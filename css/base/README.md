@@ -1,0 +1,2 @@
+# About the Base Directory
+The base SASS directory is the second to be loaded and contains very high-level styling for things like forms, links, paragraphs, etc. Mine's based off the excellent [Normalize](https://necolas.github.io/normalize.css/) as it lets me apply logical cross-browser styles and edit (not overwrite—an important distinction) only what I need for the particular site I'm working on.

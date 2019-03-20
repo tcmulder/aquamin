@@ -1,0 +1,2 @@
+# About the Global Directory
+The Global SASS directory is the first to be loaded (except for overrides and shame which are last), like mixins, variables, etc. Most things in here don't get output:they're just tools to use elsewhere.

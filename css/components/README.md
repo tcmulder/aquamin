@@ -1,0 +1,2 @@
+# About the Components Directory
+The components SASS directory is the third to be loaded and contains the modules that actually make up the page—things like image grids, calls to action, contact forms, etc. Any collection of elements that makes up a distinct feature of the website is a candidate for its own file in the components directory. I use [SASS Globbing](https://github.com/chriseppstein/sass-globbing) so it's easy for me to drop new files into the directory without needing to edit the styles.scss imports.

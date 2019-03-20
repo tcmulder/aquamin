@@ -1,0 +1,47 @@
+/**
+ * (╯°□°）╯︵ ┻━┻
+ */
+
+/**
+ * Body Breakpoint Debugger
+ */
+[id^="things-list-"] {
+    &:not(:hover) > li > a {display: none !important;}
+    &:before {content:"max (over #{$bp-lg--max})";width:100%;color:#fff;padding-left:5px;font-size:10px;float:left;}
+    @include bp($bp-lg--max){ &:before { content: "$bp-lg--max (#{$bp-lg--max})"}}
+    @include bp($bp-lg--mid){ &:before { content: "$bp-lg--mid (#{$bp-lg--mid})"}}
+    @include bp($bp-lg--min){ &:before { content: "$bp-lg--min (#{$bp-lg--min})"}}
+
+    @include bp($bp-md--max){ &:before { content: "$bp-md--max (#{$bp-md--max})"}}
+    @include bp($bp-md--mid){ &:before { content: "$bp-md--mid (#{$bp-md--mid})"}}
+    @include bp($bp-md--min){ &:before { content: "$bp-md--min (#{$bp-md--min})"}}
+
+    @include bp($bp-sm--max){ &:before { content: "$bp-sm--max (#{$bp-sm--max})"}}
+    @include bp($bp-sm--mid){ &:before { content: "$bp-sm--mid (#{$bp-sm--mid})"}}
+    @include bp($bp-sm--min){ &:before { content: "$bp-sm--min (#{$bp-sm--min})"}}
+}
+
+/**
+ * Browsersync Restyle
+ */
+#__bs_notify__ {
+    opacity: .8;
+    bottom: 0;
+    left: 0;
+    right: auto !important;
+    top: auto !important;
+    border-radius: 0 10px 0 0 !important;
+    transform: scale(.6);
+    transform-origin: 0 100%;
+    background-color: mediumaquamarine !important;
+}
+
+/**
+ * Preview Overlay
+ */
+#pix2pix { max-width: none !important; }
+
+/**
+ * Show Possible Bum Links
+ */
+// [href*="#"]{ /*TEMP*/box-shadow:0 0 0 1px rgba(aquamarine,.5) inset !important;background-color:rgba(aquamarine,.5) !important; }

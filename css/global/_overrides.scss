@@ -1,0 +1,39 @@
+/**
+ * Global Modifications
+ *
+ * Table of Contents:
+ *
+ * Layout
+ * Text
+ * Background/Frames/Overlays
+ * Special/Non-Reusable
+ */
+
+/**
+ * Layout
+ */
+%space-above {
+    margin-top: $gap--above;
+    @include bp($bp-sm--max){
+        margin-top: $gap--above-mobile;
+    }
+} .space-above { @extend %space-above; }
+%space-below {
+    margin-bottom: $gap--below;
+    @include bp($bp-sm--max){
+        margin-bottom: $gap--below-mobile;
+    }
+} .space-below { @extend %space-below; }
+
+/**
+ * Text
+ */
+
+/**
+ * Background/Frames/Overlays
+ */
+
+/**
+ * Special/Non-Reusable
+ */
+
