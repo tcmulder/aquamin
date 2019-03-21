@@ -47,39 +47,37 @@ $color-dark:            #000;
 $font-size: 16;
 
 // font families
-$fam-1:                 sans-serif;
-$fam-2:                 serif;
+$fam-1:                 monospace;
+$fam-2:                 monospace;
 
 /**
  * Layout
  */
-// gaps and padding
-$rem-pad:               30/$font-size * 1rem; // 30px given base font size
-$rem-gap:               $rem-pad;
+// gaps in scalable em format
+$gap:                   30/$font-size * 1em; // 30px given base font size;
+$gap--big:              $gap*4;
+$gap--baby:             $gap*2;
+
+// gaps in rigid em format
+$rem-gap:               30/$font-size * 1rem; // 30px given base font size
 $rem-gap--big:          $rem-gap*4;
 $rem-gap--baby:         $rem-gap*2;
 
-// gaps in scalable em format
-$pad:                   30/$font-size * 1em; // 30px given base font size
-$gap:                   $pad;
-$gap--big:              $gap*4;
-$gap--baby:             $gap*2;
+// vertical spacing
+$gap--out-above:        (50/$font-size) * 1em; // 50px
+$gap--out-above-mobile: (20/$font-size) * 1em; // 20px
+$gap--out-below:        (90/$font-size) * 1em; // 90px
+$gap--out-below-mobile: (50/$font-size) * 1em; // 50px
+
+$gap--in-above:         (50/$font-size) * 1em; // 50px
+$gap--in-above-mobile:  (20/$font-size) * 1em; // 20px
+$gap--in-below:         (90/$font-size) * 1em; // 90px
+$gap--in-below-mobile:  (50/$font-size) * 1em; // 50px
 
 // horizontal row widths
 $row:                   960px;
 $row--baby:             1280px;
 $row--big:              1440px;
-
-$padding-top:           $gap;
-$padding-bottom:        $gap;
-$padding-top--big:      $gap--big*2;
-$padding-bottom--big:   $gap--big*2;
-
-// vertical spacing
-$gap--above:            (70/$font-size) * 1em; // 70px
-$gap--above-mobile:     (20/$font-size) * 1em; // 20px
-$gap--below:            (150/$font-size) * 1em; // 150px
-$gap--below-mobile:     (70/$font-size) * 1em; // 70px
 
 /**
  * Breakpoints

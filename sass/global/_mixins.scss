@@ -1,18 +1,13 @@
 /**
  * Mixins
-
+ *
  * Table of Contents:
-
  * Map Deep Get
  * Clearfix
  * Placeholders
  * Strip Unit
- * Pixels to EMs
- * Placeholder Color
- * @Font Face Shortener
+ * Unit px to em
  * Media Queries
- * Changing grid-column to col
- * Sticky Footer
  * Nav
  * Buttons
  */
@@ -40,37 +35,31 @@
  */
 // Autoprefixer seems to have issues, even if these are just comma separated.
 // make edits in normal _forms.scss file.
-@mixin placeholder-prefixes($el: '') {
-    #{$el} * placeholder {
+@mixin placeholder-prefixes {
+    &::-webkit-input-placeholder {
         @content;
     }
-    #{$el} * -webkit-input-placeholder {
+    &::-moz-placeholder {
         @content;
     }
-    #{$el}:-moz-placeholder {
+    &:-ms-input-placeholder {
         @content;
     }
-    #{$el} * -moz-placeholder {
-        @content;
-    }
-    #{$el}:-ms-input-placeholder {
+    &:-moz-placeholder {
         @content;
     }
 }
 @mixin placeholder-prefixes-focus {
-    :focus * placeholder {
+    &:focus::-webkit-input-placeholder {
         @content;
     }
-    :focus * -webkit-input-placeholder {
+    &:focus::-moz-placeholder {
         @content;
     }
-    :focus:-moz-placeholder {
+    &:focus:-ms-input-placeholder {
         @content;
     }
-    :focus * -moz-placeholder {
-        @content;
-    }
-    :focus:-ms-input-placeholder {
+    &:focus:-moz-placeholder {
         @content;
     }
 }
@@ -87,7 +76,7 @@
 }
 
 /**
- * Pixels to Ems
+ * Unit px to em
  */
 //Usage:
 // converts a pixel value to an em value
@@ -102,38 +91,6 @@
 @function em($value, $base: $font-size) {
     $value: strip-unit($value) / strip-unit($base) * 1em;
     @return $value;
-}
-
-/**
- * Placeholder Color
- */
-@mixin input-placeholder {
-    &.placeholder { @content; }
-    &:-moz-placeholder { @content; }
-    & * -moz-placeholder { @content; }
-    &:-ms-input-placeholder { @content; }
-    & * -webkit-input-placeholder { @content; }
-}
-
-/**
- * @Font Face Shortener
- */
-//Usage:
-//Descript:
-@mixin font-face($font-family, $font-path, $font-weight : normal, $font-style :normal, $font-stretch : normal) {
-    @font-face {
-        font-family: '#{$font-family}';
-
-        src: url('fonts/#{$font-path}.eot');
-        src: url('fonts/#{$font-path}.eot?#iefix') format('embedded-opentype'),
-             url('fonts/#{$font-path}.woff') format('woff'),
-             url('fonts/#{$font-path}.ttf') format('truetype'),
-             url('fonts/#{$font-path}.svg##{$font-family}') format('svg');
-
-        font-weight: $font-weight;
-        font-style: $font-style;
-        font-stretch: $font-stretch;
-    }
 }
 
 /**
@@ -159,48 +116,6 @@
         @media only screen and (max-width: $max) { @content; }
     }
 
-}
-
-/**
- * Changing grid-column to col
- */
-
-//Just @include col(x);
-@mixin col($columns, $last-column:false, $center:false, $offset:false, $push:false, $pull:false, $collapse:false, $float:left) {
-    @include grid-column($columns, $last-column, $center, $offset, $push, $pull, $collapse, $float);
-}
-
-/**
- * Sticky Footer
- */
-
-// Use this mixin to make the footer sticky.
-// Just add the following line somewhere in your stylesheet:
-//
-//      @include sticky-footer($footer-height:200px);
-//
-
-@mixin sticky-footer(
-    $wrap: '.sticky-footer',
-    $row:  '.sticky-footer__row',
-    $flex: '.sticky-footer__row--flex'){
-
-    html, body {
-        height: 99.99999%;//not 100% to eliminate horizontal scroll
-    }
-    #{$wrap} {
-        display: table;
-        table-layout: fixed;
-        height: 100%;
-        width: 100%;
-    }
-    #{$row} {
-        display: table-row;
-        height: 1px;
-    }
-    #{$flex} {
-        height: auto;
-    }
 }
 
 /**

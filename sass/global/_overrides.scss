@@ -1,0 +1,66 @@
+/**
+ * Global Modifications
+ *
+ * Table of Contents:
+ *
+ * Layout
+ * Text
+ * Background/Frames/Overlays
+ * Special/Non-Reusable
+ */
+
+/**
+ * Layout
+ */
+%mod--inner {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: $row;
+	@at-root { .mod--inner { @extend %mod--inner; } }
+}
+%mod--pad-sides {
+	padding: { left: $gap; right: $gap; }
+	@at-root { .mod--pad-sides { @extend %mod--pad-sides; } }
+}
+%mod--margin-top {
+	margin-top: $gap--out-above;
+	@include bp($bp-sm--max){
+		margin-top: $gap--out-above-mobile;
+	}
+	@at-root { .mod--margin-top { @extend %mod--margin-top; } }
+}
+%mod--padding-top {
+	padding-top: $gap--in-below;
+	@include bp($bp-sm--max){
+		padding-top: $gap--in-below-mobile;
+	}
+	@at-root { .mod--padding-top { @extend %mod--padding-top; } }
+}
+%mod--padding-bottom {
+	padding-bottom: $gap--in-above;
+	@include bp($bp-sm--max){
+		padding-bottom: $gap--in-above-mobile;
+	}
+	@at-root { .mod--padding-bottom { @extend %mod--padding-bottom; } }
+}
+%mod--margin-bottom {
+	margin-bottom: $gap--out-below;
+	@include bp($bp-sm--max){
+		margin-bottom: $gap--out-below-mobile;
+	}
+	@at-root { .mod--margin-bottom { @extend %mod--margin-bottom; } }
+}
+
+/**
+ * Text
+ */
+
+/**
+ * Background/Frames/Overlays
+ */
+
+/**
+ * Special/Non-Reusable
+ */
+

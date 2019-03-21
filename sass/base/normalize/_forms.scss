@@ -12,6 +12,12 @@ textarea {
 	font: inherit;
 	margin: 0;
 }
+%button {
+	text-decoration: none; // for anchor tags
+	&:hover,
+	&:focus {}
+	&:active {}
+}
 button {
 	overflow: visible;
 }
@@ -19,10 +25,12 @@ button,
 select {
 	text-transform: none;
 }
+.button,
 button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
+	@extend %button;
 	-webkit-appearance: button;
 	cursor: pointer;
 }
@@ -34,6 +42,35 @@ button * -moz-focus-inner,
 input * -moz-focus-inner {
 	border: 0;
 	padding: 0;
+}
+@mixin input-like-text-elements {
+    input[type="text"],
+    input[type="password"],
+    input[type="search"],
+    input[type="email"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="range"],
+    input[type="date"],
+    input[type="month"],
+    input[type="week"],
+    input[type="time"],
+    input[type="datetime"],
+    input[type="datetime-local"] {
+        @content;
+    }
+}
+%input-like-text-styling {
+    &:disabled {
+        opacity: .4;
+        pointer-events: none;
+    }
+    @include placeholder-prefixes() {}
+    @include placeholder-prefixes-focus() {}
+}
+@include input-like-text-elements {
+    @extend %input-like-text-styling;
 }
 input {
 	line-height: normal;

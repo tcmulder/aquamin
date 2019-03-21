@@ -1,0 +1,93 @@
+/**
+ * Text Level Semantics
+ *
+ * Normalize.css v3.0.0 | MIT License | git.io/normalize
+ */
+body {
+	font-family: $fam-1;
+	font-size: $font-size * 1px;
+}
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+b,
+strong {
+	font-weight: bold;
+}
+dfn {
+	font-style: italic;
+}
+p {
+	margin-top: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+%h {
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+%h1 {
+	@extend %h;
+	margin: 0.67em 0;
+	font-size: 2em;
+	font-family: $fam-2;
+}
+%h2 {
+	@extend %h;
+}
+%h3 {
+	@extend %h;
+}
+%h4 {
+	@extend %h;
+}
+%h5 {
+	@extend %h;
+}
+%h6 {
+	@extend %h;
+}
+h1, .h1{ @extend %h1; }
+h2, .h2{ @extend %h2; }
+h3, .h3{ @extend %h3; }
+h4, .h4{ @extend %h4; }
+h5, .h5{ @extend %h5; }
+h6, .h6{ @extend %h6; }
+mark {
+	background: #ff0;
+	color: #000;
+}
+%small,
+small {
+	font-size: 80%;
+}
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+%cite {
+	font-size: 1.5em;
+}
+cite {
+	@extend %cite;
+}
+%blockquote {
+	font-size: 2em;
+}
+blockquote {
+	@extend %blockquote;
+}
