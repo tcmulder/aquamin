@@ -14,7 +14,7 @@
 	</div><!-- #content (opened in header.php) -->
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-footer__nav inner">
+		<div class="site-footer__nav mod--inner">
 			<?php
 				wp_nav_menu( array(
 					'theme_location'  => 'foot-menu',
@@ -24,7 +24,7 @@
 			?>
 			</div>
 		</div>
-		<div class="site-footer__copy inner">
+		<div class="site-footer__copy mod--inner">
 			&copy;<?php echo date( 'Y' ) ?>
 		</div>
 	</footer>

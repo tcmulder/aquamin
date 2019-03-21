@@ -9,9 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'main-torso__content' ); ?>>
-	<div class="main-torso__inner inner">
-		<h1 class="main-torso__title"><?php the_title(); ?></h1>
-		<?php the_content(); ?>
-	</div>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-content' ); ?>>
+	<h1 class="post-content__title"><?php the_title(); ?></h1>
+	<?php the_content(); ?>
 </article>

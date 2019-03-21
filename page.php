@@ -14,14 +14,18 @@
 
 get_header(); ?>
 
-	<main id="main" class="main-torso">
-		<?php if ( have_posts() ) : ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'template-parts/content', 'page' ); ?>
-			<?php endwhile; ?>
-		<?php else : ?>
-			<?php get_template_part( 'template-parts/content', 'none' ); ?>
-		<?php endif; ?>
-	</main>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+			<?php if ( have_posts() ) : ?>
+				<?php while ( have_posts() ) : the_post(); ?>
+					<?php get_template_part( 'template-parts/content', 'page' ); ?>
+				<?php endwhile; ?>
+			<?php else : ?>
+				<section class="site-main__content mod--inner">
+					<?php get_template_part( 'template-parts/content', 'none' ); ?>
+				</section>
+			<?php endif; ?>
+		</main>
+	</div>
 
 <?php get_footer();

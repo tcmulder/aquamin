@@ -9,6 +9,6 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'main-torso__content' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
 	<?php the_content(); ?>
 </article>
