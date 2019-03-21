@@ -16,3 +16,13 @@ require get_template_directory() . '/inc/setup.php';
  * Add styles and scripts.
  */
 require get_template_directory() . '/inc/enqueue.php';
+
+/**
+ * Add common reusable scripts
+ */
+require get_template_directory() . '/inc/libs.php';
+
+/**
+ * Utilize Advanced Custom Fields Pro plugin.
+ */
+require get_template_directory() . '/inc/acf.php';

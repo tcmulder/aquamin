@@ -1,4 +1,7 @@
 <?php
+/**
+ * Aquamin standard theme setup.
+ */
 add_action( 'after_setup_theme', 'aquamin_setup' );
 if ( ! function_exists( 'aquamin_setup' ) ) {
 	/**
