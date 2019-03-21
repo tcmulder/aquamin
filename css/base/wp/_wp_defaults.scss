@@ -16,7 +16,9 @@
  * Overrides
  */
 
-/* Text meant only for screen readers. */
+/**
+ * Accessibility
+ */
 .screen-reader-text {
     border: 0;
     clip: rect(1px, 1px, 1px, 1px);
@@ -49,8 +51,6 @@
         z-index: 100000; /* Above WP toolbar. */
     }
 }
-
-/* Do not show the outline on the skip link target. */
 #content[tabindex="-1"]:focus {
     outline: 0;
 }
