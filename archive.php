@@ -18,6 +18,7 @@ get_header(); ?>
 					<?php while( have_posts() ) : the_post(); ?>
 						<?php get_template_part( 'template-parts/excerpt', get_post_type() ); ?>
 					<?php endwhile; ?>
+					<?php aquamin_pagination(); ?>
 				<?php else : ?>
 					<?php get_template_part( 'template-parts/content', 'none' ); ?>
 				<?php endif; ?>

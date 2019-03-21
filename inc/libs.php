@@ -86,3 +86,30 @@ function aquamin_module_class ( $class = '', $echo = true ) {
 	}
 	return $html;
 }
+
+/**
+ * Adds pagination.
+ *
+ * Use following a loop displaying posts that may contain pagination.
+ *
+ * @param  string $class Optional. Class to add to the wrapper.
+ * @param  string $prev_text Optional. Text to show for previous button (default "Previous").
+ * @param  string $next_text Optional. Text to show for next button (default "Next").
+ */
+function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text = '' ) {
+	global $wp_query;
+	$big = 999999999;
+	$prev_text = ( '' !== $prev_text ? $prev_text : __( 'Previous', 'aquamin' ) );
+	$next_text = ( '' !== $next_text ? $next_text : __( 'Next', 'aquamin' ) );
+	$nav = paginate_links( array(
+	    'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+	    'format'    => '?paged=%#%',
+	    'prev_text' => $prev_text,
+	    'current'   => max(1, get_query_var('paged')),
+	    'total'     => $wp_query->max_num_pages,
+	    'next_text' => $next_text,
+	) );
+	if ( $nav ) {
+		echo '<div class="' . $class . '">' . $nav . '</div>';
+	}
+}
