@@ -22,7 +22,6 @@
 					'container_class' => 'footer-nav',
 				) );
 			?>
-			</div>
 		</div>
 		<div class="site-footer__copy mod--inner">
 			<?php printf( esc_html__( '&copy; %s', 'aquamin' ), date( 'Y' ) ); ?>
