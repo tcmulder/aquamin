@@ -20,6 +20,9 @@ function aquamin_id() {
 
 	if ( ! $the_id ) {
 
+		// start with a default
+		$the_id = get_the_id();
+
 		// use page set as the "posts page" for blog-like templates
 		if ( get_option( 'page_for_posts' )
 			&& ( is_singular('post')
@@ -30,16 +33,11 @@ function aquamin_id() {
 			)
 		) {
 			$the_id = get_option('page_for_posts');
-		// use a page with slug "404" for the 404 page id
+		// use a page with slug "404-page" for the 404 page id
 		} elseif ( is_404() ) {
-			if ( $post = get_page_by_path( '404', OBJECT, 'page' ) ) {
+			if ( $post = get_page_by_path( '404-page', OBJECT, 'page' ) ) {
 			    $the_id = $post->ID;
-			} else {
-				get_the_id();
 			}
-		// default to the current page id
-		} else {
-			$the_id = get_the_id();
 		}
 
 		wp_cache_add( 'aquamin_current_id', $the_id, 'aquamin_ids' );
