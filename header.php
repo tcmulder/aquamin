@@ -21,6 +21,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php do_action('custom_script_tags_plugin_after_opening_body'); // requires aquamarine's custom scripts plugin ?>
 <div id="page" class="all-the-things">
 
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'aquamin' ); ?></a>
