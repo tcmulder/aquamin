@@ -25,7 +25,7 @@ A minimal starting point for custom theme development. Starts with a white page 
 
 = Does this theme require any plugins? =
 
-Advanced Custom Fields Pro is highly recommended.
+Advanced Custom Fields Pro is highly recommended. If you're not going to use it though, you can delete the functions.php line requiring the inc/acf.php file, the inc/acf.php file itself, and the acf-json directory.
 
 == Changelog ==
 
