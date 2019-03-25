@@ -8,7 +8,7 @@ function aquamin_scripts(){
 	/**
 	 * Configure styles
 	 */
-	wp_register_style( 'aquamin-style', get_template_directory_uri() . '/style.css', array(), '1.0.0','screen, projection' );
+	wp_register_style( 'aquamin-style', get_template_directory_uri() . '/style.css', array(), '1.0.0', 'screen' );
 
 	/**
 	 * Load styles
