@@ -6,9 +6,17 @@ add_action( 'wp_enqueue_scripts', 'aquamin_scripts' );
 function aquamin_scripts(){
 
 	/**
+	 * Cache breaker
+	 *
+	 * Increment this number to break cache (not to
+	 * be confused with the theme version number).
+	 */
+	$cache_version = '1';
+
+	/**
 	 * Configure styles
 	 */
-	wp_register_style( 'aquamin-style', get_template_directory_uri() . '/style.css', array(), '1.0.0', 'screen' );
+	wp_register_style( 'aquamin-style', get_template_directory_uri() . '/style.css', array(), $cache_version, 'screen' );
 
 	/**
 	 * Load styles
@@ -20,7 +28,7 @@ function aquamin_scripts(){
 	 */
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js', false, '1.10.1', true );
-	wp_register_script( 'aquamin-scripts', get_template_directory_uri() . '/js/scripts.min.js', false, '1.0.0', true );
+	wp_register_script( 'aquamin-scripts', get_template_directory_uri() . '/js/scripts.min.js', false, $cache_version, true );
 
 	/**
 	 * Load relevant scripts
@@ -55,6 +63,6 @@ function aquamin_admin_scripts() {
 	/**
 	 * Load back-end styles
 	 */
-	wp_enqueue_style( 'aquamin-admin-style', get_template_directory_uri() . '/admin-style.css', false, '1.0.0', 'screen, projection' );
+	wp_enqueue_style( 'aquamin-admin-style', get_template_directory_uri() . '/admin-style.css', false, $cache_version, 'screen, projection' );
 
 }
