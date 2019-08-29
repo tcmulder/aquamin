@@ -5,7 +5,7 @@ Tags: starter, clean, basic, semantic
 
 Requires at least: 4.5
 Tested up to: 5.1.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,8 +29,11 @@ Advanced Custom Fields Pro is highly recommended. If you're not going to use it 
 
 == Changelog ==
 
-= 1.0 - April 1 2019 =
-* Initial release
+= 1.0.0 - April 1 2019 =
+* Initial release.
+= 1.0.1 - August 29 2019 =
+* Added cache break number to enqueue.
+* Added theme attribution to admin footer.
 
 == Credits ==
 
