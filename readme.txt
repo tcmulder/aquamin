@@ -29,11 +29,18 @@ Advanced Custom Fields Pro is highly recommended. If you're not going to use it 
 
 == Changelog ==
 
-= 1.0.0 - April 1 2019 =
-* Initial release.
+= 1.1.0 - October 2 2020 =
+* Added ACF fields to the_content on save.
+* Added common ACF helper functions.
+* Added if_the, if_get_field, etc. sprintf function logic.
+* Added aquamin class generating functions.
+* Added common disambiguation function.
+* Added media functions (aquamin_bg, aquamin_img, aquamin_vid).
 = 1.0.1 - August 29 2019 =
 * Added cache break number to enqueue.
 * Added theme attribution to admin footer.
+= 1.0.0 - April 1 2019 =
+* Initial release.
 
 == Credits ==
 
