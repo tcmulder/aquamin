@@ -456,6 +456,21 @@ function aquamin_vid( $opt ) {
 }
 
 /**
+ * Calculate inner image sizing
+ */
+function aqua_inner_images() {
+	return array(
+		'max_width' 			=> 2000, // usually 2000 (the maximum image width, i.e. if in full width column)
+		'css_bp_desktop' 		=> 1310, // usually 1280 + 15 + 15
+		'css_bp_tablet' 		=> 800, // usually 800
+		'css_bp_phone' 			=> 500, // usually 500
+		'css_padding_desktop' 	=> 15, // usually 15
+		'css_padding_tablet' 	=> 15, // usually 15
+		'css_padding_phone' 	=> 15, // usually 15
+	);
+}
+
+/**
  * Easy conditional print.
  *
  * Like get_sub_field or the_sub_field but conditional.

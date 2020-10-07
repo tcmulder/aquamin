@@ -1,9 +1,9 @@
 {
-    "key": "group_5bc73b217eac3",
-    "title": "Module - TEMPLATE",
+    "key": "group_5e7b822207526",
+    "title": "Module - Title",
     "fields": [
         {
-            "key": "field_5bc73b2196ac2",
+            "key": "field_5e7b822213413",
             "label": "Content",
             "name": "",
             "type": "tab",
@@ -19,7 +19,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_5bc73b2196b4f",
+            "key": "field_5e7b8222134c7",
             "label": "Description",
             "name": "",
             "type": "message",
@@ -31,12 +31,33 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Use this module to add general content to the page.",
+            "message": "Use this module to add a title to the page. <em>SEO Level<\/em> defines how much value SEO should place on this heading, while <em>Restyle<\/em> defines the visual size of this heading (it defaults to matching the <em>SEO Level<\/em>'s standard size).",
             "new_lines": "wpautop",
             "esc_html": 0
         },
         {
-            "key": "field_5bc73b2196bff",
+            "key": "field_5e7b82393faea",
+            "label": "Title",
+            "name": "title",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5d052fc08b12c"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_5e7b82221358e",
             "label": "Settings",
             "name": "",
             "type": "tab",
@@ -52,7 +73,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_5bc73b2196d8f",
+            "key": "field_5e7b82221367d",
             "label": "Settings",
             "name": "settings",
             "type": "clone",
@@ -96,7 +117,7 @@
         "the_content",
         "featured_image"
     ],
-    "active": true,
+    "active": 1,
     "description": "",
-    "modified": 1584549107
+    "modified": 1597414519
 }

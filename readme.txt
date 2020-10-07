@@ -29,8 +29,9 @@ Advanced Custom Fields Pro is highly recommended. If you're not going to use it 
 
 == Changelog ==
 
-= 1.2.0 - October 3 2020 =
+= 1.2.0 - October 7 2020 =
 * Added aquaadmin-specific UI styling.
+* Updated styles directory (was sass) with common variables/mixins/etc.
 = 1.1.0 - October 2 2020 =
 * Added ACF fields to the_content on save.
 * Added common ACF helper functions.
