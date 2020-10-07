@@ -43,8 +43,10 @@ $color-dark:            #000;
 /**
  * Text Styling
  */
-// global font size (add px before use)
-$font-size: 16;
+// global font size (will add px before use)
+$font-size:             16;
+// $font-size--tablet:     17; // remains constant in design
+// $font-size--phone:      15; // remains constant in design
 
 // font families
 $fam-1:                 monospace;
@@ -53,37 +55,43 @@ $fam-2:                 monospace;
 /**
  * Layout
  */
+
+// gaps
+$gap-size:              15;
+$px-gap:                $gap-size * 1px;
+
 // gaps in scalable em format
-$gap:                   30/$font-size * 1em; // 30px given base font size;
+$gap:                   $gap-size/$font-size * 1em;
 $gap--big:              $gap*4;
 $gap--baby:             $gap*2;
 
 // gaps in rigid em format
-$rem-gap:               30/$font-size * 1rem; // 30px given base font size
+$rem-gap:               $gap-size/$font-size * 1rem;
 $rem-gap--big:          $rem-gap*4;
 $rem-gap--baby:         $rem-gap*2;
 
 // vertical spacing
-$gap--out-above:        (50/$font-size) * 1em; // 50px
-$gap--out-above-mobile: (20/$font-size) * 1em; // 20px
-$gap--out-below:        (90/$font-size) * 1em; // 90px
-$gap--out-below-mobile: (50/$font-size) * 1em; // 50px
+$gap--margin-top:       (80/$font-size) * 1em;
+$gap--padding-top:      (50/$font-size) * 1em;
+$gap--padding-bottom:   (50/$font-size) * 1em;
+$gap--margin-bottom:    (100/$font-size) * 1em;
 
-$gap--in-above:         (50/$font-size) * 1em; // 50px
-$gap--in-above-mobile:  (20/$font-size) * 1em; // 20px
-$gap--in-below:         (90/$font-size) * 1em; // 90px
-$gap--in-below-mobile:  (50/$font-size) * 1em; // 50px
+$gap--sm-margin-top:    (50/$font-size) * 1em;
+$gap--sm-padding-top:   (20/$font-size) * 1em;
+$gap--sm-padding-bottom:(20/$font-size) * 1em;
+$gap--sm-margin-bottom: (80/$font-size) * 1em;
+
 
 // horizontal row widths
-$row:                   960px;
-$row--baby:             1280px;
-$row--big:              1440px;
+$row:                   1200px + $px-gap*2; // desired inner width plus padding
+$row--baby:             1080px + $px-gap*2; // 1130px overall with 1080px inner when padded
+$row--big:              1500px;
 
 /**
  * Breakpoints
  */
 // basis
-$bp-lg--max:            $row--big;
+$bp-lg--max:            $row--big; // often $row--big
 $bp-md--max:            800px;
 $bp-sm--max:            500px;
 
@@ -101,3 +109,7 @@ $bp-sm--mid: round((($bp-sm--max - $bp-sm--min) / 2) + $bp-sm--min);
 $galaxy:        $bp-lg--max;
 $solarsystem:   $bp-md--max;
 $planetary:     $bp-sm--max;
+
+/**
+ * Special
+ */

@@ -5,14 +5,14 @@
  */
 @mixin anchor {
     background: transparent;
+    &:hover,
+    &:focus {}
     &:active,
     &:hover {
     	outline: 0;
     }
 }
-%anchor {
-    @include anchor();
-}
+%anchor,
 a {
-	@extend %anchor;
+    @include anchor();
 }

@@ -2,17 +2,133 @@
  * Mixins
  *
  * Table of Contents:
+ * Plus X
+ * Arrow
+ * No Tap Hightlight
  * Map Deep Get
  * Clearfix
  * Placeholders
  * Strip Unit
  * Unit px to em
- * Media Queries
  * Nav
- * Buttons
  */
 
 /**
+ * Plus X
+ */
+ @mixin plusX(
+    $color: currentColor,
+    $color-hover: false,
+    $length: 1em,
+    $breadth: 2px,
+    $rotate: -45deg 45deg,
+    $speed: .3s,
+    $transition: .3s,
+    $top: 50%,
+    $left: 50%,
+    $right: false,
+    $bottom: false
+) {
+    &:before, // the x
+    &:after {
+        content: "";
+        position: absolute;
+        width: $breadth;
+        height: $length;
+        background-color: $color;
+        transform-origin: 0% 0%;
+        @if $transition {
+            transition: $transition;
+        }
+        @if $bottom {
+            bottom: $bottom;
+        } @else {
+            top: $top;
+        }
+        @if $right {
+            right: $right;
+        } @else {
+            left: $left;
+        }
+    }
+    &:before {
+        transform: rotate(#{nth($rotate, 1)}) translate(-50%, -50%);
+    }
+    &:after {
+        transform: rotate(#{nth($rotate, 2)}) translate(-50%, -50%);
+    }
+    @if $color-hover {
+        &:hover {
+            &:before,
+            &:after {
+                background-color: $color-hover;
+            }
+        }
+    }
+}
+
+/**
+ * Arrow
+ */
+@mixin arrow(
+    $angle: "right",
+    $el: '&:before',
+    $stroke: 2px,
+    $color: currentColor,
+    $transition: .3s,
+    $width: 50%,
+    $height: 50%,
+    $top: 50%,
+    $left: 50%,
+    $right: false,
+    $bottom: false,
+    $reorient: false,
+) {
+    $angles: (
+        "up":       45deg * 1,
+        "right":    45deg * 3,
+        "down":     45deg * 5,
+        "left":     45deg * 7
+    );
+    #{$el} {
+        // "reorient" allows arrows to be rotated without repeating ALL the other css again
+        @if $reorient {
+            transform: rotate(#{map-get($angles, $reorient)}) translate(-50%, -50%);
+        } @else {
+            content: "";
+            position: absolute;
+            border: 0 solid $color;
+            border-width: $stroke 0 0 $stroke;
+            width: $width;
+            height: $height;
+            transform-origin: 0% 0%;
+            transform: rotate(#{map-get($angles, $angle)}) translate(-50%, -50%);
+            @if $transition {
+                transition: $transition;
+            }
+            @if $bottom {
+                bottom: $bottom;
+            } @else {
+                top: $top;
+            }
+            @if $right {
+                right: $right;
+            } @else {
+                left: $left;
+            }
+        }
+    }
+}
+
+/**
+ * No Tap Hightlight
+ */
+@mixin no-tap {
+    user-select: none;
+    -webkit-tap-highlight-color:transparent;
+}
+
+ /**
  * Map Deep Get
  */
 @function map-deep-get($map, $keys...) {
@@ -91,31 +207,6 @@
 @function em($value, $base: $font-size) {
     $value: strip-unit($value) / strip-unit($base) * 1em;
     @return $value;
-}
-
-/**
- * Media Queries
- */
-//Usage:
-// @include bp($max: 600px){ body { background:#000 } }
-// @include bp($min: 600px){ body { background:#fff } }
-// @include bp($min: 600px, $max: 600px){ body { background:#000 } }
-// @include bp($planetary){ body { background:#fff } }
-
-@mixin bp($media: false, $min: false, $max: false) {
-    @if $media {
-        @media only screen and (max-width: $media) { @content; }
-    }
-    @else if $min and $max {
-        @media only screen and (min-width: $min) and (max-width: $max) { @content; }
-    }
-    @else if $min {
-        @media only screen and (min-width: $min) { @content; }
-    }
-    @else if $max {
-        @media only screen and (max-width: $max) { @content; }
-    }
-
 }
 
 /**
@@ -206,6 +297,8 @@
                     position: absolute;
                     opacity: 0;
                 }
+                &:focus,
+                &:focus-within,
                 &:hover {
                     ul {
                         opacity: 1;

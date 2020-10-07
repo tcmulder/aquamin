@@ -1,9 +1,9 @@
 /*!
-Theme Name: Aquamin
+Theme Name: Mile High Youth Corps
 Theme URI: https://www.thinkaquamarine.com
 Author: Tomas Mulder
 Description: A minimal starting point for custom theme development.
-Version: 1.1.0
+Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: aquamin
@@ -43,7 +43,7 @@ Tags: starter, clean, basic, semantic
  * normalize, global text styling,
  * global classes, plugin styling, etc.
  */
-@import "base/**/*";
+@import "base/*/*";
 
 /**
  * Components
@@ -53,7 +53,7 @@ Tags: starter, clean, basic, semantic
  * like sliders, contact forms, logos,
  * etc.
  */
-@import "components/**/*";
+@import "components/*";
 
 /**
  * Layout
@@ -62,7 +62,7 @@ Tags: starter, clean, basic, semantic
  * elements goes here, like header and
  * footer, navigation, sidebars, etc.
  */
-@import "layout/**/*";
+@import "layout/*";
 
 /**
  * Templates
@@ -72,7 +72,7 @@ Tags: starter, clean, basic, semantic
  * specific styling or a blog post's
  * styling.
  */
-@import "templates/**/*";
+@import "templates/*";
 
 /**
  * Overrides (in Global)

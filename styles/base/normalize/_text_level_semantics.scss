@@ -6,9 +6,12 @@
 body {
 	font-family: $fam-1;
 	font-size: $font-size * 1px;
+	line-height: 1.5;
 }
 abbr[title] {
-	border-bottom: 1px dotted;
+	border-bottom: none;
+	cursor: inherit;
+	text-decoration: none;
 }
 b,
 strong {
@@ -24,6 +27,9 @@ p {
 	}
 }
 %h {
+	margin: .5em 0;
+	font-weight: bold;
+	line-height: 1;
     &:first-child {
         margin-top: 0;
     }
@@ -31,40 +37,34 @@ p {
         margin-bottom: 0;
     }
 }
-%h1 {
+%h1, h1, .h1 {
 	@extend %h;
-	margin: 0.67em 0;
-	font-size: 2em;
-	font-family: $fam-2;
+	font-size: (32/$font-size) * 1em;
 }
-%h2 {
+%h2, h2, .h2 {
 	@extend %h;
 }
-%h3 {
+%h3, h3, .h3 {
 	@extend %h;
 }
-%h4 {
+%h4, h4, .h4 {
 	@extend %h;
 }
-%h5 {
+%h5, h5, .h5 {
 	@extend %h;
 }
-%h6 {
+%h6, h6, .h6 {
 	@extend %h;
 }
-h1, .h1{ @extend %h1; }
-h2, .h2{ @extend %h2; }
-h3, .h3{ @extend %h3; }
-h4, .h4{ @extend %h4; }
-h5, .h5{ @extend %h5; }
-h6, .h6{ @extend %h6; }
 mark {
 	background: #ff0;
 	color: #000;
 }
-%small,
-small {
+%small, small {
 	font-size: 80%;
+}
+%big, big {
+	font-size: 120%;
 }
 sub,
 sup {
@@ -79,15 +79,14 @@ sup {
 sub {
 	bottom: -0.25em;
 }
-%cite {
+%cite, cite {
 	font-size: 1.5em;
 }
-cite {
-	@extend %cite;
-}
-%blockquote {
-	font-size: 2em;
-}
-blockquote {
-	@extend %blockquote;
+%blockquote, blockquote {
+	margin: .5em 0;
+	padding: 0;
+	font-size: 2.25em;
+	line-height: 1.05;
+	font-weight: bold;
+	text-align: center;
 }
