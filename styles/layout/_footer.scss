@@ -1,0 +1,15 @@
+/**
+ * Footer styling
+ */
+
+// sticky
+.all-the-things {
+	min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    @at-root {
+    	html, body { // for sticky footer specifically
+    		height: 100%;
+    	}
+    }
+}

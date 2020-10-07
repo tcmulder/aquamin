@@ -61,7 +61,8 @@
                 "id": ""
             },
             "choices": {
-                "mod--TEMPLATE": "TEMPLATE"
+                "mod--text-invert": "Light text colors",
+                "mod--bg-dark": "Black background"
             },
             "allow_custom": 1,
             "save_custom": 0,
@@ -94,7 +95,7 @@
         "the_content",
         "featured_image"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1553189681
+    "modified": 1602108265
 }

@@ -1,0 +1,44 @@
+/**
+ * The .title-element and .title-wrap module styling
+ */
+
+.title-wrap {
+	&.mod--in-bottom {
+		padding-bottom: 2.5em; // less extreme so it's more heading-like
+		margin-bottom: 0;
+	}
+	&.mod--out-bottom {
+		margin-bottom: 2.5em; // less extreme so it's more heading-like
+	}
+}
+.title-element {
+	&:not(.mod--margin-top):first-child {
+		margin-top: 0;
+	}
+	.mod--inner {
+		@extend %mod--pad-sides;
+	}
+}
+
+// special reset for nested %h in _text_level_semantics.scss
+.title-element {
+	display: block;
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+		margin: {top: .75em; bottom: .25em;}
+	}
+	&:first-child {
+		h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+			margin-top: 0;
+		}
+	}
+	&:last-child {
+		h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+			margin-bottom: 0;
+		}
+	}
+	br {
+		@media (max-width: $bp-md--mid) {
+			display: none;
+		}
+	}
+}

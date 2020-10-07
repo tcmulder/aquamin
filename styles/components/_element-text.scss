@@ -1,0 +1,13 @@
+/**
+ * The .text-element element styling
+ */
+.text-element {
+	width: 100%;
+	&:last-child {
+		p:last-child,
+		ul:last-child,
+		ul:last-child li:last-child {
+			margin-bottom: $gap;
+		}
+	}
+}
