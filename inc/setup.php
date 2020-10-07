@@ -77,5 +77,21 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 			return '<span id="footer-thankyou">Theme by <a href="https://www.thinkaquamarine.com/" target="_blank">' . $svg . '</a></span>';
 		}
 
+		/**
+		 * Aquamarine-ize the interface (from Admin Color Schemes plugin originally)
+		 */
+		add_action( 'admin_init' , 'aquamin_aquamarine_colors' );
+		function aquamin_aquamarine_colors() {
+			$user = wp_get_current_user();
+			if ( 'aquaadmin' === $user->user_login ) {
+				wp_admin_css_color(
+					'aquamarine', __( 'Aquamarine', 'admin_schemes' ),
+					get_template_directory_uri() . '/admin-aquamarine.css',
+					array( '#1F2C39', '#2c3e50', '#1abc9c', '#f39c12' ),
+					array( 'base' => '#f1f2f3', 'focus' => '#fff', 'current' => '#fff' )
+				);
+			}
+		}
+
 	}
 }
