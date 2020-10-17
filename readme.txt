@@ -5,7 +5,7 @@ Tags: starter, clean, basic, semantic
 
 Requires at least: 4.5
 Tested up to: 5.1.1
-Stable tag: 1.0.1
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,8 @@ Advanced Custom Fields Pro is highly recommended. If you're not going to use it 
 
 == Changelog ==
 
+= 1.2.1 - October 7 2020 =
+* Set default ID for aquamin_img function.
 = 1.2.0 - October 7 2020 =
 * Added aquaadmin-specific UI styling.
 * Updated styles directory (was sass) with common variables/mixins/etc.
