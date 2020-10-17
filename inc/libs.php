@@ -246,19 +246,17 @@ function aquamin_bg($attr) {
  *		),
  *		'images' => array( // ignored if svg/gif mime type
  *			array(
- *				'id'        => $image_id,
  *				'max-width' => 500,
  *				'width'     => 500,
  *			),
  *			array(
- *				'id'        => $image_id,
  *				'max-width' => 800,
  *				'width'     => 800,
  *			),
  *			array(
- *				'id'        => $image_id,
  *				'min-width' => 801,
  *				'width'     => 1440,
+ *				// 'id'        => $image_id, // defaults to default image id
  *				// 'height'    => 100, // defaults to default image aspect ratio
  *				// 'crop'      => false, // defaults to true
  *			),
@@ -312,7 +310,7 @@ function aquamin_img( $opt ) {
 				$height = round( $image[ 'height' ] ? $image[ 'height' ] : $aspect * $image[ 'width' ] );
 				$image_prev = array( 'width' => $width, 'height' => $height );
 				$image_arr = fly_get_attachment_image_src(
-					$image[ 'id' ],
+					( $image[ 'id' ] ? $image[ 'id' ] : $opt[ 'default' ][ 'id' ] ),
 					array( $width, $height ),
 					( isset( $image[ 'crop' ] ) ? $image[ 'crop' ] : true )
 				);
@@ -351,7 +349,7 @@ function aquamin_img( $opt ) {
 				$width = $image[ 'width' ];
 				$height = $image[ 'height' ];
 				$image_arr = fly_get_attachment_image_src(
-					$image[ 'id' ],
+					( $image[ 'id' ] ? $image[ 'id' ] : $opt[ 'default' ][ 'id' ] ),
 					array( $width, $height ),
 					( isset( $image[ 'crop' ] ) ? $image[ 'crop' ] : true )
 				);
