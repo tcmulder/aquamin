@@ -471,34 +471,23 @@ function aqua_inner_images() {
 /**
  * Easy conditional print.
  *
- * Like get_sub_field or the_sub_field but conditional.
+ * Like printf/sprintf but only outputs the string (usually
+ * HTML) if none of the values are (boolean) false.
  *
- * @uses ACF plugin
  */
-function if_get_field( $sprintf, $field_name, $post_id = false ) {
-	$post_id = ( $post_id ? $post_id : aquamin_id() );
-	$field = get_field( $field_name, $post_id );
-	if ( $field ) {
-		return sprintf( $sprintf, $field );
+function if_sprintf( $sprintf, ...$fields ) {
+	// get the first value and continue if it's not false
+	$first = array_shift( $fields );
+	if ( false !== $first && '' !== $first ) {
+		// simply output it if that's all we've got (90% of the time it's just one argument)
+		if ( ! $fields ) {
+			return sprintf( $sprintf, $first );
+		// do additional digging if there are multiple replacements to be made
+		} elseif ( ! in_array( false, $fields, true ) ) {
+			return call_user_func_array( 'sprintf', array_merge( (array) $sprintf, (array) $first, $fields ) );
+		}
 	}
 }
-function if_the_field( $sprintf, $field_name, $post_id = false ) {
-	echo if_get_field( $sprintf, $field_name, $post_id );
-}
-function if_get_sub_field( $sprintf, $field_name ) {
-	$field = get_sub_field( $field_name );
-	if ( $field ) {
-		return sprintf( $sprintf, $field );
-	}
-}
-function if_the_sub_field( $sprintf, $field_name ) {
-	echo if_get_sub_field( $sprintf, $field_name );
-}
-function if_get( $sprintf, $field ) {
-	if ( $field ) {
-		return sprintf( $sprintf, $field );
-	}
-}
-function if_the( $sprintf, $field ) {
-	echo if_get( $sprintf, $field );
+function if_printf( $sprintf, ...$field ) {
+	echo if_sprintf( $sprintf, ...$field );
 }
