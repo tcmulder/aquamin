@@ -456,7 +456,7 @@ function aquamin_vid( $opt ) {
 /**
  * Calculate inner image sizing
  */
-function aqua_inner_images() {
+function aquamin_inner_images() {
 	return array(
 		'max_width' 			=> 2000, // usually 2000 (the maximum image width, i.e. if in full width column)
 		'css_bp_desktop' 		=> 1310, // usually 1280 + 15 + 15

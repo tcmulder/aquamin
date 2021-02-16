@@ -5,7 +5,7 @@ Tags: starter, clean, basic, semantic
 
 Requires at least: 4.5
 Tested up to: 5.1.1
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,9 @@ Advanced Custom Fields Pro is highly recommended. If you're not going to use it 
 
 == Changelog ==
 
+= 1.2.3 - February 16 2021 =
+* Fix function name for aquamin_inner_images.
+* Add admin-aquamarine.css file for primary admin theme.
 = 1.2.2 - January 14 2021 =
 * Replaced if_the etc. with more generic if_printf/if_sprintf version.
 = 1.2.1 - October 7 2020 =
