@@ -122,7 +122,6 @@ function aquamin_disambiguate() {
 	// return it
 	return $unique_number;
 }
-
 /**
  * Adds pagination.
  *
@@ -131,22 +130,32 @@ function aquamin_disambiguate() {
  * @param  string $class Optional. Class to add to the wrapper.
  * @param  string $prev_text Optional. Text to show for previous button (default "Previous").
  * @param  string $next_text Optional. Text to show for next button (default "Next").
+ * @param  string $show_disabled Optional. Show disabled prev/next buttons (default is false).
  */
-function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text = '' ) {
+function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text = '', $show_disabled = false ) {
 	global $wp_query;
 	$big = 999999999;
 	$prev_text = ( '' !== $prev_text ? $prev_text : __( 'Previous', 'aquamin' ) );
 	$next_text = ( '' !== $next_text ? $next_text : __( 'Next', 'aquamin' ) );
 	$nav = paginate_links( array(
-		'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-		'format'    => '?paged=%#%',
-		'prev_text' => $prev_text,
-		'current'   => max(1, get_query_var('paged')),
-		'total'     => $wp_query->max_num_pages,
-		'next_text' => $next_text,
+	    'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+	    'format'    => '?paged=%#%',
+	    'prev_text' => $prev_text,
+	    'current'   => max(1, get_query_var('paged')),
+	    'total'     => $wp_query->max_num_pages,
+	    'next_text' => $next_text,
 	) );
 	if ( $nav ) {
-		echo '<div class="' . $class . '">' . $nav . '</div>';
+		$html = $nav;
+		if ( $show_disabled ) {
+			if ( stripos( $html, 'prev page-numbers' ) === false ) {
+				$html = ' <a href="javascript:void(0)" aria-disabled="true" class="prev page-numbers">' . $prev_text . '</a> ' . $html;
+			}
+			if ( stripos( $html, 'next page-numbers' ) === false ) {
+				$html = $html . ' <a href="javascript:void(0)" aria-disabled="true" class="next page-numbers">' . $next_text . '</a> ';
+			}
+		}
+		echo '<div class="' . $class . '">' . $html . '</div>';
 	}
 }
 

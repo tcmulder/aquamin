@@ -5,7 +5,7 @@ Tags: starter, clean, basic, semantic
 
 Requires at least: 4.5
 Tested up to: 5.1.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,8 @@ Advanced Custom Fields Pro is highly recommended. If you're not going to use it 
 
 == Changelog ==
 
+= 1.2.4 - October 5 2021 =
+* Add option to show disabled pagination next/prev links.
 = 1.2.3 - February 16 2021 =
 * Fix function name for aquamin_inner_images.
 * Add admin-aquamarine.css file for primary admin theme.
