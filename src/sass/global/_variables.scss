@@ -17,6 +17,8 @@
  */
 
 // p r i m a r y
+@use "sass:math";
+
 $color-1:               aquamarine;
 $color-1--light:        lighten($color-1, 15%);
 $color-1--dark:         darken($color-1, 15%);
@@ -61,25 +63,25 @@ $gap-size:              15;
 $px-gap:                $gap-size * 1px;
 
 // gaps in scalable em format
-$gap:                   $gap-size/$font-size * 1em;
+$gap:                   math.div($gap-size, $font-size) * 1em;
 $gap--big:              $gap*4;
 $gap--baby:             $gap*2;
 
 // gaps in rigid em format
-$rem-gap:               $gap-size/$font-size * 1rem;
+$rem-gap:               math.div($gap-size, $font-size) * 1rem;
 $rem-gap--big:          $rem-gap*4;
 $rem-gap--baby:         $rem-gap*2;
 
 // vertical spacing
-$gap--margin-top:       (80/$font-size) * 1em;
-$gap--padding-top:      (50/$font-size) * 1em;
-$gap--padding-bottom:   (50/$font-size) * 1em;
-$gap--margin-bottom:    (100/$font-size) * 1em;
+$gap--margin-top:       math.div(80, $font-size) * 1em;
+$gap--padding-top:      math.div(50, $font-size) * 1em;
+$gap--padding-bottom:   math.div(50, $font-size) * 1em;
+$gap--margin-bottom:    math.div(100, $font-size) * 1em;
 
-$gap--sm-margin-top:    (50/$font-size) * 1em;
-$gap--sm-padding-top:   (20/$font-size) * 1em;
-$gap--sm-padding-bottom:(20/$font-size) * 1em;
-$gap--sm-margin-bottom: (80/$font-size) * 1em;
+$gap--sm-margin-top:    math.div(50, $font-size) * 1em;
+$gap--sm-padding-top:   math.div(20, $font-size) * 1em;
+$gap--sm-padding-bottom:math.div(20, $font-size) * 1em;
+$gap--sm-margin-bottom: math.div(80, $font-size) * 1em;
 
 
 // horizontal row widths
@@ -97,13 +99,13 @@ $bp-sm--max:            500px;
 
 // min/max/special
 $bp-lg--min: $bp-md--max + 1;
-$bp-lg--mid: round((($bp-lg--max - $bp-lg--min) / 2) + $bp-lg--min);
+$bp-lg--mid: round((($bp-lg--max - $bp-lg--min) * 0.5) + $bp-lg--min);
 
 $bp-md--min: $bp-sm--max + 1;
-$bp-md--mid: round((($bp-md--max - $bp-md--min) / 2) + $bp-md--min);
+$bp-md--mid: round((($bp-md--max - $bp-md--min) * 0.5) + $bp-md--min);
 
 $bp-sm--min: 320px;
-$bp-sm--mid: round((($bp-sm--max - $bp-sm--min) / 2) + $bp-sm--min);
+$bp-sm--mid: round((($bp-sm--max - $bp-sm--min) * 0.5) + $bp-sm--min);
 
 // legacy
 $galaxy:        $bp-lg--max;

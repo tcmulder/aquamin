@@ -3,6 +3,8 @@
  *
  * Normalize.css v3.0.0 | MIT License | git.io/normalize
  */
+@use "sass:math";
+
 body {
 	font-family: $fam-1;
 	font-size: $font-size * 1px;
@@ -30,16 +32,16 @@ p {
 	margin: .5em 0;
 	font-weight: bold;
 	line-height: 1;
-    &:first-child {
-        margin-top: 0;
-    }
-    &:last-child {
-        margin-bottom: 0;
-    }
+	&:first-child {
+		margin-top: 0;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 %h1, h1, .h1 {
 	@extend %h;
-	font-size: (32/$font-size) * 1em;
+	font-size: math.div(32, $font-size) * 1em;
 }
 %h2, h2, .h2 {
 	@extend %h;

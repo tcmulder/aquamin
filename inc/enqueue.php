@@ -16,7 +16,7 @@ function aquamin_scripts(){
 	/**
 	 * Configure styles
 	 */
-	wp_register_style( 'aquamin-style', get_template_directory_uri() . '/style.css', array(), $cache_version, 'screen' );
+	wp_register_style( 'aquamin-style', get_template_directory_uri() . '/assets/public/css/common.css', array(), $cache_version, 'screen' );
 
 	/**
 	 * Load styles
@@ -28,7 +28,7 @@ function aquamin_scripts(){
 	 */
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js', false, '1.10.1', true );
-	wp_register_script( 'aquamin-scripts', get_template_directory_uri() . '/js/scripts.min.js', false, $cache_version, true );
+	wp_register_script( 'aquamin-scripts', get_template_directory_uri() . '/assets/public/js/common.js', false, $cache_version, true );
 
 	/**
 	 * Load relevant scripts

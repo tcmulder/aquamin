@@ -29,10 +29,10 @@ Tags: starter, clean, basic, semantic
  * things in here don't get output:
  * they're just tools to use elsewhere.
  */
-@import "global/variables";
-@import "global/mixins";
-@import "global/extends";
-@import "global/animations";
+@import "global/variables.scss";
+@import "global/mixins.scss";
+@import "global/extends.scss";
+@import "global/animations.scss";
 
 
 /**
@@ -43,7 +43,7 @@ Tags: starter, clean, basic, semantic
  * normalize, global text styling,
  * global classes, plugin styling, etc.
  */
-@import "base/*/*";
+@import "base/**/*.scss";
 
 /**
  * Components
@@ -53,7 +53,7 @@ Tags: starter, clean, basic, semantic
  * like sliders, contact forms, logos,
  * etc.
  */
-@import "components/*";
+@import "components/**/*.scss";
 
 /**
  * Layout
@@ -62,7 +62,7 @@ Tags: starter, clean, basic, semantic
  * elements goes here, like header and
  * footer, navigation, sidebars, etc.
  */
-@import "layout/*";
+@import "layout/**/*.scss";
 
 /**
  * Templates
@@ -72,7 +72,7 @@ Tags: starter, clean, basic, semantic
  * specific styling or a blog post's
  * styling.
  */
-@import "templates/*";
+@import "templates/**/*.scss";
 
 /**
  * Overrides (in Global)
@@ -81,7 +81,7 @@ Tags: starter, clean, basic, semantic
  * defaults goes here (since it
  * appears later in the cascade)
  */
-@import "global/overrides";
+@import "global/overrides.scss";
 
 /**
  * Shame (in Global)
@@ -92,4 +92,18 @@ Tags: starter, clean, basic, semantic
  * resets that require !important to
  * work.
  */
-@import "global/shame";
+@import "global/shame.scss";
+
+
+/**
+* Importing by selector filtering example
+* https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-magic-importer#selector-filtering
+ */
+//  @import '{ .example-0, .example-1 } from utils/_example.scss';
+//  @import '{ .renamed-0 as .renamed-1 } from utils/_example-2.scss';
+ 
+/**
+ * Importing by glob example
+ * https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-magic-importer#globbing
+  */
+//  @import 'things/**/*.scss';

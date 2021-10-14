@@ -1,0 +1,344 @@
+/**
+ * Mixins
+ *
+ * Table of Contents:
+ * Plus X
+ * Arrow
+ * No Tap Hightlight
+ * Map Deep Get
+ * Clearfix
+ * Placeholders
+ * Strip Unit
+ * Unit px to em
+ * Nav
+ */
+
+/**
+ * Plus X
+ */
+@use "sass:math";
+
+@mixin plusX(
+	$color: currentColor,
+	$color-hover: false,
+	$length: 1em,
+	$breadth: 2px,
+	$rotate: -45deg 45deg,
+	$speed: .3s,
+	$transition: .3s,
+	$top: 50%,
+	$left: 50%,
+	$right: false,
+	$bottom: false
+) {
+	&:before, 
+	&:after {
+		content: "";
+		position: absolute;
+		width: $breadth;
+		height: $length;
+		background-color: $color;
+		transform-origin: 0% 0%;
+		@if $transition {
+			transition: $transition;
+		}
+		@if $bottom {
+			bottom: $bottom;
+		} @else {
+			top: $top;
+		}
+		@if $right {
+			right: $right;
+		} @else {
+			left: $left;
+		}
+	}
+	&:before {
+		transform: rotate(#{nth($rotate, 1)}) translate(-50%, -50%);
+	}
+	&:after {
+		transform: rotate(#{nth($rotate, 2)}) translate(-50%, -50%);
+	}
+	@if $color-hover {
+		&:hover {
+			&:before,
+			&:after {
+				background-color: $color-hover;
+			}
+		}
+	}
+}
+
+/**
+ * Arrow
+ */
+@mixin arrow(
+	$angle: "right",
+	$el: '&:before',
+	$stroke: 2px,
+	$color: currentColor,
+	$transition: .3s,
+	$width: 50%,
+	$height: 50%,
+	$top: 50%,
+	$left: 50%,
+	$right: false,
+	$bottom: false,
+	$reorient: false,
+) {
+	$angles: (
+		"up":       45deg * 1,
+		"right":    45deg * 3,
+		"down":     45deg * 5,
+		"left":     45deg * 7
+	);
+	#{$el} {
+		// "reorient" allows arrows to be rotated without repeating ALL the other css again
+		@if $reorient {
+			transform: rotate(#{map-get($angles, $reorient)}) translate(-50%, -50%);
+		} @else {
+			content: "";
+			position: absolute;
+			border: 0 solid $color;
+			border-width: $stroke 0 0 $stroke;
+			width: $width;
+			height: $height;
+			transform-origin: 0% 0%;
+			transform: rotate(#{map-get($angles, $angle)}) translate(-50%, -50%);
+			@if $transition {
+				transition: $transition;
+			}
+			@if $bottom {
+				bottom: $bottom;
+			} @else {
+				top: $top;
+			}
+			@if $right {
+				right: $right;
+			} @else {
+				left: $left;
+			}
+		}
+	}
+}
+
+/**
+ * No Tap Hightlight
+ */
+@mixin no-tap {
+	user-select: none;
+	-webkit-tap-highlight-color:transparent;
+}
+
+/**
+ * Map Deep Get
+ */
+@function map-deep-get($map, $keys...) {
+	@each $key in $keys {
+		$map: map-get($map, $key);
+	}
+	@return $map;
+}
+
+/**
+ * Clearfix
+ */
+@mixin clearfix {
+	&:before, &:after { content: " "; display: table; }
+	&:after { clear: both; }
+}
+
+/**
+ * Placeholders
+ */
+// Autoprefixer seems to have issues, even if these are just comma separated.
+// make edits in normal _forms.scss file.
+@mixin placeholder-prefixes {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&:-ms-input-placeholder {
+		@content;
+	}
+	&:-moz-placeholder {
+		@content;
+	}
+}
+@mixin placeholder-prefixes-focus {
+	&:focus::-webkit-input-placeholder {
+		@content;
+	}
+	&:focus::-moz-placeholder {
+		@content;
+	}
+	&:focus:-ms-input-placeholder {
+		@content;
+	}
+	&:focus:-moz-placeholder {
+		@content;
+	}
+}
+
+/**
+ * Strip Unit
+ */
+//Usage:
+// p {
+//   line-height: strip-unit(16px); // compiles to line-height: 16;
+// }
+@function strip-unit($num) {
+	@return math.div($num, $num * 0 + 1);
+}
+
+/**
+ * Unit px to em
+ */
+//Usage:
+// converts a pixel value to an em value
+// p {
+//     width: em(16px); // compiles to 1em
+// }
+//
+// or for non-standard base font size:
+// p {
+//     padding: em(16px,8px); // compiles to 2em
+// }
+@function em($value, $base: $font-size) {
+	$value: math.div(strip-unit($value), strip-unit($base)) * 1em;
+	@return $value;
+}
+
+/**
+ * Navigation
+ */
+
+// Use this mixin to add basic nav styling.
+// Just add the following code within your styles:
+//
+//
+//      @include nav(
+//          $type: 'nested',            //nav type: dropdown or nested
+//          $nav-container: '.nav',     //& by default
+//          $fade: .3s,                 //fade speed for dropdown (take out for no animation)
+//          $easy-hover: 50px,          //amount of invisible overflow for dropdown (take out to not use)
+//          $easy-hover-top: 0          //set top easy-hover value (you can also set $easy-hover-right, -bottom, and -left separately)
+//      );
+//
+// or to just use the defaults inside any parent element, simply
+//
+//      .nav {
+//          @include nav();
+//      }
+
+@mixin nav(
+	$type: 'nested',
+	$nav-container: '&',
+	$fade: false,
+	$easy-hover: false,
+	$easy-hover-top: false,
+	$easy-hover-right: false,
+	$easy-hover-bottom: false,
+	$easy-hover-left: false
+){
+	@if $type == dropdown {
+		#{$nav-container} {
+			position: relative;
+			z-index: 10;
+			ul {
+				li {
+					display: block;
+					float: left;
+					list-style: none;
+				}
+				ul {
+					visibility: hidden;
+					padding: 0;
+					@if $fade {
+						transition-property: #{opacity, visibility, background-color};
+						transition-duration: #{$fade, 0s};
+						transition-delay: #{0s, $fade};
+					}
+					@if $easy-hover {
+						&:after {
+							content: "";
+							position: absolute;
+							@if $easy-hover-top {
+								top: -1 * $easy-hover-top;
+							} @else {
+								top: -1 * $easy-hover;
+							}
+							@if $easy-hover-bottom {
+								bottom:  -1 * $easy-hover-bottom;
+							} @else {
+								bottom:  -1 * $easy-hover;
+							}
+							@if $easy-hover-left {
+								left:  -1 * $easy-hover-left;
+							} @else {
+								left:  -1 * $easy-hover;
+							}
+							@if $easy-hover-right {
+								right:  -1 * $easy-hover-right;
+							} @else {
+								right:  -1 * $easy-hover;
+							}
+							background-color: #000;
+							opacity: 0;
+							z-index: -1;
+						}
+					}
+				}
+			}
+			//local nav
+			li {
+				ul {
+					display: block;
+					position: absolute;
+					opacity: 0;
+				}
+				&:focus,
+				&:focus-within,
+				&:hover {
+					ul {
+						opacity: 1;
+						visibility: visible;
+						@if $fade {
+							transition-delay: 0s, 0s;
+						}
+					}
+				}
+			}
+		}
+	}
+	@if $type == 'nested' {
+		#{$nav-container} {
+			li {
+				float: left;
+				list-style: none;
+				ul {
+					padding: 0;
+				}
+				li {
+					clear: both;
+				}
+				a {
+					display: block;
+				}
+			}
+			//global nav
+			ul {
+				//local nav
+				ul {
+					padding:0;
+					li {
+						float: left;
+						clear: both;
+					}
+				}
+			}
+		}
+	}
+}
