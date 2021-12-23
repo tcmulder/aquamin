@@ -19,9 +19,19 @@
 }
 // single full column
 .col--1 {
-	.col__group {
-		width: 100%; // default
-	}
+    .col__group {
+        width: 100%; // default
+        &[style^="--width:"] {
+            margin: { left: auto; right: auto; } // center if it's not full width
+        }
+        @include bp($max: $bp-sm--max){
+            --width: 100% !important; // overrides wordpress-editable inline style
+            width: 100%;
+            &:not(:last-child) {
+                padding-bottom: 1.5em;
+            }
+        }
+    }
 }
 // half/half
 .col--2 {

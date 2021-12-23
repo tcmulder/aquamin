@@ -35,6 +35,7 @@ Advanced Custom Fields Pro is highly recommended. If you're not going to use it 
 * Fixed element title fatal error.
 * Added built-in support for password protection.
 * Allow ACF to replace the_content for specific post ID.
+* Add advanced centering to single narrow columns.
 = 2.0.0 - October 14 2021 =
 * Modify to support new build tool (modified wp-strap webpack).
 = 1.2.4 - October 5 2021 =
