@@ -270,6 +270,7 @@ function aquamin_bg($attr) {
  *				// 'crop'      => false, // defaults to true
  *			),
  *		),
+ * 		'disable_size' => false, // true to remove height/width
  *		'attr' => array(
  *			'class' => 'my-image-class'
  *		)
@@ -291,6 +292,8 @@ function aquamin_img( $opt ) {
 
 		// get the default image
 		$default_src = '';
+		$default_width = '';
+		$default_height = '';
 		$default_alt = 'alt="' . get_post_meta( $opt[ 'default' ][ 'id' ], '_wp_attachment_image_alt', true ) . '" ';
 		$default_path = get_attached_file( $opt[ 'default' ][ 'id' ] );
 		$default_mime = wp_check_filetype( $default_path );
@@ -301,10 +304,21 @@ function aquamin_img( $opt ) {
 				array( $opt[ 'default' ][ 'width' ], $opt[ 'default' ][ 'height' ] ),
 				( isset( $opt[ 'default' ][ 'crop' ] ) ? $opt[ 'default' ][ 'crop' ] : true )
 			);
+			$default_width = $default_arr[ 'width' ];
+			$default_height = $default_arr[ 'height' ];
 			$default_src = 'src="' . $default_arr[ 'src' ] . '" ';
 		} else {
-			$default_arr = wp_get_attachment_image_src( $opt[ 'default' ][ 'id' ] );
+			$default_arr = wp_get_attachment_image_src( $opt[ 'default' ][ 'id' ], 'full' );
 			$default_src = 'src="' . $default_arr[ 0 ] . '" ';
+			$default_meta = wp_get_attachment_metadata( $opt[ 'default' ][ 'id' ] );
+			$default_width = $default_meta[ 'width' ];
+			$default_height = $default_meta[ 'height' ];
+		}
+
+		// set sizes on image container
+		if ( ! $opt[ 'disable_size' ] ) {
+			$parent_attr .= ' width="' . $default_width . '"';
+			$parent_attr .=' height="' . $default_height . '" ';
 		}
 
 		// get the attributes
