@@ -32,6 +32,7 @@ Advanced Custom Fields Pro is highly recommended. If you're not going to use it 
 = 2.0.1 - December 23 2021 =
 * Default to adding height/width to aquamin_img() (disable by setting disable_size to true).
 * Set aquamin_img() to use full image size if not using srcset (e.g. for animaged gif images).
+* Fixed element title fatal error.
 = 2.0.0 - October 14 2021 =
 * Modify to support new build tool (modified wp-strap webpack).
 = 1.2.4 - October 5 2021 =

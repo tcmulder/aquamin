@@ -4,8 +4,8 @@
  */
 
     $classes = 'title-element';
-	$classes .= if_get_sub_field( ' %s', 'alignment' );
-	$classes .= if_get_sub_field( ' %s', 'style' );
+	$classes .= if_sprintf( ' %s', get_sub_field( 'alignment' ) );
+	$classes .= if_sprintf( ' %s', get_sub_field( 'style' ) );
 
 	$title = get_sub_field( 'title' );
 
