@@ -1,0 +1,18 @@
+/**
+ * Links
+ *
+ * Normalize.css v3.0.0 | MIT License | git.io/normalize
+ */
+@mixin anchor {
+	background: transparent;
+	&:hover,
+	&:focus {}
+	&:active,
+	&:hover {
+		outline: 0;
+	}
+}
+%anchor,
+a {
+	@include anchor();
+}
