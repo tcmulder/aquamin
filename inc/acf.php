@@ -4,28 +4,30 @@
  */
 if ( class_exists( 'acf' ) ) {
 
-	/**
-	 * Replace the_content with ACF.
-	 */
-	add_filter( 'the_content', 'aquamin_acf_content_replace' );
-	function aquamin_acf_content_replace( $content ) {
+	    /**
+     * Replace the_content with ACF.
+     */
+    add_filter( 'the_content', 'aquamin_acf_content_replace', 10, 2 );
+    function aquamin_acf_content_replace( $content, $post_id=0 ) {
 
-		// prep to store captured content
-		$return_content = '';
+        // prep to store captured content
+        $return_content = '';
 
-		// get post's id (possibly if not single then the page used for this page's content)
-		$post_id = aquamin_id();
+        // get post's id (possibly if not single then the page used for this page's content)
+        $post_id = ( $post_id ? $post_id : aquamin_id() );
 
-		// only execute if on the front-end and there are fields to capture
-		if ( ! is_admin() ) {
-			if ( get_field( 'modules', $post_id ) ) {
-				$return_content = aquamin_acf_build_modules( $post_id );
-			}
-		}
-		// return either what's been captured or pass $content through
-		return ('' !== $return_content ? $return_content : $content);
+        // only execute if on the front-end and there are fields to capture
+        if ( ! is_admin() ) {
+            if ( post_password_required() ) {
+                $return_content = get_the_password_form();
+            } elseif ( get_field( 'modules', $post_id ) ) {
+                $return_content = aquamin_acf_build_modules( $post_id );
+            }
+        }
+        // return either what's been captured or pass $content through
+        return ('' !== $return_content ? $return_content : $content);
 
-	}
+    }
 
 	/**
 	 * Get output of ACF Modules group.
