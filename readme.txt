@@ -5,7 +5,7 @@ Tags: starter, clean, basic, semantic
 
 Requires at least: 4.5
 Tested up to: 5.1.1
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,8 @@ Advanced Custom Fields Pro is highly recommended. If you're not going to use it 
 
 == Changelog ==
 
+= 2.0.2 - April 25 2022 =
+* Replace cached of aquamin_id() since some hosts object cache the incorrect ID.
 = 2.0.1 - December 23 2021 =
 * Default to adding height/width to aquamin_img() (disable by setting disable_size to true).
 * Set aquamin_img() to use full image size if not using srcset (e.g. for animaged gif images).
