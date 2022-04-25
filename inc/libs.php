@@ -16,7 +16,7 @@
  */
 function aquamin_id() {
 
-	$the_id = wp_cache_get( 'aquamin_current_id', 'aquamin_ids' );
+	$the_id = $GLOBALS[ 'aquamin_id' ];
 
 	if ( ! $the_id ) {
 
@@ -40,11 +40,12 @@ function aquamin_id() {
 			}
 		}
 
-		wp_cache_add( 'aquamin_current_id', $the_id, 'aquamin_ids' );
+		$GLOBALS[ 'aquamin_id' ] = $the_id;
 
 	}
 
 	return $the_id;
+	
 }
 
 /**
