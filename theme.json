@@ -1,0 +1,83 @@
+{
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": true,
+			"wideSize": true
+		},
+		"spacing": {
+			"blockGap": true,
+			"units": ["%", "px", "em", "rem", "vh", "vw"]
+		},
+		"typography": {
+			"fontSizes": [
+				{
+					"slug": "h1",
+					"size": "var(--fs-h1, 64px)",
+					"name": "Like h1"
+				},
+				{
+					"slug": "h2",
+					"size": "var(--fs-h2, 48px)",
+					"name": "Like h2"
+				},
+				{
+					"slug": "h3",
+					"size": "var(--fs-h3, 32px)",
+					"name": "Like h3"
+				},
+				{
+					"slug": "h4",
+					"size": "var(--fs-h4, 24px)",
+					"name": "Like h4"
+				},
+				{
+					"slug": "h5",
+					"size": "var(--fs-h5, 18px)",
+					"name": "Like h5"
+				},
+				{
+					"slug": "h6",
+					"size": "var(--fs-h6, 16px)",
+					"name": "Like h6"
+				},
+				{
+					"slug": "big",
+					"size": "var(--fs-big, 18px)",
+					"name": "Big"
+				},
+				{
+					"slug": "p",
+					"size": "var(--fs-body, 16px)",
+					"name": "Normal (p)"
+				},
+				{
+					"slug": "small",
+					"size": "var(--fs-small, 18px)",
+					"name": "Small"
+				}
+			]
+		},
+		"color": {
+			"custom": false,
+			"customGradient": false,
+			"gradients": [],
+			"link": false,
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"palette": [
+				{
+					"slug": "black-dark",
+					"color": "#000",
+					"name": "Black"
+				},
+				{
+					"slug": "white-light",
+					"color": "#fff",
+					"name": "White"
+				}
+			]
+		}
+	}
+}

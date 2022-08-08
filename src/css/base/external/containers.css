@@ -1,0 +1,42 @@
+/**
+ * Block layout adjustments
+ */
+
+/* standard widts */
+.torso > *,
+.wp-block-columns {
+	width: var(--w);
+	max-width: var(--w-px);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* wider widths */
+.alignwide {
+	width: var(--w-l);
+	max-width: var(--w-px);
+	margin-left: auto;
+	margin-right: auto;
+
+	& .wp-block-columns.alignwide {
+		max-width: 100%;
+	}
+}
+
+/* full widths */
+.alignfull,
+.alignfull .wp-block-columns.alignfull {
+	width: 100%;
+	max-width: 100%;
+}
+
+/* heights */
+.aligntall {
+	height: 100vh;
+}
+
+/* backgrounds */
+.has-background,
+p.has-background {
+	padding: 0;
+}

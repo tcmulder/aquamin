@@ -16,15 +16,13 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-			<section class="site-main__content mod--inner">
-				<?php if ( have_posts() ) : ?>
-					<?php while ( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
-					<?php endwhile; ?>
-				<?php else : ?>
-					<?php get_template_part( 'template-parts/content', 'none' ); ?>
-				<?php endif; ?>
-			</section>
+			<?php if ( have_posts() ) : ?>
+				<?php while ( have_posts() ) : the_post(); ?>
+					<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
+				<?php endwhile; ?>
+			<?php else : ?>
+				<?php get_template_part( 'template-parts/content', 'none' ); ?>
+			<?php endif; ?>
 		</main>
 	</div>
 

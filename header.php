@@ -27,7 +27,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'aquamin' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-header__nav mod--inner">
+		<div class="site-header__nav">
 			<?php
 			    wp_nav_menu( array(
 					'container_id'    => 'site-navigation',

@@ -1,0 +1,12 @@
+{
+	"title": "Current Year",
+	"description": "The current year (updated automatically each year).",
+	"text-domain": "aquamin",
+	"name": "aquamin/year",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"supports": {
+		"customClassName": true
+	}
+}

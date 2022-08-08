@@ -1,0 +1,14 @@
+{
+	"extends": [
+		"@parcel/config-default"
+	],
+	"resolvers": [
+		"@parcel/resolver-glob",
+		"..."
+	],
+	"transformers": {
+		"*inline.svg": [
+			"@parcel/transformer-svg-react"
+		]
+	}
+}

@@ -1,0 +1,19 @@
+/**
+ * Footer styling
+ */
+
+/* sticky footer feature */
+@supports (display: grid) {
+	html,
+	body {
+		height: 100%;
+	}
+	.all-the-things {
+		min-height: 100%;
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		& > * {
+			min-width: 0;
+		}
+	}
+}

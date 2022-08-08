@@ -3,9 +3,9 @@
 Contributors: @thinkaquamarine
 Tags: starter, clean, basic, semantic
 
-Requires at least: 4.5
-Tested up to: 5.1.1
-Stable tag: 2.0.2
+Requires at least: 6.0.1
+Tested up to: 6.0.1
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,14 +21,11 @@ A minimal starting point for custom theme development. Starts with a white page 
 2. Click Upload Theme and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
 
-== Frequently Asked Questions ==
-
-= Does this theme require any plugins? =
-
-Advanced Custom Fields Pro is highly recommended. If you're not going to use it though, you can delete the functions.php line requiring the inc/acf.php file, the inc/acf.php file itself, and the acf-json directory.
-
 == Changelog ==
 
+= 3.0.0 - August 08 2022 =
+* Rewrite to support Gutenberg by default.
+* Includes Parcel 2 as build tool.
 = 2.0.2 - April 25 2022 =
 * Replace cached of aquamin_id() since some hosts object cache the incorrect ID.
 = 2.0.1 - December 23 2021 =

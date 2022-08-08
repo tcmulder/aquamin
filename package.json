@@ -1,0 +1,61 @@
+{
+	"name": "aquarcel",
+	"version": "1.0.0",
+	"description": "Parcel build tool for Aquamarine",
+	"private": true,
+	"engines": {
+		"nodeVersion": ">=16.13.2",
+		"npmVersion": ">=7.11.2"
+	},
+	"config": {
+		"url": "https://playground.aquamarine.test"
+	},
+	"scripts": {
+		"server": "browser-sync start --no-open --proxy $npm_package_config_url --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
+		"builder": "parcel watch src/js/*/*.bundle.js",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"clean": "rm -rf ./.parcel-cache",
+		"start": "npm-run-all --parallel builder server",
+		"build": "npm run clean && parcel build src/js/*/*.bundle.js --no-cache"
+	},
+	"author": "@tcmulder",
+	"license": "ISC",
+	"@parcel/transformer-css": {
+		"drafts": {
+			"nesting": true,
+			"customMedia": true
+		}
+	},
+	"devDependencies": {
+		"@babel/core": "^7.18.5",
+		"@babel/eslint-parser": "^7.18.2",
+		"@babel/preset-react": "^7.17.12",
+		"@parcel/resolver-glob": "^2.6.1",
+		"@parcel/transformer-inline-string": "^2.6.1",
+		"@parcel/transformer-svg-react": "^2.6.1",
+		"@types/node": "^16.11.41",
+		"@typescript-eslint/eslint-plugin": "^5.29.0",
+		"@typescript-eslint/parser": "^5.29.0",
+		"@wordpress/icons": "^9.5.0",
+		"browser-sync": "^2.27.10",
+		"classnames": "^2.3.1",
+		"eslint": "^8.18.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-airbnb-typescript": "^16.2.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-config-wesbos": "^3.0.2",
+		"eslint-plugin-html": "^6.2.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-jsx-a11y": "^6.5.1",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-react": "^7.30.0",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"npm-run-all": "^4.1.5",
+		"parcel": "^2.7.0",
+		"prettier": "^2.7.1",
+		"process": "^0.11.10",
+		"react": "^18.2.0",
+		"typescript": "^4.7.4"
+	}
+}

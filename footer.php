@@ -23,7 +23,7 @@
 				) );
 			?>
 		</div>
-		<div class="site-footer__copy mod--inner">
+		<div class="site-footer__copy">
 			<?php printf( esc_html__( '&copy; %s', 'aquamin' ), date( 'Y' ) ); ?>
 		</div>
 	</footer>
