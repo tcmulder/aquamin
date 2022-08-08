@@ -1,0 +1,9 @@
+/**
+ * Year editor styling
+ *
+ * This file is for CSS admin overrides only.
+ * Use style.css for shared theme/editor block styling.
+ */
+div[data-type="aquamin/year"] {
+	display: inline !important;
+}

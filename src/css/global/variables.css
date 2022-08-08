@@ -1,0 +1,73 @@
+/**
+ * CSS Custom Properties
+ */
+
+:root {
+	/* fonts */
+	--fs: 16;
+	--ff-body: monospace, sans-serif;
+	--ff-alt: var(--body);
+
+	--fs-body: 1em;
+	--fs-h1: calc((64 / var(--fs)) * 1em);
+	--fs-h2: calc((48 / var(--fs)) * 1em);
+	--fs-h3: calc((32 / var(--fs)) * 1em);
+	--fs-h4: calc((24 / var(--fs)) * 1em);
+	--fs-h5: calc((18 / var(--fs)) * 1em);
+	--fs-h6: calc((16 / var(--fs)) * 1em);
+	--fs-big: calc((18 / var(--fs)) * 1em);
+	--fs-small: calc((18 / var(--fs)) * 1em);
+
+	/* spacing */
+	--sp-base: var(--fs);
+	--sp-rem: calc((var(--sp-base) / var(--fs)) * 1rem);
+	--sp: calc((24 / var(--fs)) * 1em);
+	--sp-s: calc((18 / var(--fs)) * 1em);
+	--sp-l: calc((48 / var(--fs)) * 1em);
+
+	/* widths */
+	--w: var(--w-m);
+	--w-s: 960px;
+	--w-m: 1280px;
+	--w-l: 1440px;
+	--w-px: calc(100% - var(--sp) * 2);
+
+	/**
+	 * colors (--<color>-<primary/secondary/etc>-<brightness 0-9>)
+	 */
+
+	/* primary */
+	--c-1: aquamarine;
+	--c-1-lt: lightcyan;
+	--c-1-dk: teal;
+
+	/* secondary */
+	--c-2: tan;
+	--c-2-lt: wheat;
+	--c-2-dk: chocolate;
+
+	/* drab */
+	--c-0: #ccc;
+	--c-0-lt: #fff;
+	--c-0-dk: #000;
+
+	/* alert colors */
+	--c-good: #0ac675;
+	--c-bad: #e24939;
+	--c-meh: #ff7f50;
+}
+
+/* breakpoints */
+/**
+ * Note: these should work when used in other files, but do not.
+ * So, alas, they're included here as a reference only.
+ */
+/*
+@custom-media --bp-zoomed-in (min-width: 280px);
+@custom-media --bp-mobile (min-width: 480px);
+@custom-media --bp-small (min-width: 600px);
+@custom-media --bp-medium (min-width: 782px); // adminbar goes big
+@custom-media --bp-large (min-width: 960px); // admin sidebar auto folds
+@custom-media --bp-xlarge (min-width: 1080px);
+@custom-media --bp-wide (min-width: 1280px);
+@custom-media --bp-huge (min-width: 1440px); */

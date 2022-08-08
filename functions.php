@@ -8,21 +8,29 @@
  */
 
 /**
+ * Set up constants
+ */
+define( 'AQUAMIN_TEMPLATE_URL', get_template_directory_uri() );
+define( 'AQUAMIN_PATH', get_template_directory() );
+define( 'AQUAMIN_INC', AQUAMIN_PATH . '/includes' );
+define( 'AQUAMIN_BLOCKS', AQUAMIN_PATH . '/blocks' );
+
+/**
  * Set up the theme.
  */
-require get_template_directory() . '/inc/setup.php';
+require AQUAMIN_INC . '/setup.php';
 
 /**
  * Add styles and scripts.
  */
-require get_template_directory() . '/inc/enqueue.php';
+require AQUAMIN_INC . '/enqueue.php';
 
 /**
  * Add common reusable scripts
  */
-require get_template_directory() . '/inc/libs.php';
+require AQUAMIN_INC . '/libs.php';
 
 /**
- * Utilize Advanced Custom Fields Pro plugin.
+ * Add the custom blocks
  */
-require get_template_directory() . '/inc/acf.php';
+require AQUAMIN_BLOCKS . '/blocks.php';

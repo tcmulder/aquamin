@@ -21,7 +21,7 @@ get_header(); ?>
 					<?php get_template_part( 'template-parts/content', 'page' ); ?>
 				<?php endwhile; ?>
 			<?php else : ?>
-				<section class="site-main__content mod--inner">
+				<section class="torso">
 					<?php get_template_part( 'template-parts/content', 'none' ); ?>
 				</section>
 			<?php endif; ?>

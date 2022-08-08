@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-content' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-content torso' ); ?>>
 	<h1 class="post-content__title"><?php the_title(); ?></h1>
 	<?php the_content(); ?>
 </article>
