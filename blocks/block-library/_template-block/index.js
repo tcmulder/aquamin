@@ -39,20 +39,20 @@ registerBlockType(block.name, {
 console.info(`
 # Block Template Todo:
 
-## Template Renames
-- search/replace template-slug
-- search/replace _template-block
-- search/replace TemplateNamespace
-- search/replace template-title
-- search/replace template-desc
+## Search/Replace Block Name Placeholders:
+- template-slug
+- _template-block
+- TemplateNamespace
+- template-title
+- template-desc
 
-## Child Renames
-- search/replace template-item-slug
-- search/replace TemplateItemNamespace
-- search/replace template-item-title
-- search/replace template-item-desc
+## Search/Replace Block Child Name Placeholders:
+- template-item-slug
+- TemplateItemNamespace
+- template-item-title
+- template-item-desc
 
-## File Manipulationss
+## ApplyFile Manipulations:
 - index.js: delete template-item-slug import if unneeded
 - index.php: delete template-item-slug and dir if unneeded
 - index.php: delete dynamic comment if unneeded
