@@ -1,14 +1,14 @@
 /**
- * Current Year block main entry point
+ * Copyright Year block main entry point
  *
  * This file orchestrates all the script files
- * together to create a WordPress block.
+ * together to create a WordPress child block.
  */
 
 /**
  * Import dependencies
  */
-import Icon from '../../icons/general.inline.svg';
+import Icon from '../../../icons/general.inline.svg';
 import edit from './edit';
 import save from './save';
 import block from './block.json';
@@ -20,9 +20,9 @@ const { registerBlockType } = wp.blocks;
  * Register block
  */
 registerBlockType(block.name, {
-	title: __('Current Year', 'aquamin'),
+	title: __('Copyright Year', 'aquamin'),
 	description: __(
-		'The current year (updated automatically each year).',
+		'Current year, automatically updated each year.',
 		'aquamin'
 	),
 	icon: Icon,

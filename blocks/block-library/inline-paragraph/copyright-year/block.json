@@ -1,0 +1,13 @@
+{
+	"title": "Copyright Year",
+	"description": "Current year, automatically updated each year.",
+	"text-domain": "aquamin",
+	"name": "aquamin/copyright-year",
+	"parent": ["aquamin/inline-paragraph"],
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"supports": {
+		"customClassName": false
+	}
+}
