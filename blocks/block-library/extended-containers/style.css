@@ -1,0 +1,14 @@
+/**
+ * Extended container shared block styling.
+ */
+
+ .is-root-container,
+ .torso {
+	 & > .has-background,
+	 & > :where(*) {
+		 &:not(.is-style-no-gutters) {
+			 padding-left: var(--gutter);
+			 padding-right: var(--gutter);
+		 }
+	}
+}

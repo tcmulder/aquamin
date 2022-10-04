@@ -1,17 +1,14 @@
 {
-	"name": "aquarcel",
-	"version": "1.0.0",
+	"name": "aquamin",
+	"version": "3.0.1",
 	"description": "Parcel build tool for Aquamarine",
 	"private": true,
 	"engines": {
 		"nodeVersion": ">=16.13.2",
 		"npmVersion": ">=7.11.2"
 	},
-	"config": {
-		"url": "https://playground.aquamarine.test"
-	},
 	"scripts": {
-		"server": "browser-sync start --no-open --proxy $npm_package_config_url --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
+		"server": "browser-sync start --no-open --proxy `grep URL .env | cut -d '=' -f2` --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
 		"builder": "parcel watch src/js/*/*.bundle.js",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
