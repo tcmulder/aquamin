@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.0.2" created="2022-10-04 17:19" -->
+<!-- generator="WordPress/6.0.2" created="2022-10-04 21:26" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Playground</title>
 <link>https://playground.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Tue, 04 Oct 2022 17:19:23 +0000</pubDate>
+<pubDate>Tue, 04 Oct 2022 21:26:54 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>https://playground.aquamarine.test</wp:base_site_url>
@@ -51,8 +51,8 @@
   <wp:post_id>7</wp:post_id>
   <wp:post_date>2022-10-03 23:49:57</wp:post_date>
   <wp:post_date_gmt>2022-10-03 23:49:57</wp:post_date_gmt>
-  <wp:post_modified>2022-10-03 23:49:57</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-03 23:49:57</wp:post_modified_gmt>
+  <wp:post_modified>2022-10-04 21:24:55</wp:post_modified>
+  <wp:post_modified_gmt>2022-10-04 21:24:55</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>payground</wp:post_name>
