@@ -21,8 +21,9 @@
 	/* spacing */
 	--sp-base: var(--fs);
 	--sp-rem: calc((var(--sp-base) / var(--fs)) * 1rem);
-	--sp: calc((24 / var(--fs)) * 1em);
-	--sp-s: calc((18 / var(--fs)) * 1em);
+	--sp-s: calc((16 / var(--fs)) * 1em);
+	--sp: calc((var(--sp-base) / var(--fs)) * 1em);
+	--sp-m: calc((18 / var(--fs)) * 1em);
 	--sp-l: calc((48 / var(--fs)) * 1em);
 
 	/* widths */
@@ -31,6 +32,11 @@
 	--w-m: 1280px;
 	--w-l: 1440px;
 	--w-px: calc(100% - var(--sp) * 2);
+
+
+	--w-default: var(--w-m);
+	--w-wide: var(--w-l);
+	--gutter: var(--sp);
 
 	/**
 	 * colors (--<color>-<primary/secondary/etc>-<brightness 0-9>)

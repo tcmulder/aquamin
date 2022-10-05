@@ -2,33 +2,35 @@
  * Block layout adjustments
  */
 
-/* standard widts */
-.torso > *,
-.wp-block-columns {
-	width: var(--w);
-	max-width: var(--w-px);
-	margin-left: auto;
-	margin-right: auto;
-}
+/* widts */
+.is-root-container,
+.torso {
+	& > .has-background,
+	& > :where(*) {
 
-/* wider widths */
-.alignwide {
-	width: var(--w-l);
-	max-width: var(--w-px);
-	margin-left: auto;
-	margin-right: auto;
+		&:where(:not(.alignwide):not(.alignfull)),
+		& > :where(*) {
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+			max-width: var(--w-default);
 
-	& .wp-block-columns.alignwide {
-		max-width: 100%;
+			&:is(img) {
+				max-width: 100%;
+			}
+		}
+
+		& > :where(.alignwide) {
+			max-width: var(--w-wide);
+		}
+
+		& > :where(.alignfull) {
+			max-width: 100%;
+		}
+
 	}
 }
 
-/* full widths */
-.alignfull,
-.alignfull .wp-block-columns.alignfull {
-	width: 100%;
-	max-width: 100%;
-}
 
 /* heights */
 .aligntall {
@@ -36,7 +38,8 @@
 }
 
 /* backgrounds */
-.has-background,
-p.has-background {
-	padding: 0;
+.has-background {
+	&.has-background {
+		padding: 0;
+	}
 }

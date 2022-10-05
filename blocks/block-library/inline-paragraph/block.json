@@ -1,8 +1,8 @@
 {
-	"title": "Current Year",
-	"description": "The current year (updated automatically each year).",
+	"title": "Inline Paragraph",
+	"description": "Paragraph with inline features (like copyright year).",
 	"text-domain": "aquamin",
-	"name": "aquamin/year",
+	"name": "aquamin/inline-paragraph",
 	"icon": "feedback",
 	"category": "aquamin-blocks",
 	"example": {},

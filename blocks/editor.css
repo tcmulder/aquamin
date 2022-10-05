@@ -18,32 +18,6 @@ body {
 }
 
 /**
- * Layout
- */
-.block-editor-block-list__layout.is-root-container > * {
-	width: var(--w);
-	max-width: var(--w-px);
-}
-.wp-block {
-	max-width: 100%;
-	&[data-align="wide"],
-	&[data-align="wide"] > *,
-	&[data-align="wide"] [data-align="wide"] > * {
-		width: var(--w-l);
-		max-width: var(--w-px);
-		& .wp-block-columns .wp-block-columns {
-			max-width: var(--w-px);
-		}
-	}
-	&[data-align="full"],
-	&[data-align="full"] > *,
-	&[data-align="full"] [data-align="full"] > * {
-		width: 100%;
-		max-width: 100%;
-	}
-}
-
-/**
  * Global editor overrides
  */
 .is-root-container,

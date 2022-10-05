@@ -6,10 +6,6 @@
  */
 @import "./style.css";
 
-.is-root-container {
-	& [data-type="aquamin/template-slug"] {
-		& .is-selected b::after {
-			content: " (✎ editor.css) ";
-		}
-	}
+[data-type="aquamin/template-slug"] .is-selected b::after {
+	content: " (✎ editor.css) ";
 }

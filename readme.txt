@@ -23,6 +23,11 @@ A minimal starting point for custom theme development. Starts with a white page 
 
 == Changelog ==
 
+= 3.0.1 - October 3 2022 =
+* Add .env support to make package.json more universal.
+* Add example block exports.
+* Start with inline paragraph block (used often for copyrights).
+* Enhance Media component.
 = 3.0.0 - August 08 2022 =
 * Rewrite to support Gutenberg by default.
 * Includes Parcel 2 as build tool.

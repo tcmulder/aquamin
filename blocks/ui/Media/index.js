@@ -1,41 +1,65 @@
 /**
+ * Media component
+ *
+ * Handles image/video media.
+ *
+ */
+
+/* eslint-disable react/prop-types */
+/**
  * Dependencies
  */
+import classnames from 'classnames';
 import { ButtonX } from '../Buttons';
-import parseNestedProps from '../../util/parse-nested-props';
 
 const { __ } = wp.i18n;
 const { MediaPlaceholder } = wp.blockEditor;
 
 /**
+ * Get type of media
+ */
+const getType = (url) => {
+	let type = 'image';
+	if (url) {
+		const ext = url.split('.').pop();
+		if (['mp4', 'm4v', 'webm', 'ogv', 'flv'].includes(ext)) {
+			type = 'video';
+		} else if (['jpg', 'png', 'gif', 'jpeg', 'webp', 'svg'].includes(ext)) {
+			type = 'image';
+		}
+	}
+	return type;
+};
+
+/**
  * Videos and images renderer
  */
-const ActualMedia = ({ attribute, className, style }) => {
-	if (attribute?.type === 'video' && attribute?.url) {
+const ActualMedia = ({ attributeNames, attributes, className, style }) => {
+	const type = getType(attributes[attributeNames.url]);
+	if (type === 'video' && attributes[attributeNames.url]) {
 		return (
 			// eslint-disable-next-line jsx-a11y/media-has-caption
 			<video
-				src={attribute?.url}
-				className={className}
+				className={classnames('media', className)}
+				src={attributes[attributeNames.url]}
+				width={attributes[attributeNames.width]}
+				height={attributes[attributeNames.height]}
 				loop=""
 				autoPlay=""
 				muted=""
 				playsinline=""
-				mute=""
-				width={attribute?.width}
-				height={attribute?.height}
 				style={style}
 			/>
 		);
 	}
-	if (attribute?.type === 'image' && attribute?.url) {
+	if (type === 'image' && attributes[attributeNames.url]) {
 		return (
 			<img
-				src={attribute?.url}
-				alt={attribute?.alt}
-				width={attribute?.width}
-				height={attribute?.height}
-				className={className}
+				className={classnames('media', className)}
+				src={attributes[attributeNames.url]}
+				width={attributes[attributeNames.width]}
+				height={attributes[attributeNames.height]}
+				alt={attributes[attributeNames.alt] || __('Media', 'aquamin')}
 				style={style}
 			/>
 		);
@@ -48,28 +72,44 @@ const ActualMedia = ({ attribute, className, style }) => {
  * Basic video adder
  */
 const Media = ({
-	nestedMedia,
+	attributeNames = {
+		alt: 'mediaAlt',
+		url: 'mediaUrl',
+		id: 'mediaId',
+		width: 'mediaWidth',
+		height: 'mediaHeight',
+	},
 	title,
+	setAttributes,
+	attributes,
 	className,
 	style,
 	editable,
-	isSelected,
 	accept,
 	allowedTypes,
 }) => {
-	// get the original name/value of the parent's prop
-	const { nestedAttribute, nestedSetAttribute } =
-		parseNestedProps(nestedMedia);
-	if (editable && nestedAttribute?.url) {
+	if (editable && attributes[attributeNames.url]) {
 		return (
 			<>
-				<ButtonX
-					show={isSelected}
-					handleClick={() => nestedSetAttribute({})}
-				/>
+				<div className="aquamin-media-remove">
+					<ButtonX
+						label={__('Remove Media', 'lift-the-label')}
+						handleClick={() =>
+							setAttributes({
+								[attributeNames.id]: '',
+								[attributeNames.url]: '',
+								[attributeNames.alt]: '',
+								[attributeNames.width]: '',
+								[attributeNames.height]: '',
+							})
+						}
+						style={{ position: 'absolute', zIndex: '10' }}
+					/>
+				</div>
 				<ActualMedia
-					attribute={nestedAttribute}
-					className={className}
+					attributeNames={attributeNames}
+					attributes={attributes}
+					className={classnames('media', className)}
 					style={style}
 				/>
 			</>
@@ -78,44 +118,25 @@ const Media = ({
 	if (editable) {
 		return (
 			<MediaPlaceholder
-				className={className}
+				disableDropZone={false}
+				className={classnames('media', className)}
 				style={style}
 				labels={{
-					title:
-						title ||
-						__(
-							'Media Upload',
-							'Slide aquaminwithin a blurb carousel.'
-						),
+					title: title || __('Media Upload', 'lift-the-label'),
 				}}
-				value={nestedAttribute?.id}
-				onSelectURL={(value) => {
-					const ext = value.split('.').pop();
-					let type = null;
-					if (
-						['jpg', 'png', 'gif', 'jpeg', 'webp', 'svg'].includes(
-							ext
-						)
-					) {
-						type = 'image';
-					} else if (
-						['mp4', 'm4v', 'webm', 'ogv', 'flv'].includes(ext)
-					) {
-						type = 'video';
-					}
-					return nestedSetAttribute({
-						url: value,
-						type,
-					});
-				}}
+				value={attributes[attributeNames.id]}
+				onSelectURL={(value) =>
+					setAttributes({
+						[attributeNames.url]: value,
+					})
+				}
 				onSelect={(value) =>
-					nestedSetAttribute({
-						id: value.id,
-						url: value.url,
-						alt: value.alt,
-						type: value.type,
-						width: value.width,
-						height: value.height,
+					setAttributes({
+						[attributeNames.id]: value.id,
+						[attributeNames.url]: value.url,
+						[attributeNames.alt]: value.alt,
+						[attributeNames.width]: value.width,
+						[attributeNames.height]: value.height,
 					})
 				}
 				accept={accept || ['image/*', 'video/*']}
@@ -124,7 +145,13 @@ const Media = ({
 		);
 	}
 
-	return <ActualMedia attribute={nestedAttribute} className={className} />;
+	return (
+		<ActualMedia
+			attributeNames={attributeNames}
+			attributes={attributes}
+			className={className}
+		/>
+	);
 };
 
 export default Media;

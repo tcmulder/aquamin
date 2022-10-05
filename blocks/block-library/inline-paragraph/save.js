@@ -1,5 +1,5 @@
 /**
- * Current Year save interface
+ * Inline Paragraph save interface
  *
  * This defines how the block gets
  * saved into the database. If
@@ -10,11 +10,10 @@
 /**
  * Import dependencies
  */
-// none
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Generate block HTML to save to the database
  */
-const YearBlockSave = () => null;
-
-export default YearBlockSave;
+const InlineParagraphBlockSave = () => <InnerBlocks.Content />;
+export default InlineParagraphBlockSave;
