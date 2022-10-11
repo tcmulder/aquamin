@@ -36,7 +36,8 @@
 
 	--w-default: var(--w-m);
 	--w-wide: var(--w-l);
-	--gutter: var(--sp);
+	--gutter: var(--sp-rem);
+	--gutter-: calc(var(--gutter) * -1);
 
 	/**
 	 * colors (--<color>-<primary/secondary/etc>-<brightness 0-9>)
@@ -61,6 +62,7 @@
 	--c-good: #0ac675;
 	--c-bad: #e24939;
 	--c-meh: #ff7f50;
+	
 }
 
 /* breakpoints */

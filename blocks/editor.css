@@ -5,6 +5,7 @@
 @import "../src/css/global/variables.css";
 @import "../src/css/base/normalize/*.css";
 @import "../src/css/base/external/*.css";
+@import "../src/css/layout/alignment.css";
 @import "../src/css/global/shame.css";
 
 /* resets from the above imports to override gutenberg specificity */

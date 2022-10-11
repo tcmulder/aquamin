@@ -1,0 +1,37 @@
+/**
+ * Page layout alignments
+ */
+:where(.is-root-container, .torso, .px) {
+	padding-left: var(--gutter);
+	padding-right: var(--gutter);
+	& > :where(*) {
+		&,
+		& > :where(*) {
+			width: 100%;
+			max-width: var(--w-default);
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	& > :is(.wp-block-group, .wp-block-cover) {
+		&,
+		&.has-background {
+			padding-left: var(--gutter);
+			padding-right: var(--gutter);
+		}
+	}
+}
+
+.alignwide {
+	max-width: var(--w-wide);
+}
+.alignfull {
+	position: relative;
+	max-width: none;
+	width: 100%;
+	width: calc(100% + var(--gutter) * 2);
+	left: var(--gutter-);
+}
+.wp-block-cover__background {
+	max-width: none;
+}
