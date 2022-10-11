@@ -23,8 +23,9 @@ A minimal starting point for custom theme development. Starts with a white page 
 
 == Changelog ==
 
-= 3.0.2 - October 3 2022 =
+= 3.0.2 - October 11 2022 =
 * Overhaul alignment layout strategy.
+* Move demo content exports.
 = 3.0.1 - October 3 2022 =
 * Add .env support to make package.json more universal.
 * Add example block exports.
