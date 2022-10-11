@@ -17,6 +17,11 @@
 body {
 	--wp--style--block-gap: var(--sp);
 }
+.has-background {
+	&.has-background {
+		padding: 0;
+	}
+}
 
 /**
  * Accessibility
