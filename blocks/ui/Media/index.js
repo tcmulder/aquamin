@@ -2,6 +2,43 @@
  * Media component
  *
  * Handles image/video media.
+ * 
+ * Usage:
+
+// add this to the block.json file:
+{
+	"title": "Some Block With Media",
+	...
+	"attributes": {
+		"mediaAlt": {
+			"type": "string"
+		},
+		"mediaUrl": {
+			"type": "string",
+		},
+		"mediaId": {
+			"type": "number"
+		},
+		"mediaWidth": {
+			"type": "number"
+		},
+		"mediaHeight": {
+			"type": "number"
+		}
+	}
+	...
+}
+
+Then use it within the edit function like:
+<Media
+	setAttributes={setAttributes}
+	attributes={attributes}
+	editable
+/>
+
+And use it within the save function like:
+<Media />
+
  *
  */
 
