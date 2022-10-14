@@ -2,10 +2,73 @@
  * Media component
  *
  * Handles image/video media.
+ * 
+ * Usage:
+
+// add this to the block.json file:
+{
+	// ...other block settings
+	"attributes": {
+		"mediaAlt": {
+			"type": "string"
+		},
+		"mediaUrl": {
+			"type": "string",
+		},
+		"mediaId": {
+			"type": "number"
+		},
+		"mediaWidth": {
+			"type": "number"
+		},
+		"mediaHeight": {
+			"type": "number"
+		}
+	}
+}
+
+Then use it within the edit function like:
+<Media
+	editable
+	setAttributes={setAttributes}
+	attributes={attributes}
+/>
+
+And use it within the save function like:
+<Media attributes={attributes} />
+
+There's a lot of customization you can do as well:
+<Media
+	editable
+	setAttributes={setAttributes}
+	attributes={attributes}
+	attributeNames = { // custom block.json props (defaults plus "Background" shown here)
+		alt: 'mediaAltBackground',
+		url: 'mediaUrlBackground',
+		id: 'mediaIdBackground',
+		width: 'mediaWidthBackground',
+		height: 'mediaHeightBackground',
+	},
+	htmlAttributes={{ // extra HTML attributes (videos default to autoplay)
+		video: {
+			loop: '',
+			muted: '',
+			playsinline: '',
+		},
+		image: {
+			loading: 'lazy',
+		},
+	}}
+	title={__('Background Media', 'aquamin)}, // title above <MediaPlaceholder />
+	className="my-extra-class" // comes with .media automatically
+	accept={['image/*', 'video/*']} // or exclude a type
+	allowedTypes={['image', 'video']} // or exclude a type
+	style={{ height: 'auto' }} // useful for WP sidebar
+/>
+
  *
  */
 
-/* eslint-disable react/prop-types */
 /**
  * Dependencies
  */
@@ -34,8 +97,22 @@ const getType = (url) => {
 /**
  * Videos and images renderer
  */
-const ActualMedia = ({ attributeNames, attributes, className, style }) => {
+const ActualMedia = ({
+	attributeNames,
+	attributes,
+	htmlAttributes,
+	className,
+	style,
+}) => {
 	const type = getType(attributes[attributeNames.url]);
+	// add arbitrary extra html attributes (and default videos to autoplaying)
+	const getHTMLAttributes = () =>
+		// eslint-disable-next-line no-prototype-builtins, no-nested-ternary
+		htmlAttributes?.hasOwnProperty(type)
+			? htmlAttributes[type]
+			: type === 'video'
+			? { loop: '', autoPlay: '', muted: '', playsinline: '' }
+			: null;
 	if (type === 'video' && attributes[attributeNames.url]) {
 		return (
 			// eslint-disable-next-line jsx-a11y/media-has-caption
@@ -44,11 +121,8 @@ const ActualMedia = ({ attributeNames, attributes, className, style }) => {
 				src={attributes[attributeNames.url]}
 				width={attributes[attributeNames.width]}
 				height={attributes[attributeNames.height]}
-				loop=""
-				autoPlay=""
-				muted=""
-				playsinline=""
 				style={style}
+				{...getHTMLAttributes()}
 			/>
 		);
 	}
@@ -61,6 +135,7 @@ const ActualMedia = ({ attributeNames, attributes, className, style }) => {
 				height={attributes[attributeNames.height]}
 				alt={attributes[attributeNames.alt] || __('Media', 'aquamin')}
 				style={style}
+				{...getHTMLAttributes()}
 			/>
 		);
 	}
@@ -82,12 +157,15 @@ const Media = ({
 	title,
 	setAttributes,
 	attributes,
+	htmlAttributes,
 	className,
 	style,
 	editable,
 	accept,
 	allowedTypes,
 }) => {
+	const willAccept = accept || ['image/*', 'video/*'];
+	const willAllowTypes = allowedTypes || ['image', 'video'];
 	if (editable && attributes[attributeNames.url]) {
 		return (
 			<>
@@ -111,6 +189,7 @@ const Media = ({
 					attributes={attributes}
 					className={classnames('media', className)}
 					style={style}
+					htmlAttributes={htmlAttributes}
 				/>
 			</>
 		);
@@ -139,8 +218,8 @@ const Media = ({
 						[attributeNames.height]: value.height,
 					})
 				}
-				accept={accept || ['image/*', 'video/*']}
-				allowedTypes={allowedTypes || ['image', 'video']}
+				accept={willAccept}
+				allowedTypes={willAllowTypes}
 			/>
 		);
 	}
@@ -150,6 +229,7 @@ const Media = ({
 			attributeNames={attributeNames}
 			attributes={attributes}
 			className={className}
+			htmlAttributes={htmlAttributes}
 		/>
 	);
 };
