@@ -23,8 +23,13 @@ A minimal starting point for custom theme development. Starts with a white page 
 
 == Changelog ==
 
+<<<<<<< Updated upstream
 = 3.0.3 - October 13 2022 =
 * Add usage examples to Media component.
+=======
+= 3.0.3 - October 14 2022 =
+* Add support for <Media /> HTML attribute customizations.
+>>>>>>> Stashed changes
 = 3.0.2 - October 11 2022 =
 * Overhaul alignment layout strategy.
 * Move demo content exports.
