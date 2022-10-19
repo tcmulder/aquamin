@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { plus, close } from '@wordpress/icons';
 
 const { __ } = wp.i18n;
