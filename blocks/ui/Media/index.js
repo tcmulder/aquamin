@@ -13,7 +13,7 @@
 			"type": "string"
 		},
 		"mediaUrl": {
-			"type": "string",
+			"type": "string"
 		},
 		"mediaId": {
 			"type": "number"

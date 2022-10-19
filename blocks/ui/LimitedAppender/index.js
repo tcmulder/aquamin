@@ -11,8 +11,8 @@ export const SomeEditBlock = ({ clientId }) => (
 	/>
 )
  */
-import { select } from '@wordpress/data';
-import { InnerBlocks } from '@wordpress/block-editor';
+const { select } = wp.data;
+const { InnerBlocks } = wp.blockEditor;
 
 const LimitedAppender = ({ limit, clientId }) => {
 	const parentBlock = select('core/editor').getBlocksByClientId(clientId)[0];

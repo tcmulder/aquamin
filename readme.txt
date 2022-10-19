@@ -5,7 +5,7 @@ Tags: starter, clean, basic, semantic
 
 Requires at least: 6.0.1
 Tested up to: 6.0.2
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,13 +23,13 @@ A minimal starting point for custom theme development. Starts with a white page 
 
 == Changelog ==
 
-<<<<<<< Updated upstream
-= 3.0.3 - October 13 2022 =
-* Add usage examples to Media component.
-=======
+= 3.0.4 - October 19 2022 =
+* Add handling of ui component css.
+* Fix imports.
+* Remove old eslint comments.
 = 3.0.3 - October 14 2022 =
+* Add usage examples to Media component.
 * Add support for <Media /> HTML attribute customizations.
->>>>>>> Stashed changes
 = 3.0.2 - October 11 2022 =
 * Overhaul alignment layout strategy.
 * Move demo content exports.
