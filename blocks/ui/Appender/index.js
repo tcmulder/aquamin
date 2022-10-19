@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /**
  * WordPress dependencies
  */
@@ -6,8 +5,6 @@
  * Internal dependencies
  */
 import { ButtonPlus } from '../Buttons';
-
-import './editor.css';
 
 const { __ } = wp.i18n;
 const { useSelect, dispatch, select } = wp.data;

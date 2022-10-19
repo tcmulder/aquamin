@@ -5,11 +5,12 @@
 import './blocks.css';
 
 /**
+ * UI component styling.
+ */
+import './ui/*/style.css';
+
+/**
  * Individual blocks
  */
 import './block-library/*/style.css';
 import './block-library/*/script.js';
-
-/**
- * Extended core blocks
- */

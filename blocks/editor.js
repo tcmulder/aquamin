@@ -5,11 +5,12 @@
 import './editor.css';
 
 /**
+ * UI component overrides.
+ */
+import './ui/*/editor.css';
+
+/**
  * Individual blocks (editor)
  */
 import './block-library/*/index.js';
 import './block-library/*/editor.css';
-
-/**
- * Extended core blocks (editor)
- */
