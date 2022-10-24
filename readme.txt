@@ -5,7 +5,7 @@ Tags: starter, clean, basic, semantic
 
 Requires at least: 6.0.1
 Tested up to: 6.0.2
-Stable tag: 3.0.4
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,8 @@ A minimal starting point for custom theme development. Starts with a white page 
 
 == Changelog ==
 
+= 3.1.0 - October 24 2022 =
+* Overhual <Media /> component.
 = 3.0.4 - October 19 2022 =
 * Add handling of ui component css.
 * Fix imports.

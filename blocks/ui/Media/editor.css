@@ -1,14 +1,8 @@
 /**
  * Editor styling
  */
-.aquamin-media-remove {
-	position: absolute;
-	z-index: 10;
+ .aquamin-media-remove {
 	display: none;
-	& button {
-		border: 1px solid currentColor;
-		background: #fff;
-	}
 	@nest :is(.is-selected, .has-child-selected) & {
 		display: block;
 	}
