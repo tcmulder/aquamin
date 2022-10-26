@@ -8,7 +8,7 @@
 		"npmVersion": ">=7.11.2"
 	},
 	"scripts": {
-		"server": "browser-sync start --no-open --proxy `grep URL .env | cut -d '=' -f2` --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
+		"server": "browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES .env | cut -d '=' -f2` --no-snippet --no-open --proxy `grep URL .env | cut -d '=' -f2` --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
 		"builder": "parcel watch src/js/*/*.bundle.js",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
