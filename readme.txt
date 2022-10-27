@@ -3,9 +3,9 @@
 Contributors: @thinkaquamarine
 Tags: starter, clean, basic, semantic
 
-Requires at least: 6.0.1
-Tested up to: 6.0.2
-Stable tag: 3.1.1
+Requires at least: 6.0.0
+Tested up to: 6.0.3
+Stable tag: 3.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,9 @@ A minimal starting point for custom theme development. Starts with a white page 
 
 == Changelog ==
 
+= 3.1.2 - October 27 2022 =
+* Break cache automatically for assets.
+* Add new footer system.
 = 3.1.1 - October 26 2022 =
 * Add .env.example.
 * Streamline cli logs.

@@ -48,7 +48,6 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 		 */
 		register_nav_menus( array(
 			'head-menu' => esc_html__( 'Header Menu', 'aquamin' ),
-			'foot-menu' => esc_html__( 'Footer Menu', 'aquamin' ),
 		) );
 
 		/*

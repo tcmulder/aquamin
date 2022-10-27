@@ -3,6 +3,29 @@
  * Library of common Aquamin functions
  */
 
+ /**
+ * Easy conditional print.
+ *
+ * Like printf/sprintf but only outputs the string (usually
+ * HTML) if none of the values are (boolean) false.
+ */
+function if_sprintf( $sprintf, ...$fields ) {
+	// get the first value and continue if it's not false
+	$first = array_shift( $fields );
+	if ( false !== $first && '' !== $first ) {
+		// simply output it if that's all we've got (90% of the time it's just one argument)
+		if ( ! $fields ) {
+			return sprintf( $sprintf, $first );
+		// do additional digging if there are multiple replacements to be made
+		} elseif ( ! in_array( false, $fields, true ) ) {
+			return call_user_func_array( 'sprintf', array_merge( (array) $sprintf, (array) $first, $fields ) );
+		}
+	}
+}
+function if_printf( $sprintf, ...$field ) {
+	echo if_sprintf( $sprintf, ...$field );
+}
+
 /**
  * Set page ID to use.
  *
@@ -45,6 +68,47 @@ function aquamin_id() {
 	}
 
 	return $the_id;
+}
+
+/**
+ * Setup general content (like footers)
+ */
+add_action( 'after_setup_theme', 'aquamin_general_custom_post_type' );
+function aquamin_general_custom_post_type() {
+	register_post_type(
+		'aquamin-general',
+		array(
+			'labels' => array(
+				'name' => _x( 'Footers', 'Taxonomy General Name', 'aquamin' ),
+				'singular_name' => _x( 'Footer', 'Taxonopmy Singular Name', 'aquamin' ),
+				'menu_name' => __( 'Footer', 'aquamin' ),
+				'all_items' => __( 'Footer', 'aquamin' ),
+				'parent_item' => __( 'Parent Footer', 'aquamin' ),
+				'parent_item_colon' => __( 'Parent Footer:', 'aquamin' ),
+				'new_item_name' => __( 'New Footer Name', 'aquamin' ),
+				'add_new_item' => __( 'Add New Footer', 'aquamin' ),
+				'edit_item' => __( 'Edit Footer', 'aquamin' ),
+				'update_item' => __( 'Update Footer', 'aquamin' ),
+				'separate_items_with_commas' => __( 'Separate Footers with commas', 'aquamin' ),
+				'search_items' => __( 'Search Footers', 'aquamin' ),
+				'add_or_remove_items' => __( 'Add or remove items', 'aquamin' ),
+				'choose_from_most_used' => __( 'Choose from the most used items', 'aquamin' ),
+				'not_found' => __( 'Not Found', 'aquamin' ),
+			),
+			'public' => true,
+			'has_archive' => false,
+			'show_in_rest' => true,
+			'show_in_menu' => 'themes.php',
+			'menu_position' => 20,
+			'menu_icon' => 'dashicons-button',
+			'supports' => array(
+				'editor',
+				'custom-fields',
+				'title',
+				'thumbnail',
+			),
+		)
+	);
 }
 
 /**
@@ -473,27 +537,4 @@ function aquamin_inner_images() {
 		'css_padding_tablet' 	=> 15, // usually 15
 		'css_padding_phone' 	=> 15, // usually 15
 	);
-}
-
-/**
- * Easy conditional print.
- *
- * Like printf/sprintf but only outputs the string (usually
- * HTML) if none of the values are (boolean) false.
- */
-function if_sprintf( $sprintf, ...$fields ) {
-	// get the first value and continue if it's not false
-	$first = array_shift( $fields );
-	if ( false !== $first && '' !== $first ) {
-		// simply output it if that's all we've got (90% of the time it's just one argument)
-		if ( ! $fields ) {
-			return sprintf( $sprintf, $first );
-		// do additional digging if there are multiple replacements to be made
-		} elseif ( ! in_array( false, $fields, true ) ) {
-			return call_user_func_array( 'sprintf', array_merge( (array) $sprintf, (array) $first, $fields ) );
-		}
-	}
-}
-function if_printf( $sprintf, ...$field ) {
-	echo if_sprintf( $sprintf, ...$field );
 }
