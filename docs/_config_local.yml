@@ -18,6 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+# ********************
+# Special Instructions
+#   2.  Serve: serve locally via `jekyll serve --config _config_local.yml --port 4001`
+#   1.  Search: to generate search json file, run `bundle exec just-the-docs rake
+#       search:init` on the command line
+# ********************
+
 title: aquamin Docs
 description: >- # this means to ignore newlines until "baseurl:"
   Documentation for the aquamin WordPress starter theme..
@@ -29,7 +36,7 @@ logo: "/assets/images/screenshot.png"
 color_scheme: aquamin
 
 # Build settings
-remote_theme: just-the-docs/just-the-docs@v0.4.0.rc1
+theme: "just-the-docs"
 plugins:
   - jekyll-feed
 
