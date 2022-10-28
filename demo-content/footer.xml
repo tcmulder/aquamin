@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.0.3" created="2022-10-28 17:08" -->
+<!-- generator="WordPress/6.0.3" created="2022-10-28 21:05" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>http://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Fri, 28 Oct 2022 17:08:46 +0000</pubDate>
+<pubDate>Fri, 28 Oct 2022 21:05:39 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>
@@ -41,7 +41,7 @@
   <title><![CDATA[Footer]]></title>
   <link>http://aquamin.aquamarine.test/aquamin-general/footer/</link>
   <pubDate>Thu, 27 Oct 2022 22:22:47 +0000</pubDate>
-  <dc:creator>aquaadmin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">http://aquamin.aquamarine.test/?post_type=aquamin-general&amp;p=5</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:aquamin/inline-paragraph -->
@@ -59,8 +59,8 @@
   <wp:post_id>5</wp:post_id>
   <wp:post_date>2022-10-27 22:22:47</wp:post_date>
   <wp:post_date_gmt>2022-10-27 22:22:47</wp:post_date_gmt>
-  <wp:post_modified>2022-10-27 22:39:46</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-27 22:39:46</wp:post_modified_gmt>
+  <wp:post_modified>2022-10-28 21:04:15</wp:post_modified>
+  <wp:post_modified_gmt>2022-10-28 21:04:15</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>footer</wp:post_name>
@@ -70,6 +70,10 @@
   <wp:post_type>aquamin-general</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
+  <wp:postmeta>
+    <wp:meta_key>_wp_old_slug</wp:meta_key>
+    <wp:meta_value><![CDATA[5]]></wp:meta_value>
+  </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_wp_old_slug</wp:meta_key>
     <wp:meta_value><![CDATA[5]]></wp:meta_value>

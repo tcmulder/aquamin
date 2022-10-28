@@ -34,3 +34,8 @@ require AQUAMIN_INC . '/libs.php';
  * Add the custom blocks
  */
 require AQUAMIN_BLOCKS . '/blocks.php';
+
+/**
+ * Enable command line interface
+ */
+require AQUAMIN_INC . '/wp-cli.php';
