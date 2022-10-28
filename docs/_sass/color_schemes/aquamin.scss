@@ -1,5 +1,20 @@
 @import "./color_schemes/dark";
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&family=Signika:wght@700&family=Vollkorn:ital,wght@0,400;0,700;1,400&display=swap');
 
-$teal: #00CAA9;
-$link-color: $teal;
-$body-font-family: "Trebuchet MS", sans-serif;
+$heading-font-family: "Signika", sans-serif;
+
+$body-font-family: "Vollkorn", serif;
+$blue-000: hsl((214-55), 95%, (58%+5%));
+$blue-100: hsl((219-55), 79%, (53%+5%));
+$blue-200: hsl((223-55), 64%, (42%+5%));
+$blue-300: hsl((226-55), 69%, (31%+5%));
+$base-button-color: $grey-dk-200;
+$btn-primary-color: $blue-200;
+$link-color: $blue-200;
+
+:is(h1, h2, h3, h4, h5, h6) {
+  font-family: $heading-font-family, sans-serif;
+}
+.nav-list-link {
+  color: $white;
+}
