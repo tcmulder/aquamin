@@ -95,10 +95,11 @@ function aquamin_general_custom_post_type() {
 				'choose_from_most_used' => __( 'Choose from the most used items', 'aquamin' ),
 				'not_found' => __( 'Not Found', 'aquamin' ),
 			),
-			'public' => true,
-			'has_archive' => false,
+			'public' => false,
 			'show_in_rest' => true,
 			'show_in_menu' => 'themes.php',
+			'show_in_nav_menus' => true,
+			'show_ui' => true,
 			'menu_position' => 20,
 			'menu_icon' => 'dashicons-button',
 			'supports' => array(
