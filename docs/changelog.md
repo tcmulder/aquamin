@@ -9,7 +9,7 @@ has_children: false
 
 # Changelog
 
-## 3.1.2 - October 27 2022
+## 4.0.0 - October 28 2022
 * Added docs.
 * Break cache automatically for assets.
 * Add new footer system.
