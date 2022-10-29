@@ -1,0 +1,132 @@
+/**
+ * Extended animation shared block styling.
+ */
+:root {
+	--ani-timing-function: var(--ani-ease, ease);
+	--ani-duration: calc(var(--ani-speed, 0.375s) * 2); /* speed of transition effects */
+	--ani-delay-increment: 0; /* integer for stepped animations */
+	--ani-delay-factor: 0.05s; /* duration of each increment step */
+	--ani-delay-offset: 0.15s; /* start delay (so ani don't start at very bottom of screen) */
+}
+.ani--load,
+.ani {
+	transition: all var(--ani-duration) var(--ani-timing-function);
+	transition-delay: calc(
+		var(--ani-delay-increment) * var(--ani-delay-factor) + var(--ani-delay-offset)
+	);
+	will-change: transform;
+	/*&, /*DEBUG*/
+	&:not(.is-shown) {
+		opacity: var(--ani-opacity, 1);
+		filter: blur(var(--ani-blur, 0));
+		transform: translateX(var(--ani-x, 0)) translateY(var(--ani-y, 0))
+			scale(var(--ani-scale-x, 1), var(--ani-scale-y, 1)) perspective(var(--ani-perspective, 0px))
+			rotateX(var(--ani-rotate-x, 0deg)) rotate(var(--ani-rotate, 0deg));
+		transition: 0s 0s;
+	}
+	&.ani--opacity {
+		--ani-opacity: 0;
+	}
+	&.ani--scale {
+		--ani-scale-x: 0.8;
+		--ani-scale-y: var(--ani-scale-x);
+	}
+	&.ani--scale-x {
+		--ani-scale-x: 0;
+	}
+	&.ani--blur {
+		--ani-blur: 0.25rem;
+	}
+	&.ani--up {
+		--ani-y: 1.25rem;
+	}
+	&.ani--down {
+		--ani-y: -1.25rem;
+	}
+	&.ani--left {
+		--ani-x: 1.5rem;
+	}
+	&.ani--right {
+		--ani-x: -1.5rem;
+	}
+	&.ani--3d {
+		--ani-perspective: 8em;
+		--ani-rotate-x: 12deg;
+		--ani-rotate: -2deg;
+	}
+}
+.ani-parallax-parent {
+	overflow: hidden;
+}
+.ani--parallax {
+	--parallax-size: 75vh;
+	overflow: hidden;
+	transition: 0s;
+	&.ani--parallax-default {
+		/* !important to override wp default */
+		height: calc(100% + var(--parallax-size)) !important;
+	}
+}
+.ani--foreground,
+.ani--background {
+	--ani-delay-offset: 0.8s;
+	position: relative;
+	z-index: 20;
+	&:is(header).is-loaded,
+	&:not(:is(header)) {
+		/* !important to override wp default */
+		background: none !important;
+	}
+	& > * {
+		position: relative;
+		z-index: 20;
+		transition: 1s;
+	}
+}
+.ani--foreground {
+	&:not(.is-shown-bg) > * {
+		opacity: 0;
+	}
+}
+.background-color-block {
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	background-color: transparent;
+	will-change: transform;
+	transition: 1s;
+	/* override WordPresss's labotimized owl */
+	margin: 0 !important;
+	&.background-color-block {
+		& * {
+			max-width: 100%;
+		}
+	}
+	& > * {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		object-fit: cover;
+		&.wp-block-cover__gradient-background {
+			z-index: 1;
+		}
+	}
+	&:not(.active) {
+		opacity: 0;
+	}
+	/* for specificity */
+	&.background-color-block.background-color-block.background-color-block {
+		max-width: none;
+		width: 100%;
+	}
+}
+.background-color-block--foreground {
+	z-index: 10;
+}

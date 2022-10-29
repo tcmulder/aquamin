@@ -62,20 +62,10 @@
 	--c-good: #0ac675;
 	--c-bad: #e24939;
 	--c-meh: #ff7f50;
+
+	/* animations */
+	--ani-ease: ease;
+	--ani-speed: 0.3s;
 	
 }
 
-/* breakpoints */
-/**
- * Note: these should work when used in other files, but do not.
- * So, alas, they're included here as a reference only.
- */
-/*
-@custom-media --bp-zoomed-in (min-width: 280px);
-@custom-media --bp-mobile (min-width: 480px);
-@custom-media --bp-small (min-width: 600px);
-@custom-media --bp-medium (min-width: 782px); // adminbar goes big
-@custom-media --bp-large (min-width: 960px); // admin sidebar auto folds
-@custom-media --bp-xlarge (min-width: 1080px);
-@custom-media --bp-wide (min-width: 1280px);
-@custom-media --bp-huge (min-width: 1440px); */
