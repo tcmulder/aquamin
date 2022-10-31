@@ -11,8 +11,8 @@ has_children: false
 
 ## 4.0.0 - October 28 2022
 * Added docs.
-* Break cache automatically for assets.
-* Add new footer system.
+* Added auto cache break for assets.
+* Added new footer system.
 
 ## 3.1.1 - October 26 2022
 * Add .env.example.
