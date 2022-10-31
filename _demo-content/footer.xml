@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.0.3" created="2022-10-29 21:52" -->
+<!-- generator="WordPress/6.0.3" created="2022-10-31 18:07" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>http://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Sat, 29 Oct 2022 21:52:42 +0000</pubDate>
+<pubDate>Mon, 31 Oct 2022 18:07:01 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>

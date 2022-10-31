@@ -38,4 +38,4 @@ require AQUAMIN_BLOCKS . '/blocks.php';
 /**
  * Enable command line interface
  */
-require AQUAMIN_INC . '/wp-cli.php';
+require AQUAMIN_INC . '/cli/wp-cli.php';

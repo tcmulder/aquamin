@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.0.3" created="2022-10-29 21:52" -->
+<!-- generator="WordPress/6.0.3" created="2022-10-31 18:07" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>http://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Sat, 29 Oct 2022 21:52:40 +0000</pubDate>
+<pubDate>Mon, 31 Oct 2022 18:07:00 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>
@@ -45,14 +45,14 @@
   <guid isPermaLink="false">https://playground.aquamarine.test/?post_type=all-the-things&amp;p=7</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>You can use this pattern for just trying random things out. Think of it sort of like an Etch A Sketch: play around with creating something, then wipe it clean once you're done so you can use it for a different something later.</p>
+<p class="">You can use this pattern for just trying random things out. Think of it sort of like an Etch A Sketch: play around with creating something, then wipe it clean once you're done so you can use it for a different something later.</p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>7</wp:post_id>
   <wp:post_date>2022-10-03 23:49:57</wp:post_date>
   <wp:post_date_gmt>2022-10-03 23:49:57</wp:post_date_gmt>
-  <wp:post_modified>2022-10-29 19:37:42</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-29 19:37:42</wp:post_modified_gmt>
+  <wp:post_modified>2022-10-31 18:06:29</wp:post_modified>
+  <wp:post_modified_gmt>2022-10-31 18:06:29</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>payground</wp:post_name>
