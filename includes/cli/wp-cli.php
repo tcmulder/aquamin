@@ -245,10 +245,10 @@ class AQUAMIN_CLI {
 	}
 
 	/**
-	 * Sets up theme
+	 * Sets up default content
 	 *
-	 * @since  1.0.0
-	 * @author @tcmulder
+	 * @param array $modules 
+     * @param array $assoc_args 
 	 */
 	public function setup( $args, $assoc_args ) {
 
@@ -259,7 +259,7 @@ class AQUAMIN_CLI {
 		WP_CLI::runcommand( 'plugin is-installed all-the-things || wp plugin install --activate https://github.com/tcmulder/all-the-things/archive/refs/heads/master.zip' );
 		
 		// get demo content files
-		$demo_content_path = get_template_directory() . '/demo-content/';
+		$demo_content_path = get_template_directory() . '/includes/cli/demo-content/';
 		$demo_content = glob($demo_content_path . '*');
 		if ( $demo_content ) {
 			// determine if the importer is installed and install it if not
@@ -279,9 +279,11 @@ class AQUAMIN_CLI {
 
 		// report
 		if ( ! $has_error ) {
-			WP_CLI::line( WP_CLI::colorize( "%CPatterns URL:%n \n" . get_admin_url( null, '/edit.php?post_type=all-the-things' ) . "\n" ) );
-			WP_CLI::line( WP_CLI::colorize( "%CFooter URL:%n \n" . get_admin_url( null, '/edit.php?post_type=aquamin-general' ) . "\n" ) );
 			WP_CLI::success( 'Setup complete' );
+			WP_CLI::line( "\nWhat's next?\n" );
+			WP_CLI::line( WP_CLI::colorize( "\n%CCustomize your footer:%n \n" . get_admin_url( null, '/edit.php?post_type=aquamin-general' )) );
+			WP_CLI::line( WP_CLI::colorize( "\n%CVisit the pattern library:%n \n" . get_admin_url( null, '/edit.php?post_type=all-the-things' )) );
+			WP_CLI::line( "\n" );
 		}
 	}
 

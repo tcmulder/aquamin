@@ -9,9 +9,19 @@ parent: Features
 
 # Custom Block Generator
 
-# Theme Setup
+# Setup
  
- You can run `wp aquamin setup` after you've activated the aquamin theme. This installs a custom Patterns plugin that showcases aquamin's pre-installed blocks and core block customizations for testing.
+After activating the aquamin theme for the first time, you can run:
+
+```
+wp aquamin setup
+```
+
+This does several things:
+
+1. Imports basic footer content for you to customize under _Appearance > Footer > Footer_ (aquamin displays this content via the `footer.php` template). Note that eventually this may move to the full site editor, but currently this is the best way to bring the block editor into the footer.
+2. Sets up a helpful pattern library plugin featuring aquamin's core block customizations and pre-installed blocks. The plugin also features a style guide for you to test styling of all the common HTML elements in one place, and a playground to experiment with custom blocks somewhere site visitors can't accidentally stumble across.
+
+## Adding Your Custom Blocks to Setup
  
- You can use the Patterns plugin for creating and testing your own blocks, too—I find it really convenient. If you configure blocks to work on another aquamin site and want to transfer them to a new site, you can just paste the block's folder into `blocks/block-library` include the block's Pattern XML export (e.g. `wp export --post__in=123`) in the `_demo-content` directory before running `wp aquamin setup` and your plugin will be imported as well.
- 
+ You can use the pattern library plugin for creating and testing your own blocks, too. If you would like to import blocks you built for other sites using the aquamin theme into the pattern library, simply copy that block's folder into `blocks/block-library` and then include the block's pattern XML export (e.g. `wp export --post__in=7 --post_type='all-the-things'`) in the `includes/cli/demo-content/` directory before running `wp aquamin setup`, and your block will be imported, too.
