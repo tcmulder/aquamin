@@ -16,4 +16,4 @@ Aquamin starts out as a white page with blue links that turn purple when you cli
 
 But as well, aquamin comes with a logical file structure and some handy, commonly-used features already set up so you can save time getting started. Happy coding!
 
-[Get started now](/installation/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/tcmulder/aquamin){: .btn .fs-5 .mb-4 .mb-md-0 }
+[Get started now](/quickstart/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/tcmulder/aquamin){: .btn .fs-5 .mb-4 .mb-md-0 }

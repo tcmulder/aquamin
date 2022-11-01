@@ -31,30 +31,3 @@ registerBlockType(block.name, {
 	edit,
 	save,
 });
-
-/**
- * Instructions ** remove this **
- */
-// eslint-disable-next-line no-console
-console.info(`
-# Block Template Todo:
-
-## Search/Replace Block Name Placeholders:
-- template-slug
-- _template-block
-- TemplateNamespace
-- template-title
-- template-desc
-
-## Search/Replace Block Child Name Placeholders:
-- template-item-slug
-- TemplateItemNamespace
-- template-item-title
-- template-item-desc
-
-## ApplyFile Manipulations:
-- index.js: delete template-item-slug import if unneeded
-- index.php: delete template-item-slug and dir if unneeded
-- index.php: delete dynamic comment if unneeded
-- script.js: delete file if unneeded
-`);

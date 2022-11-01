@@ -38,7 +38,7 @@ GEM
       jekyll (>= 3.8, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    just-the-docs (0.4.0.rc1)
+    just-the-docs (0.4.0.rc3)
       jekyll (>= 3.8.5)
       jekyll-seo-tag (>= 2.0)
       rake (>= 12.3.1)
@@ -78,7 +78,7 @@ PLATFORMS
 DEPENDENCIES
   http_parser.rb (~> 0.6.0)
   jekyll (~> 4.3.1)
-  just-the-docs (= 0.4.0.rc1)
+  just-the-docs (= 0.4.0.rc3)
   minima (~> 2.5)
   tzinfo (>= 1, < 3)
   tzinfo-data

@@ -8,14 +8,21 @@ $blue-000: hsl((214-55), 95%, (58%+5%));
 $blue-100: hsl((219-55), 79%, (53%+5%));
 $blue-200: hsl((223-55), 64%, (42%+5%));
 $blue-300: hsl((226-55), 69%, (31%+5%));
+$blue-400: lighten(desaturate($blue-300, 50%), 20%);
 $base-button-color: $grey-dk-200;
 $btn-primary-color: $blue-200;
-$link-color: $blue-200;
+$link-color: $blue-400;
 
-:is(h1, h2, h3, h4, h5, h6) {
+body :is(h1, h2, h3, h4, h5, h6) {
   font-family: $heading-font-family, sans-serif;
-  color: $blue-200 !important;
+  color: $blue-200;
 }
 .nav-list-link {
   color: $white;
+}
+.nav-list .nav-list-item > .nav-list .nav-list-item a.nav-list-link {
+  color: $blue-400;
+}
+.text-delta, body :is(h3, h4, h5, h6) {
+  color: $grey-dk-000;
 }
