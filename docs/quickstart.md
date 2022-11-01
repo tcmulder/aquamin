@@ -20,40 +20,15 @@ nav_order: 2
 
 ## Installation
 
-Installation is simple!
-
-**Option 1:** you can install via the wp-cli:
-
-```
-wp theme install --activate https://github.com/tcmulder/aquamin/archive/refs/heads/v4.0.0.zip
-```
-
-**Option 1:** you can install manually:
-1. Download the theme ([download link](https://github.com/tcmulder/aquamin/archive/refs/heads/master.zip){:download="download"}).
-2. In your admin panel, go to *Appearance > Themes* and click the *Add New* button.
-3. Click *Upload Theme* and *Choose File*, then select the theme's .zip file. Click *Install Now*.
-4. Click *Activate* to start using aquamin.
+Run `wp theme install --activate https://github.com/tcmulder/aquamin/archive/refs/heads/master.zip` to install using wp-cli, or [download aquamin](https://github.com/tcmulder/aquamin/archive/refs/heads/master.zip){:download="download"} directly and [install the theme manually](https://wordpress.org/support/article/using-themes/#adding-new-themes-using-the-administration-screens){: target="_blank"}.
 
 ## Setup
-After initial installation, here's how you get started with the theme.
+Once you've installed aquamin, you're ready to set up the development environment.
 
-1. Fire up your local server
-2. `cd` into the theme's directory.
-3. Run `npm install`.
-4. Run `wp aquamin setup`.
-5. Run `npm run start` for your development server, or `npm run build` for production builds.
+1. Fire up your local server (most [local servers](https://wordpress.org/support/article/installing-wordpress-on-your-own-computer/){: target="_blank"} should work fine, see [requirements](/features/requirements/)).
+2. `cd wp-content/themes/aquamin` so you're in the theme's directory.
+3. Run `npm install` to set up the build tooling.
+4. Optionally, run `wp aquamin setup` ([learn about the setup script](/features/wp-cli/#theme-setup)).
+5. Run `npm run start` to fire up the dev server, or `npm run build` for a production build.
 
-You're all set!
-
-## Requirements
-
-Aquamin works with the following versions of things:
-
-| Requirement       | Minimum Version |
-| :---------------- | :-------------- |
-| WordPress         | 6.0.1           |
-| PHP               | 8.0.1           |
-| Node              | 16.13.2         |
-| WP-CLI (optional) | 2.6.0           |
-
-Note that I haven't done testing in older versions, but aquamin may still work—feel free to give it a try!
+You're all set! Next up, familiarize yourself with the aquamin [directory structure and concepts](/features/structure-and-concepts/).

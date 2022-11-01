@@ -2,7 +2,7 @@
 title: Changelog
 permalink: /changelog/
 layout: default
-nav_order: 3
+nav_order: 4
 has_children: false
 # parent: Page Title
 ---
@@ -13,6 +13,7 @@ has_children: false
 * Added docs.
 * Added auto cache break for assets.
 * Added new footer system.
+* Added wp cli commands `block` and `setup`.
 
 ## 3.1.1 - October 26 2022
 * Add .env.example.
