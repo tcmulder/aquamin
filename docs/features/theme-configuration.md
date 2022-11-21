@@ -1,13 +1,13 @@
 ---
-title: Block Configuration
-permalink: /features/block-configuration/
+title: Theme Configuration
+permalink: /features/theme-configuration/
 layout: default
-nav_order: 2
+nav_order: 1
 # has_children: true
 parent: Features
 ---
 
-# Block Configuration
+# Theme Configuration
 {: .no_toc }
 
 Aquamin makes it super easy to add and configure blocks.
