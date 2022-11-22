@@ -35,3 +35,8 @@ body :is(h1, h2, h3, h4, h5, h6) {
 .text-delta, body :is(h3, h4, h5, h6) {
   color: $grey-dk-000;
 }
+
+// new custom classes
+.short-line-height {
+  line-height: 0.9;
+}
