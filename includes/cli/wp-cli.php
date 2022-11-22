@@ -295,7 +295,7 @@ class AQUAMIN_CLI {
 			if ( ! $import_plugin_path ) WP_CLI::runcommand( 'plugin install wordpress-importer --activate' );
 			// import all the content
 			foreach( $demo_content as $content ) {
-				WP_CLI::runcommand( 'import --authors=skip ' . $content );
+				WP_CLI::runcommand( "import --authors=skip '$content'" );
 			}
 			// delete importer if it wasn't previously installed
 			if ( ! $import_plugin_path ) WP_CLI::runcommand( 'plugin uninstall wordpress-importer --deactivate' );;
