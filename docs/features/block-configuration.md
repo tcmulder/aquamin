@@ -23,7 +23,7 @@ parent: Features
 Aquamin takes an approach that makes it easy to create blocks, remove them, or even transfer them to future aquamin-themed sites. To do this, each block is it's own self-contained directory with all files necessary for it to function contained within it. So, adding a block is as easy as pasting in that block's directory, and removing it is as easy as deleting it's directory—no hunting down multiple files and imports spread throughout the theme.
 
 ## Creating Blocks
-The easiest way to create blocks is to run `wp aquamin block` (see aquamin's [WP-CLI docs](/features/wp-cli/)). If you have parcel running, just refresh WordPress and the block will immediately be available as a registered block.
+The easiest way to create blocks is to run `wp aquamin block` (see aquamin's [WP-CLI docs](/aquamin/features/wp-cli/)). If you have parcel running, just refresh WordPress and the block will immediately be available as a registered block.
 
 ### Front-End JavaScript Option
 

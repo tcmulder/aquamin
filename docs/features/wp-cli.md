@@ -14,7 +14,7 @@ Aquamin has some [WP-CLI](https://developer.wordpress.org/cli/commands/){: targe
 
 # `wp aquamin block`
 
-This command sets up a new block matching aquamin's standard block pattern, walking you through a series of prompts to name your custom block and generate its files. You can run `wp aquamin block --help` for a full list of options. Learn more about [blocks in aquamin](/features/block-configuration/).
+This command sets up a new block matching aquamin's standard block pattern, walking you through a series of prompts to name your custom block and generate its files. You can run `wp aquamin block --help` for a full list of options. Learn more about [blocks in aquamin](/aquamin/features/block-configuration/).
 
 # `wp aquamin setup`
  
