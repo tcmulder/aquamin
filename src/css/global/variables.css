@@ -39,24 +39,28 @@
 	--gutter: var(--sp-rem);
 	--gutter-: calc(var(--gutter) * -1);
 
+	/* animations */
+	--ani-ease: ease;
+	--ani-speed: 0.3s;
+
 	/**
-	 * colors (--<color>-<primary/secondary/etc>-<brightness 0-9>)
+	 * colors (--<color>-<variant 1/2/3/etc>-<brightness 000(dark)-900(light)>)
 	 */
 
 	/* primary */
-	--c-1: aquamarine;
-	--c-1-lt: lightcyan;
-	--c-1-dk: teal;
+	--c-raw-1-200: 180, 100%, 94%; /* lightcyan */
+	--c-raw-1-500: 160 100% 75%; /* aquamarine */
+	--c-raw-1-800: 180, 100%, 25%; /* teal */
 
 	/* secondary */
-	--c-2: tan;
-	--c-2-lt: wheat;
-	--c-2-dk: chocolate;
+	--c-raw-2-200: 39, 77%, 83%; /* wheat */
+	--c-raw-2-500: 34, 44%, 69%; /* tan */
+	--c-raw-2-800: 25, 75%, 47%; /* chocolate */
 
 	/* drab */
-	--c-0: #ccc;
-	--c-0-lt: #fff;
-	--c-0-dk: #000;
+	--c-raw-0-900: 0, 0%, 100%; /* white */
+	--c-raw-0-500: 0, 0%, 50%; /* gray */
+	--c-raw-0-000: 0, 0%, 0%; /* black */
 
 	/* alert colors */
 	--c-good: #0ac675;
@@ -65,17 +69,37 @@
 	
 }
 
-/* breakpoints */
 /**
- * Note: these should work when used in other files, but do not.
- * So, alas, they're included here as a reference only.
+ * Customizeable Custom Properties
+ *
+ * If styling is applied to :root, you can't
+ * override a variable on a per-element level. By
+ * applying directly to the elements, you can
+ * do the following:
+	Example:
+	:root {
+		--c-raw-0-000: 0, 0%, 0%; <-- start with hsl values only
+	* {
+		--c-alpha: 1; <-- default alpha is 100%
+		--c-0-000: hsla(var(--c-raw-0-000) / var(--c-alpha); <-- default is solid black
+	}
+	.thing {
+		--c-alpha: 0.5; <-- we choose a different opacity for this element
+		background-color: var(--c-0-000); <-- we get a 50% transparent black color
+	}
+	.thing p {
+		color: var(--c-0-000); <-- we're back to solid black
+	}
  */
-/*
-@custom-media --bp-zoomed-in (min-width: 280px);
-@custom-media --bp-mobile (min-width: 480px);
-@custom-media --bp-small (min-width: 600px);
-@custom-media --bp-medium (min-width: 782px); // adminbar goes big
-@custom-media --bp-large (min-width: 960px); // admin sidebar auto folds
-@custom-media --bp-xlarge (min-width: 1080px);
-@custom-media --bp-wide (min-width: 1280px);
-@custom-media --bp-huge (min-width: 1440px); */
+* {
+	--c-alpha: 1;
+	--c-1-200: hsla(var(--c-raw-1-200) / var(--c-alpha));
+	--c-1-500: hsla(var(--c-raw-1-500) / var(--c-alpha));
+	--c-1-800: hsla(var(--c-raw-1-800) / var(--c-alpha));
+	--c-2-200: hsla(var(--c-raw-2-200) / var(--c-alpha));
+	--c-2-500: hsla(var(--c-raw-2-500) / var(--c-alpha));
+	--c-2-800: hsla(var(--c-raw-2-800) / var(--c-alpha));
+	--c-0-900: hsla(var(--c-raw-0-900) / var(--c-alpha));
+	--c-0-500: hsla(var(--c-raw-0-500) / var(--c-alpha));
+	--c-0-000: hsla(var(--c-raw-0-000) / var(--c-alpha));
+}

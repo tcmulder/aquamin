@@ -16,15 +16,15 @@
 	<footer id="colophon" class="site-footer">
 		<div class="site-footer__nav mod--inner">
 			<?php
-				wp_nav_menu( array(
-					'theme_location'  => 'foot-menu',
-					'container'       => 'nav',
-					'container_class' => 'footer-nav',
+				$footer = get_posts( array(
+					'name' => 'footer',
+					'post_type' => 'aquamin-general',
+					'posts_per_page' => 1,
 				) );
+				if( $footer ) {
+					echo apply_filters( 'the_content', get_post_field( 'post_content', $footer[0]->ID ) );
+				}
 			?>
-		</div>
-		<div class="site-footer__copy">
-			<?php printf( esc_html__( '&copy; %s', 'aquamin' ), date( 'Y' ) ); ?>
 		</div>
 	</footer>
 

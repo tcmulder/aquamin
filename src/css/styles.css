@@ -17,6 +17,8 @@
  */
 @import "./global/variables.css";
 @import "./global/animations.css";
+@import "./global/common-classes.css";
+@import "./global/fonts.css";
 
 /**
  * Base
