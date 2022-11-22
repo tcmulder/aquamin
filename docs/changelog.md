@@ -10,6 +10,10 @@ search_exclude: true
 
 # Changelog
 
+## 4.0.1 - November 22 2022
+* Fix `wp aquamin setup` import path issue.
+* Fix docs internal linking paths.
+
 ## 4.0.0 - October 28 2022
 * Added docs.
 * Added auto cache break for assets.
