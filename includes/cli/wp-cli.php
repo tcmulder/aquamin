@@ -79,7 +79,7 @@ class AQUAMIN_CLI {
 			exit;
 		}
 		// identify paths
-		$blocks_path = get_template_directory() . '/blocks/block-library/';
+		$library_path = get_template_directory() . '/blocks/block-library/';
 		$cli_path = get_template_directory() . '/includes/cli/templates/';
 		$template_dir = '_template-block';
 		$template_inner_dir = 'template-item-slug';
@@ -119,49 +119,77 @@ class AQUAMIN_CLI {
 			'template-desc',
 		);
 
-		// get inner block details if we're creating one
-		$ask_inner_block = $this->ask('Add inner block? [y/N]');
-		$has_inner_block = strtolower( $ask_inner_block ?? '' ) === 'y' ? true : false;
-		$inner_block = array();
-		if ( $has_inner_block ) {
+		$ask_js = $this->ask('Has front-end JavaScript? [y/N]');
+		$has_js = strtolower( $ask_js ?? '' ) === 'y' ? true : false;
 
-			// ask what to call the inner block
-			$guess = $title . ' Item';
-			$inner_block[ 'inner_block_title' ] = array(
-				$assoc_args[ 'inner_block_title' ] ?? $this->ask("Inner block title [$guess]:", $guess),
-				'template-item-title',
-			);
-			$title = $inner_block[ 'inner_block_title' ][ 0 ];
-			
-			$guess = sanitize_title( $title );
-			$inner_block[ 'inner_block_slug' ] = array(
-				$assoc_args[ 'inner_block_slug' ] ?? $this->ask("Inner block slug [$guess]:", $guess),
-				'template-item-slug',
-			);
-			
-			$guess = str_replace(' ', '', $title);
-			$inner_block[ 'inner_block_namespace' ] = array(
-				$assoc_args[ 'inner_block_namespace' ] ?? $this->ask("Inner block namespace [$guess]:", $guess),
-				'TemplateItemNamespace',
-			);
+		$ask_dynamic = $this->ask('Dynamic? [y/N]');
+		$is_dynamic = strtolower( $ask_dynamic ?? '' ) === 'y' ? true : false;
 
-			$guess = 'The ' . $title . ' block.';
-			$inner_block[ 'inner_block_desc' ] = array(
-				$assoc_args[ 'inner_block_desc' ] ?? $this->ask("Inner block description [$guess]:", $guess),
-				'template-item-desc',
-			);
+		// get inner block details if we're creating one and we're not dynamic
+		$has_inner_block = false;
+		if ( ! $is_dynamic ) {
+
+			$ask_inner_block = $this->ask('Add inner block? [y/N]');
+			$has_inner_block = strtolower( $ask_inner_block ?? '' ) === 'y' ? true : false;
+			$inner_block = array();
+			if ( $has_inner_block ) {
+	
+				// ask what to call the inner block
+				$guess = $title . ' Item';
+				$inner_block[ 'inner_block_title' ] = array(
+					$assoc_args[ 'inner_block_title' ] ?? $this->ask("Inner block title [$guess]:", $guess),
+					'template-item-title',
+				);
+				$title = $inner_block[ 'inner_block_title' ][ 0 ];
+				
+				$guess = sanitize_title( $title );
+				$inner_block[ 'inner_block_slug' ] = array(
+					$assoc_args[ 'inner_block_slug' ] ?? $this->ask("Inner block slug [$guess]:", $guess),
+					'template-item-slug',
+				);
+				
+				$guess = str_replace(' ', '', $title);
+				$inner_block[ 'inner_block_namespace' ] = array(
+					$assoc_args[ 'inner_block_namespace' ] ?? $this->ask("Inner block namespace [$guess]:", $guess),
+					'TemplateItemNamespace',
+				);
+	
+				$guess = 'The ' . $title . ' block.';
+				$inner_block[ 'inner_block_desc' ] = array(
+					$assoc_args[ 'inner_block_desc' ] ?? $this->ask("Inner block description [$guess]:", $guess),
+					'template-item-desc',
+				);
+			}
+
 		}
 		
 		// create the plugin directory
 		$block_slug = $block[ 'block_slug' ][ 0 ];
 		global $wp_filesystem;
-		$wp_filesystem->mkdir( $blocks_path . $block_slug );
+		$block_path = $library_path . $block_slug;
+		$wp_filesystem->mkdir( $block_path );
 
 		// duplicate template's files
-		copy_dir( $cli_path . $template_dir, $blocks_path . $block_slug, array( $template_inner_dir ));
+		copy_dir( $cli_path . $template_dir, $block_path, array( '_optional' ) );
+
+		// if we're dynamic
+		if ( $is_dynamic ) {
+			$to_rename = array( 'index.php', 'save.js', 'edit.js', 'markup.php' );
+			foreach( $to_rename as $filename ) {
+				copy( $cli_path . $template_dir . '/_optional/dynamic/' . $filename, $block_path . '/' . $filename );
+			}
+		}
+
+		// if we have front-end scripts
+		if ( $has_js ) {
+			copy( $cli_path . $template_dir . '/_optional/script.js', $block_path . '/script.js' );
+		}
+
+		// remove extras folder
+
 
 		// loop through new block's directory
-		$block_files = new RecursiveDirectoryIterator( $blocks_path . $block_slug );
+		$block_files = new RecursiveDirectoryIterator( $block_path );
 		foreach( new RecursiveIteratorIterator( $block_files ) as $file ) {
 			// perform find and replace
 			if ( is_file( $file ) ) {
@@ -177,9 +205,9 @@ class AQUAMIN_CLI {
 		if ( $has_inner_block ) {
 
 			// copy the inner blocks directory
-			$block_inner_path = $blocks_path . $block_slug . '/' . $inner_block[ 'inner_block_slug' ][ 0 ];
+			$block_inner_path = $block_path . '/' . $inner_block[ 'inner_block_slug' ][ 0 ];
 			$wp_filesystem->mkdir( $block_inner_path );
-			copy_dir( $cli_path . $template_dir . "/$template_inner_dir/", $block_inner_path );
+			copy_dir( $cli_path . $template_dir . "/_optional/$template_inner_dir/", $block_inner_path );
 			// loop through block's directory (including parent block)
 			foreach( new RecursiveIteratorIterator( $block_files ) as $file ) {
 				// perform find and replace
@@ -198,7 +226,7 @@ class AQUAMIN_CLI {
 			// remove inner block registration
 			$inner_block_removes = array(
 				array(
-					'path' => $blocks_path . $block_slug . '/index.js',
+					'path' => $block_path . '/index.js',
 					'replace' =><<< EOD
 			
 					/**
@@ -210,17 +238,17 @@ class AQUAMIN_CLI {
 					'with' => ''
 				),
 				array(
-					'path' => $blocks_path . $block_slug . '/edit.js',
+					'path' => $block_path . '/edit.js',
 					'replace' => "<InnerBlocks template={[['aquamin/template-item-slug']]} />",
 					'with' => ''
 				),
 				array(
-					'path' => $blocks_path . $block_slug . '/edit.js',
+					'path' => $block_path . '/edit.js',
 					'replace' => 'InnerBlocks, ',
 					'with' => ''
 				),
 				array(
-					'path' => $blocks_path . $block_slug . '/index.php',
+					'path' => $block_path . '/index.php',
 					'replace' =><<< EOD
 
 					// register child blocks

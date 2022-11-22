@@ -1,0 +1,35 @@
+{
+	"title": "My Block",
+	"description": "The My Block block.",
+	"text-domain": "aquamin",
+	"name": "aquamin/my-block",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"templateRichText": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"customClassName": true,
+		"align": ["wide", "full", "left", "right"],
+		"alignWide": false,
+		"anchor": false,
+		"color": {
+			"gradients": false,
+			"background": false,
+			"text": false
+		},
+		"defaultStylePicker": false,
+		"fontSize": false,
+		"html": false,
+		"inserter": true,
+		"lineHeight": true,
+		"multiple": true,
+		"reusable": false,
+		"spacing": {
+			"padding": false
+		}
+	}
+}

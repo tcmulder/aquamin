@@ -17,6 +17,15 @@ body :is(h1, h2, h3, h4, h5, h6) {
   font-family: $heading-font-family, sans-serif;
   color: $blue-200;
 }
+.main-content blockquote {
+  padding: 0.15em 0.75em;
+  background-color: $code-background-color;
+  border-left-color: $blue-300;
+  border-radius: 0 4px 4px 0;
+  & code {
+    background-color:  $grey-dk-300;
+  }
+}
 .nav-list-link {
   color: $white;
 }

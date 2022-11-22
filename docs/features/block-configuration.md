@@ -23,32 +23,34 @@ Aquamin makes it super easy to add and configure blocks.
 ## Creating Blocks
 The easiest way to create blocks is to run `wp aquamin block` (see aquamin's [WP-CLI docs](/features/wp-cli/)). If you have parcel running, just refresh WordPress and the block will immediately be available as a registered block.
 
-### Manually
-{: .no_toc }
+### Front-End JavaScript Option
 
-If you'd prefer to add blocks manually rather than via WP-CLI, you can copy the `aquamin/includes/cli/templates/_template-block` directory and paste it into `aquamin/blocks/block-library`, rename your directory, then find and replace the following within it: in the parent block, `template-slug`, `_template-block`, `TemplateNamespace`, `template-title`, `template-desc`; in the inner block (optional), `template-item-slug`, `TemplateItemNamespace`, `template-item-title`, `template-item-desc`.
+You'll have the option to add a `script.js` file to your block that will be immediately available for front-end scripts. Under the hood, `aquamin/blocks/blocks.js` is simply importing all `./block-library/*/script.js` files, so you can easily remove or re-add this file later.
 
-If you'd like to remove the inner block that's pre-configured after manually creating a block like this, remove the 2nd `register_block_type_from_metadata` function within `index.php`, and the inner block import under the `Register inner blocks` heading within `index.js`.
+If you'd like to break the front-end scripts into multiple files, you can use this `script.js` file as an entry point and organize your additional files as desired.
 
-## Deleting Blocks
+### Inner Blocks Option
 
-If you delete a block's directory to remove the block, you'll need to exit parcel and run `npm run clean` to clear the cache, then `npm run start` to restart the server; after that, your block will be removed from WordPress's registered bocks.
+The `wp aquamin block` command will ask if you'd like an inner block set up. This is a common pattern if your parent block requires a codependent inner block (e.g. a Slider parent block with multiple Slide inner blocks). The styling and front-end scripts for the inner blocks is handled by the parent block's files so you don't need to edit things in multiple files (see [Anatomy of a Block](#anatomy-of-a-block) for more details).
 
-> _Note:_ if you _don't_ do this, builds will fail. Maybe future releases of Parcel will eliminate this requirement. It appears to happen when one file imports another, then the imported file gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don't clear its cache first.
+### Dynamic Block Option
+
+Though JavaScript is the preferred method for creating blocks, some will require dynamically up-to-date data from the database (e.g. a "latest blog posts"). So, `wp aquamin block` will ask if you need a dynamic block, and create the necessary files if so. (Note that `wp aquamin block` doesn't currently provide automated inner block setup if you choose to go dynamic, so if you need that you'll have to add the inner block manually.)
 
 ## Anatomy of a Block
 
-All blocks reside within the `blocks/block-library` directory. Blocks are organized as follows:
+Each block has its own block directory within the `aquamin/blocks/block-library`. All the block's files are contained within their block directory. Note that inner blocks use the parent block's `editor.css`, `style.css`, and optional `script.js` files so you needn't jump between so many files while you're working on the block as a whole.
 
 ```
 📂 blocks
 ┗ 📂 block-library         // all blocks reside within blocks/block-library/*
-   ┗ 📂 example-block      // generally the block's name
+   ┗ 📂 example-block      // the block's unique name
       ┣ 📄 block.json      // details about block registration
       ┣ 📄 edit.js         // HTML shown in the block editor
       ┣ 📄 editor.css      // styling for block editor (also imports front-end's style.css)
       ┣ 📄 index.js        // block entry file (mostly imports other files)
       ┣ 📄 index.php       // PHP block registration (and optionally dynamic block PHP)
+      ┣ 📄 markup.php      // optional PHP for a dynamic block
       ┣ 📄 save.js         // HTML saved to database
       ┣ 📄 script.js       // optional script that runs on site's front-end only
       ┣ 📄 style.css       // front-end styling
@@ -59,11 +61,10 @@ All blocks reside within the `blocks/block-library` directory. Blocks are organi
          ┗ 📄 save.js      // HTML saved to database
 ```
 
-Inner blocks use the parent block's `editor.css`, `style.css`, and optional `script.js` so you needn't jump between many files to build related functionality (e.g. you can edit a Slider block and its inner Slide block in the same place since they're so tightly interrelated).
-
 > _Note:_ The `blocks/blocks.js` and `blocks/editor.js` files import file glob patterns (e.g. `./block-library/*/index.js`) to make it easy to add blocks—as soon as you add a new block directory, parcel takes care of registering it with WordPress without further coding. Because of this, all files within block directories must be named as shown here.
 
-# Dynamic Blocks
-Aquamin's WP-CLI command for creating blocks doesn't currently support automatic creation of dynamic blocks, but you can simply uncomment the dynamic
+## Deleting Blocks
 
-# Front-End Scripts
+If you delete a block's directory to remove the block, you'll need to exit parcel and run `npm run clean` to clear the cache, then `npm run start` to restart the server; after that, your block will be removed from WordPress's registered bocks. You can run `npm run clean && npm run start` if you would like to clear the cache immediately before starting the build server each time.
+
+> _Note:_ if you _don't_ do this and you delete a file, builds will fail. Maybe future releases of Parcel will eliminate this requirement. It appears to happen when one file imports another, but then the imported file later gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don't clear its cache first.
