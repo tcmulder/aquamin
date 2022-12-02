@@ -44,3 +44,8 @@
 .wp-block-cover__background {
 	max-width: none;
 }
+/* eliminate default padding */
+:where(.wp-block-columns.has-background) {
+	padding-top: 0;
+	padding-bottom: 0;
+}
