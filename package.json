@@ -9,13 +9,13 @@
 	},
 	"scripts": {
 		"server": "browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
-		"builder": "parcel watch src/js/*/*.bundle.js",
+		"builder": "parcel watch ./*/*.bundle.js",
 		"docs": "cd ./docs && jekyll serve --config _config_local.yml --port 4001",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"clean": "rm -rf ./.parcel-cache",
 		"start": "npm-run-all --parallel builder server",
-		"build": "npm run clean && parcel build src/js/*/*.bundle.js --no-cache"
+		"build": "npm run clean && parcel build ./*/*.bundle.js --no-cache"
 	},
 	"author": "@tcmulder",
 	"license": "ISC",

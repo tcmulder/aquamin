@@ -1,21 +1,28 @@
 /**
- * Import select theme stylesheets for editor
+ * Import select theme stylesheets
+ *
+ * This causes the editor to inherit
+ * the theme's major styling features,
+ * wrapped within .editor-styles-wrapper.
  */
+@import "../components/global/style.css";
+@import "../components/normalize/style.css";
 
-@import "../src/css/global/variables.css";
-@import "../src/css/base/normalize/*.css";
-@import "../src/css/base/external/*.css";
-@import "../src/css/layout/alignment.css";
-@import "../src/css/global/shame.css";
+/**
+   * Global block styling and WordPress block overrides.
+   *
+   * This causes the editor to inherit
+   * styling for the theme's blocks,
+   * wrapped within .editor-styles-wrapper.
+   */
+@import "./blocks.css";
 
 /* resets from the above imports to override gutenberg specificity */
-body {
-	& * {
-		font-family: var(--ff-body);
-		font-size: calc(var(--fs) * 1px);
-		line-height: 1.4;
-		color: unset;
-	}
+.is-root-container {
+	font-family: var(--ff-1);
+	font-size: calc(var(--fs) * 1px);
+	line-height: 1.4;
+	color: unset;
 }
 
 /**

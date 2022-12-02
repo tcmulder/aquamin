@@ -1,0 +1,11 @@
+/**
+ * Core
+ *
+ * High level stuff goes here, like
+ * custom properites, @keyframes, etc.
+ */
+@import "./variables.css";
+@import "./fonts.css";
+@import "./animations.css";
+@import "./common-classes.css";
+@import "./alignment.css";

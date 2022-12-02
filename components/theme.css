@@ -1,0 +1,5 @@
+/**
+ * Common theme styling
+ */
+@import "./global/style.css";
+@import "./normalize/style.css";
