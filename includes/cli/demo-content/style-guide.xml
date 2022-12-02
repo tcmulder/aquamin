@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.0.3" created="2022-11-01 22:53" -->
+<!-- generator="WordPress/6.1.1" created="2022-12-02 20:56" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>http://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Tue, 01 Nov 2022 22:53:40 +0000</pubDate>
+<pubDate>Fri, 02 Dec 2022 20:56:27 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>
@@ -36,7 +36,7 @@
   <wp:author_first_name><![CDATA[]]></wp:author_first_name>
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
 </wp:author>
-<generator>https://wordpress.org/?v=6.0.3</generator>
+<generator>https://wordpress.org/?v=6.1.1</generator>
 <item>
   <title><![CDATA[➠ Style Guide]]></title>
   <link>http://aquamin.aquamarine.test/all-the-things/style-guide/</link>
@@ -101,6 +101,71 @@ h4.text-level-semantics-title{
 }
 </style>
 </div>
+<script id="color-swatch">
+[
+	...[...document.styleSheets].find((sheet) => {
+		return sheet?.href?.includes('theme.bundle.css');
+	}).cssRules,
+]
+	.filter((rule) => {
+		return rule.type === 1;
+	})
+	.reduce((propValArr, rule) => {
+		const props = [...rule.style]
+			.map((propName) => {
+				return [
+					propName.trim(),
+					rule.style.getPropertyValue(propName).trim(),
+				];
+			})
+			.filter(([propName]) => {
+				return propName.indexOf('--') === 0;
+			});
+
+		return [
+			...propValArr,
+			...props
+				.map((prop) => {
+					return prop[0];
+				})
+				.filter((name) => {
+					return /^--c-\d.*/.test(name);
+				}),
+		];
+	}, [])
+	.forEach((color) => {
+		let swatch = document.querySelector('.color-swatch');
+		if (!swatch) {
+			const js = document.getElementById('color-swatch');
+			swatch = document.createElement('div');
+			swatch.classList.add('text-element', 'color-swatch');
+			swatch.innerHTML = `
+				<h2 class="text-level-semantics-title">Color Swatch</h2>
+				<style>
+					.color-swatch {
+						display: flex;
+						flex-wrap: wrap;
+					}
+					.color-swatch .text-level-semantics-title {
+						width: 100%;
+					}
+					.color-swatch div {
+						padding: .5em;
+						color: white;
+						width: 33.333%;
+						text-shadow: 0 0 2px black;
+					}
+				</style>
+			`;
+			js.parentNode.insertBefore(swatch, js);
+		}
+		const el = document.createElement('div');
+		el.innerHTML = color;
+		el.style.backgroundColor = `var(${color})`;
+		swatch.appendChild(el);
+	});
+
+</script>
 <div class="text-element ">
 	<h2 class="text-level-semantics-title">Text</h2>
 <h3 class="text-level-semantics-title">Headings</h3>
@@ -202,7 +267,7 @@ h4.text-level-semantics-title{
 <input name="datetime-local" type="datetime-local" placeholder="Datetime-Local"><br>
 <input name="color" type="color" placeholder="color"></p>
 
-<div class="has-some-dark-background-color has-white-light-color" style="padding:10px;margin:10px 0;background-color:black;">
+<div class="has-0-000-background-color has-0-900-color" style="padding:10px;margin:10px 0;background-color:black;color:white;">
 	<p><label for="form-element">Label</label>
 		<input id="form-element" name="text" type="text" placeholder="Text"><br>
 		<input name="search" type="search" placeholder="Search"><br>
@@ -226,7 +291,7 @@ h4.text-level-semantics-title{
 <h3 class="text-level-semantics-title">Textarea</h3>
 <p><textarea name="textarea" placeholder="Textarea"></textarea></p>
 
-<div class="has-some-dark-background-color has-white-light-color" style="padding:10px;margin:10px 0;background-color:black;">
+<div class="has-0-000-background-color has-0-900-color" style="padding:10px;margin:10px 0;background-color:black;color:white;">
 	<p><textarea name="textarea" placeholder="Textarea"></textarea></p>
 </div>
 
@@ -235,7 +300,7 @@ h4.text-level-semantics-title{
 <p><label><input name="radio-button" type="radio" value="1"> Radio Button</label><br>
 <label><input checked="checked" name="radio-button" type="radio" value="2"> Checked Radio Button</label></p>
 
-<div class="has-some-dark-background-color has-white-light-color" style="padding:10px;margin:10px 0;background-color:black;">
+<div class="has-0-000-background-color has-0-900-color" style="padding:10px;margin:10px 0;background-color:black;color:white;">
 	<p><label><input name="radio-button" type="radio" value="1"> Radio Button</label><br>
 		<label><input checked="checked" name="radio-button" type="radio" value="2"> Checked Radio Button</label></p>
 </div>
@@ -245,7 +310,7 @@ h4.text-level-semantics-title{
 <p><label><input name="checkbox-button-1" type="checkbox" value="1"> Checkbox</label><br>
 <label><input checked="checked" name="checkbox-button-2" type="checkbox" value="2"> Checked Checkbox</label></p>
 
-<div class="has-some-dark-background-color has-white-light-color" style="padding:10px;margin:10px 0;background-color:black;">
+<div class="has-0-000-background-color has-0-900-color" style="padding:10px;margin:10px 0;background-color:black;color:white;">
 	<p><label><input name="checkbox-button-1" type="checkbox" value="1"> Checkbox</label><br>
 	<label><input checked="checked" name="checkbox-button-2" type="checkbox" value="2"> Checked Checkbox</label></p>
 </div>
@@ -254,7 +319,7 @@ h4.text-level-semantics-title{
 <h3 class="text-level-semantics-title">Select Box</h3>
 <p><select name="select"><option value="value1">Value 1</option><option selected="selected" value="value2">Selected Value 2</option><option value="value3">Value 3</option></select></p>
 
-<div class="has-some-dark-background-color has-white-light-color" style="padding:10px;margin:10px 0;background-color:black;">
+<div class="has-0-000-background-color has-0-900-color" style="padding:10px;margin:10px 0;background-color:black;color:white;">
 	<p><select name="select"><option value="value1">Value 1</option><option selected="selected" value="value2">Selected Value 2</option><option value="value3">Value 3</option></select></p>
 </div>
 
@@ -268,7 +333,7 @@ h4.text-level-semantics-title{
 <button class="wp-block-button__link" type="button" value="Button (type)">Button</button><br>
 <input type="submit" value="Submit (input with no :before/:after)"></p>
 
-<div class="has-some-dark-background-color has-white-light-color" style="padding:10px;margin:10px 0;background-color:black;">
+<div class="has-0-000-background-color has-0-900-color" style="padding:10px;margin:10px 0;background-color:black;color:white;">
 	<p><a class="button" href="#">Link</a><br>
 	<button class="wp-block-button__link" type="reset" value="Reset">Reset</button><br>
 	<button class="wp-block-button__link" type="submit" value="Submit">Submit</button><br>
@@ -347,8 +412,8 @@ h4.text-level-semantics-title{
   <wp:post_id>9</wp:post_id>
   <wp:post_date>2022-10-03 23:53:26</wp:post_date>
   <wp:post_date_gmt>2022-10-03 23:53:26</wp:post_date_gmt>
-  <wp:post_modified>2022-10-03 23:53:26</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-03 23:53:26</wp:post_modified_gmt>
+  <wp:post_modified>2022-12-02 20:54:51</wp:post_modified>
+  <wp:post_modified_gmt>2022-12-02 20:54:51</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>style-guide</wp:post_name>

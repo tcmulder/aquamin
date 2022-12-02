@@ -68,12 +68,22 @@
 			"defaultGradients": false,
 			"palette": [
 				{
-					"slug": "black-dark",
+					"slug": "1-500",
+					"color": "aquamarine",
+					"name": "Primary"
+				},
+				{
+					"slug": "2-500",
+					"color": "tan",
+					"name": "Secondary"
+				}
+				{
+					"slug": "0-000",
 					"color": "#000",
 					"name": "Black"
 				},
 				{
-					"slug": "white-light",
+					"slug": "0-900",
 					"color": "#fff",
 					"name": "White"
 				}
