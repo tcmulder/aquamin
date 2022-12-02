@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.1.1" created="2022-12-02 22:57" -->
+<!-- generator="WordPress/6.1.1" created="2022-12-02 23:01" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>http://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Fri, 02 Dec 2022 22:57:11 +0000</pubDate>
+<pubDate>Fri, 02 Dec 2022 23:01:00 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>
@@ -226,8 +226,8 @@
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","id":0,"dimRatio":0,"overlayColor":"0-900","minHeight":446,"minHeightUnit":"px","isDark":false,"align":"full","aquaminClassNameAni":[{"value":"ani\u002d\u002dbackground","title":"Background"}]} -->
-<div class="wp-block-cover alignfull is-light ani--background ani" style="min-height:446px"><span aria-hidden="true" class="wp-block-cover__background has-0-900-background-color has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","id":0,"dimRatio":0,"overlayColor":"0-900","minHeight":446,"minHeightUnit":"px","isDark":false,"align":"full","aquaminClassNameAni":[{"value":"ani\u002d\u002dbackground","title":"Background"}]} -->
+<div class="wp-block-cover alignfull is-light ani--background ani" style="min-height:446px"><span aria-hidden="true" class="wp-block-cover__background has-0-900-background-color has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center"} -->
 <h2 class="has-text-align-center">Background:</h2>
 <!-- /wp:heading -->
 
@@ -266,8 +266,8 @@
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","id":0,"dimRatio":0,"overlayColor":"0-900","minHeight":75,"minHeightUnit":"vh","isDark":false,"align":"full","aquaminClassNameAni":[{"value":"ani\u002d\u002dparallax","title":"Parallax"}]} -->
-<div class="wp-block-cover alignfull is-light ani--parallax ani" style="min-height:75vh"><span aria-hidden="true" class="wp-block-cover__background has-0-900-background-color has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","id":0,"dimRatio":0,"overlayColor":"0-900","minHeight":75,"minHeightUnit":"vh","isDark":false,"align":"full","aquaminClassNameAni":[{"value":"ani\u002d\u002dparallax","title":"Parallax"}]} -->
+<div class="wp-block-cover alignfull is-light ani--parallax ani" style="min-height:75vh"><span aria-hidden="true" class="wp-block-cover__background has-0-900-background-color has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center"} -->
 <h2 class="has-text-align-center">Parallax:</h2>
 <!-- /wp:heading -->
 
