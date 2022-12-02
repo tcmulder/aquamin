@@ -1,9 +1,27 @@
 /**
  * Page layout alignments
  */
+
+/* set simple default widths */
+.alignwide {
+	max-width: var(--w-wide);
+}
+.alignfull {
+	width: 100%;
+	max-width: none;
+}
+/* for everything in the main column */
 :where(.is-root-container, .torso, .px) {
+	/* don't let content press the viewport sides */
 	padding-left: var(--gutter);
 	padding-right: var(--gutter);
+	/* counteract the default padding for full-width items */
+	& .alignfull {
+		position: relative;
+		width: calc(100% + var(--gutter) * 2);
+		left: var(--gutter-);
+	}
+	/* 2st and 2nd level elements are default column width */
 	& > :where(*) {
 		&,
 		& > :where(*) {
@@ -13,6 +31,7 @@
 			margin-right: auto;
 		}
 	}
+	/* groups/covers need side spacing for children (except for .alignfull, see above) */
 	& > :is(.wp-block-group, .wp-block-cover) {
 		&,
 		&.has-background {
@@ -21,17 +40,7 @@
 		}
 	}
 }
-
-.alignwide {
-	max-width: var(--w-wide);
-}
-.alignfull {
-	position: relative;
-	max-width: none;
-	width: 100%;
-	width: calc(100% + var(--gutter) * 2);
-	left: var(--gutter-);
-}
+/* prevent cover backgrounds from being too small */
 .wp-block-cover__background {
 	max-width: none;
 }
