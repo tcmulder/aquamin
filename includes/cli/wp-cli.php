@@ -185,8 +185,52 @@ class AQUAMIN_CLI {
 			copy( $cli_path . $template_dir . '/_optional/script.js', $block_path . '/script.js' );
 		}
 
-		// remove extras folder
+		// if don't have an inner block
+		if ( ! $has_inner_block ) {
+			// remove inner block registration
+			$inner_block_removes = array(
+				array(
+					'path' => $block_path . '/index.js',
+					'replace' =><<< EOD
+			
+					/**
+					 * Register inner blocks
+					 */
+					import './template-item-slug';
+		
+					EOD,
+					'with' => ''
+				),
+				array(
+					'path' => $block_path . '/edit.js',
+					'replace' => "<InnerBlocks template={[['aquamin/template-item-slug']]} />",
+					'with' => ''
+				),
+				array(
+					'path' => $block_path . '/edit.js',
+					'replace' => 'InnerBlocks, ',
+					'with' => ''
+				),
+				array(
+					'path' => $block_path . '/index.php',
+					'replace' =><<< EOD
 
+					// register child blocks
+					register_block_type_from_metadata(
+						AQUAMIN_BLOCKS . '/block-library/_template-block/template-item-slug'
+					);
+
+					EOD,
+					'with' => ''
+				),
+			);
+			foreach( $inner_block_removes as $remove ) {
+				$file = $remove[ 'path' ];
+				$str = file_get_contents( $file );
+				$str = str_replace( $remove[ 'replace'], $remove[ 'with'], $str );
+				file_put_contents( $file, $str );	
+			}
+		}
 
 		// loop through new block's directory
 		$block_files = new RecursiveDirectoryIterator( $block_path );
@@ -221,52 +265,7 @@ class AQUAMIN_CLI {
 				}
 			}
 		
-		// if we have no inner block
-		} else {
-			// remove inner block registration
-			$inner_block_removes = array(
-				array(
-					'path' => $block_path . '/index.js',
-					'replace' =><<< EOD
-			
-					/**
-					 * Register inner blocks
-					 */
-					import './template-item-slug';
-		
-					EOD,
-					'with' => ''
-				),
-				array(
-					'path' => $block_path . '/edit.js',
-					'replace' => "<InnerBlocks template={[['aquamin/template-item-slug']]} />",
-					'with' => ''
-				),
-				array(
-					'path' => $block_path . '/edit.js',
-					'replace' => 'InnerBlocks, ',
-					'with' => ''
-				),
-				array(
-					'path' => $block_path . '/index.php',
-					'replace' =><<< EOD
-
-					// register child blocks
-					register_block_type_from_metadata(
-						AQUAMIN_BLOCKS . '/block-library/my-block/template-item-slug'
-					);
-
-					EOD,
-					'with' => ''
-				),
-			);
-			foreach( $inner_block_removes as $remove ) {
-				$file = $remove[ 'path' ];
-				$str = file_get_contents( $file );
-				$str = str_replace( $remove[ 'replace'], $remove[ 'with'], $str );
-				file_put_contents( $file, $str );	
-			}
-		}
+		} 
 
 		// report
 		WP_CLI::success( 'Block created' );
