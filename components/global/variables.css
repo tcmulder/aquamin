@@ -5,8 +5,8 @@
 :root {
 	/* fonts */
 	--fs: 16;
-	--ff-body: monospace, sans-serif;
-	--ff-alt: var(--body);
+	--ff-1: monospace, sans-serif;
+	--ff-2: var(--ff-2);
 
 	--fs-body: 1em;
 	--fs-h1: calc((64 / var(--fs)) * 1em);

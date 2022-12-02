@@ -4,7 +4,7 @@
  * Normalize.css v3.0.0 | MIT License | git.io/normalize
  */
 body {
-	font-family: var(--ff-body);
+	font-family: var(--ff-1);
 	font-size: calc(var(--fs) * 1px);
 	line-height: 1.4;
 }
@@ -30,7 +30,7 @@ p {
 	margin: 0.5em 0;
 	font-weight: bold;
 	line-height: 1.2;
-	font-family: var(--ff-alt);
+	font-family: var(--ff-2);
 	&:first-child {
 		margin-top: 0;
 	}
