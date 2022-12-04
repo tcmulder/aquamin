@@ -14,6 +14,8 @@ search_exclude: true
 * Refactor components structure.
 * Fix potential errors with cache buster.
 * Fix bug with WP-CLI find-and-replace if have no inner block.
+* Adjust alignment styling.
+* Support home.php blogroll page via archive.php.
 
 ## 4.0.1 - November 22 2022
 * Fix `wp aquamin setup` import path issue.
