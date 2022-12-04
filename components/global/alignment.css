@@ -1,51 +1,37 @@
 /**
  * Page layout alignments
  */
-
-/* set simple default widths */
 .alignwide {
-	max-width: var(--w-wide);
+	max-width: var(--wp--style--global--wide-size);
+	margin-left: auto;
+	margin-right: auto;
 }
-.alignfull {
-	width: 100%;
-	max-width: none;
-}
-/* for everything in the main column */
-:where(.is-root-container, .torso, .px) {
-	/* don't let content press the viewport sides */
-	padding-left: var(--gutter);
-	padding-right: var(--gutter);
-	/* counteract the default padding for full-width items */
-	& .alignfull {
-		position: relative;
-		width: calc(100% + var(--gutter) * 2);
-		left: var(--gutter-);
+.has-background {
+	&.has-background {
+		padding-top: 0;
+		padding-bottom: 0;
 	}
-	/* 2st and 2nd level elements are default column width */
-	& > :where(*) {
-		&,
-		& > :where(*) {
-			width: 100%;
-			max-width: var(--w-default);
-			margin-left: auto;
-			margin-right: auto;
-		}
-	}
-	/* groups/covers need side spacing for children (except for .alignfull, see above) */
-	& > :is(.wp-block-group, .wp-block-cover) {
-		&,
-		&.has-background {
-			padding-left: var(--gutter);
-			padding-right: var(--gutter);
-		}
+	&:not(.has-global-padding) {
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
-/* prevent cover backgrounds from being too small */
-.wp-block-cover__background {
-	max-width: none;
+.has-global-padding :where(.has-global-padding) {
+	padding-right: var(--wp--style--root--padding-right);
+	padding-left: var(--wp--style--root--padding-left);
+	& > .alignfull {
+		margin-right: calc(var(--wp--style--root--padding-right) * -1);
+		margin-left: calc(var(--wp--style--root--padding-left) * -1);
+	}
 }
-/* eliminate default padding */
-:where(.wp-block-columns.has-background) {
-	padding-top: 0;
-	padding-bottom: 0;
+.wp-block-cover__inner-container {
+	& > *:not(.alignfull):not(.alignwide) {
+		max-width: var(--wp--style--global--content-size);
+		margin-left: auto;
+		margin-right: auto;
+	}
+	& > *.alignfull {
+		margin-left: -1rem;
+		margin-right: -1rem;
+	}
 }

@@ -27,7 +27,8 @@ p {
 	}
 }
 :where(h1, .has-h-1-font-size, .h1, h2, .has-h-2-font-size, .h2, h3, .has-h-3-font-size, .h3, h4, .has-h-4-font-size, .h4, h5, .has-h-5-font-size, .h5, h6, .has-h-6-font-size, .h6) {
-	margin: 0.5em 0;
+	margin-top: 0.5em;
+	margin-bottom: 0;
 	font-weight: bold;
 	line-height: 1.2;
 	font-family: var(--ff-2);

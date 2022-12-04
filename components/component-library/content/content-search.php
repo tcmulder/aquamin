@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'search-result' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'search-result torso entry-content has-global-padding is-layout-constrained' ); ?>>
 	<h2 class="search-result__title">
 		<a href="<?php the_permalink(); ?>">
 			<?php the_title(); ?>

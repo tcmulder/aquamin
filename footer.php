@@ -13,20 +13,7 @@
 
 	</div><!-- #content (opened in header.php) -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-footer__nav mod--inner">
-			<?php
-				$footer = get_posts( array(
-					'name' => 'footer',
-					'post_type' => 'aquamin-general',
-					'posts_per_page' => 1,
-				) );
-				if( $footer ) {
-					echo apply_filters( 'the_content', get_post_field( 'post_content', $footer[0]->ID ) );
-				}
-			?>
-		</div>
-	</footer>
+	<?php get_template_part( 'components/component-library/footer/template' ); ?>
 
 </div><!-- #page (opened in header.php) -->
 

@@ -16,11 +16,8 @@
  */
 body {
 	--wp--style--block-gap: var(--sp);
-}
-.has-background {
-	&.has-background {
-		padding: 0;
-	}
+	--wp--style--root--padding-right: var(--gutter);
+	--wp--style--root--padding-left: var(--gutter);
 }
 
 /**

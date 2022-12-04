@@ -13,7 +13,7 @@ Note that I haven't done substantial testing in older versions of things, but aq
 
 | Requirement       | Minimum Version |
 | :---------------- | :-------------- |
-| WordPress         | 6.0.1           |
+| WordPress         | 6.1.1           |
 | PHP               | 8.0.1           |
 | Node              | 16.13.2         |
 | WP-CLI (optional) | 2.6.0           |

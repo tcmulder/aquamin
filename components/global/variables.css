@@ -109,3 +109,48 @@
 	--c-0-200: hsla(var(--c-raw-0-200), var(--c-alpha));
 	--c-0-000: hsla(var(--c-raw-0-000), var(--c-alpha));
 }
+
+/**
+ * Allow access to current background color var
+ *
+ * This let's you do things like:
+ .thing {
+	border: 1px solid var(--c-bg);
+ }
+ * So, for .thing.has-0-000-background-color
+ * you'll get a black border, and for
+ * .thing.has-0-900-background-color you'll
+ * get a white border, matching their respective
+ * backgrounds. It's often quite useful.
+ */
+.has-0-000-background-color {
+	--c-bg: var(--c-0-000);
+}
+.has-0-900-background-color {
+	--c-bg: var(--c-0-900);
+}
+.has-1-500-background-color {
+	--c-bg: var(--c-1-500);
+}
+.has-2-500-background-color {
+	--c-bg: var(--c-2-500);
+}
+
+/**
+ * Common breakpoints reference
+ *
+ * Note: postcss-custom-media isn't working
+ * with imported files, so we need to manually
+ * add these values.
+ * 
+ * Based on WordPress's _breakpoints.scss file.
+ *	--bp-huge: 		1440px;
+ *	--bp-wide: 		1280px;
+ *	--bp-xlarge: 	1080px;
+ *	--bp-large: 	960px;	// admin sidebar auto folds
+ *	--bp-medium: 	782px;	// adminbar goes big
+ *	--bp-small: 	600px;
+ *	--bp-mobile: 	480px;
+ *	--bp-zoomed-in: 280px;
+ * (NOTE: if using max-width then subtract one)
+ */

@@ -9,6 +9,6 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'torso entry-content has-global-padding is-layout-constrained' ); ?>>
 	<?php the_content(); ?>
 </article>
