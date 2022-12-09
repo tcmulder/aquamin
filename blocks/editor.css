@@ -7,6 +7,7 @@
  */
 @import "../components/global/style.css";
 @import "../components/normalize/style.css";
+@import "../components/component-library/*/editor.css";
 
 /**
    * Global block styling and WordPress block overrides.
