@@ -21,7 +21,7 @@ const TemplateNamespaceBlockEdit = ({
 	setAttributes,
 	className,
 }) => {
-	const { templateRichText } = attributes;
+	const { demoText } = attributes;
 
 	return (
 		<div
@@ -29,13 +29,14 @@ const TemplateNamespaceBlockEdit = ({
 				className: classnames('template-slug', className),
 			})}
 		>
+			{/* replace this demo code with your own: */}
 			<RichText
 				tagName="b"
 				placeholder={__('template-title', 'aquamin')}
-				value={templateRichText}
-				onChange={(value) => setAttributes({ templateRichText: value })}
+				value={demoText}
+				onChange={(value) => setAttributes({ demoText: value })}
 			/>
-			<InnerBlocks template={[['aquamin/template-item-slug']]} />
+			<InnerBlocks />
 		</div>
 	);
 };

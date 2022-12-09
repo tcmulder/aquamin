@@ -1,0 +1,13 @@
+/**
+ * template-title shared block styling
+ *
+ * This file gets shared between the
+ * theme and editor.
+ */
+
+/* replace this demo code with your own: */
+.template-slug {
+	& b::after {
+		content: " (❒ style.css) ";
+	}
+}

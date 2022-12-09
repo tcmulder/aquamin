@@ -8,8 +8,10 @@
 	"category": "aquamin-blocks",
 	"example": {},
 	"attributes": {
-		"templateItemRichText": {
-			"type": "string"
+		"demoText": {
+			"type": "string",
+			"default": "(remove this demo attribute)"
 		}
-	}
+	},
+	"supports": {}
 }

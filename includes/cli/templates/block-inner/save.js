@@ -1,5 +1,5 @@
 /**
- * template-title save interface
+ * template-item-title save interface
  *
  * This defines how the block gets
  * saved into the database. If
@@ -17,18 +17,20 @@ const { useBlockProps, InnerBlocks } = wp.blockEditor;
 /**
  * Generate block HTML to save to the database
  */
-const TemplateNamespaceBlockSave = ({ attributes, className }) => {
-	const { templateRichText } = attributes;
+const TemplateItemNamespaceSave = ({ attributes, className }) => {
+	const { demoText } = attributes;
 
 	return (
 		<div
 			{...useBlockProps.save({
-				className: classnames('template-slug', className),
+				className: classnames('template-slug__item', className),
 			})}
 		>
-			<b>{templateRichText}</b>
+			{/* replace this demo code with your own: */}
+			<i>{demoText}</i>
 			<InnerBlocks.Content />
 		</div>
 	);
 };
-export default TemplateNamespaceBlockSave;
+
+export default TemplateItemNamespaceSave;

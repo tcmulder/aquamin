@@ -1,6 +1,6 @@
 <?php
 /**
- * template-title dynamic block PHP.
+ * My Block dynamic block PHP.
  *
  * This file renders the dynamic block.
  * 
@@ -11,6 +11,7 @@
  * @return string
  */
 ?>
-<div class="<?php echo $args[ 'attributes' ][ 'className' ] ?? ''; ?>">
-	<?php echo $args[ '$content' ] ?? 'Dynamic Block'; ?>
+<div <?php echo get_block_wrapper_attributes( array( 'class' => 'template-slug' ) ) ?>>
+	<!-- replace this demo code with your own: -->
+	<?php echo $args[ 'content' ] !== '' ? $args[ 'content' ] : 'template-desc'; ?>
 </div>

@@ -1,0 +1,18 @@
+{
+	"title": "template-title",
+	"description": "template-desc",
+	"text-domain": "aquamin",
+	"name": "aquamin/template-slug",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"demoText": {
+			"type": "string",
+			"default": "(remove this demo attribute)"
+		}
+	},
+	"supports": {
+		"customClassName": true
+	}
+}
