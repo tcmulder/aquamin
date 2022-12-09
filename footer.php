@@ -13,7 +13,7 @@
 
 	</div><!-- #content (opened in header.php) -->
 
-	<?php get_template_part( 'components/component-library/footer/template' ); ?>
+	<?php get_template_part( 'components/component-library/footer/markup' ); ?>
 
 </div><!-- #page (opened in header.php) -->
 
