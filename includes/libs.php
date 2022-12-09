@@ -103,7 +103,7 @@ function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text 
 	    'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
 	    'format'    => '?paged=%#%',
 	    'prev_text' => $prev_text,
-	    'current'   => max(1, get_query_var('paged')),
+	    'current'   => max( 1, get_query_var( 'paged' ) ),
 	    'total'     => $wp_query->max_num_pages,
 	    'next_text' => $next_text,
 	) );
@@ -126,13 +126,13 @@ function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text 
  */
 add_filter( 'render_block', 'aqua_dynamic_ani', 10, 2 );
 function aqua_dynamic_ani( $block_content, $block ) {
-	if ( ! $block_content || ! is_array( $block['attrs']['aquaminClassNameAni'] ?? null ) ) {
+	if ( ! $block_content || ! is_array( $block[ 'attrs' ][ 'aquaminClassNameAni' ] ?? null ) ) {
 		return $block_content;
 	}
 	$classes_arr = array_map( function( $ani ) {
 		return $ani[ 'value' ];
-	}, $block['attrs']['aquaminClassNameAni'] );
-	$classes = implode(' ', $classes_arr );
+	}, $block[ 'attrs' ][ 'aquaminClassNameAni' ] );
+	$classes = implode( ' ', $classes_arr );
 	return preg_replace(
 		'/' . preg_quote( 'class="', '/' ) . '/',
 		'class="' . esc_attr( $classes ) . ' ',
@@ -154,7 +154,7 @@ function aqua_dynamic_ani( $block_content, $block ) {
  */
 function aquamin_id() {
 
-	$the_id = wp_cache_get( 'aquamin_current_id', 'aquamin_ids' );
+	$the_id = $GLOBALS[ 'aquamin_current_id' ];
 
 	if ( ! $the_id ) {
 
@@ -163,14 +163,14 @@ function aquamin_id() {
 
 		// use page set as the "posts page" for blog-like templates
 		if ( get_option( 'page_for_posts' )
-			&& ( is_singular('post')
+			&& ( is_singular( 'post' )
 				|| is_post_type_archive( 'post' )
 				|| is_category()
 				|| is_tag()
 				|| is_home()
 			)
 		) {
-			$the_id = get_option('page_for_posts');
+			$the_id = get_option( 'page_for_posts' );
 		// use a page with slug "404-page" for the 404 page id
 		} elseif ( is_404() ) {
 			if ( $post = get_page_by_path( '404-page', OBJECT, 'page' ) ) {
@@ -178,7 +178,7 @@ function aquamin_id() {
 			}
 		}
 
-		wp_cache_add( 'aquamin_current_id', $the_id, 'aquamin_ids' );
+		$GLOBALS[ 'aquamin_current_id' ] = $the_id;
 
 	}
 
