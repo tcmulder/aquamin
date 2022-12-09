@@ -6,7 +6,12 @@
 	"icon": "feedback",
 	"category": "aquamin-blocks",
 	"example": {},
-	"attributes": {},
+	"attributes": {
+		"aquaminClassNameAni": {
+			"type": "array",
+			"default": []
+		}
+	},
 	"supports": {
 		"customClassName": true
 	}

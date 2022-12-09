@@ -71,6 +71,26 @@ function aquamin_id() {
 }
 
 /**
+ * Add ani to dynamic blocks
+ */
+add_filter( 'render_block', 'aqua_dynamic_ani', 10, 2 );
+function aqua_dynamic_ani( $block_content, $block ) {
+	if ( ! $block_content || ! is_array( $block['attrs']['aquaminClassNameAni'] ?? null ) ) {
+		return $block_content;
+	}
+	$classes_arr = array_map( function( $ani ) {
+		return $ani[ 'value' ];
+	}, $block['attrs']['aquaminClassNameAni'] );
+	$classes = implode(' ', $classes_arr );
+	return preg_replace(
+		'/' . preg_quote( 'class="', '/' ) . '/',
+		'class="' . esc_attr( $classes ) . ' ',
+		$block_content,
+		1
+	);
+}
+
+/**
  * Setup general content (like footers)
  */
 add_action( 'after_setup_theme', 'aquamin_general_custom_post_type' );
