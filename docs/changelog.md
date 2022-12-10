@@ -10,14 +10,12 @@ search_exclude: true
 
 # Changelog
 
-## 4.1.0 - December 2 2022
+## 4.1.0 - December 12 2022
 * Refactored components structure.
-* Refactored block templates for wp-cli.
-* Fix potential errors with cache buster.
-* Fix bug with WP-CLI find-and-replace if have no inner block.
-* Adjust alignment styling.
-* Support home.php blogroll page via archive.php.
-* Cleaned up dynamic block template.
+* Refactored (simplified) block templates for cli.
+* Fixed enqueue cache buster potential issues.
+* Adjusted alignment styling to use new WP 6.1.1 features.
+* Added built in support for home.php blogroll via archive.php.
 
 ## 4.0.1 - November 22 2022
 * Fix `wp aquamin setup` import path issue.
