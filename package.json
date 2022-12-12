@@ -8,14 +8,15 @@
 		"npmVersion": ">=7.11.2"
 	},
 	"scripts": {
+		"start": "npm-run-all --parallel builder server",
+		"build": "npm run clean && parcel build ./*/*.bundle.js --no-cache",
 		"server": "browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
+		"docs:server": "browser-sync start --no-open --proxy='http://127.0.0.1:4001/aquamin/' --files='./docs/'",
+		"docs": "cd ./docs; jekyll serve --config _config_local.yml --port 4001",
 		"builder": "parcel watch ./*/*.bundle.js",
-		"docs": "cd ./docs && jekyll serve --config _config_local.yml --port 4001",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"clean": "rm -rf ./.parcel-cache",
-		"start": "npm-run-all --parallel builder server",
-		"build": "npm run clean && parcel build ./*/*.bundle.js --no-cache"
+		"clean": "rm -rf ./.parcel-cache"
 	},
 	"author": "@tcmulder",
 	"license": "ISC",
@@ -31,6 +32,7 @@
 		"@babel/preset-react": "^7.18.6",
 		"@parcel/resolver-glob": "^2.7.0",
 		"@parcel/transformer-inline-string": "^2.7.0",
+		"@parcel/transformer-sass": "^2.7.0",
 		"@parcel/transformer-svg-react": "^2.7.0",
 		"@types/node": "^18.11.7",
 		"@typescript-eslint/eslint-plugin": "^5.41.0",
