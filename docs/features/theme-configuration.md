@@ -18,63 +18,65 @@ parent: Features
 
 ---
 
-## PHP
+## Aquamin's Component Philosophy
+All sites are built out of a collection of components, and aquamin capitalizes on this by making it _really_ easy to work with components.
 
-Aquamin comes with a pretty minimal number of standard WordPress theme files (header.php, footer.php, page.php, etc.). It also comes with a `aquamin/template-parts/` directory for your `get_template_part()` calls. There are several common template parts already set up you can edit or discard as needed.
+Much like blocks, each component is it's own self-contained directory (with a few global exceptions) where you'll handle all development for that particular piece of the site (it may help to read [aquamin's block philosophy](/aquamin/features/block-configuration/#aquamins-block-philosophy) for more on that).
 
-### Functions in functions.php
-{: .no_toc }
+But, there's a lot more variety to components than blocks, so aquamin keeps things flexible and mostly manual. The main thing to keep in mind is that aquamin automatically includes all `style.css` styling on the front-end, all `editor.css` styling in the block editor's back-end, all `script.js` JavaScript on the front-end, and your HTML/PHP should go in `markup.php` files (you'll need to manually include them with `get_template_part()` where they're needed). Just name the files within your components accordingly.
 
-Most functions you'd like to add to your theme can simply go directly in the `aquamin/functions.php` file. If you would prefer to break this file up, you can follow the examples at the top of the `functions.php` file itself, adding those additional files to the `aquamin/includes/` directory.
+### Examples
 
-
-## JavaScript
-Front-end scripts go within the `src/js/` directory. By default, the `aquamin/src/js/theme/theme.bundle.js` script is enqueued in `aquamin/includes/enqueue.php` for your theme-wide scripts.
-
-But, any JavaScript files titled like `*.bundle.js` will be treated as separate entry points, and will therefore generate separate files within the `aquamin/dist/` directory. So, if you'd like to break your front-end scripts up, you can duplicate the `aquamin/src/js/theme/` directory and rename it's bundle.js and directory name appropriately.
+A good example component is the `aquamin/components/component-library/menu` component, which is where you'll build the site's navigation.
 
 ```
-📂 src
- ┗ 📂 js
-   ┣ 📂 theme                // site-wide scripts
-   ┃ ┣ 📄 theme.bundle.js    // main entrypoint: import all your site-wide scripts here
-   ┃ ┗ 📄 main-menu.js       // menu functionality example
-   ┣ 📂 another-example      // example additional script (you'll need to enqueue it)
-   ┃ ┣ 📄 example.bundle.js  // entrypoint for the examples that follow
-   ┃ ┣ 📄 example-1.js       // example functionality
-   ┃ ┗ 📄 example-2.js       // additional example functionality
-   ┗ 📂 block-editor         // don't touch these: used by aquamin for block configuration
+📂 components
+ ┗ 📂 component-library
+   ┗ 📂 menu          // the component's unique name
+     ┣ 📄 markup.php  // html for the component (this one is included from header.php) 
+     ┣ 📄 script.js   // javascript for activating the mobile navigation, etc.
+     ┗ 📄 style.css   // styling for the navigation
 ```
 {: .short-line-height }
 
-Aquamin supports simple import [glob patterns](https://parceljs.org/features/dependency-resolution/#glob-specifiers){: target="_blank"} as well.
+Notice that within the normal WordPress `header.php` template, we use `get_template_part()` to grab the `markup.php` file shown here: that lets us have all files associated with the navigation component within this single component directory.
 
-## CSS
-
-The `aquamin/src/css/` directory contains the theme's styling, including a `styles.css` file that imports the files in the proper cascade. It's composed of several folders:
+For convenience, you can also include features here that don't quite fit the "component" concept in a traditional sense. Take WordPress styling overrides for instance:
 
 ```
-📂 src
- ┗ 📂 css
-   ┣ 📂 global		// high level stuff like variables, @font-face, @keyframes, etc.
-   ┣ 📂 base		// universal styling affecting nearly every page.
-   ┃ ┣ 📂 external	// overrides for WordPress defaults, plugins, extensions, etc.
-   ┃ ┣ 📂 normalize	// base HTML styling starting point you'll customize.
-   ┣ 📂 components	// styling for individual pieces of the site (most files go here).
-   ┣ 📂 layout		// styling for major layout elements like header, footer, menus, etc.
-   ┗ 📄 styles.css	// main entrypoint that coordinates the cascade.
+📂 components
+ ┗ 📂 component-library
+   ┗ 📂 wp-overrides  // the "component's" unique name
+     ┣ 📄 editor.css  // wp styling overrides within the block editor
+     ┗ 📄 style.css   // wp styling overrides for front-end
 ```
 {: .short-line-height }
 
-Aquamin uses PostCSS to provide support for [nesting](https://parceljs.org/languages/css/#nesting){: target="_blank"}, and supports simple [glob patterns](https://parceljs.org/features/dependency-resolution/#glob-specifiers){: target="_blank"}.
+Here, we add some styling to the front-end (`style.css`) and block editor (`editor.css`).
 
-   
-### Font and Image Assets
-{: .no_toc }
+### Directory Structure
 
-You can add fonts to the `aquamin/src/fonts/` folder, then add the @font-face definitions in the `aquamin/src/global/fonts.css` file. You can add images you'll be using in your CSS files within the `aquamin/src/images/` directory. Parcel will take care of hashing and including these assets in the `/aquamin/dist/` directory for you.
+Here's how aquamin is set up to start—then, you'll edit these files and add your own component directories as you're bulding the site.
 
-### SVGs
-{: .no_toc }
-
-If you would like to import your SVG images inline, you can name them like `*.inline.svg` and Parcel will handle the inlining for you. You'll notice the `aquamin/blocks/icons/general.inline.svg` image is already set up in this manner for block icons (feel free to update this with your own custom icon!).
+```
+📂 components
+ ┣ 📂 normalize             // global styling for common html elements you'll customize
+ ┣ 📂 util                  // js utility functions (used across multiple components)
+ ┣ 📄 theme.bundle.js       // theme entry file (mostly imports other files)
+ ┣ 📄 theme.css             // theme style entry file (coordinates css cascade)
+ ┗ 📂 component-library     // all your component files should be within this folder
+   ┣ 📂 content             // component: content for posts
+   ┣ 📂 excerpt             // component: standard blog excerpts
+   ┣ 📂 footer              // component: the site's footer
+   ┣ 📂 menu                // component: the site's main navigation
+   ┣ 📂 wp-overrides        // wordpress styling overrides
+   📂 global                // global styling that exists across all components
+   ┣ 📄 alignment.css       // block alignment customizations
+   ┣ 📄 animations.css      // reusable multi-component keyframe animations (blank initially)
+   ┣ 📄 common-classes.css  // common styling classes used across components
+   ┣ 📄 fonts.css           // custom font imports
+   ┣ 📂 fonts               // custom font files
+   ┣ 📄 style.css           // main entry file (coordinates global styling cascade)
+   ┗ 📄 variables.css       // css custom properties
+```
+{: .short-line-height }
