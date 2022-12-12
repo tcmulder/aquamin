@@ -2,7 +2,7 @@
 title: Theme Configuration
 permalink: /features/theme-configuration/
 layout: default
-nav_order: 1
+nav_order: 2
 # has_children: true
 parent: Features
 ---
@@ -25,7 +25,7 @@ Much like blocks, each component is it's own self-contained directory (with a fe
 
 But, there's a lot more variety to components than blocks, so aquamin keeps things flexible and mostly manual. The main thing to keep in mind is that aquamin automatically includes all `style.css` styling on the front-end, all `editor.css` styling in the block editor's back-end, all `script.js` JavaScript on the front-end, and your HTML/PHP should go in `markup.php` files (you'll need to manually include them with `get_template_part()` where they're needed). Just name the files within your components accordingly.
 
-### Examples
+## Examples
 
 A good example component is the `aquamin/components/component-library/menu` component, which is where you'll build the site's navigation.
 
@@ -54,7 +54,7 @@ For convenience, you can also include features here that don't quite fit the "co
 
 Here, we add some styling to the front-end (`style.css`) and block editor (`editor.css`).
 
-### Directory Structure
+## Directory Structure
 
 Here's how aquamin is set up to start—then, you'll edit these files and add your own component directories as you're bulding the site.
 
@@ -80,3 +80,20 @@ Here's how aquamin is set up to start—then, you'll edit these files and add yo
    ┗ 📄 variables.css       // css custom properties
 ```
 {: .short-line-height }
+
+## Assets
+
+### Font Assets
+{: .no_toc }
+
+You can add fonts to the `aquamin/components/global/fonts/` folder, then add the `@font-face definitions` in the `aquamin/components/global/fonts.css` file. Or, you can directly enqueue any fonts from CDN, like Google Fonts, within the `aquamin/includes/enqueue.php` file. Parcel will take care of hashing and including these assets in the `/aquamin/dist/` directory for you.
+
+### Image Assets
+{: .no_toc }
+
+If a component requires images, you should create an `aquamin/components/component-library/some-component-name/images` directory and include them there—that way, each component's directory houses its own images. If you have images that are used by multiple components, you can also create an `aquamin/components/images` directory for them. Parcel will take care of hashing and including these assets in the `/aquamin/dist/` directory for you.
+
+### SVG
+{: .no_toc }
+
+Usually, Parcel will import all images as a simple path, including SVGs. If you would instead like to import your SVG images inline, you can name them like `*.inline.svg`, and Parcel will handle the inlining for you. For example, you'll notice each block has an `icon.inline.svg` image file is already set up in this manner for block icons (feel free to update these with your own custom icons!).
