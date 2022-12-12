@@ -27,19 +27,19 @@
 
 title: aquamin Docs
 description: >- # this means to ignore newlines until "baseurl:"
-  Documentation for the aquamin WordPress starter theme..
+    Documentation for the aquamin WordPress starter theme..
 baseurl: "/aquamin" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: tcmulder
-github_username:  tcmulder
+github_username: tcmulder
 logo: "/assets/images/screenshot.png"
 color_scheme: aquamin
+destination: _start-here
 
 # Build settings
 theme: "just-the-docs"
 plugins:
-  - jekyll-feed
-
+    - jekyll-feed
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

@@ -1,0 +1,128 @@
+{"0": {
+    "doc": "Block Configuration",
+    "title": "Block Configuration",
+    "content": " ",
+    "url": "/aquamin/features/block-configuration/",
+    "relUrl": "/features/block-configuration/"
+  },"1": {
+    "doc": "Block Configuration",
+    "title": "Table of contents",
+    "content": ". | Aquamin’s Block Philosophy | Creating Blocks . | Front-End JavaScript Option | Inner Blocks Option | Dynamic Block Option | . | Anatomy of a Block . | Directory Structure | . | Deleting Blocks | Reusable Block Features | . ",
+    "url": "/aquamin/features/block-configuration/#table-of-contents",
+    "relUrl": "/features/block-configuration/#table-of-contents"
+  },"2": {
+    "doc": "Block Configuration",
+    "title": "Aquamin’s Block Philosophy",
+    "content": "Aquamin’s goal is to make it really easy to create blocks, remove them, or transfer them to future aquamin-themed sites. In order to accomplish this, each block is it’s own self-contained directory, with all files necessary for it to function contained within that directory. There’s no configuration you need to do outside of that directory to get the block working, and all your development occurs within that directory so you can spend less time tracking down files across the theme’s filesystem. If you want to move that block to another aquamin-compatible site in the future, you need only copy and paste it’s directory into the new site (and then tweak styling to match the new site). And if you decide to get rid of a block, simply delete it’s directory, and it’ll leave behind no extra code bloat across other files in the theme—it’s 100% gone. Easy peasy! . ",
+    "url": "/aquamin/features/block-configuration/#aquamins-block-philosophy",
+    "relUrl": "/features/block-configuration/#aquamins-block-philosophy"
+  },"3": {
+    "doc": "Block Configuration",
+    "title": "Creating Blocks",
+    "content": "The easiest way to create blocks is to run wp aquamin block (see the docs). If you have parcel running, just refresh WordPress and the scaffolded block will immediately be available as a registered block, ready for you to customize within its own directory in aquamin/blocks/block-library/. Note: If you would prefer not to use WP-CLI, simply copy the appropriate block scaffold directory out of aquamin/includes/cli/templates/ and conduct a find and replace for the various “template” placeholder strings you’ll find within its files. Front-End JavaScript Option . The wp aquamin block command will ask if you want to add a script.js file to your block that will be immediately available for front-end scripting. (Under the hood, aquamin/blocks/blocks.js is simply importing all ./block-library/*/script.js files, so you can easily remove or add script.js files later.) . If you’d like to break the front-end scripts into multiple files, you can use this script.js file as an entry point and organize your additional files as desired within the block’s directory. Inner Blocks Option . The wp aquamin block command will ask if you’d like an inner block set up. This is a common pattern if your parent block requires a codependent inner block (e.g. a Slider parent block with multiple Slide inner blocks). You’ll add styles and scripts to your inner block via it’s parent’s style.css and optional script.js files, rather than within the inner block’s directory. This simplifies things by eliminating the need to jump between multiple files to develop blocks that are so tightly coupled anyway (see Anatomy of a Block for more details). Dynamic Block Option . Though aquamin prefers blocks be built with JavaScript, in some cases blocks require up-to-date data from the database, and therefore require PHP. So, wp aquamin block will ask if you need a dynamic block, and will create a markup.php file to facilitate your edits. (Note that it doesn’t currently provide automated inner block setup if you choose to go dynamic: if you need that, you’ll have to add your dynamic inner block manually.) . ",
+    "url": "/aquamin/features/block-configuration/#creating-blocks",
+    "relUrl": "/features/block-configuration/#creating-blocks"
+  },"4": {
+    "doc": "Block Configuration",
+    "title": "Anatomy of a Block",
+    "content": "Each block has its own block directory within the aquamin/blocks/block-library/ directory. All the block’s files are contained within its block directory. Note that inner blocks use the parent block’s editor.css, style.css, and optional script.js files so you needn’t jump between so many files while you’re working on the block as a whole. Directory Structure . 📂 blocks ┗ 📂 block-library // all blocks reside within blocks/block-library/* ┗ 📂 example-block // the block's unique name ┣ 📄 block.json // details about block registration ┣ 📄 edit.js // HTML shown in the block editor ┣ 📄 editor.css // styling for block editor (also imports front-end's style.css) ┣ 📄 index.js // block entry file (mostly imports other files) ┣ 📄 index.php // PHP block registration (and optionally inner block registration) ┣ 📄 markup.php // optional PHP for a dynamic block ┣ 📄 save.js // HTML saved to database ┣ 📄 script.js // optional front-end script for the block ┣ 📄 style.css // front-end styling ┗ 📂 inner-block // nested block used only by the parent block (optional) ┣ 📄 block.json // details about inner block registration ┣ 📄 edit.js // HTML shown in the block editor ┣ 📄 index.js // block entry file (mostly imports other files) ┗ 📄 save.js // HTML saved to database . Note: The aquamin/blocks/blocks.js and aquamin/blocks/editor.js files import file glob patterns (e.g./block-library/*/index.js) to make it easy to add blocks—as soon as you add a new block directory, parcel takes care of registering it with WordPress without further coding. Because of this, all files within block directories must be named as shown here. ",
+    "url": "/aquamin/features/block-configuration/#anatomy-of-a-block",
+    "relUrl": "/features/block-configuration/#anatomy-of-a-block"
+  },"5": {
+    "doc": "Block Configuration",
+    "title": "Deleting Blocks",
+    "content": "There’s currently a bug in Parcel. If you delete a block’s directory to remove the block, you’ll need to exit parcel and run npm run clean to clear the cache, then npm run start to restart the server; after that, your block will be removed from WordPress’s registered bocks. You can run npm run clean &amp;&amp; npm run start if you would like to clear the cache immediately before starting the build server each time. Note: if you don’t do this and you delete a file Parcel was watching, builds will fail. Maybe future releases of Parcel will eliminate this requirement. It appears to happen when one file imports another, but then the imported file later gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don’t clear its cache first. ",
+    "url": "/aquamin/features/block-configuration/#deleting-blocks",
+    "relUrl": "/features/block-configuration/#deleting-blocks"
+  },"6": {
+    "doc": "Block Configuration",
+    "title": "Reusable Block Features",
+    "content": "You’ll find some helpful, reusable utilities and UI components under aquamin/blocks/util and aquamin/blocks/ui, respectively. You can add your own into these directories as well, or ignore them if they’re not helpful to you: anything you don’t use won’t get bundled into the production build anyway. ",
+    "url": "/aquamin/features/block-configuration/#reusable-block-features",
+    "relUrl": "/features/block-configuration/#reusable-block-features"
+  },"7": {
+    "doc": "Credits",
+    "title": "Credits",
+    "content": ". | Based on Underscores (https://underscores.me), ©2012-2017 Automattic, Inc., GPLv2 or later. | Uses modified version of normalize.css https://necolas.github.io/normalize.css/, ©2012-2016 Nicolas Gallagher and Jonathan Neal, MIT. | . ",
+    "url": "/aquamin/credits/",
+    "relUrl": "/credits/"
+  },"8": {
+    "doc": "Home",
+    "title": "Aquamin WordPress Theme",
+    "content": "Aquamin is a minimal theme for custom WordPress development, with first-class support for your own Gutenberg blocks built right in. Aquamin starts out as a white page with blue links that turn purple when you click ‘em—i.e. there’s no styling yet—so you can craft your own code rather than wrestling with a bunch of pre-fab stuff. (It’s like a solid block of marble, full of potential and free of restriction, and you’re the sculptor.) . But at the same time, aquamin comes with some handy, almost-always-needed features already baked in, plus a methodology that makes it a breeze to template out your own custom blocks and other site components. Happy coding! . Get started now View it on GitHub . ",
+    "url": "/aquamin/#aquamin-wordpress-theme",
+    "relUrl": "/#aquamin-wordpress-theme"
+  },"9": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/aquamin/",
+    "relUrl": "/"
+  },"10": {
+    "doc": "Features",
+    "title": "Features",
+    "content": " ",
+    "url": "/aquamin/features/",
+    "relUrl": "/features/"
+  },"11": {
+    "doc": "Quickstart",
+    "title": "Quickstart",
+    "content": "Installing aquamin is easiest with WP-CLI using any local server that meets the requirements. | Run wp theme install --activate https://github.com/tcmulder/aquamin/archive/refs/heads/master.zip. | Run cd wp-content/themes/aquamin to enter aquamin’s directory. | Rename the .env.example file to .env and update the URL value appropriately. | Run npm install to set up the build tool. | Run npm run start to fire up the dev server (and npm run build for a production build). | Optionally, set up some defaults by running wp aquamin setup. | . You’re all set! Next up, familiarize yourself with aquamin’s features. Note: If you’d prefer to install manually, just download aquamin directly and install the theme like normal. ",
+    "url": "/aquamin/quickstart/",
+    "relUrl": "/quickstart/"
+  },"12": {
+    "doc": "Requirements",
+    "title": "Requirements",
+    "content": "| Requirement | Minimum Version Tested | . | WordPress | 6.1.1 | . | PHP | 8.0.1 | . | Node | 16.13.2 | . | WP-CLI | 2.6.0 | . ",
+    "url": "/aquamin/features/requirements/",
+    "relUrl": "/features/requirements/"
+  },"13": {
+    "doc": "Theme Configuration",
+    "title": "Theme Configuration",
+    "content": " ",
+    "url": "/aquamin/features/theme-configuration/",
+    "relUrl": "/features/theme-configuration/"
+  },"14": {
+    "doc": "Theme Configuration",
+    "title": "Table of contents",
+    "content": ". | PHP | JavaScript | CSS | . ",
+    "url": "/aquamin/features/theme-configuration/#table-of-contents",
+    "relUrl": "/features/theme-configuration/#table-of-contents"
+  },"15": {
+    "doc": "Theme Configuration",
+    "title": "PHP",
+    "content": "Aquamin comes with a pretty minimal number of standard WordPress theme files (header.php, footer.php, page.php, etc.). It also comes with a aquamin/template-parts/ directory for your get_template_part() calls. There are several common template parts already set up you can edit or discard as needed. Functions in functions.php . Most functions you’d like to add to your theme can simply go directly in the aquamin/functions.php file. If you would prefer to break this file up, you can follow the examples at the top of the functions.php file itself, adding those additional files to the aquamin/includes/ directory. ",
+    "url": "/aquamin/features/theme-configuration/#php",
+    "relUrl": "/features/theme-configuration/#php"
+  },"16": {
+    "doc": "Theme Configuration",
+    "title": "JavaScript",
+    "content": "Front-end scripts go within the src/js/ directory. By default, the aquamin/src/js/theme/theme.bundle.js script is enqueued in aquamin/includes/enqueue.php for your theme-wide scripts. But, any JavaScript files titled like *.bundle.js will be treated as separate entry points, and will therefore generate separate files within the aquamin/dist/ directory. So, if you’d like to break your front-end scripts up, you can duplicate the aquamin/src/js/theme/ directory and rename it’s bundle.js and directory name appropriately. 📂 src ┗ 📂 js ┣ 📂 theme // site-wide scripts ┃ ┣ 📄 theme.bundle.js // main entrypoint: import all your site-wide scripts here ┃ ┗ 📄 main-menu.js // menu functionality example ┣ 📂 another-example // example additional script (you'll need to enqueue it) ┃ ┣ 📄 example.bundle.js // entrypoint for the examples that follow ┃ ┣ 📄 example-1.js // example functionality ┃ ┗ 📄 example-2.js // additional example functionality ┗ 📂 block-editor // don't touch these: used by aquamin for block configuration . Aquamin supports simple import glob patterns as well. ",
+    "url": "/aquamin/features/theme-configuration/#javascript",
+    "relUrl": "/features/theme-configuration/#javascript"
+  },"17": {
+    "doc": "Theme Configuration",
+    "title": "CSS",
+    "content": "The aquamin/src/css/ directory contains the theme’s styling, including a styles.css file that imports the files in the proper cascade. It’s composed of several folders: . 📂 src ┗ 📂 css ┣ 📂 global // high level stuff like variables, @font-face, @keyframes, etc. ┣ 📂 base // universal styling affecting nearly every page. ┃ ┣ 📂 external // overrides for WordPress defaults, plugins, extensions, etc. ┃ ┣ 📂 normalize // base HTML styling starting point you'll customize. ┣ 📂 components // styling for individual pieces of the site (most files go here). ┣ 📂 layout // styling for major layout elements like header, footer, menus, etc. ┗ 📄 styles.css // main entrypoint that coordinates the cascade. Aquamin uses PostCSS to provide support for nesting, and supports simple glob patterns. Font and Image Assets . You can add fonts to the aquamin/src/fonts/ folder, then add the @font-face definitions in the aquamin/src/global/fonts.css file. You can add images you’ll be using in your CSS files within the aquamin/src/images/ directory. Parcel will take care of hashing and including these assets in the /aquamin/dist/ directory for you. SVGs . If you would like to import your SVG images inline, you can name them like *.inline.svg and Parcel will handle the inlining for you. You’ll notice the aquamin/blocks/icons/general.inline.svg image is already set up in this manner for block icons (feel free to update this with your own custom icon!). ",
+    "url": "/aquamin/features/theme-configuration/#css",
+    "relUrl": "/features/theme-configuration/#css"
+  },"18": {
+    "doc": "WP-CLI Commands",
+    "title": "WP-CLI Commands",
+    "content": "Aquamin has some WP-CLI commands built in to make common development tasks easy. ",
+    "url": "/aquamin/features/wp-cli/",
+    "relUrl": "/features/wp-cli/"
+  },"19": {
+    "doc": "WP-CLI Commands",
+    "title": "wp aquamin block",
+    "content": "This command scaffolds a new block for you, walking you through a series of prompts to name your block and generate its files. You’ll end up with a new directory within aquamin/blocks/block-library/ that contains all your block files, ready for you to customize (learn more about blocks in aquamin). ",
+    "url": "/aquamin/features/wp-cli/#wp-aquamin-block",
+    "relUrl": "/features/wp-cli/#wp-aquamin-block"
+  },"20": {
+    "doc": "WP-CLI Commands",
+    "title": "wp aquamin setup",
+    "content": "This setup command does several things: . | It sets up a helpful pattern library plugin. You can build your custom blocks as patterns here in order to test common use cases (e.g. showing multiple block options all in one place for testing, or adding your block over multiple background colors to test aesthetics and readability). This pattern library is only available to users logged into WordPress. | It imports content featuring aquamin’s core block customizations, animations, and small suite of pre-installed blocks for you to preview. | It features a style guide for you to test styling of all the common HTML elements in one place. | It features a playground to experiment with custom blocks somewhere site visitors can’t accidentally stumble across. | . | It imports basic footer content for you to customize under Appearance &gt; Global Content &gt; Footer. Aquamin displays this content via the footer.php template automatically. (Eventually this may move to the full site editor, but currently this is the best way to bring the block editor into the footer.) | . Note: The pattern library is designed for you to use for developing your own blocks, too. If on future sites you would like to pre-install some of your own aquamin-compatible blocks, simply add that block’s directory into aquamin/blocks/block-library/ and then include the block’s pattern WXR file (e.g. wp export --post__in=123) in the aquamin/includes/cli/demo-content/ directory before running wp aquamin setup, and your block will be imported alongside aquamin’s small suite of standard blocks. ",
+    "url": "/aquamin/features/wp-cli/#wp-aquamin-setup",
+    "relUrl": "/features/wp-cli/#wp-aquamin-setup"
+  }
+}
