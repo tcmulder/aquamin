@@ -12,12 +12,13 @@
 	<div class="site-footer__inner alignfull">
 		<?php
 			$footer = get_posts( array(
-				'name' => 'footer',
-				'post_type' => 'aquamin-general',
-				'posts_per_page' => 1,
+				'name'				=> 'footer',
+				'post_type'			=> 'aquamin-general',
+				'posts_per_page'	=> 1,
+				'fields'			=> 'ids'
 			) );
 			if( $footer ) {
-				echo apply_filters( 'the_content', get_post_field( 'post_content', $footer[0]->ID ) );
+				echo apply_filters( 'the_content', get_post_field( 'post_content', $footer[0] ) );
 			}
 		?>
 	</div>
