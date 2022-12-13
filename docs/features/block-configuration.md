@@ -81,11 +81,11 @@ There's currently a bug in Parcel. If you delete a block's directory to remove t
 
 > _Note:_ if you _don't_ do this and you delete a file Parcel was watching, builds will fail. Maybe future releases of Parcel will eliminate this requirement. It appears to happen when one file imports another, but then the imported file later gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don't clear its cache first.
 
-## Reusable Block Features
+## Block Utilities
 
 You'll find some helpful, reusable utilities and UI components under `aquamin/blocks/util` and `aquamin/blocks/ui`, respectively. You can add your own into these directories as well, or ignore them if they're not helpful to you: anything you don't use won't get bundled into the production build anyway.
 
-## Imports
+## A Note on Imports
 
 You'll notice we're importing some libraries but destructuring the `wp` object for most WordPress features. For example:
 

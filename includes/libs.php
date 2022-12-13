@@ -184,3 +184,28 @@ function aquamin_id() {
 
 	return $the_id;
 }
+
+/**
+ * Allow access to current background color var
+ *
+ * This let's you do things like:
+ *	.thing {
+ *		border: 1px solid var(--c-bg);
+ * 	}
+ * So, for .thing.has-0-000-background-color
+ * you'll get a black border, and for
+ * .thing.has-0-900-background-color you'll
+ * get a white border, matching their respective
+ * backgrounds. It's often quite useful.
+ */
+add_action( 'wp_head', 'aquamin_bg_css' );
+function aquamin_bg_css() {
+	$colors = wp_get_global_settings( array( 'color', 'palette', 'theme' ) );
+	if ( $colors ) {
+		echo '<style>';
+		foreach( $colors as $color ) {
+			echo '.has-' . $color[ 'slug' ] . '-background-color { --c-bg: var(--c-' . $color[ 'slug' ] . ') } /* ' . $color[ 'name' ] . " */\n";
+		}
+		echo '</style>';
+	}
+}

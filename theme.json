@@ -3,8 +3,8 @@
 	"settings": {
 		"appearanceTools": true,
 		"layout": {
-			"contentSize": "var(--w-m)",
-			"wideSize": "var(--w-l)"
+			"contentSize": "var(--w-default)",
+			"wideSize": "var(--w-wide)"
 		},
 		"useRootPaddingAwareAlignments": true,
 		"spacing": {

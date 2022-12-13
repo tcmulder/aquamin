@@ -5,10 +5,8 @@
 :root {
 	/* fonts */
 	--fs: 16;
-	--ff-1: monospace, sans-serif;
-	--ff-2: var(--ff-2);
 
-	--fs-body: 1em;
+	--fs-body: 11em;
 	--fs-h1: calc((64 / var(--fs)) * 1em);
 	--fs-h2: calc((48 / var(--fs)) * 1em);
 	--fs-h3: calc((32 / var(--fs)) * 1em);
@@ -18,7 +16,10 @@
 	--fs-big: calc((18 / var(--fs)) * 1em);
 	--fs-small: calc((18 / var(--fs)) * 1em);
 
-	/* spacing */
+	--ff-1: monospace, sans-serif;
+	--ff-2: var(--ff-2);
+
+	/* layout */
 	--sp-base: var(--fs);
 	--sp-rem: calc((var(--sp-base) / var(--fs)) * 1rem);
 	--sp-s: calc((16 / var(--fs)) * 1em);
@@ -26,7 +27,6 @@
 	--sp-m: calc((18 / var(--fs)) * 1em);
 	--sp-l: calc((48 / var(--fs)) * 1em);
 
-	/* widths */
 	--w: var(--w-m);
 	--w-s: 960px;
 	--w-m: 1280px;
@@ -35,6 +35,9 @@
 
 	--w-default: var(--w-m);
 	--w-wide: var(--w-l);
+
+	--h-menu: 3em;
+
 	--gutter: var(--sp-rem);
 	--gutter-: calc(var(--gutter) * -1);
 
@@ -42,9 +45,7 @@
 	--ani-ease: ease;
 	--ani-speed: 0.3s;
 
-	/**
-	 * colors (--<color>-<variant 1/2/3/etc>-<brightness 000(darkest)-900(lightest)>)
-	 */
+	/* colors: --<color>-<variant 1/2/3/etc>-<brightness 000(darkest)-900(lightest)> */
 
 	/* drab */
 	--c-raw-0-900: 0, 0%, 100%; /* white */
@@ -111,32 +112,6 @@
 }
 
 /**
- * Allow access to current background color var
- *
- * This let's you do things like:
- .thing {
-	border: 1px solid var(--c-bg);
- }
- * So, for .thing.has-0-000-background-color
- * you'll get a black border, and for
- * .thing.has-0-900-background-color you'll
- * get a white border, matching their respective
- * backgrounds. It's often quite useful.
- */
-.has-0-000-background-color {
-	--c-bg: var(--c-0-000);
-}
-.has-0-900-background-color {
-	--c-bg: var(--c-0-900);
-}
-.has-1-500-background-color {
-	--c-bg: var(--c-1-500);
-}
-.has-2-500-background-color {
-	--c-bg: var(--c-2-500);
-}
-
-/**
  * Common breakpoints reference
  *
  * Note: postcss-custom-media isn't working
@@ -154,3 +129,17 @@
  *	--bp-zoomed-in: 280px;
  * (NOTE: if using max-width then subtract one)
  */
+
+/* tablet */
+@media (max-width: 781px) {
+	:root {
+		--fs-h1: calc((54 / var(--fs)) * 1em);
+	}
+}
+
+/* phone */
+@media (max-width: 479px) {
+	:root {
+		--fs-h1: calc((50 / var(--fs)) * 1em);
+	}
+}
