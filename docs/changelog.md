@@ -10,7 +10,7 @@ search_exclude: true
 
 # Changelog
 
-## 4.1.0 - December 12 2022
+## 4.1.0 - December 13 2022
 * Refactored components structure.
 * Refactored (simplified) block templates for cli.
 * Fixed enqueue cache buster potential issues.
