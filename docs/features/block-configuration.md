@@ -87,18 +87,21 @@ You'll find some helpful, reusable utilities and UI components under `aquamin/bl
 
 ## Imports
 
-You'll notice we're importing some libraries but destructuring the `wp` object for most WordPress features, as in the `aquamin/blocks/ui/Media` UI component:
+You'll notice we're importing some libraries but destructuring the `wp` object for most WordPress features. For example:
 
 ```javascript
-/**
- * Dependencies
- */
+// we can import node_modules packages:
 import classnames from 'classnames';
+
+// we can import components from files:
 import { ButtonX } from '../Buttons';
 
-const { __ } = wp.i18n;
+// but we can't import from WordPress's node_module packages i.e.:
+// import {  InspectorControls } from '@wordpress/block-editor';
+// because that would cause two conflicting versions of the
+// wp object to exist. Instead, we need to destructure from the
+// existing wp object:
 const { MediaPlaceholder, InspectorControls } = wp.blockEditor;
-const { PanelBody, TextareaControl } = wp.components;
 ```
 
-Many examples you'll see online just `import` everything, but I was unable to get Parcel to behave like Webpack and properly use the `wp` object without it being imported twice (and therefore throwing all manner of errors). So, until I can find a viable workaround for Parcel, if you're following an example online that shows `import {  InspectorControls } from '@wordpress/block-editor';`, you'll simply change it to `const {  InspectorControls } = wp.blockEditor;`
+Many examples you'll see online just `import` everything, but I was unable to get Parcel to behave like Webpack and properly use the `wp` object without it being imported twice (and therefore throwing all manner of errors). So, until I can find a viable workaround for Parcel, if you're following an example online that shows `import {  InspectorControls } from '@wordpress/block-editor'`, you'll simply change it to `const {  InspectorControls } = wp.blockEditor`
