@@ -1,0 +1,145 @@
+/**
+ * CSS Custom Properties
+ */
+
+:root {
+	/* fonts */
+	--fs: 16;
+
+	--fs-body: 11em;
+	--fs-h1: calc((64 / var(--fs)) * 1em);
+	--fs-h2: calc((48 / var(--fs)) * 1em);
+	--fs-h3: calc((32 / var(--fs)) * 1em);
+	--fs-h4: calc((24 / var(--fs)) * 1em);
+	--fs-h5: calc((18 / var(--fs)) * 1em);
+	--fs-h6: calc((16 / var(--fs)) * 1em);
+	--fs-big: calc((18 / var(--fs)) * 1em);
+	--fs-small: calc((18 / var(--fs)) * 1em);
+
+	--ff-1: monospace, sans-serif;
+	--ff-2: var(--ff-2);
+
+	/* layout */
+	--sp-base: var(--fs);
+	--sp-rem: calc((var(--sp-base) / var(--fs)) * 1rem);
+	--sp-s: calc((16 / var(--fs)) * 1em);
+	--sp: calc((var(--sp-base) / var(--fs)) * 1em);
+	--sp-m: calc((18 / var(--fs)) * 1em);
+	--sp-l: calc((48 / var(--fs)) * 1em);
+
+	--w: var(--w-m);
+	--w-s: 960px;
+	--w-m: 1280px;
+	--w-l: 1440px;
+	--w-px: calc(100% - var(--sp) * 2);
+
+	--w-default: var(--w-m);
+	--w-wide: var(--w-l);
+
+	--h-menu: 3em;
+
+	--gutter: var(--sp-rem);
+	--gutter-: calc(var(--gutter) * -1);
+
+	/* animations */
+	--ani-ease: ease;
+	--ani-speed: 0.3s;
+
+	/* colors: --<color>-<variant 1/2/3/etc>-<brightness 000(darkest)-900(lightest)> */
+
+	/* drab */
+	--c-raw-0-900: 0, 0%, 100%; /* white */
+	--c-raw-0-800: 0, 0%, 83%; /* lightgray */
+	--c-raw-0-500: 0, 0%, 50%; /* gray */
+	--c-raw-0-200: 0, 0%, 41%; /* dimgray */
+	--c-raw-0-000: 0, 0%, 0%; /* black */
+
+	/* primary */
+	--c-raw-1-800: 180, 100%, 25%; /* teal */
+	--c-raw-1-500: 160, 100%, 75%; /* aquamarine */
+	--c-raw-1-200: 180, 100%, 94%; /* lightcyan */
+
+	/* secondary */
+	--c-raw-2-800: 25, 75%, 47%; /* chocolate */
+	--c-raw-2-500: 34, 44%, 69%; /* tan */
+	--c-raw-2-200: 39, 77%, 83%; /* wheat */
+
+	/* alert colors */
+	--c-good: #0ac675;
+	--c-bad: #e24939;
+	--c-meh: #ff7f50;
+}
+
+/**
+ * Customizeable Custom Properties
+ *
+ * If styling is applied to :root, you can't
+ * override a variable on a per-element level. By
+ * applying directly to the elements, you can
+ * do the following:
+	Example:
+	:root {
+		--c-raw-0-000: 0, 0%, 0%; // start with hsl values only
+	}
+	* {
+		--c-alpha: 1; // default alpha is 100%
+		--c-0-000: hsla(var(--c-raw-0-000), var(--c-alpha); // default is solid black
+	}
+	.thing {
+		--c-alpha: 0.5; // we choose a different opacity for this element
+		background-color: var(--c-0-000); // we get a 50% transparent black color
+	}
+	.thing p {
+		color: var(--c-0-000); // we're back to solid black
+	}
+ */
+* {
+	--c-alpha: 1;
+
+	--c-1-800: hsla(var(--c-raw-1-800), var(--c-alpha));
+	--c-1-500: hsla(var(--c-raw-1-500), var(--c-alpha));
+	--c-1-200: hsla(var(--c-raw-1-200), var(--c-alpha));
+
+	--c-2-800: hsla(var(--c-raw-2-800), var(--c-alpha));
+	--c-2-500: hsla(var(--c-raw-2-500), var(--c-alpha));
+	--c-2-200: hsla(var(--c-raw-2-200), var(--c-alpha));
+
+	--c-0-900: hsla(var(--c-raw-0-900), var(--c-alpha));
+	--c-0-800: hsla(var(--c-raw-0-800), var(--c-alpha));
+	--c-0-500: hsla(var(--c-raw-0-500), var(--c-alpha));
+	--c-0-200: hsla(var(--c-raw-0-200), var(--c-alpha));
+	--c-0-000: hsla(var(--c-raw-0-000), var(--c-alpha));
+}
+
+/**
+ * Common breakpoints reference
+ *
+ * Note: postcss-custom-media isn't working
+ * with imported files, so we need to manually
+ * add these values.
+ * 
+ * Based on WordPress's _breakpoints.scss file.
+ *	--bp-huge: 		1440px;
+ *	--bp-wide: 		1280px;
+ *	--bp-xlarge: 	1080px;
+ *	--bp-large: 	960px;	// admin sidebar auto folds
+ *	--bp-medium: 	782px;	// adminbar goes big
+ *	--bp-small: 	600px;
+ *	--bp-mobile: 	480px;
+ *	--bp-zoomed-in: 280px;
+ * (NOTE: if using max-width then subtract one)
+ */
+
+/* tablet */
+@media (max-width: 781px) {
+	:root {
+		--fs-h1: calc((54 / var(--fs)) * 1em);
+	}
+}
+
+/* phone */
+@media (max-width: 479px) {
+	:root {
+		--fs-h1: calc((50 / var(--fs)) * 1em);
+	}
+}

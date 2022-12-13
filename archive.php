@@ -16,11 +16,11 @@ get_header(); ?>
 				<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
 				<?php if ( have_posts() ) : ?>
 					<?php while( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'template-parts/excerpt', get_post_type() ); ?>
+						<?php get_template_part( 'components/component-library/excerpt/excerpt', get_post_type() ); ?>
 					<?php endwhile; ?>
 					<?php aquamin_pagination(); ?>
 				<?php else : ?>
-					<?php get_template_part( 'template-parts/content', 'none' ); ?>
+					<?php get_template_part( 'components/component-library/content/content', 'none' ); ?>
 				<?php endif; ?>
 			</section>
 		</main>

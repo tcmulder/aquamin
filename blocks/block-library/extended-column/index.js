@@ -9,7 +9,7 @@
  */
 import classnames from 'classnames';
 
-import extractClasses from '../../util/exctract-classes';
+import extractClasses from '../../util/extractClasses';
 
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
@@ -27,7 +27,9 @@ const EXTENSION_NAME = 'aquamin/column';
  * Check if we're applying to this block
  */
 const AFFECTED_BLOCKS = ['core/column'];
-const isAffected = (name) => AFFECTED_BLOCKS.includes(name);
+const isAffected = (name) => {
+	return AFFECTED_BLOCKS.includes(name);
+};
 
 /**
  * Modify attributes
@@ -58,7 +60,7 @@ addFilter('blocks.registerBlockType', EXTENSION_NAME, modifyAttributes);
  * Modify editor controls
  */
 const withModifyEdit = createHigherOrderComponent(
-	// eslint-disable-next-line react/display-name
+	// eslint-disable-next-line react/display-name, arrow-body-style
 	(BlockEdit) => (props) => {
 		const { name } = props;
 		// if we're supposed to edit this block
@@ -81,7 +83,9 @@ const withModifyEdit = createHigherOrderComponent(
 
 			// set up fake array of strings to mimic actual attribute objects
 			const [selectedStrings, setSelectedStrings] = useState(
-				[...aquaminClassNameColumn].map((pair) => pair.title)
+				[...aquaminClassNameColumn].map((pair) => {
+					return pair.title;
+				})
 			);
 
 			// handle updates to tokens
@@ -91,7 +95,9 @@ const withModifyEdit = createHigherOrderComponent(
 				// update actual attributes
 				const newAttributes = [];
 				tokens.forEach((str) => {
-					const match = classNames.find((obj) => obj.title === str);
+					const match = classNames.find((obj) => {
+						return obj.title === str;
+					});
 					if (match) {
 						newAttributes.push(match);
 					}
@@ -108,7 +114,9 @@ const withModifyEdit = createHigherOrderComponent(
 							<FormTokenField
 								value={selectedStrings}
 								label={__('For this column:', 'aquamin')}
-								suggestions={classNames.map((opt) => opt.title)}
+								suggestions={classNames.map((opt) => {
+									return opt.title;
+								})}
 								onChange={handleChange}
 								__experimentalExpandOnFocus
 								expandOnFocus
@@ -142,7 +150,9 @@ const modifySave = (props, block, attributes) => {
 				...props,
 				className: classnames(
 					props.className,
-					attributes.aquaminClassNameColumn.map((opt) => opt.value)
+					attributes.aquaminClassNameColumn.map((opt) => {
+						return opt.value;
+					})
 				),
 			};
 		}
@@ -159,20 +169,22 @@ addFilter('blocks.getSaveContent.extraProps', EXTENSION_NAME, modifySave);
  */
 const withShowModifyEdit = createHigherOrderComponent(
 	// eslint-disable-next-line react/display-name
-	(BlockListBlock) => (props) => {
-		const { name, attributes } = props;
-		// if we're supposed to edit this block
-		if (isAffected(name)) {
-			return (
-				<BlockListBlock
-					{...props}
-					className={classnames(extractClasses(attributes))}
-				/>
-			);
-		}
+	(BlockListBlock) => {
+		return (props) => {
+			const { name, attributes } = props;
+			// if we're supposed to edit this block
+			if (isAffected(name)) {
+				return (
+					<BlockListBlock
+						{...props}
+						className={classnames(extractClasses(attributes))}
+					/>
+				);
+			}
 
-		// everything's normal nothing to see here
-		return <BlockListBlock {...props} />;
+			// everything's normal nothing to see here
+			return <BlockListBlock {...props} />;
+		};
 	},
 	'withShowModifyEdit'
 );

@@ -17,7 +17,7 @@ const { useBlockProps, InnerBlocks, RichText } = wp.blockEditor;
  * Generate block editor component
  */
 const InlineParagraphBlockEdit = ({ attributes, setAttributes, className }) => {
-	const { templateRichText } = attributes;
+	const { demo } = attributes;
 
 	return (
 		<div

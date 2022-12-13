@@ -73,18 +73,18 @@ class AQUAMIN_CLI {
      * @param array $assoc_args 
 	 */
 	public function block( $args, $assoc_args ) {
-		// exit if we can't edit the filesystem
+		
+		/**
+		 * Exit if we can't edit the filesystem
+		 */
 		if ( ! WP_Filesystem() ) {
 			WP_CLI::error( 'Unable to access filesystem' );
 			exit;
 		}
-		// identify paths
-		$library_path = get_template_directory() . '/blocks/block-library/';
-		$cli_path = get_template_directory() . '/includes/cli/templates/';
-		$template_dir = '_template-block';
-		$template_inner_dir = 'template-item-slug';
 		
-		// get block details
+		/**
+		 * Request block details
+		 */
 		$block = array();
 		
 		$title = 'My Block';
@@ -125,7 +125,6 @@ class AQUAMIN_CLI {
 		$ask_dynamic = $this->ask('Dynamic? [y/N]');
 		$is_dynamic = strtolower( $ask_dynamic ?? '' ) === 'y' ? true : false;
 
-		// get inner block details if we're creating one and we're not dynamic
 		$has_inner_block = false;
 		if ( ! $is_dynamic ) {
 
@@ -159,37 +158,51 @@ class AQUAMIN_CLI {
 					$assoc_args[ 'inner_block_desc' ] ?? $this->ask("Inner block description [$guess]:", $guess),
 					'template-item-desc',
 				);
+
+				$inner_block[ 'parent_block_slug' ] = array(
+					$block[ 'block_slug' ][0],
+					'template-slug',
+				);
+
 			}
 
 		}
+
+		/**
+		 * Identify paths/dirs
+		 * 
+		 * Note: all paths end with a trailing /
+		 */
+		$template_path = get_template_directory();
+		$library_path = $template_path . '/blocks/block-library/';
+		$cli_path = $template_path . '/includes/cli/templates/';
+		$template_dir = '';
+		if ( $is_dynamic ) {
+			$template_dir = 'block-dynamic';
+		} else {
+			$template_dir = 'block';
+		}
+		$block_path = $library_path . $block[ 'block_slug' ][ 0 ] . '/';
 		
-		// create the plugin directory
-		$block_slug = $block[ 'block_slug' ][ 0 ];
+		/**
+		 * Create plugin directory
+		 */
 		global $wp_filesystem;
-		$block_path = $library_path . $block_slug;
 		$wp_filesystem->mkdir( $block_path );
 
 		// duplicate template's files
-		copy_dir( $cli_path . $template_dir, $block_path, array( '_optional' ) );
-
-		// if we're dynamic
-		if ( $is_dynamic ) {
-			$to_rename = array( 'index.php', 'save.js', 'edit.js', 'markup.php' );
-			foreach( $to_rename as $filename ) {
-				copy( $cli_path . $template_dir . '/_optional/dynamic/' . $filename, $block_path . '/' . $filename );
-			}
-		}
+		copy_dir( $cli_path . $template_dir, $block_path );
 
 		// if we have front-end scripts
 		if ( $has_js ) {
-			copy( $cli_path . $template_dir . '/_optional/script.js', $block_path . '/script.js' );
+			copy( $cli_path . '/common/script.js', $block_path . 'script.js' );
 		}
 
-		// remove extras folder
-
-
-		// loop through new block's directory
+		/**
+		 * Find and replace strings
+		 */
 		$block_files = new RecursiveDirectoryIterator( $block_path );
+		// loop through new block's directory
 		foreach( new RecursiveIteratorIterator( $block_files ) as $file ) {
 			// perform find and replace
 			if ( is_file( $file ) ) {
@@ -201,16 +214,71 @@ class AQUAMIN_CLI {
 			}
 		}
 		
-		// if we have an inner block
+		/**
+		 * Setup inner blocks
+		 */
 		if ( $has_inner_block ) {
 
+			// register/setup the inner block within parent files
+			$inner_block_removes = array(
+				array(
+					'path' => $block_path . 'index.js',
+					'replace' =><<< EOD
+					/**
+					 * Import dependencies
+					 */
+					EOD,
+					'with' =><<< EOD
+					/**
+					 * Register inner blocks
+					 */
+					import './template-item-slug';
+
+					/**
+					 * Import dependencies
+					 */
+					EOD
+				),
+				array(
+					'path' => $block_path . 'index.php',
+					'replace' =><<< EOD
+					// register the block
+					register_block_type_from_metadata( dirname( __FILE__ ) );
+					EOD,
+					'with' =><<< EOD
+					// register the block
+					register_block_type_from_metadata( dirname( __FILE__ ) );
+
+					// register inner blocks
+					register_block_type_from_metadata( dirname( __FILE__ ) . '/template-item-slug' );
+					EOD
+				),
+				array(
+					'path' => $block_path . 'edit.js',
+					'replace' => '<InnerBlocks />',
+					'with' =><<< EOD
+					<InnerBlocks
+									template={[['aquamin/template-item-slug']]}
+									allowedBlocks={['aquamin/template-item-slug']}
+								/>
+					EOD
+				),
+			);
+			foreach( $inner_block_removes as $remove ) {
+				$file = $remove[ 'path' ];
+				$str = file_get_contents( $file );
+				$str = str_replace( $remove[ 'replace'], $remove[ 'with'], $str );
+				file_put_contents( $file, $str );	
+			}
+
 			// copy the inner blocks directory
-			$block_inner_path = $block_path . '/' . $inner_block[ 'inner_block_slug' ][ 0 ];
+			$template_inner_dir = 'block-inner';
+			$block_inner_path = $block_path . $inner_block[ 'inner_block_slug' ][ 0 ] . '/';
 			$wp_filesystem->mkdir( $block_inner_path );
-			copy_dir( $cli_path . $template_dir . "/_optional/$template_inner_dir/", $block_inner_path );
-			// loop through block's directory (including parent block)
+			copy_dir( $cli_path . $template_inner_dir, $block_inner_path );
+			
+			// loop through block's directory (including parent block) to find/replace text
 			foreach( new RecursiveIteratorIterator( $block_files ) as $file ) {
-				// perform find and replace
 				if ( is_file( $file ) ) {
 					$str = file_get_contents( $file );
 					foreach ( $inner_block as $key => $value ) {
@@ -221,52 +289,7 @@ class AQUAMIN_CLI {
 				}
 			}
 		
-		// if we have no inner block
-		} else {
-			// remove inner block registration
-			$inner_block_removes = array(
-				array(
-					'path' => $block_path . '/index.js',
-					'replace' =><<< EOD
-			
-					/**
-					 * Register inner blocks
-					 */
-					import './template-item-slug';
-		
-					EOD,
-					'with' => ''
-				),
-				array(
-					'path' => $block_path . '/edit.js',
-					'replace' => "<InnerBlocks template={[['aquamin/template-item-slug']]} />",
-					'with' => ''
-				),
-				array(
-					'path' => $block_path . '/edit.js',
-					'replace' => 'InnerBlocks, ',
-					'with' => ''
-				),
-				array(
-					'path' => $block_path . '/index.php',
-					'replace' =><<< EOD
-
-					// register child blocks
-					register_block_type_from_metadata(
-						AQUAMIN_BLOCKS . '/block-library/my-block/template-item-slug'
-					);
-
-					EOD,
-					'with' => ''
-				),
-			);
-			foreach( $inner_block_removes as $remove ) {
-				$file = $remove[ 'path' ];
-				$str = file_get_contents( $file );
-				$str = str_replace( $remove[ 'replace'], $remove[ 'with'], $str );
-				file_put_contents( $file, $str );	
-			}
-		}
+		} 
 
 		// report
 		WP_CLI::success( 'Block created' );
@@ -287,7 +310,7 @@ class AQUAMIN_CLI {
 		WP_CLI::runcommand( 'plugin is-installed all-the-things || wp plugin install --activate https://github.com/tcmulder/all-the-things/archive/refs/heads/master.zip' );
 		
 		// get demo content files
-		$demo_content_path = get_template_directory() . '/includes/cli/demo-content/';
+		$demo_content_path = $template_path . '/includes/cli/demo-content/';
 		$demo_content = glob($demo_content_path . '*');
 		if ( $demo_content ) {
 			// determine if the importer is installed and install it if not

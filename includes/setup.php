@@ -14,10 +14,6 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 	function aquamin_setup() {
 
 		/*
-		 * Style the visual editor with editor-style.css.
-		 */
-		add_editor_style();
-		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 */

@@ -1,3 +1,8 @@
 /**
  * Common block styling shared with editor and theme.
  */
+.is-style-wide {
+	height: 0.1em;
+	background-color: currentColor !important;
+	border-radius: 1em;
+}

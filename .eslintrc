@@ -10,7 +10,7 @@
 				"useTabs": true
 			}
 		],
-		"arrow-body-style": ["error", "always"],
+		"arrow-body-style": "off",
 		"import/no-extraneous-dependencies": "off",
 		"no-undef": "off",
 		"react/prop-types": "off"

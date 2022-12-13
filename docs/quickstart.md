@@ -16,8 +16,8 @@ Installing aquamin is easiest with WP-CLI using any [local server](https://wordp
 3. Rename the `.env.example` file to `.env` and update the URL value appropriately.
 4. Run `npm install` to set up the build tool.
 5. Run `npm run start` to fire up the dev server (and `npm run build` for a production build).
-6. Optionally, run `wp aquamin setup` ([learn more about the setup command](/aquamin/features/wp-cli/#wp-aquamin-setup)).
+6. Optionally, [set up some defaults](/aquamin/features/wp-cli/#wp-aquamin-setup) by running `wp aquamin setup`.
 
-You're all set! Next up, familiarize yourself with the aquamin [features](/aquamin/features/).
+You're all set! Next up, familiarize yourself with aquamin's [features](/aquamin/features/).
 
-> _Note:_ If you'd prefer to install manually, just [download aquamin](https://github.com/tcmulder/aquamin/archive/refs/heads/master.zip){:download="download"} directly and [install the theme](https://wordpress.org/support/article/using-themes/#adding-new-themes-using-the-administration-screens){: target="_blank"}.
+> _Note:_ If you'd prefer to install manually, just [download aquamin](https://github.com/tcmulder/aquamin/archive/refs/heads/master.zip){:download="download"} directly and [install the theme](https://wordpress.org/support/article/using-themes/#adding-new-themes-using-the-administration-screens){: target="_blank"} like normal.

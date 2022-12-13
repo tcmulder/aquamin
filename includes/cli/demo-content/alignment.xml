@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.0.3" created="2022-11-01 22:53" -->
+<!-- generator="WordPress/6.1.1" created="2022-12-04 01:40" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>http://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Tue, 01 Nov 2022 22:53:39 +0000</pubDate>
+<pubDate>Sun, 04 Dec 2022 01:40:59 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>
@@ -36,7 +36,7 @@
   <wp:author_first_name><![CDATA[]]></wp:author_first_name>
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
 </wp:author>
-<generator>https://wordpress.org/?v=6.0.3</generator>
+<generator>https://wordpress.org/?v=6.1.1</generator>
 <item>
   <title><![CDATA[Alignment]]></title>
   <link>http://aquamin.aquamarine.test/all-the-things/alignment/</link>
@@ -44,231 +44,35 @@
   <dc:creator/>
   <guid isPermaLink="false">https://playground.aquamarine.test/?post_type=all-the-things&amp;p=10</guid>
   <description/>
-  <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>This demoes standard alignments set up via <code>src/css/layout/alignment.css</code></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>By default, groups are column width, so...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:group {"backgroundColor":"black-dark"} -->
-<div class="wp-block-group has-black-dark-background-color has-background"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...normal inner blocks are this width,</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">wide inner blocks are this width,</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">and full inner blocks are this width.</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>You can also set them to wide width, so...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:group {"align":"wide","backgroundColor":"black-dark","layout":{"inherit":true}} -->
-<div class="wp-block-group alignwide has-black-dark-background-color has-background"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...normal inner blocks are this width,</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3,"align":"wide","backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="alignwide has-black-dark-color has-white-light-background-color has-text-color has-background">wide inner blocks are this width,</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3,"align":"full","backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="alignfull has-black-dark-color has-white-light-background-color has-text-color has-background">and full inner blocks are this width.</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>And, you can set them to full width, so...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:group {"align":"full","backgroundColor":"black-dark","layout":{"inherit":true}} -->
-<div class="wp-block-group alignfull has-black-dark-background-color has-background"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...normal inner blocks are this width,</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3,"align":"wide","backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="alignwide has-black-dark-color has-white-light-background-color has-text-color has-background">wide inner blocks are this width,</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3,"align":"full","backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="alignfull has-black-dark-color has-white-light-background-color has-text-color has-background">and full inner blocks are this width.</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>You can also customize inner block widths (e.g. 500px/800px), which could mean...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:group {"align":"full","backgroundColor":"black-dark","layout":{"inherit":false,"contentSize":"500px","wideSize":"800px"}} -->
-<div class="wp-block-group alignfull has-black-dark-background-color has-background"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...normal inner blocks are this width,</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3,"align":"wide","backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="alignwide has-black-dark-color has-white-light-background-color has-text-color has-background">wide inner blocks are this width,</h3>
-<!-- /wp:heading -->
-
-<!-- wp:heading {"level":3,"align":"full","backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="alignfull has-black-dark-color has-white-light-background-color has-text-color has-background">and full inner blocks are this width.</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>Lastly, you can set nested layouts within inner blocks (e.g. 600px), which could mean...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:group {"align":"full","backgroundColor":"black-dark","layout":{"inherit":true}} -->
-<div class="wp-block-group alignfull has-black-dark-background-color has-background"><!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column {"width":"100%","layout":{"contentSize":"600px","wideSize":"600px"}} -->
-<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...normal inner blocks are this width,</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:group {"align":"wide","layout":{"inherit":false,"contentSize":"600px","wideSize":"600px"}} -->
-<div class="wp-block-group alignwide"><!-- wp:heading {"level":3,"align":"wide","backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="alignwide has-black-dark-color has-white-light-background-color has-text-color has-background">wide inner blocks are this width,</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
-
-<!-- wp:columns {"align":"full"} -->
-<div class="wp-block-columns alignfull"><!-- wp:column {"width":"100%","layout":{"contentSize":"600px"}} -->
-<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">and full inner blocks are this width.</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>Further, normal cover block looks like...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"black-dark","minHeight":200,"minHeightUnit":"px","isDark":false} -->
-<div class="wp-block-cover is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-black-dark-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">…inner blocks are this width.</h3>
-<!-- /wp:heading --></div></div>
-<!-- /wp:cover -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>While, a wide cover block looks like...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"black-dark","minHeight":200,"minHeightUnit":"px","isDark":false,"align":"wide"} -->
-<div class="wp-block-cover alignwide is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-black-dark-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">…inner blocks are this width.</h3>
-<!-- /wp:heading --></div></div>
-<!-- /wp:cover -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>And, a full width cover block looks like...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"isDark":false,"className":"alignfull is-light"} -->
-<div class="wp-block-cover is-light alignfull"><span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">…inner blocks are this width.</h3>
-<!-- /wp:heading --></div></div>
-<!-- /wp:cover -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>A normal columns block looks like...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:columns {"backgroundColor":"black-dark","textColor":"white-light"} -->
-<div class="wp-block-columns has-white-light-color has-black-dark-background-color has-text-color has-background"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...a column</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:column -->
-
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...another column</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>While a wide columns block looks like...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:columns {"align":"wide","backgroundColor":"black-dark","textColor":"white-light"} -->
-<div class="wp-block-columns alignwide has-white-light-color has-black-dark-background-color has-text-color has-background"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...a column</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:column -->
-
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...another column</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>And a full width columns block looks like...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:columns {"align":"full","backgroundColor":"black-dark","textColor":"white-light"} -->
-<div class="wp-block-columns alignfull has-white-light-color has-black-dark-background-color has-text-color has-background"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...a column</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:column -->
-
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":3,"backgroundColor":"white-light","textColor":"black-dark"} -->
-<h3 class="has-black-dark-color has-white-light-background-color has-text-color has-background">...another column</h3>
-<!-- /wp:heading --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:heading {"level":3} -->
-<h3><em>Lastly, regular paragraphs are just column width like...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"backgroundColor":"black-dark","textColor":"white-light"} -->
-<p class="has-white-light-color has-black-dark-background-color has-text-color has-background">...normal paragraphs are this width.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:html -->
-<div class="size-check">
+  <content:encoded><![CDATA[<!-- wp:html -->
+<div class="size-check has-global-padding is-layout-constrained">
 	<style>
 		:root {
-			--sc-c: teal;
-			--sc-c-bg-outer: mediumaquamarine;
-			--sc-c-bg-inner: aquamarine;
 			--sc-c-reference-normal: lime;
 			--sc-c-reference-wide: yellow;
-			--sc-w-normal: var(--w-default);
-			--sc-w-wide: var(--w-wide);
+			--sc-c-reference-full: aqua;
 		}
 		.torso h3 {
-			--wp--preset--color--black-dark: var(--sc-c);
-			margin-top: 25px !important;
-			margin-bottom: 25px !important;
-			color: var(--sc-c);
+			margin-top: 50px !important;
+			margin-bottom: 10px !important;
+		}
+		.torso h4 {
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
 		}
 		.torso .wp-block-group,
 		.torso .wp-block-group__inner-container,
 		.torso .wp-block-columns,
 		.torso .wp-block-column {
 			outline: 1px solid rgba(0, 0, 0, 0.2);
+			border: 0 solid rgba(0, 0, 0, 0.2);
+			border-width: 5px 0;
 		}
 		.torso .has-background {
-			background-color: var(--sc-c-bg-outer) !important;
+			outline: 1px solid rgba(0, 0, 0, 0.2);
 		}
 		.torso .has-background .has-background {
-			background-color: var(--sc-c-bg-inner) !important;
+			outline: 1px solid rgba(0, 0, 0, 0.2);
 		}
 		.size-check {
 			pointer-events: none;
@@ -288,7 +92,7 @@
 		}
 		.size-check i {
 			pointer-events: none;
-			border: 1px dashed currentcolor;
+			border: 1px dashed rgba(0, 0, 0, 0.2);
 			bottom: 0;
 			height: 9999px;
 			position: absolute;
@@ -304,7 +108,7 @@
 			opacity: 0.5;
 		}
 		.size-check b {
-			color: var(--sc-c);
+			color: black !important;
 		}
 		.size-check__container {
 			padding: 0 var(--gutter);
@@ -312,14 +116,14 @@
 		.size-check__container--normal,
 		.size-check__container--normal div {
 			color: var(--sc-c-reference-normal);
-			width: 100% !important;
-			max-width: var(--sc-w-normal) !important;
 		}
 		.size-check__container--wide,
 		.size-check__container--wide div {
 			color: var(--sc-c-reference-wide);
-			width: 100% !important;
-			max-width: var(--sc-w-wide) !important;
+		}
+		.size-check__container--full,
+		.size-check__container--full div {
+			color: var(--sc-c-reference-full);
 		}
 	</style>
 	<div class="size-check__container size-check__container--normal">
@@ -329,34 +133,274 @@
 		</div>
 		<i></i><i></i>
 	</div>
-	<div class="size-check__container size-check__container--wide">
+	<div class="size-check__container size-check__container--wide alignwide">
 		<div>
 			<i></i><i></i>
 			<b>[ Wide <span>]</span></b>
 		</div>
 		<i></i><i></i>
 	</div>
+	<div class="size-check__container size-check__container--full alignfull">
+		<div>
+			<i></i><i></i>
+			<b>[ Full <span>]</span></b>
+		</div>
+		<i></i><i></i>
+	</div>
 	<script>
-		window.addEventListener('load', () => {
+		const sizer = () => {
 			document.querySelectorAll('.size-check__container ')
 				.forEach((el) => {
-					const span = el.querySelector('span');
-					span.innerHTML = `${el.offsetWidth}px ]`
+					el.querySelector('span').innerHTML = `${el.offsetWidth}px ]`;
 				});
-			document.querySelectorAll('h3')
+			document.querySelectorAll('h4 strong')
 				.forEach(el=>{
-					el.innerHTML = el.innerHTML.replace('this width', `${el.offsetWidth}px`);
+					el.innerHTML = `${el.parentElement.offsetWidth}px`;
+				});
+		}
+		window.addEventListener('load', sizer);
+		window.addEventListener('resize', sizer);
+		window.addEventListener('load', () => {
+			document.querySelectorAll('h3 strong')
+				.forEach(el=>{
+					if (el.innerText === 'column width') {
+						el.innerText += `(${getComputedStyle(document.body).getPropertyValue('--wp--style--global--content-size').trim()})`;
+					} else if (el.innerText === 'wide width') {
+						el.innerText += `(${getComputedStyle(document.body).getPropertyValue('--wp--style--global--wide-size').trim()})`;
+					} else if (el.innerText === 'full width') {
+						el.innerText += `(${window.innerWidth}px)`;
+					}
 				});
 		})
 	</script>
 </div>
-<!-- /wp:html -->]]></content:encoded>
+<!-- /wp:html -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>By default, groups are <strong>column width</strong>, so...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:group {"backgroundColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-group has-0-000-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>You can also set them to <strong>wide width</strong>, so...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"wide","backgroundColor":"0-000","layout":{"inherit":true,"type":"constrained"},"aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignwide has-0-000-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="alignwide has-0-000-color has-0-900-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="alignfull has-0-000-color has-0-900-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>And, you can set them to <strong>full width</strong>, so...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"full","backgroundColor":"0-000","layout":{"inherit":true,"type":"constrained"},"aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignfull has-0-000-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="alignwide has-0-000-color has-0-900-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="alignfull has-0-000-color has-0-900-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>You can also customize inner block widths (e.g. 500px/800px), which could mean...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"full","backgroundColor":"0-000","layout":{"inherit":false,"contentSize":"500px","wideSize":"800px","type":"constrained"},"aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignfull has-0-000-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="alignwide has-0-000-color has-0-900-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="alignfull has-0-000-color has-0-900-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>Lastly, you can set nested layouts within inner blocks (e.g. 600px), which could mean...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"full","backgroundColor":"0-000","layout":{"inherit":true,"type":"constrained"},"aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignfull has-0-000-background-color has-background"><!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column {"width":"100%","layout":{"contentSize":"600px","wideSize":"600px"}} -->
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:group {"align":"wide","layout":{"inherit":false,"contentSize":"600px","wideSize":"600px","type":"constrained"},"aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignwide"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="alignwide has-0-000-color has-0-900-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:columns {"align":"full"} -->
+<div class="wp-block-columns alignfull"><!-- wp:column {"width":"100%","layout":{"contentSize":"600px"}} -->
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>Further, normal cover block looks like...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"0-000","minHeight":200,"minHeightUnit":"px","isDark":false} -->
+<div class="wp-block-cover is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-000-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","className":"alignwide"} -->
+<h4 class="alignwide has-0-000-color has-0-900-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","className":"alignfull"} -->
+<h4 class="alignfull has-0-000-color has-0-900-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>While, a wide cover block looks like...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"0-000","minHeight":200,"minHeightUnit":"px","isDark":false,"align":"wide"} -->
+<div class="wp-block-cover alignwide is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-000-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","className":"alignwide"} -->
+<h4 class="alignwide has-0-000-color has-0-900-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","className":"alignfull"} -->
+<h4 class="alignfull has-0-000-color has-0-900-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>And, a full width cover block looks like...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"isDark":false,"className":"alignfull is-light"} -->
+<div class="wp-block-cover is-light alignfull"><span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">…inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","className":"alignwide"} -->
+<h4 class="alignwide has-0-000-color has-0-900-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","className":"alignfull"} -->
+<h4 class="alignfull has-0-000-color has-0-900-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>A normal columns block looks like...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:columns {"backgroundColor":"0-000","textColor":"0-900"} -->
+<div class="wp-block-columns has-0-900-color has-0-000-background-color has-text-color has-background"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...a column</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...another column</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>While a wide columns block looks like...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:columns {"align":"wide","style":{"spacing":{"padding":{"top":"0"}}},"backgroundColor":"0-000","textColor":"0-900"} -->
+<div class="wp-block-columns alignwide has-0-900-color has-0-000-background-color has-text-color has-background" style="padding-top:0"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...a column</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...another column</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>And a full width columns block looks like...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:columns {"align":"full","backgroundColor":"0-000","textColor":"0-900"} -->
+<div class="wp-block-columns alignfull has-0-900-color has-0-000-background-color has-text-color has-background"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...a column</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000"} -->
+<h4 class="has-0-000-color has-0-900-background-color has-text-color has-background">...another column</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class=""><em>Lastly, regular paragraphs are just column width like...</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"backgroundColor":"0-000","textColor":"0-900"} -->
+<p class="has-0-900-color has-0-000-background-color has-text-color has-background">...normal paragraphs are <strong>this width</strong>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":"150px"} -->
+<div style="height:150px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>10</wp:post_id>
   <wp:post_date>2022-10-04 00:03:42</wp:post_date>
   <wp:post_date_gmt>2022-10-04 00:03:42</wp:post_date_gmt>
-  <wp:post_modified>2022-10-04 00:03:42</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-04 00:03:42</wp:post_modified_gmt>
+  <wp:post_modified>2022-12-04 01:38:29</wp:post_modified>
+  <wp:post_modified_gmt>2022-12-04 01:38:29</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>alignment</wp:post_name>

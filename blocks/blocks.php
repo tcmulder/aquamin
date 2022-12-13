@@ -42,7 +42,7 @@ function aquamin_theme_support() {
 
 	// prefix editor styles
 	add_theme_support( 'editor-styles' );
-	add_editor_style( '/dist/block-editor/editor.bundle.css' );
+	add_editor_style( '/dist/blocks/editor.bundle.css' );
 
 
 }

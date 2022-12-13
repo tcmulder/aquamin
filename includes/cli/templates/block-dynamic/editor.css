@@ -1,0 +1,16 @@
+/**
+ * template-title editor styling
+ *
+ * This file is for CSS admin overrides only.
+ * Use style.css for shared theme/editor block styling.
+ */
+@import "./style.css";
+
+/* replace this demo code with your own: */
+[data-type="aquamin/template-slug"] {
+	& .is-selected {
+		& b::after {
+			content: " (✎ editor.css) ";
+		}
+	}
+}
