@@ -84,3 +84,21 @@ There's currently a bug in Parcel. If you delete a block's directory to remove t
 ## Reusable Block Features
 
 You'll find some helpful, reusable utilities and UI components under `aquamin/blocks/util` and `aquamin/blocks/ui`, respectively. You can add your own into these directories as well, or ignore them if they're not helpful to you: anything you don't use won't get bundled into the production build anyway.
+
+## Imports
+
+You'll notice we're importing some libraries but destructuring the `wp` object for most WordPress features, as in the `aquamin/blocks/ui/Media` UI component:
+
+```javascript
+/**
+ * Dependencies
+ */
+import classnames from 'classnames';
+import { ButtonX } from '../Buttons';
+
+const { __ } = wp.i18n;
+const { MediaPlaceholder, InspectorControls } = wp.blockEditor;
+const { PanelBody, TextareaControl } = wp.components;
+```
+
+Many examples you'll see online just `import` everything, but I was unable to get Parcel to behave like Webpack and properly use the `wp` object without it being imported twice (and therefore throwing all manner of errors). So, until I can find a viable workaround for Parcel, if you're following an example online that shows `import {  InspectorControls } from '@wordpress/block-editor';`, you'll simply change it to `const {  InspectorControls } = wp.blockEditor;`
