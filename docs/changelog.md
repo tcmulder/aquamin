@@ -14,6 +14,7 @@ search_exclude: true
 * Refined cli templates.
 * Fixed syntax for <Media /> properties.
 * Updated theme.json layouts.
+* Correct .alignfull rendering within editor.
 
 ## 4.1.0 - December 13 2022
 * Refactored components structure.
