@@ -100,7 +100,13 @@ const { PanelBody, TextareaControl } = wp.components;
 const getType = (url) => {
 	let type = 'image';
 	if (url) {
-		const ext = url.split('.').pop();
+		const ext = url
+			.split('/')
+			.pop()
+			.split('#')[0]
+			.split('?')[0]
+			.split('.')
+			.pop();
 		if (['mp4', 'm4v', 'webm', 'ogv', 'flv'].includes(ext)) {
 			type = 'video';
 		} else if (['jpg', 'png', 'gif', 'jpeg', 'webp', 'svg'].includes(ext)) {
