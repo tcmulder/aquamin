@@ -10,6 +10,10 @@ search_exclude: true
 
 # Changelog
 
+## 4.1.1 - February 8 2023
+* Fixed hard-coded title for dynamic block template.
+
+
 ## 4.1.0 - December 13 2022
 * Refactored components structure.
 * Refactored (simplified) block templates for cli.

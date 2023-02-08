@@ -1,6 +1,6 @@
 <?php
 /**
- * My Block dynamic block PHP.
+ * My template-title dynamic block PHP.
  *
  * This file renders the dynamic block.
  * 
