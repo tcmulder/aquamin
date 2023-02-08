@@ -15,6 +15,7 @@ search_exclude: true
 * Fixed syntax for <Media /> properties.
 * Updated theme.json layouts.
 * Correct .alignfull rendering within editor.
+* Fix excerpt template part.
 
 ## 4.1.0 - December 13 2022
 * Refactored components structure.
