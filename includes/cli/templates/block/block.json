@@ -13,6 +13,10 @@
 		}
 	},
 	"supports": {
-		"customClassName": true
+		"customClassName": true,
+		"spacing": {
+			"margin": ["top", "bottom"],
+			"padding": ["top", "bottom"]
+		}
 	}
 }
