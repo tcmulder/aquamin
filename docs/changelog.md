@@ -12,7 +12,7 @@ search_exclude: true
 
 ## 4.1.1 - February 8 2023
 * Refined cli templates.
-
+* Fixed syntax for <Media /> properties.
 
 ## 4.1.0 - December 13 2022
 * Refactored components structure.

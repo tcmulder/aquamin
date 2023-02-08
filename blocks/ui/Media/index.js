@@ -49,13 +49,13 @@ There's a lot of customization you can do as well:
 	editable
 	setAttributes={setAttributes}
 	attributes={attributes}
-	attributeNames = { // custom block.json props (defaults plus "Background" shown here)
+	attributeNames = {{ // custom block.json props (defaults plus "Background" shown here)
 		alt: 'mediaAltBackground',
 		url: 'mediaUrlBackground',
 		id: 'mediaIdBackground',
 		width: 'mediaWidthBackground',
 		height: 'mediaHeightBackground',
-	},
+	}}
 	htmlAttributes={[
 		{
 			// apply html attributes to all media types
@@ -73,7 +73,7 @@ There's a lot of customization you can do as well:
 			controls: '',
 		},
 	]}
-	title={__('Background Media', 'aquamin)}, // title above <MediaPlaceholder />
+	title={__('Background Media', 'aquamin')}, // title above <MediaPlaceholder />
 	className="my-extra-class" // comes with .media automatically
 	accept={['image/*', 'video/*']} // or exclude a type
 	allowedTypes={['image', 'video']} // or exclude a type
