@@ -1,0 +1,12 @@
+/**
+ * Inline Year format types styling
+ */
+.current-year {
+	position: relative;
+	display: inline-block;
+	outline: 1px dotted lightgrey;
+	&::after {
+		content: "YYYY";
+		pointer-events: none;
+	}
+}
