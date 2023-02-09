@@ -173,7 +173,7 @@ const MediaInspector = (props) => {
 			<PanelBody title={title}>
 				<MediaEdit {...props} style={{ ...style, height: 'auto' }} />
 				<MediaNew {...props} />
-				{getType(attributes[attributeNames.url]) === 'image' && (
+				{getType(attributes[attributeNames.url]) !== 'video' && (
 					<div style={{ marginTop: 10 }}>
 						<TextareaControl
 							label={__('Alt text (alternative text)', 'aquamin')}
@@ -261,7 +261,7 @@ const MediaEdit = (props) => {
 		<>
 			<div className="aquamin-media-remove">
 				<ButtonX
-					label={__('Remove Media', 'lift-the-label')}
+					label={__('Remove Media', 'aquamin')}
 					handleClick={() =>
 						setAttributes({
 							[attributeNames.id]: '',
