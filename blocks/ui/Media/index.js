@@ -49,13 +49,13 @@ There's a lot of customization you can do as well:
 	editable
 	setAttributes={setAttributes}
 	attributes={attributes}
-	attributeNames = { // custom block.json props (defaults plus "Background" shown here)
+	attributeNames = {{ // custom block.json props (defaults plus "Background" shown here)
 		alt: 'mediaAltBackground',
 		url: 'mediaUrlBackground',
 		id: 'mediaIdBackground',
 		width: 'mediaWidthBackground',
 		height: 'mediaHeightBackground',
-	},
+	}}
 	htmlAttributes={[
 		{
 			// apply html attributes to all media types
@@ -73,7 +73,7 @@ There's a lot of customization you can do as well:
 			controls: '',
 		},
 	]}
-	title={__('Background Media', 'aquamin)}, // title above <MediaPlaceholder />
+	title={__('Background Media', 'aquamin')}, // title above <MediaPlaceholder />
 	className="my-extra-class" // comes with .media automatically
 	accept={['image/*', 'video/*']} // or exclude a type
 	allowedTypes={['image', 'video']} // or exclude a type
@@ -100,7 +100,13 @@ const { PanelBody, TextareaControl } = wp.components;
 const getType = (url) => {
 	let type = 'image';
 	if (url) {
-		const ext = url.split('.').pop();
+		const ext = url
+			.split('/')
+			.pop()
+			.split('#')[0]
+			.split('?')[0]
+			.split('.')
+			.pop();
 		if (['mp4', 'm4v', 'webm', 'ogv', 'flv'].includes(ext)) {
 			type = 'video';
 		} else if (['jpg', 'png', 'gif', 'jpeg', 'webp', 'svg'].includes(ext)) {
@@ -167,7 +173,7 @@ const MediaInspector = (props) => {
 			<PanelBody title={title}>
 				<MediaEdit {...props} style={{ ...style, height: 'auto' }} />
 				<MediaNew {...props} />
-				{getType(attributes[attributeNames.url]) === 'image' && (
+				{getType(attributes[attributeNames.url]) !== 'video' && (
 					<div style={{ marginTop: 10 }}>
 						<TextareaControl
 							label={__('Alt text (alternative text)', 'aquamin')}
@@ -255,7 +261,7 @@ const MediaEdit = (props) => {
 		<>
 			<div className="aquamin-media-remove">
 				<ButtonX
-					label={__('Remove Media', 'lift-the-label')}
+					label={__('Remove Media', 'aquamin')}
 					handleClick={() =>
 						setAttributes({
 							[attributeNames.id]: '',

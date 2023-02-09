@@ -154,7 +154,7 @@ function aqua_dynamic_ani( $block_content, $block ) {
  */
 function aquamin_id() {
 
-	$the_id = $GLOBALS[ 'aquamin_current_id' ];
+	$the_id = $GLOBALS[ 'aquamin_current_id' ] ?? null;
 
 	if ( ! $the_id ) {
 

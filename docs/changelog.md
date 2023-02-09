@@ -10,6 +10,13 @@ search_exclude: true
 
 # Changelog
 
+## 4.1.1 - February 8 2023
+* Refined cli templates.
+* Fixed syntax for <Media /> properties.
+* Updated theme.json layouts.
+* Correct .alignfull rendering within editor.
+* Fix excerpt template part.>
+
 ## 4.1.0 - December 13 2022
 * Refactored components structure.
 * Refactored (simplified) block templates for cli.

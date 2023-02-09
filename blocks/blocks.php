@@ -12,6 +12,21 @@ add_action( 'after_setup_theme', 'aquamin_block_patterns_and_categories' );
 add_action( 'admin_menu', 'aquamin_reusable_blocks_admin_menu' );
 
 /**
+ * Set up block hooks
+ * 
+ * This lets you add a hook.php file to your blocks and use
+ * add_action or add_filter functionality. You can remove this
+ * if you're not using it, but note the aquamin Year Format Type
+ * uses it.
+ */
+$blocks = glob(AQUAMIN_BLOCKS . '/block-library/*/hooks.php');
+if ( $blocks ) {
+	foreach ( $blocks as $block ) {
+		require_once $block;
+	}
+}
+
+/**
  * Add in blocks that are registered in this theme
  */
 function aquamin_register_theme_blocks() {

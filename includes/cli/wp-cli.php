@@ -310,6 +310,7 @@ class AQUAMIN_CLI {
 		WP_CLI::runcommand( 'plugin is-installed all-the-things || wp plugin install --activate https://github.com/tcmulder/all-the-things/archive/refs/heads/master.zip' );
 		
 		// get demo content files
+		$template_path = get_template_directory();
 		$demo_content_path = $template_path . '/includes/cli/demo-content/';
 		$demo_content = glob($demo_content_path . '*');
 		if ( $demo_content ) {
