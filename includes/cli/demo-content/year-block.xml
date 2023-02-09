@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.1.1" created="2022-12-04 01:40" -->
+<!-- generator="WordPress/6.1.1" created="2023-02-09 14:25" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>http://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Sun, 04 Dec 2022 01:40:58 +0000</pubDate>
+<pubDate>Thu, 09 Feb 2023 14:25:04 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>
@@ -38,81 +38,37 @@
 </wp:author>
 <generator>https://wordpress.org/?v=6.1.1</generator>
 <item>
-  <title><![CDATA[Year Block]]></title>
+  <title><![CDATA[Year Format Type]]></title>
   <link>http://aquamin.aquamarine.test/all-the-things/year-block/</link>
   <pubDate>Tue, 04 Oct 2022 15:13:07 +0000</pubDate>
   <dc:creator/>
   <guid isPermaLink="false">https://playground.aquamarine.test/?post_type=all-the-things&amp;p=18</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:heading {"fontSize":"h6"} -->
-<h2 class="has-h-6-font-size">Especially useful for footers, following is an Inline Paragraph block with a Year block in the center:</h2>
+<h2 class="has-h-6-font-size">Especially useful for footers, you can add a year using the Paragraph block's Format Type menu (the same one that lets you add a core Inline Image).</h2>
 <!-- /wp:heading -->
 
-<!-- wp:aquamin/inline-paragraph {"className":"inline-example"} -->
-<!-- wp:paragraph {"placeholder":"optional text before "} -->
-<p>Copyright ©</p>
+<!-- wp:paragraph -->
+<p class=""></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:aquamin/copyright-year /-->
-
-<!-- wp:paragraph {"placeholder":" optional text after"} -->
-<p> by <em>aquamin</em></p>
-<!-- /wp:paragraph -->
-<!-- /wp:aquamin/inline-paragraph -->
-
-<!-- wp:heading {"fontSize":"h6"} -->
-<h2 class="has-h-6-font-size">The initial text is optional:</h2>
-<!-- /wp:heading -->
-
-<!-- wp:aquamin/inline-paragraph -->
-<!-- wp:paragraph {"placeholder":"optional text before "} -->
-<p></p>
+<!-- wp:paragraph -->
+<p class="">Example:</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:aquamin/copyright-year /-->
-
-<!-- wp:paragraph {"placeholder":" optional text after"} -->
-<p> after only</p>
-<!-- /wp:paragraph -->
-<!-- /wp:aquamin/inline-paragraph -->
-
-<!-- wp:heading {"fontSize":"h6"} -->
-<h2 class="has-h-6-font-size">As is the final text:</h2>
-<!-- /wp:heading -->
-
-<!-- wp:aquamin/inline-paragraph -->
-<!-- wp:paragraph {"placeholder":"optional text before "} -->
-<p>before only </p>
+<!-- wp:paragraph -->
+<p class=""></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:aquamin/copyright-year /-->
-
-<!-- wp:paragraph {"placeholder":" optional text after"} -->
-<p></p>
-<!-- /wp:paragraph -->
-<!-- /wp:aquamin/inline-paragraph -->
-
-<!-- wp:heading {"fontSize":"h6"} -->
-<h2 class="has-h-6-font-size">And as a test, these lines shouldn't have spaces to either side of the year:</h2>
-<!-- /wp:heading -->
-
-<!-- wp:aquamin/inline-paragraph -->
-<!-- wp:paragraph {"placeholder":"optional text before "} -->
-<p>nospaces|</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:aquamin/copyright-year /-->
-
-<!-- wp:paragraph {"placeholder":" optional text after"} -->
-<p>|nospaces</p>
-<!-- /wp:paragraph -->
-<!-- /wp:aquamin/inline-paragraph -->]]></content:encoded>
+<!-- wp:paragraph -->
+<p class=""><em>©Aquamarine Limited <span class="current-year" title="Current Year"></span>, all rights reserved. The year is currently <span class="current-year" title="Current Year"></span>.</em></p>
+<!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>18</wp:post_id>
   <wp:post_date>2022-10-04 15:13:07</wp:post_date>
   <wp:post_date_gmt>2022-10-04 15:13:07</wp:post_date_gmt>
-  <wp:post_modified>2022-10-04 15:13:07</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-04 15:13:07</wp:post_modified_gmt>
+  <wp:post_modified>2023-02-09 14:24:16</wp:post_modified>
+  <wp:post_modified_gmt>2023-02-09 14:24:16</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>year-block</wp:post_name>
