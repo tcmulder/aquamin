@@ -4,7 +4,6 @@
  * Normalize.css v3.0.0 | MIT License | git.io/normalize
  */
 html {
-	--fs: 100;
 	font-family: var(--ff-1);
 	font-size: calc(var(--fs) * 1px);
 	line-height: 1.4;
