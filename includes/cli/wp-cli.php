@@ -257,7 +257,7 @@ class AQUAMIN_CLI {
 					EOD
 				),
 				array(
-					'path' => $block_path . 'edit.js',
+					'path' => $block_path . 'template-slug-edit.js',
 					'replace' => '<InnerBlocks />',
 					'with' =><<< EOD
 					<InnerBlocks
