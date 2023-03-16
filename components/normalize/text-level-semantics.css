@@ -5,7 +5,7 @@
  */
 html {
 	font-family: var(--ff-1);
-	font-size: calc(var(--fs) * 1px);
+	font-size: var(--fs-px);
 	line-height: 1.4;
 }
 abbr[title] {
