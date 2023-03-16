@@ -127,6 +127,7 @@ class AQUAMIN_CLI {
 		$is_dynamic = strtolower( $ask_dynamic ?? '' ) === 'y' ? true : false;
 
 		$has_inner_block = false;
+		$inner_slug = '';
 		if ( ! $is_dynamic ) {
 
 			$ask_inner_block = $this->ask('Add inner block? [y/N]');
@@ -147,6 +148,7 @@ class AQUAMIN_CLI {
 					$assoc_args[ 'inner_block_slug' ] ?? $this->ask("Inner block slug [$guess]:", $guess),
 					'template-item-slug',
 				);
+				$inner_slug = $inner_block[ 'inner_block_slug' ][ 0 ];
 				
 				$guess = str_replace(' ', '', $title);
 				$inner_block[ 'inner_block_namespace' ] = array(
@@ -274,7 +276,7 @@ class AQUAMIN_CLI {
 
 			// copy the inner blocks directory
 			$template_inner_dir = 'block-inner';
-			$block_inner_path = $block_path . $inner_block[ 'inner_block_slug' ][ 0 ] . '/';
+			$block_inner_path = $block_path . $inner_slug . '/';
 			$wp_filesystem->mkdir( $block_inner_path );
 			copy_dir( $cli_path . $template_inner_dir, $block_inner_path );
 			
@@ -298,6 +300,9 @@ class AQUAMIN_CLI {
 				$file_name = basename( $file );
 				if ( 'template-slug' === substr( $file_name, 0, 13 ) ) {
 					$new_file = str_replace( 'template-slug', $slug, $file );
+					rename( $file, $new_file );
+				} elseif ( 'template-item-slug' === substr( $file_name, 0, 18 ) ) {
+					$new_file = str_replace( 'template-item-slug', $inner_slug, $file );
 					rename( $file, $new_file );
 				}
 			}
