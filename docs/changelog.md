@@ -10,6 +10,13 @@ search_exclude: true
 
 # Changelog
 
+## 4.2.0 - March 16 2023
+* Added ability to prefix common files, e.g. footer-style.css rather than just style.css (makes debugging easier).
+* Added static components/assets folder that copies into the dist directory on build.
+* Applied minor CSS custom property adjustments.
+* Fixed error caused by cache breaker before first build.
+* Fixed base font size issue and start with default H1-H6 sizes.
+
 ## 4.1.1 - February 8 2023
 * Refined cli templates.
 * Fixed syntax for <Media /> properties.

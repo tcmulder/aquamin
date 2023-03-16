@@ -5,16 +5,16 @@
 :root {
 	/* fonts */
 	--fs: 16;
+	--fs-px: calc(var(--fs) * 1px);
 
-	--fs-body: 11em;
-	--fs-h1: calc((64 / var(--fs)) * 1em);
-	--fs-h2: calc((48 / var(--fs)) * 1em);
-	--fs-h3: calc((32 / var(--fs)) * 1em);
-	--fs-h4: calc((24 / var(--fs)) * 1em);
-	--fs-h5: calc((18 / var(--fs)) * 1em);
-	--fs-h6: calc((16 / var(--fs)) * 1em);
+	--fs-h1: calc((32 / var(--fs)) * 1em);
+	--fs-h2: calc((24 / var(--fs)) * 1em);
+	--fs-h3: calc((20.8 / var(--fs)) * 1em);
+	--fs-h4: calc((16 / var(--fs)) * 1em);
+	--fs-h5: calc((12.8 / var(--fs)) * 1em);
+	--fs-h6: calc((11.2 / var(--fs)) * 1em);
 	--fs-big: calc((18 / var(--fs)) * 1em);
-	--fs-small: calc((18 / var(--fs)) * 1em);
+	--fs-small: calc((14 / var(--fs)) * 1em);
 
 	--ff-1: monospace, sans-serif;
 	--ff-2: var(--ff-2);
@@ -33,7 +33,7 @@
 	--w-l: 1440px;
 	--w-px: calc(100% - var(--sp) * 2);
 
-	--w-default: var(--w-m);
+	--w-normal: var(--w-m);
 	--w-wide: var(--w-l);
 
 	--h-menu: 3em;

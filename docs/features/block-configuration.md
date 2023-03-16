@@ -32,9 +32,11 @@ The easiest way to create blocks is to run `wp aquamin block` ([see the docs](/a
 
 ### Front-End JavaScript Option
 
-The `wp aquamin block` command will ask if you want to add a `script.js` file to your block that will be immediately available for front-end scripting. (Under the hood, `aquamin/blocks/blocks.js` is simply importing all `./block-library/*/script.js` files, so you can easily remove or add `script.js` files later.)
+The `wp aquamin block` command will ask if you want to add a `script.js` file to your block that will be immediately available for front-end scripting. (Under the hood, `aquamin/blocks/blocks.js` is simply importing all `./block-library/*/*script.js` files, so you can easily remove or add `script.js` files later.)
 
 If you'd like to break the front-end scripts into multiple files, you can use this `script.js` file as an entry point and organize your additional files as desired within the block's directory.
+
+You can also prefix the `script.js` file, like `my-block-script.js` for example, to make debugging more convenient.
 
 ### Inner Blocks Option
 

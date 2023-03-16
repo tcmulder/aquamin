@@ -100,8 +100,9 @@ class AQUAMIN_CLI {
 			$assoc_args[ 'block_slug' ] ?? $this->ask( "Slug [$guess]:", $guess ),
 			'template-slug',
 		);
+		$slug = $block[ 'block_slug' ][ 0 ];
 		
-		$guess = $block[ 'block_slug' ][ 0 ];
+		$guess = $slug;
 		$block[ 'block_dir' ] = array(
 			$assoc_args[ 'block_dir' ] ?? $this->ask( "Directory [$guess]:", $guess ),
 			'_template-block',
@@ -126,6 +127,7 @@ class AQUAMIN_CLI {
 		$is_dynamic = strtolower( $ask_dynamic ?? '' ) === 'y' ? true : false;
 
 		$has_inner_block = false;
+		$inner_slug = '';
 		if ( ! $is_dynamic ) {
 
 			$ask_inner_block = $this->ask('Add inner block? [y/N]');
@@ -146,6 +148,7 @@ class AQUAMIN_CLI {
 					$assoc_args[ 'inner_block_slug' ] ?? $this->ask("Inner block slug [$guess]:", $guess),
 					'template-item-slug',
 				);
+				$inner_slug = $inner_block[ 'inner_block_slug' ][ 0 ];
 				
 				$guess = str_replace(' ', '', $title);
 				$inner_block[ 'inner_block_namespace' ] = array(
@@ -182,7 +185,7 @@ class AQUAMIN_CLI {
 		} else {
 			$template_dir = 'block';
 		}
-		$block_path = $library_path . $block[ 'block_slug' ][ 0 ] . '/';
+		$block_path = $library_path . $slug . '/';
 		
 		/**
 		 * Create plugin directory
@@ -195,7 +198,7 @@ class AQUAMIN_CLI {
 
 		// if we have front-end scripts
 		if ( $has_js ) {
-			copy( $cli_path . '/common/script.js', $block_path . 'script.js' );
+			copy( $cli_path . '/common/template-slug-script.js', $block_path . 'template-slug-script.js' );
 		}
 
 		/**
@@ -273,7 +276,7 @@ class AQUAMIN_CLI {
 
 			// copy the inner blocks directory
 			$template_inner_dir = 'block-inner';
-			$block_inner_path = $block_path . $inner_block[ 'inner_block_slug' ][ 0 ] . '/';
+			$block_inner_path = $block_path . $inner_slug . '/';
 			$wp_filesystem->mkdir( $block_inner_path );
 			copy_dir( $cli_path . $template_inner_dir, $block_inner_path );
 			
@@ -287,9 +290,23 @@ class AQUAMIN_CLI {
 					}
 					file_put_contents( $file, $str );
 				}
+			}			
+
+		}
+
+		// loop through the block's directory and replace temporary prefix names
+		foreach( new RecursiveIteratorIterator( $block_files ) as $file ) {
+			if ( is_file( $file ) ) {
+				$file_name = basename( $file );
+				if ( 'template-slug' === substr( $file_name, 0, 13 ) ) {
+					$new_file = str_replace( 'template-slug', $slug, $file );
+					rename( $file, $new_file );
+				} elseif ( 'template-item-slug' === substr( $file_name, 0, 18 ) ) {
+					$new_file = str_replace( 'template-item-slug', $inner_slug, $file );
+					rename( $file, $new_file );
+				}
 			}
-		
-		} 
+		}
 
 		// report
 		WP_CLI::success( 'Block created' );

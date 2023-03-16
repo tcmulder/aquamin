@@ -23,7 +23,7 @@ All sites are built out of a collection of components, and aquamin capitalizes o
 
 Much like blocks, each component is it's own self-contained directory (with a few global exceptions) where you'll handle all development for that particular piece of the site (it may help to read [aquamin's block philosophy](/aquamin/features/block-configuration/#aquamins-block-philosophy) for more on that).
 
-But, there's a lot more variety to components than blocks, so aquamin keeps things flexible and mostly manual. The main thing to keep in mind is that aquamin automatically includes all `style.css` styling on the front-end, all `editor.css` styling in the block editor's back-end, all `script.js` JavaScript on the front-end, and your HTML/PHP should go in `markup.php` files (you'll need to manually include them with `get_template_part()` where they're needed). Just name the files within your components accordingly.
+But, there's a lot more variety to components than blocks, so aquamin keeps things flexible and mostly manual. The main thing to keep in mind is that aquamin automatically includes all `style.css` styling on the front-end, all `editor.css` styling in the block editor's back-end, all `script.js` JavaScript on the front-end, and your HTML/PHP should go in `markup.php` files (you'll need to manually include them with `get_template_part()` where they're needed). Just name the files within your components accordingly. Note you can also add a prefix to these files, like `main-menu-script.js` for example, to make debugging more convenient.
 
 ## Examples
 
@@ -33,13 +33,13 @@ A good example component is the `aquamin/components/component-library/menu` comp
 📂 components
  ┗ 📂 component-library
    ┗ 📂 menu          // the component's unique name
-     ┣ 📄 markup.php  // html for the component (this one is included from header.php) 
-     ┣ 📄 script.js   // javascript for activating the mobile navigation, etc.
-     ┗ 📄 style.css   // styling for the navigation
+     ┣ 📄 menu-markup.php  // html for the component (this one is included from header.php) 
+     ┣ 📄 menu-script.js   // javascript for activating the mobile navigation, etc.
+     ┗ 📄 menu-style.css   // styling for the navigation
 ```
 {: .short-line-height }
 
-Notice that within the normal WordPress `header.php` template, we use `get_template_part()` to grab the `markup.php` file shown here: that lets us have all files associated with the navigation component within this single component directory.
+Notice that within the normal WordPress `header.php` template, we use `get_template_part()` to grab the `menu-markup.php` file shown here: that lets us have all files associated with the navigation component within this single component directory.
 
 For convenience, you can also include features here that don't quite fit the "component" concept in a traditional sense. Take WordPress styling overrides for instance:
 
@@ -47,12 +47,12 @@ For convenience, you can also include features here that don't quite fit the "co
 📂 components
  ┗ 📂 component-library
    ┗ 📂 wp-overrides  // the "component's" unique name
-     ┣ 📄 editor.css  // wp styling overrides within the block editor
-     ┗ 📄 style.css   // wp styling overrides for front-end
+     ┣ 📄 wp-editor.css  // wp styling overrides within the block editor
+     ┗ 📄 wp-style.css   // wp styling overrides for front-end
 ```
 {: .short-line-height }
 
-Here, we add some styling to the front-end (`style.css`) and block editor (`editor.css`).
+Here, we add some styling to the front-end (`wp-style.css`) and block editor (`wp-editor.css`).
 
 ## Directory Structure
 
@@ -97,3 +97,8 @@ If a component requires images, you should create an `aquamin/components/compone
 {: .no_toc }
 
 Usually, Parcel will import all images as a simple path, including SVGs. If you would instead like to import your SVG images inline, you can name them like `*.inline.svg`, and Parcel will handle the inlining for you. For example, you'll notice each block has an `icon.inline.svg` image file is already set up in this manner for block icons (feel free to update these with your own custom icons!).
+
+### Static Assets
+{: .no_toc }
+
+You may want to include static assets in the `/aquamin/dist/` directory, like I often do for a `theme.sprite.svg` file that contains reusable logos, social icons, etc. You can add these files within the `/aquamin/components/assets/` directory, and any time you run `npm run build` they will be copied into `/aquamin/dist/components/assets/`. Note that `npm run start` ignores these files, so you will need to rerun the build if you make changes.

@@ -5,13 +5,13 @@
  * the theme's major styling features,
  * wrapped within .editor-styles-wrapper.
  */
-@import "../components/global/style.css";
-@import "../components/normalize/style.css";
+@import "../components/global/global-style.css";
+@import "../components/normalize/normalize-style.css";
 
 /**
  * Import theme stylesheets for editor into the editor
  */
-@import "../components/component-library/*/editor.css";
+@import "../components/component-library/*/*editor.css";
 
 /**
  * (optional) Import theme front-end stylesheets into the block editor
@@ -22,7 +22,7 @@
  * editor. Use at your own risk, or feel free to manually add a
  * list of imports for specific theme front-end components here.
  */
-/* @import "../components/component-library/* /style.css"; */
+/* @import "../components/component-library/* /*style.css"; */
 
 /**
    * Global block styling and WordPress block overrides.

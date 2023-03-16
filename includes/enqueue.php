@@ -2,7 +2,7 @@
 
 function aquamin_cache_break(  $path )  {
 	// break cache automatically via file save timestamp
-	return @filemtime( $path );
+	return file_exists( $path ) ? @filemtime( $path ) : 1;
 	// /* or... hardcode cache break */ return '1';
 }
 

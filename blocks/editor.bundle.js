@@ -7,10 +7,10 @@ import './editor.css';
 /**
  * UI component overrides.
  */
-import './ui/*/editor.css';
+import './ui/*/*editor.css';
 
 /**
  * Individual blocks (editor)
  */
-import './block-library/*/index.js';
-import './block-library/*/editor.css';
+import './block-library/*/*index.js';
+import './block-library/*/*editor.css';
