@@ -97,3 +97,8 @@ If a component requires images, you should create an `aquamin/components/compone
 {: .no_toc }
 
 Usually, Parcel will import all images as a simple path, including SVGs. If you would instead like to import your SVG images inline, you can name them like `*.inline.svg`, and Parcel will handle the inlining for you. For example, you'll notice each block has an `icon.inline.svg` image file is already set up in this manner for block icons (feel free to update these with your own custom icons!).
+
+### Static Assets
+{: .no_toc }
+
+You may want to include static assets in the `/aquamin/dist/` directory, like I often do for a `theme.sprite.svg` file that contains reusable logos, social icons, etc. You can add these files within the `/aquamin/components/assets/` directory, and any time you run `npm run build` they will be copied into `/aquamin/dist/components/assets/`. Note that `npm run start` ignores these files, so you will need to rerun the build if you make changes.
