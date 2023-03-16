@@ -9,7 +9,7 @@ register_block_type_from_metadata(
 		'render_callback' => function( $attributes, $content, $block ) {
 			ob_start();
 			get_template_part(
-				'blocks/block-library/' . basename( __DIR__ ) . '/markup',
+				'blocks/block-library/' . basename( __DIR__ ) . '/template-slug-markup',
 				null,
 				[
 					'attributes' => $attributes,

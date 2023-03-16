@@ -1,7 +1,7 @@
 /**
  * Responsive device faux hiding
  */
-@import "./style.css";
+@import "./*style.css";
 
 /* hide anything phone and below */
 .hide-bp-sm {

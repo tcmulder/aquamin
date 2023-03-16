@@ -100,8 +100,9 @@ class AQUAMIN_CLI {
 			$assoc_args[ 'block_slug' ] ?? $this->ask( "Slug [$guess]:", $guess ),
 			'template-slug',
 		);
+		$slug = $block[ 'block_slug' ][ 0 ];
 		
-		$guess = $block[ 'block_slug' ][ 0 ];
+		$guess = $slug;
 		$block[ 'block_dir' ] = array(
 			$assoc_args[ 'block_dir' ] ?? $this->ask( "Directory [$guess]:", $guess ),
 			'_template-block',
@@ -182,7 +183,7 @@ class AQUAMIN_CLI {
 		} else {
 			$template_dir = 'block';
 		}
-		$block_path = $library_path . $block[ 'block_slug' ][ 0 ] . '/';
+		$block_path = $library_path . $slug . '/';
 		
 		/**
 		 * Create plugin directory
@@ -195,7 +196,7 @@ class AQUAMIN_CLI {
 
 		// if we have front-end scripts
 		if ( $has_js ) {
-			copy( $cli_path . '/common/script.js', $block_path . 'script.js' );
+			copy( $cli_path . '/common/template-slug-script.js', $block_path . 'template-slug-script.js' );
 		}
 
 		/**
@@ -287,9 +288,20 @@ class AQUAMIN_CLI {
 					}
 					file_put_contents( $file, $str );
 				}
+			}			
+
+		}
+
+		// loop through the block's directory and replace temporary prefix names
+		foreach( new RecursiveIteratorIterator( $block_files ) as $file ) {
+			if ( is_file( $file ) ) {
+				$file_name = basename( $file );
+				if ( 'template-slug' === substr( $file_name, 0, 13 ) ) {
+					$new_file = str_replace( 'template-slug', $slug, $file );
+					rename( $file, $new_file );
+				}
 			}
-		
-		} 
+		}
 
 		// report
 		WP_CLI::success( 'Block created' );

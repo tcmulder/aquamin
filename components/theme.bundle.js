@@ -11,8 +11,8 @@ import './theme.css';
 /**
  * Individual components
  */
-import './component-library/*/script.js';
-import './component-library/*/style.css';
+import './component-library/*/*script.js';
+import './component-library/*/*style.css';
 
 /**
  * Stuff we don't wanna talk about...
@@ -20,4 +20,4 @@ import './component-library/*/style.css';
  * See file for notes. Added here to be last
  * in cascade.
  */
-import './shame/style.css';
+import './shame/shame-style.css';
