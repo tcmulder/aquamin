@@ -84,6 +84,79 @@ function aquamin_disambiguate() {
 	// return it
 	return $unique_number;
 }
+
+/**
+ * Add custom scripts
+ * 
+ * Adds fields for adding custom embed scripts at
+ * ...</head>, <body>..., and/or ...</body>. Options
+ * page available under Settings > Custom Scripts.
+ * 
+ * Supports shortcodes, so you could create a shortcode
+ * for excluding a specific post type, list of page
+ * IDS, etc. if necessary.
+ */
+
+// create the settings page
+add_action( 'admin_menu', 'aquamin_create_custom_scripts_options_page' );
+function aquamin_create_custom_scripts_options_page() {
+	add_options_page( __( 'Custom Scripts', 'aquamin' ), __( 'Custom Scripts', 'aquamin' ), 'administrator', __FILE__, function() {
+		ob_start();
+			settings_fields('aquamin_custom_scripts');
+		$fields = ob_get_clean();
+		ob_start();
+			do_settings_sections(__FILE__);
+		$section = ob_get_clean();
+		printf(
+			'<form method="post" action="options.php" enctype="multipart/form-data">
+				%s%s
+				<input name="Submit" type="submit" class="button-primary" value="%s" />
+			</form>',
+			$fields,
+			$section,
+			__( 'Save Changes', 'aquamin' )
+		);
+	});
+}
+
+// register custom script fields
+add_action( 'admin_init', 'aquamin_register_custom_scripts_fields' );
+function aquamin_register_custom_scripts_fields() {
+	register_setting( 'aquamin_custom_scripts', 'aquamin_custom_scripts', null ) ;
+	add_settings_section('main_section', 'Custom Scripts', function() {
+		printf( '<p>%s</p>', __( 'Embed scripts in the site header, body, or footer.' ) );
+	}, __FILE__);
+	add_settings_field( 'aquamin_custom_scripts_closing_header', 'Before closing &lt;/head&gt;', function() {
+		$options = get_option( 'aquamin_custom_scripts' );
+		$code = $options['aquamin_custom_scripts_closing_header'] ?? '';
+		echo '<textarea name="aquamin_custom_scripts[aquamin_custom_scripts_closing_header]" rows="10" cols="60" type="textarea">' . $code . '</textarea>';
+	}, __FILE__, 'main_section');
+	add_settings_field( 'aquamin_custom_scripts_opening_body', 'Before opening &lt;body&gt;', function() {
+		$options = get_option( 'aquamin_custom_scripts' );
+		$code = $options['aquamin_custom_scripts_opening_body'] ?? '';
+		echo '<textarea name="aquamin_custom_scripts[aquamin_custom_scripts_opening_body]" rows="10" cols="60" type="textarea">' . $code . '</textarea>';
+	}, __FILE__, 'main_section');
+	add_settings_field( 'aquamin_custom_scripts_closing_body', 'Before closing &lt;/body&gt;', function() {
+		$options = get_option( 'aquamin_custom_scripts' );
+		$code = $options['aquamin_custom_scripts_closing_body'] ?? '';
+		echo '<textarea name="aquamin_custom_scripts[aquamin_custom_scripts_closing_body]" rows="10" cols="60" type="textarea">' . $code . '</textarea>';
+	}, __FILE__, 'main_section');
+}
+
+// add code to appropriate places in theme
+add_action( 'wp_head', function() {
+	$options = get_option( 'aquamin_custom_scripts' );
+	echo do_shortcode( $options['aquamin_custom_scripts_closing_header'] ?? '' );
+}, 99 );
+add_action( 'wp_body_open', function() {
+	$options = get_option( 'aquamin_custom_scripts' );
+	echo do_shortcode( $options['aquamin_custom_scripts_opening_body'] ?? '' );
+}, 99 );
+add_action( 'wp_footer', function() {
+	$options = get_option( 'aquamin_custom_scripts' );
+	echo do_shortcode( $options['aquamin_custom_scripts_closing_body'] ?? '' );
+}, 99 );
+
 /**
  * Add pagination.
  *
