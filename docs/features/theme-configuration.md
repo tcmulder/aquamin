@@ -105,4 +105,4 @@ Usually, Parcel will import all images as a simple path, including SVGs. If you 
 ### Static Assets
 {: .no_toc }
 
-You may want to include static assets in the `/aquamin/dist/` directory, like I often do for a `theme.sprite.svg` file that contains reusable logos, social icons, etc. You can add these files within the `/aquamin/components/assets/` directory, and any time you run `npm run build` they will be copied into `/aquamin/dist/components/assets/`. Note that `npm run start` ignores these files, so you will need to rerun the build if you make changes.
+You may want to include static assets in the `/aquamin/dist/` directory, like I often do for a `theme.sprite.svg` file that contains reusable logos, social icons, etc. You can add these files within the `/aquamin/components/assets/` directory, and any time you run `npm run build` they will be copied into `/aquamin/dist/components/assets/`. Note that `npm run start` ignores changes to these files, so you will need to rerun the build if you make changes.

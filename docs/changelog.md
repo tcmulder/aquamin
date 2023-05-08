@@ -15,6 +15,7 @@ search_exclude: true
 * Change wp cli `wp aquamin block` command to be `wp aquamin create block` so it makes more sense.
 * Added new wp cli `wp aquamin create component` command to create basic components.
 * Added new EntitySelector block UI component (useful for associating posts, terms, etc. to a block).
+* Added new/improved npm clean and static asset copying.
 
 ## 4.2.0 - March 16 2023
 * Added ability to prefix common files, e.g. footer-style.css rather than just style.css (makes debugging easier).
