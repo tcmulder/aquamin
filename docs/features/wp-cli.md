@@ -12,9 +12,13 @@ parent: Features
 
 Aquamin has some [WP-CLI](https://developer.wordpress.org/cli/commands/){: target="_blank"} commands built in to make common development tasks easy.
 
-# `wp aquamin block`
+# `wp aquamin create block`
 
 This command scaffolds a new block for you, walking you through a series of prompts to name your block and generate its files. You'll end up with a new directory within `aquamin/blocks/block-library/` that contains all your block files, ready for you to customize (learn more about [blocks in aquamin](/aquamin/features/block-configuration/)).
+
+# `wp aquamin create component`
+
+This command scaffolds a new component for you, letting you name the component and choose what files it should include. You'll end up with a new directory within `aquamin/components/component-library/` that contains all your component files, properly enqueued and ready to use. Note you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file, if you chose to include PHP.
 
 # `wp aquamin setup`
  

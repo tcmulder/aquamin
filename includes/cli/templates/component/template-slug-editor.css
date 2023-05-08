@@ -1,0 +1,7 @@
+/**
+ * template-title editor styling
+ *
+ * This file is for CSS admin overrides only.
+ * Use style.css for shared theme/editor styling.
+ */
+@import "./*style.css";
