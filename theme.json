@@ -68,7 +68,7 @@
 				},
 				{
 					"slug": "p",
-					"size": "var(--fs-body, 16px)",
+					"size": "var(--fs-normal, 16px)",
 					"name": "Normal (p)"
 				},
 				{
