@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.1.1" created="2023-02-09 14:25" -->
+<!-- generator="WordPress/6.2" created="2023-05-08 23:18" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>http://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Thu, 09 Feb 2023 14:25:07 +0000</pubDate>
+<pubDate>Mon, 08 May 2023 23:18:47 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>
@@ -36,7 +36,7 @@
   <wp:author_first_name><![CDATA[]]></wp:author_first_name>
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
 </wp:author>
-<generator>https://wordpress.org/?v=6.1.1</generator>
+<generator>https://wordpress.org/?v=6.2</generator>
 <item>
   <title><![CDATA[➠ Payground]]></title>
   <link>http://aquamin.aquamarine.test/all-the-things/payground/</link>
@@ -46,13 +46,21 @@
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
 <p class="">You can use this pattern for just trying random things out. Think of it sort of like an Etch A Sketch: play around with creating something, then wipe it clean once you're done so you can use it for a different something later.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:aquamin/my-block -->
+<div class="wp-block-aquamin-my-block my-block"><b>(remove this demo attribute)</b></div>
+<!-- /wp:aquamin/my-block -->
+
+<!-- wp:paragraph -->
+<p class="">...</p>
 <!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>7</wp:post_id>
   <wp:post_date>2022-10-03 23:49:57</wp:post_date>
   <wp:post_date_gmt>2022-10-03 23:49:57</wp:post_date_gmt>
-  <wp:post_modified>2022-10-03 23:49:57</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-03 23:49:57</wp:post_modified_gmt>
+  <wp:post_modified>2023-03-16 16:57:27</wp:post_modified>
+  <wp:post_modified_gmt>2023-03-16 16:57:27</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>payground</wp:post_name>
