@@ -124,7 +124,8 @@ add_action( 'admin_init', 'aquamin_register_custom_scripts_fields' );
 function aquamin_register_custom_scripts_fields() {
 	register_setting( 'aquamin_custom_scripts', 'aquamin_custom_scripts', null ) ;
 	add_settings_section('main_section', 'Custom Scripts', function() {
-		printf( '<p>%s</p>', __( 'Embed scripts in the site header, body, or footer.' ) );
+		printf( '<p>%s</p>', __( 'Embed scripts on the front-end of the website.', 'aquamin' ) );
+		printf( '<div class="update-nag notice notice-warning inline">%s</div>', __( 'WARNING: be very carful changing these settings, or you could break your site.', 'aquamin' ) );
 	}, __FILE__);
 	add_settings_field( 'aquamin_custom_scripts_closing_header', 'Before closing &lt;/head&gt;', function() {
 		$options = get_option( 'aquamin_custom_scripts' );

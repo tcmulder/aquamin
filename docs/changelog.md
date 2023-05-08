@@ -10,6 +10,9 @@ search_exclude: true
 
 # Changelog
 
+## 4.3.0 - May 8 2023
+* Add custom embed scripts option page under Settings > Custom Scripts.
+
 ## 4.2.0 - March 16 2023
 * Added ability to prefix common files, e.g. footer-style.css rather than just style.css (makes debugging easier).
 * Added static components/assets folder that copies into the dist directory on build.
