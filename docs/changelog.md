@@ -11,9 +11,10 @@ search_exclude: true
 # Changelog
 
 ## 4.3.0 - May 8 2023
-* Add custom embed scripts option page under Settings > Custom Scripts.
+* Added custom embed scripts option page under Settings > Custom Scripts.
 * Change wp cli `wp aquamin block` command to be `wp aquamin create block` so it makes more sense.
-* Add new wp cli `wp aquamin create component` command to create basic components.
+* Added new wp cli `wp aquamin create component` command to create basic components.
+* Added new EntitySelector block UI component (useful for associating posts, terms, etc. to a block).
 
 ## 4.2.0 - March 16 2023
 * Added ability to prefix common files, e.g. footer-style.css rather than just style.css (makes debugging easier).
