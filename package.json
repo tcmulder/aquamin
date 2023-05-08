@@ -27,6 +27,7 @@
 			"customMedia": true
 		}
 	},
+	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"devDependencies": {
 		"@babel/core": "^7.19.6",
 		"@babel/eslint-parser": "^7.19.1",
