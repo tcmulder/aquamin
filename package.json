@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"start": "npm-run-all --parallel builder server",
-		"build": "npm run clean && parcel build ./*/*.bundle.js --no-cache && npm run build:post",
+		"build": "npm run clean && parcel build ./*/*.bundle.js --no-cache && npm run build:assets",
 		"build:assets": "del ./dist/assets/* && ncp ./components/assets ./dist/assets --filter '**/*.*'",
 		"server": "browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
 		"docs:server": "browser-sync start --no-open --proxy='http://127.0.0.1:4001/aquamin/' --files='./docs/'",
