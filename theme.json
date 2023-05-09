@@ -2,30 +2,44 @@
 	"version": 2,
 	"settings": {
 		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
 		"layout": {
 			"type": "constrained",
 			"contentSize": "var(--w-m)",
 			"wideSize": "var(--w-l)"
 		},
-		"useRootPaddingAwareAlignments": true,
+		"styles": {
+			"spacing": {
+				"padding": {
+					"right": "var(--gutter)",
+					"left": "var(--gutter)"
+				},
+				"blockGap": null
+			}
+		},
 		"spacing": {
 			"blockGap": false,
 			"units": ["%", "px", "em", "rem", "vh", "vw"],
 			"spacingSizes": [
 				{
-					"size": "clamp(1rem, 3vw, 2rem)",
+					"size": "var(--sp-rem-s)",
+					"slug": "10",
+					"name": "Small"
+				},
+				{
+					"size": "var(--gutter)",
 					"slug": "20",
-					"name": "1"
+					"name": "Gutter"
 				},
 				{
-					"size": "clamp(2.5rem, 7vw, 5rem)",
+					"size": "clamp(var(--sp-rem), 6vw, var(--sp-rem-m))",
 					"slug": "50",
-					"name": "2"
+					"name": "Medium"
 				},
 				{
-					"size": "clamp(6rem, 15vw, 15rem)",
+					"size": "clamp(var(--sp-rem-m), 15vw, var(--sp-rem-l))",
 					"slug": "80",
-					"name": "3"
+					"name": "Large"
 				}
 			]
 		},
@@ -107,15 +121,6 @@
 					"name": "White"
 				}
 			]
-		}
-	},
-	"styles": {
-		"spacing": {
-			"padding": {
-				"right": "var(--gutter)",
-				"left": "var(--gutter)"
-			},
-			"blockGap": null
 		}
 	}
 }

@@ -21,6 +21,7 @@ search_exclude: true
 * Added smarter --sp spacing variables.
 * Added password protected pattern and remove older year block pattern from wp cli `wp aquamin setup` command.
 * Fixed bug with missing block category.
+* Overhauled layouts to match back-end more closely.
 
 ## 4.2.0 - March 16 2023
 * Added ability to prefix common files, e.g. footer-style.css rather than just style.css (makes debugging easier).

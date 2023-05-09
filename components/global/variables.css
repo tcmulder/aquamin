@@ -21,10 +21,10 @@
 	--ff-2: var(--ff-2);
 
 	/* layout */
-	--sp-raw-s: 15;		--sp-s:calc((var(--sp-raw-s)/var(--fs))*1em);--sp-rem-s:calc((var(--sp-raw-s)/var(--fs))*1rem);
+	--sp-raw-s: 10;		--sp-s:calc((var(--sp-raw-s)/var(--fs))*1em);--sp-rem-s:calc((var(--sp-raw-s)/var(--fs))*1rem);
 	--sp-raw: 24;		--sp:calc((var(--sp-raw)/var(--fs))*1em);--sp-rem:calc((var(--sp-raw)/var(--fs))*1rem);
-	--sp-raw-m: 50;		--sp-m:calc((var(--sp-raw-m)/var(--fs))*1em);--sp-rem-m:calc((var(--sp-raw-m)/var(--fs))*1rem);
-	--sp-raw-l: 64;		--sp-l:calc((var(--sp-raw-l)/var(--fs))*1em);--sp-rem-l:calc((var(--sp-raw-l)/var(--fs))*1rem);
+	--sp-raw-m: 75;		--sp-m:calc((var(--sp-raw-m)/var(--fs))*1em);--sp-rem-m:calc((var(--sp-raw-m)/var(--fs))*1rem);
+	--sp-raw-l: 150;		--sp-l:calc((var(--sp-raw-l)/var(--fs))*1em);--sp-rem-l:calc((var(--sp-raw-l)/var(--fs))*1rem);
 
 	--w: var(--w-m);
 	--w-s: 960px;

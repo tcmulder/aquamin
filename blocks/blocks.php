@@ -200,3 +200,32 @@ add_action( 'after_setup_theme', function() {
 add_action( 'admin_menu', function() {
     add_menu_page( __( 'Reusable Blocks', 'aquamin' ), __( 'Reusable Blocks', 'aquamin' ), 'edit_posts', 'edit.php?post_type=wp_block', '', 'dashicons-editor-table', 22 );
 } );
+
+/**
+ * Ugly hack to set correct root editor container classes
+ * 
+ * Setting settings.useRootPaddingAwareAlignments to true and settings.layout.type to
+ * "constrained" should result in these classes being added properly, but it does not.
+ * So, we add them manually. This allows front- and back-end layouts to match, since
+ * both containers are wrapped with the same classes.
+ * 
+ * @see https://stackoverflow.com/questions/75912533/has-global-padding-not-added-to-is-root-container-in-wordpress
+ */
+add_action('admin_footer-post.php', 'aquamin_root_editor_container_fix'); // Fired on post edit page
+add_action('admin_footer-post-new.php', 'aquamin_root_editor_container_fix'); // Fired on add new post page
+function aquamin_root_editor_container_fix() {
+    echo "<script>
+		window.addEventListener('load', function() {
+			var rootFix = document.querySelector('.is-root-container');
+			if (rootFix) {
+				if (!rootFix.classList.contains('has-global-padding')) {
+					rootFix.classList.remove('is-layout-flow');
+					rootFix.classList.add('has-global-padding');
+					rootFix.classList.add('is-layout-constrained');
+				} else {
+					console.log('The theme is now adding .has-global-padding properly: you may remove this patch.');
+				}
+			}
+		});
+	</script>";
+};
