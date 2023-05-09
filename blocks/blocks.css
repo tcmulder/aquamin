@@ -1,3 +1,10 @@
 /**
  * Common block styling shared with editor and theme.
  */
+
+/**
+ * Core block overrides
+ */
+.wp-block-cover {
+	padding: var(--gutter);
+}

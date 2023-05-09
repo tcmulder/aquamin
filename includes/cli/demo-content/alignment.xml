@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.2" created="2023-05-09 20:28" -->
+<!-- generator="WordPress/6.2" created="2023-05-09 21:52" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>http://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Tue, 09 May 2023 20:28:10 +0000</pubDate>
+<pubDate>Tue, 09 May 2023 21:52:58 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>
@@ -218,8 +218,8 @@
 <h3 class="wp-block-heading"><em>If you want to have the padding internally, too, you can manually apply it, so</em>...</h3>
 <!-- /wp:heading -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|10","left":"var:preset|spacing|10"}}},"backgroundColor":"0-000","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-000-background-color has-background" style="padding-right:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"backgroundColor":"0-000","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-000-background-color has-background" style="padding-right:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading has-0-000-color has-0-900-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
@@ -527,8 +527,8 @@
   <wp:post_id>10</wp:post_id>
   <wp:post_date>2022-10-04 00:03:42</wp:post_date>
   <wp:post_date_gmt>2022-10-04 00:03:42</wp:post_date_gmt>
-  <wp:post_modified>2023-05-09 20:27:01</wp:post_modified>
-  <wp:post_modified_gmt>2023-05-09 20:27:01</wp:post_modified_gmt>
+  <wp:post_modified>2023-05-09 21:08:44</wp:post_modified>
+  <wp:post_modified_gmt>2023-05-09 21:08:44</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>alignment</wp:post_name>

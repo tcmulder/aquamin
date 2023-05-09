@@ -11,3 +11,53 @@
 		padding-right: 0;
 	}
 }
+
+/* pull alignfull elements outside containers that use default left/right padding sizes */
+[style*="padding-left:var(--wp--preset--spacing--10)"] {
+	--pl: var(--wp--preset--spacing--10);
+	& > .alignfull {
+		margin-left: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-right:var(--wp--preset--spacing--10)"] {
+	--pl: var(--wp--preset--spacing--10);
+	& > .alignfull {
+		margin-right: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-left:var(--wp--preset--spacing--20)"] {
+	--pl: var(--wp--preset--spacing--20);
+	& > .alignfull {
+		margin-left: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-right:var(--wp--preset--spacing--20)"] {
+	--pl: var(--wp--preset--spacing--20);
+	& > .alignfull {
+		margin-right: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-left:var(--wp--preset--spacing--50)"] {
+	--pl: var(--wp--preset--spacing--50);
+	& > .alignfull {
+		margin-left: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-right:var(--wp--preset--spacing--50)"] {
+	--pl: var(--wp--preset--spacing--50);
+	& > .alignfull {
+		margin-right: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-left:var(--wp--preset--spacing--80)"] {
+	--pl: var(--wp--preset--spacing--80);
+	& > .alignfull {
+		margin-left: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-right:var(--wp--preset--spacing--80)"] {
+	--pl: var(--wp--preset--spacing--80);
+	& > .alignfull {
+		margin-right: calc(-1 * var(--pl));
+	}
+}
