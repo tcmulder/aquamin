@@ -377,14 +377,14 @@ class AQUAMIN_CLI {
 					'path' => $block_path . 'index.php',
 					'replace' =><<< EOD
 					// register the block
-					register_block_type_from_metadata( dirname( __FILE__ ) );
+					register_block_type_from_metadata( __DIR__ );
 					EOD,
 					'with' =><<< EOD
 					// register the block
-					register_block_type_from_metadata( dirname( __FILE__ ) );
+					register_block_type_from_metadata( __DIR__ );
 
 					// register inner blocks
-					register_block_type_from_metadata( dirname( __FILE__ ) . '/template-item-slug' );
+					register_block_type_from_metadata( __DIR__ . '/template-item-slug' );
 					EOD
 				),
 				array(
