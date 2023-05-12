@@ -1,6 +1,6 @@
 {
 	"name": "aquamin",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"description": "Parcel build tool for Aquamarine",
 	"private": true,
 	"engines": {
@@ -10,14 +10,15 @@
 	"scripts": {
 		"start": "npm-run-all --parallel builder server",
 		"build": "npm run clean && parcel build ./*/*.bundle.js --no-cache && npm run build:post",
-		"build:post": "ncp ./components/assets ./dist/assets --filter '**/*.*'",
+		"build:post": "npm run build:assets; npm run lint",
+		"build:assets": "del ./dist/assets/* && ncp ./components/assets ./dist/assets --filter '**/*.*'",
 		"server": "browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
 		"docs:server": "browser-sync start --no-open --proxy='http://127.0.0.1:4001/aquamin/' --files='./docs/'",
 		"docs": "cd ./docs; jekyll serve --config _config_local.yml --port 4001",
 		"builder": "parcel watch ./*/*.bundle.js",
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix",
-		"clean": "rm -rf ./.parcel-cache"
+		"lint": "eslint ./blocks ./components",
+		"lint:fix": "eslint ./blocks ./components --fix",
+		"clean": "del ./.parcel-cache/*"
 	},
 	"author": "@tcmulder",
 	"license": "ISC",
@@ -27,6 +28,7 @@
 			"customMedia": true
 		}
 	},
+	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"devDependencies": {
 		"@babel/core": "^7.19.6",
 		"@babel/eslint-parser": "^7.19.1",
@@ -41,6 +43,7 @@
 		"@wordpress/icons": "^9.11.0",
 		"browser-sync": "^2.27.10",
 		"classnames": "^2.3.2",
+		"del-cli": "^5.0.0",
 		"eslint": "^8.26.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-airbnb-typescript": "^17.0.0",
@@ -52,7 +55,7 @@
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-react": "^7.31.10",
 		"eslint-plugin-react-hooks": "^4.6.0",
-		"ncp": "2.0.0",
+		"ncp": "^2.0.0",
 		"npm-run-all": "^4.1.5",
 		"parcel": "^2.7.0",
 		"prettier": "^2.7.1",

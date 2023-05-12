@@ -32,6 +32,137 @@ class AQUAMIN_CLI {
     }
 
 	/**
+	 * Creates a component
+	 * 
+     * ## OPTIONS
+	 * 
+	 * Note: leave these blank to enter interactive mode where you'll be asked to enter each value.
+     *
+	 * [--component_title] 
+	 * : Set title.
+	 * 
+	 * [--component_slug] 
+	 * : Set slug.
+	 * 
+	 * [--component_dir] 
+	 * : Set directory.
+     *
+     * ## EXAMPLES
+     *
+     * wp aquamin component
+	 *
+	 * @param array $modules 
+     * @param array $assoc_args 
+	 */
+	public function create_component( $args, $assoc_args ) {
+		
+		/**
+		 * Exit if we can't edit the filesystem
+		 */
+		if ( ! WP_Filesystem() ) {
+			WP_CLI::error( 'Unable to access filesystem' );
+			exit;
+		}
+		
+		/**
+		 * Request component details
+		 */
+		$component = array();
+		
+		$title = 'My Component';
+		$guess = $title;
+		$component[ 'component_title' ] = array(
+			$assoc_args[ 'component_title' ] ?? $this->ask( "Title [$guess]:", $guess ),
+			'template-title',
+		);
+		$title = $component[ 'component_title' ][ 0 ];
+		
+		$guess = sanitize_title( $title );
+		$component[ 'component_slug' ] = array(
+			$assoc_args[ 'component_slug' ] ?? $this->ask( "Slug [$guess]:", $guess ),
+			'template-slug',
+		);
+		$slug = $component[ 'component_slug' ][ 0 ];
+		
+		$guess = $slug;
+		$component[ 'component_dir' ] = array(
+			$assoc_args[ 'component_dir' ] ?? $this->ask( "Directory [$guess]:", $guess ),
+			'_template-component',
+		);
+
+		$exclude = array();
+
+		$ask_admin_css = $this->ask('Has admin CSS? [y/N]');
+		$exclude['admin_css'] = strtolower( $ask_admin_css ?? '' ) === 'y' ? false : 'template-slug-editor.css';
+		
+		$ask_js = $this->ask('Has front-end JavaScript? [y/N]');
+		$exclude['js'] = strtolower( $ask_js ?? '' ) === 'y' ? false : 'template-slug-script.js';
+
+		$ask_template_part = $this->ask('Has get_template_part() PHP? [y/N]');
+		$exclude['template_part'] = strtolower( $ask_template_part ?? '' ) === 'y' ? false : 'template-slug-markup.php';
+
+		/**
+		 * Identify paths/dirs
+		 * 
+		 * Note: all paths end with a trailing /
+		 */
+		$template_path = get_template_directory();
+		$library_path = $template_path . '/components/component-library/';
+		$cli_path = $template_path . '/includes/cli/templates/';
+		$template_dir = 'component';
+		$component_path = $library_path . $slug . '/';
+		
+		/**
+		 * Create plugin directory
+		 */
+		global $wp_filesystem;
+		$wp_filesystem->mkdir( $component_path );
+
+		// duplicate template's files
+		copy_dir( $cli_path . $template_dir, $component_path );
+
+		// remove things we're not using
+		foreach( $exclude as $filename ) {
+			if ( $filename && file_exists( $component_path . $filename ) ) {
+				unlink( $component_path . $filename );
+			}
+		}
+
+		/**
+		 * Find and replace strings
+		 */
+		$component_files = new RecursiveDirectoryIterator( $component_path );
+		// loop through new component's directory
+		foreach( new RecursiveIteratorIterator( $component_files ) as $file ) {
+			// perform find and replace
+			if ( is_file( $file ) ) {
+				$str = file_get_contents( $file );
+				foreach ( $component as $key => $value ) {
+					$str = str_replace( $value[ 1 ], $value[ 0 ], $str);
+				}
+				file_put_contents( $file, $str );
+			}
+		}
+
+		// loop through the component's directory and replace file prefixes
+		foreach( new RecursiveIteratorIterator( $component_files ) as $file ) {
+			if ( is_file( $file ) ) {
+				$file_name = basename( $file );
+				if ( 'template-slug' === substr( $file_name, 0, 13 ) ) {
+					$new_file = str_replace( 'template-slug', $slug, $file );
+					rename( $file, $new_file );
+				} elseif ( 'template-item-slug' === substr( $file_name, 0, 18 ) ) {
+					$new_file = str_replace( 'template-item-slug', $inner_slug, $file );
+					rename( $file, $new_file );
+				}
+			}
+		}
+
+		// report
+		WP_CLI::success( 'Component created' );
+	}
+
+	/**
 	 * Creates a block
 	 * 
      * ## OPTIONS
@@ -67,12 +198,12 @@ class AQUAMIN_CLI {
      *
      * ## EXAMPLES
      *
-     * wp aquamin block
+     * wp aquamin create block
 	 *
 	 * @param array $modules 
      * @param array $assoc_args 
 	 */
-	public function block( $args, $assoc_args ) {
+	public function create_block( $args, $assoc_args ) {
 		
 		/**
 		 * Exit if we can't edit the filesystem
@@ -246,14 +377,14 @@ class AQUAMIN_CLI {
 					'path' => $block_path . 'index.php',
 					'replace' =><<< EOD
 					// register the block
-					register_block_type_from_metadata( dirname( __FILE__ ) );
+					register_block_type_from_metadata( __DIR__ );
 					EOD,
 					'with' =><<< EOD
 					// register the block
-					register_block_type_from_metadata( dirname( __FILE__ ) );
+					register_block_type_from_metadata( __DIR__ );
 
 					// register inner blocks
-					register_block_type_from_metadata( dirname( __FILE__ ) . '/template-item-slug' );
+					register_block_type_from_metadata( __DIR__ . '/template-item-slug' );
 					EOD
 				),
 				array(
@@ -294,7 +425,7 @@ class AQUAMIN_CLI {
 
 		}
 
-		// loop through the block's directory and replace temporary prefix names
+		// loop through the block's directory and replace file prefixes
 		foreach( new RecursiveIteratorIterator( $block_files ) as $file ) {
 			if ( is_file( $file ) ) {
 				$file_name = basename( $file );
@@ -366,5 +497,7 @@ class AQUAMIN_CLI {
  */
 add_action( 'cli_init', 'aquamin_cli_register_commands' );
 function aquamin_cli_register_commands() {
-	WP_CLI::add_command( 'aquamin', 'AQUAMIN_CLI' );
+	WP_CLI::add_command( 'aquamin setup', array( 'AQUAMIN_CLI', 'setup' ) );
+	WP_CLI::add_command( 'aquamin create block', array( 'AQUAMIN_CLI', 'create_block' ) );
+	WP_CLI::add_command( 'aquamin create component', array( 'AQUAMIN_CLI', 'create_component' ) );
 }

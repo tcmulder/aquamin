@@ -1,37 +1,36 @@
 /**
  * CSS Custom Properties
  */
-
+/* prettier-ignore */
 :root {
 	/* fonts */
 	--fs: 16;
 	--fs-px: calc(var(--fs) * 1px);
 
-	--fs-h1: calc((32 / var(--fs)) * 1em);
-	--fs-h2: calc((24 / var(--fs)) * 1em);
-	--fs-h3: calc((20.8 / var(--fs)) * 1em);
-	--fs-h4: calc((16 / var(--fs)) * 1em);
-	--fs-h5: calc((12.8 / var(--fs)) * 1em);
-	--fs-h6: calc((11.2 / var(--fs)) * 1em);
-	--fs-big: calc((18 / var(--fs)) * 1em);
-	--fs-small: calc((14 / var(--fs)) * 1em);
+	--fs-h1: 	calc((32 / var(--fs)) * 1em);
+	--fs-h2: 	calc((24 / var(--fs)) * 1em);
+	--fs-h3: 	calc((20.8 / var(--fs)) * 1em);
+	--fs-h4: 	calc((16 / var(--fs)) * 1em);
+	--fs-h5: 	calc((12.8 / var(--fs)) * 1em);
+	--fs-h6: 	calc((11.2 / var(--fs)) * 1em);
+	--fs-big: 	calc((18 / var(--fs)) * 1em);
+	--fs-small:	calc((14 / var(--fs)) * 1em);
+	--fs-normal: 1em;
 
 	--ff-1: monospace, sans-serif;
 	--ff-2: var(--ff-2);
 
 	/* layout */
-	--sp-base: var(--fs);
-	--sp-rem: calc((var(--sp-base) / var(--fs)) * 1rem);
-	--sp-s: calc((16 / var(--fs)) * 1em);
-	--sp: calc((var(--sp-base) / var(--fs)) * 1em);
-	--sp-m: calc((18 / var(--fs)) * 1em);
-	--sp-l: calc((48 / var(--fs)) * 1em);
+	--sp-raw-s: 10;		--sp-s:calc((var(--sp-raw-s)/var(--fs))*1em);--sp-rem-s:calc((var(--sp-raw-s)/var(--fs))*1rem);
+	--sp-raw: 24;		--sp:calc((var(--sp-raw)/var(--fs))*1em);--sp-rem:calc((var(--sp-raw)/var(--fs))*1rem);
+	--sp-raw-m: 75;		--sp-m:calc((var(--sp-raw-m)/var(--fs))*1em);--sp-rem-m:calc((var(--sp-raw-m)/var(--fs))*1rem);
+	--sp-raw-l: 150;		--sp-l:calc((var(--sp-raw-l)/var(--fs))*1em);--sp-rem-l:calc((var(--sp-raw-l)/var(--fs))*1rem);
 
 	--w: var(--w-m);
 	--w-s: 960px;
 	--w-m: 1280px;
 	--w-l: 1440px;
-	--w-px: calc(100% - var(--sp) * 2);
+	--w-px: calc(100% - var(--gutter) * 2);
 
 	--w-normal: var(--w-m);
 	--w-wide: var(--w-l);
@@ -45,70 +44,29 @@
 	--ani-ease: ease;
 	--ani-speed: 0.3s;
 
-	/* colors: --<color>-<variant 1/2/3/etc>-<brightness 000(darkest)-900(lightest)> */
+	/* colors: --<color>-<variant>-<brightness> */
 
-	/* drab */
-	--c-raw-0-900: 0, 0%, 100%; /* white */
-	--c-raw-0-800: 0, 0%, 83%; /* lightgray */
-	--c-raw-0-500: 0, 0%, 50%; /* gray */
-	--c-raw-0-200: 0, 0%, 41%; /* dimgray */
-	--c-raw-0-000: 0, 0%, 0%; /* black */
+	/* drab (light, medium, dark) */
+	--c-raw-0-9: 0, 0%, 100%; /* white */ 			--c-0-9: hsl(var(--c-raw-0-9));
+	--c-raw-0-7: 0, 0%, 83%; /* lightgray */ 		--c-0-7: hsl(var(--c-raw-0-7));
+	--c-raw-0-5: 0, 0%, 50%; /* gray */ 			--c-0-5: hsl(var(--c-raw-0-5));
+	--c-raw-0-2: 0, 0%, 41%; /* dimgray */ 			--c-0-2: hsl(var(--c-raw-0-2));
+	--c-raw-0-0: 0, 0%, 0%; /* black */ 			--c-0-0: hsl(var(--c-raw-0-0));
 
-	/* primary */
-	--c-raw-1-800: 180, 100%, 25%; /* teal */
-	--c-raw-1-500: 160, 100%, 75%; /* aquamarine */
-	--c-raw-1-200: 180, 100%, 94%; /* lightcyan */
+	/* primary (light, medium, dark) */
+	--c-raw-1-7: 180, 100%, 94%; /* lightcyan */ 	--c-1-7: hsl(var(--c-raw-1-7));
+	--c-raw-1-5: 160, 100%, 75%; /* aquamarine */ 	--c-1-5: hsl(var(--c-raw-1-5));
+	--c-raw-1-2: 180, 100%, 25%; /* teal */ 		--c-1-2: hsl(var(--c-raw-1-2));
 
-	/* secondary */
-	--c-raw-2-800: 25, 75%, 47%; /* chocolate */
-	--c-raw-2-500: 34, 44%, 69%; /* tan */
-	--c-raw-2-200: 39, 77%, 83%; /* wheat */
+	/* secondary (light, medium, dark) */
+	--c-raw-2-7: 39, 77%, 83%; /* wheat */ 			--c-2-7: hsl(var(--c-raw-2-7));
+	--c-raw-2-5: 34, 44%, 69%; /* tan */ 			--c-2-5: hsl(var(--c-raw-2-5));
+	--c-raw-2-2: 25, 75%, 47%; /* chocolate */ 		--c-2-2: hsl(var(--c-raw-2-2));
 
 	/* alert colors */
 	--c-good: #0ac675;
 	--c-bad: #e24939;
 	--c-meh: #ff7f50;
-}
-
-/**
- * Customizeable Custom Properties
- *
- * If styling is applied to :root, you can't
- * override a variable on a per-element level. By
- * applying directly to the elements, you can
- * do the following:
-	Example:
-	:root {
-		--c-raw-0-000: 0, 0%, 0%; // start with hsl values only
-	}
-	* {
-		--c-alpha: 1; // default alpha is 100%
-		--c-0-000: hsla(var(--c-raw-0-000), var(--c-alpha); // default is solid black
-	}
-	.thing {
-		--c-alpha: 0.5; // we choose a different opacity for this element
-		background-color: var(--c-0-000); // we get a 50% transparent black color
-	}
-	.thing p {
-		color: var(--c-0-000); // we're back to solid black
-	}
- */
-* {
-	--c-alpha: 1;
-
-	--c-1-800: hsla(var(--c-raw-1-800), var(--c-alpha));
-	--c-1-500: hsla(var(--c-raw-1-500), var(--c-alpha));
-	--c-1-200: hsla(var(--c-raw-1-200), var(--c-alpha));
-
-	--c-2-800: hsla(var(--c-raw-2-800), var(--c-alpha));
-	--c-2-500: hsla(var(--c-raw-2-500), var(--c-alpha));
-	--c-2-200: hsla(var(--c-raw-2-200), var(--c-alpha));
-
-	--c-0-900: hsla(var(--c-raw-0-900), var(--c-alpha));
-	--c-0-800: hsla(var(--c-raw-0-800), var(--c-alpha));
-	--c-0-500: hsla(var(--c-raw-0-500), var(--c-alpha));
-	--c-0-200: hsla(var(--c-raw-0-200), var(--c-alpha));
-	--c-0-000: hsla(var(--c-raw-0-000), var(--c-alpha));
 }
 
 /**

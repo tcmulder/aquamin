@@ -4,4 +4,4 @@
  */
 
 // register the block
-register_block_type_from_metadata( dirname( __FILE__ ) );
+register_block_type_from_metadata( __DIR__ );

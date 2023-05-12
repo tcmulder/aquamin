@@ -4,14 +4,6 @@
  */
 
 /**
- * Set up blocks
- */
-add_action( 'init', 'aquamin_register_theme_blocks' );
-add_action( 'after_setup_theme', 'aquamin_theme_support' );
-add_action( 'after_setup_theme', 'aquamin_block_patterns_and_categories' );
-add_action( 'admin_menu', 'aquamin_reusable_blocks_admin_menu' );
-
-/**
  * Set up block hooks
  * 
  * This lets you add a hook.php file to your blocks and use
@@ -29,8 +21,7 @@ if ( $blocks ) {
 /**
  * Add in blocks that are registered in this theme
  */
-function aquamin_register_theme_blocks() {
-
+add_action( 'init', function() {
 	// load blocks
 	$blocks = glob(AQUAMIN_BLOCKS . '/block-library/*/index.php');
 	if ( $blocks ) {
@@ -38,8 +29,18 @@ function aquamin_register_theme_blocks() {
 			require_once $block;
 		}
 	}
+} );
 
-}
+/**
+ * Add our own block category
+ */
+add_filter( 'block_categories' , function( $categories ) {
+	$categories[] = array(
+		'slug'  => 'aquamin-blocks',
+        'title' => __( 'Custom Blocks', 'aquamin' ),
+	);
+	return $categories;
+} );
 
 
 /**
@@ -47,7 +48,7 @@ function aquamin_register_theme_blocks() {
  *
  * @see https://www.billerickson.net/building-a-gutenberg-website/#align-wide
  */
-function aquamin_theme_support() {
+add_action( 'after_setup_theme', function() {
 
 	// make embeds preserve aspect ratio
 	add_theme_support( 'responsive-embeds' );
@@ -60,14 +61,14 @@ function aquamin_theme_support() {
 	add_editor_style( '/dist/blocks/editor.bundle.css' );
 
 
-}
+} );
 
 /**
  * Manage block patterns and block pattern categories
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-patterns/
  */
-function aquamin_block_patterns_and_categories() {
+add_action( 'after_setup_theme', function() {
 
 	// register aquamin block category
 	add_filter( 'block_categories', function( $categories, $post ) {
@@ -190,12 +191,41 @@ function aquamin_block_patterns_and_categories() {
 		}
 	}
 
-}
+} );
 
 /**
  * Make reusable blocks accessible in backend
  * @link https://www.billerickson.net/reusable-blocks-accessible-in-wordpress-admin-area
  */
-function aquamin_reusable_blocks_admin_menu() {
+add_action( 'admin_menu', function() {
     add_menu_page( __( 'Reusable Blocks', 'aquamin' ), __( 'Reusable Blocks', 'aquamin' ), 'edit_posts', 'edit.php?post_type=wp_block', '', 'dashicons-editor-table', 22 );
-}
+} );
+
+/**
+ * Ugly hack to set correct root editor container classes
+ * 
+ * Setting settings.useRootPaddingAwareAlignments to true and settings.layout.type to
+ * "constrained" should result in these classes being added properly, but it does not.
+ * So, we add them manually. This allows front- and back-end layouts to match, since
+ * both containers are wrapped with the same classes.
+ * 
+ * @see https://stackoverflow.com/questions/75912533/has-global-padding-not-added-to-is-root-container-in-wordpress
+ */
+add_action('admin_footer-post.php', 'aquamin_root_editor_container_fix'); // Fired on post edit page
+add_action('admin_footer-post-new.php', 'aquamin_root_editor_container_fix'); // Fired on add new post page
+function aquamin_root_editor_container_fix() {
+    echo "<script>
+		window.addEventListener('load', function() {
+			var rootFix = document.querySelector('.is-root-container');
+			if (rootFix) {
+				if (!rootFix.classList.contains('has-global-padding')) {
+					rootFix.classList.remove('is-layout-flow');
+					rootFix.classList.add('has-global-padding');
+					rootFix.classList.add('is-layout-constrained');
+				} else {
+					console.log('The theme is now adding .has-global-padding properly: you may remove this patch.');
+				}
+			}
+		});
+	</script>";
+};

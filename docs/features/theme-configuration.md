@@ -23,7 +23,11 @@ All sites are built out of a collection of components, and aquamin capitalizes o
 
 Much like blocks, each component is it's own self-contained directory (with a few global exceptions) where you'll handle all development for that particular piece of the site (it may help to read [aquamin's block philosophy](/aquamin/features/block-configuration/#aquamins-block-philosophy) for more on that).
 
-But, there's a lot more variety to components than blocks, so aquamin keeps things flexible and mostly manual. The main thing to keep in mind is that aquamin automatically includes all `style.css` styling on the front-end, all `editor.css` styling in the block editor's back-end, all `script.js` JavaScript on the front-end, and your HTML/PHP should go in `markup.php` files (you'll need to manually include them with `get_template_part()` where they're needed). Just name the files within your components accordingly. Note you can also add a prefix to these files, like `main-menu-script.js` for example, to make debugging more convenient.
+## Creating Components
+
+The easiest way to create components is to run `wp aquamin create component` ([see the docs](/aquamin/features/wp-cli/#wp-aquamin-create-component)). If you have parcel running, just refresh WordPress and the scaffolded component will immediately be available, ready for you to customize within its own directory in `aquamin/components/component-library/`. If you had the command scaffold your PHP, you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file in that directory.
+
+Or, since there's a lot more variety to components than blocks, you may choose to add these manually for more control: just add a new directory and appropriate files to the `aquamin/components/component-library/` folder. The main thing to keep in mind is that aquamin automatically includes all `style.css` styling on the front-end, all `editor.css` styling in the block editor's back-end, all `script.js` JavaScript on the front-end, and your HTML/PHP should go in `markup.php` files (you'll need to manually include them with `get_template_part()` where they're needed). Just name the files within your components accordingly. Note you can also add a prefix to these files, like `main-menu-script.js` for example, to make debugging more convenient.
 
 ## Examples
 
@@ -101,4 +105,4 @@ Usually, Parcel will import all images as a simple path, including SVGs. If you 
 ### Static Assets
 {: .no_toc }
 
-You may want to include static assets in the `/aquamin/dist/` directory, like I often do for a `theme.sprite.svg` file that contains reusable logos, social icons, etc. You can add these files within the `/aquamin/components/assets/` directory, and any time you run `npm run build` they will be copied into `/aquamin/dist/components/assets/`. Note that `npm run start` ignores these files, so you will need to rerun the build if you make changes.
+You may want to include static assets in the `/aquamin/dist/` directory, like I often do for a `theme.sprite.svg` file that contains reusable logos, social icons, etc. You can add these files within the `/aquamin/components/assets/` directory, and any time you run `npm run build` they will be copied into `/aquamin/dist/components/assets/`. Note that `npm run start` ignores changes to these files, so you will need to rerun the build if you make changes.

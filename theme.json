@@ -2,30 +2,44 @@
 	"version": 2,
 	"settings": {
 		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
 		"layout": {
 			"type": "constrained",
 			"contentSize": "var(--w-m)",
 			"wideSize": "var(--w-l)"
 		},
-		"useRootPaddingAwareAlignments": true,
+		"styles": {
+			"spacing": {
+				"padding": {
+					"right": "var(--gutter)",
+					"left": "var(--gutter)"
+				},
+				"blockGap": null
+			}
+		},
 		"spacing": {
 			"blockGap": false,
 			"units": ["%", "px", "em", "rem", "vh", "vw"],
 			"spacingSizes": [
 				{
-					"size": "clamp(1rem, 3vw, 2rem)",
+					"size": "var(--sp-rem-s)",
+					"slug": "10",
+					"name": "Small"
+				},
+				{
+					"size": "var(--gutter)",
 					"slug": "20",
-					"name": "1"
+					"name": "Gutter"
 				},
 				{
-					"size": "clamp(2.5rem, 7vw, 5rem)",
+					"size": "clamp(var(--sp-rem), 6vw, var(--sp-rem-m))",
 					"slug": "50",
-					"name": "2"
+					"name": "Medium"
 				},
 				{
-					"size": "clamp(6rem, 15vw, 15rem)",
+					"size": "clamp(var(--sp-rem-m), 15vw, var(--sp-rem-l))",
 					"slug": "80",
-					"name": "3"
+					"name": "Large"
 				}
 			]
 		},
@@ -33,32 +47,32 @@
 			"fontSizes": [
 				{
 					"slug": "h1",
-					"size": "var(--fs-h1, 64px)",
+					"size": "var(--fs-h1, 32px)",
 					"name": "Like h1"
 				},
 				{
 					"slug": "h2",
-					"size": "var(--fs-h2, 48px)",
+					"size": "var(--fs-h2, 24px)",
 					"name": "Like h2"
 				},
 				{
 					"slug": "h3",
-					"size": "var(--fs-h3, 32px)",
+					"size": "var(--fs-h3, 20.8px)",
 					"name": "Like h3"
 				},
 				{
 					"slug": "h4",
-					"size": "var(--fs-h4, 24px)",
+					"size": "var(--fs-h4, 16px)",
 					"name": "Like h4"
 				},
 				{
 					"slug": "h5",
-					"size": "var(--fs-h5, 18px)",
+					"size": "var(--fs-h5, 12.8px)",
 					"name": "Like h5"
 				},
 				{
 					"slug": "h6",
-					"size": "var(--fs-h6, 16px)",
+					"size": "var(--fs-h6, 11.2px)",
 					"name": "Like h6"
 				},
 				{
@@ -68,12 +82,12 @@
 				},
 				{
 					"slug": "p",
-					"size": "var(--fs-body, 16px)",
+					"size": "var(--fs-normal, 16px)",
 					"name": "Normal (p)"
 				},
 				{
 					"slug": "small",
-					"size": "var(--fs-small, 18px)",
+					"size": "var(--fs-small, 14px)",
 					"name": "Small"
 				}
 			]
@@ -107,15 +121,6 @@
 					"name": "White"
 				}
 			]
-		}
-	},
-	"styles": {
-		"spacing": {
-			"padding": {
-				"right": "var(--gutter)",
-				"left": "var(--gutter)"
-			},
-			"blockGap": null
 		}
 	}
 }

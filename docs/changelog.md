@@ -10,6 +10,20 @@ search_exclude: true
 
 # Changelog
 
+## 4.3.0 - May 12 2023
+* Added custom embed scripts option page under Settings > Custom Scripts.
+* Change wp cli `wp aquamin block` command to be `wp aquamin create block` so it makes more sense.
+* Added new wp cli `wp aquamin create component` command to create basic components.
+* Added new EntitySelector block UI component (useful for associating posts, terms, etc. to a block).
+* Added new/improved npm clean and static asset copying.
+* Removed --c-alpha:1 feature; in the future, we can use built in CSS color functions.
+* Simplified color variables, and go with 7 for bright rather than 8 for more flexibility, e.g. can have extra dark variant.
+* Added smarter --sp spacing variables.
+* Added password protected pattern and remove older year block pattern from wp cli `wp aquamin setup` command.
+* Fixed bug with missing block category.
+* Overhauled layouts to match back-end more closely.
+* Fix linting and add as build step.
+
 ## 4.2.0 - March 16 2023
 * Added ability to prefix common files, e.g. footer-style.css rather than just style.css (makes debugging easier).
 * Added static components/assets folder that copies into the dist directory on build.

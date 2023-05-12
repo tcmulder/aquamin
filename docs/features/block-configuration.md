@@ -26,13 +26,13 @@ There's no configuration you need to do outside of that directory to get the blo
 
 ## Creating Blocks
 
-The easiest way to create blocks is to run `wp aquamin block` ([see the docs](/aquamin/features/wp-cli/#wp-aquamin-block)). If you have parcel running, just refresh WordPress and the scaffolded block will immediately be available as a registered block, ready for you to customize within its own directory in `aquamin/blocks/block-library/`.
+The easiest way to create blocks is to run `wp aquamin create block` ([see the docs](/aquamin/features/wp-cli/#wp-aquamin-create-block)). If you have parcel running, just refresh WordPress and the scaffolded block will immediately be available as a registered block, ready for you to customize within its own directory in `aquamin/blocks/block-library/`.
 
 > _Note:_  If you would prefer not to use WP-CLI, simply copy the appropriate block scaffold directory out of `aquamin/includes/cli/templates/` and conduct a find and replace for the various "template" placeholder strings you'll find within its files.
 
 ### Front-End JavaScript Option
 
-The `wp aquamin block` command will ask if you want to add a `script.js` file to your block that will be immediately available for front-end scripting. (Under the hood, `aquamin/blocks/blocks.js` is simply importing all `./block-library/*/*script.js` files, so you can easily remove or add `script.js` files later.)
+The `wp aquamin create block` command will ask if you want to add a `script.js` file to your block that will be immediately available for front-end scripting. (Under the hood, `aquamin/blocks/blocks.js` is simply importing all `./block-library/*/*script.js` files, so you can easily remove or add `script.js` files later.)
 
 If you'd like to break the front-end scripts into multiple files, you can use this `script.js` file as an entry point and organize your additional files as desired within the block's directory.
 
@@ -40,13 +40,13 @@ You can also prefix the `script.js` file, like `my-block-script.js` for example,
 
 ### Inner Blocks Option
 
-The `wp aquamin block` command will ask if you'd like an inner block set up. This is a common pattern if your parent block requires a codependent inner block (e.g. a Slider parent block with multiple Slide inner blocks).
+The `wp aquamin create block` command will ask if you'd like an inner block set up. This is a common pattern if your parent block requires a codependent inner block (e.g. a Slider parent block with multiple Slide inner blocks).
 
 You'll add styles and scripts to your inner block via it's _parent's_ `style.css` and optional `script.js` files, rather than within the inner block's directory. This simplifies things by eliminating the need to jump between multiple files to develop blocks that are so tightly coupled anyway (see [Anatomy of a Block](#anatomy-of-a-block) for more details).
 
 ### Dynamic Block Option
 
-Though aquamin prefers blocks be built with JavaScript, in some cases blocks require up-to-date data from the database, and therefore require PHP. So, `wp aquamin block` will ask if you need a dynamic block, and will create a `markup.php` file to facilitate your edits. (Note that it doesn't currently provide automated inner block setup if you choose to go dynamic: if you need that, you'll have to add your dynamic inner block manually.)
+Though aquamin prefers blocks be built with JavaScript, in some cases blocks require up-to-date data from the database, and therefore require PHP. So, `wp aquamin create block` will ask if you need a dynamic block, and will create a `markup.php` file to facilitate your edits. (Note that it doesn't currently provide automated inner block setup if you choose to go dynamic: if you need that, you'll have to add your dynamic inner block manually.)
 
 ## Anatomy of a Block
 

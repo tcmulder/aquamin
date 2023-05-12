@@ -12,7 +12,7 @@
  */
 import classnames from 'classnames';
 
-const { useBlockProps, InnerBlocks } = wp.blockEditor;
+const { useBlockProps, InnerBlocks, RichText } = wp.blockEditor;
 
 /**
  * Generate block HTML to save to the database
@@ -27,7 +27,7 @@ const TemplateItemNamespaceSave = ({ attributes, className }) => {
 			})}
 		>
 			{/* replace this demo code with your own: */}
-			<i>{demoText}</i>
+			<RichText.Content tagName="b" value={demoText} />
 			<InnerBlocks.Content />
 		</div>
 	);
