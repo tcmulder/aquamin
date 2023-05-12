@@ -10,7 +10,8 @@ search_exclude: true
 
 # Changelog
 
-## 4.3.0 - May 8 2023
+## 5.0.0 - May 12 2023
+* Changed blocks to only load assets on pages where they appear.
 * Added custom embed scripts option page under Settings > Custom Scripts.
 * Change wp cli `wp aquamin block` command to be `wp aquamin create block` so it makes more sense.
 * Added new wp cli `wp aquamin create component` command to create basic components.
