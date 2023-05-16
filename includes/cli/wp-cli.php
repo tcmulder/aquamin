@@ -25,14 +25,23 @@ class AQUAMIN_CLI {
      * @param {string} $default Optional default (i.e. passed as cli arguments)
      * @return string
      */
-    protected function ask( $question, $guess='', $default='' ) {
-		if ( $default ) {
+    protected function ask( $question, $guess='', $default=null ) {
+		// if user explicitly passed a boolean as a cli option then default to "y"
+		if ( 'boolean' === gettype( $default ) ) {
+			return 'y';
+		// if user explicitly passed a string as a cli option then use it
+		} elseif ( $default ) {
 			return $default;
+		// if the user hasn't defined something via a cli option
+		} else {
+			// ask the user vie command line
+			fwrite( STDOUT, $question . ' ' );
+			$answer = trim( fgets( STDIN ) );
+			// go with their answer or our guess if they didn't answer
+			$answer = $answer ? $answer : $guess;
+			// send it!
+			return $answer;
 		}
-		fwrite( STDOUT, $question . ' ' );
-		$answer = trim( fgets( STDIN ) );
-		$answer = $answer ? $answer : $guess;
-		return $answer;
     }
 
 	/**
@@ -225,14 +234,15 @@ class AQUAMIN_CLI {
 	 * : Set inner block description.
 	 * 
 	 * [--has_js] 
-	 * : Set to y to include a front-end JavaScript file.
+	 * : Add front-end JavaScript file (set to "n" to prevent)
 	 * 
 	 * [--is_dynamic] 
-	 * : Set to y to for a dynamic block.
+	 * : Make it a dynamic block (set to "n" to prevent).
 	 * 
      * [--has_inner_block] 
-	 * : Set to y to include an inner block.
-     * ## EXAMPLES
+	 * : Include an inner block (set to "n" to prevent).
+     *
+	 * ## EXAMPLES
      *
      * wp aquamin create block
 	 *
