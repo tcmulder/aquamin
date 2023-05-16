@@ -82,7 +82,16 @@ class AQUAMIN_CLI {
 	 * : Set slug.
 	 * 
 	 * [--component_dir] 
-	 * : Set directory.
+	 * : Set directory name.
+	 * 
+	 * [--has_js] 
+	 * : Add front-end JavaScript file (set to "n" to prevent)
+	 * 
+	 * [--has_template_part] 
+	 * : Add a PHP template part (set to "n" to prevent)
+	 * 
+	 * [--has_admin_css] 
+	 * : Add CSS for editor (set to "n" to prevent)
      *
      * ## EXAMPLES
      *
@@ -108,35 +117,36 @@ class AQUAMIN_CLI {
 		
 		$title = 'My Component';
 		$guess = $title;
+
 		$component[ 'component_title' ] = array(
-			$assoc_args[ 'component_title' ] ?? $this->ask( "Title [$guess]:", $guess ),
+			$this->ask( "Title [$guess]:", $guess, $assoc_args[ 'component_title' ] ?? '' ),
 			'template-title',
 		);
 		$title = $component[ 'component_title' ][ 0 ];
 		
 		$guess = sanitize_title( $title );
 		$component[ 'component_slug' ] = array(
-			$assoc_args[ 'component_slug' ] ?? $this->ask( "Slug [$guess]:", $guess ),
+			$this->ask( "Slug [$guess]:", $guess, $assoc_args[ 'component_slug' ] ?? '' ),
 			'template-slug',
 		);
 		$slug = $component[ 'component_slug' ][ 0 ];
 		
 		$guess = $slug;
 		$component[ 'component_dir' ] = array(
-			$assoc_args[ 'component_dir' ] ?? $this->ask( "Directory [$guess]:", $guess ),
+			$this->ask( "Directory [$guess]:", $guess, $assoc_args[ 'component_dir' ] ?? '' ),
 			'_template-component',
 		);
 
 		$exclude = array();
 
-		$ask_admin_css = $this->ask('Has admin CSS? [y/N]');
-		$exclude['admin_css'] = strtolower( $ask_admin_css ?? '' ) === 'y' ? false : 'template-slug-editor.css';
-		
-		$ask_js = $this->ask('Has front-end JavaScript? [y/N]');
-		$exclude['js'] = strtolower( $ask_js ?? '' ) === 'y' ? false : 'template-slug-script.js';
+		$ask_js = $this->ask( 'Has front-end JavaScript? [y/N]', 'n', $assoc_args[ 'has_js' ] );
+		$exclude['js'] = strtolower( $ask_js ) === 'y' ? false : 'template-slug-script.js';
 
-		$ask_template_part = $this->ask('Has get_template_part() PHP? [y/N]');
-		$exclude['template_part'] = strtolower( $ask_template_part ?? '' ) === 'y' ? false : 'template-slug-markup.php';
+		$ask_template_part = $this->ask( 'Has PHP template part? [y/N]', 'n', $assoc_args[ 'has_template_part' ] );
+		$exclude['template_part'] = strtolower( $ask_template_part ) === 'y' ? false : 'template-slug-markup.php';
+
+		$ask_admin_css = $this->ask( 'Has admin CSS? [y/N]', 'n', $assoc_args[ 'has_admin_css' ] );
+		$exclude['admin_css'] = strtolower( $ask_admin_css ) === 'y' ? false : 'template-slug-editor.css';
 
 		/**
 		 * Identify paths/dirs
@@ -213,7 +223,7 @@ class AQUAMIN_CLI {
 	 * : Set slug.
 	 * 
 	 * [--block_dir] 
-	 * : Set directory.
+	 * : Set directory name.
 	 * 
 	 * [--block_namespace] 
 	 * : Set namespace.
