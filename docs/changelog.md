@@ -10,7 +10,7 @@ search_exclude: true
 
 # Changelog
 
-## 5.0.0 - May 12 2023
+## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.
 * Update wp cli to support some boolean options.
 
