@@ -7,17 +7,21 @@
 		"nodeVersion": ">=16.13.2",
 		"npmVersion": ">=7.11.2"
 	},
+	"config": {
+		"lint_paths": "./blocks ./components",
+		"asset_paths": "./*/*.bundle.js ./blocks/block-library/*/*script.js ./blocks/block-library/*/*style.css"
+	},
 	"scripts": {
 		"start": "npm-run-all --parallel builder server",
-		"build": "npm run clean && parcel build ./*/*.bundle.js --no-cache && npm run build:post",
+		"build": "npm run clean && parcel build $npm_package_config_asset_paths --no-cache && npm run build:post",
 		"build:post": "npm run build:assets; npm run lint",
 		"build:assets": "del ./dist/assets/* && ncp ./components/assets ./dist/assets --filter '**/*.*'",
 		"server": "browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files './dist/**/*.css,./dist/**/*.js,./**/*.php'",
 		"docs:server": "browser-sync start --no-open --proxy='http://127.0.0.1:4001/aquamin/' --files='./docs/'",
 		"docs": "cd ./docs; jekyll serve --config _config_local.yml --port 4001",
-		"builder": "parcel watch ./*/*.bundle.js",
-		"lint": "eslint ./blocks ./components",
-		"lint:fix": "eslint ./blocks ./components --fix",
+		"builder": "parcel watch $npm_package_config_asset_paths",
+		"lint": "eslint $npm_package_config_lint_paths",
+		"lint:fix": "eslint $npm_package_config_lint_paths --fix",
 		"clean": "del ./.parcel-cache/*"
 	},
 	"author": "@tcmulder",

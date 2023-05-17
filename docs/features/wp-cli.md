@@ -10,7 +10,7 @@ parent: Features
 
 # WP-CLI Commands
 
-Aquamin has some [WP-CLI](https://developer.wordpress.org/cli/commands/){: target="_blank"} commands built in to make common development tasks easy.
+Aquamin has some [WP-CLI](https://developer.wordpress.org/cli/commands/){: target="_blank"} commands built in to make common development tasks easy. Each feature comes with its own `--help` docs (e.g. `wp aquamin create block --help`) which contains additional information.
 
 # `wp aquamin create block`
 

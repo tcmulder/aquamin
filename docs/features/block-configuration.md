@@ -26,7 +26,7 @@ There's no configuration you need to do outside of that directory to get the blo
 
 ## Creating Blocks
 
-The easiest way to create blocks is to run `wp aquamin create block` ([see the docs](/aquamin/features/wp-cli/#wp-aquamin-create-block)). If you have parcel running, just refresh WordPress and the scaffolded block will immediately be available as a registered block, ready for you to customize within its own directory in `aquamin/blocks/block-library/`.
+The easiest way to create blocks is to run `wp aquamin create block` ([see the docs](/aquamin/features/wp-cli/#wp-aquamin-create-block)). You'll need to restart parcel if it's running (which will add new entry points to the file watcher), and then the scaffolded block will be available as a registered block in WordPress, ready for you to customize within its own directory in `aquamin/blocks/block-library/`.
 
 > _Note:_  If you would prefer not to use WP-CLI, simply copy the appropriate block scaffold directory out of `aquamin/includes/cli/templates/` and conduct a find and replace for the various "template" placeholder strings you'll find within its files.
 
@@ -36,7 +36,7 @@ The `wp aquamin create block` command will ask if you want to add a `script.js` 
 
 If you'd like to break the front-end scripts into multiple files, you can use this `script.js` file as an entry point and organize your additional files as desired within the block's directory.
 
-You can also prefix the `script.js` file, like `my-block-script.js` for example, to make debugging more convenient.
+You can also prefix the `script.js` file, like `my-block-script.js` for example, to make debugging easier.
 
 ### Inner Blocks Option
 
