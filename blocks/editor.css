@@ -48,7 +48,7 @@ html .edit-widgets-main-block-list :where(.editor-styles-wrapper),
  * Post title
  */
 .editor-post-title {
-	@nest .edit-post-visual-editor__post-title-wrapper & {
+	.edit-post-visual-editor__post-title-wrapper & {
 		border-bottom: 1px dashed var(--wp-admin-theme-color);
 		margin: 0 auto 1em;
 	}

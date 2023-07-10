@@ -1,9 +1,9 @@
 /**
  * Editor styling
  */
- .aquamin-media-remove {
+.aquamin-media-remove {
 	display: none;
-	@nest :is(.is-selected, .has-child-selected) & {
+	:is(.is-selected, .has-child-selected) & {
 		display: block;
 	}
 }
