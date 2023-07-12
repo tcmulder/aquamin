@@ -391,8 +391,8 @@ class AQUAMIN_CLI {
 			$script_replacements = array(
 				'index.php-1' => array(
 					<<< EOD
-					wp_register_script( 'aquamin-block-template-slug-script', get_template_directory_uri() . '/dist/blocks/block-library/template-slug/template-slug-script.js', null );
 					wp_register_style( 'aquamin-block-template-slug-style', get_template_directory_uri() . '/dist/blocks/block-library/template-slug/template-slug-style.css', null, '1.0' );
+					wp_register_script( 'aquamin-block-template-slug-script', get_template_directory_uri() . '/dist/blocks/block-library/template-slug/template-slug-script.js', null );
 					EOD,
 					<<< EOD
 					wp_register_style( 'aquamin-block-template-slug-style', get_template_directory_uri() . '/dist/blocks/block-library/template-slug/template-slug-style.css', null, '1.0' );
