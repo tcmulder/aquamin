@@ -13,12 +13,10 @@
 				"padding": {
 					"right": "var(--gutter)",
 					"left": "var(--gutter)"
-				},
-				"blockGap": null
+				}
 			}
 		},
 		"spacing": {
-			"blockGap": false,
 			"units": ["%", "px", "em", "rem", "vh", "vw"],
 			"spacingSizes": [
 				{
