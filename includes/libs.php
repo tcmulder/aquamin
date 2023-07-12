@@ -289,6 +289,7 @@ function aquamin_id() {
  * backgrounds. It's often quite useful.
  */
 add_action( 'wp_head', 'aquamin_bg_css' );
+add_action( 'admin_head', 'aquamin_bg_css' );
 function aquamin_bg_css() {
 	$colors = wp_get_global_settings( array( 'color', 'palette', 'theme' ) );
 	if ( $colors ) {
