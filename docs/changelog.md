@@ -12,6 +12,7 @@ search_exclude: true
 
 ## 5.1.0 - July 10 2023
 * Updated Parcel 2 and other npm packages.
+* Refined alignment/layout styling.
 
 ## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.
