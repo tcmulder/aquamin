@@ -1,0 +1,68 @@
+/**
+ * Responsive device faux hiding
+ */
+@import "./*style.css";
+
+.hide-bp-sm,
+.hide-bp-md,
+.hide-bp-lg,
+.hide-bp-md-up {
+	&::before {
+		display: none;
+		content: "hidden at this screen size";
+		pointer-events: none;
+		position: absolute;
+		font-size: 12px;
+		color: white;
+		line-height: 1.1;
+		background-color: var(--wp--preset--color--vivid-red);
+	}
+}
+/* hide from mobile */
+.hide-bp-sm {
+	@media (max-width: 479px) {
+		outline: 1px dashed var(--wp--preset--color--vivid-red);
+		& > * {
+			opacity: 0.25;
+		}
+		&::before {
+			display: block;
+		}
+	}
+}
+/* hide from tablet */
+.hide-bp-md {
+	@media (min-width: 480px) and (max-width: 781px) {
+		outline: 1px dashed var(--wp--preset--color--vivid-red);
+		& > * {
+			opacity: 0.25;
+		}
+		&::before {
+			display: block;
+		}
+	}
+}
+/* hide from laptop */
+.hide-bp-lg {
+	@media (min-width: 782px) and (max-width: 1439px) {
+		outline: 1px dashed var(--wp--preset--color--vivid-red);
+		& > * {
+			opacity: 0.25;
+		}
+		&::before {
+			display: block;
+		}
+	}
+}
+/* hide above laptop (i.e. desktop) */
+.hide-bp-md-up {
+	@media (min-width: 1440px) {
+		outline: 1px dashed var(--wp--preset--color--vivid-red);
+		& > * {
+			opacity: 0.25;
+		}
+		&::before {
+			display: block;
+		}
+	}
+}

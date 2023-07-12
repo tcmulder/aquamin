@@ -200,19 +200,35 @@ function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text 
  */
 add_filter( 'render_block', 'aqua_dynamic_ani', 10, 2 );
 function aqua_dynamic_ani( $block_content, $block ) {
-	if ( ! $block_content || ! is_array( $block[ 'attrs' ][ 'aquaminClassNameAni' ] ?? null ) ) {
-		return $block_content;
+
+	// start with no custom class names
+	$classes = '';
+
+	// handle animation classes
+	if ( ! empty( $block[ 'attrs' ][ 'aquaminClassNameAni' ] ) ) {
+		$classes .= ' ani ' . implode( ' ',  array_map( function( $ani ) {
+			return $ani[ 'value' ];
+		}, $block[ 'attrs' ][ 'aquaminClassNameAni' ] ) );
 	}
-	$classes_arr = array_map( function( $ani ) {
-		return $ani[ 'value' ];
-	}, $block[ 'attrs' ][ 'aquaminClassNameAni' ] );
-	$classes = implode( ' ', $classes_arr );
-	return preg_replace(
-		'/' . preg_quote( 'class="', '/' ) . '/',
-		'class="' . esc_attr( $classes ) . ' ',
-		$block_content,
-		1
-	);
+
+	// handle hide/show responsiveness
+	if ( ! empty( $block[ 'attrs' ][ 'aquaminClassNameHide' ] ) ) {
+		$classes .= ' ' . implode( ' ',  array_map( function( $ani ) {
+			return $ani[ 'value' ];
+		}, $block[ 'attrs' ][ 'aquaminClassNameHide' ] ) );
+	}
+
+	// if we have new stuff then send it
+	if ( $classes && $block_content ) {
+		return preg_replace(
+			'/' . preg_quote( 'class="', '/' ) . '/',
+			'class="' . trim( esc_attr( $classes ) ) . ' ',
+			$block_content,
+			1
+		);
+	}
+	// just return things unchanged by default
+	return $block_content;
 }
 
 /**

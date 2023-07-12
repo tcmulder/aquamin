@@ -13,11 +13,12 @@ search_exclude: true
 ## 5.1.0 - July 10 2023
 * Updated Parcel 2 and other npm packages.
 * Refined alignment/layout styling.
+* Moved extended blocks to their own directory and added documentation.
+* Add responsive hide/show extension for groups.
 
 ## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.
 * Update wp cli to support some boolean options.
-* Moved extended blocks to their own directory and added documentation.
 
 ## 4.3.0 - May 12 2023
 * Added custom embed scripts option page under Settings > Custom Scripts.

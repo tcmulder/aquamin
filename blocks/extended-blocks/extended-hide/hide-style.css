@@ -1,0 +1,32 @@
+/**
+ * Responsive device hiding
+ *
+ * Allows for hiding block containers at
+ * various breakpoints.
+ */
+.torso {
+	/* hide from mobile */
+	@media (max-width: 479px) {
+		& .hide-bp-sm {
+			display: none !important;
+		}
+	}
+	/* hide from tablet */
+	@media (min-width: 480px) and (max-width: 781px) {
+		& .hide-bp-md {
+			display: none !important;
+		}
+	}
+	/* hide from laptop */
+	@media (min-width: 782px) and (max-width: 1439px) {
+		& .hide-bp-lg {
+			display: none !important;
+		}
+	}
+	/* hide above laptop (i.e. desktop) */
+	@media (min-width: 1440px) {
+		& .hide-bp-md-up {
+			display: none !important;
+		}
+	}
+}
