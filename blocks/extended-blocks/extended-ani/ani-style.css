@@ -3,7 +3,9 @@
  */
 :root {
 	--ani-timing-function: var(--ani-ease, ease);
-	--ani-duration: calc(var(--ani-speed, 0.375s) * 2); /* speed of transition effects */
+	--ani-duration: calc(
+		var(--ani-speed, 0.375s) * 2
+	); /* speed of transition effects */
 	--ani-delay-increment: 0; /* integer for stepped animations */
 	--ani-delay-factor: 0.05s; /* duration of each increment step */
 	--ani-delay-offset: 0.15s; /* start delay (so ani don't start at very bottom of screen) */
@@ -12,7 +14,8 @@
 .ani {
 	transition: all var(--ani-duration) var(--ani-timing-function);
 	transition-delay: calc(
-		var(--ani-delay-increment) * var(--ani-delay-factor) + var(--ani-delay-offset)
+		var(--ani-delay-increment) * var(--ani-delay-factor) +
+			var(--ani-delay-offset)
 	);
 	will-change: transform;
 	/*&, /*DEBUG*/
@@ -20,7 +23,8 @@
 		opacity: var(--ani-opacity, 1);
 		filter: blur(var(--ani-blur, 0));
 		transform: translateX(var(--ani-x, 0)) translateY(var(--ani-y, 0))
-			scale(var(--ani-scale-x, 1), var(--ani-scale-y, 1)) perspective(var(--ani-perspective, 0px))
+			scale(var(--ani-scale-x, 1), var(--ani-scale-y, 1))
+			perspective(var(--ani-perspective, 0px))
 			rotateX(var(--ani-rotate-x, 0deg)) rotate(var(--ani-rotate, 0deg));
 		transition: 0s 0s;
 	}
@@ -35,6 +39,7 @@
 		--ani-scale-x: 0;
 	}
 	&.ani--blur {
+		box-shadow: 0 0 0 100vw hsla(160, 100%, 75%, 0.8) inset;
 		--ani-blur: 0.25rem;
 	}
 	&.ani--up {

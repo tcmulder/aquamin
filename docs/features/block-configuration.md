@@ -87,6 +87,10 @@ There's currently a bug in Parcel. If you delete a block's directory to remove t
 
 You'll find some helpful, reusable utilities and UI components under `aquamin/blocks/util` and `aquamin/blocks/ui`, respectively. You can add your own into these directories as well, or ignore them if they're not helpful to you: anything you don't use won't get bundled into the production build anyway.
 
+## Extending Core Blocks
+
+You can add modifications to core blocks in the `aquamin/blocks/extended-blocks/` directory. While your custom blocks will only load the front-end styles and scripts on posts that use those particular blocks, extended blocks get loaded on all front-end pages, ensuring they're available to any core blocks that need them. Aquamin comes with a few already, including block animations, column layout enhancements, and show/hide responsive container additions.
+
 ## A Note on Imports
 
 You'll notice we're importing some libraries but destructuring the `wp` object for most WordPress features. For example:

@@ -14,3 +14,9 @@ import './ui/*/*editor.css';
  */
 import './block-library/*/*index.js';
 import './block-library/*/*editor.css';
+
+/**
+ * Extended existing block overrides.
+ */
+import './extended-blocks/*/*index.js';
+import './extended-blocks/*/*editor.css';
