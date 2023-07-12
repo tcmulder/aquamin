@@ -431,12 +431,12 @@ class AQUAMIN_CLI {
 					import './template-item-slug';
 
 					/**
-					 * Import dependencies
+					 * Import edit dependencies
 					 */
 					EOD,
 					<<< EOD
 					/**
-					 * Import dependencies
+					 * Import edit dependencies
 					 */
 					EOD
 				),

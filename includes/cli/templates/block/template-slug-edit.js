@@ -6,7 +6,7 @@
  */
 
 /**
- * Import dependencies
+ * Import edit dependencies
  */
 import classnames from 'classnames';
 

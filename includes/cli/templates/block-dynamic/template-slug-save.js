@@ -8,7 +8,7 @@
  */
 
 /**
- * Import dependencies
+ * Import save dependencies
  */
 const { InnerBlocks } = wp.blockEditor;
 
