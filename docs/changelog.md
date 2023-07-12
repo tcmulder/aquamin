@@ -15,6 +15,8 @@ search_exclude: true
 * Refined alignment/layout styling.
 * Moved extended blocks to their own directory and added documentation.
 * Add responsive hide/show extension for groups.
+* Add responsive hide/show extension for groups.
+* Removed common-classes.css as it's redundant (use reusable-global.css instead).
 
 ## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.
