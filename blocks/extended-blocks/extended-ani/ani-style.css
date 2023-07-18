@@ -136,13 +136,8 @@
 		.wp-block-cover__image-background {
 			height: calc(100% + var(--parallax-size));
 			will-change: transform;
-			transform: translate3d(
-				0,
-				calc(
-					var(--parallax-size) * var(--ani-plx) - var(--parallax-size)
-				),
-				0
-			);
+			/* prettier-ignore */
+			transform: translate3d(0,calc(var(--parallax-size) * var(--ani-plx) - var(--parallax-size)), 0);
 			& > img,
 			& > video {
 				height: 100%;
