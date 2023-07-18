@@ -547,6 +547,6 @@ class AQUAMIN_CLI {
 add_action( 'cli_init', 'aquamin_cli_register_commands' );
 function aquamin_cli_register_commands() {
 	WP_CLI::add_command( 'aquamin setup', array( 'AQUAMIN_CLI', 'setup' ) );
-	WP_CLI::add_command( 'aquamin create block', array( 'AQUAMIN_CLI', 'create_block' ) );
-	WP_CLI::add_command( 'aquamin create component', array( 'AQUAMIN_CLI', 'create_component' ) );
+	WP_CLI::add_command( 'aquamin block create', array( 'AQUAMIN_CLI', 'create_block' ) );
+	WP_CLI::add_command( 'aquamin component create', array( 'AQUAMIN_CLI', 'create_component' ) );
 }

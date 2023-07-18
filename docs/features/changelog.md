@@ -17,7 +17,6 @@ search_exclude: true
 * Add responsive hide/show extension for groups.
 * Add responsive hide/show extension for groups.
 * Removed common-classes.css as it's redundant (use reusable-global.css instead).
-* Reversed cli commands for rubustness and clarity (e.g. `wp aquamin bock create`).
 
 ## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.
@@ -25,8 +24,8 @@ search_exclude: true
 
 ## 4.3.0 - May 12 2023
 * Added custom embed scripts option page under Settings > Custom Scripts.
-* Change wp cli `wp aquamin block` command to be `wp aquamin create block` so it makes more sense.
-* Added new wp cli `wp aquamin create component` command to create basic components.
+* Change wp cli `wp aquamin block` command to be `wp aquamin block create` so it makes more sense.
+* Added new wp cli `wp aquamin component create` command to create basic components.
 * Added new EntitySelector block UI component (useful for associating posts, terms, etc. to a block).
 * Added new/improved npm clean and static asset copying.
 * Removed --c-alpha:1 feature; in the future, we can use built in CSS color functions.
