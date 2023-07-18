@@ -13,17 +13,14 @@ import { ani, aniDelegate } from './scripts/aniViewport';
 
 // execute animations
 aniLoad('.ani--load');
-aniScroll({
-	parent: '.ani--parallax',
-	child: '.wp-block-cover__video-background, .wp-block-cover__image-background',
-});
+aniScroll('.ani--parallax');
 aniBackground('.ani--background');
 aniBackground('.ani--foreground', true);
 ani([
 	...aniDelegate([
 		{ parent: '.ani-parent', child: '.ani-child' },
 		// eslint-disable-next-line prettier/prettier
-		{ parent: '.wp-block-cover', child: '.wp-block-cover__image-background' },
+		{ parent: '.wp-block-cover:not(.ani--parallax)', child: '.wp-block-cover__image-background' },
 		{ parent: '.wp-block-columns', child: '.wp-block-column' },
 		{ parent: '.wp-block-buttons', child: '.wp-block-button' },
 	]),

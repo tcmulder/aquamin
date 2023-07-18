@@ -2,10 +2,9 @@
  * Extended animation shared block styling.
  */
 :root {
+	/* prettier-ignore */
+	--ani-duration: calc(var(--ani-speed, 0.375s) * 2); /* speed of transition effects */
 	--ani-timing-function: var(--ani-ease, ease);
-	--ani-duration: calc(
-		var(--ani-speed, 0.375s) * 2
-	); /* speed of transition effects */
 	--ani-delay-increment: 0; /* integer for stepped animations */
 	--ani-delay-factor: 0.05s; /* duration of each increment step */
 	--ani-delay-offset: 0.15s; /* start delay (so ani don't start at very bottom of screen) */
@@ -22,11 +21,16 @@
 	&:not(.is-shown) {
 		opacity: var(--ani-opacity, 1);
 		filter: blur(var(--ani-blur, 0));
-		transform: translateX(var(--ani-x, 0)) translateY(var(--ani-y, 0))
+		transition: 0s 0s;
+		/* prettier-ignore */
+		transform:
+			translateX(var(--ani-x, 0))
+			translateY(var(--ani-y, 0))
 			scale(var(--ani-scale-x, 1), var(--ani-scale-y, 1))
 			perspective(var(--ani-perspective, 0px))
-			rotateX(var(--ani-rotate-x, 0deg)) rotate(var(--ani-rotate, 0deg));
-		transition: 0s 0s;
+			rotateX(var(--ani-rotate-x, 0deg))
+			rotate(var(--ani-rotate, 0deg))
+			translateZ(var(--ani-z, 0));
 	}
 	&.ani--opacity {
 		--ani-opacity: 0;
@@ -39,7 +43,6 @@
 		--ani-scale-x: 0;
 	}
 	&.ani--blur {
-		box-shadow: 0 0 0 100vw hsla(160, 100%, 75%, 0.8) inset;
 		--ani-blur: 0.25rem;
 	}
 	&.ani--up {
@@ -58,18 +61,7 @@
 		--ani-perspective: 8em;
 		--ani-rotate-x: 12deg;
 		--ani-rotate: -2deg;
-	}
-}
-.ani-parallax-parent {
-	overflow: hidden;
-}
-.ani--parallax {
-	--parallax-size: 75vh;
-	overflow: hidden;
-	transition: 0s;
-	&.ani--parallax-default {
-		/* !important to override wp default */
-		height: calc(100% + var(--parallax-size)) !important;
+		--ani-z: 1.5em;
 	}
 }
 .ani--foreground,
@@ -79,8 +71,7 @@
 	z-index: 20;
 	&:is(header).is-loaded,
 	&:not(:is(header)) {
-		/* !important to override wp default */
-		background: none !important;
+		background: none !important; /* !important overrides wp default */
 	}
 	& > * {
 		position: relative;
@@ -126,7 +117,7 @@
 	&:not(.active) {
 		opacity: 0;
 	}
-	/* for specificity */
+	/* for specificity... */
 	&.background-color-block.background-color-block.background-color-block {
 		max-width: none;
 		width: 100%;
@@ -134,4 +125,29 @@
 }
 .background-color-block--foreground {
 	z-index: 10;
+}
+
+.ani--parallax {
+	&:is(.wp-block-cover) {
+		--parallax-size: 100px;
+		overflow: hidden;
+		transition: 0s;
+		.wp-block-cover__video-background,
+		.wp-block-cover__image-background {
+			height: calc(100% + var(--parallax-size));
+			will-change: transform;
+			transform: translate3d(
+				0,
+				calc(
+					var(--parallax-size) * var(--ani-plx) - var(--parallax-size)
+				),
+				0
+			);
+			& > img,
+			& > video {
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
 }
