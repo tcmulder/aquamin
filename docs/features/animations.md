@@ -48,14 +48,21 @@ While not nearly as robust as something like [Greensock](https://greensock.com/)
 
 Aquamin has two animations types that pin an element's background from moving while still allowing the content within it to scroll. On the `core/cover` block, you can apply a Background animation which will pin the background behind surrounding content, or Foreground animation which will pin the background above surrounding content (much like a popup). This works for background colors, images, videos, etc.: whatever you choose as a background for the `core/cover` block you're animating.
 
-## Remove Or Customize Build
+## Custom Animations
 
-### Eliminate Specific Features
+In addition to the built-in animations, you can add your own using the `--ani-custom-transform` and/or `--ani-custom-filter` variables. Remember, you're animating _from_ a off-screen state _to_ a final resting state, so your code will look something like this:
+
+```css
+.ani:not(.is-shown) {
+	--ani-custom-transform: skewX(10deg);
+	--ani-custom-filter:
+		drop-shadow(5px 5px 0 red)
+		hue-rotate(220deg)
+		drop-shadow(-5px -5px 0 red);
+}
+```
+
+## Opt Out of Animations
 {: .no_toc }
 
-The ani library comes with quite a few features by default. If you would like to turn some of these features off, you can easily do so within the `aquamin/blocks/block-library/extended-ani/script.js` file: simply remove the import and function call of the features you would like to eliminate, and that script will get excluded from the theme's JavaScript build.
-
-### Full Removal
-{: .no_toc }
-
-If you don't want to use aquamin's animation system at all, simply delete the entire `aquamin/blocks/block-library/extended-ani` directory.
+If you don't want to use aquamin's animation system at all, simply delete the entire `aquamin/blocks/extended-blocks/extended-ani` directory. You can also remove specific animation features by removing the related imports, files, and function calls.

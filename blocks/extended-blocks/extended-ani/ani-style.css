@@ -2,8 +2,14 @@
  * Extended animation shared block styling.
  */
 
-/* load all dependencies */
-@import "./styles/ani-*.css";
+/* animate items when they enter the viewport */
+@import "./styles/ani-viewport.css";
+
+/* animate items on scroll (scrubs animation as you scroll) */
+@import "./styles/ani-scroll.css";
+
+/* animate backgrounds (like background-attachment:fixed) and foregrounds (like position:fixed popup) */
+@import "./styles/ani-background.css";
 
 /* common default animation custom properties */
 :root {

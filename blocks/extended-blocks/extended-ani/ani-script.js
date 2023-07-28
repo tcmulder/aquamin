@@ -22,6 +22,7 @@ aniBackground('.ani--background');
 // animate foreground colors and media (like position:fixed popup)
 aniBackground('.ani--foreground', true);
 
+// (must come last as items above remove some extra .ani classes)
 // animate items when they enter the viewport
 ani([
 	// delegate some animations (i.e. Gutenberg applies classes to parent and we'll move them to an appropriate child)

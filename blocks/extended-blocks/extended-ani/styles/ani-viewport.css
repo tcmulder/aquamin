@@ -8,32 +8,51 @@
  * .ani--load animations activate once on page load,
  * and won't reanimate if you scroll away from then
  * then back again—very useful for hero animations.
+ *
+ * In addition to the built-in animations, you can add
+ * your own. Example:
+ *
+.ani:not(.is-shown) {
+	--ani-custom-transform: skewX(10deg);
+	--ani-custom-filter:
+		drop-shadow(5px 5px 0 red)
+		hue-rotate(220deg)
+		drop-shadow(-5px -5px 0 red);
+}
  */
 .ani--load,
 .ani {
-	transition: all var(--ani-duration) var(--ani-timing-function);
+	/* prettier-ignore */
 	transition-delay: calc(
-		var(--ani-delay-increment) * var(--ani-delay-factor) +
-			var(--ani-delay-offset)
+		var(--ani-delay-increment)
+		* var(--ani-delay-factor)
+		+ var(--ani-delay-offset)
 	);
+	transition-duration: var(--ani-duration);
+	transition-timing-function: var(--ani-timing-function);
+	transition-property: all;
 	will-change: transform;
 	/*&, / *DEBUG*/
 	&:not(.is-shown) {
-		opacity: var(--ani-opacity, 1);
-		filter: blur(var(--ani-blur, 0));
 		transition: 0s 0s;
+		/* prettier-ignore */
+		filter:
+			blur(var(--ani-blur, 0))
+			opacity(var(--ani-opacity, 100%))
+			var(--ani-custom-filter, );
 		/* prettier-ignore */
 		transform:
 			 translateX(var(--ani-x, 0))
 			 translateY(var(--ani-y, 0))
-			 scale(var(--ani-scale-x, 1), var(--ani-scale-y, 1))
 			 perspective(var(--ani-perspective, 0px))
+			 scale(var(--ani-scale-x, 1), var(--ani-scale-y, 1))
 			 rotateX(var(--ani-rotate-x, 0deg))
 			 rotate(var(--ani-rotate, 0deg))
-			 translateZ(var(--ani-z, 0));
+			 translateZ(var(--ani-z, 0))
+			 var(--ani-custom-transform, );
 	}
 	&.ani--opacity {
-		--ani-opacity: 0;
+		--ani-opacity: 0%;
 	}
 	&.ani--scale {
 		--ani-scale-x: 0.8;
