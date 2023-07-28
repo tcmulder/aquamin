@@ -1,0 +1,66 @@
+/**
+ * Viewport-based animations.
+ *
+ * .ani animations occur once an element enters the
+ * viewport, then reset immediatly after that element
+ * has left the viewport so it's ready to reanimate.
+ *
+ * .ani--load animations activate once on page load,
+ * and won't reanimate if you scroll away from then
+ * then back again—very useful for hero animations.
+ */
+.ani--load,
+.ani {
+	transition: all var(--ani-duration) var(--ani-timing-function);
+	transition-delay: calc(
+		var(--ani-delay-increment) * var(--ani-delay-factor) +
+			var(--ani-delay-offset)
+	);
+	will-change: transform;
+	/*&, / *DEBUG*/
+	&:not(.is-shown) {
+		opacity: var(--ani-opacity, 1);
+		filter: blur(var(--ani-blur, 0));
+		transition: 0s 0s;
+		/* prettier-ignore */
+		transform:
+			 translateX(var(--ani-x, 0))
+			 translateY(var(--ani-y, 0))
+			 scale(var(--ani-scale-x, 1), var(--ani-scale-y, 1))
+			 perspective(var(--ani-perspective, 0px))
+			 rotateX(var(--ani-rotate-x, 0deg))
+			 rotate(var(--ani-rotate, 0deg))
+			 translateZ(var(--ani-z, 0));
+	}
+	&.ani--opacity {
+		--ani-opacity: 0;
+	}
+	&.ani--scale {
+		--ani-scale-x: 0.8;
+		--ani-scale-y: var(--ani-scale-x);
+	}
+	&.ani--scale-x {
+		--ani-scale-x: 0;
+	}
+	&.ani--blur {
+		--ani-blur: 0.25rem;
+	}
+	&.ani--up {
+		--ani-y: 1.25rem;
+	}
+	&.ani--down {
+		--ani-y: -1.25rem;
+	}
+	&.ani--left {
+		--ani-x: 1.5rem;
+	}
+	&.ani--right {
+		--ani-x: -1.5rem;
+	}
+	&.ani--3d {
+		--ani-perspective: 8em;
+		--ani-rotate-x: 12deg;
+		--ani-rotate: -2deg;
+		--ani-z: 1.5em;
+	}
+}

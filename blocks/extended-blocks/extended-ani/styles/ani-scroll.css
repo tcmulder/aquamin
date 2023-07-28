@@ -1,0 +1,30 @@
+/**
+ * Scroll-based animation.
+ *
+ * These animations occur fluidly as you scroll down the page,
+ * sort of like you're scrubbing through a video. It only handles Cover blocks
+ * by default, but --ani-plx is simply going from 0 to 1 as an element enters
+ * then leaves the viewport (e.g. --ani-plx is 0.5 when an element is scrolled
+ * 50% into the viewport); so, you can use it for a wide variety of other animations
+ * using calc() functions.
+ * 
+ */
+.ani--parallax {
+	&:is(.wp-block-cover) {
+		--parallax-size: 100px;
+		overflow: hidden;
+		transition: 0s;
+		.wp-block-cover__video-background,
+		.wp-block-cover__image-background {
+			height: calc(100% + var(--parallax-size));
+			will-change: transform;
+			/* prettier-ignore */
+			transform: translate3d(0,calc(var(--parallax-size) * var(--ani-plx) - var(--parallax-size)), 0);
+			& > img,
+			& > video {
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+}
