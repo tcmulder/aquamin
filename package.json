@@ -13,15 +13,14 @@
 		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
 	},
 	"scripts": {
-		"start": "npm-run-all --parallel parcel watch $npm_package_config_build_paths server",
+		"start": "npm-run-all --parallel builder server",
 		"build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache && npm run build:post",
 		"build:post": "npm run assets; npm run lint",
-		"assets": "del ./dist/assets/* && ncp ./assets ./dist/assets --filter '**/*.*'",
+		"builder": "parcel watch $npm_package_config_build_paths",
 		"server": "browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
-		"docs:server": "browser-sync start --no-open --proxy='http://127.0.0.1:4001/aquamin/' --files='./docs/'",
-		"docs": "cd ./docs; jekyll serve --config _config_local.yml --port 4001",
+		"assets": "del ./dist/assets/* && ncp ./assets ./dist/assets --filter '**/*.*'",
+		"docs": "docsify serve docs --open --port 4000",
 		"lint": "eslint $npm_package_config_lint_paths",
-		"lint:fix": "eslint $npm_package_config_lint_paths --fix",
 		"clean": "del ./.parcel-cache/*"
 	},
 	"author": "@tcmulder",
@@ -39,6 +38,7 @@
 		"browser-sync": "^2.29.3",
 		"classnames": "^2.3.2",
 		"del-cli": "^5.0.0",
+		"docsify-cli": "^4.4.4",
 		"eslint-config-wesbos": "^3.2.3",
 		"ncp": "^2.0.0",
 		"npm-run-all": "^4.1.5",

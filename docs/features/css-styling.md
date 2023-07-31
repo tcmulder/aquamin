@@ -51,7 +51,7 @@ So, for instance, `--c-1-800` would be a light primary color, `--c-1-500` would 
 
 You'll notice `:root` defines `--c-raw-<variant>-<brightness>` in HSL format (you could use RGB if you prefer), and then `*` sets the actual `--c-<variant>-<brightness>` color values, plus a `--c-alpha` value; this is very powerful, as it allows you do the following:
 
-```scss
+```css
 :root {
 	--c-raw-0-000: 0, 0%, 0%; /* start with black hsl (or rgb) values only */
 }
@@ -71,7 +71,7 @@ You'll notice `:root` defines `--c-raw-<variant>-<brightness>` in HSL format (yo
 
 Lastly for colors, within the `libs.php` file, aquamin loops through all theme colors (set in the `theme.json` file) and outputs a `--c-bg` for each. This gives you access within CSS to the current background color. For instance, it let's you do things like:
 
-```scss
+```css
 .thing {
 	border: 1px solid var(--c-bg);
 }

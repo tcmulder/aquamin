@@ -1,23 +1,14 @@
----
-title: Changelog
-permalink: /changelog/
-layout: default
-nav_order: 99
-has_children: false
-# parent: Page Title
-search_exclude: true
----
-
 # Changelog
 
 ## 5.1.0 - July 10 2023
 * Updated Parcel 2 and other npm packages.
 * Refined alignment/layout styling.
-* Moved extended blocks to their own directory and added documentation.
-* Add responsive hide/show extension for groups.
-* Add responsive hide/show extension for groups.
+* Moved extended blocks to their own directory (and added documentation).
+* Added responsive hide/show extension for groups.
+* Split .ani animation files into separate files.
 * Removed common-classes.css as it's redundant (use reusable-global.css instead).
 * Reversed cli commands for rubustness and clarity (e.g. `wp aquamin bock create`).
+* Overualed documentation to use docsify (eliminatse ruby dependency).
 
 ## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.

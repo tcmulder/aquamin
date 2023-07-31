@@ -1,27 +1,9 @@
----
-title: Theme Configuration
-permalink: /features/theme-configuration/
-layout: default
-nav_order: 2
-# has_children: true
-parent: Features
----
-
 # Theme Configuration
-{: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
+## Component Philosophy
+All sites are built out of a collection of components. Just like with blocks, aquamin capitalizes on this by making it _really_ easy to work with components.
 
-1. TOC
-{:toc}
-
----
-
-## Aquamin's Component Philosophy
-All sites are built out of a collection of components, and aquamin capitalizes on this by making it _really_ easy to work with components.
-
-Much like blocks, each component is it's own self-contained directory (with a few global exceptions) where you'll handle all development for that particular piece of the site (it may help to read [aquamin's block philosophy](/aquamin/features/block-configuration/#aquamins-block-philosophy) for more on that).
+So, each component is it's own self-contained directory (with a few global exceptions) where you'll handle all development for that particular piece of the site (it may help to read [aquamin's block philosophy](/features/block-configuration#block-philosophy) for more on that).
 
 ## Creating Components
 
