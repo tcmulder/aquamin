@@ -5,7 +5,7 @@
  * the theme's major styling features,
  * wrapped within .editor-styles-wrapper.
  */
-@import "../../global/index.css";
+@import "../../global/style.css";
 
 /**
  * Import theme stylesheets for editor into the editor

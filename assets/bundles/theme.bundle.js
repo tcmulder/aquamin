@@ -6,7 +6,7 @@
 /**
  * Core/global configurations
  */
-import '../global/index.css';
+import '../global/style.css';
 
 /**
  * Individual components
