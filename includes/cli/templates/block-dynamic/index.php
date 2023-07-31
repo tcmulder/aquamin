@@ -4,7 +4,7 @@
  */
 
 // enqueue block assets
-wp_register_style( 'aquamin-block-template-slug-style', get_template_directory_uri() . '/dist/blocks/block-library/template-slug/template-slug-style.css', null, '1.0' );
+wp_register_style( 'aquamin-block-template-slug-style', get_template_directory_uri() . '/dist/block-library/template-slug/template-slug-style.css', null, '1.0' );
 
 // register the block
 register_block_type(
@@ -13,7 +13,7 @@ register_block_type(
 		'render_callback' => function( $attributes, $content, $block ) {
 			ob_start();
 			get_template_part(
-				'blocks/block-library/' . basename( __DIR__ ) . '/template-slug-markup',
+				'assets/block-library/' . basename( __DIR__ ) . '/template-slug-markup',
 				null,
 				array(
 					'attributes' => $attributes,

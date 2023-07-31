@@ -72,6 +72,6 @@ if( $sidebar ) {
 }
 ```
 
-Within aquamarine, you can see an example of this code under `aquamin/components/component-library/footer/morkup.php`;
+Within aquamarine, you can see an example of this code under `aquamin/assets/component-library/footer/morkup.php`;
 
 > _Note:_ Once WordPress's Full Site Editor has sufficiently matured, most of this functionality will likely be handled by that system, and the Global Content feature in aquamin will be deprecated at that time. For now though, it's very convenient, especially for clients wanting to edit content utilizing the full potential of blocks.

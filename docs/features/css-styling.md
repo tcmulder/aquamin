@@ -28,6 +28,8 @@ Aquamin employs the font settings within the `text-level-semantics.css` file and
 - `--fs-<name>` defines the sizes of various text elements, like H1-H6 headings. They're converted from pixels to ems by default, but you can replace these as needed
 - `--ff-<number>` defines the site's font families (you can add more if you need to).
 
+You can add fonts from CDN using `aquamin/includes/enqueue.php`, or locally using `aquamin/theme/global/fonts.css`.
+
 ## Layout
 
 - `--sp-<size>` is useful for consistent margins and padding throughout your theme.

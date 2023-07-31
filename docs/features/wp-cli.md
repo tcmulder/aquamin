@@ -14,11 +14,11 @@ Aquamin has some [WP-CLI](https://developer.wordpress.org/cli/commands/){: targe
 
 # `wp aquamin block create`
 
-This command scaffolds a new block for you, walking you through a series of prompts to name your block and generate its files. You'll end up with a new directory within `aquamin/blocks/block-library/` that contains all your block files, ready for you to customize (learn more about [blocks in aquamin](/aquamin/features/block-configuration/)).
+This command scaffolds a new block for you, walking you through a series of prompts to name your block and generate its files. You'll end up with a new directory within `aquamin/assets/block-library/` that contains all your block files, ready for you to customize (learn more about [blocks in aquamin](/aquamin/features/block-configuration/)).
 
 # `wp aquamin component create`
 
-This command scaffolds a new component for you, letting you name the component and choose what files it should include. You'll end up with a new directory within `aquamin/components/component-library/` that contains all your component files, properly enqueued and ready to use. Note you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file, if you chose to include PHP.
+This command scaffolds a new component for you, letting you name the component and choose what files it should include. You'll end up with a new directory within `aquamin/assets/component-library/` that contains all your component files, properly enqueued and ready to use. Note you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file, if you chose to include PHP.
 
 # `wp aquamin setup`
  
@@ -30,4 +30,4 @@ This setup command does several things:
    3. It features a playground to experiment with custom blocks somewhere site visitors can't accidentally stumble across. 
 2. It imports basic footer content for you to customize under _Appearance > Global Content > Footer_. Aquamin displays this content via the `footer.php` template automatically. (Eventually this may move to the full site editor, but currently this is the best way to bring the block editor into the footer.)
 
-> _Note:_ The pattern library is designed for you to use for developing your own blocks, too. If on future sites you would like to pre-install some of your own aquamin-compatible blocks, simply add that block's directory into `aquamin/blocks/block-library/` and then include the block's pattern [WXR file](https://developer.wordpress.org/cli/commands/export/){: target="_blank"} (e.g. `wp export --post__in=123`) in the `aquamin/includes/cli/demo-content/` directory before running `wp aquamin setup`, and your block will be imported alongside aquamin's small suite of standard blocks.
+> _Note:_ The pattern library is designed for you to use for developing your own blocks, too. If on future sites you would like to pre-install some of your own aquamin-compatible blocks, simply add that block's directory into `aquamin/assets/block-library/` and then include the block's pattern [WXR file](https://developer.wordpress.org/cli/commands/export/){: target="_blank"} (e.g. `wp export --post__in=123`) in the `aquamin/includes/cli/demo-content/` directory before running `wp aquamin setup`, and your block will be imported alongside aquamin's small suite of standard blocks.

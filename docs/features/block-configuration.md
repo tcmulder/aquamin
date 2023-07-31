@@ -4,11 +4,11 @@
 
 Aquamin's goal is to make it _really_ easy to create blocks, remove them, or transfer them to future aquamin-themed sites. In order to accomplish this, each block is it's own self-contained directory, with all files necessary for it to function contained within that directory.
 
-There's no configuration you need to do outside of that directory to get the block working, and all your development occurs within that directory so you can spend less time tracking down files across the theme's filesystem. If you want to move that block to another aquamin-compatible site in the future, you need only copy and paste it's directory into the new site and tweak it's styling to match. And if you decide to get rid of a block, simply delete it's directory, and it'll leave behind no extra code bloat across other files in the theme—it's 100% gone. Easy peasy!
+There's no configuration you need to do outside of that directory to get the block working, and all your development occurs within that directory so you can spend less time tracking down files across the theme's filesystem. If you want to move that block to another aquamin-compatible site in the future, you need only copy and paste it's directory into the new site and tweak its styling to match. And if you decide to get rid of a block, simply delete it's directory, and it'll leave behind no extra code bloat across other files in the theme—it's just 100% gone. Easy peasy!
 
 ## Creating Blocks
 
-The easiest way to create blocks is to run `wp aquamin block create` ([see the docs](/features/wp-cli#wp-aquamin-block-create)). You'll need to restart parcel if it's running to add the new entry points to its file watcher, and then the scaffolded block will be available as a registered block in WordPress, ready for you to customize within its own directory inside `aquamin/blocks/block-library/`.
+The easiest way to create blocks is to run `wp aquamin block create` ([see the docs](/features/wp-cli#wp-aquamin-block-create)). You'll need to restart parcel if it's running to add the new entry points to its file watcher, and then the scaffolded block will be available as a registered block in WordPress, ready for you to customize within its own directory inside `aquamin/assets/block-library/`.
 
 ?> _Note:_  If you would prefer not to use WP-CLI, simply copy the appropriate block scaffold directory out of `aquamin/includes/cli/templates/`, conduct a find and replace for the "template" placeholder strings you'll find within its files, and update/remove any placeholder comments.
 
@@ -32,13 +32,13 @@ Though aquamin prefers blocks be built with JavaScript, in some cases blocks req
 
 ## Anatomy of a Block
 
-Each block has its own block directory within the `aquamin/blocks/block-library/` directory. All the block's files are contained within its block directory. Note that inner blocks use the parent block's `editor.css`, `style.css`, and optional `script.js` files so you needn't jump between so many files while you're working on the block as a whole.
+Each block has its own block directory within the `aquamin/assets/block-library/` directory. All the block's files are contained within its block directory. Note that inner blocks use the parent block's `editor.css`, `style.css`, and optional `script.js` files so you needn't jump between so many files while you're working on the block as a whole.
 
 ### Directory Structure
 
 ```
-📂 blocks
-┗ 📂 block-library         // all blocks reside within blocks/block-library/*
+📂 assets
+┗ 📂 block-library         // all blocks reside within assets/block-library/*
    ┗ 📂 example-block      // the block's unique name
       ┣ 📄 block.json      // details about block registration
       ┣ 📄 edit.js         // HTML shown in the block editor
@@ -55,10 +55,21 @@ Each block has its own block directory within the `aquamin/blocks/block-library/
          ┣ 📄 index.js     // block entry file (mostly imports other files)
          ┗ 📄 save.js      // HTML saved to database
 ```
+?> _Note:_ These filenames are simplified; they'll work, but for easier debugging, aquamin prefixes filenames like `example-block-edit.js`, `example-block-editor.css`, `example-block-markup.php`, etc.
+
+## Editing Core Blocks
+
+You can modify core blocks using the `aquamin/assets/block-edits/` directory. Aquamin comes with a few already, including block animations, column layout enhancements, and show/hide responsive container edits. Feel free to duplicate and reuse any of these for your own purposes, or remove those you don't want.
+
+?> _Note:_ While aquamin only loads custom block front-end styles and scripts on posts that use those particular blocks (in order to optimize performance), it loads edits within this directory globally to ensure your edits apply to core blocks wherever they may appear.
 
 ## PHP Hooks
 
-If your block requires PHP hooks, rather than adding them to the theme's `functions.php` file (and therefore having code related to your block that's outside its single, self-contained directory), you can add your hooks to a `hooks.php` file within the block's directory (see an example of this used by the built-in year block's directory at `blocks/block-library/format-type-year/hooks.php`).
+If your block requires PHP hooks, rather than adding them to the theme's `functions.php` file (and therefore having code related to your block that's outside its single, self-contained directory), you can add your hooks to a `hooks.php` file within the block's directory (see an example of this used by the built-in year block's directory at `aquamin/assets/block-library/format-type-year/hooks.php`).
+
+## Block Utilities
+
+You'll find some helpful, reusable utilities and UI components under `aquamin/assets/util` and `aquamin/assets/block-ui`, respectively. Check out the comments at the top of these files for usage information. You can add your own scripts into these directories as well, or ignore them if they're not helpful to you (since anything you don't use won't get bundled into the production build anyway).
 
 ## Deleting Blocks
 
@@ -66,17 +77,7 @@ There's currently a bug in Parcel: if you delete a block's directory to remove t
 
 ?> _Note:_ You can run `npm run clean && npm run start` if you would like to clear the cache immediately before starting the build server each time.
 
-!> _Warning:_ If you _don't_ do this and you delete a file Parcel was watching, builds will fail. Maybe future releases of Parcel will eliminate this requirement. It appears to happen when one file imports another, but then the imported file later gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don't clear its cache first.
-
-## Block Utilities
-
-You'll find some helpful, reusable utilities and UI components under `aquamin/blocks/util` and `aquamin/blocks/ui`, respectively. Check out the comments at the top of these files for usage information. You can add your own into these directories as well, or ignore them if they're not helpful to you (since anything you don't use won't get bundled into the production build anyway).
-
-## Editing Core Blocks
-
-You can modify core blocks using the `aquamin/blocks/block-edits/` directory. Aquamin comes with a few already, including block animations, column layout enhancements, and show/hide responsive container edits. Feel free to duplicate and reuse any of these for your own purposes, or remove those you don't want.
-
-?> _Note:_ While aquamin only loads custom block front-end styles and scripts on posts that use those particular blocks (in order to optimize performance), it loads edits within this directory globally to ensure your edits apply to core blocks wherever they may appear.
+!> _Warning:_ If you _don't_ follow these instructions and you delete a file Parcel was watching, builds will fail. Maybe future releases of Parcel will eliminate this requirement. It appears to happen when one file imports another, but then the imported file later gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don't clear its cache first.
 
 ## A Note on Imports
 

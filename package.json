@@ -8,17 +8,17 @@
 		"npmVersion": ">=7.11.2"
 	},
 	"config": {
-		"lint_paths": "./blocks ./components",
-		"build_paths": "./*/*.bundle.js ./blocks/block-library/*/*script.js ./blocks/block-library/*/*style.css",
+		"lint_paths": "./assets",
+		"build_paths": "./assets/*/*.bundle.js ./assets/block-library/*/*script.js ./assets/block-library/*/*style.css",
 		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
 	},
 	"scripts": {
 		"start": "npm-run-all --parallel builder server",
 		"build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache && npm run build:post",
-		"build:post": "npm run assets; npm run lint",
+		"build:post": "npm run static",
 		"builder": "parcel watch $npm_package_config_build_paths",
 		"server": "browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
-		"assets": "del ./dist/assets/* && ncp ./assets ./dist/assets --filter '**/*.*'",
+		"static": "del ./dist/static/* && ncp ./assets/static ./dist/static --filter '**/*.*'",
 		"docs": "docsify serve docs --open --port 4000",
 		"lint": "eslint $npm_package_config_lint_paths",
 		"clean": "del ./.parcel-cache/*"
@@ -34,6 +34,7 @@
 	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"devDependencies": {
 		"@parcel/resolver-glob": "^2.9.3",
+		"@parcel/transformer-svg-react": "^2.9.3",
 		"@wordpress/icons": "^9.29.0",
 		"browser-sync": "^2.29.3",
 		"classnames": "^2.3.2",

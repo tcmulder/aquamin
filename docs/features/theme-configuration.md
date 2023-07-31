@@ -1,19 +1,19 @@
 # Theme Configuration
 
 ## Component Philosophy
-All sites are built out of a collection of components. Just like with blocks, aquamin capitalizes on this by making it _really_ easy to work with components.
+All sites are essentially just a collection of varous components. As it does with blocks, aquamin capitalizes on this by making it _really_ easy to work with components.
 
-So, each component is it's own self-contained directory (with a few global exceptions) where you'll handle all development for that particular piece of the site (it may help to read [aquamin's block philosophy](/features/block-configuration#block-philosophy) for more on that).
+So, each component is it's own self-contained directory (with a few global exceptions) where you'll handle all development for that particular piece of the site (it may help to read [aquamin's block philosophy](/features/block-configuration#block-philosophy) for more on the theory).
 
 ## Creating Components
 
-The easiest way to create components is to run `wp aquamin component create` ([see the docs](/aquamin/features/wp-cli/#wp-aquamin-create-component)). If you have parcel running, just refresh the site and the scaffolded component will immediately be available, ready for you to customize within its own directory in `aquamin/components/component-library/`. If you had the command scaffold your PHP, you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file in that directory, too.
+The easiest way to create components is to run `wp aquamin component create` ([see the docs](aquamin/features/wp-cli/#wp-aquamin-create-component)). If you have parcel running, just refresh the site and the scaffolded component will immediately be available, ready for you to customize within its own directory in `aquamin/assets/component-library/`. If you had the command scaffold your PHP, you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file in that directory, too.
 
-Or, since there's a lot more variety to components than blocks, you may choose to add these manually for more control: just add a new directory and appropriate files to the `aquamin/components/component-library/` folder. The main thing to keep in mind is that aquamin automatically includes all `style.css` styling on the front-end, all `editor.css` styling in the block editor's back-end, all `script.js` JavaScript on the front-end, and your HTML/PHP should go in `markup.php` files (you'll need to manually include them with `get_template_part()` where they're needed). Note you can also add a prefix to these files, like `main-menu-script.js` for example, to make debugging easier.
+Or, since there's a lot more variety to components than blocks, you may choose to add these manually for more control: just add a new directory and appropriate files to the `aquamin/assets/component-library/` folder. The main thing to keep in mind is that aquamin automatically includes all `style.css` styling on the front-end, all `editor.css` styling in the block editor's back-end, all `script.js` JavaScript on the front-end, and your HTML/PHP should go in `markup.php` files (you'll need to manually include them with `get_template_part()` where they're needed). Note you can also add a prefix to these files, like `main-menu-script.js` for example, to make debugging easier.
 
 ## Examples
 
-A good example component is the `aquamin/components/component-library/menu` component, which is where you'll build the site's navigation.
+A good example component is the `aquamin/assets/component-library/menu` component, which is where you'll build the site's navigation.
 
 ```
 📂 components
@@ -72,12 +72,12 @@ Here's how aquamin is set up to start—then, you'll edit these files and add yo
 ### Font Assets
 {: .no_toc }
 
-You can add fonts to the `aquamin/components/global/fonts/` folder, then add the `@font-face definitions` in the `aquamin/components/global/fonts.css` file. Or, you can directly enqueue any fonts from CDN, like Google Fonts, within the `aquamin/includes/enqueue.php` file. Parcel will take care of hashing and including these assets in the `/aquamin/dist/` directory for you.
+You can add fonts to the `aquamin/assets/global/fonts/` folder, then add the `@font-face definitions` in the `aquamin/assets/global/fonts.css` file. Or, you can directly enqueue any fonts from CDN, like Google Fonts, within the `aquamin/includes/enqueue.php` file. Parcel will take care of hashing and including these assets in the `aquamin/dist/` directory for you.
 
 ### Image Assets
 {: .no_toc }
 
-If a component requires images, you should create an `aquamin/components/component-library/some-component-name/images` directory and include them there—that way, each component's directory houses its own images. If you have images that are used by multiple components, you can also create an `aquamin/components/images` directory for them. Parcel will take care of hashing and including these assets in the `/aquamin/dist/` directory for you.
+If a component requires images, you should create an `aquamin/assets/component-library/some-component-name/images` directory and include them there—that way, each component's directory houses its own images. If you have images that are used by multiple components, you can also create an `aquamin/assets/images` directory for them. Parcel will take care of hashing and including these assets in the `aquamin/dist/` directory for you.
 
 ### SVG
 {: .no_toc }
@@ -87,4 +87,4 @@ Usually, Parcel will import all images as a simple path, including SVGs. If you 
 ### Static Assets
 {: .no_toc }
 
-You may want to include static assets in the `/aquamin/dist/` directory, like I often do for a `theme.sprite.svg` file that contains reusable logos, social icons, etc. You can add these files within the `/aquamin/components/assets/` directory, and any time you run `npm run build` they will be copied into `/aquamin/dist/components/assets/`. Note that `npm run start` ignores changes to these files, so you will need to rerun the build if you make changes.
+You may want to include static assets in the `aquamin/dist/` directory, like I often do for a `theme.sprite.svg` file that contains reusable logos, social icons, etc. You can add these files within the `aquamin/assets/assets/` directory, and any time you run `npm run build` they will be copied into `aquamin/dist/components/assets/`. Note that `npm run start` ignores changes to these files, so you will need to rerun the build if you make changes.

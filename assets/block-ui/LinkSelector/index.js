@@ -1,5 +1,14 @@
 /**
- * Dependencies
+ * Add link to block's floating toolbar.
+ *
+ * Example:
+ *
+const { link } = attributes; // { url: 'https://example.com', opensInNewTab: false, title: 'Button Title' }
+<LinkSelector
+	link={link}
+	setAttributes={setAttributes}
+	show={isSelected}
+/>
  */
 import { link as linkIcon } from '@wordpress/icons';
 

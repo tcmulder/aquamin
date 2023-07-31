@@ -11,7 +11,7 @@
  * if you're not using it, but note the aquamin Year Format Type
  * uses it.
  */
-$blocks = glob(AQUAMIN_BLOCKS . '/block-library/*/hooks.php');
+$blocks = glob(AQUAMIN_ASSETS . '/block-library/*/hooks.php');
 if ( $blocks ) {
 	foreach ( $blocks as $block ) {
 		require_once $block;
@@ -23,7 +23,7 @@ if ( $blocks ) {
  */
 add_action( 'init', function() {
 	// load blocks
-	$blocks = glob(AQUAMIN_BLOCKS . '/block-library/*/index.php');
+	$blocks = glob(AQUAMIN_ASSETS . '/block-library/*/index.php');
 	if ( $blocks ) {
 		foreach ( $blocks as $block ) {
 			require_once $block;
@@ -58,7 +58,7 @@ add_action( 'after_setup_theme', function() {
 
 	// prefix editor styles
 	add_theme_support( 'editor-styles' );
-	add_editor_style( '/dist/blocks/editor.bundle.css' );
+	add_editor_style( '/dist/bundles/editor.bundle.css' );
 
 
 } );

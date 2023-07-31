@@ -23,7 +23,7 @@ If you ran the `wp aquamin setup` command, your pattern library will contain a p
 
 ## Block Animations
 
-Aquamin adds animation options to many of the WordPress core blocks. If you would like to add your own, you can do so by adding your block's name to the `affectedBlocks` array within the `aquamin/blocks/block-edits/ani/index.js` file. You can also eliminate core blocks from this list if you do not want them to support animations.
+Aquamin adds animation options to many of the WordPress core blocks. If you would like to add your own, you can do so by adding your block's name to the `affectedBlocks` array within the `aquamin/assets/block-edits/ani/index.js` file. You can also eliminate core blocks from this list if you do not want them to support animations.
 
 ## Viewport-Based Animations
 
@@ -65,4 +65,4 @@ In addition to the built-in animations, you can add your own using the `--ani-cu
 ## Opt Out of Animations
 {: .no_toc }
 
-If you don't want to use aquamin's animation system at all, simply delete the entire `aquamin/blocks/boock-edits/ani` directory. You can also remove specific animation features by removing the related imports, files, and function calls.
+If you don't want to use aquamin's animation system at all, simply delete the entire `aquamin/assets/block-edits/ani` directory. You can also remove specific animation features by removing the related imports, files, and function calls.

@@ -6,13 +6,13 @@
 /**
  * Core/global configurations
  */
-import './theme.css';
+import '../global/index.css';
 
 /**
  * Individual components
  */
-import './component-library/*/*script.js';
-import './component-library/*/*style.css';
+import '../component-library/*/*script.js';
+import '../component-library/*/*style.css';
 
 /**
  * Stuff we don't wanna talk about...
@@ -20,4 +20,4 @@ import './component-library/*/*style.css';
  * See file for notes. Added here to be last
  * in cascade.
  */
-import './shame/shame-style.css';
+import '../global/shame.css';

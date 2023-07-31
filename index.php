@@ -18,10 +18,10 @@ get_header(); ?>
 		<main id="main" class="site-main">
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'components/component-library/content/content', get_post_type() ); ?>
+					<?php get_template_part( 'assets/component-library/content/content', get_post_type() ); ?>
 				<?php endwhile; ?>
 			<?php else : ?>
-				<?php get_template_part( 'components/component-library/content/content', 'none' ); ?>
+				<?php get_template_part( 'assets/component-library/content/content', 'none' ); ?>
 			<?php endif; ?>
 		</main>
 	</div>

@@ -14,30 +14,30 @@ function aquamin_scripts(){
 
 	wp_enqueue_style(
 		'aquamin-style',
-		get_template_directory_uri() . '/dist/components/theme.bundle.css',
+		get_template_directory_uri() . '/dist/bundles/theme.bundle.css',
 		array(),
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/components/theme.bundle.css' ),
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.css' ),
 		'screen'
 	);
 	wp_enqueue_script(
 		'aquamin-scripts',
-		get_template_directory_uri() . '/dist/components/theme.bundle.js',
+		get_template_directory_uri() . '/dist/bundles/theme.bundle.js',
 		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/components/theme.bundle.js' ),
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.js' ),
 		true
 	);
 	wp_enqueue_style(
 		'aquamin-block-style',
-		get_template_directory_uri() . '/dist/blocks/blocks.bundle.css',
+		get_template_directory_uri() . '/dist/bundles/blocks.bundle.css',
 		array(),
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/blocks/blocks.bundle.css' ),
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/blocks.bundle.css' ),
 		'screen'
 	);
 	wp_enqueue_script(
 		'aquamin-block-scripts',
-		get_template_directory_uri() . '/dist/blocks/blocks.bundle.js',
+		get_template_directory_uri() . '/dist/bundles/blocks.bundle.js',
 		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/blocks/blocks.bundle.js' ),
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/blocks.bundle.js' ),
 		true
 	);
 
@@ -67,9 +67,9 @@ function aquamin_editor_scripts() {
 
 	wp_enqueue_script(
 		'aquamin-editor-scripts',
-		get_template_directory_uri() . '/dist/blocks/editor.bundle.js',
+		get_template_directory_uri() . '/dist/bundles/editor.bundle.js',
 		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/blocks/editor.bundle.js' ),
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/editor.bundle.js' ),
 		true
 	);
 	wp_localize_script( 'aquamin-editor-scripts', 'aquaminLocalizedBlockEditor', array(
