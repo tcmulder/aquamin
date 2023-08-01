@@ -27,8 +27,7 @@
 	"license": "ISC",
 	"@parcel/transformer-css": {
 		"drafts": {
-			"nesting": true,
-			"customMedia": true
+			"nesting": true
 		}
 	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
