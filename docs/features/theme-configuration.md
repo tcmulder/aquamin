@@ -9,9 +9,9 @@ So, each component is it's own self-contained directory (with a few global excep
 
 The easiest way to create a component is to run `wp aquamin component create` ([see the docs](features/wp-cli#wp-aquamin-component-create)). If you have parcel running, just refresh the site and the scaffolded component will immediately be available, ready for you to customize within its own directory inside `aquamin/assets/component-library/`. If you had the command scaffold your PHP, you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file in that directory, too.
 
-Or, if you'd prefer to scaffold a component yourself, you may choose to add these manually for more control: just add a new directory and appropriate files to the `aquamin/assets/component-library/` folder. The main thing to keep in mind is that aquamin automatically includes all `style.css` styling on the front-end, all `editor.css` styling in the block editor's back-end, all `script.js` JavaScript on the front-end, and your HTML/PHP should go in `markup.php` files (you'll need to manually include them with `get_template_part()` where they're needed).
+Or, if you'd prefer to scaffold a component yourself, you may choose to add the necessary files manually for more control: just add those within a new directory inside the `aquamin/assets/component-library/` folder. The main thing to keep in mind is that aquamin automatically includes all `*style.css` styling on the front-end, all `*editor.css` styling in the block editor's back-end, all `*script.js` JavaScript on the front-end, and your HTML/PHP should be within a `markup.php` file (you'll need to manually include this with `get_template_part()` wherever it's needed).
 
-?> _Note:_ Aquamin prefixes filenames for easier debugging like `my-component-style.css`, `my-component-editor.css`, etc., and includes them via glob patterns like `*style.css`, `*editor.css`, etc.
+?> Aquamin prefixes filenames for easier debugging like `my-component-style.css`, `my-component-editor.css`, etc., and includes them via glob patterns like `*style.css`, `*editor.css`, etc.
 
 ## Examples
 
@@ -27,7 +27,7 @@ An example component is the included `aquamin/assets/component-library/footer` c
 
 You could also add a `footer-script.js` file to develop front-end scripts associated with the footer, or `footer-editor.css` to add footer styling within back-end block editor.
 
-?> _Note:_ See how within the normal WordPress `footer.php` template, we use `get_template_part()` to grab the `footer-markup.php` file shown here: that lets us have all files associated with the footer component within this single component directory.
+?> Within the default WordPress `aquamin/footer.php` file, you'll see `get_template_part( 'assets/component-library/footer/footer-markup' )`, which includes the markup for this component. In this way, we have all files associated with the footer component in a single, manageable directory.
 
 For convenience, you can also include features here that don't quite fit the "component" concept in a traditional sense. Take the included WordPress styling overrides for instance:
 
@@ -46,8 +46,8 @@ The following components come with the aquamin theme. You'll add your own alongs
 ```
 📂 assets
  ┗ 📂 component-library     // all your component files should be within this folder
-   ┣ 📂 content             // component: content for posts
-   ┣ 📂 excerpt             // component: standard blog excerpts
+   ┣ 📂 content             // component: basic content markup for posts and pages
+   ┣ 📂 excerpt             // component: blog excerpt markup
    ┣ 📂 footer              // component: the site's footer
    ┣ 📂 menu                // component: the site's main navigation
    ┗ 📂 wp-overrides        // wordpress styling overrides
@@ -55,7 +55,7 @@ The following components come with the aquamin theme. You'll add your own alongs
 
 ## Global Features
 
-Aquamin includes some global, reusable features that apply across all components.
+Aquamin includes some global features that apply across all components. Use these files as a starting point, modifying and adding your own code to them to suit your needs.
 
 ```
 📂 assets
@@ -70,23 +70,21 @@ Aquamin includes some global, reusable features that apply across all components
    ┗ 📄 variables.css       // css custom properties (first in cascade)
 ```
 
-## OtherAssets
-
-### Font Assets
-You can add fonts to a `aquamin/assets/global/fonts/` folder, then add the `@font-face definitions` in the `aquamin/assets/global/fonts.css` file. Parcel will take care of hashing and including these assets in the `aquamin/dist/` directory for you.
+## Fonts
+You should add fonts to a `aquamin/assets/global/fonts/` folder, then add the `@font-face` definitions in the `aquamin/assets/global/fonts.css` file. Parcel will take care of hashing and including your font files within the `aquamin/dist/` directory, and aquamin will enqueue them.
 
 Or, you can directly enqueue any fonts from a CDN (like Google Fonts) within the `aquamin/includes/enqueue.php` file.
 
-### Image Assets
+## Images
 
-If a component requires images, you should create an `aquamin/assets/component-library/some-component-name/images` directory and include them from there—that way, each component's directory houses its own images. If you have images that are used by multiple components, you can also create an `aquamin/assets/images` directory for them. Parcel will take care of hashing and including these assets in the `aquamin/dist/` directory for you.
+To add images to a particular component, you should create an `images` directory within that component (e.g. `aquamin/assets/component-library/some-component-name/images/`) to keep all that component's files in one directory. If you have images that are used by multiple components, you can also create an `aquamin/assets/images` directory for them. Parcel will take care of hashing and including these assets in the `aquamin/dist/` directory.
 
-### SVG Assets
+## SVGs
 
-Usually, Parcel will import all images as a simple path, including SVGs. If you would instead like to import your SVG images inline, you can name them like `*.inline.svg`, and Parcel will handle the inlining for you. For example, you'll notice each block has an `icon.inline.svg` image file is already set up in this manner for block icons (feel free to update these with your own custom icons!).
+Usually, Parcel will import all images as a simple URL, including SVGs. If you would instead like to import your SVG images inline, you can name them like `*.inline.svg`, and Parcel will handle the inlining for you. For example, you'll notice each block has an `icon.inline.svg` image file is already set up in this manner for block icons (feel free to update these with your own custom icons!).
 
-### Static Assets
+## Static Assets
 
-You may want to include static assets in the `aquamin/dist/` directory (I often do for a `theme.sprite.svg` file that contains reusable logos, social icons, etc.). You can add these files within the `aquamin/assets/static/` directory, and any time you run `npm run build` they will be copied into `aquamin/dist/static/`.
+You may want to include static assets in the `aquamin/dist/` directory. One example could be for a `theme.sprite.svg` sprite file containing reusable logos, social icons, etc. Add these files within the `aquamin/assets/static/` directory, and any time you run `npm run build` Parcel will copy them into `aquamin/dist/static/`.
 
-?> _Note:_ `npm run start` ignores changes to these files, so you will need to rerun the build if you make changes.
+!> Changes to these files are ignored by `npm run start`, so you'll have to rerun `npm run build`.

@@ -24,7 +24,7 @@
 	--sp-raw-s: 10;		--sp-s:calc((var(--sp-raw-s)/var(--fs))*1em);--sp-rem-s:calc((var(--sp-raw-s)/var(--fs))*1rem);
 	--sp-raw: 24;		--sp:calc((var(--sp-raw)/var(--fs))*1em);--sp-rem:calc((var(--sp-raw)/var(--fs))*1rem);
 	--sp-raw-m: 75;		--sp-m:calc((var(--sp-raw-m)/var(--fs))*1em);--sp-rem-m:calc((var(--sp-raw-m)/var(--fs))*1rem);
-	--sp-raw-l: 150;		--sp-l:calc((var(--sp-raw-l)/var(--fs))*1em);--sp-rem-l:calc((var(--sp-raw-l)/var(--fs))*1rem);
+	--sp-raw-l: 150;	--sp-l:calc((var(--sp-raw-l)/var(--fs))*1em);--sp-rem-l:calc((var(--sp-raw-l)/var(--fs))*1rem);
 
 	--w: var(--w-m);
 	--w-s: 960px;
@@ -67,37 +67,30 @@
 	--c-good: #0ac675;
 	--c-bad: #e24939;
 	--c-meh: #ff7f50;
-}
 
-/**
- * Common breakpoints reference
- *
- * Note: postcss-custom-media isn't working
- * with imported files, so we need to manually
- * add these values.
- * 
- * Based on WordPress's _breakpoints.scss file.
- *	--bp-huge: 		1440px;
- *	--bp-wide: 		1280px;
- *	--bp-xlarge: 	1080px;
- *	--bp-large: 	960px;	// admin sidebar auto folds
- *	--bp-medium: 	782px;	// adminbar goes big
- *	--bp-small: 	600px;
- *	--bp-mobile: 	480px;
- *	--bp-zoomed-in: 280px;
- * (NOTE: if using max-width then subtract one)
- */
 
-/* tablet */
-@media (max-width: 781px) {
-	:root {
+	/**
+	* Common breakpoints reference
+	* 
+	* Based on WordPress's _breakpoints.scss file.
+	* (NOTE: if using max-width then subtract one)
+	*	--bp-huge: 		1440px;
+	*	--bp-wide: 		1280px;
+	*	--bp-xlarge: 	1080px;
+	*	--bp-large: 	960px;	// admin sidebar auto folds
+	*	--bp-medium: 	782px;	// adminbar goes big
+	*	--bp-small: 	600px;
+	*	--bp-mobile: 	480px;
+	*	--bp-zoomed-in: 280px;
+	*/
+
+	/* tablet */
+	@media (max-width: 781px) {
 		--fs-h1: calc((54 / var(--fs)) * 1em);
 	}
-}
 
-/* phone */
-@media (max-width: 479px) {
-	:root {
+	/* phone */
+	@media (max-width: 479px) {
 		--fs-h1: calc((50 / var(--fs)) * 1em);
 	}
 }

@@ -11,4 +11,4 @@ Installing aquamin is easiest with [WP-CLI](https://make.wordpress.org/cli/handb
 
 You're all set! Next up, familiarize yourself with aquamin's [features](/features/).
 
-?> _Note:_ If you'd prefer to install manually, just [download aquamin](https://github.com/tcmulder/aquamin/archive/refs/heads/master.zip ':download=download') and [install the theme](https://wordpress.org/support/article/using-themes/#adding-new-themes-using-the-administration-screens ':target=_blank') like normal.
+?> If you'd prefer to install manually, just [download aquamin](https://github.com/tcmulder/aquamin/archive/refs/heads/master.zip ':download=download') and [install the theme](https://wordpress.org/support/article/using-themes/#adding-new-themes-using-the-administration-screens ':target=_blank') like normal.

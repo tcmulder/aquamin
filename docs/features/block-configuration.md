@@ -10,7 +10,7 @@ There's no configuration you need to do outside of that directory to get the blo
 
 The easiest way to create blocks is to run `wp aquamin block create` ([see the docs](/features/wp-cli#wp-aquamin-block-create)). You'll need to restart parcel if it's running to add the new entry points to its file watcher, and then the scaffolded block will be available as a registered block in WordPress, ready for you to customize within its own directory inside `aquamin/assets/block-library/`.
 
-?> _Note:_  If you would prefer not to use WP-CLI, simply copy the appropriate block scaffold directory out of `aquamin/includes/cli/templates/`, conduct a find and replace for the "template" placeholder strings you'll find within its files, and update/remove any placeholder comments.
+?> If you would prefer not to use WP-CLI, simply copy the appropriate block scaffold directory out of `aquamin/includes/cli/templates/`, conduct a find and replace for the "template" placeholder strings you'll find within its files, and update/remove any placeholder comments.
 
 ### Front-End JavaScript Option
 
@@ -28,7 +28,7 @@ You'll add styles and scripts to your inner block via it's _parent's_ `style.css
 
 Though aquamin prefers blocks be built with JavaScript, in some cases blocks require up-to-date data from the database, and therefore require PHP. So, `wp aquamin block create` will ask if you need a dynamic block, and will create a `markup.php` file to house your PHP code if so.
 
-?> _Note:_ Aquamin doesn't currently support automated inner block setup if you choose to go dynamic: if you need that, you'll have to add your dynamic inner block manually.
+?> Aquamin doesn't currently support automated inner block setup if you choose to go dynamic: if you need that, you'll have to add your dynamic inner block manually.
 
 ## Anatomy of a Block
 
@@ -55,13 +55,13 @@ Each block has its own block directory within the `aquamin/assets/block-library/
          ┣ 📄 index.js     // block entry file (mostly imports other files)
          ┗ 📄 save.js      // HTML saved to database
 ```
-?> _Note:_ These filenames are simplified; they'll work, but for easier debugging, aquamin prefixes filenames like `example-block-edit.js`, `example-block-editor.css`, `example-block-markup.php`, etc.
+?> These filenames are simplified; they'll work, but for easier debugging, aquamin prefixes filenames like `example-block-edit.js`, `example-block-editor.css`, `example-block-markup.php`, etc.
 
 ## Editing Core Blocks
 
 You can modify core blocks using the `aquamin/assets/block-edits/` directory. Aquamin comes with a few already, including block animations, column layout enhancements, and show/hide responsive container edits. Feel free to duplicate and reuse any of these for your own purposes, or remove those you don't want.
 
-?> _Note:_ While aquamin only loads custom block front-end styles and scripts on posts that use those particular blocks (in order to optimize performance), it loads edits within this directory globally to ensure your edits apply to core blocks wherever they may appear.
+?> While aquamin only loads custom block front-end styles and scripts on posts that use those particular blocks (in order to optimize performance), it loads edits within this directory globally to ensure your edits apply to core blocks wherever they may appear.
 
 ## PHP Hooks
 
@@ -75,9 +75,9 @@ You'll find some helpful, reusable utilities and UI components under `aquamin/as
 
 There's currently a bug in Parcel: if you delete a block's directory to remove the block, you'll need to exit parcel and run `npm run clean` to clear the cache, then `npm run start` to restart the server; after that, your block will be removed from WordPress's registered bocks.
 
-?> _Note:_ You can run `npm run clean && npm run start` if you would like to clear the cache immediately before starting the build server each time.
+?> You can run `npm run clean && npm run start` if you would like to clear the cache immediately before starting the build server each time.
 
-!> _Warning:_ If you _don't_ follow these instructions and you delete a file Parcel was watching, builds will fail. Maybe future releases of Parcel will eliminate this requirement. It appears to happen when one file imports another, but then the imported file later gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don't clear its cache first.
+!> If you _don't_ follow these instructions and you delete a file Parcel was watching, builds will fail. Maybe future releases of Parcel will eliminate this requirement. It appears to happen when one file imports another, but then the imported file later gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don't clear its cache first.
 
 ## A Note on Imports
 

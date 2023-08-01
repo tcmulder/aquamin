@@ -60,7 +60,6 @@ p {
 }
 :is(h1, .has-h-1-font-size, .h1) {
 	font-size: var(--fs-h1);
-	box-shadow: 0 0 0 100vw oklch(92% 0.15 170 / 0.2) inset;
 }
 :is(h2, .has-h-2-font-size, .h2) {
 	font-size: var(--fs-h2);

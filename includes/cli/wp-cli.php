@@ -95,7 +95,7 @@ class AQUAMIN_CLI {
      *
      * ## EXAMPLES
      *
-     * wp aquamin component
+     * wp aquamin component create
 	 *
 	 * @param array $modules 
      * @param array $assoc_args 
@@ -254,7 +254,7 @@ class AQUAMIN_CLI {
      *
 	 * ## EXAMPLES
      *
-     * wp aquamin create block
+     * wp aquamin block create
 	 *
 	 * @param array $modules 
      * @param array $assoc_args 
