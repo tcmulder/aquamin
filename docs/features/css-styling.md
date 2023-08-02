@@ -17,7 +17,7 @@ The `aquamin/assets/global/variables.css` file provides a number of useful custo
 - `--h-<name>` defines common heights. For example, if your site has a sticky menu bar, you could use `--h-menu` to define the main menu's height, then apply that same value to padding that pushes content precisely underneath the sticky menu.
 - `--gutter` defines the space to either side of the main column of content for the entire site. WordPress' `--root--padding-<right/left>` variables are set to this value in the `wp-overrides.css` for consistency.
 
-## Animations
+## Keyframe Animations
 - `--ani-ease` defines the primary easing function used throughout the site.
 - `--ani-speed` defines the primary duration of animations throughout the site.
 
