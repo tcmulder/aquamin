@@ -85,6 +85,10 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 					array( '#1F2C39', '#2c3e50', '#1abc9c', '#f39c12' ),
 					array( 'base' => '#f1f2f3', 'focus' => '#fff', 'current' => '#fff' )
 				);
+				// automatically use it for localhost
+				if ( $_SERVER['REMOTE_ADDR'] === '127.0.0.1' && 'aquamarine' !== get_user_option( 'admin_color' ) ) {
+					update_user_option( get_current_user_id(), 'admin_color', 'aquamarine' );
+				}
 			}
 		}
 
