@@ -19,4 +19,5 @@
 	--ani-delay-increment: 0; /* integer for stepped animations */
 	--ani-delay-factor: 0.05s; /* duration of each increment step */
 	--ani-delay-offset: 0.15s; /* start delay (so ani don't start at very bottom of screen) */
+	--ani-property: filter, transform; /* properties to animate */
 }

@@ -30,7 +30,7 @@
 	);
 	transition-duration: var(--ani-duration);
 	transition-timing-function: var(--ani-timing-function);
-	transition-property: all;
+	transition-property: var(--ani-property);
 	will-change: transform;
 	/*&, / *DEBUG*/
 	&:not(.is-shown) {
