@@ -73,12 +73,8 @@ const withModifyEdit = createHigherOrderComponent(
 
 			// define classes
 			const classNames = [
-				{ value: 'hide-bp-sm', title: 'Hide at phone width' },
-				{ value: 'hide-bp-md', title: 'Hide at tablet width' },
-				{ value: 'hide-bp-lg', title: 'Hide at desktop width' },
-				{ value: 'hide-bp-md-up', title: 'Hide above desktop width' },
-				{ value: 'is-full-md', title: 'Full width on tablets' },
 				{ value: 'is-first-md', title: 'Order first on tablets' },
+				{ value: 'is-full-md', title: 'Full width on tablets' },
 			];
 
 			// set up fake array of strings to mimic actual attribute objects
@@ -169,22 +165,20 @@ addFilter('blocks.getSaveContent.extraProps', EXTENSION_NAME, modifySave);
  */
 const withShowModifyEdit = createHigherOrderComponent(
 	// eslint-disable-next-line react/display-name
-	(BlockListBlock) => {
-		return (props) => {
-			const { name, attributes } = props;
-			// if we're supposed to edit this block
-			if (isAffected(name)) {
-				return (
-					<BlockListBlock
-						{...props}
-						className={classnames(extractClasses(attributes))}
-					/>
-				);
-			}
+	(BlockListBlock) => (props) => {
+		const { name, attributes } = props;
+		// if we're supposed to edit this block
+		if (isAffected(name)) {
+			return (
+				<BlockListBlock
+					{...props}
+					className={classnames(extractClasses(attributes))}
+				/>
+			);
+		}
 
-			// everything's normal nothing to see here
-			return <BlockListBlock {...props} />;
-		};
+		// everything's normal nothing to see here
+		return <BlockListBlock {...props} />;
 	},
 	'withShowModifyEdit'
 );

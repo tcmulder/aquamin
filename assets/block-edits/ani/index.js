@@ -248,7 +248,7 @@ const modifySave = (props, block, attributes) => {
 				: [];
 			const newClasses = attributes.aquaminClassNameAni
 				.map((opt) => opt.value)
-				.filter((name) => !existingClasses.includes(name));
+				.filter((title) => !existingClasses.includes(title));
 			newClasses.push(
 				newClasses.length && !newClasses.includes('ani') ? 'ani' : ''
 			);
