@@ -23,6 +23,20 @@
 	--code-theme-text: #f6f1e5;
 	--code-theme-variable: #f9deac;
 }
+a:hover {
+	--link-text-decoration--hover: var(
+		--sidebar-nav-link-text-decoration--hover
+	);
+	--link-text-decoration: var(--sidebar-nav-link-text-decoration);
+	--link-text-decoration-color: var(--sidebar-nav-link-text-decoration-color);
+}
+.markdown-section a.anchor:hover {
+	text-decoration: var(
+		--link-text-decoration--hover,
+		var(--link-text-decoration)
+	);
+	text-decoration-color: var(--sidebar-nav-link-text-decoration-color);
+}
 .cover {
 	overflow: hidden;
 }
