@@ -1,12 +1,3 @@
----
-title: Requirements
-permalink: /features/requirements/
-layout: default
-nav_order: 99
-# has_children: true
-parent: Features
----
-
 # Requirements
 
 | Requirement       | Minimum Version Tested |
