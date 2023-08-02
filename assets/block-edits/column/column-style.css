@@ -15,7 +15,6 @@
 		/* for specificity */
 		&.is-first-md {
 			order: -1;
-			margin-bottom: var(--sp);
 		}
 	}
 }
