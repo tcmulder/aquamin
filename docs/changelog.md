@@ -1,14 +1,14 @@
 # Changelog
 
-## 5.1.0 - July 10 2023
-* Updated Parcel 2 and other npm packages.
+## 5.1.0 - August 2 2023
+* Overhauled directory structure: now most things are in `assets`.
+* Updated and reduced number of packages.
 * Refined alignment/layout styling.
-* Moved extended blocks to their own directory (and added documentation).
-* Added responsive hide/show extension for groups.
+* Moved extended blocks to their own `block-edits` directory.
+* Added responsive hide/show functionality for group blocks.
 * Split .ani animation files into separate files.
-* Removed common-classes.css as it's redundant (use reusable-global.css instead).
-* Reversed cli commands for rubustness and clarity (e.g. `wp aquamin bock create`).
-* Overualed documentation to use docsify (eliminatse ruby dependency).
+* Reversed cli commands for robustness and clarity (e.g. `wp aquamin bock create`).
+* Rewrote and overhauled documentation using docsify (eliminates ruby dependency). Just run `npm run docs` to view them.
 
 ## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.
@@ -64,7 +64,7 @@
 * Streamline cli logs.
 
 ## 3.1.0 - October 24 2022
-* Overhual <Media /> component.
+* Overhaul <Media /> component.
 
 ## 3.0.4 - October 19 2022
 * Add handling of ui component css.
@@ -94,7 +94,7 @@
 
 ## 2.0.1 - December 23 2021
 * Default to adding height/width to aquamin_img() (disable by setting disable_size to true).
-* Set aquamin_img() to use full image size if not using srcset (e.g. for animaged gif images).
+* Set aquamin_img() to use full image size if not using srcset (e.g. for animated gif images).
 * Fixed element title fatal error.
 * Added built-in support for password protection.
 * Allow ACF to replace the_content for specific post ID.

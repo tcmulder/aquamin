@@ -45,7 +45,7 @@ In addition to the built-in animations, you can add your own via the `--ani-cust
 		drop-shadow(-5px -5px 0 red);
 }
 ```
-This would cause `.thing` elements outside of the viewport that are using the built in blur and scale animations to also be skewed and shadowed; then, when scrolled into view, `.thing` elements would animate to their non-skewed/scaled/blured/shadowed state in the viewport.
+This would cause `.thing` elements outside of the viewport that are using the built in blur and scale animations to also be skewed and shadowed; then, when scrolled into view, `.thing` elements would animate to their non-skewed/scaled/blurred/shadowed state in the viewport.
 
 ## Opt Out of Animations
 Aquamin's animations are lightweight and easy to use, but maybe they don't suit your needs. If you don't want to use them at all, simply delete the entire `aquamin/assets/block-edits/ani` directory. Though a little more involved, you can also remove specific animation features by removing the related files, imports, and function calls within that directory.

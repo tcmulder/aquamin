@@ -1,6 +1,6 @@
 # Aquamin WordPress Theme
 
-Aquamin is a minimal theme for custom WordPress development, with first-class support for your own Gutenberg blocks and custom compontents built right in.
+Aquamin is a minimal theme for custom WordPress development, with first-class support for your own Gutenberg blocks and custom components built right in.
 
 Aquamin begins as a white page with blue links that turn purple when you click them—in other words, there's no styling whatsoever—so you can craft your own code rather than wrestling with a bunch of pre-fab stuff. It's like a solid block of marble, full of potential and free of restriction, and you're the sculptor.
 
