@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-console
 console.error(`
-NOTE: Do not use this file for anything. It's just a weird solution to a silly quirk in Parcel.
+WARNING: Do not use this file for anything. It's just a weird solution to a silly quirk in Parcel.
 When running a build, Parcel places bundles from assets/bundles into dist/bundles, blocks from
 assets/block-library into dist/block-library, etc., i.e. everything has its own directory. That
 is, except initially, when there are no blocks within assets/block-library: in that case, since
