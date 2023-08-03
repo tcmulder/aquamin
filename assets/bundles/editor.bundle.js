@@ -10,7 +10,7 @@ import '../block-edits/global/editor.css';
 import '../ui/*/*editor.css';
 
 /**
- * Individual blocks (editor)
+ * Individual blocks (editor).
  */
 import '../block-library/*/*index.js';
 import '../block-library/*/*editor.css';
@@ -20,3 +20,8 @@ import '../block-library/*/*editor.css';
  */
 import '../block-edits/*/*index.js';
 import '../block-edits/*/*editor.css';
+
+/**
+ * Components (editor).
+ */
+import '../component-library/*/*editor.css';

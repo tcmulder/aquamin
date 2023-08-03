@@ -36,7 +36,7 @@ const TemplateNamespaceBlockEdit = ({
 				value={demoText}
 				onChange={(value) => setAttributes({ demoText: value })}
 			/>
-			<InnerBlocks />
+			<InnerBlocks /* PLACEHOLDER: inner blocks template */ />
 		</div>
 	);
 };

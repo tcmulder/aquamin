@@ -11,7 +11,7 @@
  * if you're not using it, but note the aquamin Year Format Type
  * uses it.
  */
-$blocks = glob(AQUAMIN_ASSETS . '/block-library/*/hooks.php');
+$blocks = glob( AQUAMIN_ASSETS . '/block-library/*/hooks.php' );
 if ( $blocks ) {
 	foreach ( $blocks as $block ) {
 		require_once $block;
@@ -23,7 +23,7 @@ if ( $blocks ) {
  */
 add_action( 'init', function() {
 	// load blocks
-	$blocks = glob(AQUAMIN_ASSETS . '/block-library/*/index.php');
+	$blocks = glob( AQUAMIN_ASSETS . '/block-library/*/index.php' );
 	if ( $blocks ) {
 		foreach ( $blocks as $block ) {
 			require_once $block;

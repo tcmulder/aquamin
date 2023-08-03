@@ -4,7 +4,7 @@ Plugin Name: Aquamin WP-CLI Helpers
 Plugin URI: https://www.thinkaquamarine.com
 Description: WP-CLI helpers for working with the aquamin theme.
 Author: @tcmulder
-Version: 1.0.0
+Version: 2.0.0
 Author URI: https://www.thinkaquamarine.com
 */
 
@@ -20,52 +20,136 @@ class AQUAMIN_CLI {
 	/**
      * Asks a question and return result.
      *
-     * @param {string} $question Question to ask the user.
-     * @param {string} $guess Optional guess at the user's answer.
-     * @param {string} $default Optional default (i.e. passed as cli arguments)
-     * @return string
+     * @param   string  $question  Question to ask the user.
+     * @param   string  $guess     Optional guess at the user's answer.
+     * @param   string  $default   Optional default (i.e. passed as cli arguments)
+     * @return  string/bool        Returns answer as string, or boolean if "y" or "n".
      */
     protected function ask( $question, $guess='', $default=null ) {
+		$answer = null;
 		// if user explicitly passed a boolean as a cli option then default to "y"
 		if ( 'boolean' === gettype( $default ) ) {
-			return 'y';
+			$answer = 'y';
 		// if user explicitly passed a string as a cli option then use it
 		} elseif ( $default ) {
-			return $default;
-		// if the user hasn't defined something via a cli option
+			$answer = $default;
+		// if the user hasn't defined something via a cli option then ask for input
 		} else {
-			// ask the user vie command line
 			fwrite( STDOUT, $question . ' ' );
-			$answer = trim( fgets( STDIN ) );
+			$input = trim( fgets( STDIN ) );
 			// go with their answer or our guess if they didn't answer
-			$answer = $answer ? $answer : $guess;
-			// send it!
-			return $answer;
+			$input = $input ? $input : $guess;
+			$answer = $input;
 		}
+		// sanitize user input
+		$answer = esc_html( $answer );
+		// handle "y" and "n" boolean answers (assumes guess is either "n" or "y")
+		if ( 'n' === $guess || 'y' === $guess ) {
+			$answer = strtolower( $answer ) === 'y' ? true : false;
+		}
+		$this->debug( "Question: \"$question\"", " Answer: \"", $answer, "\"" );
+		return $answer;
     }
 
 	/**
 	 * Find-and-replace text in files
 	 * 
-	 * @param {array}	$files		File paths.
-	 * @param {array}	$strings	Array like [[replace, find], [replace, find]].
-	 * 
-	 * @return null
+	 * @param   array  $files  File paths.
+	 * @param   array  $far    Array like ['find' => 'look for', 'repl' => 'replace with].
+	 * @return  null
 	 */
-	protected function far( $path, $strings ) {
+	protected function far( $path, $far ) {
 		$files = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $path ) );
-		if ( ! empty( $files ) ) {
+		if ( ! empty( $files ) && ! empty( $far ) ) {
 			foreach( $files as $file ) {
-				// perform find and replace
 				if ( is_file( $file ) ) {
 					$str = file_get_contents( $file );
-					foreach ( $strings as $key => $value ) {
-						$str = str_replace( $value[ 1 ], $value[ 0 ], $str);
+					foreach ( $far as $arr ) {
+						$str = str_replace( $arr[ 'find' ], $arr[ 'repl' ], $str );
+						$this->debug( 'Replacing ', $arr[ 'find' ], ' with ', $arr[ 'repl' ], ' in ', $file->getBasename() );
 					}
 					file_put_contents( $file, $str );
 				}
 			}
 		}
+	}
+
+	/**
+	 * Build find-and-replace array.
+	 * 
+	 * @param   array   $far   Array of find-and-replace values (passed by reference).
+	 * @param   array   $args  Arguments like ['question', 'guess', 'find', 'default'].
+	 * @return  string         Value of the answer to the question.
+	 */
+	protected function build_far( &$far, $args ) {
+		$question = str_replace( '[guess]', '[' . $args['guess'] . ']', $args['question'] );
+		$repl = $this->ask( $question, $args['guess'], $args['default'] );
+		array_push( $far, array( 'find' => $args['find'], 'repl' => $repl ) );
+		$this->debug( 'Will replace ', $args['find'], ' with ', $repl );
+		return $repl;
+	}
+
+	/**
+	 * Build excluded files list.
+	 * 
+	 * @param   array   $exclude  Array of files to exclude/delete (passed by reference).
+	 * @param   array   $args     Arguments like ['question', 'guess', 'filename', 'default'].
+	 * @return  bool              True if excluding, false if including.
+	 */
+	protected function exclude( &$exclude, $args ) {
+		$question = str_replace( '[guess]', '[' . $args['guess'] . ']', $args['question'] );
+		$dont_exclude = $this->ask( $question, $args['guess'], $args['default'] );
+		if ( ! $dont_exclude  ) {
+			array_push( $exclude, $args['filename'] );
+			$this->debug( 'Will exclude ', $args['filename'] );
+		} else {
+			$this->debug( 'Will include ', $args['filename'] );
+		}
+		return $dont_exclude;
+	}
+
+	/**
+	 * Add prefix to filenames
+	 * 
+	 * @param   string  $path  Path to files we're renaming.
+	 * @param   string  $find  String to find.
+	 * @param   string  $repl  Replacement string.
+	 * @return  null
+	 */
+	protected function prefix( $path, $find, $repl ) {
+		foreach( new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $path ) ) as $file ) {
+			if ( is_file( $file ) ) {
+				$file_name = basename( $file );
+				if ( str_starts_with( $file_name, $find ) ) {
+					$new_file = str_replace( $find, $repl, $file );
+					$this->debug( 'Renaming ', $file_name, ' to ', basename( $new_file ), ' in ', dirname( $file ) );
+					rename( $file, $new_file );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Output debug info
+	 * 
+	 * Run wp-cli with flag --debug to
+	 * enable debugging messages. Enter
+	 * as many mixed arguments as you'd
+	 * like to output.
+	 * 
+	 * @return null
+	 */
+	protected function debug() {
+		$msg = '';
+		$args = func_get_args();
+		foreach( $args as $info ) {
+			$type = gettype( $info );
+			if ( 'array' === $type || 'object' === $type ) {
+				$msg .= "\n";
+			}
+			$msg .= print_r( $info, 1 );
+		}
+		WP_CLI::debug( $msg, 'aquamin' );
 	}
 
 	/**
@@ -99,6 +183,7 @@ class AQUAMIN_CLI {
 	 *
 	 * @param array $modules 
      * @param array $assoc_args 
+	 * @return null
 	 */
 	public function create_component( $args, $assoc_args ) {
 		
@@ -113,51 +198,54 @@ class AQUAMIN_CLI {
 		/**
 		 * Request component details
 		 */
-		$component = array();
-		
-		$title = 'My Component';
-		$guess = $title;
+		$far = array(); // array os strings to find and replace
+		$exclude = array(); // files to exclude from scaffold
 
-		$component[ 'component_title' ] = array(
-			$this->ask( "Title [$guess]:", $guess, $assoc_args[ 'component_title' ] ?? '' ),
-			'template-title',
-		);
-		$title = $component[ 'component_title' ][ 0 ];
-		
-		$guess = sanitize_title( $title );
-		$component[ 'component_slug' ] = array(
-			$this->ask( "Slug [$guess]:", $guess, $assoc_args[ 'component_slug' ] ?? '' ),
-			'template-slug',
-		);
-		$slug = $component[ 'component_slug' ][ 0 ];
-		
-		$guess = $slug;
-		$component[ 'component_dir' ] = array(
-			$this->ask( "Directory [$guess]:", $guess, $assoc_args[ 'component_dir' ] ?? '' ),
-			'_template-component',
-		);
-
-		$exclude = array();
-
-		$ask_js = $this->ask( 'Has front-end JavaScript? [y/N]', 'n', $assoc_args[ 'has_js' ] );
-		$exclude['js'] = strtolower( $ask_js ) === 'y' ? false : 'template-slug-script.js';
-
-		$ask_template_part = $this->ask( 'Has PHP template part? [y/N]', 'n', $assoc_args[ 'has_template_part' ] );
-		$exclude['template_part'] = strtolower( $ask_template_part ) === 'y' ? false : 'template-slug-markup.php';
-
-		$ask_admin_css = $this->ask( 'Has admin CSS? [y/N]', 'n', $assoc_args[ 'has_admin_css' ] );
-		$exclude['admin_css'] = strtolower( $ask_admin_css ) === 'y' ? false : 'template-slug-editor.css';
+		$title = $this->build_far( $far, array(
+			'question'   => 'Title [guess]:',
+			'guess'      => 'My Component',
+			'find'       => 'template-title',
+			'default'    => $assoc_args[ 'component_title' ] ?? '',
+		) );
+		$slug = $this->build_far( $far, array(
+			'question'   => 'Slug [guess]:',
+			'guess'      => sanitize_title( $title ),
+			'find'       => 'template-slug',
+			'default'    => $assoc_args[ 'component_slug' ] ?? '',
+		) );
+		$dir = $this->build_far( $far, array(
+			'question'   => 'Directory [guess]:',
+			'guess'      => $slug,
+			'find'       => '_template-component',
+			'default'    => $assoc_args[ 'component_dir' ] ?? '',
+		) );
+		$this->exclude( $exclude, array(
+			'question'   => 'Has front-end JavaScript? [y/N]',
+			'guess'      => 'n',
+			'filename'   => 'template-slug-script.js',
+			'default'    => $assoc_args[ 'has_js' ] ?? '',
+		) );
+		$has_template_part = $this->exclude( $exclude, array(
+			'question'   => 'Has PHP template part? [y/N]',
+			'guess'      => 'n',
+			'filename'   => 'template-slug-markup.php',
+			'default'    => $assoc_args[ 'has_template_part' ] ?? '',
+		) );
+		$this->exclude( $exclude, array(
+			'question'   => 'Has admin CSS? [y/N]',
+			'guess'      => 'n',
+			'filename'   => 'template-slug-editor.css',
+			'default'    => $assoc_args[ 'has_admin_css' ] ?? '',
+		) );
 
 		/**
-		 * Identify paths/dirs
-		 * 
-		 * Note: all paths end with a trailing /
+		 * Identify paths/dirs (note all paths end with a trailing /)
 		 */
 		$template_path = get_template_directory();
 		$library_path = $template_path . '/assets/component-library/';
 		$cli_path = $template_path . '/includes/cli/templates/';
 		$template_dir = 'component';
-		$component_path = $library_path . $slug . '/';
+		$component_path = $library_path . $dir . '/';
 		
 		/**
 		 * Create plugin directory
@@ -165,48 +253,26 @@ class AQUAMIN_CLI {
 		global $wp_filesystem;
 		$wp_filesystem->mkdir( $component_path );
 
-		// duplicate template's files
-		copy_dir( $cli_path . $template_dir, $component_path );
-
-		// remove things we're not using
-		foreach( $exclude as $filename ) {
-			if ( $filename && file_exists( $component_path . $filename ) ) {
-				unlink( $component_path . $filename );
-			}
-		}
+		// duplicate template's files (minus any we should exclude)
+		copy_dir( $cli_path . $template_dir, $component_path, $exclude );
 
 		/**
 		 * Find and replace strings
 		 */
-		$component_files = new RecursiveDirectoryIterator( $component_path );
-		// loop through new component's directory
-		foreach( new RecursiveIteratorIterator( $component_files ) as $file ) {
-			// perform find and replace
-			if ( is_file( $file ) ) {
-				$str = file_get_contents( $file );
-				foreach ( $component as $key => $value ) {
-					$str = str_replace( $value[ 1 ], $value[ 0 ], $str);
-				}
-				file_put_contents( $file, $str );
-			}
-		}
+		$this->far( $component_path, $far );
 
 		// loop through the component's directory and replace file prefixes
-		foreach( new RecursiveIteratorIterator( $component_files ) as $file ) {
-			if ( is_file( $file ) ) {
-				$file_name = basename( $file );
-				if ( 'template-slug' === substr( $file_name, 0, 13 ) ) {
-					$new_file = str_replace( 'template-slug', $slug, $file );
-					rename( $file, $new_file );
-				} elseif ( 'template-item-slug' === substr( $file_name, 0, 18 ) ) {
-					$new_file = str_replace( 'template-item-slug', $inner_slug, $file );
-					rename( $file, $new_file );
-				}
-			}
-		}
+		$this->prefix( $component_path, 'template-slug', $slug );
 
 		// report
 		WP_CLI::success( 'Component created' );
+		WP_CLI::line( WP_CLI::colorize( "\n%6%k What's next? %n\n" ) );
+		WP_CLI::line( WP_CLI::colorize( "%C ‣ Restart Parcel and refresh your browser to watch these new files") );
+		if ( $has_template_part ) {
+			WP_CLI::line( WP_CLI::colorize( "%C ‣ Include your template part somewhere:%n get_template_part( 'assets/component-library/$dir/$slug-markup' );") );
+		}
+		WP_CLI::line( WP_CLI::colorize( "%C ‣ Edit your new $title component:%n $component_path") );
+		WP_CLI::line( "\n" );
 	}
 
 	/**
@@ -231,11 +297,17 @@ class AQUAMIN_CLI {
 	 * [--block_desc] 
 	 * : Set description.
 	 * 
+	 * [--has_inner_block] 
+	 * : Include an inner block (set to "n" to prevent).
+	 * 
 	 * [--inner_block_title] 
 	 * : Set inner block title.
 	 * 
 	 * [--inner_block_slug] 
 	 * : Set inner block slug.
+	 * 
+	 * [--inner_block_dir] 
+	 * : Set inner block directory nae.
 	 * 
 	 * [--inner_block_namespace] 
 	 * : Set inner block namespace.
@@ -248,16 +320,14 @@ class AQUAMIN_CLI {
 	 * 
 	 * [--is_dynamic] 
 	 * : Make it a dynamic block (set to "n" to prevent).
-	 * 
-     * [--has_inner_block] 
-	 * : Include an inner block (set to "n" to prevent).
      *
 	 * ## EXAMPLES
      *
      * wp aquamin block create
 	 *
-	 * @param array $modules 
-     * @param array $assoc_args 
+	 * @param array $modules
+     * @param array $assoc_args
+	 * @return null
 	 */
 	public function create_block( $args, $assoc_args ) {
 		
@@ -272,90 +342,81 @@ class AQUAMIN_CLI {
 		/**
 		 * Request block details
 		 */
-		$block = array();
+		$far = array(); // array os strings to find and replace
+		$exclude = array(); // files to exclude from scaffold
 		
-		$title = 'My Block';
-		$guess = $title;
-		$block[ 'block_title' ] = array(
-			$this->ask( "Title [$guess]:", $guess, $assoc_args[ 'block_title' ] ?? '' ),
-			'template-title',
-		);
-		$title = $block[ 'block_title' ][ 0 ];
+		$title = $this->build_far( $far, array(
+			'question'   => 'Title [guess]:',
+			'guess'      => 'My Block',
+			'find'       => 'template-title',
+			'default'    => $assoc_args[ 'block_title' ] ?? '',
+		) );
+		$slug = $this->build_far( $far, array(
+			'question'   => 'Slug [guess]:',
+			'guess'      => sanitize_title( $title ),
+			'find'       => 'template-slug',
+			'default'    => $assoc_args[ 'block_slug' ] ?? '',
+		) );
+		$dir = $this->build_far( $far, array(
+			'question'   => 'Directory [guess]:',
+			'guess'      => $slug,
+			'find'       => '_template-block',
+			'default'    => $assoc_args[ 'block_dir' ] ?? '',
+		) );
+		$this->build_far( $far, array(
+			'question'   => 'Namespace [guess]:',
+			'guess'      => str_replace(' ', '', $title),
+			'find'       => 'TemplateNamespace',
+			'default'    => $assoc_args[ 'block_namespace' ] ?? '',
+		) );
+		$this->build_far( $far, array(
+			'question'   => 'Description [guess]:',
+			'guess'      => 'The ' . $title . ' block.',
+			'find'       => 'template-desc',
+			'default'    => $assoc_args[ 'block_desc' ] ?? '',
+		) );
+		$has_js = $this->exclude( $exclude, array(
+			'question'   => 'Has front-end JavaScript? [y/N]',
+			'guess'      => 'n',
+			'filename'   => 'template-slug-script.js',
+			'default'    => $assoc_args[ 'has_js' ] ?? '',
+		) );
+		$is_dynamic = $this->ask( 'Dynamic? [y/N]', 'n', $assoc_args[ 'is_dynamic' ] ?? '' );
 		
-		$guess = sanitize_title( $title );
-		$block[ 'block_slug' ] = array(
-			$this->ask( "Slug [$guess]:", $guess, $assoc_args[ 'block_slug' ] ?? '' ),
-			'template-slug',
-		);
-		$slug = $block[ 'block_slug' ][ 0 ];
-		
-		$guess = $slug;
-		$block[ 'block_dir' ] = array(
-			$this->ask( "Directory [$guess]:", $guess, $assoc_args[ 'block_dir' ] ?? '' ),
-			'_template-block',
-		);
-		
-		$guess = str_replace(' ', '', $title);
-		$block[ 'block_namespace' ] = array(
-			$this->ask( "Namespace [$guess]:", $guess, $assoc_args[ 'block_namespace' ] ?? '' ),
-			'TemplateNamespace',
-		);
-
-		$guess = 'The ' . $title . ' block.';
-		$block[ 'block_desc' ] = array(
-			$this->ask( "Description [$guess]:", $guess, $assoc_args[ 'block_desc' ] ?? '' ),
-			'template-desc',
-		);
-
-		$ask_js = $this->ask( 'Has front-end JavaScript? [y/N]', 'n', $assoc_args[ 'has_js' ] );
-		$has_js = strtolower( $ask_js ) === 'y' ? true : false;
-
-		$ask_dynamic = $this->ask( 'Dynamic? [y/N]', 'n', $assoc_args[ 'is_dynamic' ] );
-		$is_dynamic = strtolower( $ask_dynamic ) === 'y' ? true : false;
-
-		$has_inner_block = false;
+		$has_inner_block = ! $is_dynamic && $this->ask( 'Add inner block? [y/N]', 'n', $assoc_args[ 'has_inner_block' ] ?? '' );
 		$inner_slug = '';
-		if ( ! $is_dynamic ) {
-
-			$ask_inner_block = $this->ask( 'Add inner block? [y/N]', 'n', $assoc_args[ 'has_inner_block' ] );
-			$has_inner_block = strtolower( $ask_inner_block ) === 'y' ? true : false;
-			$inner_block = array();
-			if ( $has_inner_block ) {
-	
-				// ask what to call the inner block
-				$guess = $title . ' Item';
-				$inner_block[ 'inner_block_title' ] = array(
-					$assoc_args[ 'inner_block_title' ] ?? $this->ask("Inner block title [$guess]:", $guess),
-					'template-item-title',
-				);
-				$title = $inner_block[ 'inner_block_title' ][ 0 ];
-				
-				$guess = sanitize_title( $title );
-				$inner_block[ 'inner_block_slug' ] = array(
-					$assoc_args[ 'inner_block_slug' ] ?? $this->ask("Inner block slug [$guess]:", $guess),
-					'template-item-slug',
-				);
-				$inner_slug = $inner_block[ 'inner_block_slug' ][ 0 ];
-				
-				$guess = str_replace(' ', '', $title);
-				$inner_block[ 'inner_block_namespace' ] = array(
-					$assoc_args[ 'inner_block_namespace' ] ?? $this->ask("Inner block namespace [$guess]:", $guess),
-					'TemplateItemNamespace',
-				);
-	
-				$guess = 'The ' . $title . ' block.';
-				$inner_block[ 'inner_block_desc' ] = array(
-					$assoc_args[ 'inner_block_desc' ] ?? $this->ask("Inner block description [$guess]:", $guess),
-					'template-item-desc',
-				);
-
-				$inner_block[ 'parent_block_slug' ] = array(
-					$block[ 'block_slug' ][0],
-					'template-slug',
-				);
-
-			}
-
+		$inner_path = '';
+		if ( $has_inner_block ) {
+			$inner_title = $this->build_far( $far, array(
+				'question'   => 'Inner Block Title [guess]:',
+				'guess'      => $title . ' Item',
+				'find'       => 'template-item-title',
+				'default'    => $assoc_args[ 'inner_block_title' ] ?? '',
+			) );
+			$inner_slug = $this->build_far( $far, array(
+				'question'   => 'Inner Block Slug [guess]:',
+				'guess'      => sanitize_title( $inner_title ),
+				'find'       => 'template-item-slug',
+				'default'    => $assoc_args[ 'inner_block_slug' ] ?? '',
+			) );
+			$inner_path = $this->build_far( $far, array(
+				'question'   => 'Inner Block Directory [guess]:',
+				'guess'      => $inner_slug,
+				'find'       => '_template-item-dir',
+				'default'    => $assoc_args[ 'inner_block_dir' ] ?? '',
+			) );
+			$this->build_far( $far, array(
+				'question'   => 'Inner Block Namespace [guess]:',
+				'guess'      => str_replace(' ', '', $inner_title),
+				'find'       => 'TemplateItemNamespace',
+				'default'    => $assoc_args[ 'inner_block_namespace' ] ?? '',
+			) );
+			$this->build_far( $far, array(
+				'question'   => 'Inner Block Description [guess]:',
+				'guess'      => 'The ' . $inner_title . ' nested block.',
+				'find'       => 'template-item-desc',
+				'default'    => $assoc_args[ 'inner_block_desc' ] ?? '',
+			) );
 		}
 
 		/**
@@ -372,7 +433,7 @@ class AQUAMIN_CLI {
 		} else {
 			$template_dir = 'block';
 		}
-		$block_path = $library_path . $slug . '/';
+		$block_path = $library_path . $dir . '/';
 		
 		/**
 		 * Create plugin directory
@@ -381,122 +442,73 @@ class AQUAMIN_CLI {
 		$wp_filesystem->mkdir( $block_path );
 
 		// duplicate template's files
-		copy_dir( $cli_path . $template_dir, $block_path );
-
-		// if we have front-end scripts
-		if ( $has_js ) {
-			// copy the script into the block directory
-			copy( $cli_path . '/common/template-slug-script.js', $block_path . 'template-slug-script.js' );
-			// enqueue it
-			$script_replacements = array(
-				'index.php-1' => array(
-					<<< EOD
-					wp_register_style( 'aquamin-block-template-slug-style', get_template_directory_uri() . '/dist/block-library/template-slug/template-slug-style.css', null, '1.0' );
-					wp_register_script( 'aquamin-block-template-slug-script', get_template_directory_uri() . '/dist/block-library/template-slug/template-slug-script.js', null );
-					EOD,
-					<<< EOD
-					wp_register_style( 'aquamin-block-template-slug-style', get_template_directory_uri() . '/dist/block-library/template-slug/template-slug-style.css', null, '1.0' );
-					EOD
-				),
-				'index.php-2' => array(
-					<<< EOD
-					'view_script_handles' => ['aquamin-block-template-slug-script'],
-						'style_handles' => ['aquamin-block-template-slug-style']
-					EOD,
-					<<< EOD
-					'style_handles' => ['aquamin-block-template-slug-style']
-					EOD
-				),
-			);
-			$this->far( $block_path, $script_replacements );
-		}
-
-		/**
-		 * Find and replace strings
-		 */
-		$this->far( $block_path, $block );
+		copy_dir( $cli_path . $template_dir, $block_path, $exclude );
+		
+		// enqueue front-end scripts if appropriate (unshift to top of array so template strings get replaced)
+		array_unshift( $far, array(
+			'find' => "/* PLACEHOLDER: enqueue front-end script */\n",
+			'repl' => ! $has_js ? "" : "wp_register_script( 'aquamin-block-template-slug-script', get_template_directory_uri() . '/dist/block-library/template-slug/template-slug-script.js', null, '1.0', true );\n",
+		) );
+		array_unshift( $far, array(
+			'find' => "\t/* PLACEHOLDER: add front-end script handle */\n",
+			'repl' => ! $has_js ? "" : "\t'view_script_handles' => ['aquamin-block-template-slug-script'],\n",
+		) );
+		array_unshift( $far, array(
+			'find' => "\t\t/* PLACEHOLDER: add dynamic front-end script handle */\n",
+			'repl' => ! $has_js ? "" : "\t\t'view_script_handles' => ['aquamin-block-template-slug-script'],\n",
+		) );
 		
 		/**
 		 * Setup inner blocks
 		 */
+		// copy the inner blocks directory
 		if ( $has_inner_block ) {
-
-			// register/setup the inner block within parent files
-			$inner_block_replacements = array(
-				'index.js' => array(
-					<<< EOD
-					/**
-					 * Register inner blocks
-					 */
-					import './template-item-slug';
-
-					/**
-					 * Import edit dependencies
-					 */
-					EOD,
-					<<< EOD
-					/**
-					 * Import edit dependencies
-					 */
-					EOD
-				),
-				'index.php' => array(
-					<<< EOD
-					// register inner blocks
-					register_block_type( __DIR__ . '/template-item-slug' );
-					
-					// register the block
-					EOD,
-					<<< EOD
-					// register the block
-					EOD
-				),
-				'template-slug-edit.js' => array(
-					<<< EOD
-					<InnerBlocks
-						template={[['aquamin/template-item-slug']]}
-						allowedBlocks={['aquamin/template-item-slug']}
-					/>
-					EOD,
-					'<InnerBlocks />'
-				),
-			);
-			$this->far( $block_path, $inner_block_replacements );
-
-			// copy the inner blocks directory
 			$template_inner_dir = 'block-inner';
-			$block_inner_path = $block_path . $inner_slug . '/';
+			$block_inner_path = $block_path . $inner_path . '/';
 			$wp_filesystem->mkdir( $block_inner_path );
-			copy_dir( $cli_path . $template_inner_dir, $block_inner_path );
-			
-			// loop through block's directory (will include parent block) to find/replace text
-			$this->far( $block_path, $inner_block );
-
+			copy_dir( $cli_path . $template_inner_dir, $block_inner_path, $exclude );
 		}
+		// add inner find-and-replace strings (unshift to top of array so template strings get replaced)
+		array_unshift( $far, array(
+			'find' => "\n/* PLACEHOLDER: register inner blocks */\n",
+			'repl' => ! $has_inner_block ? "" : "\n/**\n * Register inner blocks\n */\nimport './_template-item-dir';\n"
+		) );
+		array_unshift( $far, array(
+			'find' => "\n/* PLACEHOLDER: register inner block */\n",
+			'repl' => ! $has_inner_block ? "" : "\n// register inner blocks\nregister_block_type( __DIR__ . '/_template-item-dir' );\n"
+		) );
+		array_unshift( $far, array(
+			'find' => " /* PLACEHOLDER: inner blocks template */ ",
+			'repl' => ! $has_inner_block ? " " : "\n\t\t\t\ttemplate={[['aquamin/template-item-slug']]}\n\t\t\t\tallowedBlocks={['aquamin/template-item-slug']}\n\t\t\t"
+		) );
+		
+		/**
+		 * Perform the find-and-replace for strings
+		 */
+		$this->far( $block_path, $far );
 
-		// loop through the block's directory and replace file prefixes
-		foreach( new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $block_path ) ) as $file ) {
-			if ( is_file( $file ) ) {
-				$file_name = basename( $file );
-				if ( 'template-slug' === substr( $file_name, 0, 13 ) ) {
-					$new_file = str_replace( 'template-slug', $slug, $file );
-					rename( $file, $new_file );
-				} elseif ( 'template-item-slug' === substr( $file_name, 0, 18 ) ) {
-					$new_file = str_replace( 'template-item-slug', $inner_slug, $file );
-					rename( $file, $new_file );
-				}
-			}
+		/**
+		 * Prefix filenames
+		 */
+		$this->prefix( $block_path, 'template-slug', $slug );
+		if ( $has_inner_block ) {
+			$this->prefix( $block_inner_path, 'template-item-slug', $inner_slug );
 		}
 
 		// report
 		WP_CLI::success( 'Block created' );
+		WP_CLI::line( WP_CLI::colorize( "\n%6%k What's next? %n\n" ) );
+		WP_CLI::line( WP_CLI::colorize( "%C ‣ Restart Parcel and refresh your browser to watch these new files") );
+		WP_CLI::line( WP_CLI::colorize( "%C ‣ Edit your new $title block:%n $block_path") );
+		WP_CLI::line( "\n" );
 	}
 
 	/**
 	 * Sets up default content
 	 *
-	 * @param array $modules 
-     * @param array $assoc_args 
+	 * @param array $modules
+     * @param array $assoc_args
+	 * @return null
 	 */
 	public function setup( $args, $assoc_args ) {
 
@@ -529,9 +541,9 @@ class AQUAMIN_CLI {
 		// report
 		if ( ! $has_error ) {
 			WP_CLI::success( 'Setup complete' );
-			WP_CLI::line( "\nWhat's next?\n" );
-			WP_CLI::line( WP_CLI::colorize( "\n%CCustomize your footer:%n \n" . get_admin_url( null, '/edit.php?post_type=aquamin-general' )) );
-			WP_CLI::line( WP_CLI::colorize( "\n%CVisit the pattern library:%n \n" . get_admin_url( null, '/edit.php?post_type=all-the-things' )) );
+			WP_CLI::line( WP_CLI::colorize( "\n%6%k What's next? %n\n" ) );
+			WP_CLI::line( WP_CLI::colorize( "%C ‣ Customize your footer:%n \n" . get_admin_url( null, '/edit.php?post_type=aquamin-general' ) ) );
+			WP_CLI::line( WP_CLI::colorize( "%C ‣ Visit the pattern library:%n \n" . get_admin_url( null, '/edit.php?post_type=all-the-things' ) ) );
 			WP_CLI::line( "\n" );
 		}
 	}
@@ -539,10 +551,7 @@ class AQUAMIN_CLI {
 }
 
 /**
- * Registers our command when cli get's initialized.
- *
- * @since  1.0.0
- * @author Scott Anderson
+ * Register commands when cli gets initialized
  */
 add_action( 'cli_init', 'aquamin_cli_register_commands' );
 function aquamin_cli_register_commands() {

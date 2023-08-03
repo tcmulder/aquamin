@@ -5,6 +5,8 @@
  * together to create a WordPress block.
  */
 
+/* PLACEHOLDER: register inner blocks */
+
 /**
  * Import dependencies
  */

@@ -8,7 +8,7 @@ This command scaffolds a new block for you, walking you through a series of prom
 
 # `wp aquamin component create`
 
-This command scaffolds a new component for you, letting you name the component and choose what files it should include. You'll end up with a new directory within `aquamin/assets/component-library/` that contains all your component files, properly enqueued and ready to use. Note you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file, if you chose to include PHP.
+This command scaffolds a new component for you, letting you name the component and choose what files it should include. You'll end up with a new directory within `aquamin/assets/component-library/` that contains all your component files, properly enqueued and ready to use. Note you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file, if you chose to include PHP. Restart Parcel to begin watching changes to this component's files.
 
 # `wp aquamin setup`
  

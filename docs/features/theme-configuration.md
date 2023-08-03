@@ -7,7 +7,9 @@ So, each component is it's own self-contained directory (with a few global excep
 
 ## Creating Components
 
-The easiest way to create a component is to run `wp aquamin component create` ([see the docs](features/wp-cli#wp-aquamin-component-create)). If you have parcel running, just refresh the site and the scaffolded component will immediately be available, ready for you to customize within its own directory inside `aquamin/assets/component-library/`. If you had the command scaffold your PHP, you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the markup.php file in that directory, too.
+The easiest way to create a component is to run `wp aquamin component create` ([see the docs](features/wp-cli#wp-aquamin-component-create)). Then, just restart Parcel, refresh the site, and the scaffolded component is ready for you to customize within its own directory inside `aquamin/assets/component-library/`. 
+
+?> If you had the command add a PHP template part, you'll conveniently find the get_template_part() call (including the appropriate file path) in the initial markup.php file comment, too.
 
 Or, if you'd prefer to scaffold a component yourself, you may choose to add the necessary files manually for more control: just add those within a new directory inside the `aquamin/assets/component-library/` folder. The main thing to keep in mind is that aquamin automatically includes all `*style.css` styling on the front-end, all `*editor.css` styling in the block editor's back-end, all `*script.js` JavaScript on the front-end, and your HTML/PHP should be within a `markup.php` file (you'll need to manually include this with `get_template_part()` wherever it's needed).
 
