@@ -1,0 +1,17 @@
+{
+	"title": "Grid Item",
+	"description": "Item within a grid.",
+	"text-domain": "aquamin",
+	"name": "aquamin/grd-item",
+	"parent": ["aquamin/grd"],
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"demoText": {
+			"type": "string",
+			"default": "(remove this demo attribute)"
+		}
+	},
+	"supports": {}
+}

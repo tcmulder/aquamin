@@ -1,0 +1,16 @@
+/**
+ * Grid editor styling
+ *
+ * This file is for CSS admin overrides only.
+ * Use style.css for shared theme/editor block styling.
+ */
+@import "./*style.css";
+
+[data-type="aquamin/grd"] {
+	& .is-selected {
+		& b::after {
+			/* replace this demo code with your own: */
+			content: " (✎ editor.css) ";
+		}
+	}
+}
