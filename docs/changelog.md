@@ -3,6 +3,7 @@
 ## 5.1.0 - August 2 2023
 * Overhauled directory structure: now most things are in `assets`.
 * Updated and reduced number of packages.
+* Updated theme.json to Gutenberg's API version 3 (you can set `"apiVersion": 2` for any legacy blocks in their `block.json`)
 * Refined alignment/layout styling.
 * Moved extended blocks to their own `block-edits` directory.
 * Added responsive hide/show functionality for group blocks.
