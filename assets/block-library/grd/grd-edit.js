@@ -15,48 +15,49 @@ const { useBlockProps, useInnerBlocksProps, InspectorControls } =
 	wp.blockEditor;
 const { RangeControl, ToggleControl, TextControl, PanelBody, Icon } =
 	wp.components;
+const { useState } = wp.element;
 
+export const getGap = ({ attributes, side }) => {
+	const gaps = attributes.style?.spacing?.blockGap;
+	if (gaps?.[side] && gaps[side] !== '0') {
+		return `var(${gaps[side]
+			.replace(/var:preset/, '--wp--preset')
+			.replaceAll('|', '--')})`;
+	}
+	return '0';
+};
+
+export const getAspect = ({ minAspect, hasAspect, hasEqualRows }) => {
+	if (!hasEqualRows && !minAspect.includes(0) && hasAspect) {
+		return `${minAspect[0]}/${minAspect[1]}`;
+	}
+	return 'auto';
+};
 /**
  * Generate block editor component
  */
 const GridBlockEdit = ({ attributes, setAttributes, className }) => {
-	const { count, hasEqualRows, minAspect } = attributes;
-	const getGap = (side) => {
-		let str = attributes.style.spacing.blockGap[side];
-		if (str !== '0') {
-			str = `var(${str
-				.replace(/var:preset/, '--wp--preset')
-				.replaceAll('|', '--')})`;
-		}
-		return str;
-	};
+	const { count, hasEqualRows, hasAspect, hasMedia, minAspect } = attributes;
 	const updateArray = (key, index, value) => {
 		const arr = [...attributes[key]];
 		arr[index] = value;
 		setAttributes({ [key]: arr });
 	};
-	const style = {
-		'--grd-count-lg': `${count[0]}`,
-		'--grd-count-md': `${count[1]}`,
-		'--grd-count-sm': `${count[2]}`,
-		'--grd-gap-y': getGap('top'),
-		'--grd-gap-x': getGap('left'),
-		'--grd-aspect': !minAspect.includes(0)
-			? `${minAspect[0]}/${minAspect[1]}`
-			: 'auto',
-	};
-
+	const aspect = getAspect(attributes);
 	return (
 		<>
 			<InspectorControls group="styles">
-				<PanelBody title={__('Grid Columns', 'aquamin')}>
+				<PanelBody
+					title={__('Grid Columns', 'aquamin')}
+					initialOpen={false}
+				>
 					<RangeControl
 						label={__('Desktop Columns', 'aquamin')}
 						value={count[0]}
 						onChange={(value) => updateArray('count', 0, value)}
 						min={1}
 						max={12}
-						withInputField={false}
+						step={1}
 						beforeIcon={<Icon icon="desktop" />}
 					/>
 					<RangeControl
@@ -65,7 +66,7 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 						onChange={(value) => updateArray('count', 1, value)}
 						min={1}
 						max={12}
-						withInputField={false}
+						step={1}
 						beforeIcon={<Icon icon="tablet" />}
 					/>
 					<RangeControl
@@ -74,7 +75,7 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 						onChange={(value) => updateArray('count', 2, value)}
 						min={1}
 						max={12}
-						withInputField={false}
+						step={1}
 						beforeIcon={<Icon icon="smartphone" />}
 					/>
 				</PanelBody>
@@ -82,71 +83,99 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 					title={__('Grid Rows', 'aquamin')}
 					initialOpen={false}
 				>
-					<br />
 					<ToggleControl
-						label={__('Equal Height Rows', 'aquamin')}
+						label={__('Stretch media to fit', 'aquamin')}
+						checked={hasMedia}
+						onChange={() => setAttributes({ hasMedia: !hasMedia })}
+					/>
+					<ToggleControl
+						label={__('Equal height rows', 'aquamin')}
 						checked={hasEqualRows}
 						onChange={() =>
 							setAttributes({ hasEqualRows: !hasEqualRows })
 						}
 					/>
-					{hasEqualRows && (
-						<>
-							<p>
-								{__('DEFAULT ASPECT RATIO', 'aquamin')}:
-								<br />
-								<em>
-									(
-									{__(
-										'applies to grid items that do not span',
-										'aquamin'
-									)}
-									)
-								</em>
-							</p>
-							<div
-								style={{
-									display: 'flex',
-									alignItems: 'flex-end',
-								}}
-							>
-								<div>
-									<TextControl
-										label={__('Width')}
-										value={minAspect[0] || 'auto'}
-										onChange={(value) =>
-											updateArray('minAspect', 0, value)
-										}
-									/>
-								</div>
-								<div style={{ padding: '1em' }}>:</div>
-								<div>
-									<TextControl
-										label={__('Height')}
-										value={minAspect[1] || 'auto'}
-										onChange={(value) =>
-											updateArray('minAspect', 1, value)
-										}
-									/>
-								</div>
+					<ToggleControl
+						label={__('Default aspect ratio', 'aquamin')}
+						checked={!hasEqualRows ? hasAspect : false}
+						onChange={() =>
+							setAttributes({ hasAspect: !hasAspect })
+						}
+						disabled={hasEqualRows}
+						title={
+							hasEqualRows &&
+							__(
+								'Aspect ratio is incompatible with equal height rows',
+								'aquamin'
+							)
+						}
+					/>
+					{!hasEqualRows && hasAspect && (
+						<div
+							style={{
+								display: 'flex',
+								alignItems: 'flex-end',
+							}}
+						>
+							<div>
+								<TextControl
+									label={__('Width')}
+									value={minAspect[0] || ''}
+									placeholder="auto"
+									onChange={(value) =>
+										updateArray('minAspect', 0, value)
+									}
+								/>
 							</div>
-						</>
+							<div style={{ padding: '1em' }}>:</div>
+							<div>
+								<TextControl
+									label={__('Height')}
+									value={minAspect[1] || ''}
+									placeholder="auto"
+									onChange={(value) =>
+										updateArray('minAspect', 1, value)
+									}
+								/>
+							</div>
+						</div>
 					)}
 				</PanelBody>
 			</InspectorControls>
 			<div
-				{...useInnerBlocksProps(
-					{},
-					{
-						template: Array(4).fill(['aquamin/grd-item']),
-						allowedBlocks: ['aquamin/grd-item'],
-					}
-				)}
-				{...useBlockProps({
-					className: classnames('grd', className),
-					style,
-				})}
-			/>
+				{...useBlockProps({ className: classnames('grd', className) })}
+			>
+				<div
+					{...useInnerBlocksProps(
+						{
+							className: classnames(
+								'grd__grid',
+								aspect && 'grd__grid--has-aspect',
+								hasMedia && 'grd__grid--has-media'
+							),
+							style: {
+								'--grd-count-lg': `${count[0]}`,
+								'--grd-count-md': `${count[1]}`,
+								'--grd-count-sm': `${count[2]}`,
+								'--grd-gap-y': getGap({
+									side: 'top',
+									attributes,
+								}),
+								'--grd-gap-x': getGap({
+									side: 'left',
+									attributes,
+								}),
+								'--grd-rows': hasEqualRows ? '1fr' : 'auto',
+								'--grd-aspect': aspect,
+							},
+						},
+						{
+							template: Array(4).fill(['aquamin/grd-item']),
+							allowedBlocks: ['aquamin/grd-item'],
+						}
+					)}
+				/>
+			</div>
 		</>
 	);
 };

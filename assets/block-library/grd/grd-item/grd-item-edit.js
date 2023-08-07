@@ -11,23 +11,21 @@
 import classnames from 'classnames';
 
 const { __ } = wp.i18n;
-const { useBlockProps, InnerBlocks, RichText } = wp.blockEditor;
+const { useInnerBlocksProps } = wp.blockEditor;
 
 /**
  * Generate block editor component
  */
 const GridItemEdit = ({ attributes, setAttributes, className }) => {
-	const { demoText } = attributes;
-
 	return (
 		<div
-			{...useBlockProps({
-				className: classnames('grd__item', className),
-			})}
-		>
-			[item]
-			{/* <InnerBlocks template={[['core/paragraph']]} /> */}
-		</div>
+			{...useInnerBlocksProps(
+				{ className: classnames('grd__item', className) },
+				{
+					template: [['core/paragraph']],
+				}
+			)}
+		/>
 	);
 };
 export default GridItemEdit;

@@ -1,4 +1,5 @@
 {
+	"apiVersion": 3,
 	"title": "Grid Item",
 	"description": "Item within a grid.",
 	"text-domain": "aquamin",
@@ -13,5 +14,13 @@
 			"default": "(remove this demo attribute)"
 		}
 	},
-	"supports": {}
+	"supports": {
+		"color": {
+			"text": true,
+			"background": true
+		},
+		"spacing": {
+			"padding": true
+		}
+	}
 }

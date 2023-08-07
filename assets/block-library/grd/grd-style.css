@@ -5,8 +5,7 @@
  * theme and editor.
  */
 
-.grd {
-	box-shadow: 0 0 0 100vw oklch(92% 0.15 170 / 0.4) inset;
+.grd__grid {
 	display: grid;
 	grid-template-columns: repeat(var(--grd-count), 1fr);
 	grid-gap: var(--grd-gap-y, 0) var(--grd-gap-x, 0);
@@ -21,7 +20,25 @@
 		--grd-count: var(--grd-count-lg);
 	}
 }
+.grd__grid--has-media {
+	& figure,
+	& video,
+	& img {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		margin: 0;
+		object-fit: cover;
+	}
+	& .grd__item {
+		position: relative;
+	}
+}
 .grd__item {
+	min-width: 0;
+	box-shadow: 0 0 0 100vw oklch(92% 0.15 17 / 0.4) inset;
 	grid-column: span var(--grd-span, 1);
 	&:not([style*="--grd-span"]) {
 		aspect-ratio: var(--grd-aspect, auto);

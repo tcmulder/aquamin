@@ -1,4 +1,5 @@
 {
+	"apiVersion": 3,
 	"title": "Grid",
 	"description": "Flexible grid layout.",
 	"text-domain": "aquamin",
@@ -15,6 +16,14 @@
 			"type": "boolean",
 			"default": false
 		},
+		"hasMedia": {
+			"type": "boolean",
+			"default": false
+		},
+		"hasAspect": {
+			"type": "boolean",
+			"default": false
+		},
 		"minAspect": {
 			"type": "array",
 			"default": [0, 0]
@@ -23,9 +32,13 @@
 	"supports": {
 		"customClassName": true,
 		"align": ["wide", "full"],
+		"color": {
+			"text": true,
+			"background": true
+		},
 		"spacing": {
 			"margin": ["top", "bottom"],
-			"padding": ["top", "bottom"],
+			"padding": true,
 			"blockGap": ["horizontal", "vertical"]
 		}
 	}

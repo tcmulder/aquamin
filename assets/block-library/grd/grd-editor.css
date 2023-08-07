@@ -6,11 +6,17 @@
  */
 @import "./*style.css";
 
-[data-type="aquamin/grd"] {
-	& .is-selected {
-		& b::after {
-			/* replace this demo code with your own: */
-			content: " (✎ editor.css) ";
-		}
+.grd__grid--has-media {
+	& figure > * {
+		width: 100% !important;
+		height: 100% !important;
+	}
+	& .components-resizable-box__handle {
+		display: none;
+	}
+}
+.grd__item {
+	& figure > * {
+		max-width: 100% !important;
 	}
 }
