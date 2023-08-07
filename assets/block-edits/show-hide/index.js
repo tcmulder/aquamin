@@ -8,7 +8,6 @@
 /**
  * Import dependencies
  */
-import { mobile, tablet, desktop, caption } from '@wordpress/icons';
 import classnames from 'classnames';
 
 import extractClasses from '../../util/extractClasses';
@@ -18,7 +17,7 @@ const { addFilter } = wp.hooks;
 const { createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
 const { InspectorControls } = wp.blockEditor;
-const { PanelBody, ButtonGroup, Button } = wp.components;
+const { PanelBody, ButtonGroup, Button, Icon } = wp.components;
 
 /**
  * Identify the extension's name
@@ -80,10 +79,10 @@ const withModifyEdit = createHigherOrderComponent(
 
 			// define classes
 			const classNames = [
-				{ value: 'hide-bp-sm', title: 'Phone', icon: mobile },
-				{ value: 'hide-bp-md', title: 'Tablet', icon: tablet },
-				{ value: 'hide-bp-lg', title: 'Laptop', icon: desktop },
-				{ value: 'hide-bp-md-up', title: 'Desktop+', icon: caption },
+				{ value: 'hide-bp-sm', title: 'Phone', icon: 'smartphone' },
+				{ value: 'hide-bp-md', title: 'Tablet', icon: 'tablet' },
+				{ value: 'hide-bp-lg', title: 'Laptop', icon: 'laptop' },
+				{ value: 'hide-bp-md-up', title: 'Desktop+', icon: 'desktop' },
 			];
 
 			// send the new control
@@ -99,7 +98,7 @@ const withModifyEdit = createHigherOrderComponent(
 									<Button
 										key={i}
 										label={opt.title}
-										icon={opt.icon}
+										icon={<Icon icon={opt.icon} />}
 										onClick={() => {
 											const newAttributes = [
 												...aquaminClassNameHide,
