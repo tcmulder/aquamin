@@ -46,3 +46,17 @@
 		max-width: 100% !important;
 	}
 }
+.grd__item--invalid {
+	outline: 1px dotted var(--wp--preset--color--vivid-red, red);
+	&::after {
+		content: "invalid span width";
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		inset: 0;
+		background: var(--wp--preset--color--vivid-red, red);
+		color: var(--wp--preset--color--white, white);
+		opacity: 0.9;
+	}
+}

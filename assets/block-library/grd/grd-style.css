@@ -4,9 +4,6 @@
  * This file gets shared between the
  * theme and editor.
  */
-.grd {
-	overflow: hidden;
-}
 .grd__grid {
 	display: grid;
 	grid-template-columns: repeat(

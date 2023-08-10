@@ -79,7 +79,7 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 										setAttributes({
 											count: {
 												...count,
-												[size[1]]: value,
+												[size[1]]: parseInt(value),
 											},
 										});
 									}}
