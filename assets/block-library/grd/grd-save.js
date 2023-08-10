@@ -19,8 +19,8 @@ const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
  * Generate block HTML to save to the database
  */
 const GridBlockSave = ({ attributes, className }) => {
-	const { count, hasEqualRows, hasMedia } = attributes;
-	const aspect = getAspect(attributes);
+	const { count, hasMedia, minAspect } = attributes;
+	const { x, y } = minAspect;
 	return (
 		<div
 			{...useBlockProps.save({ className: classnames('grd', className) })}
@@ -29,17 +29,16 @@ const GridBlockSave = ({ attributes, className }) => {
 				{...useInnerBlocksProps.save({
 					className: classnames(
 						'grd__grid',
-						aspect && 'grd__grid--has-aspect',
-						hasMedia && 'grd__grid--has-media'
+						x && y && 'grd__grid--has-aspect',
+						hasMedia && 'grd__grid--stretch-media'
 					),
 					style: {
-						'--grd-count-lg': `${count[0]}`,
-						'--grd-count-md': `${count[1]}`,
-						'--grd-count-sm': `${count[2]}`,
-						'--grd-gap-y': getGap({ side: 'top', attributes }),
-						'--grd-gap-x': getGap({ side: 'left', attributes }),
-						'--grd-rows': hasEqualRows ? '1fr' : 'auto',
-						'--grd-aspect': aspect,
+						'--grd-count-lg': `${count.lg}`,
+						'--grd-count-md': `${count.md}`,
+						'--grd-count-sm': `${count.sm}`,
+						...getGap(attributes, 'top'),
+						...getGap(attributes, 'left'),
+						...getAspect(minAspect),
 					},
 				})}
 			/>

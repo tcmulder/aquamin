@@ -11,19 +11,24 @@
  * Import dependencies
  */
 import classnames from 'classnames';
+import { getSpan } from './grd-item-edit';
 
-const { useInnerBlocksProps } = wp.blockEditor;
+const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 
 /**
  * Generate block HTML to save to the database
  */
 const GridItemSave = ({ attributes, className }) => {
+	const { span } = attributes;
 	return (
 		<div
-			{...useInnerBlocksProps.save({
+			{...useBlockProps.save({
 				className: classnames('grd__item', className),
+				style: { ...getSpan(span) },
 			})}
-		/>
+		>
+			<div {...useInnerBlocksProps.save({ className: 'grd__frame' })} />
+		</div>
 	);
 };
 

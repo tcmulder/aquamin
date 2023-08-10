@@ -32,6 +32,7 @@ const AFFECTED_BLOCKS = [
 	'core/column',
 	'core/image',
 	'core/video',
+	'aquamin/grd-item',
 ];
 const isAffected = (name) => {
 	return AFFECTED_BLOCKS.includes(name);

@@ -13,133 +13,122 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { useBlockProps, useInnerBlocksProps, InspectorControls } =
 	wp.blockEditor;
-const { RangeControl, ToggleControl, TextControl, PanelBody, Icon } =
-	wp.components;
-const { useState } = wp.element;
+const { ToggleControl, TextControl, PanelBody } = wp.components;
 
-export const getGap = ({ attributes, side }) => {
+/**
+ * Get grid gap value
+ *
+ * @param    {object} attributes  All block attributes for us to dig through
+ * @param    {string} side        Grid gap side 'left' or 'top' to retrieve
+ * @returns  {object}             Grid gap css custom property object
+ */
+export const getGap = (attributes, side) => {
+	let gap = {};
 	const gaps = attributes.style?.spacing?.blockGap;
 	if (gaps?.[side] && gaps[side] !== '0') {
-		return `var(${gaps[side]
-			.replace(/var:preset/, '--wp--preset')
-			.replaceAll('|', '--')})`;
+		gap = {
+			[`--grd-gap-${side}`]: `var(${gaps[side]
+				.replace(/var:preset/, '--wp--preset')
+				.replaceAll('|', '--')})`,
+		};
 	}
-	return '0';
+	return gap;
 };
 
-export const getAspect = ({ minAspect, hasAspect, hasEqualRows }) => {
-	if (!hasEqualRows && !minAspect.includes(0) && hasAspect) {
-		return `${minAspect[0]}/${minAspect[1]}`;
-	}
-	return 'auto';
+/**
+ * Get aspect ratio
+ *
+ * @param    {object}   minAspect  Aspect ratio x and y
+ * @returns  {object}              Aspect ratio CSS value
+ */
+export const getAspect = (minAspect) => {
+	return minAspect.x && minAspect.y
+		? { '--grd-aspect': `${minAspect.y}/${minAspect.x}` }
+		: {};
 };
+
+/**
+ * Wrap inspector controls side by side
+ */
+export const Flex = ({ children }) => {
+	return <div style={{ display: 'flex', gap: '5px' }}>{children}</div>;
+};
+
 /**
  * Generate block editor component
  */
 const GridBlockEdit = ({ attributes, setAttributes, className }) => {
-	const { count, hasEqualRows, hasAspect, hasMedia, minAspect } = attributes;
-	const updateArray = (key, index, value) => {
-		const arr = [...attributes[key]];
-		arr[index] = value;
-		setAttributes({ [key]: arr });
-	};
-	const aspect = getAspect(attributes);
+	const { count, hasMedia, minAspect } = attributes;
+	const { x, y } = minAspect;
 	return (
 		<>
 			<InspectorControls group="styles">
-				<PanelBody
-					title={__('Grid Columns', 'aquamin')}
-					initialOpen={false}
-				>
-					<RangeControl
-						label={__('Desktop Columns', 'aquamin')}
-						value={count[0]}
-						onChange={(value) => updateArray('count', 0, value)}
-						min={1}
-						max={12}
-						step={1}
-						beforeIcon={<Icon icon="desktop" />}
-					/>
-					<RangeControl
-						label={__('Tablet Columns', 'aquamin')}
-						value={count[1]}
-						onChange={(value) => updateArray('count', 1, value)}
-						min={1}
-						max={12}
-						step={1}
-						beforeIcon={<Icon icon="tablet" />}
-					/>
-					<RangeControl
-						label={__('Mobile Columns', 'aquamin')}
-						value={count[2]}
-						onChange={(value) => updateArray('count', 2, value)}
-						min={1}
-						max={12}
-						step={1}
-						beforeIcon={<Icon icon="smartphone" />}
-					/>
-				</PanelBody>
-				<PanelBody
-					title={__('Grid Rows', 'aquamin')}
-					initialOpen={false}
-				>
+				<PanelBody title={__('Grid Columns & Rows', 'aquamin')}>
+					<Flex>
+						{[
+							[__('Desktop', 'aquamin'), 'lg'],
+							[__('Tablet', 'aquamin'), 'md'],
+							[__('Mobile', 'aquamin'), 'sm'],
+						].map((size, i) => {
+							return (
+								<TextControl
+									key={i}
+									label={size[0]}
+									value={count[size[1]]}
+									onChange={(value) => {
+										setAttributes({
+											count: {
+												...count,
+												[size[1]]: value,
+											},
+										});
+									}}
+									min={1}
+									type="number"
+									max={12}
+									step={1}
+								/>
+							);
+						})}
+					</Flex>
+					<p>
+						<strong>
+							{__('Minimum Row Aspect Ratio', 'aquamin')}
+						</strong>
+					</p>
+					<Flex>
+						{[
+							[__('Width', 'aquamin'), 'y'],
+							[__('Height', 'aquamin'), 'x'],
+						].map((aspect, i) => {
+							return (
+								<TextControl
+									key={i}
+									label={aspect[0]}
+									value={
+										minAspect[aspect[1]]
+											? minAspect[aspect[1]]
+											: ''
+									}
+									onChange={(value) => {
+										setAttributes({
+											minAspect: {
+												...minAspect,
+												[aspect[1]]: parseFloat(value),
+											},
+										});
+									}}
+									type="number"
+									step={0.1}
+								/>
+							);
+						})}
+					</Flex>
 					<ToggleControl
-						label={__('Stretch media to fit', 'aquamin')}
+						label={__('Fit media to grid cells', 'aquamin')}
 						checked={hasMedia}
 						onChange={() => setAttributes({ hasMedia: !hasMedia })}
 					/>
-					<ToggleControl
-						label={__('Equal height rows', 'aquamin')}
-						checked={hasEqualRows}
-						onChange={() =>
-							setAttributes({ hasEqualRows: !hasEqualRows })
-						}
-					/>
-					<ToggleControl
-						label={__('Default aspect ratio', 'aquamin')}
-						checked={!hasEqualRows ? hasAspect : false}
-						onChange={() =>
-							setAttributes({ hasAspect: !hasAspect })
-						}
-						disabled={hasEqualRows}
-						title={
-							hasEqualRows &&
-							__(
-								'Aspect ratio is incompatible with equal height rows',
-								'aquamin'
-							)
-						}
-					/>
-					{!hasEqualRows && hasAspect && (
-						<div
-							style={{
-								display: 'flex',
-								alignItems: 'flex-end',
-							}}
-						>
-							<div>
-								<TextControl
-									label={__('Width')}
-									value={minAspect[0] || ''}
-									placeholder="auto"
-									onChange={(value) =>
-										updateArray('minAspect', 0, value)
-									}
-								/>
-							</div>
-							<div style={{ padding: '1em' }}>:</div>
-							<div>
-								<TextControl
-									label={__('Height')}
-									value={minAspect[1] || ''}
-									placeholder="auto"
-									onChange={(value) =>
-										updateArray('minAspect', 1, value)
-									}
-								/>
-							</div>
-						</div>
-					)}
 				</PanelBody>
 			</InspectorControls>
 			<div
@@ -150,28 +139,22 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 						{
 							className: classnames(
 								'grd__grid',
-								aspect && 'grd__grid--has-aspect',
-								hasMedia && 'grd__grid--has-media'
+								x && y && 'grd__grid--has-aspect',
+								hasMedia && 'grd__grid--stretch-media'
 							),
 							style: {
-								'--grd-count-lg': `${count[0]}`,
-								'--grd-count-md': `${count[1]}`,
-								'--grd-count-sm': `${count[2]}`,
-								'--grd-gap-y': getGap({
-									side: 'top',
-									attributes,
-								}),
-								'--grd-gap-x': getGap({
-									side: 'left',
-									attributes,
-								}),
-								'--grd-rows': hasEqualRows ? '1fr' : 'auto',
-								'--grd-aspect': aspect,
+								'--grd-count-lg': `${count.lg}`,
+								'--grd-count-md': `${count.md}`,
+								'--grd-count-sm': `${count.sm}`,
+								...getGap(attributes, 'top'),
+								...getGap(attributes, 'left'),
+								...getAspect(minAspect),
 							},
 						},
 						{
 							template: Array(4).fill(['aquamin/grd-item']),
 							allowedBlocks: ['aquamin/grd-item'],
+							orientation: 'horizontal',
 						}
 					)}
 				/>

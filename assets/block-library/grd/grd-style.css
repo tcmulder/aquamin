@@ -4,12 +4,18 @@
  * This file gets shared between the
  * theme and editor.
  */
-
+.grd {
+	overflow: hidden;
+}
 .grd__grid {
 	display: grid;
-	grid-template-columns: repeat(var(--grd-count), 1fr);
-	grid-gap: var(--grd-gap-y, 0) var(--grd-gap-x, 0);
-	grid-auto-rows: var(--grd-rows, auto);
+	grid-template-columns: repeat(
+		var(--grd-count),
+		calc(100% / var(--grd-count) - var(--grd-gap-left, 0px))
+	);
+	margin-right: calc(var(--grd-gap-left, 0px) * -1);
+	/* grid-template-columns: repeat(var(--grd-count), 1fr); */
+	grid-gap: var(--grd-gap-top, 0px) var(--grd-gap-left, 0px);
 	@media (max-width: 479px) {
 		--grd-count: var(--grd-count-sm);
 	}
@@ -20,27 +26,53 @@
 		--grd-count: var(--grd-count-lg);
 	}
 }
-.grd__grid--has-media {
+.grd__grid--has-aspect {
+	grid-auto-rows: 1fr;
+	&::before {
+		content: "";
+		grid-column-start: 1;
+		aspect-ratio: var(--grd-aspect);
+		background: blue;
+	}
+	&::before,
+	& .grd__item:first-child {
+		opacity: 0.9;
+		--grd-col: 1;
+		grid-row-start: 1;
+	}
+}
+.grd__grid--stretch-media {
 	& figure,
 	& video,
 	& img {
 		position: absolute;
 		display: block;
-		width: 100%;
-		height: 100%;
 		max-width: none;
 		margin: 0;
 		object-fit: cover;
-	}
-	& .grd__item {
-		position: relative;
+		/* override any inline height/width */
+		width: 100% !important;
+		height: 100% !important;
 	}
 }
 .grd__item {
+	position: relative;
+	display: grid;
 	min-width: 0;
-	box-shadow: 0 0 0 100vw oklch(92% 0.15 17 / 0.4) inset;
-	grid-column: span var(--grd-span, 1);
-	&:not([style*="--grd-span"]) {
-		aspect-ratio: var(--grd-aspect, auto);
+	box-shadow: 0 0 0 100vw oklch(92% 0.15 170 / 0.4) inset;
+	min-width: 2em;
+	grid-column: var(--grd-col, auto) / span var(--grd-span, 1);
+	@media (max-width: 479px) {
+		--grd-span: var(--grd-span-sm, 1);
 	}
+	@media (min-width: 480px) and (max-width: 781px) {
+		--grd-span: var(--grd-span-md, 1);
+	}
+	@media (min-width: 782px) {
+		--grd-span: var(--grd-span-lg, 1);
+	}
+}
+.grd__frame {
+	pointer-events: none;
+	opacity: 0.9;
 }

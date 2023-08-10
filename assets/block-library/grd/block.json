@@ -9,24 +9,16 @@
 	"example": {},
 	"attributes": {
 		"count": {
-			"type": "array",
-			"default": [4, 2, 1]
-		},
-		"hasEqualRows": {
-			"type": "boolean",
-			"default": false
+			"type": "object",
+			"default": { "lg": 4, "md": 2, "sm": 1 }
 		},
 		"hasMedia": {
 			"type": "boolean",
 			"default": false
 		},
-		"hasAspect": {
-			"type": "boolean",
-			"default": false
-		},
 		"minAspect": {
-			"type": "array",
-			"default": [0, 0]
+			"type": "object",
+			"default": { "y": 0, "x": 0 }
 		}
 	},
 	"supports": {

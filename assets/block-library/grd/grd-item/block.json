@@ -9,9 +9,9 @@
 	"category": "aquamin-blocks",
 	"example": {},
 	"attributes": {
-		"demoText": {
-			"type": "string",
-			"default": "(remove this demo attribute)"
+		"span": {
+			"type": "object",
+			"default": { "lg": 1, "md": 1, "sm": 1 }
 		}
 	},
 	"supports": {
