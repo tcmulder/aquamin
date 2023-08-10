@@ -29,11 +29,9 @@
 		content: "";
 		grid-column-start: 1;
 		aspect-ratio: var(--grd-aspect);
-		background: blue;
 	}
 	&::before,
 	& .grd__item:first-child {
-		opacity: 0.9;
 		--grd-col: 1;
 		grid-row-start: 1;
 	}
@@ -56,7 +54,6 @@
 	position: relative;
 	display: grid;
 	min-width: 0;
-	box-shadow: 0 0 0 100vw oklch(92% 0.15 170 / 0.4) inset;
 	min-width: 2em;
 	grid-column: var(--grd-col, auto) / span var(--grd-span, 1);
 	@media (max-width: 479px) {
@@ -68,8 +65,4 @@
 	@media (min-width: 782px) {
 		--grd-span: var(--grd-span-lg, 1);
 	}
-}
-.grd__frame {
-	pointer-events: none;
-	opacity: 0.9;
 }
