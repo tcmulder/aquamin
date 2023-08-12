@@ -89,7 +89,7 @@ const withModifyEdit = createHigherOrderComponent(
 			return (
 				<Fragment>
 					<BlockEdit {...props} />
-					<InspectorControls>
+					<InspectorControls group="styles">
 						<PanelBody
 							title={__('Responsive Visibility', 'aquamin')}
 						>
