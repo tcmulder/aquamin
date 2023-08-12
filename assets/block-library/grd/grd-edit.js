@@ -60,6 +60,32 @@ export const Flex = ({ children }) => {
 const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 	const { count, hasMedia, minAspect } = attributes;
 	const { x, y } = minAspect;
+	const hasAspect = x && y;
+	const blockProps = useBlockProps({
+		className: classnames(
+			'grd',
+			hasAspect && 'grd--has-aspect',
+			hasMedia && 'grd--stretch-media',
+			className
+		),
+		style: {
+			'--grd-count-lg': `${count.lg}`,
+			'--grd-count-md': `${count.md}`,
+			'--grd-count-sm': `${count.sm}`,
+			...getGap(attributes, 'top'),
+			...getGap(attributes, 'left'),
+			...getAspect(minAspect),
+		},
+	});
+	const innerBlocksProps = useInnerBlocksProps(
+		{ ...blockProps },
+		{
+			template: Array(4).fill(['aquamin/grd-item']),
+			allowedBlocks: ['aquamin/grd-item'],
+			orientation: 'horizontal',
+		}
+	);
+
 	return (
 		<>
 			<InspectorControls group="styles">
@@ -131,34 +157,7 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div
-				{...useBlockProps({ className: classnames('grd', className) })}
-			>
-				<div
-					{...useInnerBlocksProps(
-						{
-							className: classnames(
-								'grd__grid',
-								x && y && 'grd__grid--has-aspect',
-								hasMedia && 'grd__grid--stretch-media'
-							),
-							style: {
-								'--grd-count-lg': `${count.lg}`,
-								'--grd-count-md': `${count.md}`,
-								'--grd-count-sm': `${count.sm}`,
-								...getGap(attributes, 'top'),
-								...getGap(attributes, 'left'),
-								...getAspect(minAspect),
-							},
-						},
-						{
-							template: Array(4).fill(['aquamin/grd-item']),
-							allowedBlocks: ['aquamin/grd-item'],
-							orientation: 'horizontal',
-						}
-					)}
-				/>
-			</div>
+			<div {...innerBlocksProps}>{innerBlocksProps.children}</div>
 		</>
 	);
 };

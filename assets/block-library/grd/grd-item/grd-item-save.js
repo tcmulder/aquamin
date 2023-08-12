@@ -20,14 +20,19 @@ const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
  */
 const GridItemSave = ({ attributes, className }) => {
 	const { span } = attributes;
+
+	const blockProps = useBlockProps.save({
+		className: classnames('grd__item', className),
+		style: { ...getSpan(span) },
+	});
+	const innerBlocksProps = useInnerBlocksProps.save(
+		{ ...blockProps },
+		{ template: [['core/paragraph']] }
+	);
+
 	return (
-		<div
-			{...useBlockProps.save({
-				className: classnames('grd__item', className),
-				style: { ...getSpan(span) },
-			})}
-		>
-			<div {...useInnerBlocksProps.save({ className: 'grd__frame' })} />
+		<div {...innerBlocksProps}>
+			<div className="grd__frame">{innerBlocksProps.children}</div>
 		</div>
 	);
 };

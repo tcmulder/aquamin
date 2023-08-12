@@ -52,6 +52,21 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 	const { count } = select('core/block-editor').getBlock(
 		select('core/block-editor').getBlockParents(clientId).at(-1)
 	).attributes;
+	const blockProps = useBlockProps({
+		className: classnames(
+			'grd__item',
+			className,
+			// add invalid class if we span more columns than exist
+			!!Object.keys(span).find((key) => span[key] > count[key]) &&
+				'grd__item--invalid'
+		),
+		style: { ...getSpan(span) },
+	});
+	const innerBlocksProps = useInnerBlocksProps(
+		{ ...blockProps },
+		{ template: [['core/paragraph']] }
+	);
+
 	return (
 		<>
 			<InspectorControls group="styles">
@@ -91,27 +106,8 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 					</Flex>
 				</PanelBody>
 			</InspectorControls>
-			<div
-				{...useBlockProps({
-					className: classnames(
-						'grd__item',
-						className,
-						// add invalid class if we span more columns than exist
-						!!Object.keys(span).find(
-							(key) => span[key] > count[key]
-						) && 'grd__item--invalid'
-					),
-					style: { ...getSpan(span) },
-				})}
-			>
-				<div
-					{...useInnerBlocksProps(
-						{ className: 'grd__frame' },
-						{
-							template: [['core/paragraph']],
-						}
-					)}
-				/>
+			<div {...innerBlocksProps}>
+				<div className="grd__frame">{innerBlocksProps.children}</div>
 			</div>
 		</>
 	);

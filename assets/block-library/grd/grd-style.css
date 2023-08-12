@@ -4,15 +4,17 @@
  * This file gets shared between the
  * theme and editor.
  */
-.grd__grid {
-	display: grid;
-	grid-template-columns: repeat(
-		var(--grd-count),
-		calc(100% / var(--grd-count) - var(--grd-gap-left, 0px))
+.grd {
+	--grd-w: calc(
+		(100% / var(--grd-count)) -
+			(
+				(var(--grd-gap-left, 0px) * (var(--grd-count) - 1)) /
+					var(--grd-count)
+			)
 	);
-	margin-right: calc(var(--grd-gap-left, 0px) * -1);
-	/* grid-template-columns: repeat(var(--grd-count), 1fr); */
-	grid-gap: var(--grd-gap-top, 0px) var(--grd-gap-left, 0px);
+	display: grid;
+	grid-template-columns: repeat(var(--grd-count), var(--grd-w));
+	grid-gap: var(--grd-gap-left, 0px);
 	@media (max-width: 479px) {
 		--grd-count: var(--grd-count-sm);
 	}
@@ -23,20 +25,22 @@
 		--grd-count: var(--grd-count-lg);
 	}
 }
-.grd__grid--has-aspect {
+.grd--has-aspect {
 	grid-auto-rows: 1fr;
-	&::before {
-		content: "";
-		grid-column-start: 1;
-		aspect-ratio: var(--grd-aspect);
+	& .grd__item {
+		display: grid;
+		&::before {
+			content: "";
+			aspect-ratio: calc(var(--grd-aspect) * var(--grd-span));
+		}
 	}
-	&::before,
-	& .grd__item:first-child {
-		--grd-col: 1;
-		grid-row-start: 1;
+	& .grd__item::before,
+	& .grd__frame {
+		grid-column: 1;
+		grid-row: 1;
 	}
 }
-.grd__grid--stretch-media {
+.grd--stretch-media {
 	& figure,
 	& video,
 	& img {
@@ -56,6 +60,7 @@
 	min-width: 0;
 	min-width: 2em;
 	grid-column: var(--grd-col, auto) / span var(--grd-span, 1);
+	grid-row: var(--grd-row, auto);
 	@media (max-width: 479px) {
 		--grd-span: var(--grd-span-sm, 1);
 	}
