@@ -117,10 +117,21 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 							);
 						})}
 					</Flex>
+					<ToggleControl
+						label={__('Fit media to grid cells', 'aquamin')}
+						checked={hasMedia}
+						onChange={() => setAttributes({ hasMedia: !hasMedia })}
+					/>
 					<p>
 						<strong>
-							{__('Minimum Row Aspect Ratio', 'aquamin')}
+							{__('Row Aspect Ratio (optional)', 'aquamin')}
 						</strong>
+					</p>
+					<p>
+						{__(
+							'Desired approximate minimum aspect ratio applied uniformly to rows',
+							'aquamin'
+						)}
 					</p>
 					<Flex>
 						{[
@@ -150,11 +161,6 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 							);
 						})}
 					</Flex>
-					<ToggleControl
-						label={__('Fit media to grid cells', 'aquamin')}
-						checked={hasMedia}
-						onChange={() => setAttributes({ hasMedia: !hasMedia })}
-					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...innerBlocksProps}>{innerBlocksProps.children}</div>
