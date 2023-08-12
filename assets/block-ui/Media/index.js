@@ -169,7 +169,7 @@ const MediaInspector = (props) => {
 	} = props;
 	const show = editable && !hideInSidebar;
 	return show ? (
-		<InspectorControls>
+		<InspectorControls group="styles">
 			<PanelBody title={title}>
 				<MediaEdit {...props} style={{ ...style, height: 'auto' }} />
 				<MediaNew {...props} />

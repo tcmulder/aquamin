@@ -105,7 +105,7 @@ const withModifyEdit = createHigherOrderComponent(
 			return (
 				<Fragment>
 					<BlockEdit {...props} />
-					<InspectorControls>
+					<InspectorControls group="styles">
 						<PanelBody title={__('Column Styling', 'aquamin')}>
 							<FormTokenField
 								value={selectedStrings}
