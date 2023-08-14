@@ -60,6 +60,62 @@ export const Flex = ({ title, children }) => {
 };
 
 /**
+ * Handle responsive number values
+ */
+export const TextControlList = ({
+	title,
+	attributeName,
+	attributes,
+	setAttributes,
+	opts = [
+		[__('Desktop', 'aquamin'), 'lg'],
+		[__('Tablet', 'aquamin'), 'md'],
+		[__('Mobile', 'aquamin'), 'sm'],
+	],
+	step = 1,
+	max,
+}) => {
+	return (
+		<fieldset>
+			{title && (
+				<legend>
+					<h2>{title}</h2>
+				</legend>
+			)}
+			<div
+				style={{
+					display: 'grid',
+					gridTemplateColumns: `repeat(${opts.length}, 1fr)`,
+					gap: '5px',
+				}}
+			>
+				{opts.map((size, i) => {
+					return (
+						<TextControl
+							key={i}
+							label={size[0]}
+							value={attributes[attributeName][size[1]]}
+							onChange={(value) => {
+								setAttributes({
+									[attributeName]: {
+										...attributes[attributeName],
+										[size[1]]: parseFloat(value),
+									},
+								});
+							}}
+							min={1}
+							type="number"
+							max={max}
+							step={step}
+						/>
+					);
+				})}
+			</div>
+		</fieldset>
+	);
+};
+
+/**
  * Generate block editor component
  */
 const GridBlockEdit = ({ attributes, setAttributes, className }) => {
@@ -100,61 +156,24 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 						checked={hasMedia}
 						onChange={() => setAttributes({ hasMedia: !hasMedia })}
 					/>
-					<Flex title={__('Number of Columns', 'aquamin')}>
-						{[
-							[__('Desktop', 'aquamin'), 'lg'],
-							[__('Tablet', 'aquamin'), 'md'],
-							[__('Mobile', 'aquamin'), 'sm'],
-						].map((size, i) => {
-							return (
-								<TextControl
-									key={i}
-									label={size[0]}
-									value={count[size[1]]}
-									onChange={(value) => {
-										setAttributes({
-											count: {
-												...count,
-												[size[1]]: parseInt(value),
-											},
-										});
-									}}
-									min={1}
-									type="number"
-									max={12}
-									step={1}
-								/>
-							);
-						})}
-					</Flex>
-					<Flex title={__('Row Aspect Ratio (optional)', 'aquamin')}>
-						{[
+					<TextControlList
+						title={__('Number of Columns', 'aquamin')}
+						attributeName="count"
+						attributes={attributes}
+						setAttributes={setAttributes}
+						max={12}
+					/>
+					<TextControlList
+						title={__('Row Aspect Ratio (optional)', 'aquamin')}
+						attributeName="minAspect"
+						attributes={attributes}
+						setAttributes={setAttributes}
+						opts={[
 							[__('Width', 'aquamin'), 'y'],
 							[__('Height', 'aquamin'), 'x'],
-						].map((aspect, i) => {
-							return (
-								<TextControl
-									key={i}
-									label={aspect[0]}
-									value={
-										minAspect[aspect[1]]
-											? minAspect[aspect[1]]
-											: ''
-									}
-									onChange={(value) => {
-										setAttributes({
-											minAspect: {
-												...minAspect,
-												[aspect[1]]: parseFloat(value),
-											},
-										});
-									}}
-									type="number"
-									step={0.1}
-								/>
-							);
-						})}
-					</Flex>
+						]}
+						step={0.1}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...innerBlocksProps}>{innerBlocksProps.children}</div>

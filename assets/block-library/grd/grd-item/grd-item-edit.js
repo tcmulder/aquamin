@@ -16,7 +16,7 @@ import {
 	justifyStretch,
 } from '@wordpress/icons';
 import classnames from 'classnames';
-import { Flex } from '../grd-edit';
+import { TextControlList } from '../grd-edit';
 
 const { __ } = wp.i18n;
 const { useBlockProps, useInnerBlocksProps, InspectorControls } =
@@ -55,16 +55,6 @@ export const getVAlign = (align) => {
 };
 
 /**
- * Show "spans x of y" helper and highlight if invalid
- */
-const SpanHelp = ({ span, count }) => {
-	const style = span > count ? { color: 'red' } : {};
-	return (
-		<span style={style}>{`${span} ${__('of', 'aquamin')} ${count}`}</span>
-	);
-};
-
-/**
  * Generate block editor component
  */
 const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
@@ -91,39 +81,12 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 		<>
 			<InspectorControls group="styles">
 				<PanelBody title={__('Grid Cell Column & Row', 'aquamin')}>
-					<Flex title={__('Span Columns', 'aquamin')}>
-						{[
-							[__('Desktop', 'aquamin'), 'lg'],
-							[__('Tablet', 'aquamin'), 'md'],
-							[__('Mobile', 'aquamin'), 'sm'],
-						].map((size, i) => {
-							return (
-								<TextControl
-									key={i}
-									label={size[0]}
-									value={span[size[1]]}
-									onChange={(value) => {
-										setAttributes({
-											span: {
-												...span,
-												[size[1]]: parseInt(value),
-											},
-										});
-									}}
-									min={1}
-									type="number"
-									max={count[size[1]] || 12}
-									step={1}
-									help={
-										<SpanHelp
-											count={count[size[1]]}
-											span={span[size[1]]}
-										/>
-									}
-								/>
-							);
-						})}
-					</Flex>
+					<TextControlList
+						title={__('Span Columns', 'aquamin')}
+						attributeName="span"
+						attributes={attributes}
+						setAttributes={setAttributes}
+					/>
 				</PanelBody>
 				<PanelBody title={__('Vertical Alignment', 'aquamin')}>
 					<ButtonGroup>

@@ -24,7 +24,7 @@
 .grd__item--invalid {
 	outline: 1px dotted var(--wp--preset--color--vivid-red, red);
 	&::after {
-		content: "invalid span width";
+		content: "spans too many columns";
 		display: flex;
 		align-items: center;
 		justify-content: center;
