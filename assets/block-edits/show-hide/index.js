@@ -93,6 +93,7 @@ const withModifyEdit = createHigherOrderComponent(
 					<InspectorControls group="styles">
 						<PanelBody
 							title={__('Responsive Visibility', 'aquamin')}
+							initialOpen={false}
 						>
 							<ButtonGroup>
 								{classNames.map((opt, i) => (
