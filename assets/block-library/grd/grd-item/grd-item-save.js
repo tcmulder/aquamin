@@ -11,7 +11,7 @@
  * Import dependencies
  */
 import classnames from 'classnames';
-import { getSpan, getVAlign } from './grd-item-edit';
+import { getStyle, getStyleFromObject } from '../grd-edit';
 
 const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 
@@ -23,7 +23,10 @@ const GridItemSave = ({ attributes, className }) => {
 
 	const blockProps = useBlockProps.save({
 		className: classnames('grd__item', className),
-		style: { ...getSpan(span), ...getVAlign(vAlign) },
+		style: {
+			...getStyleFromObject('--grd-span', span, (val) => val > 1),
+			...getStyle('--grd-v-align', vAlign, (val) => val !== 'stretch'),
+		},
 	});
 	const innerBlocksProps = useInnerBlocksProps.save(
 		{ ...blockProps },

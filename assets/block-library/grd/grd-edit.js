@@ -16,7 +16,7 @@ const { useBlockProps, useInnerBlocksProps, InspectorControls } =
 const { ToggleControl, TextControl, PanelBody } = wp.components;
 
 /**
- * Get grid gap value
+ * Get style for grid gaps (using WordPress's built in gap system)
  *
  * @param    {object} attributes  All block attributes for us to dig through
  * @param    {string} side        Grid gap side 'left' or 'top' to retrieve
@@ -36,15 +36,40 @@ export const getGap = (attributes, side) => {
 };
 
 /**
- * Get aspect ratio
+ * Get custom property style attribute from a string
  *
- * @param    {object}   minAspect  Aspect ratio x and y
- * @returns  {object}              Aspect ratio CSS value
+ * @param   {string}    name      Custom property name
+ * @param   {mixed}     value 	  Value of the property (string or number)
+ * @param   {function}  validate  Validation function (defaults to checking truthy)
+ * @returns {object}              Style object (or {} if didn't pass validation)
  */
-export const getAspect = (minAspect) => {
-	return minAspect.x && minAspect.y
-		? { '--grd-aspect': `${minAspect.y}/${minAspect.x}` }
-		: {};
+export const getStyle = (name, value, validate = (val) => !!val) => {
+	const style = {};
+	if (value && (!validate || validate(value))) {
+		style[name] = `${value}`;
+	}
+	return style;
+};
+
+/**
+ * Get custom property style attributes from an object
+ *
+ * @param   {string}    nameBase  Custom property name base (keys in object get appended as suffix)
+ * @param   {object}    obj       Object with key (used as name suffix) and value (property value)
+ * @param   {function}  validate  Validation function (defaults to checking truthy)
+ * @returns {object}              Style object (or {} if didn't pass validation)
+ */
+export const getStyleFromObject = (
+	nameBase,
+	obj,
+	validate = (val) => !!val
+) => {
+	return Object.assign(
+		{},
+		...Object.keys(obj).map((key) =>
+			getStyle(`${nameBase}-${key}`, `${obj[key]}`, validate)
+		)
+	);
 };
 
 /**
@@ -118,14 +143,13 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 			className
 		),
 		style: {
-			'--grd-count-lg': `${count.lg}`,
-			'--grd-count-md': `${count.md}`,
-			'--grd-count-sm': `${count.sm}`,
+			...getStyleFromObject('--grd-count', count),
 			...getGap(attributes, 'top'),
 			...getGap(attributes, 'left'),
-			...getAspect(minAspect),
+			...getStyle('--grd-aspect', minAspect.x / minAspect.y),
 		},
 	});
+
 	const innerBlocksProps = useInnerBlocksProps(
 		{ ...blockProps },
 		{
@@ -157,8 +181,8 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 						attributes={attributes}
 						setAttributes={setAttributes}
 						opts={[
-							[__('Width', 'aquamin'), 'y'],
-							[__('Height', 'aquamin'), 'x'],
+							[__('Width', 'aquamin'), 'x'],
+							[__('Height', 'aquamin'), 'y'],
 						]}
 						step={0.1}
 					/>

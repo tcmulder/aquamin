@@ -11,7 +11,7 @@
  * Import save dependencies
  */
 import classnames from 'classnames';
-import { getGap, getAspect } from './grd-edit';
+import { getGap, getStyle, getStyleFromObject } from './grd-edit';
 
 const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 
@@ -31,12 +31,10 @@ const GridBlockSave = ({ attributes, className }) => {
 			className
 		),
 		style: {
-			'--grd-count-lg': `${count.lg}`,
-			'--grd-count-md': `${count.md}`,
-			'--grd-count-sm': `${count.sm}`,
+			...getStyleFromObject('--grd-count', count),
 			...getGap(attributes, 'top'),
 			...getGap(attributes, 'left'),
-			...getAspect(minAspect),
+			...getStyle('--grd-aspect', minAspect.x / minAspect.y),
 		},
 	});
 	const innerBlocksProps = useInnerBlocksProps.save(

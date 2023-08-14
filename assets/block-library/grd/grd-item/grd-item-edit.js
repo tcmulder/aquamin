@@ -16,43 +16,13 @@ import {
 	justifyStretch,
 } from '@wordpress/icons';
 import classnames from 'classnames';
-import { TextControlList } from '../grd-edit';
+import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
 
 const { __ } = wp.i18n;
 const { useBlockProps, useInnerBlocksProps, InspectorControls } =
 	wp.blockEditor;
-const { TextControl, PanelBody, Icon, Button, ButtonGroup } = wp.components;
+const { PanelBody, Icon, Button, ButtonGroup } = wp.components;
 const { select } = wp.data;
-
-/**
- * Get span styles
- *
- * @param    {object}  span  Object containing responsive span amounts
- * @returns  {object}        Style object
- */
-export const getSpan = (span) => {
-	const style = {};
-	Object.keys(span).forEach((size) => {
-		if (span[size] > 1) {
-			style[`--grd-span-${size}`] = `${span[size]}`;
-		}
-	});
-	return style;
-};
-
-/**
- * Get alignment styles
- *
- * @param    {string}  align  Alignment value
- * @returns  {object}         Style object
- */
-export const getVAlign = (align) => {
-	const style = {};
-	if (align !== 'stretch') {
-		style[`--grd-v-align`] = align;
-	}
-	return style;
-};
 
 /**
  * Generate block editor component
@@ -70,8 +40,12 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 			!!Object.keys(span).find((key) => span[key] > count[key]) &&
 				'grd__item--invalid'
 		),
-		style: { ...getSpan(span), ...getVAlign(vAlign) },
+		style: {
+			...getStyleFromObject('--grd-span', span, (val) => val > 1),
+			...getStyle('--grd-v-align', vAlign, (val) => val !== 'stretch'),
+		},
 	});
+
 	const innerBlocksProps = useInnerBlocksProps(
 		{ ...blockProps },
 		{ template: [['core/paragraph']] }
