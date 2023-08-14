@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.3" created="2023-08-14 22:38" -->
+<!-- generator="WordPress/6.3" created="2023-08-14 22:40" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>https://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Mon, 14 Aug 2023 22:38:13 +0000</pubDate>
+<pubDate>Mon, 14 Aug 2023 22:40:46 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>https://aquamin.aquamarine.test</wp:base_site_url>
@@ -130,8 +130,8 @@
 <!-- /wp:aquamin/grd-item --></div>
 <!-- /wp:aquamin/grd -->
 
-<!-- wp:aquamin/grd {"count":{"lg":12,"md":6,"sm":6},"minAspect":{"y":1,"x":1},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"},"blockGap":{"top":"var:preset|spacing|10","left":"var:preset|spacing|10"}}},"backgroundColor":"0-0"} -->
-<div class="wp-block-aquamin-grd grd grd--has-aspect has-0-0-background-color has-background" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);--grd-count-lg:12;--grd-count-md:6;--grd-count-sm:6;--grd-gap-top:var(--wp--preset--spacing--10);--grd-gap-left:var(--wp--preset--spacing--10);--grd-aspect:1"><!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<!-- wp:aquamin/grd {"count":{"lg":12,"md":7,"sm":8},"minAspect":{"y":1,"x":1},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"},"blockGap":{"top":"var:preset|spacing|10","left":"var:preset|spacing|10"}}},"backgroundColor":"0-0"} -->
+<div class="wp-block-aquamin-grd grd grd--has-aspect has-0-0-background-color has-background" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);--grd-count-lg:12;--grd-count-md:7;--grd-count-sm:8;--grd-gap-top:var(--wp--preset--spacing--10);--grd-gap-left:var(--wp--preset--spacing--10);--grd-aspect:1"><!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
 <div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
 <p class="has-text-align-center has-0-9-color has-text-color">.</p>
 <!-- /wp:paragraph --></div></div>
@@ -469,8 +469,8 @@
   <wp:post_id>240</wp:post_id>
   <wp:post_date>2023-08-07 14:41:31</wp:post_date>
   <wp:post_date_gmt>2023-08-07 14:41:31</wp:post_date_gmt>
-  <wp:post_modified>2023-08-14 22:37:48</wp:post_modified>
-  <wp:post_modified_gmt>2023-08-14 22:37:48</wp:post_modified_gmt>
+  <wp:post_modified>2023-08-14 22:40:29</wp:post_modified>
+  <wp:post_modified_gmt>2023-08-14 22:40:29</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>grid</wp:post_name>
