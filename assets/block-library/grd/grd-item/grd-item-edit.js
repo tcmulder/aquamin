@@ -16,7 +16,6 @@ const { useBlockProps, useInnerBlocksProps, InspectorControls } =
 	wp.blockEditor;
 const { TextControl, PanelBody } = wp.components;
 const { select } = wp.data;
-const { useState } = wp.element;
 
 /**
  * Get span styles
