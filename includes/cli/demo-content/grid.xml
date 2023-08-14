@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.3" created="2023-08-12 19:30" -->
+<!-- generator="WordPress/6.3" created="2023-08-14 15:40" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>https://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Sat, 12 Aug 2023 19:30:32 +0000</pubDate>
+<pubDate>Mon, 14 Aug 2023 15:40:56 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>https://aquamin.aquamarine.test</wp:base_site_url>
@@ -104,8 +104,8 @@
 <h2 class="wp-block-heading">Responsive Aspect 1:1</h2>
 <!-- /wp:heading -->
 
-<!-- wp:aquamin/grd {"count":{"lg":3,"md":2,"sm":1},"minAspect":{"y":1,"x":1},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"},"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"},"blockGap":{"top":"var:preset|spacing|10","left":"var:preset|spacing|10"}}},"backgroundColor":"0-0"} -->
-<div class="wp-block-aquamin-grd grd grd--has-aspect has-0-0-background-color has-background" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20);padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);--grd-count-lg:3;--grd-count-md:2;--grd-count-sm:1;--grd-gap-top:var(--wp--preset--spacing--10);--grd-gap-left:var(--wp--preset--spacing--10);--grd-aspect:1/1"><!-- wp:aquamin/grd-item {"span":{"lg":"2","md":"2","sm":1},"backgroundColor":"0-9"} -->
+<!-- wp:aquamin/grd {"count":{"lg":3,"md":2,"sm":1},"minAspect":{"y":null,"x":null},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"},"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"},"blockGap":{"top":"var:preset|spacing|10","left":"var:preset|spacing|10"}}},"backgroundColor":"0-0"} -->
+<div class="wp-block-aquamin-grd grd has-0-0-background-color has-background" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20);padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);--grd-count-lg:3;--grd-count-md:2;--grd-count-sm:1;--grd-gap-top:var(--wp--preset--spacing--10);--grd-gap-left:var(--wp--preset--spacing--10)"><!-- wp:aquamin/grd-item {"span":{"lg":"2","md":"2","sm":1},"backgroundColor":"0-9"} -->
 <div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background" style="--grd-span-lg:2;--grd-span-md:2"><div class="grd__frame"><!-- wp:group {"layout":{"type":"constrained"},"aquaminClassNameHide":[{"value":"hide-bp-md"},{"value":"hide-bp-sm"}]} -->
 <div class="wp-block-group hide-bp-md hide-bp-sm"><!-- wp:paragraph -->
 <p class="">(a) desktop span 2 (of 3)</p>
@@ -263,8 +263,8 @@
   <wp:post_id>240</wp:post_id>
   <wp:post_date>2023-08-07 14:41:31</wp:post_date>
   <wp:post_date_gmt>2023-08-07 14:41:31</wp:post_date_gmt>
-  <wp:post_modified>2023-08-12 19:30:15</wp:post_modified>
-  <wp:post_modified_gmt>2023-08-12 19:30:15</wp:post_modified_gmt>
+  <wp:post_modified>2023-08-14 15:40:08</wp:post_modified>
+  <wp:post_modified_gmt>2023-08-14 15:40:08</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>grid</wp:post_name>

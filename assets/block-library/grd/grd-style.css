@@ -5,13 +5,8 @@
  * theme and editor.
  */
 .grd {
-	--grd-w: calc(
-		(100% / var(--grd-count)) -
-			(
-				(var(--grd-gap-left, 0px) * (var(--grd-count) - 1)) /
-					var(--grd-count)
-			)
-	);
+	/* prettier-ignore */
+	--grd-w: calc((100%/var(--grd-count))-((var(--grd-gap-left, 0px)*(var(--grd-count)- 1))/var(--grd-count)));
 	display: grid;
 	grid-template-columns: repeat(var(--grd-count), var(--grd-w));
 	grid-gap: var(--grd-gap-left, 0px);
@@ -27,11 +22,18 @@
 }
 .grd--has-aspect {
 	grid-auto-rows: 1fr;
+	/* DEBUG */
+	/* @supports selector(:has(*)) {
+		
+	} */
 	& .grd__item {
 		display: grid;
 		&::before {
+			/* prettier-ignore */
+			--grd-w-aspect: calc(100%/var(--grd-span, 1)-(var(--grd-gap-left, 0px)/var(--grd-span,1)*(var(--grd-span,1)- 1)));
 			content: "";
-			aspect-ratio: calc(var(--grd-aspect) * var(--grd-span));
+			width: var(--grd-w-aspect);
+			aspect-ratio: var(--grd-aspect);
 		}
 	}
 	& .grd__item::before,

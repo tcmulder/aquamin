@@ -127,12 +127,6 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 							{__('Row Aspect Ratio (optional)', 'aquamin')}
 						</strong>
 					</p>
-					<p>
-						{__(
-							'Desired approximate minimum aspect ratio applied uniformly to rows',
-							'aquamin'
-						)}
-					</p>
 					<Flex>
 						{[
 							[__('Width', 'aquamin'), 'y'],
