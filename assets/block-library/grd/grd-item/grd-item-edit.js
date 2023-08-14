@@ -8,13 +8,20 @@
 /**
  * Import dependencies
  */
+
+import {
+	justifyCenter,
+	justifyLeft,
+	justifyRight,
+	justifyStretch,
+} from '@wordpress/icons';
 import classnames from 'classnames';
 import { Flex } from '../grd-edit';
 
 const { __ } = wp.i18n;
 const { useBlockProps, useInnerBlocksProps, InspectorControls } =
 	wp.blockEditor;
-const { TextControl, PanelBody } = wp.components;
+const { TextControl, PanelBody, Icon, Button, ButtonGroup } = wp.components;
 const { select } = wp.data;
 
 /**
@@ -34,6 +41,20 @@ export const getSpan = (span) => {
 };
 
 /**
+ * Get alignment styles
+ *
+ * @param    {string}  align  Alignment value
+ * @returns  {object}         Style object
+ */
+export const getVAlign = (align) => {
+	const style = {};
+	if (align !== 'stretch') {
+		style[`--grd-v-align`] = align;
+	}
+	return style;
+};
+
+/**
  * Show "spans x of y" helper and highlight if invalid
  */
 const SpanHelp = ({ span, count }) => {
@@ -47,7 +68,7 @@ const SpanHelp = ({ span, count }) => {
  * Generate block editor component
  */
 const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
-	const { span } = attributes;
+	const { span, vAlign } = attributes;
 	const { count } = select('core/block-editor').getBlock(
 		select('core/block-editor').getBlockParents(clientId).at(-1)
 	).attributes;
@@ -59,7 +80,7 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 			!!Object.keys(span).find((key) => span[key] > count[key]) &&
 				'grd__item--invalid'
 		),
-		style: { ...getSpan(span) },
+		style: { ...getSpan(span), ...getVAlign(vAlign) },
 	});
 	const innerBlocksProps = useInnerBlocksProps(
 		{ ...blockProps },
@@ -103,6 +124,52 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 							);
 						})}
 					</Flex>
+				</PanelBody>
+				<PanelBody title={__('Vertical Alignment', 'aquamin')}>
+					<ButtonGroup>
+						{[
+							{
+								label: __('Stretch'),
+								icon: justifyStretch,
+								value: 'stretch',
+							},
+							{
+								label: __('Align Top'),
+								icon: justifyLeft,
+								value: 'flex-start',
+							},
+							{
+								label: __('Align Center'),
+								icon: justifyCenter,
+								value: 'center',
+							},
+							{
+								label: __('Align Bottom'),
+								icon: justifyRight,
+								value: 'flex-end',
+							},
+						].map((opt, i) => {
+							return (
+								<Button
+									key={i}
+									label={opt.label}
+									value={opt.value}
+									isPressed={opt.value === vAlign}
+									onClick={() =>
+										setAttributes({ vAlign: opt.value })
+									}
+									icon={
+										<Icon
+											icon={opt.icon}
+											style={{
+												transform: 'rotate(90deg)',
+											}}
+										/>
+									}
+								/>
+							);
+						})}
+					</ButtonGroup>
 				</PanelBody>
 			</InspectorControls>
 			<div {...innerBlocksProps}>

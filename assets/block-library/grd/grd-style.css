@@ -57,6 +57,7 @@
 	}
 }
 .grd__item {
+	align-self: var(--grd-v-align, stretch);
 	position: relative;
 	display: grid;
 	min-width: 0;
