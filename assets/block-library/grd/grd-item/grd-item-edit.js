@@ -90,8 +90,8 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 	return (
 		<>
 			<InspectorControls group="styles">
-				<PanelBody title={__('Span Columns', 'aquamin')}>
-					<Flex>
+				<PanelBody title={__('Grid Cell Column & Row', 'aquamin')}>
+					<Flex title={__('Span Columns', 'aquamin')}>
 						{[
 							[__('Desktop', 'aquamin'), 'lg'],
 							[__('Tablet', 'aquamin'), 'md'],

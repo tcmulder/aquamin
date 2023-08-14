@@ -50,8 +50,13 @@ export const getAspect = (minAspect) => {
 /**
  * Wrap inspector controls side by side
  */
-export const Flex = ({ children }) => {
-	return <div style={{ display: 'flex', gap: '5px' }}>{children}</div>;
+export const Flex = ({ title, children }) => {
+	return (
+		<>
+			{title && <h2>{title}</h2>}
+			<div style={{ display: 'flex', gap: '5px' }}>{children}</div>
+		</>
+	);
 };
 
 /**
@@ -90,7 +95,12 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 		<>
 			<InspectorControls group="styles">
 				<PanelBody title={__('Grid Columns & Rows', 'aquamin')}>
-					<Flex>
+					<ToggleControl
+						label={__('Fit media to grid cells', 'aquamin')}
+						checked={hasMedia}
+						onChange={() => setAttributes({ hasMedia: !hasMedia })}
+					/>
+					<Flex title={__('Number of Columns', 'aquamin')}>
 						{[
 							[__('Desktop', 'aquamin'), 'lg'],
 							[__('Tablet', 'aquamin'), 'md'],
@@ -117,17 +127,7 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 							);
 						})}
 					</Flex>
-					<ToggleControl
-						label={__('Fit media to grid cells', 'aquamin')}
-						checked={hasMedia}
-						onChange={() => setAttributes({ hasMedia: !hasMedia })}
-					/>
-					<p>
-						<strong>
-							{__('Row Aspect Ratio (optional)', 'aquamin')}
-						</strong>
-					</p>
-					<Flex>
+					<Flex title={__('Row Aspect Ratio (optional)', 'aquamin')}>
 						{[
 							[__('Width', 'aquamin'), 'y'],
 							[__('Height', 'aquamin'), 'x'],
