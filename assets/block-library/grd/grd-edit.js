@@ -48,18 +48,6 @@ export const getAspect = (minAspect) => {
 };
 
 /**
- * Wrap inspector controls side by side
- */
-export const Flex = ({ title, children }) => {
-	return (
-		<>
-			{title && <h2>{title}</h2>}
-			<div style={{ display: 'flex', gap: '5px' }}>{children}</div>
-		</>
-	);
-};
-
-/**
  * Handle responsive number values
  */
 export const TextControlList = ({
