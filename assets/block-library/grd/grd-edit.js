@@ -67,7 +67,7 @@ export const getStyleFromObject = (
 	return Object.assign(
 		{},
 		...Object.keys(obj).map((key) =>
-			getStyle(`${nameBase}-${key}`, `${obj[key]}`, validate)
+			getStyle(`${nameBase}-${key}`, obj[key], validate)
 		)
 	);
 };
@@ -86,6 +86,7 @@ export const TextControlList = ({
 		[__('Mobile', 'aquamin'), 'sm'],
 	],
 	step = 1,
+	min = 0,
 	max,
 }) => {
 	return (
@@ -103,11 +104,12 @@ export const TextControlList = ({
 				}}
 			>
 				{opts.map((size, i) => {
+					const val = attributes[attributeName][size[1]];
 					return (
 						<TextControl
 							key={i}
 							label={size[0]}
-							value={attributes[attributeName][size[1]]}
+							value={val !== 0 ? val : null}
 							onChange={(value) => {
 								setAttributes({
 									[attributeName]: {
@@ -116,7 +118,7 @@ export const TextControlList = ({
 									},
 								});
 							}}
-							min={1}
+							min={min}
 							type="number"
 							max={max}
 							step={step}
@@ -174,6 +176,7 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 						attributes={attributes}
 						setAttributes={setAttributes}
 						max={12}
+						min={1}
 					/>
 					<TextControlList
 						title={__('Row Aspect Ratio (optional)', 'aquamin')}

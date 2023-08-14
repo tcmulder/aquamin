@@ -28,7 +28,7 @@ const { select } = wp.data;
  * Generate block editor component
  */
 const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
-	const { span, vAlign } = attributes;
+	const { span, col, row, spanRow, vAlign } = attributes;
 	const { count } = select('core/block-editor').getBlock(
 		select('core/block-editor').getBlockParents(clientId).at(-1)
 	).attributes;
@@ -43,6 +43,9 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 		style: {
 			...getStyleFromObject('--grd-span', span, (val) => val > 1),
 			...getStyle('--grd-v-align', vAlign, (val) => val !== 'stretch'),
+			...getStyleFromObject('--grd-col', col),
+			...getStyleFromObject('--grd-row', row),
+			...getStyleFromObject('--grd-span-row', spanRow, (val) => val > 1),
 		},
 	});
 
@@ -54,7 +57,7 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 	return (
 		<>
 			<InspectorControls group="styles">
-				<PanelBody title={__('Grid Cell Column & Row', 'aquamin')}>
+				<PanelBody title={__('Column Spanning', 'aquamin')}>
 					<TextControlList
 						title={__('Span Columns', 'aquamin')}
 						attributeName="span"
@@ -107,6 +110,30 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 							);
 						})}
 					</ButtonGroup>
+				</PanelBody>
+				<PanelBody
+					title={__('Advanced Columns & Rows', 'aquamin')}
+					initialOpen={false}
+				>
+					<TextControlList
+						title={__('Force Column', 'aquamin')}
+						attributeName="col"
+						attributes={attributes}
+						setAttributes={setAttributes}
+					/>
+					<TextControlList
+						title={__('Force Row', 'aquamin')}
+						attributeName="row"
+						attributes={attributes}
+						setAttributes={setAttributes}
+					/>
+					<TextControlList
+						title={__('Span Rows', 'aquamin')}
+						attributeName="spanRow"
+						attributes={attributes}
+						setAttributes={setAttributes}
+						min={1}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...innerBlocksProps}>

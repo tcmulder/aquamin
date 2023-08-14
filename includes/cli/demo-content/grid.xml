@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.3" created="2023-08-14 17:00" -->
+<!-- generator="WordPress/6.3" created="2023-08-14 22:38" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>https://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Mon, 14 Aug 2023 17:00:03 +0000</pubDate>
+<pubDate>Mon, 14 Aug 2023 22:38:13 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>https://aquamin.aquamarine.test</wp:base_site_url>
@@ -96,6 +96,182 @@
 
 <!-- wp:paragraph -->
 <p class="">Velit dolore quis elit reprehenderit officia laborum aliqua mollit.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item --></div>
+<!-- /wp:aquamin/grd -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Custom Layout</h2>
+<!-- /wp:heading -->
+
+<!-- wp:aquamin/grd {"count":{"lg":3,"md":3,"sm":3},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"},"blockGap":{"top":"var:preset|spacing|10","left":"var:preset|spacing|10"}}},"backgroundColor":"0-0"} -->
+<div class="wp-block-aquamin-grd grd has-0-0-background-color has-background" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);--grd-count-lg:3;--grd-count-md:3;--grd-count-sm:3;--grd-gap-top:var(--wp--preset--spacing--10);--grd-gap-left:var(--wp--preset--spacing--10)"><!-- wp:aquamin/grd-item {"col":{"lg":3,"md":3,"sm":3},"row":{"lg":1,"md":1,"sm":1},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"}}},"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);--grd-col-lg:3;--grd-col-md:3;--grd-col-sm:3;--grd-row-lg:1;--grd-row-md:1;--grd-row-sm:1"><div class="grd__frame"><!-- wp:paragraph -->
+<p class="">row 1 col 3 (was 1/1)</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"}}},"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><div class="grd__frame"><!-- wp:paragraph -->
+<p class="">spacer (was 1/2)</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"col":{"lg":1,"md":1,"sm":1},"row":{"lg":1,"md":1,"sm":1},"spanRow":{"lg":2,"md":2,"sm":2},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"}}},"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);--grd-col-lg:1;--grd-col-md:1;--grd-col-sm:1;--grd-row-lg:1;--grd-row-md:1;--grd-row-sm:1;--grd-span-row-lg:2;--grd-span-row-md:2;--grd-span-row-sm:2"><div class="grd__frame"><!-- wp:paragraph -->
+<p class="">row 1 col 1 (was 1/3)</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"span":{"lg":2,"md":2,"sm":2},"col":{"lg":2,"md":2,"sm":2},"row":{"lg":2,"md":2,"sm":2},"spanRow":{"lg":1,"md":1,"sm":1},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"}}},"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);--grd-span-lg:2;--grd-span-md:2;--grd-span-sm:2;--grd-col-lg:2;--grd-col-md:2;--grd-col-sm:2;--grd-row-lg:2;--grd-row-md:2;--grd-row-sm:2;--grd-span-row-lg:1;--grd-span-row-md:1;--grd-span-row-sm:1"><div class="grd__frame"><!-- wp:paragraph -->
+<p class="">col 2 row 2 span 2 (was 2/1)</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item --></div>
+<!-- /wp:aquamin/grd -->
+
+<!-- wp:aquamin/grd {"count":{"lg":12,"md":6,"sm":6},"minAspect":{"y":1,"x":1},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"},"blockGap":{"top":"var:preset|spacing|10","left":"var:preset|spacing|10"}}},"backgroundColor":"0-0"} -->
+<div class="wp-block-aquamin-grd grd grd--has-aspect has-0-0-background-color has-background" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);--grd-count-lg:12;--grd-count-md:6;--grd-count-sm:6;--grd-gap-top:var(--wp--preset--spacing--10);--grd-gap-left:var(--wp--preset--spacing--10);--grd-aspect:1"><!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"span":{"lg":1,"md":2,"sm":4},"col":{"lg":1,"md":1,"sm":2},"row":{"lg":1,"md":1,"sm":2},"spanRow":{"lg":1,"md":2,"sm":2},"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background" style="--grd-span-md:2;--grd-span-sm:4;--grd-col-lg:1;--grd-col-md:1;--grd-col-sm:2;--grd-row-lg:1;--grd-row-md:1;--grd-row-sm:2;--grd-span-row-lg:1;--grd-span-row-md:2;--grd-span-row-sm:2"><div class="grd__frame"><!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center"><br>custom</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:aquamin/grd-item -->
+
+<!-- wp:aquamin/grd-item {"backgroundColor":"0-9"} -->
+<div class="wp-block-aquamin-grd-item grd__item has-0-9-background-color has-background"><div class="grd__frame"><!-- wp:paragraph {"align":"center","textColor":"0-9"} -->
+<p class="has-text-align-center has-0-9-color has-text-color">.</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:aquamin/grd-item --></div>
 <!-- /wp:aquamin/grd -->
@@ -197,9 +373,9 @@
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"backgroundColor":"0-0","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-0-0-background-color has-background" style="padding-right:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:aquamin/grd {"hasMedia":true,"minAspect":{"y":16,"x":9},"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|20","left":"var:preset|spacing|20"},"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<div class="wp-block-aquamin-grd grd grd--has-aspect grd--stretch-media" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);--grd-count-lg:4;--grd-count-md:2;--grd-count-sm:1;--grd-gap-top:var(--wp--preset--spacing--20);--grd-gap-left:var(--wp--preset--spacing--20);--grd-aspect:16/9"><!-- wp:aquamin/grd-item {"span":{"lg":3,"md":2,"sm":1}} -->
-<div class="wp-block-aquamin-grd-item grd__item" style="--grd-span-lg:3;--grd-span-md:2"><div class="grd__frame"><!-- wp:image {"sizeSlug":"large"} -->
+<div class="wp-block-group alignfull has-0-0-background-color has-background" style="padding-right:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:aquamin/grd {"hasMedia":true,"minAspect":{"y":9,"x":16},"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|20","left":"var:preset|spacing|20"},"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
+<div class="wp-block-aquamin-grd grd grd--has-aspect grd--stretch-media" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);--grd-count-lg:4;--grd-count-md:2;--grd-count-sm:1;--grd-gap-top:var(--wp--preset--spacing--20);--grd-gap-left:var(--wp--preset--spacing--20);--grd-aspect:1.7777777777777777"><!-- wp:aquamin/grd-item {"span":{"lg":2,"md":2,"sm":1}} -->
+<div class="wp-block-aquamin-grd-item grd__item" style="--grd-span-lg:2;--grd-span-md:2"><div class="grd__frame"><!-- wp:image {"sizeSlug":"large"} -->
 <figure class="wp-block-image size-large"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' %3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" alt=""/></figure>
 <!-- /wp:image --></div></div>
 <!-- /wp:aquamin/grd-item -->
@@ -293,8 +469,8 @@
   <wp:post_id>240</wp:post_id>
   <wp:post_date>2023-08-07 14:41:31</wp:post_date>
   <wp:post_date_gmt>2023-08-07 14:41:31</wp:post_date_gmt>
-  <wp:post_modified>2023-08-14 16:59:17</wp:post_modified>
-  <wp:post_modified_gmt>2023-08-14 16:59:17</wp:post_modified_gmt>
+  <wp:post_modified>2023-08-14 22:37:48</wp:post_modified>
+  <wp:post_modified_gmt>2023-08-14 22:37:48</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>grid</wp:post_name>
