@@ -65,7 +65,10 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 						setAttributes={setAttributes}
 					/>
 				</PanelBody>
-				<PanelBody title={__('Vertical Alignment', 'aquamin')}>
+				<PanelBody
+					title={__('Vertical Alignment', 'aquamin')}
+					initialOpen={false}
+				>
 					<ButtonGroup>
 						{[
 							{

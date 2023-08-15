@@ -84,3 +84,12 @@
 		height: 100% !important;
 	}
 }
+
+/* integration with other blocks */
+.grd__frame:has(.wp-block-group-is-layout-flex:only-child) {
+	display: flex;
+	& .wp-block-group-is-layout-flex {
+		height: 100%;
+		width: 100%;
+	}
+}
