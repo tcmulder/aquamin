@@ -25,6 +25,7 @@ const GridItemSave = ({ attributes, className }) => {
 		className: classnames(
 			'grd__item',
 			variation !== 'cell' && `grd__item--${variation}`,
+			'ani-child',
 			className
 		),
 		style: {

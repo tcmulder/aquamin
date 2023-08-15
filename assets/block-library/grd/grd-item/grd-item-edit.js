@@ -41,6 +41,7 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 		className: classnames(
 			'grd__item',
 			variation !== 'cell' && `grd__item--${variation}`,
+			'ani-child',
 			className,
 			// add invalid class if we span more columns than exist
 			!!Object.keys(span).find((key) => span[key] > count[key]) &&

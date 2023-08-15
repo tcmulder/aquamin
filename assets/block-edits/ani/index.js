@@ -34,6 +34,7 @@ const affectedBlocks = [
 	'core/paragraph',
 	'core/separator',
 	'core/video',
+	'aquamin/grd',
 ];
 const isAffected = (name, blocks) => {
 	affected = blocks || affectedBlocks;

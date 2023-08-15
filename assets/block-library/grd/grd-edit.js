@@ -142,6 +142,7 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 			'grd',
 			hasAspect && 'grd--has-aspect',
 			hasEqualRows && 'grd--has-equal-rows',
+			'ani-parent',
 			className
 		),
 		style: {
