@@ -47,7 +47,7 @@ The following components come with the aquamin theme. You'll add your own alongs
 
 ```
 📂 assets
- ┗ 📂 component-library     // all your component files should be within this folder
+ ┗ 📂 component-library     // all preinstalled components are within this folder
    ┣ 📂 content             // component: basic content markup for posts and pages
    ┣ 📂 excerpt             // component: blog excerpt markup
    ┣ 📂 footer              // component: the site's footer

@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.3" created="2023-08-15 22:41" -->
+<!-- generator="WordPress/6.3" created="2023-08-15 23:22" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>https://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Tue, 15 Aug 2023 22:41:15 +0000</pubDate>
+<pubDate>Tue, 15 Aug 2023 23:22:54 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>https://aquamin.aquamarine.test</wp:base_site_url>
@@ -128,6 +128,30 @@
 <div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Button 5</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:cover {"dimRatio":10,"overlayColor":"0-000","minHeight":100,"minHeightUnit":"vh","isDark":false,"align":"full"} -->
+<div class="wp-block-cover alignfull is-light" style="min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-0-000-background-color has-background-dim-10 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","textColor":"0-000","className":"has-0-0-color"} -->
+<h2 class="wp-block-heading has-text-align-center has-0-0-color has-0-000-color has-text-color">Nested:</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","textColor":"0-000","className":"has-0-0-color has-text-color","aquaminClassNameAni":[]} -->
+<p class="has-text-align-center has-0-0-color has-text-color has-0-000-color">Parent animations shouldn't get inherited by child animations.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:columns {"style":{"spacing":{"margin":{"top":"15px","bottom":"15px"}}},"textColor":"0-000","className":"has-0-0-color","aquaminClassNameAni":[{"value":"ani\u002d\u002dopacity","title":"Opacity"},{"value":"ani\u002d\u002dup","title":"Up"}]} -->
+<div class="wp-block-columns has-0-0-color has-0-000-color has-text-color ani--opacity ani--up ani" style="margin-top:15px;margin-bottom:15px"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph {"align":"center","aquaminClassNameAni":[{"value":"ani\u002d\u002ddown","title":"Down"}]} -->
+<p class="has-text-align-center ani--down ani">parent up + child down</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph {"align":"center","aquaminClassNameAni":[{"value":"ani\u002d\u002dup","title":"Up"}]} -->
+<p class="has-text-align-center ani--up ani">parent up + child up</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
 <!-- /wp:cover -->
 
 <!-- wp:cover {"dimRatio":10,"overlayColor":"0-000","minHeight":100,"minHeightUnit":"vh","isDark":false,"align":"full"} -->
@@ -286,6 +310,43 @@
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
+<!-- wp:cover {"dimRatio":10,"overlayColor":"0-000","minHeight":100,"minHeightUnit":"vh","isDark":false,"align":"full"} -->
+<div class="wp-block-cover alignfull is-light" style="min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-0-000-background-color has-background-dim-10 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","textColor":"0-000","className":"has-0-0-color"} -->
+<h2 class="wp-block-heading has-text-align-center has-0-0-color has-0-000-color has-text-color">Custom:</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">You can also combine your own custom animations via CSS code. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<p class="ani--my-custom-ani ani ani--opacity" style="text-align:center">custom</p>
+<style>
+.ani--my-custom-ani:not(.is-shown) {
+	--ani-custom-transform: skewX(10deg);
+	--ani-custom-filter:
+		drop-shadow(5px 5px 0 red)
+		hue-rotate(220deg)
+		drop-shadow(-5px -5px 0 red);
+}
+</style>
+<!-- /wp:html -->
+
+<!-- wp:code {"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"}},"border":{"radius":"5px"}},"backgroundColor":"0-0","textColor":"0-9"} -->
+<pre class="wp-block-code has-0-9-color has-0-0-background-color has-text-color has-background" style="border-radius:5px;padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><code>&lt;!-- the above code in html/css -->
+&lt;p class="ani--my-custom-ani ani ani--opacity" style="text-align:center">custom&lt;/p>
+&lt;style>
+.ani--my-custom-ani:not(.is-shown) {
+	--ani-custom-transform: skewX(10deg);
+	--ani-custom-filter:
+		drop-shadow(5px 5px 0 red)
+		hue-rotate(220deg)
+		drop-shadow(-5px -5px 0 red);
+}
+&lt;/style></code></pre>
+<!-- /wp:code --></div></div>
+<!-- /wp:cover -->
+
 <!-- wp:spacer {"height":"100vh"} -->
 <div style="height:100vh" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
@@ -300,8 +361,8 @@
   <wp:post_id>26</wp:post_id>
   <wp:post_date>2022-10-29 19:58:04</wp:post_date>
   <wp:post_date_gmt>2022-10-29 19:58:04</wp:post_date_gmt>
-  <wp:post_modified>2022-10-29 19:58:04</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-29 19:58:04</wp:post_modified_gmt>
+  <wp:post_modified>2023-08-15 23:22:30</wp:post_modified>
+  <wp:post_modified_gmt>2023-08-15 23:22:30</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>animation</wp:post_name>

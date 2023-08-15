@@ -22,6 +22,17 @@
  */
 .ani--load,
 .ani {
+	--ani-blur: 0;
+	--ani-opacity: 100%;
+	--ani-custom-filter: ;
+	--ani-x: 0;
+	--ani-y: 0;
+	--ani-perspective: 0px;
+	--ani-rotate-x: 0deg;
+	--ani-rotate: 0deg;
+	--ani-z: 0;
+	--ani-scale-x: 1;
+	--ani-scale-y: 1;
 	/* prettier-ignore */
 	transition-delay: calc(
 		var(--ani-delay-increment)
@@ -37,18 +48,18 @@
 		transition: 0s 0s;
 		/* prettier-ignore */
 		filter:
-			blur(var(--ani-blur, 0))
-			opacity(var(--ani-opacity, 100%))
-			var(--ani-custom-filter, );
+			blur(var(--ani-blur))
+			opacity(var(--ani-opacity))
+			var(--ani-custom-filter);
 		/* prettier-ignore */
 		transform:
-			 translateX(var(--ani-x, 0))
-			 translateY(var(--ani-y, 0))
-			 perspective(var(--ani-perspective, 0px))
-			 scale(var(--ani-scale-x, 1), var(--ani-scale-y, 1))
-			 rotateX(var(--ani-rotate-x, 0deg))
-			 rotate(var(--ani-rotate, 0deg))
-			 translateZ(var(--ani-z, 0))
+			 translateX(var(--ani-x))
+			 translateY(var(--ani-y))
+			 perspective(var(--ani-perspective))
+			 rotateX(var(--ani-rotate-x))
+			 rotate(var(--ani-rotate))
+			 translateZ(var(--ani-z))
+			 scale(var(--ani-scale-x), var(--ani-scale-y))
 			 var(--ani-custom-transform, );
 	}
 	&.ani--opacity {

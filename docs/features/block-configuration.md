@@ -71,6 +71,15 @@ If your block requires PHP hooks, rather than adding them to the theme's `functi
 
 You'll find some helpful, reusable utilities and UI components under `aquamin/assets/util` and `aquamin/assets/block-ui`, respectively. Check out the comments at the top of these files for usage information. You can add your own scripts into these directories as well, or ignore them if they're not helpful to you (since anything you don't use won't get bundled into the production build anyway).
 
+## Built In Blocks
+
+Aquamin comes with a few blocks preinstalled.
+
+1. *The `aquamin/assets/block-library/format-type-year` Format Type*: This format type allows you to essentially add "YYYY" to a paragraph, which gets converted to the current year via PHP—very useful for footer copyrights.
+2. *The `aquamin/assets/block-library/grd` Grid Block*: This block supports advanced, responsive layout grids.
+
+Feel free to edit or delete these blocks to suit your needs.
+
 ## Deleting Blocks
 
 There's currently a bug in Parcel: if you delete a block's directory to remove the block, you'll need to exit parcel and run `npm run clean` to clear the cache, then `npm run start` to restart the server; after that, your block will be removed from WordPress's registered bocks.
