@@ -19,10 +19,14 @@ const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
  * Generate block HTML to save to the database
  */
 const GridItemSave = ({ attributes, className }) => {
-	const { span, col, row, spanRow, vAlign } = attributes;
+	const { span, col, row, spanRow, vAlign, variation } = attributes;
 
 	const blockProps = useBlockProps.save({
-		className: classnames('grd__item', className),
+		className: classnames(
+			'grd__item',
+			variation !== 'cell' && `grd__item--${variation}`,
+			className
+		),
 		style: {
 			...getStyleFromObject('--grd-span', span, (val) => val > 1),
 			...getStyle('--grd-v-align', vAlign, (val) => val !== 'stretch'),

@@ -134,14 +134,14 @@ export const TextControlList = ({
  * Generate block editor component
  */
 const GridBlockEdit = ({ attributes, setAttributes, className }) => {
-	const { count, hasMedia, minAspect } = attributes;
+	const { count, hasEqualRows, minAspect } = attributes;
 	const { x, y } = minAspect;
 	const hasAspect = x && y;
 	const blockProps = useBlockProps({
 		className: classnames(
 			'grd',
 			hasAspect && 'grd--has-aspect',
-			hasMedia && 'grd--stretch-media',
+			hasEqualRows && 'grd--has-equal-rows',
 			className
 		),
 		style: {
@@ -165,11 +165,6 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 		<>
 			<InspectorControls group="styles">
 				<PanelBody title={__('Grid Columns & Rows', 'aquamin')}>
-					<ToggleControl
-						label={__('Fit media to grid cells', 'aquamin')}
-						checked={hasMedia}
-						onChange={() => setAttributes({ hasMedia: !hasMedia })}
-					/>
 					<TextControlList
 						title={__('Number of Columns', 'aquamin')}
 						attributeName="count"
@@ -188,6 +183,13 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 							[__('Height', 'aquamin'), 'y'],
 						]}
 						step={0.1}
+					/>
+					<ToggleControl
+						label={__('Equalize row heights', 'aquamin')}
+						checked={hasEqualRows}
+						onChange={() =>
+							setAttributes({ hasEqualRows: !hasEqualRows })
+						}
 					/>
 				</PanelBody>
 			</InspectorControls>

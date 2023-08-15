@@ -23,7 +23,6 @@
 }
 .grd__item {
 	align-self: var(--grd-v-align, stretch);
-	position: relative;
 	display: grid;
 	min-width: 0;
 	min-width: 2em;
@@ -48,29 +47,30 @@
 		--grd-span-row: var(--grd-span-row-lg, 1);
 	}
 }
-.grd--has-aspect {
+.grd--has-equal-rows {
 	grid-auto-rows: 1fr;
-	/* DEBUG */
-	/* @supports selector(:has(*)) {
-		
-	} */
-	& .grd__item {
-		display: grid;
-		&::before {
-			/* prettier-ignore */
-			--grd-w-aspect: calc(100%/var(--grd-span, 1)-(var(--grd-gap-left, 0px)/var(--grd-span,1)*(var(--grd-span,1)- 1)));
-			content: "";
-			width: var(--grd-w-aspect);
-			aspect-ratio: var(--grd-aspect);
-		}
+}
+.grd--has-aspect .grd__item,
+.grd__item--video,
+.grd__item--image {
+	--grd-item-aspect: var(--grd-aspect, 16/9);
+	overflow: hidden;
+	display: grid;
+	/* faux aspect ratio */
+	&::after {
+		--grd-w-aspect: calc(
+			100% / var(--grd-span, 1)- (var(--grd-gap-left, 0px) /
+						var(--grd-span, 1) * (var(--grd-span, 1)- 1))
+		);
+		content: "";
+		width: var(--grd-w-aspect);
+		aspect-ratio: var(--grd-item-aspect);
 	}
-	& .grd__item::before,
+	&::after,
 	& .grd__frame {
 		grid-column: 1;
 		grid-row: 1;
 	}
-}
-.grd--stretch-media {
 	& figure,
 	& video,
 	& img {
@@ -83,6 +83,9 @@
 		width: 100% !important;
 		height: 100% !important;
 	}
+}
+.grd__frame {
+	position: relative;
 }
 
 /* integration with other blocks */

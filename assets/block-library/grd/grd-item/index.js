@@ -6,6 +6,11 @@
  */
 
 /**
+ * Import variations
+ */
+import './grd-item-variations';
+
+/**
  * Import dependencies
  */
 import Icon from './icon.inline.svg';

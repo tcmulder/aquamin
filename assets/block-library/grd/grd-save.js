@@ -19,7 +19,7 @@ const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
  * Generate block HTML to save to the database
  */
 const GridBlockSave = ({ attributes, className }) => {
-	const { count, hasMedia, minAspect } = attributes;
+	const { count, hasEqualRows, minAspect } = attributes;
 	const { x, y } = minAspect;
 	const hasAspect = x && y;
 
@@ -27,7 +27,7 @@ const GridBlockSave = ({ attributes, className }) => {
 		className: classnames(
 			'grd',
 			hasAspect && 'grd--has-aspect',
-			hasMedia && 'grd--stretch-media',
+			hasEqualRows && 'grd--has-equal-rows',
 			className
 		),
 		style: {

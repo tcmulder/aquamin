@@ -6,19 +6,25 @@
  */
 @import "./*style.css";
 
-.grd--stretch-media {
+.grd__item {
+	min-height: 1em;
+	& figure > * {
+		max-width: 100% !important;
+	}
+}
+.grd__item--video,
+.grd__item--image {
+	&:is(.is-selected, .has-child-selected) {
+		overflow: visible;
+		position: relative;
+		z-index: 10;
+	}
 	& figure > * {
 		width: 100% !important;
 		height: 100% !important;
 	}
 	& .components-resizable-box__handle {
 		display: none !important;
-	}
-}
-.grd__item {
-	min-height: 1em;
-	& figure > * {
-		max-width: 100% !important;
 	}
 }
 .grd__item--invalid {

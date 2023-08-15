@@ -19,8 +19,12 @@ import classnames from 'classnames';
 import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
 
 const { __ } = wp.i18n;
-const { useBlockProps, useInnerBlocksProps, InspectorControls } =
-	wp.blockEditor;
+const {
+	useBlockProps,
+	useInnerBlocksProps,
+	InspectorControls,
+	useBlockDisplayInformation,
+} = wp.blockEditor;
 const { PanelBody, Icon, Button, ButtonGroup } = wp.components;
 const { select } = wp.data;
 
@@ -28,13 +32,15 @@ const { select } = wp.data;
  * Generate block editor component
  */
 const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
-	const { span, col, row, spanRow, vAlign } = attributes;
+	const { span, col, row, spanRow, vAlign, variation } = attributes;
 	const { count } = select('core/block-editor').getBlock(
 		select('core/block-editor').getBlockParents(clientId).at(-1)
 	).attributes;
+
 	const blockProps = useBlockProps({
 		className: classnames(
 			'grd__item',
+			variation !== 'cell' && `grd__item--${variation}`,
 			className,
 			// add invalid class if we span more columns than exist
 			!!Object.keys(span).find((key) => span[key] > count[key]) &&
@@ -49,9 +55,24 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 		},
 	});
 
+	const templates = {
+		cell: {
+			template: [['core/paragraph']],
+			allowedBlocks: ['core/paragraph'],
+		},
+		image: {
+			template: [['core/image']],
+			allowedBlocks: ['core/image'],
+		},
+		video: {
+			template: [['core/video']],
+			allowedBlocks: ['core/video'],
+		},
+	};
+
 	const innerBlocksProps = useInnerBlocksProps(
 		{ ...blockProps },
-		{ template: [['core/paragraph']] }
+		{ ...templates[variation] }
 	);
 
 	return (

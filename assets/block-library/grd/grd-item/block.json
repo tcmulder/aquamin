@@ -28,6 +28,10 @@
 		"vAlign": {
 			"type": "string",
 			"default": "stretch"
+		},
+		"variation": {
+			"type": "string",
+			"default": "cell"
 		}
 	},
 	"supports": {

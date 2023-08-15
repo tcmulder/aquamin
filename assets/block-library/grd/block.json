@@ -12,7 +12,7 @@
 			"type": "object",
 			"default": { "lg": 4, "md": 2, "sm": 1 }
 		},
-		"hasMedia": {
+		"has-equal-rows": {
 			"type": "boolean",
 			"default": false
 		},
