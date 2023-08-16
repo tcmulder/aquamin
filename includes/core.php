@@ -15,6 +15,29 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 	 */
 	function aquamin_setup() {
 
+		/**
+		 * Enqueue theme front-end styles and scripts
+		 */
+		add_action( 'wp_enqueue_scripts', 'aquamin_theme_scripts' );
+		function aquamin_theme_scripts() {
+
+			wp_enqueue_style(
+				'aquamin-style',
+				get_template_directory_uri() . '/dist/bundles/theme.bundle.css',
+				array(),
+				aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.css' ),
+				'screen'
+			);
+			wp_enqueue_script(
+				'aquamin-scripts',
+				get_template_directory_uri() . '/dist/bundles/theme.bundle.js',
+				false,
+				aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.js' ),
+				true
+			);
+
+		}
+
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
@@ -95,29 +118,6 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 		}
 
 		/**
-		 * Enqueue theme front-end styles and scripts
-		 */
-		add_action( 'wp_enqueue_scripts', 'aquamin_theme_scripts' );
-		function aquamin_theme_scripts() {
-
-			wp_enqueue_style(
-				'aquamin-style',
-				get_template_directory_uri() . '/dist/bundles/theme.bundle.css',
-				array(),
-				aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.css' ),
-				'screen'
-			);
-			wp_enqueue_script(
-				'aquamin-scripts',
-				get_template_directory_uri() . '/dist/bundles/theme.bundle.js',
-				false,
-				aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.js' ),
-				true
-			);
-
-		}
-
-		/**
 		 * Disable unwanted WordPress scripts
 		 */
 		add_action( 'wp_enqueue_scripts', 'aquamin_disable_scripts' );
@@ -151,7 +151,6 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 			}, 10, 2 );
 
 		}
-
 
 	}
 }
