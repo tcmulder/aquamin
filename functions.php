@@ -18,17 +18,12 @@ define( 'AQUAMIN_ASSETS', AQUAMIN_PATH . '/assets' );
 /**
  * Set up the theme.
  */
-require AQUAMIN_INC . '/setup.php';
-
-/**
- * Add styles and scripts.
- */
-require AQUAMIN_INC . '/enqueue.php';
+require AQUAMIN_INC . '/core.php';
 
 /**
  * Add common reusable scripts
  */
-require AQUAMIN_INC . '/libs.php';
+require AQUAMIN_INC . '/util.php';
 
 /**
  * Add the custom blocks

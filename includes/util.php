@@ -1,30 +1,64 @@
 <?php
 /**
- * Library of common Aquamin functions
+ * Library of common aquamin utility functions
+ * 
+ * @package Aquamin
  */
 
  /**
  * Easy conditional print.
  *
  * Like printf/sprintf but only outputs the string (usually
- * HTML) if none of the values are (boolean) false.
+ * HTML) if none of the values are false.
+ * 
+ * Example:
+ * 
+ * $heading = single_cat_title(); // this will be false on e.g. page.php
+ * $blurb = "Some text.";
+ * // echo nothing (printf would output <h1></h1><p>Some text.</p> with empty H1)
+ * if_printf( '<h1>%s</h1><p>%s</p>', $heading, $blurb );
  */
-function if_sprintf( $sprintf, ...$fields ) {
-	// get the first value and continue if it's not false
-	$first = array_shift( $fields );
-	if ( false !== $first && '' !== $first ) {
-		// simply output it if that's all we've got (90% of the time it's just one argument)
-		if ( ! $fields ) {
+function if_sprintf( $sprintf, ...$items ) {
+	// get the first value and continue if it exists
+	$first = array_shift( $items );
+	if ( aquamin_is_truty_or_zero( $first ) ) {
+		// simply return it if that's all we've got (90% of the time it's just one argument)
+		if ( ! $items ) {
 			return sprintf( $sprintf, $first );
-		// do additional digging if there are multiple replacements to be made
-		} elseif ( ! in_array( false, $fields, true ) ) {
-			return call_user_func_array( 'sprintf', array_merge( (array) $sprintf, (array) $first, $fields ) );
+		} else {
+			// if any remaining items don't exist then return an empty string
+			foreach ( $items as $item ) {
+				if ( ! aquamin_is_truty_or_zero( $item ) ) {
+					return '';
+				}
+			}
+			// return the sprintf result if all items exist
+			return call_user_func_array( 'sprintf', array_merge( (array) $sprintf, (array) $first, $items ) );
 		}
 	}
 }
 
-function if_printf( $sprintf, ...$field ) {
-	echo if_sprintf( $sprintf, ...$field );
+// echo rather than return string
+function if_printf( $sprintf, ...$item ) {
+	echo if_sprintf( $sprintf, ...$item );
+}
+
+// check truthy but allow 0, '0', 0.0, etc.
+function aquamin_is_truty_or_zero( $mixed ) {
+	return ( !! $mixed || is_int( $mixed ) || is_float( $mixed ) || '0' === $mixed );
+}
+
+/**
+ * Break file cache by appending `?ver={timestamp}` to the URL.
+ * 
+ * Note: if you'd rather manually break cache, just
+ * replace the return line with e.g. `return '1.0.0'`.
+ * 
+ * @param  string  $path  File URI.
+ * @return string         File URI with cache break appended.
+ */
+function aquamin_cache_break(  $path )  {
+	return file_exists( $path ) ? @filemtime( $path ) : 1;
 }
 
 /**

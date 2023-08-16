@@ -1,6 +1,8 @@
 <?php
 /**
  * Gutenberg Blocks setup
+ * 
+ * @package Aquamin
  */
 
 /**
@@ -16,8 +18,9 @@ add_action( 'after_setup_theme', function() {
 	// get rid of core patterns
 	remove_theme_support( 'core-block-patterns' );
 
+	// enable editor styles
 	add_theme_support( 'editor-styles' );
-	add_editor_style( '/dist/bundles/editor.bundle.css' );
+	add_editor_style( '/dist/bundles/editor-styles.bundle.css' );
 
 } );
 
@@ -287,7 +290,7 @@ add_action('admin_footer-post.php', 'aquamin_root_editor_container_fix'); // Fir
 add_action('admin_footer-post-new.php', 'aquamin_root_editor_container_fix'); // Fired on add new post page
 function aquamin_root_editor_container_fix() {
     echo "<script>
-		window.addEventListener('load', function() {
+		function fixRoot() {
 			var rootContainer = null;
 			var editorCanvas = document.querySelector('iframe[name=\"editor-canvas\"]');
 			if (editorCanvas) {
@@ -304,6 +307,8 @@ function aquamin_root_editor_container_fix() {
 					console.error('The theme is now adding .has-global-padding properly: you may remove this patch.');
 				}
 			}
-		});
+		}
+		typeof jQuery === 'function' && jQuery(document).ready(fixRoot);
+		window.addEventListener('load', fixRoot);
 	</script>";
 };

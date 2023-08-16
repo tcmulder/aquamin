@@ -12,6 +12,8 @@
 * Reversed cli commands for robustness and clarity (e.g. `wp aquamin bock create`).
 * Rewrote and overhauled documentation using docsify (eliminates ruby dependency). Just run `npm run docs` to view them.
 * Added flexible grid block.
+* Overhauled enqueue system to support modern CSS in editor (pending resolution of an add_editor_style() parsing issue).
+* Renamed some script files in `includes` for clarity and consolidation.
 
 ## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.

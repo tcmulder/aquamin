@@ -1,0 +1,8 @@
+/**
+ * Apply root-level styling for the editor
+ */
+.is-root-container {
+	--wp--style--block-gap: var(--sp);
+	--wp--style--root--padding-right: var(--gutter);
+	--wp--style--root--padding-left: var(--gutter);
+}
