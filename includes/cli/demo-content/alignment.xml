@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.3" created="2023-08-15 23:22" -->
+<!-- generator="WordPress/6.3" created="2023-08-16 17:51" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>https://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Tue, 15 Aug 2023 23:22:55 +0000</pubDate>
+<pubDate>Wed, 16 Aug 2023 17:51:54 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>https://aquamin.aquamarine.test</wp:base_site_url>
@@ -167,205 +167,201 @@
 <!-- /wp:html -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>By default, groups are <strong>column width</strong>, so...</em></h3>
+<h3 class="wp-block-heading"><em>By default, groups are <strong>column width</strong>, so…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...root-level normal inner blocks are <strong>this width</strong>,</h4>
+<!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…root-level normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">root-level wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">and root-level full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
-<!-- wp:group {"backgroundColor":"0-000","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<!-- wp:group {"backgroundColor":"0-0","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">...normal inner blocks within groups are <strong>this width</strong>,</h4>
+<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks within groups are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>If you want to have the padding internally, too, you can manually apply it, so</em>...</h3>
+<h3 class="wp-block-heading"><em>If you want to have the padding internally, too, you can manually apply it, so</em>…</h3>
 <!-- /wp:heading -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"backgroundColor":"0-000","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-0-background-color has-background" style="padding-right:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"backgroundColor":"0-0","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-0-background-color has-background" style="padding-right:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">...normal inner blocks within groups are <strong>this width</strong>,</h4>
+<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks within groups are <strong>this width</strong>.</h4>
-<!-- /wp:heading --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
-
-<!-- wp:paragraph -->
-<p class=""></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>You can also set them to <strong>wide width</strong>, so...</em></h3>
-<!-- /wp:heading -->
-
-<!-- wp:group {"align":"wide","backgroundColor":"0-000","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
-<!-- /wp:heading -->
-
-<!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">...normal inner blocks within groups are <strong>this width</strong>,</h4>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
-<!-- /wp:heading -->
-
-<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks within groups are <strong>this width</strong>,</h4>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
-<!-- /wp:heading -->
-
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks within groups are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>And, you can set them to <strong>full width</strong>, so...</em></h3>
+<h3 class="wp-block-heading"><em>You can also set them to <strong>wide width</strong>, so…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:group {"align":"full","backgroundColor":"0-000","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<!-- wp:group {"align":"wide","backgroundColor":"0-0","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">...normal inner blocks within groups are <strong>this width</strong>,</h4>
+<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks within groups are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>You can also customize inner block widths (e.g. 500px/800px), which could mean...</em></h3>
+<h3 class="wp-block-heading"><em>And, you can set them to <strong>full width</strong>, so…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:group {"align":"full","backgroundColor":"0-000","layout":{"inherit":false,"contentSize":"500px","wideSize":"800px","type":"constrained"},"aquaminClassNameAni":[]} -->
-<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<!-- wp:group {"align":"full","backgroundColor":"0-0","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks within groups are <strong>this width</strong>,</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks within groups are <strong>this width</strong>,</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks within groups are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
+<h3 class="wp-block-heading"><em>You can also customize inner block widths (e.g. 500px/800px), which could mean…</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"full","backgroundColor":"0-0","layout":{"inherit":false,"contentSize":"500px","wideSize":"800px","type":"constrained"},"aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>Lastly, you can set nested layouts within inner blocks (e.g. 600px), which could mean...</em></h3>
+<h3 class="wp-block-heading"><em>Lastly, you can set nested layouts within inner blocks (e.g. 600px), which could mean…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:group {"align":"full","backgroundColor":"0-000","layout":{"inherit":true,"type":"constrained"},"aquaminClassNameAni":[]} -->
+<!-- wp:group {"align":"full","backgroundColor":"0-0","layout":{"inherit":true,"type":"constrained"},"aquaminClassNameAni":[],"aquaminClassNameHide":[]} -->
 <div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"100%","layout":{"contentSize":"600px","wideSize":"600px"}} -->
-<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...normal inner blocks are <strong>this width</strong>,</h4>
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
 <!-- wp:group {"align":"wide","layout":{"inherit":false,"contentSize":"600px","wideSize":"600px","type":"constrained"},"aquaminClassNameAni":[]} -->
-<div class="wp-block-group alignwide"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignwide"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
 <!-- wp:columns {"align":"full"} -->
 <div class="wp-block-columns alignfull"><!-- wp:column {"width":"100%","layout":{"contentSize":"600px"}} -->
-<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column --></div>
@@ -373,151 +369,151 @@
 <!-- /wp:group -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>Further, normal cover block looks like...</em></h3>
+<h3 class="wp-block-heading"><em>Further, normal cover block looks like…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"0-000","minHeight":200,"minHeightUnit":"px","isDark":false} -->
-<div class="wp-block-cover is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"0-0","minHeight":200,"minHeightUnit":"px","isDark":false} -->
+<div class="wp-block-cover is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","className":"alignwide","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","className":"alignwide","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","className":"alignfull","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","className":"alignfull","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div></div>
 <!-- /wp:cover -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>While, a wide cover block looks like...</em></h3>
+<h3 class="wp-block-heading"><em>While, a wide cover block looks like…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"0-000","minHeight":200,"minHeightUnit":"px","isDark":false,"align":"wide"} -->
-<div class="wp-block-cover alignwide is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"0-0","minHeight":200,"minHeightUnit":"px","isDark":false,"align":"wide"} -->
+<div class="wp-block-cover alignwide is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","className":"alignwide","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","className":"alignwide","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","className":"alignfull","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","className":"alignfull","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div></div>
 <!-- /wp:cover -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>And, a full width cover block looks like...</em></h3>
+<h3 class="wp-block-heading"><em>And, a full width cover block looks like…</em></h3>
 <!-- /wp:heading -->
 
 <!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"isDark":false,"className":"alignfull is-light"} -->
-<div class="wp-block-cover is-light alignfull"><span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
+<div class="wp-block-cover is-light alignfull"><span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-900","textColor":"0-000","className":"alignwide","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","className":"alignwide","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-900","textColor":"0-000","className":"alignfull","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","className":"alignfull","aquaminClassNameAni":[]} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div></div>
 <!-- /wp:cover -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>A normal columns block looks like...</em></h3>
+<h3 class="wp-block-heading"><em>A normal columns block looks like…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:columns {"backgroundColor":"0-000","textColor":"0-900"} -->
+<!-- wp:columns {"backgroundColor":"0-0","textColor":"0-9"} -->
 <div class="wp-block-columns has-0-9-color has-0-0-background-color has-text-color has-background"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...a column</h4>
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…a column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...another column</h4>
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…another column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>While a wide columns block looks like...</em></h3>
+<h3 class="wp-block-heading"><em>While a wide columns block looks like…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:columns {"align":"wide","style":{"spacing":{"padding":{"top":"0"}}},"backgroundColor":"0-000","textColor":"0-900"} -->
+<!-- wp:columns {"align":"wide","style":{"spacing":{"padding":{"top":"0"}}},"backgroundColor":"0-0","textColor":"0-9"} -->
 <div class="wp-block-columns alignwide has-0-9-color has-0-0-background-color has-text-color has-background" style="padding-top:0"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...a column</h4>
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…a column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...another column</h4>
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…another column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>And a full width columns block looks like...</em></h3>
+<h3 class="wp-block-heading"><em>And a full width columns block looks like…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:columns {"align":"full","backgroundColor":"0-000","textColor":"0-900"} -->
+<!-- wp:columns {"align":"full","backgroundColor":"0-0","textColor":"0-9"} -->
 <div class="wp-block-columns alignfull has-0-9-color has-0-0-background-color has-text-color has-background"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...a column</h4>
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…a column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-900","textColor":"0-000","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...another column</h4>
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…another column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
 <!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>There are a few margin/padding sizes like...</em></h3>
+<h3 class="wp-block-heading"><em>There are a few margin/padding sizes like…</em></h3>
 <!-- /wp:heading -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","right":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10"},"margin":{"bottom":"var:preset|spacing|10"}}},"backgroundColor":"0-000","textColor":"0-900","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-bottom:var(--wp--preset--spacing--10);padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-900","layout":{"type":"constrained"}} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","right":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10"},"margin":{"bottom":"var:preset|spacing|10"}}},"backgroundColor":"0-0","textColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-bottom:var(--wp--preset--spacing--10);padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-9","layout":{"type":"constrained"}} -->
 <div class="wp-block-group has-border-color has-0-9-border-color" style="border-width:1px"><!-- wp:paragraph -->
 <p class="">small spacing (size 10),</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|20","right":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20"},"margin":{"bottom":"var:preset|spacing|20","top":"0"}}},"backgroundColor":"0-000","textColor":"0-900","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--20);padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-900","layout":{"type":"constrained"}} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|20","right":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20"},"margin":{"bottom":"var:preset|spacing|20","top":"0"}}},"backgroundColor":"0-0","textColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--20);padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-9","layout":{"type":"constrained"}} -->
 <div class="wp-block-group has-border-color has-0-9-border-color" style="border-width:1px"><!-- wp:paragraph -->
 <p class="">gutter spacing (size 20, matches outer container padding),</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","right":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50"},"margin":{"bottom":"var:preset|spacing|50"}}},"backgroundColor":"0-000","textColor":"0-900","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-bottom:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-900","layout":{"type":"constrained"}} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","right":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50"},"margin":{"bottom":"var:preset|spacing|50"}}},"backgroundColor":"0-0","textColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-bottom:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-9","layout":{"type":"constrained"}} -->
 <div class="wp-block-group has-border-color has-0-9-border-color" style="border-width:1px"><!-- wp:paragraph -->
 <p class="">medium spacing (size 50),</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|80","right":"var:preset|spacing|80","bottom":"var:preset|spacing|80","left":"var:preset|spacing|80"},"margin":{"bottom":"var:preset|spacing|80"}}},"backgroundColor":"0-000","textColor":"0-900","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-bottom:var(--wp--preset--spacing--80);padding-top:var(--wp--preset--spacing--80);padding-right:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--80)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-900","layout":{"type":"constrained"}} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|80","right":"var:preset|spacing|80","bottom":"var:preset|spacing|80","left":"var:preset|spacing|80"},"margin":{"bottom":"var:preset|spacing|80"}}},"backgroundColor":"0-0","textColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-bottom:var(--wp--preset--spacing--80);padding-top:var(--wp--preset--spacing--80);padding-right:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--80)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-9","layout":{"type":"constrained"}} -->
 <div class="wp-block-group has-border-color has-0-9-border-color" style="border-width:1px"><!-- wp:paragraph -->
 <p class="">and large spacing (size 80).</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:paragraph {"backgroundColor":"0-000","textColor":"0-900"} -->
-<p class="has-0-9-color has-0-0-background-color has-text-color has-background">Lastly, regular paragraphs are just column width, like this. Happy coding :-)</p>
+<!-- wp:paragraph {"backgroundColor":"0-0","textColor":"0-9","className":"has-0-900-color has-0-000-background-color","aquaminClassNameAni":[]} -->
+<p class="has-0-900-color has-0-000-background-color has-0-9-color has-0-0-background-color has-text-color has-background">Lastly, regular paragraphs are just column width, like this. Happy coding :-)</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:spacer {"height":"150px"} -->
@@ -527,8 +523,8 @@
   <wp:post_id>10</wp:post_id>
   <wp:post_date>2022-10-04 00:03:42</wp:post_date>
   <wp:post_date_gmt>2022-10-04 00:03:42</wp:post_date_gmt>
-  <wp:post_modified>2022-10-04 00:03:42</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-04 00:03:42</wp:post_modified_gmt>
+  <wp:post_modified>2023-08-16 17:39:13</wp:post_modified>
+  <wp:post_modified_gmt>2023-08-16 17:39:13</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>alignment</wp:post_name>

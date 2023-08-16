@@ -4,46 +4,6 @@
  */
 
 /**
- * Set up block hooks
- * 
- * This lets you add a hook.php file to your blocks and use
- * add_action or add_filter functionality. You can remove this
- * if you're not using it, but note the aquamin Year Format Type
- * uses it.
- */
-$blocks = glob( AQUAMIN_ASSETS . '/block-library/*/hooks.php' );
-if ( $blocks ) {
-	foreach ( $blocks as $block ) {
-		require_once $block;
-	}
-}
-
-/**
- * Add in blocks that are registered in this theme
- */
-add_action( 'init', function() {
-	// load blocks
-	$blocks = glob( AQUAMIN_ASSETS . '/block-library/*/index.php' );
-	if ( $blocks ) {
-		foreach ( $blocks as $block ) {
-			require_once $block;
-		}
-	}
-} );
-
-/**
- * Add our own block category
- */
-add_filter( 'block_categories' , function( $categories ) {
-	$categories[] = array(
-		'slug'  => 'aquamin-blocks',
-        'title' => __( 'Custom Blocks', 'aquamin' ),
-	);
-	return $categories;
-} );
-
-
-/**
  * Set up block editor feature support
  *
  * @see https://www.billerickson.net/building-a-gutenberg-website/#align-wide
@@ -61,6 +21,60 @@ add_action( 'after_setup_theme', function() {
 	add_editor_style( '/dist/bundles/editor.bundle.css' );
 
 
+} );
+
+/**
+ * Enqueue block editor scripts
+ */
+add_action( 'enqueue_block_editor_assets', 'aquamin_editor_scripts' );
+function aquamin_editor_scripts() {
+
+	wp_enqueue_script(
+		'aquamin-editor-scripts',
+		get_template_directory_uri() . '/dist/bundles/editor.bundle.js',
+		false,
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/editor.bundle.js' ),
+		true
+	);
+	wp_localize_script( 'aquamin-editor-scripts', 'aquaminLocalizedBlockEditor', array(
+		'restUrl' => rtrim( get_rest_url(), '/' ),
+		'siteUrl' => rtrim( get_home_url(), '/' ),
+	) );
+
+}
+
+/**
+ * Register all blocks in the block library
+ */
+add_action( 'init', function() {
+	$blocks = glob( AQUAMIN_ASSETS . '/block-library/*/index.php' );
+	if ( $blocks ) {
+		foreach ( $blocks as $block ) {
+			require_once $block;
+		}
+	}
+} );
+
+/**
+ * Execute hooks for blocks in the block library
+ * 
+ * Add a hooks.php file within any block directory to use
+ * add_action or add_filter features (rather than adding
+ * these hooks outside the block's directory within functions.php).
+ */
+$blocks = glob( AQUAMIN_ASSETS . '/block-library/*/hooks.php' );
+if ( $blocks ) {
+	foreach ( $blocks as $block ) {
+		require_once $block;
+	}
+}
+
+/**
+ * Add our own block category
+ */
+add_filter( 'block_categories' , function( $categories ) {
+	$categories[] = array( 'slug'  => 'aquamin-blocks', 'title' => __( 'Custom Blocks', 'aquamin' ) );
+	return $categories;
 } );
 
 /**
@@ -155,9 +169,8 @@ add_action( 'after_setup_theme', function() {
 		)
 	);
 
-	// register pattern categories
+	// register pattern categories in the block editor
 	$categories = get_terms( 'custom-patterns-categories' );
-	
 	if ( $categories ) {
 		foreach( $categories as $cat ) {
 			register_block_pattern_category(
@@ -167,7 +180,7 @@ add_action( 'after_setup_theme', function() {
 		}
 	}
 
-	// register patterns
+	// register patterns in the block editor
 	$patterns = get_posts( array(
 		'post_type' => 'custom-patterns',
 		'posts_per_page' => 999,
@@ -194,7 +207,8 @@ add_action( 'after_setup_theme', function() {
 } );
 
 /**
- * Make reusable blocks accessible in backend
+ * Expose all reusable blocks in the WordPress back-end sidebar
+ * 
  * @link https://www.billerickson.net/reusable-blocks-accessible-in-wordpress-admin-area
  */
 add_action( 'admin_menu', function() {
@@ -202,7 +216,7 @@ add_action( 'admin_menu', function() {
 } );
 
 /**
- * Ugly hack to set correct root editor container classes
+ * Apply ugly hack to set correct root editor container classes
  * 
  * Setting settings.useRootPaddingAwareAlignments to true and settings.layout.type to
  * "constrained" should result in these classes being added properly, but it does not.
@@ -216,16 +230,25 @@ add_action('admin_footer-post-new.php', 'aquamin_root_editor_container_fix'); //
 function aquamin_root_editor_container_fix() {
     echo "<script>
 		window.addEventListener('load', function() {
-			var rootFix = document.querySelector('.is-root-container');
-			if (rootFix) {
-				if (!rootFix.classList.contains('has-global-padding')) {
-					rootFix.classList.remove('is-layout-flow');
-					rootFix.classList.add('has-global-padding');
-					rootFix.classList.add('is-layout-constrained');
+			var rootContainer = null;
+			var editorCanvas = document.querySelector('iframe[name=\"editor-canvas\"]');
+			if (editorCanvas) {
+				rootContainer = editorCanvas.contentWindow.document.querySelector('.is-root-container');
+			} else {
+				rootContainer = document.querySelector('.is-root-container');
+			}
+			if (rootContainer) {
+				if (!rootContainer.classList.contains('has-global-padding')) {
+					rootContainer.classList.remove('is-layout-flow');
+					rootContainer.classList.add('has-global-padding');
+					rootContainer.classList.add('is-layout-constrained');
 				} else {
 					console.log('The theme is now adding .has-global-padding properly: you may remove this patch.');
 				}
 			}
 		});
 	</script>";
+	echo "<style>
+		h1 { opacity: 0.9; }
+	</style>";
 };
