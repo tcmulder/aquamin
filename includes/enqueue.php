@@ -16,8 +16,8 @@ function aquamin_cache_break(  $path )  {
 /**
  * Enqueue theme front-end styles and scripts
  */
-add_action( 'wp_enqueue_scripts', 'aquamin_scripts' );
-function aquamin_scripts() {
+add_action( 'wp_enqueue_scripts', 'aquamin_theme_scripts' );
+function aquamin_theme_scripts() {
 
 	wp_enqueue_style(
 		'aquamin-style',
@@ -31,20 +31,6 @@ function aquamin_scripts() {
 		get_template_directory_uri() . '/dist/bundles/theme.bundle.js',
 		false,
 		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.js' ),
-		true
-	);
-	wp_enqueue_style(
-		'aquamin-block-style',
-		get_template_directory_uri() . '/dist/bundles/blocks.bundle.css',
-		array(),
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/blocks.bundle.css' ),
-		'screen'
-	);
-	wp_enqueue_script(
-		'aquamin-block-scripts',
-		get_template_directory_uri() . '/dist/bundles/blocks.bundle.js',
-		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/blocks.bundle.js' ),
 		true
 	);
 

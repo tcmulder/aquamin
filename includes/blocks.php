@@ -16,15 +16,73 @@ add_action( 'after_setup_theme', function() {
 	// get rid of core patterns
 	remove_theme_support( 'core-block-patterns' );
 
-	// prefix editor styles
 	add_theme_support( 'editor-styles' );
 	add_editor_style( '/dist/bundles/editor.bundle.css' );
-
 
 } );
 
 /**
- * Enqueue block editor scripts
+ * Enqueue back-end block editor content styling
+ * 
+ * Note: the recommended way to include these is via the
+ * after_setup_theme hook, adding:
+ * 
+ * add_theme_support( 'editor-styles' );
+ * add_editor_style( '/dist/bundles/editor.bundle.css' );
+ *
+ * We're manually enqueuing it here for now instead so we can use modern
+ * CSS features without breaking back-end styles. It may be possible to
+ * begin using editor-styles once the following issue is resolved:
+ * 
+ * @see https://github.com/WordPress/gutenberg/issues/40444
+ * @see https://developer.wordpress.org/reference/functions/add_editor_style/#comment-5332
+ */
+add_action( 'enqueue_block_assets', 'aquamin_editor_block_scripts' );
+function aquamin_editor_block_scripts() {
+
+	if ( is_admin() ) {
+		wp_enqueue_style(
+			'aquamin-editor-style',
+			get_template_directory_uri() . '/dist/bundles/editor.bundle.css',
+			array(),
+			aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/editor.bundle.css' ),
+			'screen'
+		);
+	}
+
+}
+
+/**
+ * Enqueue front-end block scripts
+ * 
+ * Note: we do this via wp_enqueue_scripts rather than the usual
+ * enqueue_block_assets so these only load on the front-end. We
+ * include them on the back-end via @import "./*style.css";
+ * statements in each block's editor.css file; that way we have the
+ * option to remove the @import and implement custom editor styling.
+ */
+add_action( 'wp_enqueue_scripts', 'aquamin_block_scripts' );
+function aquamin_block_scripts() {
+
+	wp_enqueue_style(
+		'aquamin-block-style',
+		get_template_directory_uri() . '/dist/bundles/blocks.bundle.css',
+		array(),
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/blocks.bundle.css' ),
+		'screen'
+	);
+	wp_enqueue_script(
+		'aquamin-block-scripts',
+		get_template_directory_uri() . '/dist/bundles/blocks.bundle.js',
+		false,
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/blocks.bundle.js' ),
+		true
+	);
+
+}
+
+/**
+ * Enqueue back-end-only block editor scripts
  */
 add_action( 'enqueue_block_editor_assets', 'aquamin_editor_scripts' );
 function aquamin_editor_scripts() {
@@ -243,12 +301,9 @@ function aquamin_root_editor_container_fix() {
 					rootContainer.classList.add('has-global-padding');
 					rootContainer.classList.add('is-layout-constrained');
 				} else {
-					console.log('The theme is now adding .has-global-padding properly: you may remove this patch.');
+					console.error('The theme is now adding .has-global-padding properly: you may remove this patch.');
 				}
 			}
 		});
 	</script>";
-	echo "<style>
-		h1 { opacity: 0.9; }
-	</style>";
 };
