@@ -19,12 +19,8 @@ import classnames from 'classnames';
 import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
 
 const { __ } = wp.i18n;
-const {
-	useBlockProps,
-	useInnerBlocksProps,
-	InspectorControls,
-	useBlockDisplayInformation,
-} = wp.blockEditor;
+const { useBlockProps, useInnerBlocksProps, InspectorControls } =
+	wp.blockEditor;
 const { PanelBody, Icon, Button, ButtonGroup } = wp.components;
 const { select } = wp.data;
 
