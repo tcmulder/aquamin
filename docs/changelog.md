@@ -14,6 +14,7 @@
 * Added flexible grid block.
 * Overhauled enqueue system to support modern CSS in editor (pending resolution of an add_editor_style() parsing issue).
 * Renamed some script files in `includes` for clarity and consolidation.
+* Created script to sync browsersync CSS injection in the block editor to the block editor iframe.
 
 ## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.

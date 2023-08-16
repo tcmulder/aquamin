@@ -102,6 +102,15 @@ function aquamin_editor_scripts() {
 		'siteUrl' => rtrim( get_home_url(), '/' ),
 	) );
 
+	// add browsersync helper (enables block editor CSS injecting within the iframe)
+	wp_enqueue_script(
+		'aquamin-browsersync',
+		get_template_directory_uri() . '/dist/build/browsersync.bundle.js',
+		false,
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/build/browsersync.bundle.js' ),
+		true
+	);
+
 }
 
 /**
