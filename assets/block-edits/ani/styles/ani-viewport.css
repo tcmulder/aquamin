@@ -1,0 +1,96 @@
+/**
+ * Viewport-based animations.
+ *
+ * .ani animations occur once an element enters the
+ * viewport, then reset immediatly after that element
+ * has left the viewport so it's ready to reanimate.
+ *
+ * .ani--load animations activate once on page load,
+ * and won't reanimate if you scroll away from then
+ * then back again—very useful for hero animations.
+ *
+ * In addition to the built-in animations, you can add
+ * your own. Example:
+ *
+.ani:not(.is-shown) {
+	--ani-custom-transform: skewX(10deg);
+	--ani-custom-filter:
+		drop-shadow(5px 5px 0 red)
+		hue-rotate(220deg)
+		drop-shadow(-5px -5px 0 red);
+}
+ */
+.ani--load,
+.ani {
+	--ani-blur: 0;
+	--ani-opacity: 100%;
+	--ani-custom-filter: ;
+	--ani-x: 0;
+	--ani-y: 0;
+	--ani-perspective: 0px;
+	--ani-rotate-x: 0deg;
+	--ani-rotate: 0deg;
+	--ani-z: 0;
+	--ani-scale-x: 1;
+	--ani-scale-y: 1;
+	/* prettier-ignore */
+	transition-delay: calc(
+		var(--ani-delay-increment)
+		* var(--ani-delay-factor)
+		+ var(--ani-delay-offset)
+	);
+	transition-duration: var(--ani-duration);
+	transition-timing-function: var(--ani-timing-function);
+	transition-property: var(--ani-property);
+	will-change: transform;
+	/*&, / *DEBUG*/
+	&:not(.is-shown) {
+		transition: 0s 0s;
+		/* prettier-ignore */
+		filter:
+			blur(var(--ani-blur))
+			opacity(var(--ani-opacity))
+			var(--ani-custom-filter);
+		/* prettier-ignore */
+		transform:
+			 translateX(var(--ani-x))
+			 translateY(var(--ani-y))
+			 perspective(var(--ani-perspective))
+			 rotateX(var(--ani-rotate-x))
+			 rotate(var(--ani-rotate))
+			 translateZ(var(--ani-z))
+			 scale(var(--ani-scale-x), var(--ani-scale-y))
+			 var(--ani-custom-transform, );
+	}
+	&.ani--opacity {
+		--ani-opacity: 0%;
+	}
+	&.ani--scale {
+		--ani-scale-x: 0.8;
+		--ani-scale-y: var(--ani-scale-x);
+	}
+	&.ani--scale-x {
+		--ani-scale-x: 0;
+	}
+	&.ani--blur {
+		--ani-blur: 0.25rem;
+	}
+	&.ani--up {
+		--ani-y: 1.25rem;
+	}
+	&.ani--down {
+		--ani-y: -1.25rem;
+	}
+	&.ani--left {
+		--ani-x: 1.5rem;
+	}
+	&.ani--right {
+		--ani-x: -1.5rem;
+	}
+	&.ani--3d {
+		--ani-perspective: 8em;
+		--ani-rotate-x: 12deg;
+		--ani-rotate: -2deg;
+		--ani-z: 1.5em;
+	}
+}

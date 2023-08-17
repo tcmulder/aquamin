@@ -1,0 +1,26 @@
+/**
+ * Common global classes
+ */
+
+/**
+ * Text-Related
+ */
+.has-align-center {
+	text-align: center;
+}
+.has-align-right {
+	text-align: right;
+}
+.has-align-left {
+	text-align: left;
+}
+.has-align-full {
+	display: block;
+}
+.has-nowrap {
+	white-space: nowrap;
+}
+
+/**
+ * Special/Non-Reusable
+ */

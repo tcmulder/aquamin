@@ -1,0 +1,37 @@
+{
+	"apiVersion": 3,
+	"title": "Grid",
+	"description": "Flexible grid layout.",
+	"text-domain": "aquamin",
+	"name": "aquamin/grd",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"count": {
+			"type": "object",
+			"default": { "lg": 4, "md": 2, "sm": 1 }
+		},
+		"has-equal-rows": {
+			"type": "boolean",
+			"default": false
+		},
+		"minAspect": {
+			"type": "object",
+			"default": { "y": 0, "x": 0 }
+		}
+	},
+	"supports": {
+		"customClassName": true,
+		"align": ["wide", "full"],
+		"color": {
+			"text": true,
+			"background": true
+		},
+		"spacing": {
+			"margin": ["top", "bottom"],
+			"padding": true,
+			"blockGap": ["horizontal", "vertical"]
+		}
+	}
+}

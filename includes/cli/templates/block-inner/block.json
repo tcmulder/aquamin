@@ -1,4 +1,5 @@
 {
+	"apiVersion": 3,
 	"title": "template-item-title",
 	"description": "template-item-desc",
 	"text-domain": "aquamin",

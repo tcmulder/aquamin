@@ -1,0 +1,87 @@
+/**
+ * Page layout alignments
+ */
+/* don't allow default extreme padding merely if has bg color */
+.has-background.has-background {
+	padding-top: 0;
+	padding-bottom: 0;
+	/* but keep padding on globally padded elements (note wp's inline padding will override this) */
+	&:not(.has-global-padding) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+/* override wp's 1em with essentially has-global-padding for cover blocks */
+.wp-block-cover {
+	padding: 0 var(--wp--style--root--padding-right) 0
+		var(--wp--style--root--padding-left);
+}
+/* default to column/wide width within cover blocks */
+.wp-block-cover__inner-container {
+	& > :not(.alignfull, .alignwide) {
+		max-width: var(--wp--style--global--content-size);
+		margin-left: auto;
+		margin-right: auto;
+	}
+	& > .alignwide {
+		max-width: var(--wp--style--global--wide-size);
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.wp-block-cover:not([style*="margin-left"]) & > .alignfull {
+		margin-left: calc(-1 * var(--wp--style--root--padding-left));
+	}
+	.wp-block-cover:not([style*="margin-right"]) & > .alignfull {
+		margin-right: calc(-1 * var(--wp--style--root--padding-right));
+	}
+}
+
+/* pull alignfull elements outside containers that use default left/right padding sizes */
+[style*="padding-left:var(--wp--preset--spacing--10)"] {
+	--pl: var(--wp--preset--spacing--10);
+	& > .alignfull {
+		margin-left: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-right:var(--wp--preset--spacing--10)"] {
+	--pl: var(--wp--preset--spacing--10);
+	& > .alignfull {
+		margin-right: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-left:var(--wp--preset--spacing--20)"] {
+	--pl: var(--wp--preset--spacing--20);
+	& > .alignfull {
+		margin-left: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-right:var(--wp--preset--spacing--20)"] {
+	--pl: var(--wp--preset--spacing--20);
+	& > .alignfull {
+		margin-right: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-left:var(--wp--preset--spacing--50)"] {
+	--pl: var(--wp--preset--spacing--50);
+	& > .alignfull {
+		margin-left: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-right:var(--wp--preset--spacing--50)"] {
+	--pl: var(--wp--preset--spacing--50);
+	& > .alignfull {
+		margin-right: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-left:var(--wp--preset--spacing--80)"] {
+	--pl: var(--wp--preset--spacing--80);
+	& > .alignfull {
+		margin-left: calc(-1 * var(--pl));
+	}
+}
+[style*="padding-right:var(--wp--preset--spacing--80)"] {
+	--pl: var(--wp--preset--spacing--80);
+	& > .alignfull {
+		margin-right: calc(-1 * var(--pl));
+	}
+}

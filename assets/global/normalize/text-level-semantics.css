@@ -1,0 +1,114 @@
+/**
+ * Text Level Semantics
+ *
+ * Normalize.css v3.0.0 | MIT License | git.io/normalize
+ */
+html {
+	font-family: var(--ff-1);
+	font-size: var(--fs-px);
+	line-height: 1.4;
+}
+abbr[title] {
+	border-bottom: none;
+	cursor: inherit;
+	text-decoration: none;
+}
+b,
+strong {
+	font-weight: bold;
+}
+dfn {
+	font-style: italic;
+}
+p {
+	margin-top: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+:where(
+		h1,
+		.has-h-1-font-size,
+		.h1,
+		h2,
+		.has-h-2-font-size,
+		.h2,
+		h3,
+		.has-h-3-font-size,
+		.h3,
+		h4,
+		.has-h-4-font-size,
+		.h4,
+		h5,
+		.has-h-5-font-size,
+		.h5,
+		h6,
+		.has-h-6-font-size,
+		.h6
+	) {
+	margin-top: 0.5em;
+	margin-bottom: 0;
+	font-weight: bold;
+	line-height: 1.2;
+	font-family: var(--ff-2);
+	&:first-child {
+		margin-top: 0;
+	}
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+:is(h1, .has-h-1-font-size, .h1) {
+	font-size: var(--fs-h1);
+}
+:is(h2, .has-h-2-font-size, .h2) {
+	font-size: var(--fs-h2);
+}
+:is(h3, .has-h-3-font-size, .h3) {
+	font-size: var(--fs-h3);
+}
+:is(h4, .has-h-4-font-size, .h4) {
+	font-size: var(--fs-h4);
+}
+:is(h5, .has-h-5-font-size, .h5) {
+	font-size: var(--fs-h5);
+}
+:is(h6, .has-h-6-font-size, .h6) {
+	font-size: var(--fs-h6);
+}
+:is(small, .has-small-font-size) {
+	font-size: var(--fs-small, 80%);
+}
+:is(big, .has-big-font-size) {
+	font-size: var(--fs-big, 120%);
+}
+mark {
+	background: #ff0;
+	color: #000;
+}
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+.wp-block-quote__citation,
+.wp-block-pullquote__citation,
+cite {
+	font-size: 1.5em;
+}
+blockquote {
+	margin: 0.5em 0;
+	padding: 0;
+	font-size: 2.25em;
+	line-height: 1.05;
+	font-weight: bold;
+	text-align: center;
+}

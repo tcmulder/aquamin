@@ -1,0 +1,96 @@
+/**
+ * CSS Custom Properties
+ */
+/* prettier-ignore */
+:root {
+	/* fonts */
+	--fs: 16;
+	--fs-px: calc(var(--fs) * 1px);
+
+	--fs-h1: 	calc((32 / var(--fs)) * 1em);
+	--fs-h2: 	calc((24 / var(--fs)) * 1em);
+	--fs-h3: 	calc((20.8 / var(--fs)) * 1em);
+	--fs-h4: 	calc((16 / var(--fs)) * 1em);
+	--fs-h5: 	calc((12.8 / var(--fs)) * 1em);
+	--fs-h6: 	calc((11.2 / var(--fs)) * 1em);
+	--fs-big: 	calc((18 / var(--fs)) * 1em);
+	--fs-small:	calc((14 / var(--fs)) * 1em);
+	--fs-normal: 1em;
+
+	--ff-1: monospace, sans-serif;
+	--ff-2: var(--ff-2);
+
+	/* layout */
+	--sp-raw-s: 10;		--sp-s:calc((var(--sp-raw-s)/var(--fs))*1em);--sp-rem-s:calc((var(--sp-raw-s)/var(--fs))*1rem);
+	--sp-raw: 24;		--sp:calc((var(--sp-raw)/var(--fs))*1em);--sp-rem:calc((var(--sp-raw)/var(--fs))*1rem);
+	--sp-raw-m: 75;		--sp-m:calc((var(--sp-raw-m)/var(--fs))*1em);--sp-rem-m:calc((var(--sp-raw-m)/var(--fs))*1rem);
+	--sp-raw-l: 150;	--sp-l:calc((var(--sp-raw-l)/var(--fs))*1em);--sp-rem-l:calc((var(--sp-raw-l)/var(--fs))*1rem);
+
+	--w: var(--w-m);
+	--w-s: 960px;
+	--w-m: 1280px;
+	--w-l: 1440px;
+	--w-px: calc(100% - var(--gutter) * 2);
+
+	--w-normal: var(--w-m);
+	--w-wide: var(--w-l);
+
+	--h-menu: 3em;
+
+	--gutter: var(--sp-rem);
+	--gutter-: calc(var(--gutter) * -1);
+
+	/* animations */
+	--ani-ease: ease;
+	--ani-speed: 0.3s;
+
+	/* colors: --<color>-<variant>-<brightness> */
+
+	/* drab (light, medium, dark) */
+	--c-raw-0-9: 0, 0%, 100%; /* white */ 			--c-0-9: hsl(var(--c-raw-0-9));
+	--c-raw-0-7: 0, 0%, 83%; /* lightgray */ 		--c-0-7: hsl(var(--c-raw-0-7));
+	--c-raw-0-5: 0, 0%, 50%; /* gray */ 			--c-0-5: hsl(var(--c-raw-0-5));
+	--c-raw-0-2: 0, 0%, 41%; /* dimgray */ 			--c-0-2: hsl(var(--c-raw-0-2));
+	--c-raw-0-0: 0, 0%, 0%; /* black */ 			--c-0-0: hsl(var(--c-raw-0-0));
+
+	/* primary (light, medium, dark) */
+	--c-raw-1-7: 180, 100%, 94%; /* lightcyan */ 	--c-1-7: hsl(var(--c-raw-1-7));
+	--c-raw-1-5: 160, 100%, 75%; /* aquamarine */ 	--c-1-5: hsl(var(--c-raw-1-5));
+	--c-raw-1-2: 180, 100%, 25%; /* teal */ 		--c-1-2: hsl(var(--c-raw-1-2));
+
+	/* secondary (light, medium, dark) */
+	--c-raw-2-7: 39, 77%, 83%; /* wheat */ 			--c-2-7: hsl(var(--c-raw-2-7));
+	--c-raw-2-5: 34, 44%, 69%; /* tan */ 			--c-2-5: hsl(var(--c-raw-2-5));
+	--c-raw-2-2: 25, 75%, 47%; /* chocolate */ 		--c-2-2: hsl(var(--c-raw-2-2));
+
+	/* alert colors */
+	--c-good: #0ac675;
+	--c-bad: #e24939;
+	--c-meh: #ff7f50;
+
+
+	/**
+	* Common breakpoints reference
+	* 
+	* Based on WordPress's _breakpoints.scss file.
+	* (NOTE: if using max-width then subtract one)
+	*	--bp-huge: 		1440px;
+	*	--bp-wide: 		1280px;
+	*	--bp-xlarge: 	1080px;
+	*	--bp-large: 	960px;	// admin sidebar auto folds
+	*	--bp-medium: 	782px;	// adminbar goes big
+	*	--bp-small: 	600px;
+	*	--bp-mobile: 	480px;
+	*	--bp-zoomed-in: 280px;
+	*/
+
+	/* tablet */
+	@media (max-width: 781px) {
+		--fs-h1: calc((54 / var(--fs)) * 1em);
+	}
+
+	/* phone */
+	@media (max-width: 479px) {
+		--fs-h1: calc((50 / var(--fs)) * 1em);
+	}
+}

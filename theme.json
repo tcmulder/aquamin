@@ -13,12 +13,10 @@
 				"padding": {
 					"right": "var(--gutter)",
 					"left": "var(--gutter)"
-				},
-				"blockGap": null
+				}
 			}
 		},
 		"spacing": {
-			"blockGap": false,
 			"units": ["%", "px", "em", "rem", "vh", "vw"],
 			"spacingSizes": [
 				{
@@ -101,22 +99,22 @@
 			"defaultGradients": false,
 			"palette": [
 				{
-					"slug": "1-500",
+					"slug": "1-5",
 					"color": "aquamarine",
 					"name": "Primary"
 				},
 				{
-					"slug": "2-500",
+					"slug": "2-5",
 					"color": "tan",
 					"name": "Secondary"
 				},
 				{
-					"slug": "0-000",
+					"slug": "0-0",
 					"color": "#000",
 					"name": "Black"
 				},
 				{
-					"slug": "0-900",
+					"slug": "0-9",
 					"color": "#fff",
 					"name": "White"
 				}

@@ -1,0 +1,98 @@
+/**
+ * Grid shared block styling
+ *
+ * This file gets shared between the
+ * theme and editor.
+ */
+.grd {
+	/* prettier-ignore */
+	--grd-w: calc((100%/var(--grd-count))-((var(--grd-gap-left, 0px)*(var(--grd-count)- 1))/var(--grd-count)));
+	display: grid;
+	grid-template-columns: repeat(var(--grd-count), var(--grd-w));
+	grid-gap: var(--grd-gap-left, 0px);
+	grid-auto-flow: row dense;
+	@media (max-width: 479px) {
+		--grd-count: var(--grd-count-sm);
+	}
+	@media (min-width: 480px) and (max-width: 781px) {
+		--grd-count: var(--grd-count-md);
+	}
+	@media (min-width: 782px) {
+		--grd-count: var(--grd-count-lg);
+	}
+}
+.grd__item {
+	align-self: var(--grd-v-align, stretch);
+	display: grid;
+	min-width: 0;
+	min-width: 2em;
+	grid-column: var(--grd-col, auto) / span var(--grd-span, 1);
+	grid-row: var(--grd-row, auto) / span var(--grd-span-row, 1);
+	@media (max-width: 479px) {
+		--grd-span: var(--grd-span-sm, 1);
+		--grd-col: var(--grd-col-sm, auto);
+		--grd-row: var(--grd-row-sm, auto);
+		--grd-span-row: var(--grd-span-row-sm, 1);
+	}
+	@media (min-width: 480px) and (max-width: 781px) {
+		--grd-span: var(--grd-span-md, 1);
+		--grd-col: var(--grd-col-md, auto);
+		--grd-row: var(--grd-row-md, auto);
+		--grd-span-row: var(--grd-span-row-md, 1);
+	}
+	@media (min-width: 782px) {
+		--grd-span: var(--grd-span-lg, 1);
+		--grd-col: var(--grd-col-lg, auto);
+		--grd-row: var(--grd-row-lg, auto);
+		--grd-span-row: var(--grd-span-row-lg, 1);
+	}
+}
+.grd--has-equal-rows {
+	grid-auto-rows: 1fr;
+}
+.grd--has-aspect .grd__item,
+.grd__item--video,
+.grd__item--image {
+	--grd-item-aspect: var(--grd-aspect, 16/9);
+	overflow: hidden;
+	display: grid;
+	/* faux aspect ratio */
+	&::after {
+		--grd-w-aspect: calc(
+			100% / var(--grd-span, 1)- (var(--grd-gap-left, 0px) /
+						var(--grd-span, 1) * (var(--grd-span, 1)- 1))
+		);
+		content: "";
+		width: var(--grd-w-aspect);
+		aspect-ratio: var(--grd-item-aspect);
+	}
+	&::after,
+	& .grd__frame {
+		grid-column: 1;
+		grid-row: 1;
+	}
+	& figure,
+	& video,
+	& img {
+		position: absolute;
+		display: block;
+		max-width: none;
+		margin: 0;
+		object-fit: cover;
+		/* override any inline height/width */
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
+.grd__frame {
+	position: relative;
+}
+
+/* integration with other blocks */
+.grd__frame:has(.wp-block-group-is-layout-flex:only-child) {
+	display: flex;
+	& .wp-block-group-is-layout-flex {
+		height: 100%;
+		width: 100%;
+	}
+}

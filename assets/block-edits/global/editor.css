@@ -1,0 +1,75 @@
+/**
+ * Import select theme stylesheets
+ *
+ * This causes the editor to inherit
+ * the theme's major styling features,
+ * wrapped within .editor-styles-wrapper.
+ */
+@import "../../global/style.css";
+
+/**
+ * Import theme stylesheets for editor into the editor
+ */
+@import "../component-library/*/*editor.css";
+
+/**
+ * (optional) Import theme front-end stylesheets into the block editor
+ * 
+ * Note: the style.css glob import _could_ import things
+ * that wreak havoc on the block editor's styling, since these things
+ * (like footers and menus) don't usually appear within the block
+ * editor. Use at your own risk, or feel free to manually add a
+ * list of imports for specific theme front-end components here.
+ */
+/* @import "../component-library/* /*style.css"; */
+
+/**
+   * Global block styling and WordPress block overrides.
+   *
+   * This causes the editor to inherit
+   * styling for the theme's blocks,
+   * wrapped within .editor-styles-wrapper.
+   */
+@import "./blocks.css";
+
+/**
+ * Global editor overrides
+ */
+.is-root-container,
+html .edit-widgets-main-block-list :where(.editor-styles-wrapper),
+.interface-interface-skeleton__content {
+	font-family: var(--ff-1);
+	font-size: calc(var(--fs) * 1px);
+	line-height: 1.4;
+}
+
+/* global-styles-inline-css breaks the front-end/block editor styling parity for core/column blocks via :not([class*="__"]) */
+.has-global-padding
+	> .alignfull:where(:not(.has-global-padding))
+	> :where(.wp-block-column:not(.alignfull)) {
+	padding-right: var(--wp--style--root--padding-right);
+	padding-left: var(--wp--style--root--padding-left);
+}
+
+/**
+ * Post title
+ */
+.editor-post-title {
+	.edit-post-visual-editor__post-title-wrapper & {
+		border-bottom: 1px dashed var(--wp-admin-theme-color);
+		margin: 0 auto 1em;
+	}
+}
+
+/**
+ * Components panel
+ */
+.components-panel {
+	& .disabled {
+		opacity: 0.5;
+	}
+}
+
+/**
+ * Core block back-end overrides
+ */

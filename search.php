@@ -18,10 +18,10 @@ get_header(); ?>
 					<?php printf( esc_html__( 'Search Results for: %s', 'aquamin' ), '<span>' . get_search_query() . '</span>' ); ?>
 				</h1>
 				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'components/component-library/content/content', 'search' ); ?>
+					<?php get_template_part( 'assets/component-library/content/content', 'search' ); ?>
 				<?php endwhile; ?>
 			<?php else : ?>
-				<?php get_template_part( 'components/component-library/content/content', 'none' ); ?>
+				<?php get_template_part( 'assets/component-library/content/content', 'none' ); ?>
 			<?php endif; ?>
 		</main>
 	</div>

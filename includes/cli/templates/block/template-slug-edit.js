@@ -6,7 +6,7 @@
  */
 
 /**
- * Import dependencies
+ * Import edit dependencies
  */
 import classnames from 'classnames';
 
@@ -36,7 +36,7 @@ const TemplateNamespaceBlockEdit = ({
 				value={demoText}
 				onChange={(value) => setAttributes({ demoText: value })}
 			/>
-			<InnerBlocks />
+			<InnerBlocks /* PLACEHOLDER: inner blocks template */ />
 		</div>
 	);
 };

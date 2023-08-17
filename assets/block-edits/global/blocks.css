@@ -1,0 +1,13 @@
+/**
+ * Common block styling shared with editor and theme.
+ */
+
+/**
+ * Core block overrides
+ */
+.wp-block-cover {
+	/* otherwise we get forced text coloring without expicitly setting text color (no inheritance) */
+	& .wp-block-cover__inner-container {
+		color: unset;
+	}
+}

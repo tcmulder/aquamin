@@ -17,17 +17,17 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.2" created="2023-05-09 21:52" -->
+<!-- generator="WordPress/6.3" created="2023-08-17 14:34" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
-<link>http://aquamin.aquamarine.test</link>
+<link>https://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Tue, 09 May 2023 21:52:59 +0000</pubDate>
+<pubDate>Thu, 17 Aug 2023 14:34:00 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
-<wp:base_site_url>http://aquamin.aquamarine.test</wp:base_site_url>
-<wp:base_blog_url>http://aquamin.aquamarine.test</wp:base_blog_url>
+<wp:base_site_url>https://aquamin.aquamarine.test</wp:base_site_url>
+<wp:base_blog_url>https://aquamin.aquamarine.test</wp:base_blog_url>
 <wp:author>
   <wp:author_id>1</wp:author_id>
   <wp:author_login>aquaadmin</wp:author_login>
@@ -36,10 +36,10 @@
   <wp:author_first_name><![CDATA[]]></wp:author_first_name>
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
 </wp:author>
-<generator>https://wordpress.org/?v=6.2</generator>
+<generator>https://wordpress.org/?v=6.3</generator>
 <item>
   <title><![CDATA[➠ Payground]]></title>
-  <link>http://aquamin.aquamarine.test/all-the-things/payground/</link>
+  <link>https://aquamin.aquamarine.test/all-the-things/payground/</link>
   <pubDate>Mon, 03 Oct 2022 23:49:57 +0000</pubDate>
   <dc:creator/>
   <guid isPermaLink="false">https://playground.aquamarine.test/?post_type=all-the-things&amp;p=7</guid>
@@ -55,8 +55,8 @@
   <wp:post_id>7</wp:post_id>
   <wp:post_date>2022-10-03 23:49:57</wp:post_date>
   <wp:post_date_gmt>2022-10-03 23:49:57</wp:post_date_gmt>
-  <wp:post_modified>2023-05-09 15:43:46</wp:post_modified>
-  <wp:post_modified_gmt>2023-05-09 15:43:46</wp:post_modified_gmt>
+  <wp:post_modified>2022-10-03 23:49:57</wp:post_modified>
+  <wp:post_modified_gmt>2022-10-03 23:49:57</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>payground</wp:post_name>

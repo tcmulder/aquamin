@@ -1,0 +1,43 @@
+/**
+ * Grid editor styling
+ *
+ * This file is for CSS admin overrides only.
+ * Use style.css for shared theme/editor block styling.
+ */
+@import "./*style.css";
+
+.grd__item {
+	min-height: 1em;
+	& figure > * {
+		max-width: 100% !important;
+	}
+}
+.grd__item--video,
+.grd__item--image {
+	&:is(.is-selected, .has-child-selected) {
+		overflow: visible;
+		position: relative;
+		z-index: 10;
+	}
+	& figure > * {
+		width: 100% !important;
+		height: 100% !important;
+	}
+	& .components-resizable-box__handle {
+		display: none !important;
+	}
+}
+.grd__item--invalid {
+	outline: 1px dotted var(--wp--preset--color--vivid-red, red);
+	&::after {
+		content: "spans too many columns";
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		inset: 0;
+		background: var(--wp--preset--color--vivid-red, red);
+		color: var(--wp--preset--color--white, white);
+		opacity: 0.9;
+	}
+}

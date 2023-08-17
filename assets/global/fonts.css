@@ -1,0 +1,21 @@
+/**
+ * Local Fonts
+ *
+ * To add local fonts, you should create a font directory as a sibling
+ * of this file (e.g. aquamin/theme/global/fonts/my-font), add all font
+ * files within it, then link to them here.
+ *
+ * Example:
+ *
+@font-face {
+	font-family: "My Font";
+	src: url("./fonts/my-font/my-font.eot");
+	src: url("./fonts/my-font/my-font.eot#iefix") format("embedded-opentype"),
+		url("./fonts/my-font/my-font.woff2") format("woff2"),
+		url("./fonts/my-font/my-font.woff") format("woff"),
+		url("./fonts/my-font/my-font.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+ */

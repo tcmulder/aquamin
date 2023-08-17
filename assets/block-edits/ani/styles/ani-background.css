@@ -1,0 +1,74 @@
+/**
+ * Background (and foreground) animations.
+ *
+ * Applying this background animation to an element
+ * essentially treats its background color, image, or
+ * video as if it were background-attachment:fixed. The
+ * foreground option is similar, but puts that background
+ * overlapping adjacent content, sort of like a position:fixed
+ * popup.
+ */
+.ani--foreground,
+.ani--background {
+	--ani-delay-offset: 0.8s;
+	position: relative;
+	z-index: 20;
+	&:is(header).is-loaded,
+	&:not(:is(header)) {
+		background: none !important; /* !important overrides wp default */
+	}
+	& > * {
+		position: relative;
+		z-index: 20;
+		transition: 1s;
+	}
+}
+.ani--foreground {
+	&:not(.is-shown-bg) > * {
+		opacity: 0;
+	}
+}
+
+/* this is a sort of fake background-attachment:fixed element */
+.background-color-block {
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	background-color: transparent;
+	will-change: transform;
+	transition: 1s;
+	/* override WordPresss's labotimized owl */
+	margin: 0 !important;
+	&.background-color-block {
+		& * {
+			max-width: 100%;
+		}
+	}
+	& > * {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		object-fit: cover;
+		&.wp-block-cover__gradient-background {
+			z-index: 1;
+		}
+	}
+	&:not(.active) {
+		opacity: 0;
+	}
+	/* for specificity... */
+	&.background-color-block.background-color-block.background-color-block {
+		max-width: none;
+		width: 100%;
+	}
+}
+.background-color-block--foreground {
+	z-index: 10;
+}

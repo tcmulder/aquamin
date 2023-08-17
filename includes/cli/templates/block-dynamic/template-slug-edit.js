@@ -6,7 +6,7 @@
  */
 
 /**
- * Import dependencies
+ * Import edit dependencies
  */
 const ServerSideRender = wp.serverSideRender;
 

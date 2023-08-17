@@ -8,7 +8,7 @@
  */
 
 /**
- * Import dependencies
+ * Import save dependencies
  */
 import classnames from 'classnames';
 

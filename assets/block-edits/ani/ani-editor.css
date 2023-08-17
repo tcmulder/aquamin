@@ -1,0 +1,16 @@
+/**
+ * Extended .ani styling for the editor
+ */
+/* turn all animations off in the editor */
+.ani {
+	--ani-opacity: 1;
+	--ani-scale-x: 1;
+	--ani-scale-y: 1;
+	--ani-blur: 0;
+	--ani-y: 0;
+	--ani-x: 0;
+	--ani-z: 0;
+	--ani-perspective: 0;
+	--ani-rotate-x: 0deg;
+	--ani-rotate: 0deg;
+}
