@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.0.1 - August 17 2023
+* Minor updates to docs link and instructions in main readme file.
+
 ## 6.0.0 - August 17 2023
 * Overhauled directory structure: now most things are in `assets`.
 * Upgrade `block.json` files to use `"apiVersion": 3` by default.
