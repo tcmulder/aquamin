@@ -1,20 +1,23 @@
 # Changelog
 
-## 5.1.0 - August 2 2023
+## 6.0.0 - August 17 2023
 * Overhauled directory structure: now most things are in `assets`.
-* Updated and reduced number of packages.
 * Upgrade `block.json` files to use `"apiVersion": 3` by default.
-* Refined alignment/layout styling.
-* Moved extended blocks to their own `block-edits` directory.
-* Added responsive hide/show block edit functionality.
-* Split .ani animation files into separate files.
 * Fixed issue where child animations inherited their parent animations.
-* Reversed cli commands for robustness and clarity (e.g. `wp aquamin bock create`).
-* Rewrote and overhauled documentation using docsify (eliminates ruby dependency). Just run `npm run docs` to view them.
 * Added flexible grid block.
 * Overhauled enqueue system to support modern CSS in editor (pending resolution of an add_editor_style() parsing issue).
 * Renamed some script files in `includes` for clarity and consolidation.
 * Created script to sync browsersync CSS injection in the block editor to the block editor iframe.
+
+## 5.1.0 - July 10 2023
+* Updated and reduced number of packages.
+* Refined alignment/layout styling.
+* Moved extended blocks to their own `block-edits` directory.
+* Added responsive hide/show block edit functionality.
+* Split .ani animation files into separate files.
+* Removed common-classes.css as it's redundant (use reusable-global.css instead).
+* Reversed cli commands for robustness and clarity (e.g. `wp aquamin bock create`).
+* Rewrote and overhauled documentation using docsify (eliminates ruby dependency). Just run `npm run docs` to view them.
 
 ## 5.0.0 - May 17 2023
 * Set block assets to appear on front-end only on pages where they're used.
