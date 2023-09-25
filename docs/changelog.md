@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.0.2 - September 25 2023
+* Fix parallax animations erroneously going above 1 or below 0 (i.e. negative).
+
 ## 6.0.1 - August 17 2023
 * Minor updates to docs link and instructions in main readme file.
 
