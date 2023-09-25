@@ -14,7 +14,7 @@ import { ani, aniDelegate, aniLoad } from './scripts/aniViewport';
 aniLoad('.ani--load');
 
 // animate items on scroll (scrubs animation as you scroll)
-aniScroll('.ani--parallax');
+aniScroll('.ani--parallax', true);
 
 // animate background colors and media (like background-attachment:fixed)
 aniBackground('.ani--background');

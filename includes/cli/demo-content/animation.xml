@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.3" created="2023-08-17 14:33" -->
+<!-- generator="WordPress/6.3.1" created="2023-09-25 20:10" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>https://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Thu, 17 Aug 2023 14:33:59 +0000</pubDate>
+<pubDate>Mon, 25 Sep 2023 20:10:11 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>https://aquamin.aquamarine.test</wp:base_site_url>
@@ -36,7 +36,7 @@
   <wp:author_first_name><![CDATA[]]></wp:author_first_name>
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
 </wp:author>
-<generator>https://wordpress.org/?v=6.3</generator>
+<generator>https://wordpress.org/?v=6.3.1</generator>
 <item>
   <title><![CDATA[Ani]]></title>
   <link>https://aquamin.aquamarine.test/all-the-things/animation/</link>
@@ -45,7 +45,7 @@
   <guid isPermaLink="false">https://aquamin.aquamarine.test/?post_type=all-the-things&amp;p=26</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p class="">Here are common animations. Apply to your own blocks via <code>blocks/block-library/extended-ani/index.js@affectedBlocks</code>.</p>
+<p class="">Here are common animations. Apply to your own blocks via <code>assets/block-edits/ani/index.js@affectedBlocks</code>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:cover {"dimRatio":10,"overlayColor":"0-000","minHeight":100,"minHeightUnit":"vh","isDark":false,"align":"full"} -->
@@ -58,7 +58,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"align":"center","textColor":"0-000","className":"has-0-0-color has-text-color","aquaminClassNameAni":[]} -->
-<p class="has-text-align-center has-0-0-color has-text-color has-0-000-color"><br>This animation happens on load (via the advanced class name <code>ani--load</code>). It works especially well for media like images, but also anything else.<br><br>(If you don't need this, you can disable it in <code>blocks/block-library/extended-ani/script.js</code>)<br></p>
+<p class="has-text-align-center has-0-0-color has-text-color has-0-000-color"><br>This animation happens on load (via the advanced class name <code>ani--load</code>). It works especially well for media like images, but also anything else.<br></p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
@@ -256,11 +256,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">This block's background will fade in behind itself and sibling blocks.<br></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">(If you don't need this, you can disable it in <code>blocks/block-library/extended-ani/script.js</code>)</p>
+<p class="has-text-align-center">This block's background will fade in behind itself and sibling blocks.</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
@@ -276,11 +272,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">This block's background will be in the foreground obscuring sibling blocks, much like a popup.<br></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">(You can disable this via <code>blocks/block-library/extended-ani/script.js</code>)</p>
+<p class="has-text-align-center">This block's background will be in the foreground obscuring sibling blocks, much like a popup.</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
@@ -290,18 +282,21 @@
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","id":0,"dimRatio":0,"overlayColor":"0-900","minHeight":75,"minHeightUnit":"vh","isDark":false,"align":"full","aquaminClassNameAni":[{"value":"ani\u002d\u002dparallax","title":"Parallax"}]} -->
-<div class="wp-block-cover alignfull is-light ani--parallax ani" style="min-height:75vh"><span aria-hidden="true" class="wp-block-cover__background has-0-900-background-color has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","aquaminClassNameAni":[]} -->
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","id":0,"dimRatio":0,"overlayColor":"0-900","minHeight":75,"minHeightUnit":"vh","isDark":false,"align":"full","className":"demo-parallax","aquaminClassNameAni":[{"value":"ani\u002d\u002dparallax","title":"Parallax"}]} -->
+<div class="wp-block-cover alignfull is-light demo-parallax ani--parallax ani" style="min-height:75vh"><span aria-hidden="true" class="wp-block-cover__background has-0-900-background-color has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","aquaminClassNameAni":[]} -->
 <h2 class="wp-block-heading has-text-align-center">Parallax:</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">This block's background scroll at a different rate than the content within it.<br></p>
+<p class="has-text-align-center">This block's background scroll at a different rate than the content within it.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">(You can disable this via <code>blocks/block-library/extended-ani/script.js</code>)</p>
-<!-- /wp:paragraph --></div></div>
+<!-- wp:html -->
+<style>
+  /* make effect more extreme for this demo */
+  .demo-parallax.ani--parallax.wp-block-cover { --parallax-size: 200px; }
+</style>
+<!-- /wp:html --></div></div>
 <!-- /wp:cover -->
 
 <!-- wp:cover {"dimRatio":0,"overlayColor":"0-900","minHeight":50,"minHeightUnit":"vh","isDark":false,"align":"full"} -->
@@ -333,9 +328,9 @@
 <!-- /wp:html -->
 
 <!-- wp:code {"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"}},"border":{"radius":"5px"}},"backgroundColor":"0-0","textColor":"0-9"} -->
-<pre class="wp-block-code has-0-9-color has-0-0-background-color has-text-color has-background" style="border-radius:5px;padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><code>&lt;!-- the above code in html/css -->
-&lt;p class="ani--my-custom-ani ani ani--opacity" style="text-align:center">custom&lt;/p>
-&lt;style>
+<pre class="wp-block-code has-0-9-color has-0-0-background-color has-text-color has-background" style="border-radius:5px;padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><code>&lt;!-- the above code in html/css --&gt;
+&lt;p class="ani--my-custom-ani ani ani--opacity" style="text-align:center"&gt;custom&lt;/p&gt;
+&lt;style&gt;
 .ani--my-custom-ani:not(.is-shown) {
 	--ani-custom-transform: skewX(10deg);
 	--ani-custom-filter:
@@ -343,7 +338,7 @@
 		hue-rotate(220deg)
 		drop-shadow(-5px -5px 0 red);
 }
-&lt;/style></code></pre>
+&lt;/style&gt;</code></pre>
 <!-- /wp:code --></div></div>
 <!-- /wp:cover -->
 
@@ -361,8 +356,8 @@
   <wp:post_id>26</wp:post_id>
   <wp:post_date>2022-10-29 19:58:04</wp:post_date>
   <wp:post_date_gmt>2022-10-29 19:58:04</wp:post_date_gmt>
-  <wp:post_modified>2023-08-15 23:22:30</wp:post_modified>
-  <wp:post_modified_gmt>2023-08-15 23:22:30</wp:post_modified_gmt>
+  <wp:post_modified>2023-09-25 19:59:04</wp:post_modified>
+  <wp:post_modified_gmt>2023-09-25 19:59:04</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>animation</wp:post_name>

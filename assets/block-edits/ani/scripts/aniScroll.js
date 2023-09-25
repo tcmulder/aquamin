@@ -9,13 +9,16 @@
  *  aniScroll(document.querySelectorAll('.ani--parallax'));
  *  // or
  *  aniScroll([
- *      document.querySelector('.ani--parallax-1'),
- *      document.querySelector('.ani--parallax-2')
+ *      document.querySelector('.ani--parallax'),
+ *      document.querySelector('.ani--parallax-alt')
  *  ]);
+ *  // or (bases animation on window height rather than total element height)
+ *  aniScroll('.ani--parallax', false);
  *
- * @param {mixed} mixed Wrapper element (as selector string, nodelist, or array of nodes)
+ * @param  {mixed}    mixed        Wrapper element (as selector string, nodelist, or array of nodes)
+ * @param  {boolean}  useElHeight  Stretch animations over full element height (true/default) or just window height (false)
  */
-export const aniScroll = (mixed) => {
+export const aniScroll = (mixed, useElHeight = true) => {
 	// identify scroll-based animation elements
 	const isStr = typeof mixed === 'string';
 	const scrollWraps = isStr ? document.querySelectorAll(mixed) : mixed;
@@ -37,7 +40,14 @@ export const aniScroll = (mixed) => {
 				const item = scrollers[key];
 				const win = window.innerHeight;
 				const { top, height } = item.getBoundingClientRect();
-				const per = (top + height) / (win + height);
+				const stretch = useElHeight ? height : 0;
+				let per = (top + stretch) / (win + stretch);
+				// don't go out of bounds (allow 0 min and 1 max)
+				if (per < 0) {
+					per = 0;
+				} else if (per > 1) {
+					per = 1;
+				}
 				scrollers[key].style.setProperty('--ani-plx', per);
 			});
 		}
