@@ -28,6 +28,8 @@ While not nearly as robust as something like [Greensock](https://greensock.com/ 
 
 Under the hood, a custom property called `--ani-plx` is simply going from 1 to 0 as elements with a class of `ani--parallax` enter then leave the viewport (i.e. `--ani-plx` is `1` as soon as the element enters the viewport, `0.5` once it has scrolled to the center of the viewport, and `0` once it has been fully scrolled out of view again). So, you can use it for a wide variety of other animations using calc() functions.
 
+You can also pass in `false` as a 2nd argument within the `aquamin/assets/block-edits/ani/ani-script.js` to base the scroll on the _window_ height rather than the _element_ height; this is useful in some scenarios, like when you want multiple animations to occur at the same speed even though the elements themselves vary in height.
+
 ## Background-Based
 
 Aquamin has two animations that pin an element's background while the rest of the page scrolls freely (available to the `core/cover`, `core/group`, and `core/columns` blocks by default). The _background_ animation is similar to `background-attachment:fixed`, pinning the background color or media behind all the page's content; the _foreground_ animation is similar to a `position:fixed` popup, covering over any content adjacent to the affected block.
