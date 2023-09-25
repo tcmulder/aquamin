@@ -38,14 +38,11 @@ const GridBlockSave = ({ attributes, className }) => {
 			...getStyle('--grd-aspect', minAspect.x / minAspect.y),
 		},
 	});
-	const innerBlocksProps = useInnerBlocksProps.save(
-		{ ...blockProps },
-		{
-			template: Array(4).fill(['aquamin/grd-item']),
-			allowedBlocks: ['aquamin/grd-item'],
-			orientation: 'horizontal',
-		}
-	);
+	const innerBlocksProps = useInnerBlocksProps.save(blockProps, {
+		template: Array(4).fill(['aquamin/grd-item']),
+		allowedBlocks: ['aquamin/grd-item'],
+		orientation: 'horizontal',
+	});
 
 	return <div {...innerBlocksProps}>{innerBlocksProps.children}</div>;
 };

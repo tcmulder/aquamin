@@ -153,14 +153,11 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 		},
 	});
 
-	const innerBlocksProps = useInnerBlocksProps(
-		{ ...blockProps },
-		{
-			template: Array(4).fill(['aquamin/grd-item']),
-			allowedBlocks: ['aquamin/grd-item'],
-			orientation: 'horizontal',
-		}
-	);
+	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+		template: Array(4).fill(['aquamin/grd-item']),
+		allowedBlocks: ['aquamin/grd-item'],
+		orientation: 'horizontal',
+	});
 
 	return (
 		<>

@@ -1,0 +1,13 @@
+/**
+ * My Dynamic Block shared block styling
+ *
+ * This file gets shared between the
+ * theme and editor.
+ */
+
+.my-dynamic-block {
+	& b::after {
+		/* replace this demo code with your own: */
+		content: " (❒ style.css) ";
+	}
+}

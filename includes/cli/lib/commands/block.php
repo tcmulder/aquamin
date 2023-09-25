@@ -216,7 +216,7 @@ function block_create( $args, $assoc_args ) {
 	) );
 	array_unshift( $far, array(
 		'find' => " /* PLACEHOLDER: inner blocks template */ ",
-		'repl' => ! $has_inner_block ? " " : "\n\t\t\t\ttemplate={[['aquamin/template-item-slug']]}\n\t\t\t\tallowedBlocks={['aquamin/template-item-slug']}\n\t\t\t"
+		'repl' => ! $has_inner_block ? " " : ", {\n\t\ttemplate: [['aquamin/template-item-slug']],\n\t\tallowedBlocks: ['aquamin/template-item-slug'],\n\t}"
 	) );
 	
 	/**
