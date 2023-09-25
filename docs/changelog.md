@@ -3,6 +3,7 @@
 ## 6.0.2 - September 25 2023
 * Fix scroll-based animations erroneously going above 1 or below 0 (i.e. negative).
 * Add scroll-based animation option to base duration on window height.
+* Switch templates to use useInnerBlocksProps rather than <InnerBlocks> for better editor HTML structure.
 
 ## 6.0.1 - August 17 2023
 * Minor updates to docs link and instructions in main readme file.
