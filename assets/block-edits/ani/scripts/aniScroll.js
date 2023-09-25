@@ -37,7 +37,13 @@ export const aniScroll = (mixed) => {
 				const item = scrollers[key];
 				const win = window.innerHeight;
 				const { top, height } = item.getBoundingClientRect();
-				const per = (top + height) / (win + height);
+				let per = (top + height) / (win + height);
+				// don't go out of bounds (allow 0 min and 1 max)
+				if (per < 0) {
+					per = 0;
+				} else if (per > 1) {
+					per = 1;
+				}
 				scrollers[key].style.setProperty('--ani-plx', per);
 			});
 		}
