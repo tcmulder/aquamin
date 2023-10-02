@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.1.0 - October 2 2023
+* Added variable font and spacing sizes using CSS's `clamp`.
+* Revamped CSS custom property names and added more documentation on each.
+
 ## 6.0.2 - September 25 2023
 * Fix scroll-based animations erroneously going above 1 or below 0 (i.e. negative).
 * Add scroll-based animation option to base duration on window height.

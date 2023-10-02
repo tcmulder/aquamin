@@ -6,9 +6,9 @@
  * Overrides
  */
 body {
-	--wp--style--block-gap: var(--sp);
-	--wp--style--root--padding-right: var(--gutter);
-	--wp--style--root--padding-left: var(--gutter);
+	--wp--style--block-gap: var(--sp-s-rem);
+	--wp--style--root--padding-right: var(--sp-s-rem);
+	--wp--style--root--padding-left: var(--sp-s-rem);
 }
 
 /**

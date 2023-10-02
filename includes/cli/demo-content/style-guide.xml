@@ -17,13 +17,13 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.3.1" created="2023-09-25 20:10" -->
+<!-- generator="WordPress/6.3.1" created="2017-02-17 00:00" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
 <link>https://aquamin.aquamarine.test</link>
 <description>Just another WordPress site</description>
-<pubDate>Mon, 25 Sep 2023 20:10:12 +0000</pubDate>
+<pubDate>Fri, 17 Feb 2017 00:00:00 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
 <wp:base_site_url>https://aquamin.aquamarine.test</wp:base_site_url>
@@ -40,67 +40,69 @@
 <item>
   <title><![CDATA[➠ Style Guide]]></title>
   <link>https://aquamin.aquamarine.test/all-the-things/style-guide/</link>
-  <pubDate>Mon, 03 Oct 2022 23:53:26 +0000</pubDate>
+  <pubDate>Fri, 17 Feb 2017 00:00:00 +0000</pubDate>
   <dc:creator/>
   <guid isPermaLink="false">https://playground.aquamarine.test/?post_type=all-the-things&amp;p=9</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:html -->
 <div>
-						<div class="text-element ">
+	<div class="text-element ">
 	<h1 class="text-level-semantics-title">Style Guide</h1>
 	<p>Here you can reference the styling of commonly used content elements. Most of these are styled via <code>components/normalize/*.css</code> and <code>src/global/variables.css</code></p>
 </div>
-<div class="text-element ">
-	<style>
-.text-level-semantics-title {
-    position: relative !important;
-    color: #666 !important;
-    display: block !important;
-    padding: 10px 2px 5px !important;
-    text-align: center !important;
-    font-family: "Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace !important;
-    margin: 100px 0 50px !important;
-    font-weight: normal !important;
-}
-.text-level-semantics-title:before {
-    content: "[style guide]" !important;
-    position: absolute !important;
-    left: 2px !important;
-    top: 2px !important;
-    font-size: 10px !important;
-    color: #ccc !important;
-    width: auto !important;
-    height: auto !important;
-    background-color: transparent !important;
-}
-.text-level-semantics-title:after {
-    display: none !important;
-}
-h1.text-level-semantics-title{
-    font-size: 48px !important;
-}
-h1.text-level-semantics-title:before {
-    content: "" !important;
-}
-h2.text-level-semantics-title{
-    font-size: 32px !important;
-    border-top: 2px solid #ddd !important;
-}
-h2.text-level-semantics-title:before {
-    content: "[style guide section]" !important;
-}
-h3.text-level-semantics-title{
-    font-size: 24px !important;
-    border-top: 1px dashed #ddd !important
-}
-h3.text-level-semantics-title:before {
-    content: "[style guide sub section]" !important;
-}
-h4.text-level-semantics-title{
-    font-size: 18px !important;
-}
+<!-- start section styling -->
+<style>
+	.text-level-semantics-title {
+		position: relative !important;
+		color: #666 !important;
+		display: block !important;
+		padding: 10px 2px 5px !important;
+		text-align: center !important;
+		font-family: "Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace !important;
+		margin: 100px 0 50px !important;
+		font-weight: normal !important;
+	}
+	.text-level-semantics-title:before {
+		content: "[style guide]" !important;
+		position: absolute !important;
+		left: 2px !important;
+		top: 2px !important;
+		font-size: 10px !important;
+		color: #ccc !important;
+		width: auto !important;
+		height: auto !important;
+		background-color: transparent !important;
+	}
+	.text-level-semantics-title:after {
+		display: none !important;
+	}
+	h1.text-level-semantics-title{
+		font-size: 48px !important;
+	}
+	h1.text-level-semantics-title:before {
+		content: "" !important;
+	}
+	h2.text-level-semantics-title{
+		font-size: 32px !important;
+		border-top: 2px solid #ddd !important;
+	}
+	h2.text-level-semantics-title:before {
+		content: "[style guide section]" !important;
+	}
+	h3.text-level-semantics-title{
+		font-size: 24px !important;
+		border-top: 1px dashed #ddd !important
+	}
+	h3.text-level-semantics-title:before {
+		content: "[style guide sub section]" !important;
+	}
+	h4.text-level-semantics-title{
+		font-size: 18px !important;
+	}
 </style>
-</div>
+<!-- end section styling -->
+
+<!-- start color swatch -->
 <script id="color-swatch">
 [
 	...[...document.styleSheets].find((sheet) => {
@@ -129,7 +131,7 @@ h4.text-level-semantics-title{
 					return prop[0];
 				})
 				.filter((name) => {
-					return /^--c-\d.*/.test(name);
+					return /^--c-\d-\d$/.test(name);
 				}),
 		];
 	}, [])
@@ -158,42 +160,69 @@ h4.text-level-semantics-title{
 				</style>
 			`;
 			js.parentNode.insertBefore(swatch, js);
+			const el = document.createElement('div');
+			el.innerHTML = '--c-1-5 25% opacity';
+			el.style.backgroundColor = `color-mix(in hsl, var(--c-1-5) 25%, transparent)`;
+			swatch.appendChild(el);
 		}
 		const el = document.createElement('div');
 		el.innerHTML = color;
 		el.style.backgroundColor = `var(${color})`;
 		swatch.appendChild(el);
 	});
-
 </script>
+
+<!-- end color swatch -->
+
+<!-- start check font size -->
+<style>
+	.check-size {
+		font-size: 14px !important;
+	}
+</style>
+<script>
+(function(){
+    window.addEventListener('resize', () => {
+		document.querySelectorAll('.check-size')?.forEach((el)=>{
+            el.innerText = getComputedStyle(el.parentElement).getPropertyValue('font-size');
+        });
+	});
+    window.onload = function() { window.dispatchEvent(new Event('resize')) };
+})();
+</script>
+<!-- end check font size -->
+
 <div class="text-element ">
 	<h2 class="text-level-semantics-title">Text</h2>
 <h3 class="text-level-semantics-title">Headings</h3>
-<h1>H1 (<em>italic</em>, <strong>bold</strong>, <em><strong>italic&amp;bold</strong></em>.)</h1>
-<h2>H2 (<em>italic</em>, <strong>bold</strong>, <em><strong>italic&amp;bold</strong></em>.)</h2>
-<h3>H3 (<em>italic</em>, <strong>bold</strong>, <em><strong>italic&amp;bold</strong></em>.)</h3>
-<h4>H4 (<em>italic</em>, <strong>bold</strong>, <strong><em>italic&amp;bold</em></strong>.)</h4>
-<h5>H5 (<em>italic</em>, <strong>bold</strong>, <strong><em>italic&amp;bold</em></strong>.)</h5>
-<h6>H6 (<em>italic</em>, <strong>bold</strong>, <strong><em>italic&amp;bold</em></strong>.)</h6>
-<h1>H1</h1>
+<h1>H1 (<em>italic</em> | <strong>bold</strong> | <em><strong>italic&amp;bold</strong></em> | <a href="#">link</a> | <span class="check-size"></span>)</h1>
+<h2>H2 (<em>italic</em> | <strong>bold</strong> | <em><strong>italic&amp;bold</strong></em> | <a href="#">link</a> | <span class="check-size"></span>)</h2>
+<h3>H3 (<em>italic</em> | <strong>bold</strong> | <em><strong>italic&amp;bold</strong></em> | <a href="#">link</a> | <span class="check-size"></span>)</h3>
+<h4>H4 (<em>italic</em> | <strong>bold</strong> | <strong><em>italic&amp;bold</em></strong> | <a href="#">link</a> | <span class="check-size"></span>)</h4>
+<h5>H5 (<em>italic</em> | <strong>bold</strong> | <strong><em>italic&amp;bold</em></strong> | <a href="#">link</a> | <span class="check-size"></span>)</h5>
+<h6>H6 (<em>italic</em> | <strong>bold</strong> | <strong><em>italic&amp;bold</em></strong> | <a href="#">link</a> | <span class="check-size"></span>)</h6>
+<h1>H1 Margins</h1>
 <p>Phasellus nec sem in justo pellentesque facilisis. Nulla sit amet est. Suspendisse feugiat. Phasellus gravida semper nisi. Donec id justo.</p>
 <p>Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Nam at tortor in tellus interdum sagittis. In ac felis quis tortor malesuada pretium. Fusce pharetra convallis urna. Sed cursus turpis vitae tortor.</p>
-<h2>Heading 2</h2>
+<h2>Heading 2 Margins</h2>
 <p>Phasellus nec sem in justo pellentesque facilisis. Nulla sit amet est. Suspendisse feugiat. Phasellus gravida semper nisi. Donec id justo.</p>
 <p>Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Nam at tortor in tellus interdum sagittis. In ac felis quis tortor malesuada pretium. Fusce pharetra convallis urna. Sed cursus turpis vitae tortor.</p>
-<h3>Heading 3</h3>
+<h3>Heading 3 Margins</h3>
 <p>Phasellus nec sem in justo pellentesque facilisis. Nulla sit amet est. Suspendisse feugiat. Phasellus gravida semper nisi. Donec id justo.</p>
 <p>Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Nam at tortor in tellus interdum sagittis. In ac felis quis tortor malesuada pretium. Fusce pharetra convallis urna. Sed cursus turpis vitae tortor.</p>
-<h4>Heading 4</h4>
+<h4>Heading 4 Margins</h4>
 <p>Phasellus nec sem in justo pellentesque facilisis. Nulla sit amet est. Suspendisse feugiat. Phasellus gravida semper nisi. Donec id justo.</p>
 <p>Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Nam at tortor in tellus interdum sagittis. In ac felis quis tortor malesuada pretium. Fusce pharetra convallis urna. Sed cursus turpis vitae tortor.</p>
-<h5>Heading 5</h5>
+<h5>Heading 5 Margins</h5>
 <p>Phasellus nec sem in justo pellentesque facilisis. Nulla sit amet est. Suspendisse feugiat. Phasellus gravida semper nisi. Donec id justo.</p>
 <p>Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Nam at tortor in tellus interdum sagittis. In ac felis quis tortor malesuada pretium. Fusce pharetra convallis urna. Sed cursus turpis vitae tortor.</p>
-<h6>Heading 6</h6>
+<h6>Heading 6 Margins</h6>
 <p>Phasellus nec sem in justo pellentesque facilisis. Nulla sit amet est. Suspendisse feugiat. Phasellus gravida semper nisi. Donec id justo.</p>
 <p>Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Nam at tortor in tellus interdum sagittis. In ac felis quis tortor malesuada pretium. Fusce pharetra convallis urna. Sed cursus turpis vitae tortor.</p>
 <h3 class="text-level-semantics-title">Paragraphs and Links</h3>
+<p><big>Big(<em>italic</em> | <strong>bold</strong> | <em><strong>italic&amp;bold</strong></em> | <a href="#">link</a> | <span class="check-size"></span>)</big></p>
+<p>Normal (<em>italic</em> | <strong>bold</strong> | <em><strong>italic&amp;bold</strong></em> | <a href="#">link</a> | <span class="check-size"></span>)</p>
+<p><small>Small (<em>italic</em> | <strong>bold</strong> | <em><strong>italic&amp;bold</strong></em> | <a href="#">link</a> | <span class="check-size"></span>)</small></p>
 <p>Regular paragraph. Etiam iaculis nunc ac metus. <strong>bold</strong> <em>italic</em> <strong><em>bold and italic</em></strong>. Vestibulum eu odio. <a href="#">A link</a>. Cras sagittis. Sed aliquam ultrices mauris. Curabitur a felis in nunc fringilla tristique.</p>
 <p>Regular paragraph. Etiam iaculis nunc ac metus. <strong>bold</strong> <em>italic</em> <strong><em>bold and italic</em></strong>. Vestibulum eu odio. <a href="#">A link</a>. Cras sagittis. Sed aliquam ultrices mauris. Curabitur a felis in nunc fringilla tristique.</p>
 <p><small>Element-based small paragraph for suplimentary information (e.g. captions). Sed aliquam ultrices mauris. Curabitur a felis in nunc fringilla tristique.</small></p>
@@ -326,7 +355,7 @@ h4.text-level-semantics-title{
 
 <h3 class="text-level-semantics-title">Button (with bottom margins)</h3>
 <div class="text-level-semantics-buttons">
-<style>.text-level-semantics-buttons [class*="button"],.text-level-semantics-buttons button,.text-level-semantics-buttons [type="button"],.text-level-semantics-buttons [type="reset"],.text-level-semantics-buttons [type="submit"]{margin-bottom:1em</style>
+<style>.text-level-semantics-buttons [class*="button"],.text-level-semantics-buttons button,.text-level-semantics-buttons [type="button"],.text-level-semantics-buttons [type="reset"],.text-level-semantics-buttons [type="submit"]{margin-bottom:1em}</style>
 <p><a class="button" href="#">Link</a><br>
 <button class="wp-block-button__link" type="reset" value="Reset">Reset</button><br>
 <button class="wp-block-button__link" type="submit" value="Submit">Submit</button><br>
@@ -406,7 +435,8 @@ h4.text-level-semantics-title{
 <h3 class="text-level-semantics-title">iframe</h3>
 <p class="aligncenter"><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/iDbyYGrswtg?rel=0&amp;start=3" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe></p>
 </div>
-					</div>
+</div>
+
 <!-- /wp:html -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>9</wp:post_id>

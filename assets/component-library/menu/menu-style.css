@@ -1,4 +1,8 @@
+.site-main {
+	padding-top: var(--h-menu);
+}
 .site-menu {
+	position: fixed;
 	height: var(--h-menu);
 	& ul,
 	& li {
@@ -6,4 +10,12 @@
 		margin: 0;
 		padding: 0;
 	}
+}
+
+/* push content below sticky menu */
+.site-main {
+	padding-top: var(--h-menu);
+}
+.site-menu {
+	height: var(--h-menu);
 }
