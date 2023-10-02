@@ -45,7 +45,7 @@
   <guid isPermaLink="false">https://playground.aquamarine.test/?post_type=all-the-things&amp;p=7</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p class="">You can use this pattern for just trying random things out. Think of it sort of like an Etch A Sketch: play around with creating something, then wipe it clean once you're done so you can use it for a different something later.</p>
+<p class="">You can use this pattern for just trying out random things. Think of it sort of like an Etch A Sketch: play around with creating something, then wipe it clean once you're done so you can use it for a different something later.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -55,8 +55,8 @@
   <wp:post_id>7</wp:post_id>
   <wp:post_date>2022-10-03 23:49:57</wp:post_date>
   <wp:post_date_gmt>2022-10-03 23:49:57</wp:post_date_gmt>
-  <wp:post_modified>2022-10-03 23:49:57</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-03 23:49:57</wp:post_modified_gmt>
+  <wp:post_modified>2023-10-02 17:33:36</wp:post_modified>
+  <wp:post_modified_gmt>2023-10-02 17:33:36</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>playground</wp:post_name>
