@@ -1,73 +1,141 @@
 /**
  * CSS Custom Properties
+ * 
+ * Note that many of these are fed into the
+ * theme.json file, allowing you to control
+ * much of the styling via this CSS file. See
+ * comments below for more.
  */
+
 /* prettier-ignore */
 :root {
-	/* fonts */
-	--fs: 16;
-	--fs-px: calc(var(--fs) * 1px);
 
-	--fs-h1: 	calc((32 / var(--fs)) * 1em);
-	--fs-h2: 	calc((24 / var(--fs)) * 1em);
-	--fs-h3: 	calc((20.8 / var(--fs)) * 1em);
-	--fs-h4: 	calc((16 / var(--fs)) * 1em);
-	--fs-h5: 	calc((12.8 / var(--fs)) * 1em);
-	--fs-h6: 	calc((11.2 / var(--fs)) * 1em);
-	--fs-big: 	calc((18 / var(--fs)) * 1em);
-	--fs-small:	calc((14 / var(--fs)) * 1em);
+	/*
+	 * Common Widths
+	 */
+	 --w: 1280; /* pixel (unitless) medium base width */
+	 --w-s: 960px;
+	 --w-m: calc(var(--w) * 1px); /* settings.layout.contentSize in theme.json */
+	 --w-l: 1440px; /* settings.layout.wideSize in theme.json */
+	 --w-px: calc(100% - var(--sp-m) * 2); /* 100% screen width minus side (x axis) padding */
+	
+	/*
+	 * Common Spacing
+	 *
+	 * Use for for margins, padding, gaps, gutters, etc.
+	 */
+	--sp-s: 24; /* pixel (unitless) desktop value for settings.spacing.spacingSizes.slug=20 in theme.json */
+		--sp-s-rem:calc((var(--sp-s)/var(--fs))*1rem);
+		--sp-s-em:calc((var(--sp-s)/var(--fs))*1em); /* settings.styles.spacing.padding in theme.json */
+	
+	--sp-m: 50; /* pixel (unitless) desktop value for settings.spacing.spacingSizes.slug=50 in theme.json */
+		--sp-m-rem:calc((var(--sp-m)/var(--fs))*1rem);
+		--sp-m-em:calc((var(--sp-m)/var(--fs))*1em);
+		--sp-m-clamp: clamp(var(--sp-s-rem), var(--sp-m) / var(--w) * 100vw, var(--sp-m-rem));
+	
+	--sp-l: 150; /* pixel (unitless) desktop value for settings.spacing.spacingSizes.slug=80 in theme.json */
+		--sp-l-rem:calc((var(--sp-l)/var(--fs))*1rem);
+		--sp-l-em:calc((var(--sp-l)/var(--fs))*1em);
+		--sp-l-clamp: clamp(var(--sp-m-rem), var(--sp-l) / var(--w) * 100vw, var(--sp-l-rem));
+
+	/*
+	 * Common Heights
+	 */
+	--h-menu: 3em; /* main menu height (e.g. to push top of content down under sticky menu) */
+	
+	/*
+	 * Common Font Sizes
+	 *
+	 * Uses clamp for variable font sizing by default. If you'd rather have more control
+	 * per breakpoint, instead use e.g. calc((24 / var(--fs)) * 1em) for a em-based, 24px font.
+	 */
+	--fs: 16; /* unitless base font sized (used by many other calculations) */
+	--fs-px: calc(var(--fs) * 1px); /* base font size in pixels */
+
+	--fs-h1: clamp(
+		18px, /* min in pixels */
+		calc(32 / var(--w) * 100vw), /* unitless max (flexes up to max value) */
+		32px /* max in pixels */
+	);
+	--fs-h2: clamp(
+		18px,
+		calc(24 / var(--w) * 100vw),
+		24px
+	);
+	--fs-h3: clamp(
+		18px,
+		calc(20.8 / var(--w) * 100vw),
+		20.8px
+	);
+	--fs-h4: clamp(
+		18px,
+		calc(16 / var(--w) * 100vw),
+		16px
+	);
+	--fs-h5: clamp(
+		18px,
+		calc(12.8 / var(--w) * 100vw),
+		12.8px
+	);
+	--fs-h6: clamp(
+		18px,
+		calc(11.2 / var(--w) * 100vw),
+		11.2px
+	);
+	--fs-big: larger;
 	--fs-normal: 1em;
+	--fs-small: smaller;
 
+	/**
+	 * Common Line Heights
+	 */
+	--flh-s: 1.2; /* default for headings */
+	--flh-m: 1.4; /* default for body copy */
+
+	/*
+	 * Common Font Families
+	 */
 	--ff-1: monospace, sans-serif;
-	--ff-2: var(--ff-2);
+	--ff-2: var(--ff-1);
 
-	/* layout */
-	--sp-raw-s: 10;		--sp-s:calc((var(--sp-raw-s)/var(--fs))*1em);--sp-rem-s:calc((var(--sp-raw-s)/var(--fs))*1rem);
-	--sp-raw: 24;		--sp:calc((var(--sp-raw)/var(--fs))*1em);--sp-rem:calc((var(--sp-raw)/var(--fs))*1rem);
-	--sp-raw-m: 75;		--sp-m:calc((var(--sp-raw-m)/var(--fs))*1em);--sp-rem-m:calc((var(--sp-raw-m)/var(--fs))*1rem);
-	--sp-raw-l: 150;	--sp-l:calc((var(--sp-raw-l)/var(--fs))*1em);--sp-rem-l:calc((var(--sp-raw-l)/var(--fs))*1rem);
-
-	--w: var(--w-m);
-	--w-s: 960px;
-	--w-m: 1280px;
-	--w-l: 1440px;
-	--w-px: calc(100% - var(--gutter) * 2);
-
-	--w-normal: var(--w-m);
-	--w-wide: var(--w-l);
-
-	--h-menu: 3em;
-
-	--gutter: var(--sp-rem);
-	--gutter-: calc(var(--gutter) * -1);
-
-	/* animations */
+	/*
+	 * Common Animation Defaults
+	 */
 	--ani-ease: ease;
 	--ani-speed: 0.3s;
 
-	/* colors: --<color>-<variant>-<brightness> */
+	/*
+	 * Common Colors
+	 *
+	 * Use the format: --<color>-<variant>-<brightness>
+	 * For example, --c-2-2 is a darkish version of color two.
+	 *
+	 * For opacity, use color-mix. For example, to produce
+	 * a 0.5 opaque lightish version of color two, use:
+	 * background: color-mix(in hsl, var(--c-2-7) 50%, transparent);
+	*/
 
 	/* drab (light, medium, dark) */
-	--c-raw-0-9: 0, 0%, 100%; /* white */ 			--c-0-9: hsl(var(--c-raw-0-9));
-	--c-raw-0-7: 0, 0%, 83%; /* lightgray */ 		--c-0-7: hsl(var(--c-raw-0-7));
-	--c-raw-0-5: 0, 0%, 50%; /* gray */ 			--c-0-5: hsl(var(--c-raw-0-5));
-	--c-raw-0-2: 0, 0%, 41%; /* dimgray */ 			--c-0-2: hsl(var(--c-raw-0-2));
-	--c-raw-0-0: 0, 0%, 0%; /* black */ 			--c-0-0: hsl(var(--c-raw-0-0));
+	--c-0-9: hsl(0, 0%, 100%); /* white */
+	--c-0-7: hsl(0, 0%, 83%); /* lightgray */
+	--c-0-5: hsl(0, 0%, 50%); /* gray */
+	--c-0-2: hsl(0, 0%, 41%); /* dimgray */
+	--c-0-0: hsl(0, 0%, 0%); /* black */
 
 	/* primary (light, medium, dark) */
-	--c-raw-1-7: 180, 100%, 94%; /* lightcyan */ 	--c-1-7: hsl(var(--c-raw-1-7));
-	--c-raw-1-5: 160, 100%, 75%; /* aquamarine */ 	--c-1-5: hsl(var(--c-raw-1-5));
-	--c-raw-1-2: 180, 100%, 25%; /* teal */ 		--c-1-2: hsl(var(--c-raw-1-2));
+	--c-1-7: hsl(180, 100%, 94%); /* lightcyan */
+	--c-1-5: hsl(160, 100%, 75%); /* aquamarine */
+	--c-1-2: hsl(180, 100%, 25%); /* teal */
 
 	/* secondary (light, medium, dark) */
-	--c-raw-2-7: 39, 77%, 83%; /* wheat */ 			--c-2-7: hsl(var(--c-raw-2-7));
-	--c-raw-2-5: 34, 44%, 69%; /* tan */ 			--c-2-5: hsl(var(--c-raw-2-5));
-	--c-raw-2-2: 25, 75%, 47%; /* chocolate */ 		--c-2-2: hsl(var(--c-raw-2-2));
+	--c-2-7: hsl(39, 77%, 83%); /* wheat */
+	--c-2-5: hsl(34, 44%, 69%); /* tan */
+	--c-2-2: hsl(25, 75%, 47%); /* chocolate */
 
 	/* alert colors */
 	--c-good: #0ac675;
 	--c-bad: #e24939;
 	--c-meh: #ff7f50;
-
 
 	/**
 	* Common breakpoints reference
@@ -78,19 +146,19 @@
 	*	--bp-wide: 		1280px;
 	*	--bp-xlarge: 	1080px;
 	*	--bp-large: 	960px;	// admin sidebar auto folds
-	*	--bp-medium: 	782px;	// adminbar goes big
+	*	--bp-medium: 	782px;	// admin bar goes big
 	*	--bp-small: 	600px;
 	*	--bp-mobile: 	480px;
 	*	--bp-zoomed-in: 280px;
 	*/
 
-	/* tablet */
+	/* tablet and smaller */
 	@media (max-width: 781px) {
-		--fs-h1: calc((54 / var(--fs)) * 1em);
+		--fs: 16;
 	}
 
-	/* phone */
+	/* phone and smaller */
 	@media (max-width: 479px) {
-		--fs-h1: calc((50 / var(--fs)) * 1em);
+		--fs: 14;
 	}
 }

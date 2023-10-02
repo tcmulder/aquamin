@@ -11,8 +11,8 @@
 		"styles": {
 			"spacing": {
 				"padding": {
-					"right": "var(--gutter)",
-					"left": "var(--gutter)"
+					"right": "var(--sp-s-rem)",
+					"left": "var(--sp-s-rem)"
 				}
 			}
 		},
@@ -20,22 +20,17 @@
 			"units": ["%", "px", "em", "rem", "vh", "vw"],
 			"spacingSizes": [
 				{
-					"size": "var(--sp-rem-s)",
-					"slug": "10",
+					"size": "var(--sp-s-rem)",
+					"slug": "20",
 					"name": "Small"
 				},
 				{
-					"size": "var(--gutter)",
-					"slug": "20",
-					"name": "Gutter"
-				},
-				{
-					"size": "clamp(var(--sp-rem), 6vw, var(--sp-rem-m))",
+					"size": "var(--sp-m-clamp)",
 					"slug": "50",
 					"name": "Medium"
 				},
 				{
-					"size": "clamp(var(--sp-rem-m), 15vw, var(--sp-rem-l))",
+					"size": "var(--sp-l-clamp)",
 					"slug": "80",
 					"name": "Large"
 				}
