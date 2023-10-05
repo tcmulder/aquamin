@@ -75,7 +75,7 @@ Aquamin includes some global features that apply across all components. Use thes
 ## Fonts
 You should add fonts to a `aquamin/assets/global/fonts/` folder, then add the `@font-face` definitions in the `aquamin/assets/global/fonts.css` file. Parcel will take care of hashing and including your font files within the `aquamin/dist/` directory, and aquamin will enqueue them.
 
-Or, you can directly enqueue any fonts from a CDN (like Google Fonts) within the `aquamin/includes/enqueue.php` file.
+Or, you can directly enqueue any fonts from a CDN (like Google Fonts) within the `aquamin/functions.php` file.
 
 ## Images
 
