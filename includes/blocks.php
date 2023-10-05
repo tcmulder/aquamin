@@ -19,41 +19,22 @@ add_action( 'after_setup_theme', function() {
 	remove_theme_support( 'core-block-patterns' );
 
 	// enable editor styles
+
+	/**
+	 * WARNING: this is the correct way to enqueue block editor styling, but
+	 * it's currently a known issue that it will fail if you use modern CSS like container
+	 * queries, which its parser doesn't understand. If you'd like to use such
+	 * CSS features, you'll need to enqueue another stylesheet via the enqueue_block_assets
+	 * hook (note that, since you're directly enqueueing it, styling isn't scoped to the
+	 * .editor-styles-wrapper container added by add_editor_style).
+	 * 
+	 * @see https://github.com/WordPress/gutenberg/issues/40444
+	 * @see https://developer.wordpress.org/reference/functions/add_editor_style/#comment-5332
+	 */
 	add_theme_support( 'editor-styles' );
-	add_editor_style( '/dist/bundles/editor-styles.bundle.css' );
+	add_editor_style( '/dist/bundles/editor.bundle.css' );
 
 } );
-
-/**
- * Enqueue back-end block editor content styling
- * 
- * Note: the recommended way to include these is via the
- * after_setup_theme hook, adding:
- * 
- * add_theme_support( 'editor-styles' );
- * add_editor_style( '/dist/bundles/editor.bundle.css' );
- *
- * We're manually enqueuing it here for now instead so we can use modern
- * CSS features without breaking back-end styles. It may be possible to
- * begin using editor-styles once the following issue is resolved:
- * 
- * @see https://github.com/WordPress/gutenberg/issues/40444
- * @see https://developer.wordpress.org/reference/functions/add_editor_style/#comment-5332
- */
-add_action( 'enqueue_block_assets', 'aquamin_editor_block_scripts' );
-function aquamin_editor_block_scripts() {
-
-	if ( is_admin() ) {
-		wp_enqueue_style(
-			'aquamin-editor-style',
-			get_template_directory_uri() . '/dist/bundles/editor.bundle.css',
-			array(),
-			aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/editor.bundle.css' ),
-			'screen'
-		);
-	}
-
-}
 
 /**
  * Enqueue front-end block scripts
