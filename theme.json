@@ -8,14 +8,6 @@
 			"contentSize": "var(--w-m)",
 			"wideSize": "var(--w-l)"
 		},
-		"styles": {
-			"spacing": {
-				"padding": {
-					"right": "var(--sp-s-rem)",
-					"left": "var(--sp-s-rem)"
-				}
-			}
-		},
 		"spacing": {
 			"units": ["%", "px", "em", "rem", "vh", "vw"],
 			"spacingSizes": [
@@ -114,6 +106,15 @@
 					"name": "White"
 				}
 			]
+		}
+	},
+	"styles": {
+		"spacing": {
+			"blockGap": "var(--sp-s-rem)",
+			"padding": {
+				"right": "var(--sp-s-rem)",
+				"left": "var(--sp-s-rem)"
+			}
 		}
 	}
 }

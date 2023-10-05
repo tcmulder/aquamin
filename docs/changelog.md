@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.1.1 - October 5 2023
+* Fix global padding and block gap position in theme.json so they apply properly.
+
 ## 6.1.0 - October 2 2023
 * Added variable font and spacing sizes using CSS's `clamp`.
 * Revamped CSS custom property names and added more documentation on each.
