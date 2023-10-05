@@ -86,7 +86,7 @@
 			bottom: 0;
 			height: 9999px;
 			position: absolute;
-			width: var(--sp-m-rem);
+			width: var(--wp--style--root--padding-left);
 		}
 		.size-check i:first-of-type {
 			right: 100%;
@@ -101,7 +101,7 @@
 			color: black !important;
 		}
 		.size-check__container {
-			padding: 0 var(--sp-m-rem);
+			padding: 0 var(--wp--style--root--padding-left);
 		}
 		.size-check__container--normal,
 		.size-check__container--normal div {
@@ -515,8 +515,8 @@
   <wp:post_id>10</wp:post_id>
   <wp:post_date>2022-10-04 00:03:42</wp:post_date>
   <wp:post_date_gmt>2022-10-04 00:03:42</wp:post_date_gmt>
-  <wp:post_modified>2022-10-04 00:03:42</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-04 00:03:42</wp:post_modified_gmt>
+  <wp:post_modified>2023-10-05 16:50:46</wp:post_modified>
+  <wp:post_modified_gmt>2023-10-05 16:50:46</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>alignment</wp:post_name>
