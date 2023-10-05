@@ -87,22 +87,22 @@
 			"palette": [
 				{
 					"slug": "1-5",
-					"color": "aquamarine",
+					"color": "var(--c-1-5, aquamarine)",
 					"name": "Primary"
 				},
 				{
 					"slug": "2-5",
-					"color": "tan",
+					"color": "var(--c-2-5, tan)",
 					"name": "Secondary"
 				},
 				{
 					"slug": "0-0",
-					"color": "#000",
+					"color": "var(--c-0-0, #000)",
 					"name": "Black"
 				},
 				{
 					"slug": "0-9",
-					"color": "#fff",
+					"color": "var(--c-0-9, #fff)",
 					"name": "White"
 				}
 			]
