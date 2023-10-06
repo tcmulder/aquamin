@@ -1,8 +1,0 @@
-/**
- * Apply root-level styling for the editor
- */
-.is-root-container {
-	--wp--style--block-gap: var(--sp-m-rem);
-	--wp--style--root--padding-right: var(--sp-m-rem);
-	--wp--style--root--padding-left: var(--sp-m-rem);
-}
