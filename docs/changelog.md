@@ -2,7 +2,7 @@
 
 ## 6.1.1 - October 5 2023
 * Fix global padding and block gap position in theme.json so they apply properly.
-* Reverted editor styling approach from 6.0.0 to again use add_editor_style() (otherwise classes aren't scoped by .editor-styles-wrapper and wreak havoc on the outer block editor interface).
+* Reverted editor styling approach from 6.0.0 to again use add_editor_style() (otherwise classes aren't scoped by .editor-styles-wrapper and wreak havoc on the outer block editor interface). Note that it appears a PR is in the works to fix this issue.
 
 ## 6.1.0 - October 2 2023
 * Added variable font and spacing sizes using CSS's `clamp`.
