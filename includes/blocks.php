@@ -19,18 +19,6 @@ add_action( 'after_setup_theme', function() {
 	remove_theme_support( 'core-block-patterns' );
 
 	// enable editor styles
-
-	/**
-	 * WARNING: this is the correct way to enqueue block editor styling, but
-	 * it's currently a known issue that it will fail if you use modern CSS like container
-	 * queries, which its parser doesn't understand. If you'd like to use such
-	 * CSS features, you'll need to enqueue another stylesheet via the enqueue_block_assets
-	 * hook (note that, since you're directly enqueueing it, styling isn't scoped to the
-	 * .editor-styles-wrapper container added by add_editor_style).
-	 * 
-	 * @see https://github.com/WordPress/gutenberg/issues/40444
-	 * @see https://developer.wordpress.org/reference/functions/add_editor_style/#comment-5332
-	 */
 	add_theme_support( 'editor-styles' );
 	add_editor_style( '/dist/bundles/editor.bundle.css' );
 
