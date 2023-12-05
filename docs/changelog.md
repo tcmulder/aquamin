@@ -6,6 +6,7 @@
 * Fix delegated animations issue that caused them to apply even with no animation options chosen.
 * Prefix wp cli files to make them easier to identify as cli scripts.
 * Fix Grid block preventing anything but paragraph blocks being entered.
+* Fix bug with block template's inner block's use of useInnerBlockProps.
 
 ## 6.1.1 - October 5 2023
 * Fix global padding and block gap position in theme.json so they apply properly.
