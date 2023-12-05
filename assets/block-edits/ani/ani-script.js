@@ -27,11 +27,11 @@ aniBackground('.ani--foreground', true);
 ani([
 	// delegate some animations (i.e. Gutenberg applies classes to parent and we'll move them to an appropriate child)
 	...aniDelegate([
-		{ parent: '.ani-parent', child: '.ani-child' },
+		{ parent: '.ani-parent.ani', child: '.ani-child' },
 		// eslint-disable-next-line prettier/prettier
-		{ parent: '.wp-block-cover:not(.ani--parallax)', child: '.wp-block-cover__image-background' },
-		{ parent: '.wp-block-columns', child: '.wp-block-column' },
-		{ parent: '.wp-block-buttons', child: '.wp-block-button' },
+		{ parent: '.wp-block-cover.ani:not(.ani--parallax)', child: '.wp-block-cover__image-background' },
+		{ parent: '.wp-block-columns.ani', child: '.wp-block-column' },
+		{ parent: '.wp-block-buttons.ani', child: '.wp-block-button' },
 	]),
 	// must come second so aniDelegate can move .ani class to children and off of the parent
 	...document.querySelectorAll('.ani'),
