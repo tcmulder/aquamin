@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.0.0 - December 6 2023
+* Switch to exclusively using block.json for registering blocks (eliminates need to load index.php for each block).
+
 ## 6.1.2 - December 6 2023
 * Remove custom block patterns feature (this is now supported by core WordPress).
 * Move synced pattern to Appearance > Synced Patterns to clean up the sidebar.
