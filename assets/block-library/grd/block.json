@@ -33,5 +33,8 @@
 			"padding": true,
 			"blockGap": ["horizontal", "vertical"]
 		}
-	}
+	},
+	"style": ["file:../../../dist/block-library/grd/grd-style.css"],
+	"viewScript": "file:../../../dist/block-library/grd/grd-script.js",
+	"editorScript": "file:../../../dist/block-library/grd/index.js"
 }

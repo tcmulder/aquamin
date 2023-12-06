@@ -12,86 +12,72 @@
  */
 add_action( 'after_setup_theme', function() {
 
-	// make embeds preserve aspect ratio
-	add_theme_support( 'responsive-embeds' );
-
-	// get rid of core patterns
-	remove_theme_support( 'core-block-patterns' );
-
 	// enable editor styles
 	add_theme_support( 'editor-styles' );
 	add_editor_style( '/dist/bundles/editor.bundle.css' );
 
+	// get rid of core patterns
+	remove_theme_support( 'core-block-patterns' );
+
 } );
 
 /**
- * Enqueue front-end block scripts
- * 
- * Note: we do this via wp_enqueue_scripts rather than the usual
- * enqueue_block_assets so these only load on the front-end. We
- * include them on the back-end via @import "./*style.css";
- * statements in each block's editor.css file; that way we have the
- * option to remove the @import and implement custom editor styling.
- */
-add_action( 'wp_enqueue_scripts', 'aquamin_block_scripts' );
-function aquamin_block_scripts() {
-
-	wp_enqueue_style(
-		'aquamin-block-style',
-		get_template_directory_uri() . '/dist/bundles/blocks.bundle.css',
-		array(),
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/blocks.bundle.css' ),
-		'screen'
-	);
-	wp_enqueue_script(
-		'aquamin-block-scripts',
-		get_template_directory_uri() . '/dist/bundles/blocks.bundle.js',
-		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/blocks.bundle.js' ),
-		true
-	);
-
-}
-
-/**
- * Enqueue back-end-only block editor scripts
- */
-add_action( 'enqueue_block_editor_assets', 'aquamin_editor_scripts' );
-function aquamin_editor_scripts() {
-
-	wp_enqueue_script(
-		'aquamin-editor-scripts',
-		get_template_directory_uri() . '/dist/bundles/editor.bundle.js',
-		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/editor.bundle.js' ),
-		true
-	);
-	wp_localize_script( 'aquamin-editor-scripts', 'aquaminLocalizedBlockEditor', array(
-		'restUrl' => rtrim( get_rest_url(), '/' ),
-		'siteUrl' => rtrim( get_home_url(), '/' ),
-	) );
-
-	// add browsersync helper (enables block editor CSS injecting within the iframe)
-	wp_enqueue_script(
-		'aquamin-browsersync',
-		get_template_directory_uri() . '/dist/build/browsersync.bundle.js',
-		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/build/browsersync.bundle.js' ),
-		true
-	);
-
-}
-
-/**
- * Register all blocks in the block library
+ * Register all blocks in the block library based on their block.json files
  */
 add_action( 'init', function() {
-	$blocks = glob( AQUAMIN_ASSETS . '/block-library/*/index.php' );
-	if ( $blocks ) {
-		foreach ( $blocks as $block ) {
-			require_once $block;
+
+	// loop through all files (this is slightly faster than glob matching block.json initially)
+	$dir_iterator = new RecursiveDirectoryIterator( AQUAMIN_ASSETS . '/block-library' );
+	$iterator = new RecursiveIteratorIterator( $dir_iterator, RecursiveIteratorIterator::SELF_FIRST );
+	foreach ( $iterator as $file ) {
+		
+		// if this is a block.json file
+		if ( basename( $file ) === 'block.json' ) {
+			
+			// get info for this block
+			$block_json_path = $file->getPathname();
+			$attr = array();
+			$json = json_decode( file_get_contents( $block_json_path ) );
+			
+			// handle scripts (styles work fine but scripts only work in a plugin)
+			// @see https://core.trac.wordpress.org/ticket/54647 (which does not work as advertised)
+			$scripts = array(
+				array( 'script', 'script_handles' ),
+				array( 'editorScript', 'editor_script_handles' ),
+				array( 'viewScript', 'view_script_handles' )
+			);
+			foreach( $scripts as $script ) {
+				$assets = $json->{ $script[0] } ?? false;
+				if ( $assets ) {
+					if ( ! is_array( $assets ) ) {
+						$assets = array( $assets );
+					}
+					foreach( $assets as $asset ) {
+						if ( str_starts_with( $asset, 'file:' ) ) {
+							$asset_paths = explode( '../../../dist/', $asset );
+							$asset_name = preg_replace( '/-|\//', '_', sanitize_title( $json->name ) ) . '_' . $script[1];
+							if ( $asset_paths[1] ?? false ) {
+								wp_register_script(
+									$asset_name,
+									get_template_directory_uri() . '/dist/' . $asset_paths[1],
+									null,
+									'1.0',
+									true
+								);
+								$attr[ $script[1] ] = array( $asset_name );
+							}
+						}
+					}
+				}
+			}
+			
+			// register the block from block.json
+			register_block_type( $block_json_path, $attr );
+
 		}
+
 	}
+
 } );
 
 /**
@@ -102,8 +88,8 @@ add_action( 'init', function() {
  * these hooks outside the block's directory within functions.php).
  */
 $hook_paths = array(
-	AQUAMIN_ASSETS . '/block-library/*/hooks.php',
-	AQUAMIN_ASSETS . '/block-edits/*/hooks.php'
+	AQUAMIN_ASSETS . '/block-library/*/*hooks.php',
+	AQUAMIN_ASSETS . '/block-edits/*/*hooks.php'
 );
 foreach ( $hook_paths as $path ) {
 	$hooks = glob( $path );
@@ -160,6 +146,23 @@ add_action( 'admin_menu', function() {
 } );
 
 /**
+ * Enqueue back-end-only block editor scripts
+ */
+add_action( 'enqueue_block_editor_assets', 'aquamin_editor_scripts' );
+function aquamin_editor_scripts() {
+
+	// add browsersync helper (enables block editor CSS injecting within the iframe)
+	wp_enqueue_script(
+		'aquamin-browsersync',
+		get_template_directory_uri() . '/dist/build/browsersync.bundle.js',
+		false,
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/build/browsersync.bundle.js' ),
+		true
+	);
+
+}
+
+/**
  * Apply ugly hack to set correct root editor container classes
  * 
  * Setting settings.useRootPaddingAwareAlignments to true and settings.layout.type to
@@ -169,8 +172,8 @@ add_action( 'admin_menu', function() {
  * 
  * @see https://stackoverflow.com/questions/75912533/has-global-padding-not-added-to-is-root-container-in-wordpress
  */
-add_action('admin_footer-post.php', 'aquamin_root_editor_container_fix'); // Fired on post edit page
-add_action('admin_footer-post-new.php', 'aquamin_root_editor_container_fix'); // Fired on add new post page
+add_action( 'admin_footer-post.php', 'aquamin_root_editor_container_fix' ); // Fired on post edit page
+add_action( 'admin_footer-post-new.php', 'aquamin_root_editor_container_fix' ); // Fired on add new post page
 function aquamin_root_editor_container_fix() {
     echo "<script>
 		function fixRoot() {

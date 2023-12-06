@@ -71,6 +71,11 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 			'head-menu' => esc_html__( 'Header Menu', 'aquamin' ),
 		) );
 
+		/**
+		 * Make embeds preserve aspect ratio
+		 */
+		add_theme_support( 'responsive-embeds' );
+
 		/*
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
