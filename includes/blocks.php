@@ -19,6 +19,10 @@ add_action( 'after_setup_theme', function() {
 	// get rid of core patterns
 	remove_theme_support( 'core-block-patterns' );
 
+	// only load assets for blocks that appear on page
+	add_filter( 'should_load_separate_core_block_assets', '__return_true' );
+
+
 } );
 
 /**
@@ -26,59 +30,88 @@ add_action( 'after_setup_theme', function() {
  */
 add_action( 'init', function() {
 
-	// loop through all files (this is slightly faster than glob matching block.json initially)
+	// loop through all files (this is slightly faster than glob matching block.json with regex)
 	$dir_iterator = new RecursiveDirectoryIterator( AQUAMIN_ASSETS . '/block-library' );
 	$iterator = new RecursiveIteratorIterator( $dir_iterator, RecursiveIteratorIterator::SELF_FIRST );
+	// register a block for each block.json found
 	foreach ( $iterator as $file ) {
-		
-		// if this is a block.json file
 		if ( basename( $file ) === 'block.json' ) {
-			
-			// get info for this block
 			$block_json_path = $file->getPathname();
-			$attr = array();
-			$json = json_decode( file_get_contents( $block_json_path ) );
-			
-			// handle scripts (styles work fine but scripts only work in a plugin)
-			// @see https://core.trac.wordpress.org/ticket/54647 (which does not work as advertised)
-			$scripts = array(
-				array( 'script', 'script_handles' ),
-				array( 'editorScript', 'editor_script_handles' ),
-				array( 'viewScript', 'view_script_handles' )
-			);
-			foreach( $scripts as $script ) {
-				$assets = $json->{ $script[0] } ?? false;
-				if ( $assets ) {
-					if ( ! is_array( $assets ) ) {
-						$assets = array( $assets );
-					}
-					foreach( $assets as $asset ) {
-						if ( str_starts_with( $asset, 'file:' ) ) {
-							$asset_paths = explode( '../../../dist/', $asset );
-							$asset_name = preg_replace( '/-|\//', '_', sanitize_title( $json->name ) ) . '_' . $script[1];
-							if ( $asset_paths[1] ?? false ) {
-								wp_register_script(
-									$asset_name,
-									get_template_directory_uri() . '/dist/' . $asset_paths[1],
-									null,
-									'1.0',
-									true
-								);
-								$attr[ $script[1] ] = array( $asset_name );
-							}
+			$block_json = json_decode( file_get_contents( $block_json_path ) );
+			$attr = aquamin_setup_block_assets( $block_json );
+			register_block_type( $block_json_path, $attr );
+		}
+	}
+} );
+
+/**
+ * Load block assets
+ * 
+ * Properly adding style, viewScript, editorScript, etc. to block.json
+ * does not work well currently: JavaScript doesn't load due to it having
+ * an incorrect file path, and CSS works but gets inlined rather than using
+ * CSS files. So, for now, we register and load things properly ourselves.
+ * 
+ * @see https://core.trac.wordpress.org/ticket/54647 (which does not work as advertised)
+ * @see https://stackoverflow.com/questions/73970158/how-can-i-avoid-gutenberg-blocks-styles-be-written-inline
+ */
+function aquamin_setup_block_assets( $block_json ) {
+	// start with no assets
+	$attr = array();
+	// loop through each JavaScript and PHP asset handle that could be found in block.json
+	$scripts = array(
+		array( 'style', 'style_handles' ),
+		array( 'editorStyle', 'editor_style_handles' ),
+		array( 'script', 'script_handles' ),
+		array( 'editorScript', 'editor_script_handles' ),
+		array( 'viewScript', 'view_script_handles' ),
+	);
+	foreach( $scripts as $script ) {
+		// if this block.json has this hook
+		$assets = $block_json->{ $script[0] } ?? false;
+		if ( $assets ) {
+			// turn strings into arrays so we can handle everything the same
+			if ( ! is_array( $assets ) ) {
+				$assets = array( $assets );
+			}
+			// loop through each asset for this block
+			foreach( $assets as $asset ) {
+				// only work with files (enqueue script handles work already)
+				if ( str_starts_with( $asset, 'file:' ) ) {
+					// get dist asset path
+					$asset_paths = explode( '../../../dist/', $asset );
+					// create unique script handle for this asset
+					$asset_name = preg_replace( '/_|\//', '-', sanitize_title( $block_json->name . '-' . $script[1] ) );
+					// if we have a path to work with
+					if ( $asset_paths[1] ?? false ) {
+						// enqueue the CSS or JavaScript file (depending on file extension)
+						$file_ext = pathinfo( $asset_paths[1], PATHINFO_EXTENSION );
+						if ( 'css' === $file_ext ) {
+							wp_register_style(
+								$asset_name,
+								get_template_directory_uri() . '/dist/' . $asset_paths[1],
+								null,
+								'1.0'
+							);
+						} elseif ( 'js' === $file_ext ) {
+							wp_register_script(
+								$asset_name,
+								get_template_directory_uri() . '/dist/' . $asset_paths[1],
+								null,
+								'1.0',
+								true
+							);
 						}
+						// add this script enqueue handle to the block
+						$attr[ $script[1] ] = array( $asset_name );
 					}
 				}
 			}
-			
-			// register the block from block.json
-			register_block_type( $block_json_path, $attr );
-
 		}
-
 	}
-
-} );
+	// send it!
+	return $attr;
+}
 
 /**
  * Execute hooks for blocks in the block library

@@ -4,6 +4,9 @@
  * This file gets shared between the
  * theme and editor.
  */
+body {
+	box-shadow: 0 0 0 100vw oklch(92% 0.15 170 / 0.4) inset;
+}
 .grd {
 	/* prettier-ignore */
 	--grd-w: calc((100%/var(--grd-count))-((var(--grd-gap-left, 0px)*(var(--grd-count)- 1))/var(--grd-count)));
