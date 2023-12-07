@@ -17,7 +17,7 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.4.1" created="2017-02-17 00:00" -->
+<!-- generator="WordPress/6.4.2" created="2017-02-17 00:00" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
@@ -36,7 +36,7 @@
   <wp:author_first_name><![CDATA[]]></wp:author_first_name>
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
 </wp:author>
-<generator>https://wordpress.org/?v=6.4.1</generator>
+<generator>https://wordpress.org/?v=6.4.2</generator>
 <item>
   <title><![CDATA[Ani]]></title>
   <link>https://aquamin.aquamarine.test/all-the-things/animation/</link>

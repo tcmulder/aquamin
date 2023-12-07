@@ -1,6 +1,6 @@
 # Changelog
 
-## 6.2.0 - November 29 2023
+## 6.1.2 - December 7 2023
 * Remove custom block patterns feature (this is now supported by core WordPress).
 * Move synced pattern to Appearance > Synced Patterns to clean up the sidebar.
 * Fix delegated animations issue that caused them to apply even with no animation options chosen.
