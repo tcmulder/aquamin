@@ -55,7 +55,6 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 	const templates = {
 		cell: {
 			template: [['core/paragraph']],
-			allowedBlocks: ['core/paragraph'],
 		},
 		image: {
 			template: [['core/image']],

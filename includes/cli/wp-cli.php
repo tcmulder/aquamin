@@ -27,11 +27,11 @@ define( 'AQUAMIN_WP_CLI_LIB', 'lib/' );
 /**
  * Include related files.
  */
-require_once AQUAMIN_WP_CLI_LIB . 'util.php';
-require_once AQUAMIN_WP_CLI_LIB . 'commands/setup.php';
-require_once AQUAMIN_WP_CLI_LIB . 'commands/block.php';
-require_once AQUAMIN_WP_CLI_LIB . 'commands/component.php';
-require_once AQUAMIN_WP_CLI_LIB . 'register.php';
+require_once AQUAMIN_WP_CLI_LIB . 'wp-cli-util.php';
+require_once AQUAMIN_WP_CLI_LIB . 'commands/wp-cli-setup.php';
+require_once AQUAMIN_WP_CLI_LIB . 'commands/wp-cli-block.php';
+require_once AQUAMIN_WP_CLI_LIB . 'commands/wp-cli-component.php';
+require_once AQUAMIN_WP_CLI_LIB . 'wp-cli-register.php';
 
 /**
  * Initialize registration of wp-cli commands.

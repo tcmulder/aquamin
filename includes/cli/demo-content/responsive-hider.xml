@@ -17,7 +17,7 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.3.1" created="2017-02-17 00:00" -->
+<!-- generator="WordPress/6.4.2" created="2017-02-17 00:00" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
@@ -36,7 +36,7 @@
   <wp:author_first_name><![CDATA[]]></wp:author_first_name>
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
 </wp:author>
-<generator>https://wordpress.org/?v=6.3.1</generator>
+<generator>https://wordpress.org/?v=6.4.2</generator>
 <item>
   <title><![CDATA[Responsive Hider]]></title>
   <link>https://aquamin.aquamarine.test/all-the-things/responsive-hider/</link>
@@ -44,45 +44,67 @@
   <dc:creator/>
   <guid isPermaLink="false">https://aquamin.aquamarine.test/?post_type=all-the-things&amp;p=200</guid>
   <description/>
-  <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p class="">Hidden at:</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|20","right":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"layout":{"type":"constrained"},"aquaminClassNameHide":[{"value":"hide-bp-md-up"}]} -->
-<div class="wp-block-group hide-bp-md-up" style="padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
-<p class="">Desktop+</p>
+  <content:encoded><![CDATA[<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"0","left":"0"}}}} -->
+<div class="wp-block-columns"><!-- wp:column {"style":{"border":{"width":"1px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}},"aquaminClassNameHide":[{"value":"hide-bp-lg"},{"value":"hide-bp-md"},{"value":"hide-bp-sm"}]} -->
+<div class="wp-block-column hide-bp-lg hide-bp-md hide-bp-sm" style="border-width:1px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
+<p class="">is Desktop+</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:group -->
+<!-- /wp:column -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|20","right":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"layout":{"type":"constrained"},"aquaminClassNameHide":[{"value":"hide-bp-lg"}]} -->
-<div class="wp-block-group hide-bp-lg" style="padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
-<p class="">Laptop</p>
+<!-- wp:column {"style":{"border":{"width":"1px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}},"backgroundColor":"0-0","textColor":"0-9","aquaminClassNameHide":[{"value":"hide-bp-md-up"}]} -->
+<div class="wp-block-column has-0-9-color has-0-0-background-color has-text-color has-background hide-bp-md-up" style="border-width:1px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
+<p class="">not Desktop+</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:group -->
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|20","right":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"layout":{"type":"constrained"},"aquaminClassNameHide":[{"value":"hide-bp-md"}]} -->
-<div class="wp-block-group hide-bp-md" style="padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
-<p class="">Tablet</p>
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"0","left":"0"}}}} -->
+<div class="wp-block-columns"><!-- wp:column {"style":{"border":{"width":"1px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}},"aquaminClassNameHide":[{"value":"hide-bp-sm"},{"value":"hide-bp-md-up"},{"value":"hide-bp-md"}]} -->
+<div class="wp-block-column hide-bp-sm hide-bp-md-up hide-bp-md" style="border-width:1px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
+<p class="">is laptop</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:group -->
+<!-- /wp:column -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|20","right":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"layout":{"type":"constrained"},"aquaminClassNameHide":[{"value":"hide-bp-sm"}]} -->
-<div class="wp-block-group hide-bp-sm" style="padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
-<p class="">Phone</p>
+<!-- wp:column {"style":{"border":{"width":"1px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}},"backgroundColor":"0-0","textColor":"0-9","aquaminClassNameHide":[{"value":"hide-bp-lg"}]} -->
+<div class="wp-block-column has-0-9-color has-0-0-background-color has-text-color has-background hide-bp-lg" style="border-width:1px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
+<p class="">not laptop</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:group -->
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|20","right":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"layout":{"type":"constrained"},"aquaminClassNameHide":[{"value":"hide-bp-md"},{"value":"hide-bp-lg"},{"value":"hide-bp-md-up"}]} -->
-<div class="wp-block-group hide-bp-md hide-bp-lg hide-bp-md-up" style="padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
-<p class="">All but Phone</p>
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"0","left":"0"}}}} -->
+<div class="wp-block-columns"><!-- wp:column {"style":{"border":{"width":"1px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}},"aquaminClassNameHide":[{"value":"hide-bp-sm"},{"value":"hide-bp-md-up"},{"value":"hide-bp-lg"}]} -->
+<div class="wp-block-column hide-bp-sm hide-bp-md-up hide-bp-lg" style="border-width:1px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
+<p class="">is tablet</p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:group -->]]></content:encoded>
+<!-- /wp:column -->
+
+<!-- wp:column {"style":{"border":{"width":"1px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}},"backgroundColor":"0-0","textColor":"0-9","aquaminClassNameHide":[{"value":"hide-bp-md"}]} -->
+<div class="wp-block-column has-0-9-color has-0-0-background-color has-text-color has-background hide-bp-md" style="border-width:1px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
+<p class="">not tablet</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"0","left":"0"}}}} -->
+<div class="wp-block-columns"><!-- wp:column {"style":{"border":{"width":"1px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}},"aquaminClassNameHide":[{"value":"hide-bp-md-up"},{"value":"hide-bp-md"},{"value":"hide-bp-lg"}]} -->
+<div class="wp-block-column hide-bp-md-up hide-bp-md hide-bp-lg" style="border-width:1px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
+<p class="">is phone</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"style":{"border":{"width":"1px"},"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}},"backgroundColor":"0-0","textColor":"0-9","aquaminClassNameHide":[{"value":"hide-bp-sm"}]} -->
+<div class="wp-block-column has-0-9-color has-0-0-background-color has-text-color has-background hide-bp-sm" style="border-width:1px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:paragraph -->
+<p class="">not phone</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>200</wp:post_id>
   <wp:post_date>2023-07-12 22:24:25</wp:post_date>
   <wp:post_date_gmt>2023-07-12 22:24:25</wp:post_date_gmt>
-  <wp:post_modified>2023-07-12 22:24:25</wp:post_modified>
-  <wp:post_modified_gmt>2023-07-12 22:24:25</wp:post_modified_gmt>
+  <wp:post_modified>2023-12-01 22:36:01</wp:post_modified>
+  <wp:post_modified_gmt>2023-12-01 22:36:01</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>responsive-hider</wp:post_name>

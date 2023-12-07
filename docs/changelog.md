@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.1.2 - December 7 2023
+* Remove custom block patterns feature (this is now supported by core WordPress).
+* Move synced pattern to Appearance > Synced Patterns to clean up the sidebar.
+* Fix delegated animations issue that caused them to apply even with no animation options chosen.
+* Prefix wp cli files to make them easier to identify as cli scripts.
+* Fix Grid block preventing anything but paragraph blocks being entered.
+* Fix bug with block template's inner block's use of useInnerBlockProps.
+
 ## 6.1.1 - October 5 2023
 * Fix global padding and block gap position in theme.json so they apply properly.
 * Reverted editor styling approach from 6.0.0 to again use add_editor_style() (otherwise classes aren't scoped by .editor-styles-wrapper and wreak havoc on the outer block editor interface). Note that it appears a PR is in the works to fix this issue.

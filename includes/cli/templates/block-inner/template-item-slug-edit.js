@@ -30,13 +30,23 @@ const TemplateItemNamespaceEdit = ({
 	});
 
 	// apply wrapper props to outermost block element so it can contain inner blocks
-	const innerBlocksProps = useInnerBlocksProps({
-		template: [['core/paragraph']],
+	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+		template: [
+			[
+				'core/paragraph',
+				{
+					placeholder: __(
+						'template-item-title Inner Blocks',
+						'aquamin'
+					),
+				},
+			],
+		],
 	});
 
 	// output the block's html
 	return (
-		<div {...blockProps}>
+		<div {...innerBlocksProps}>
 			{/* replace this demo code with your own: */}
 			<RichText
 				tagName="i"
