@@ -20,8 +20,7 @@ const { registerBlockType } = wp.blocks;
  * Register block
  */
 registerBlockType(block.name, {
-	title: __('template-item-title', 'aquamin'),
-	description: __('template-item-desc', 'aquamin'),
+	...block,
 	icon: Icon,
 	edit,
 	save,

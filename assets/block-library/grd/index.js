@@ -25,8 +25,7 @@ const { registerBlockType } = wp.blocks;
  * Register block
  */
 registerBlockType(block.name, {
-	title: __('Grid', 'aquamin'),
-	description: __('Flexible grid layout.', 'aquamin'),
+	...block,
 	icon: Icon,
 	edit,
 	save,

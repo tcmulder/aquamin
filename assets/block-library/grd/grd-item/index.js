@@ -25,10 +25,8 @@ const { registerBlockType } = wp.blocks;
  * Register block
  */
 registerBlockType(block.name, {
-	title: __('Grid Item', 'aquamin'),
-	description: __('Item within a grid.', 'aquamin'),
+	...block,
 	icon: Icon,
 	edit,
 	save,
-	parent: ['aquamin/grd'],
 });
