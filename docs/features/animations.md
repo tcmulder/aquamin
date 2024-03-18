@@ -6,7 +6,7 @@ If you ran the `wp aquamin setup` command, your pattern library will contain a p
 
 ## Block Animations
 
-Aquamin adds animation options to many of the WordPress core blocks. If you would like to add your own, you can do so by adding your block's name to the `affectedBlocks` array within the `aquamin/assets/block-edits/ani/index.js` file. You can also eliminate core blocks from this list if you do not want them to support animations.
+Aquamin adds animation options to many of the WordPress core blocks. If you would like to add your own, you can do so by adding your block's name to the `affectedBlocks` array within the `aquamin/assets/block-editor/ani/index.js` file. You can also eliminate core blocks from this list if you do not want them to support animations.
 
 ## Viewport-Based
 
@@ -28,7 +28,7 @@ While not nearly as robust as something like [Greensock](https://greensock.com/ 
 
 Under the hood, a custom property called `--ani-plx` is simply going from 1 to 0 as elements with a class of `ani--parallax` enter then leave the viewport (i.e. `--ani-plx` is `1` as soon as the element enters the viewport, `0.5` once it has scrolled to the center of the viewport, and `0` once it has been fully scrolled out of view again). So, you can use it for a wide variety of other animations using calc() functions.
 
-You can also pass in `false` as a 2nd argument within the `aquamin/assets/block-edits/ani/ani-script.js` to base the scroll on the _window_ height rather than the _element_ height; this is useful in some scenarios, like when you want multiple animations to occur at the same speed even though the elements themselves vary in height.
+You can also pass in `false` as a 2nd argument within the `aquamin/assets/block-editor/ani/ani-script.js` to base the scroll on the _window_ height rather than the _element_ height; this is useful in some scenarios, like when you want multiple animations to occur at the same speed even though the elements themselves vary in height.
 
 ## Background-Based
 
@@ -50,4 +50,4 @@ In addition to the built-in animations, you can add your own via the `--ani-cust
 This would cause `.thing` elements outside of the viewport that are using the built in blur and scale animations to also be skewed and shadowed; then, when scrolled into view, `.thing` elements would animate to their non-skewed/scaled/blurred/shadowed state in the viewport.
 
 ## Opt Out of Animations
-Aquamin's animations are lightweight and easy to use, but maybe they don't suit your needs. If you don't want to use them at all, simply delete the entire `aquamin/assets/block-edits/ani` directory. Though a little more involved, you can also remove specific animation features by removing the related files, imports, and function calls within that directory.
+Aquamin's animations are lightweight and easy to use, but maybe they don't suit your needs. If you don't want to use them at all, simply delete the entire `aquamin/assets/block-editor/ani` directory. Though a little more involved, you can also remove specific animation features by removing the related files, imports, and function calls within that directory.

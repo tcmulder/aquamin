@@ -2,7 +2,7 @@
 /**
  * Global block styling and WordPress overrides.
  */
-import '../block-edits/global/blocks.css';
+import '../block-editor/global/blocks.css';
 
 /**
  * Global UI component styling.
@@ -12,5 +12,5 @@ import '../ui/*/*style.css';
 /**
  * Overrides to existing blocks.
  */
-import '../block-edits/*/*script.js';
-import '../block-edits/*/*style.css';
+import '../block-editor/*/*script.js';
+import '../block-editor/*/*style.css';

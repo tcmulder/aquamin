@@ -45,7 +45,7 @@
   <guid isPermaLink="false">https://aquamin.aquamarine.test/?post_type=all-the-things&amp;p=26</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p class="">Here are common animations. Apply to your own blocks via <code>assets/block-edits/ani/index.js@affectedBlocks</code>.</p>
+<p class="">Here are common animations. Apply to your own blocks via <code>assets/block-editor/ani/index.js@affectedBlocks</code>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:cover {"dimRatio":10,"overlayColor":"0-000","minHeight":100,"minHeightUnit":"vh","isDark":false,"align":"full"} -->

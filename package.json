@@ -9,7 +9,7 @@
 	},
 	"config": {
 		"lint_paths": "./assets",
-		"build_paths": "./assets/*/*.bundle.js ./assets/*/*.bundle.css ./assets/block-library/*/*script.js ./assets/block-library/*/*style.css",
+		"build_paths": "./assets/*/*.bundle.js ./assets/*/*.bundle.css ./assets/block-library/*/*script.js ./assets/block-library/*/index.js ./assets/block-library/*/*style.css",
 		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
 	},
 	"scripts": {

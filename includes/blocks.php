@@ -49,8 +49,8 @@ add_action( 'init', function() {
  * 
  * Properly adding style, viewScript, editorScript, etc. to block.json
  * does not work well currently: JavaScript doesn't load due to it having
- * an incorrect file path, and CSS works but gets inlined rather than using
- * CSS files. So, for now, we register and load things properly ourselves.
+ * an incorrect (plugin) file path, and CSS works but gets inlined rather than
+ * using .css files. So, for now, we register and load things properly ourselves.
  * 
  * @see https://core.trac.wordpress.org/ticket/54647 (which does not work as advertised)
  * @see https://stackoverflow.com/questions/73970158/how-can-i-avoid-gutenberg-blocks-styles-be-written-inline
@@ -122,7 +122,7 @@ function aquamin_setup_block_assets( $block_json ) {
  */
 $hook_paths = array(
 	AQUAMIN_ASSETS . '/block-library/*/*hooks.php',
-	AQUAMIN_ASSETS . '/block-edits/*/*hooks.php'
+	AQUAMIN_ASSETS . '/block-editor/*/*hooks.php'
 );
 foreach ( $hook_paths as $path ) {
 	$hooks = glob( $path );
@@ -190,6 +190,15 @@ function aquamin_editor_scripts() {
 		get_template_directory_uri() . '/dist/build/browsersync.bundle.js',
 		false,
 		aquamin_cache_break( get_stylesheet_directory() .'/dist/build/browsersync.bundle.js' ),
+		true
+	);
+
+	// add editor-related scripts like global block modifications
+	wp_enqueue_script(
+		'aquamin-editor',
+		get_template_directory_uri() . '/dist/bundles/editor.bundle.js',
+		false,
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/editor.bundle.js' ),
 		true
 	);
 

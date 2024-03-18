@@ -59,7 +59,7 @@ Each block has its own block directory within the `aquamin/assets/block-library/
 
 ## Editing Core Blocks
 
-You can modify core blocks using the `aquamin/assets/block-edits/` directory. Aquamin comes with a few already, including block animations, column layout enhancements, and show/hide responsive container edits. Feel free to duplicate and reuse any of these for your own purposes, or remove those you don't want.
+You can modify core blocks using the `aquamin/assets/block-editor/` directory. Aquamin comes with a few modifications already, including block animations, column layout enhancements, and show/hide responsive container edits. Feel free to duplicate and reuse any of these for your own purposes, or remove those you don't want.
 
 ?> While aquamin only loads custom block front-end styles and scripts on posts that use those particular blocks (in order to optimize performance), it loads edits within this directory globally to ensure your edits apply to core blocks wherever they may appear.
 
@@ -69,7 +69,7 @@ If your block requires PHP hooks, rather than adding them to the theme's `functi
 
 ## Block Utilities
 
-You'll find some helpful, reusable utilities and UI components under `aquamin/assets/util` and `aquamin/assets/block-ui`, respectively. Check out the comments at the top of these files for usage information. You can add your own scripts into these directories as well, or ignore them if they're not helpful to you (since anything you don't use won't get bundled into the production build anyway).
+You'll find some helpful, reusable utilities and UI components under `aquamin/assets/util` and `aquamin/assets/util/block-ui`, respectively. Check out the comments at the top of these files for usage information. You can add your own scripts into these directories as well, or ignore them if they're not helpful to you (since anything you don't use won't get bundled into the production build anyway).
 
 ## Built In Blocks
 
