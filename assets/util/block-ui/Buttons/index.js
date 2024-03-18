@@ -1,7 +1,6 @@
 import { plus, close } from '@wordpress/icons';
-
-const { __ } = wp.i18n;
-const { Button } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Button } from '@wordpress/components';
 
 export const ButtonIconized = ({ icon, label, show, handleClick, style }) =>
 	show || show === undefined ? (

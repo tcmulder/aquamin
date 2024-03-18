@@ -10,7 +10,7 @@
 /**
  * Import save dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Generate block HTML to save to the database

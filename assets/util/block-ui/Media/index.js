@@ -89,10 +89,9 @@ There's a lot of customization you can do as well:
  */
 import classnames from 'classnames';
 import { ButtonX } from '../Buttons';
-
-const { __ } = wp.i18n;
-const { MediaPlaceholder, InspectorControls } = wp.blockEditor;
-const { PanelBody, TextareaControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { MediaPlaceholder, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, TextareaControl } from '@wordpress/components';
 
 /**
  * Get type of media

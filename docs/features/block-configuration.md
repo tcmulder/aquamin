@@ -90,21 +90,6 @@ There's currently a bug in Parcel: if you delete a block's directory to remove t
 
 ## A Note on Imports
 
-You'll notice we're destructuring the `wp` object for most WordPress features rather than using normal imports. For example:
+Via the `alias` section of the `package.json`, Parcel converts imports like `import { InspectorControls } from '@wordpress/block-editor';` to essentially `const { InspectorControls } = wp.blockEditor;` using the globally-available `wp` object in the editor. It does this in order to reduce bundle size and prevent duplicate versions of the `wp` object from clashing, and so everything better matches the format of most block tutorials you'll find online.
 
-```javascript
-// we can import node_modules packages:
-import classnames from 'classnames';
-
-// we can import components from files:
-import { ButtonX } from '../Buttons';
-
-// but we can't import from WordPress's node_module packages i.e.:
-// import {  InspectorControls } from '@wordpress/block-editor';
-// because that would cause two conflicting versions of the
-// wp object to exist. Instead, we need to destructure from the
-// existing wp object:
-const { MediaPlaceholder, InspectorControls } = wp.blockEditor;
-```
-
-Many examples you'll see online just `import` everything, but I was unable to get Parcel to behave like Webpack and properly use the `wp` object without importing it twice (and therefore throwing all manner of errors). So, until I can find a viable workaround for Parcel, if you're following an example online that shows `import {  InspectorControls } from '@wordpress/block-editor'`, you'll simply change it to `const {  InspectorControls } = wp.blockEditor`.
+This happens automatically and is generally irrelevant, but note a couple of things: first, blocks built using older versions of aquamin that didn't do this conversion (and used the global `wp` object directly instead) will still work fine; and second, though `package.json` includes the most common `@wordpress` package imports, there are many others, so if you encounter import errors in the console then you'll need to add those imports to `package.json` so Parcel knows to convert them also.

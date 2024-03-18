@@ -9,11 +9,9 @@
  * Import edit dependencies
  */
 import classnames from 'classnames';
-
-const { __ } = wp.i18n;
-const { useBlockProps, useInnerBlocksProps, InspectorControls } =
-	wp.blockEditor;
-const { ToggleControl, TextControl, PanelBody } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { useBlockProps, useInnerBlocksProps, InspectorControls } from '@wordpress/block-editor';
+import { ToggleControl, TextControl, PanelBody } from '@wordpress/components';
 
 /**
  * Get style for grid gaps (using WordPress's built in gap system)

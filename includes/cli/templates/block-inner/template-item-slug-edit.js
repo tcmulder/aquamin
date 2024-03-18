@@ -9,9 +9,8 @@
  * Import dependencies
  */
 import classnames from 'classnames';
-
-const { __ } = wp.i18n;
-const { useBlockProps, useInnerBlocksProps, RichText } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { useBlockProps, useInnerBlocksProps, RichText } from '@wordpress/block-editor';
 
 /**
  * Generate block editor component

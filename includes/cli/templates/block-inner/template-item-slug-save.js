@@ -12,7 +12,7 @@
  */
 import classnames from 'classnames';
 
-const { useBlockProps, useInnerBlocksProps, RichText } = wp.blockEditor;
+import { useBlockProps, useInnerBlocksProps, RichText } from '@wordpress/block-editor';
 
 /**
  * Generate block HTML to save to the database

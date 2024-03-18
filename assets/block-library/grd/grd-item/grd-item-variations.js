@@ -5,8 +5,8 @@
  * variations.
  */
 
-const { registerBlockVariation } = wp.blocks;
-const { __ } = wp.i18n;
+import { registerBlockVariation } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 
 registerBlockVariation('aquamin/grd-item', [
 	{

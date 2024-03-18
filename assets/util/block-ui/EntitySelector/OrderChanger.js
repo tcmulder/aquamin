@@ -10,8 +10,8 @@
 /**
  * Import dependencies
  */
-const { __ } = wp.i18n;
-const { Button } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Button } from '@wordpress/components';
 
 const MoveButton = ({ label, onClick, children, disabled }) => (
 	<Button

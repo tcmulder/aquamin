@@ -14,7 +14,7 @@ export const SomeEditBlock = ({ clientId }) => (
 	/>
 )
  */
-const { select } = wp.data;
+import { select } from '@wordpress/data';
 
 const limitAppender = (limit, clientId) => {
 	const parentBlock = select('core/editor')

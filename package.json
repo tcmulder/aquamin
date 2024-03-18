@@ -30,6 +30,53 @@
 			"nesting": true
 		}
 	},
+	"alias": {
+		"wp": {
+			"global": "wp"
+		},
+		"@wordpress/element": {
+			"global": "wp.element"
+		},
+		"@wordpress/i18n": {
+			"global": "wp.i18n"
+		},
+		"@wordpress/blocks": {
+			"global": "wp.blocks"
+		},
+		"@wordpress/block-editor": {
+			"global": "wp.blockEditor"
+		},
+		"@wordpress/components": {
+			"global": "wp.components"
+		},
+		"@wordpress/server-side-render": {
+			"global": "wp.serverSideRender"
+		},
+		"@wordpress/dom-ready": {
+			"global": "wp.domReady"
+		},
+		"@wordpress/hooks": {
+			"global": "wp.hooks"
+		},
+		"@wordpress/compose": {
+			"global": "wp.compose"
+		},
+		"@wordpress/data": {
+			"global": "wp.data"
+		},
+		"@wordpress/edit-post": {
+			"global": "wp.editPost"
+		},
+		"@wordpress/html-entities": {
+			"global": "wp.htmlEntities"
+		},
+		"@wordpress/rich-text": {
+			"global": "wp.richText"
+		},
+		"@wordpress/core-data": {
+			"global": "wp.coreData"
+		}
+	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"devDependencies": {
 		"@parcel/resolver-glob": "^2.9.3",

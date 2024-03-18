@@ -12,8 +12,7 @@
  */
 import classnames from 'classnames';
 import { getStyle, getStyleFromObject } from '../grd-edit';
-
-const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 /**
  * Generate block HTML to save to the database

@@ -17,12 +17,10 @@ import {
 } from '@wordpress/icons';
 import classnames from 'classnames';
 import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
-
-const { __ } = wp.i18n;
-const { useBlockProps, useInnerBlocksProps, InspectorControls } =
-	wp.blockEditor;
-const { PanelBody, Icon, Button, ButtonGroup } = wp.components;
-const { select } = wp.data;
+import { __ } from '@wordpress/i18n';
+import { useBlockProps, useInnerBlocksProps, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, Icon, Button, ButtonGroup } from '@wordpress/components';
+import { select } from '@wordpress/data';
 
 /**
  * Generate block editor component

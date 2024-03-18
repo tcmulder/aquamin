@@ -27,12 +27,11 @@
 
 import PillsControl from './PillsControl';
 import OrderChanger from './OrderChanger';
-
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { useState } = wp.element;
-const { Spinner, Button } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
+import { Spinner, Button } from '@wordpress/components';
 
 const Render = ({
 	entities,

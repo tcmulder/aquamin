@@ -2,10 +2,10 @@
  * Inline Year format types
  */
 
-const { __ } = wp.i18n;
-const { registerFormatType, insert, create } = wp.richText;
-const { RichTextToolbarButton } = wp.blockEditor;
-const { useSelect } = wp.data;
+import { __ } from '@wordpress/i18n';
+import { registerFormatType, insert, create } from '@wordpress/rich-text';
+import { RichTextToolbarButton } from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
 
 /**
  * Setup conditional inserter button

@@ -11,8 +11,8 @@
 />
  */
 
-const { useState } = wp.element;
-const { FormTokenField } = wp.components;
+import { useState } from '@wordpress/element';
+import { FormTokenField } from '@wordpress/components';
 
 const PillsControl = ({
 	label,
