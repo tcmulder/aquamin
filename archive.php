@@ -16,7 +16,7 @@ get_header(); ?>
 				<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
 				<?php if ( have_posts() ) : ?>
 					<?php while( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'assets/component-library/excerpt/excerpt-markup', get_post_type() ); ?>
+						<?php get_template_part( 'assets/component-library/excerpt/excerpt-render', get_post_type() ); ?>
 					<?php endwhile; ?>
 					<?php aquamin_pagination(); ?>
 				<?php else : ?>

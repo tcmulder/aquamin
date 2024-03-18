@@ -26,7 +26,7 @@ You'll add styles and scripts to your inner block via it's _parent's_ `style.css
 
 ### Dynamic Block Option
 
-Though aquamin prefers blocks be built with JavaScript, in some cases blocks require up-to-date data from the database, and therefore require PHP. So, `wp aquamin block create` will ask if you need a dynamic block, and will create a `markup.php` file to house your PHP code if so.
+Though aquamin prefers blocks be built with JavaScript, in some cases blocks require up-to-date data from the database, and therefore require PHP. So, `wp aquamin block create` will ask if you need a dynamic block, and will create a `render.php` file to house your PHP code if so.
 
 ?> Aquamin doesn't currently support automated inner block setup if you choose to go dynamic: if you need that, you'll have to add your dynamic inner block manually.
 
@@ -45,7 +45,7 @@ Each block has its own block directory within the `aquamin/assets/block-library/
       ┣ 📄 editor.css      // styling for block editor (also imports front-end's style.css)
       ┣ 📄 index.js        // block entry file (mostly imports other files)
       ┣ 📄 index.php       // PHP block registration (and optionally inner block registration)
-      ┣ 📄 markup.php      // optional PHP for a dynamic block
+      ┣ 📄 render.php      // optional PHP for a dynamic block
       ┣ 📄 save.js         // HTML saved to database
       ┣ 📄 script.js       // optional front-end script for the block
       ┣ 📄 style.css       // front-end styling
@@ -55,7 +55,7 @@ Each block has its own block directory within the `aquamin/assets/block-library/
          ┣ 📄 index.js     // block entry file (mostly imports other files)
          ┗ 📄 save.js      // HTML saved to database
 ```
-?> These filenames are simplified; they'll work, but for easier debugging, aquamin prefixes filenames like `example-block-edit.js`, `example-block-editor.css`, `example-block-markup.php`, etc.
+?> These filenames are simplified; they'll work, but for easier debugging, aquamin prefixes filenames like `example-block-edit.js`, `example-block-editor.css`, `example-block-render.php`, etc.
 
 ## Editing Core Blocks
 
@@ -65,7 +65,7 @@ You can modify core blocks using the `aquamin/assets/block-editor/` directory. A
 
 ## PHP Hooks
 
-If your block requires PHP hooks, rather than adding them to the theme's `functions.php` file (and therefore having code related to your block that's outside its single, self-contained directory), you can add your hooks to a `hooks.php` file within the block's directory (see an example of this used by the built-in year block's directory at `aquamin/assets/block-library/format-type-year/hooks.php`).
+If your block requires PHP hooks, rather than adding them to the theme's `functions.php` file (and therefore having code related to your block that's outside its single, self-contained directory), you can add your hooks to a `hooks.php` file within the block's directory (see an example of this used by the built-in year block's directory at `aquamin/assets/block-editor/format-type-year/year-hooks.php`).
 
 ## Block Utilities
 

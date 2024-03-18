@@ -15,7 +15,7 @@ register_block_type(
 		'render_callback' => function( $attributes, $content, $block ) {
 			ob_start();
 			get_template_part(
-				'assets/block-library/' . basename( __DIR__ ) . '/template-slug-markup',
+				'assets/block-library/' . basename( __DIR__ ) . '/template-slug-render',
 				null,
 				array(
 					'attributes' => $attributes,

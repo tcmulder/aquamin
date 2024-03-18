@@ -9,9 +9,9 @@ So, each component is it's own self-contained directory (with a few global excep
 
 The easiest way to create a component is to run `wp aquamin component create` ([see the docs](features/wp-cli#wp-aquamin-component-create)). Then, just restart Parcel, refresh the site, and the scaffolded component is ready for you to customize within its own directory inside `aquamin/assets/component-library/`. 
 
-?> If you had the command add a PHP template part, you'll conveniently find the get_template_part() call (including the appropriate file path) in the initial markup.php file comment, too.
+?> If you had the command add a PHP template part, you'll conveniently find the get_template_part() call (including the appropriate file path) in the initial render.php file comment, too.
 
-Or, if you'd prefer to scaffold a component yourself, you may choose to add the necessary files manually for more control: just add those within a new directory inside the `aquamin/assets/component-library/` folder. The main thing to keep in mind is that aquamin automatically includes all `*style.css` styling on the front-end, all `*editor.css` styling in the block editor's back-end, all `*script.js` JavaScript on the front-end, and your HTML/PHP should be within a `markup.php` file (you'll need to manually include this with `get_template_part()` wherever it's needed).
+Or, if you'd prefer to scaffold a component yourself, you may choose to add the necessary files manually for more control: just add those within a new directory inside the `aquamin/assets/component-library/` folder. The main thing to keep in mind is that aquamin automatically includes all `*style.css` styling on the front-end, all `*editor.css` styling in the block editor's back-end, all `*script.js` JavaScript on the front-end, and your HTML/PHP should be within a `render.php` file (you'll need to manually include this with `get_template_part()` wherever it's needed).
 
 ?> Aquamin prefixes filenames for easier debugging like `my-component-style.css`, `my-component-editor.css`, etc., and includes them via glob patterns like `*style.css`, `*editor.css`, etc.
 
@@ -23,13 +23,13 @@ An example component is the included `aquamin/assets/component-library/footer` c
 📂 assets
  ┗ 📂 component-library     // directory containing all components
    ┗ 📂 footer              // the component's unique name
-     ┣ 📄 footer-markup.php // html for the component (this one is included in footer.php) 
+     ┣ 📄 footer-render.php // html for the component (this one is included in footer.php) 
      ┗ 📄 footer-style.css  // sticky footer styling (add additional footer styling here)
 ```
 
 You could also add a `footer-script.js` file to develop front-end scripts associated with the footer, or `footer-editor.css` to add footer styling within back-end block editor.
 
-?> Within the default WordPress `aquamin/footer.php` file, you'll see `get_template_part( 'assets/component-library/footer/footer-markup' )`, which includes the markup for this component. In this way, we have all files associated with the footer component in a single, manageable directory.
+?> Within the default WordPress `aquamin/footer.php` file, you'll see `get_template_part( 'assets/component-library/footer/footer-render' )`, which includes the markup for this component. In this way, we have all files associated with the footer component in a single, manageable directory.
 
 For convenience, you can also include features here that don't quite fit the "component" concept in a traditional sense. Take the included WordPress styling overrides for instance:
 
