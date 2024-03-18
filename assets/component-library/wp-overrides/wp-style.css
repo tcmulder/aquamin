@@ -5,11 +5,6 @@
 /**
  * Overrides
  */
-body {
-	--wp--style--block-gap: var(--sp-s-rem);
-	--wp--style--root--padding-right: var(--sp-s-rem);
-	--wp--style--root--padding-left: var(--sp-s-rem);
-}
 
 /**
  * Accessibility
