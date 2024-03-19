@@ -183,16 +183,13 @@ function block_create( $args, $assoc_args ) {
 	
 	// enqueue front-end scripts if appropriate (unshift to top of array so template strings get replaced)
 	array_unshift( $far, array(
-		'find' => "/* PLACEHOLDER: enqueue front-end script */\n",
-		'repl' => ! $has_js ? "" : "wp_register_script( 'aquamin-block-template-slug-script', get_template_directory_uri() . '/dist/block-library/template-slug/template-slug-script.js', null, '1.0', true );\n",
+		'find' => "\t/* PLACEHOLDER: enqueue front-end script */\n",
+		'repl' => ! $has_js ? "" : "\t\"viewScript\": [\"file:../../../dist/block-library/_template-block/template-slug-script.js\"],\n",
 	) );
+	// identify dynamic render php script
 	array_unshift( $far, array(
-		'find' => "\t/* PLACEHOLDER: add front-end script handle */\n",
-		'repl' => ! $has_js ? "" : "\t'view_script_handles' => ['aquamin-block-template-slug-script'],\n",
-	) );
-	array_unshift( $far, array(
-		'find' => "\t\t/* PLACEHOLDER: add dynamic front-end script handle */\n",
-		'repl' => ! $has_js ? "" : "\t\t'view_script_handles' => ['aquamin-block-template-slug-script'],\n",
+		'find' => "\t/* PLACEHOLDER: enqueue dynamic render script */\n",
+		'repl' => ! $is_dynamic ? "" : "\t\"render\": \"file:./template-slug-render.php\",\n",
 	) );
 	
 	/**
@@ -209,10 +206,6 @@ function block_create( $args, $assoc_args ) {
 	array_unshift( $far, array(
 		'find' => "\n/* PLACEHOLDER: register inner blocks */\n",
 		'repl' => ! $has_inner_block ? "" : "\n/**\n * Register inner blocks\n */\nimport './_template-item-dir';\n"
-	) );
-	array_unshift( $far, array(
-		'find' => "\n/* PLACEHOLDER: register inner block */\n",
-		'repl' => ! $has_inner_block ? "" : "\n// register inner blocks\nregister_block_type( __DIR__ . '/_template-item-dir' );\n"
 	) );
 	array_unshift( $far, array(
 		'find' => " /* PLACEHOLDER: inner blocks template */ ",

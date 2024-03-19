@@ -23,5 +23,4 @@ registerBlockType(block.name, {
 	icon: Icon,
 	edit,
 	save,
-	parent: ['aquamin/template-slug'],
 });

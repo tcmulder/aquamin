@@ -8,7 +8,7 @@
 /**
  * Import edit dependencies
  */
-import ServerSideRender from '@wordpress/serverSideRender';
+import ServerSideRender from '@wordpress/server-side-render';
 
 /**
  * Generate block editor component
