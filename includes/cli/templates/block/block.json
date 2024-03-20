@@ -21,7 +21,9 @@
 			"padding": ["top", "bottom"]
 		}
 	},
-	/* PLACEHOLDER: enqueue front-end script */
-	"style": ["file:../../../dist/block-library/_template-block/template-slug-style.css"],
+	/* TEMPLATE: enqueue front-end script */
+	"style": [
+		"file:../../../dist/block-library/_template-block/template-slug-style.css"
+	],
 	"editorScript": "file:../../../dist/block-library/_template-block/index.js"
 }
