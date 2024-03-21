@@ -4,8 +4,8 @@
 	"description": "Parcel build tool for Aquamarine",
 	"private": true,
 	"engines": {
-		"nodeVersion": ">=16.13.2",
-		"npmVersion": ">=7.11.2"
+		"node": ">=18.18.2",
+		"npm": ">=9.8.1"
 	},
 	"config": {
 		"lint_paths": "./assets",
