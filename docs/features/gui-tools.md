@@ -54,4 +54,4 @@ if( $sidebar ) {
 }
 ```
 
-?> Once WordPress' Full Site Editor has sufficiently matured, most of this functionality will likely be handled through that system, and the Global Content feature in aquamin will be deprecated at that time. For now though, it's very convenient, especially for clients wanting to edit content utilizing the full potential of blocks in nonstandard places on the site.
+?> Once WordPress's Full Site Editor has sufficiently matured, most of this functionality will likely be handled through that system, and the Global Content feature in aquamin will be deprecated at that time. For now though, it's very convenient, especially for clients wanting to edit content utilizing the full potential of blocks in nonstandard places on the site.

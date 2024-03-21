@@ -1,9 +1,11 @@
 # Changelog
 
-## 7.0.0 - December 6 2023
+## 7.0.0 - March 19 2024
+* WARNING: breaking changes, so blocks coming from v6 or lower may need some adjustments (mainly using `blocks.json` rather than `index.php` for automatic block registration).
 * Switch to exclusively using block.json for registering blocks (eliminates need to load index.php for each block).
 * Rename `block-edits` directory `block-editor` so it parallels Gutenberg's directory structure.
 * Converted imports to a more standard format (from e.g. `const {__} = wp.i18n` to `import {__} from '@wordpress/i18n'`).
+* Updated and refined documentation.
 
 ## 6.1.2 - December 6 2023
 * Remove custom block patterns feature (this is now supported by core WordPress).
