@@ -1,10 +1,10 @@
 <div class="site-menu">
 	<?php
 		wp_nav_menu( array(
-			'container_id'    => 'site-navigation',
-			'theme_location'  => 'head-menu',
+			'menu_id' => 'site-navigation',
+			'menu_class' => 'site-menu__nav',
 			'container'       => 'nav',
-			'container_class' => 'site-menu__nav',
+			'theme_location'  => 'head-menu',
 		) );
 	?>
 </div>
