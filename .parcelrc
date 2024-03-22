@@ -4,6 +4,7 @@
 	],
 	"resolvers": [
 		"@parcel/resolver-glob",
+		".parcel-resolvers.mjs",
 		"..."
 	],
 	"transformers": {
