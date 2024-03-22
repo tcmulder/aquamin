@@ -65,7 +65,7 @@ html .edit-widgets-main-block-list :where(.editor-styles-wrapper),
  * Components panel
  */
 .components-panel {
-	& .disabled {
+	.disabled {
 		opacity: 0.5;
 	}
 }

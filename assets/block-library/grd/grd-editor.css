@@ -8,7 +8,7 @@
 
 .grd__item {
 	min-height: 1em;
-	& figure > * {
+	figure > * {
 		max-width: 100% !important;
 	}
 }
@@ -19,11 +19,11 @@
 		position: relative;
 		z-index: 10;
 	}
-	& figure > * {
+	figure > * {
 		width: 100% !important;
 		height: 100% !important;
 	}
-	& .components-resizable-box__handle {
+	.components-resizable-box__handle {
 		display: none !important;
 	}
 }

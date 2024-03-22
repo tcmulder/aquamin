@@ -44,7 +44,7 @@
 	/* override WordPresss's labotimized owl */
 	margin: 0 !important;
 	&.background-color-block {
-		& * {
+		* {
 			max-width: 100%;
 		}
 	}

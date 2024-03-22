@@ -8,7 +8,7 @@
 
 .template-slug {
 	/* replace this demo code with your own: */
-	& b::after {
+	b::after {
 		content: " (❒ style.css) ";
 	}
 }

@@ -7,7 +7,7 @@
  */
 .wp-block-cover {
 	/* otherwise we get forced text coloring without expicitly setting text color (no inheritance) */
-	& .wp-block-cover__inner-container {
+	.wp-block-cover__inner-container {
 		color: unset;
 	}
 }

@@ -6,7 +6,7 @@
  */
 
 .template-slug {
-	& b::after {
+	b::after {
 		/* replace this demo code with your own: */
 		content: " (❒ style.css) ";
 	}

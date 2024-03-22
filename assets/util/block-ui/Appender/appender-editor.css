@@ -61,7 +61,7 @@
 		transform: translateY(1em);
 	}
 
-	& .aquamin-wp-button {
+	.aquamin-wp-button {
 		background: var(--wp-admin-theme-color);
 		position: relative;
 		transition: 0.3s cubic-bezier(0, 0, 0.24, 1.39);
@@ -80,7 +80,7 @@
 	}
 
 	&:not(:hover):not(:focus):not(:focus-within) {
-		& .aquamin-wp-button {
+		.aquamin-wp-button {
 			opacity: 0;
 			transform: scale(0.5);
 			transition: 0s;
@@ -104,7 +104,7 @@
 		width: 100%;
 	}
 
-	& .aquamin-appender__inner {
+	.aquamin-appender__inner {
 		width: 100%;
 
 		&::before {
@@ -115,7 +115,7 @@
 		}
 
 		&:not(:hover):not(:focus):not(:focus-within) {
-			& .aquamin-wp-button {
+			.aquamin-wp-button {
 				opacity: 0;
 				transform: scale(0.5);
 				transition: 0s;
@@ -145,7 +145,7 @@
 		width: 0;
 	}
 
-	& .aquamin-appender__inner {
+	.aquamin-appender__inner {
 		height: 100%;
 
 		&::before {

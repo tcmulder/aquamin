@@ -27,11 +27,6 @@
 	},
 	"author": "@tcmulder",
 	"license": "ISC",
-	"@parcel/transformer-css": {
-		"drafts": {
-			"nesting": true
-		}
-	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"devDependencies": {
 		"@parcel/resolver-glob": "^2.9.3",
