@@ -10,8 +10,15 @@
 				"useTabs": true
 			}
 		],
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"packageDir": "./",
+				"bundledDependencies": false
+			}
+		],
 		"arrow-body-style": "off",
-		"import/no-extraneous-dependencies": false,
+		"import/no-unresolved": [2, { "ignore": ["^@wordpress/.*$"] }],
 		"no-undef": "off",
 		"react/prop-types": "off"
 	}
