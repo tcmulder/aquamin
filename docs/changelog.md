@@ -1,9 +1,9 @@
 # Changelog
 
 ## 7.0.0 - March 19 2024
-* WARNING: breaking changes, so blocks coming from v6 or lower may need some adjustments (mainly using `blocks.json` rather than `index.php` for automatic block registration).
-* Switch to exclusively using block.json for registering blocks (eliminates need to load index.php for each block).
-* Rename `block-edits` directory `block-editor` so it parallels Gutenberg's directory structure.
+* Note there are breaking changes, so blocks coming from v6 or lower may need some adjustments (mainly using `blocks.json` rather than `index.php` for automatic block registration).
+* Switched to exclusively using block.json for registering blocks (eliminates need to load index.php for each block, and reduces a lot of redundant code).
+* Renamed `block-edits` directory `block-editor` so it better parallels Gutenberg's directory structure.
 * Converted imports to a more standard format (from e.g. `const {__} = wp.i18n` to `import {__} from '@wordpress/i18n'`).
 * Updated and refined documentation.
 

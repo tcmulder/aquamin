@@ -171,8 +171,8 @@ add_action( 'after_setup_theme', function() {
 add_action( 'admin_menu', function() {
 	add_submenu_page(
         'themes.php',
-        __( 'Synced Patterns', 'aquamin' ),
-        __( 'Synced Patterns', 'aquamin' ),
+        __( 'Block Patterns', 'aquamin' ),
+        __( 'Block Patterns', 'aquamin' ),
         'edit_posts',
         'edit.php?post_type=wp_block'
     );
