@@ -46,17 +46,21 @@
   <description/>
   <content:encoded><![CDATA[<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group"><!-- wp:paragraph -->
-<p class="">Copyright ©<span class="current-year" title="Current Year"></span></p>
+<p class="">Copyright ©<span class="current-year" title="Current Year"></span>&nbsp;</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:site-title {"level":0,"isLink":false} /--></div>
-<!-- /wp:group -->]]></content:encoded>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p class=""></p>
+<!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>5</wp:post_id>
   <wp:post_date>2022-10-27 22:22:47</wp:post_date>
   <wp:post_date_gmt>2022-10-27 22:22:47</wp:post_date_gmt>
-  <wp:post_modified>2023-12-07 23:01:26</wp:post_modified>
-  <wp:post_modified_gmt>2023-12-07 23:01:26</wp:post_modified_gmt>
+  <wp:post_modified>2024-03-22 19:17:52</wp:post_modified>
+  <wp:post_modified_gmt>2024-03-22 19:17:52</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>footer</wp:post_name>
