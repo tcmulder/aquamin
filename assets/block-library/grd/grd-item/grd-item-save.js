@@ -11,8 +11,8 @@
  * Import dependencies
  */
 import classnames from 'classnames';
-import { getStyle, getStyleFromObject } from '../grd-edit';
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
+import { getStyle, getStyleFromObject } from '../grd-edit';
 
 /**
  * Generate block HTML to save to the database

@@ -21,7 +21,8 @@
 		"server": "npm run server:pre && browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
 		"static": "del ./dist/static/* && ncp ./assets/static ./dist/static --filter '**/*.*'",
 		"docs": "docsify serve docs --open --port 4000",
-		"lint": "eslint $npm_package_config_lint_paths",
+		"lint": "eslint -c .eslintrc.js $npm_package_config_lint_paths",
+		"lint:fix": "eslint -c .eslintrc.js $npm_package_config_lint_paths --fix",
 		"clean": "del ./.parcel-cache/*"
 	},
 	"author": "@tcmulder",
@@ -82,6 +83,7 @@
 	"devDependencies": {
 		"@parcel/resolver-glob": "^2.9.3",
 		"@parcel/transformer-svg-react": "^2.9.3",
+		"@wordpress/element": "^5.31.0",
 		"@wordpress/icons": "^9.29.0",
 		"browser-sync": "^2.29.3",
 		"classnames": "^2.3.2",

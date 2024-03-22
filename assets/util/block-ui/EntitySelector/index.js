@@ -25,13 +25,13 @@
 />
  */
 
-import PillsControl from './PillsControl';
-import OrderChanger from './OrderChanger';
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 import { Spinner, Button } from '@wordpress/components';
+import OrderChanger from './OrderChanger';
+import PillsControl from './PillsControl';
 
 const Render = ({
 	entities,

@@ -9,13 +9,13 @@
  * Import dependencies
  */
 import classnames from 'classnames';
-import extractClasses from '../../util/extractClasses';
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ButtonGroup, Button, Icon } from '@wordpress/components';
+import extractClasses from '../../util/extractClasses';
 
 /**
  * Identify the extension's name

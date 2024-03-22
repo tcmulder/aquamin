@@ -2,5 +2,6 @@
  * Set up main menu.
  */
 document.querySelectorAll('.site-menu')?.forEach((menu) => {
-	console.log('menu component script has loaded (add your menu scripts to this file)')
-})
+	// eslint-disable-next-line no-console
+	console.log('add menu scripts to this file', menu);
+});

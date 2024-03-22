@@ -13,8 +13,16 @@ const { link } = attributes; // { url: 'https://example.com', opensInNewTab: fal
 import { link as linkIcon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
-import { BlockControls, __experimentalLinkControl as LinkControl } from '@wordpress/block-editor';
-import { ToolbarGroup, ToolbarButton, Popover, TextControl } from '@wordpress/components';
+import {
+	BlockControls,
+	__experimentalLinkControl as LinkControl,
+} from '@wordpress/block-editor';
+import {
+	ToolbarGroup,
+	ToolbarButton,
+	Popover,
+	TextControl,
+} from '@wordpress/components';
 
 /**
  * Link selector

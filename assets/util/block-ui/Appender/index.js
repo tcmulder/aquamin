@@ -18,10 +18,10 @@ export const SomeInnerEditBlock = ({ clientId }) => (
 )
  */
 import classnames from 'classnames';
-import { ButtonPlus } from '../Buttons';
 import { __ } from '@wordpress/i18n';
 import { useSelect, dispatch, select } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
+import { ButtonPlus } from '../Buttons';
 
 const Appender = ({ clientId, label, show, orientation }) => {
 	const block = select('core/block-editor').getBlock(clientId);

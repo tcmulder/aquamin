@@ -88,10 +88,10 @@ There's a lot of customization you can do as well:
  * Dependencies
  */
 import classnames from 'classnames';
-import { ButtonX } from '../Buttons';
 import { __ } from '@wordpress/i18n';
 import { MediaPlaceholder, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextareaControl } from '@wordpress/components';
+import { ButtonX } from '../Buttons';
 
 /**
  * Get type of media

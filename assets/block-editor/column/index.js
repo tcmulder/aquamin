@@ -8,13 +8,13 @@
  * Import dependencies
  */
 import classnames from 'classnames';
-import extractClasses from '../../util/extractClasses';
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment, useState } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { FormTokenField, PanelBody } from '@wordpress/components';
+import extractClasses from '../../util/extractClasses';
 
 /**
  * Identify the extension's name

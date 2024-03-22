@@ -16,11 +16,15 @@ import {
 	justifyStretch,
 } from '@wordpress/icons';
 import classnames from 'classnames';
-import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, useInnerBlocksProps, InspectorControls } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	InspectorControls,
+} from '@wordpress/block-editor';
 import { PanelBody, Icon, Button, ButtonGroup } from '@wordpress/components';
 import { select } from '@wordpress/data';
+import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
 
 /**
  * Generate block editor component

@@ -13,12 +13,12 @@ import './grd-item';
 /**
  * Import dependencies
  */
+import { __ } from '@wordpress/i18n';
+import { registerBlockType } from '@wordpress/blocks';
 import Icon from './icon.inline.svg';
 import edit from './grd-edit';
 import save from './grd-save';
 import block from './block.json';
-import { __ } from '@wordpress/i18n';
-import { registerBlockType } from '@wordpress/blocks';
 
 /**
  * Register block
