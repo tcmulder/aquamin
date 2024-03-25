@@ -10,7 +10,11 @@
  */
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, useInnerBlocksProps, RichText } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	RichText,
+} from '@wordpress/block-editor';
 
 /**
  * Generate block editor component
@@ -35,8 +39,8 @@ const TemplateItemNamespaceEdit = ({
 				'core/paragraph',
 				{
 					placeholder: __(
-						'template-item-title Inner Blocks',
-						'aquamin'
+						'template-item-title inner blocks',
+						'aquamin',
 					),
 				},
 			],
@@ -46,13 +50,14 @@ const TemplateItemNamespaceEdit = ({
 	// output the block's html
 	return (
 		<div {...innerBlocksProps}>
-			{/* replace this demo code with your own: */}
+			{/* START: replace with your own code */}
 			<RichText
 				tagName="i"
-				placeholder={__('template-item-title', 'aquamin')}
+				placeholder={__('template-item-title content', 'aquamin')}
 				value={demoText}
 				onChange={(value) => setAttributes({ demoText: value })}
 			/>
+			{/* END: replace with your own code */}
 			{innerBlocksProps.children}
 		</div>
 	);

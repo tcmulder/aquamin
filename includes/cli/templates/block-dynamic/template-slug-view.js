@@ -2,7 +2,7 @@
  * template-title JavaScript
  *
  * This file defines template-title
- * behavior.
+ * front-end behavior.
  */
 
 // eslint-disable-next-line no-console

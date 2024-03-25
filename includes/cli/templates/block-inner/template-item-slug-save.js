@@ -12,7 +12,11 @@
  */
 import classnames from 'classnames';
 
-import { useBlockProps, useInnerBlocksProps, RichText } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	RichText,
+} from '@wordpress/block-editor';
 
 /**
  * Generate block HTML to save to the database
@@ -32,8 +36,9 @@ const TemplateItemNamespaceSave = ({ attributes, className }) => {
 	// output the block's html
 	return (
 		<div {...blockProps}>
-			{/* replace this demo code with your own: */}
+			{/* START: replace with your own code */}
 			<RichText.Content tagName="i" value={demoText} />
+			{/* END: replace with your own code */}
 			{innerBlocksProps.children}
 		</div>
 	);

@@ -208,8 +208,8 @@ function block_create( $args, $assoc_args ) {
 		'repl' => ! $has_inner_block ? "" : "\n/**\n * Register inner blocks\n */\nimport './_template-item-dir';\n"
 	) );
 	array_unshift( $far, array(
-		'find' => " /* TEMPLATE: inner blocks template */ ",
-		'repl' => ! $has_inner_block ? " " : ", {\n\t\ttemplate: [['aquamin/template-item-slug']],\n\t\tallowedBlocks: ['aquamin/template-item-slug'],\n\t}"
+		'find' => " /* TEMPLATE: inner blocks template */",
+		'repl' => ! $has_inner_block ? "" : ", {\n\t\ttemplate: [['aquamin/template-item-slug']],\n\t\tallowedBlocks: ['aquamin/template-item-slug'],\n\t}"
 	) );
 	
 	/**

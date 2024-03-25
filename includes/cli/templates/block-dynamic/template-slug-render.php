@@ -11,6 +11,7 @@
  */
 ?>
 <div <?php echo get_block_wrapper_attributes( array( 'class' => 'template-slug' ) ) ?>>
-	<!-- replace this demo code with your own: -->
+	<!-- START: replace with your own code -->
 	<?php echo $content !== '' ? $content : 'template-desc'; ?>
+	<!-- END: replace with your own code -->
 </div>

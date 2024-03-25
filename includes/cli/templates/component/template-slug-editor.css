@@ -2,6 +2,6 @@
  * template-title editor styling
  *
  * This file is for CSS admin overrides only.
- * Use view.css for shared theme/editor styling.
+ * Use view.css for front-end theme styling.
  */
 @import "./*view.css";

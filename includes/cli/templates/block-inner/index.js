@@ -8,12 +8,12 @@
 /**
  * Import dependencies
  */
+import { __ } from '@wordpress/i18n';
+import { registerBlockType } from '@wordpress/blocks';
 import Icon from './icon.inline.svg';
 import edit from './template-item-slug-edit';
 import save from './template-item-slug-save';
 import block from './block.json';
-import { __ } from '@wordpress/i18n';
-import { registerBlockType } from '@wordpress/blocks';
 
 /**
  * Register block

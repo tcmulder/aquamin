@@ -6,11 +6,6 @@
  */
 @import "./*view.css";
 
-[data-type="aquamin/template-slug"] {
-	.is-selected {
-		b::after {
-			/* replace this demo code with your own: */
-			content: " (✎ editor.css) ";
-		}
-	}
+[data-type="aquamin/template-slug"].is-selected b::after {
+	content: " ✎ "; /* NOTE: replace all this with your own code */
 }

@@ -5,9 +5,6 @@
  * theme and editor.
  */
 
-.template-slug {
-	b::after {
-		/* replace this demo code with your own: */
-		content: " (❒ view.css) ";
-	}
+.template-slug b::after {
+	content: " ❒ "; /* NOTE: replace all this with your own code */
 }
