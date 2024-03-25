@@ -64,13 +64,13 @@ export const getStyle = (name, value, validate = (val) => !!val) => {
 export const getStyleFromObject = (
 	nameBase,
 	obj,
-	validate = (val) => !!val
+	validate = (val) => !!val,
 ) => {
 	return Object.assign(
 		{},
 		...Object.keys(obj).map((key) =>
-			getStyle(`${nameBase}-${key}`, obj[key], validate)
-		)
+			getStyle(`${nameBase}-${key}`, obj[key], validate),
+		),
 	);
 };
 
@@ -145,7 +145,7 @@ const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 			hasAspect && 'grd--has-aspect',
 			hasEqualRows && 'grd--has-equal-rows',
 			'ani-parent',
-			className
+			className,
 		),
 		style: {
 			...getStyleFromObject('--grd-count', count),

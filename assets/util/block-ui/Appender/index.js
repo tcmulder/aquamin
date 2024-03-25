@@ -41,7 +41,7 @@ const Appender = ({ clientId, label, show, orientation }) => {
 		<div
 			className={classnames(
 				'aquamin-appender',
-				`aquamin-appender--${orientation || 'horizontal'}`
+				`aquamin-appender--${orientation || 'horizontal'}`,
 			)}
 			data-name={labelText}
 		>
@@ -54,7 +54,7 @@ const Appender = ({ clientId, label, show, orientation }) => {
 							dispatch('core/editor').insertBlock(
 								createBlock(block.name),
 								index,
-								parentBlock
+								parentBlock,
 							);
 						}}
 					/>

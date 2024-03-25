@@ -79,7 +79,7 @@ const withModifyEdit = createHigherOrderComponent(
 			const [selectedStrings, setSelectedStrings] = useState(
 				[...aquaminClassNameColumn].map((pair) => {
 					return pair.title;
-				})
+				}),
 			);
 
 			// handle updates to tokens
@@ -126,7 +126,7 @@ const withModifyEdit = createHigherOrderComponent(
 		// everything's normal nothing to see here
 		return <BlockEdit {...props} />;
 	},
-	'withModifyEdit'
+	'withModifyEdit',
 );
 
 addFilter('editor.BlockEdit', EXTENSION_NAME, withModifyEdit);
@@ -146,7 +146,7 @@ const modifySave = (props, block, attributes) => {
 					props.className,
 					attributes.aquaminClassNameColumn.map((opt) => {
 						return opt.value;
-					})
+					}),
 				),
 			};
 		}
@@ -178,7 +178,7 @@ const withShowModifyEdit = createHigherOrderComponent(
 		// everything's normal nothing to see here
 		return <BlockListBlock {...props} />;
 	},
-	'withShowModifyEdit'
+	'withShowModifyEdit',
 );
 
 addFilter('editor.BlockListBlock', EXTENSION_NAME, withShowModifyEdit);

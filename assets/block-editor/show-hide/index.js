@@ -106,7 +106,8 @@ const withModifyEdit = createHigherOrderComponent(
 											const index =
 												newAttributes.findIndex(
 													(item) =>
-														item.value === opt.value
+														item.value ===
+														opt.value,
 												);
 											if (index === -1) {
 												newAttributes.push({
@@ -123,7 +124,7 @@ const withModifyEdit = createHigherOrderComponent(
 										isPressed={
 											!aquaminClassNameHide.find(
 												(item) =>
-													item.value === opt.value
+													item.value === opt.value,
 											)
 										}
 									/>
@@ -138,7 +139,7 @@ const withModifyEdit = createHigherOrderComponent(
 		// everything's normal nothing to see here
 		return <BlockEdit {...props} />;
 	},
-	'withModifyEdit'
+	'withModifyEdit',
 );
 
 addFilter('editor.BlockEdit', EXTENSION_NAME, withModifyEdit);
@@ -158,7 +159,7 @@ const modifySave = (props, block, attributes) => {
 					props.className,
 					attributes.aquaminClassNameHide.map((opt) => {
 						return opt.value;
-					})
+					}),
 				),
 			};
 		}
@@ -190,7 +191,7 @@ const withShowModifyEdit = createHigherOrderComponent(
 		// everything's normal nothing to see here
 		return <BlockListBlock {...props} />;
 	},
-	'withShowModifyEdit'
+	'withShowModifyEdit',
 );
 
 addFilter('editor.BlockListBlock', EXTENSION_NAME, withShowModifyEdit);

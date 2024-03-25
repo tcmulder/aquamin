@@ -25,7 +25,7 @@ const GridItemSave = ({ attributes, className }) => {
 			'grd__item',
 			variation !== 'cell' && `grd__item--${variation}`,
 			'ani-child',
-			className
+			className,
 		),
 		style: {
 			...getStyleFromObject('--grd-span', span, (val) => val > 1),
@@ -37,7 +37,7 @@ const GridItemSave = ({ attributes, className }) => {
 	});
 	const innerBlocksProps = useInnerBlocksProps.save(
 		{ ...blockProps },
-		{ template: [['core/paragraph']] }
+		{ template: [['core/paragraph']] },
 	);
 
 	return (

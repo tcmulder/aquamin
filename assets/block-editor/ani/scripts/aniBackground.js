@@ -36,7 +36,7 @@ export const aniBackground = (element, isPopupStyle = false) => {
 					}
 				});
 			},
-			{ rootMargin: '-50% 0% -50%' }
+			{ rootMargin: '-50% 0% -50%' },
 		);
 
 		// loop through our elements
@@ -49,15 +49,15 @@ export const aniBackground = (element, isPopupStyle = false) => {
 				'background-color-block',
 				`background-color-block--${
 					isPopupStyle ? 'foreground' : 'background'
-				}`
+				}`,
 			);
 			const coverEls = el.querySelectorAll(
-				'.wp-block-cover__gradient-background, .wp-block-cover__video-background, .wp-block-cover__image-background, .wp-block-cover__background'
+				'.wp-block-cover__gradient-background, .wp-block-cover__video-background, .wp-block-cover__image-background, .wp-block-cover__background',
 			);
 			if (coverEls.length) {
 				fixedBackground.classList.add('wp-block-cover');
 				coverEls.forEach((childEl) =>
-					fixedBackground.appendChild(childEl)
+					fixedBackground.appendChild(childEl),
 				);
 			}
 			torsoEl.appendChild(fixedBackground);
@@ -67,7 +67,7 @@ export const aniBackground = (element, isPopupStyle = false) => {
 			const classTransfers = classNames.filter(
 				(className) =>
 					/^has-.*-background-color$/.test(className) ||
-					/^is-style-.*$/.test(className)
+					/^is-style-.*$/.test(className),
 			);
 			if (classTransfers.length) {
 				el.classTransfers = classTransfers;

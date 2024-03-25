@@ -32,7 +32,7 @@ import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
 const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 	const { span, col, row, spanRow, vAlign, variation } = attributes;
 	const { count } = select('core/block-editor').getBlock(
-		select('core/block-editor').getBlockParents(clientId).at(-1)
+		select('core/block-editor').getBlockParents(clientId).at(-1),
 	).attributes;
 
 	const blockProps = useBlockProps({
@@ -43,7 +43,7 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 			className,
 			// add invalid class if we span more columns than exist
 			!!Object.keys(span).find((key) => span[key] > count[key]) &&
-				'grd__item--invalid'
+				'grd__item--invalid',
 		),
 		style: {
 			...getStyleFromObject('--grd-span', span, (val) => val > 1),
@@ -70,7 +70,7 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{ ...blockProps },
-		{ ...templates[variation] }
+		{ ...templates[variation] },
 	);
 
 	return (

@@ -187,7 +187,7 @@ const MediaInspector = (props) => {
 						<p>
 							{__(
 								'Describe the purpose of the image. Leave empty if the image is purely decorative.',
-								'aquamin'
+								'aquamin',
 							)}
 							{` `}
 							<a

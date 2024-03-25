@@ -48,7 +48,7 @@ const Validation = ({ aquaminClassNameAni }) => {
 	const msgs = [];
 	// get the animations the user selected
 	const chosen = aquaminClassNameAni.map((aniPair) =>
-		aniPair.value.substring(5)
+		aniPair.value.substring(5),
 	);
 	// handle set conflicts
 	[
@@ -60,8 +60,8 @@ const Validation = ({ aquaminClassNameAni }) => {
 			msgs.push(
 				`${__('animations', 'aquamin')} ${set.join(', ')} ${__(
 					'may conflict with each other.',
-					'aquamin'
-				)}`
+					'aquamin',
+				)}`,
 			);
 		}
 	});
@@ -71,8 +71,8 @@ const Validation = ({ aquaminClassNameAni }) => {
 			msgs.push(
 				`${name} ${__(
 					'may conflict with with other animations applied.',
-					'auamin'
-				)}`
+					'auamin',
+				)}`,
 			);
 		}
 	});
@@ -183,7 +183,7 @@ const withModifyEdit = createHigherOrderComponent(
 
 			// set up fake array of strings to mimic actual attribute objects
 			const [selectedStrings, setSelectedStrings] = useState(
-				[...aquaminClassNameAni].map((pair) => pair.title)
+				[...aquaminClassNameAni].map((pair) => pair.title),
 			);
 
 			// handle updates to tokens
@@ -229,7 +229,7 @@ const withModifyEdit = createHigherOrderComponent(
 		// everything's normal nothing to see here
 		return <BlockEdit {...props} />;
 	},
-	'withModifyEdit'
+	'withModifyEdit',
 );
 
 addFilter('editor.BlockEdit', extensionName, withModifyEdit);
@@ -250,7 +250,7 @@ const modifySave = (props, block, attributes) => {
 				.map((opt) => opt.value)
 				.filter((title) => !existingClasses.includes(title));
 			newClasses.push(
-				newClasses.length && !newClasses.includes('ani') ? 'ani' : ''
+				newClasses.length && !newClasses.includes('ani') ? 'ani' : '',
 			);
 			return {
 				...props,

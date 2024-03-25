@@ -70,7 +70,7 @@ export const aniScroll = (mixed, useElHeight = true) => {
 				}
 			});
 		},
-		{ rootMargin: '10px 0px 10px' }
+		{ rootMargin: '10px 0px 10px' },
 	);
 
 	// controll scroll-based animations (throttled)

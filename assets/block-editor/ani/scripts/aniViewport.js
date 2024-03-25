@@ -15,11 +15,11 @@ export const ani = (els) => {
 					// toggle .is-shown based on visibility in viewport
 					entry.target.classList.toggle(
 						'is-shown',
-						entry.isIntersecting
+						entry.isIntersecting,
 					);
 				});
 			},
-			{ rootMargin: '10px 0px 0px' }
+			{ rootMargin: '10px 0px 0px' },
 		);
 		// add all elements to the observer
 		els.forEach((el) => {
@@ -58,7 +58,7 @@ export const aniDelegate = (delegatedSelectors, aniClassName = 'ani') => {
 						aniClassName,
 						...[...parentEl.classList].filter(
 							(className) =>
-								className.substr(0, 5) === `${aniClassName}--`
+								className.substr(0, 5) === `${aniClassName}--`,
 						),
 					];
 					// for every child we're delegating to
@@ -77,7 +77,7 @@ export const aniDelegate = (delegatedSelectors, aniClassName = 'ani') => {
 					allAniEls.push(parentEl);
 				}
 			});
-		}
+		},
 	);
 	return allAniEls;
 };
@@ -123,7 +123,7 @@ export const aniLoad = (element, aniClassNameList = ['ani']) => {
 				document.addEventListener(
 					'DOMContentLoaded',
 					() => el.classList.add('is-shown'),
-					false
+					false,
 				);
 			}
 		});

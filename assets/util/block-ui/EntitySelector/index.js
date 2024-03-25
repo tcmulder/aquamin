@@ -85,7 +85,13 @@ const EntitySelector = compose(
 	withSelect(
 		(
 			scopedSelect,
-			{ title, limit, blockAttributes, entityRecordsQuery, parseEntities }
+			{
+				title,
+				limit,
+				blockAttributes,
+				entityRecordsQuery,
+				parseEntities,
+			},
 		) => {
 			// parse attribute/setAttributes from parent
 			const attrName = Object.keys(blockAttributes).pop('setAttributes');
@@ -108,8 +114,8 @@ const EntitySelector = compose(
 					setAttr({ [attrName]: value });
 				},
 			};
-		}
-	)
+		},
+	),
 )(Render);
 
 export default EntitySelector;

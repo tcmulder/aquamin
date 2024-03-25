@@ -28,7 +28,7 @@ const GridBlockSave = ({ attributes, className }) => {
 			hasAspect && 'grd--has-aspect',
 			hasEqualRows && 'grd--has-equal-rows',
 			'ani-parent',
-			className
+			className,
 		),
 		style: {
 			...getStyleFromObject('--grd-count', count),
