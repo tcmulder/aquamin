@@ -111,7 +111,7 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 			if ( 'aquaadmin' === $user->user_login ) {
 				wp_admin_css_color(
 					'aquamarine', __( 'Aquamarine', 'admin_schemes' ),
-					get_template_directory_uri() . '/admin-aquamarine.css',
+					get_template_directory_uri() . '/assets/global/admin-aquamarine.css',
 					array( '#1F2C39', '#2c3e50', '#1abc9c', '#f39c12' ),
 					array( 'base' => '#f1f2f3', 'focus' => '#fff', 'current' => '#fff' )
 				);
