@@ -13,7 +13,7 @@
 		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
 	},
 	"scripts": {
-		"start": "npm-run-all --parallel builder server",
+		"start": "clear && npm-run-all --parallel --silent builder server",
 		"build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache && npm run build:post",
 		"build:post": "npm run static",
 		"builder": "parcel watch $npm_package_config_build_paths",
