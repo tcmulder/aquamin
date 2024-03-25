@@ -24,12 +24,12 @@ Each block has its own block directory within `aquamin/assets/block-library/`. A
    ┗ 📂 example-block      // the block's unique name
       ┣ 📄 block.json      // block registration details
       ┣ 📄 edit.js         // HTML shown in the block editor
-      ┣ 📄 editor.css      // styling for block editor (also imports front-end's style.css)
+      ┣ 📄 editor.css      // styling for block editor (also imports front-end's view.css)
       ┣ 📄 index.js        // block entry file (mostly imports other files)
       ┣ 📄 render.php      // (optional) PHP for a dynamic block
       ┣ 📄 save.js         // HTML saved to database
-      ┣ 📄 script.js       // (optional) front-end JavaScript (also used for inner blocks)
-      ┣ 📄 style.css       // front-end CSS styling (also used for inner blocks)
+      ┣ 📄 view.js         // (optional) front-end JavaScript (also used for inner blocks)
+      ┣ 📄 view.css        // front-end CSS styling (also used for inner blocks)
       ┗ 📂 inner-block     // (optional) nested block used only by its parent
          ┣ 📄 block.json   // block registration details
          ┣ 📄 edit.js      // HTML shown in the block editor
@@ -40,15 +40,15 @@ Each block has its own block directory within `aquamin/assets/block-library/`. A
 
 ## Front-End JavaScript
 
-To add front-end JavaScript to a block, you can register a `script.js` file via the `viewScript` property of the block's `block.json` file. The `wp aquamin block create` command can create this for you, prefixing the filename like `my-block-script.js` to make console debugging easier.
+To add front-end JavaScript to a block, you can register a `view.js` file via the `viewScript` property of the block's `block.json` file. The `wp aquamin block create` command can create this for you, prefixing the filename like `my-block-view.js` to make console debugging easier.
 
-If you'd like to break a front-end script into multiple files, you can use this `script.js` file as an entry point and import your additional files from within the block's directory.
+If you'd like to break a front-end script into multiple files, you can use this `view.js` file as an entry point and import your additional files from within the block's directory.
 
 ## Inner Blocks
 
 A common pattern in Gutenberg is to have a parent block with dependent inner blocks, like a "Slider" block with several "Slide" blocks within it. The `wp aquamin block create` command will ask if you'd like to generate such an inner block, and will place that inner block within the parent's directory for convenience.
 
-Note that you'll apply styling and front-end scripting for an inner block to it's _parent's_ `style.css` and `script.js` files. This simplifies development by reducing the number of files you need to work with, since these block parings are so tightly coupled anyway (see [Anatomy of a Block](#anatomy-of-a-block) for more details).
+Note that you'll apply styling and front-end scripting for an inner block to it's _parent's_ `view.css` and `view.js` files. This simplifies development by reducing the number of files you need to work with, since these block parings are so tightly coupled anyway (see [Anatomy of a Block](#anatomy-of-a-block) for more details).
 
 ## Dynamic Blocks
 

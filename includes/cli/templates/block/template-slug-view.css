@@ -8,6 +8,6 @@
 .template-slug {
 	b::after {
 		/* replace this demo code with your own: */
-		content: " (❒ style.css) ";
+		content: " (❒ view.css) ";
 	}
 }

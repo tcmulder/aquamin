@@ -1,7 +1,7 @@
 /**
  * Responsive device faux hiding
  */
-@import "./*style.css";
+@import "./*view.css";
 
 .hide-bp-sm,
 .hide-bp-md,

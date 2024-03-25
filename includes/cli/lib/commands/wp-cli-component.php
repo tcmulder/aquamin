@@ -81,7 +81,7 @@ function component_create( $args, $assoc_args ) {
 	Util\exclude( $exclude, array(
 		'question'   => 'Has front-end JavaScript? [y/N]',
 		'guess'      => 'n',
-		'filename'   => 'template-slug-script.js',
+		'filename'   => 'template-slug-view.js',
 		'default'    => $assoc_args[ 'has_js' ] ?? '',
 	) );
 	$has_template_part = Util\exclude( $exclude, array(

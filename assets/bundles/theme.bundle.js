@@ -6,19 +6,19 @@
 /**
  * Core/global configurations
  */
-import '../global/style.css';
+import '../global/view.css';
 
 /**
  * Individual components
  */
-import '../component-library/*/*script.js';
-import '../component-library/*/*style.css';
+import '../component-library/*/*view.js';
+import '../component-library/*/*view.css';
 
 /**
  * Front-end overrides to existing blocks.
  */
-import '../block-editor/*/*script.js';
-import '../block-editor/*/*style.css';
+import '../block-editor/*/*view.js';
+import '../block-editor/*/*view.css';
 
 /**
  * Stuff we don't wanna talk about...

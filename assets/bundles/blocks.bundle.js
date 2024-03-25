@@ -7,10 +7,10 @@ import '../block-editor/global/blocks.css';
 /**
  * Global UI component styling.
  */
-import '../ui/*/*style.css';
+import '../ui/*/*view.css';
 
 /**
  * Overrides to existing blocks.
  */
-import '../block-editor/*/*script.js';
-import '../block-editor/*/*style.css';
+import '../block-editor/*/*view.js';
+import '../block-editor/*/*view.css';

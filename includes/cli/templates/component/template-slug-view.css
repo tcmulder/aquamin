@@ -9,6 +9,6 @@
 .template-slug {
 	/* replace this demo code with your own: */
 	b::after {
-		content: " (❒ style.css) ";
+		content: " (❒ view.css) ";
 	}
 }

@@ -115,7 +115,7 @@ function block_create( $args, $assoc_args ) {
 	$has_js = Util\exclude( $exclude, array(
 		'question'   => 'Has front-end JavaScript? [y/N]',
 		'guess'      => 'n',
-		'filename'   => 'template-slug-script.js',
+		'filename'   => 'template-slug-view.js',
 		'default'    => $assoc_args[ 'has_js' ] ?? '',
 	) );
 	$is_dynamic = Util\ask( 'Dynamic? [y/N]', 'n', $assoc_args[ 'is_dynamic' ] ?? '' );
@@ -184,7 +184,7 @@ function block_create( $args, $assoc_args ) {
 	// enqueue front-end scripts if appropriate (unshift to top of array so template strings get replaced)
 	array_unshift( $far, array(
 		'find' => "\t/* TEMPLATE: enqueue front-end script */\n",
-		'repl' => ! $has_js ? "" : "\t\"viewScript\": [\"file:../../../dist/block-library/_template-block/template-slug-script.js\"],\n",
+		'repl' => ! $has_js ? "" : "\t\"viewScript\": [\"file:../../../dist/block-library/_template-block/template-slug-view.js\"],\n",
 	) );
 	// identify dynamic render php script
 	array_unshift( $far, array(

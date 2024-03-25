@@ -6,6 +6,7 @@
 * Renamed `block-edits` directory `block-editor` so it better parallels Gutenberg's directory structure.
 * Converted imports to a more standard format (from e.g. `const {__} = wp.i18n` to `import {__} from '@wordpress/i18n'`).
 * Updated and refined documentation.
+* Changed `script.js` and `style.css` files to `view.js` and `view.css` to make their parallel purpose clearer.
 
 ## 6.1.2 - December 6 2023
 * Remove custom block patterns feature (this is now supported by core WordPress).

@@ -11,7 +11,7 @@ The easiest way to create a component is to run `wp aquamin component create` ([
 
 ?> If you'd prefer not to use WP-CLI, you can simply add your own components as individual directories within `aquamin/assets/component-library/`. You can use the files within `aquamin/includes/cli/templates/component/` as a starting point if it's helpful, replacing all the "template" placeholder code and filename prefixes with your component's name.
 
-Not all components are alike, so the files each requires will differ. Aquamin automatically enqueues any `style.css` file as front-end styling, any `editor.css` file as back-end block editor styling, and any `script.js` file as front-end JavaScript, loading all of these site-wide. It houses any HTML or PHP in a `render.php` file, then uses `get_template_part()` to include the component wherever it's needed elsewhere in the theme. It also allows you to add any WordPress hooks and filters to a `hooks.php` file within each component's directory. You can optionally prefix all of these names (e.g. `my-component-style.css` or `my-component-hooks.php`) to make code editing and debugging easier. The goal is to ensure each component's code only exists within it's own directory, making them easy to find, manage, and edit.
+Not all components are alike, so the files each requires will differ. Aquamin automatically enqueues any `view.css` file as front-end styling, any `view.js` file as front-end JavaScript, and any `editor.css` file as back-end block editor styling, loading all of these site-wide. It houses any HTML or PHP in a `render.php` file, then uses `get_template_part()` to include the component wherever it's needed elsewhere in the theme. It also allows you to add any WordPress hooks and filters to a `hooks.php` file within each component's directory. You can optionally prefix all of these names (e.g. `my-component-view.css` or `my-component-hooks.php`) to make code editing and debugging easier. The goal is to ensure each component's code only exists within it's own directory, making them easy to find, manage, and edit.
 
 ?> When you use the `wp aquamin component create` command, you'll conveniently find the `get_template_part()` call (including the appropriate file path) in the  `render.php` file's header comment.
 
@@ -24,10 +24,10 @@ An example is the included `aquamin/assets/component-library/footer` sticky foot
  ┗ 📂 component-library     // directory containing all components
    ┗ 📂 footer              // the component's unique name
      ┣ 📄 footer-render.php // HTML/PHP for the footer component
-     ┗ 📄 footer-style.css  // sticky footer styling (add additional footer styling here)
+     ┗ 📄 footer-view.css  // sticky footer styling (add additional footer styling here)
 ```
 
-Aquamin then includes this component via `get_template_part( 'assets/component-library/footer/footer-render' )` in the standard `aquamin/footer.php` file. You could additionally add a `footer-script.js` file for front-end footer scripts, a `footer-editor.css` file to add styles relevant only to the back-end block editor, or a `footer-hooks.php` file to add footer-related WordPress hooks and filters.
+Aquamin then includes this component via `get_template_part( 'assets/component-library/footer/footer-render' )` in the standard `aquamin/footer.php` file. You could additionally add a `footer-view.js` file for front-end footer scripts, a `footer-editor.css` file to add styles relevant only to the back-end block editor, or a `footer-hooks.php` file to add footer-related WordPress hooks and filters.
 
 ## Built In Components
 
@@ -56,7 +56,7 @@ Aquamin includes some global features that apply site-wide across all components
    ┣ 📄 fonts.css           // custom font imports (see Fonts below)
    ┣ 📂 normalize           // global styling for common html elements you'll customize
    ┣ 📄 shame.css           // styling we hope to fix later (occurs last in cascade)
-   ┣ 📄 style.css           // main entry file (coordinates global styling cascade)
+   ┣ 📄 view.css           // main entry file (coordinates global styling cascade)
    ┗ 📄 variables.css       // css custom properties (first in cascade)
 ```
 
@@ -67,9 +67,9 @@ Or, you can directly enqueue any fonts from a CDN (like Google Fonts) within the
 
 ## Images
 
-You can add images for a component within an "images" folder in that component's directory (e.g. `aquamin/assets/component-library/some-component/images/icon.png`), then include them via a relative path (e.g. `background-image: url("./images/icon.png")` in `aquamin/assets/component-library/some-component/some-component-style.css`).
+You can add images for a component within an "images" folder in that component's directory (e.g. `aquamin/assets/component-library/some-component/images/icon.png`), then include them via a relative path (e.g. `background-image: url("./images/icon.png")` in `aquamin/assets/component-library/some-component/some-component-view.css`).
 
-If you have images that multiple components need to use, create your own `aquamin/assets/images` directory for them. Then, reference them via a relative path (e.g. `background-image: url("../../images/fpo.png")` in `aquamin/assets/component-library/some-component/some-component-style.css`), and Parcel will take care of hashing and including these images in the `aquamin/dist/` directory.
+If you have images that multiple components need to use, create your own `aquamin/assets/images` directory for them. Then, reference them via a relative path (e.g. `background-image: url("../../images/fpo.png")` in `aquamin/assets/component-library/some-component/some-component-view.css`), and Parcel will take care of hashing and including these images in the `aquamin/dist/` directory.
 
 ## SVGs
 
