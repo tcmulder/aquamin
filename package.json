@@ -9,7 +9,7 @@
 	},
 	"config": {
 		"lint_paths": "./assets",
-		"build_paths": "./assets/*/*.bundle.js ./assets/*/*.bundle.css ./assets/block-library/*/*script.js ./assets/block-library/*/index.js ./assets/block-library/*/*style.css",
+		"build_paths": "./assets/*/*.bundle.js ./assets/*/*.bundle.css ./assets/block-library/*/*view.js ./assets/block-library/*/index.js ./assets/block-library/*/*view.css",
 		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
 	},
 	"scripts": {
@@ -33,7 +33,7 @@
 		"@parcel/transformer-svg-react": "^2.12.0",
 		"@wordpress/element": "^5.31.0",
 		"@wordpress/icons": "^9.45.0",
-		"browser-sync": "^3.0.2",
+		"browser-sync": "^2.29.3",
 		"classnames": "^2.5.1",
 		"del-cli": "^5.1.0",
 		"docsify-cli": "^4.4.4",
