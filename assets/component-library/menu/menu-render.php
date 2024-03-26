@@ -1,3 +1,10 @@
+<?php
+/**
+ * The main site navigation menu
+ *
+ * @package Aquamin
+ */
+?>
 <div class="site-menu">
 	<?php
 		wp_nav_menu( array(

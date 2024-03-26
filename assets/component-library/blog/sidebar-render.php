@@ -1,8 +1,6 @@
 <?php
 /**
- * The sidebar.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * The template for displaying the site's sidebar
  *
  * @package Aquamin
  */

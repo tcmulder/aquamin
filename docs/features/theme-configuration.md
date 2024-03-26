@@ -17,7 +17,7 @@ Not all components are alike, so the files each requires will differ. Aquamin au
 
 ## Examples
 
-An example is the included `aquamin/assets/component-library/footer` sticky footer component.
+An example is the included `aquamin/assets/component-library/footer/` sticky footer component.
 
 ```
 📂 assets
@@ -35,13 +35,19 @@ The following components come with the aquamin theme. You'll add your own alongs
 
 ```
 📂 assets
- ┗ 📂 component-library     // all preinstalled components are within this folder
-   ┣ 📂 content             // component: basic content markup for posts and pages
-   ┣ 📂 excerpt             // component: blog excerpt markup
-   ┣ 📂 footer              // component: the site's footer
-   ┣ 📂 menu                // component: the site's main navigation
-   ┗ 📂 wp-overrides        // wordpress styling overrides
+ ┗ 📂 component-library   // all preinstalled components are within this folder
+   ┣ 📂 404               // 404 error message component
+   ┣ 📂 blog              // blog (single, archive, sidebar, etc.)
+   ┣ 📂 footer            // site's footer component
+   ┣ 📂 header            // site's header component
+   ┣ 📂 menu              // site's main menu navigation in the header
+   ┣ 📂 no-content        // reusable "no posts" message component
+   ┣ 📂 page              // general page torso component
+   ┣ 📂 search            // search-related components
+   ┗ 📂 wp-overrides      // wordpress styling overrides
 ```
+
+?> Aquamin loads some of these from the root `aquamin/index.php` file via `get_template_part()` calls reaching into this directory. This allows you, for instance, to work on all your blog-related code within just the `aquamin/assets/component-library/blog/` directory.
 
 ## Global Features
 
