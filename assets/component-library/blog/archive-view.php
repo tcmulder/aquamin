@@ -25,10 +25,10 @@ get_header(); ?>
 				<?php endwhile; ?>
 				<?php aquamin_pagination(); ?>
 			<?php else : ?>
-				<?php get_template_part( 'assets/component-library/no-content/no-content-render' ); ?>
+				<?php get_template_part( 'assets/component-library/no-content/no-content-view' ); ?>
 			<?php endif; ?>
 		</section>
-		<?php get_template_part( 'assets/component-library/blog/sidebar-render' ); ?>
+		<?php get_template_part( 'assets/component-library/blog/sidebar-view' ); ?>
 	</main>
 </div>
 

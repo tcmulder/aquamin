@@ -32,7 +32,7 @@ get_header(); ?>
 				<?php else : ?>
 					<?php
 						get_template_part(
-							'assets/component-library/no-content/no-content-render',
+							'assets/component-library/no-content/no-content-view',
 							null,
 							array(
 								'message' => __( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'aquamin' )

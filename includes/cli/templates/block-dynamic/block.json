@@ -29,6 +29,6 @@
 	"style": [
 		"file:../../../dist/block-library/_template-block/template-slug-view.css"
 	],
-	"render": "file:./template-slug-render.php",
+	"render": "file:./template-slug-view.php",
 	"editorScript": "file:../../../dist/block-library/_template-block/index.js"
 }

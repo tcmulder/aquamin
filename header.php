@@ -23,6 +23,6 @@
 <?php wp_body_open(); ?>
 <div id="page" class="all-the-things">
 
-	<?php get_template_part( 'assets/component-library/header/header-render' ); ?>
+	<?php get_template_part( 'assets/component-library/header/header-view' ); ?>
 
 	<div id="content" class="site-content">

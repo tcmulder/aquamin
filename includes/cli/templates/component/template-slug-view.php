@@ -5,7 +5,7 @@
  * This file renders the component's HTML
  * via the template part path:
  * 
- * get_template_part( 'assets/component-library/_template-component/template-slug-render' );
+ * get_template_part( 'assets/component-library/_template-component/template-slug-view' );
  * 
  * @param  array 	$args 	Optional array of custom arguments from parent script
  * @return string

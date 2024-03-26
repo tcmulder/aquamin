@@ -26,7 +26,7 @@ Each block has its own block directory within `aquamin/assets/block-library/`. A
       ┣ 📄 edit.js         // HTML shown in the block editor
       ┣ 📄 editor.css      // styling for block editor (also imports front-end's view.css)
       ┣ 📄 index.js        // block entry file (mostly imports other files)
-      ┣ 📄 render.php      // (optional) PHP for a dynamic block
+      ┣ 📄 view.php        // (optional) PHP for a dynamic block
       ┣ 📄 save.js         // HTML saved to database
       ┣ 📄 view.js         // (optional) front-end JavaScript (also used for inner blocks)
       ┣ 📄 view.css        // front-end CSS styling (also used for inner blocks)
@@ -36,7 +36,7 @@ Each block has its own block directory within `aquamin/assets/block-library/`. A
          ┣ 📄 index.js     // block entry file (mostly imports other files)
          ┗ 📄 save.js      // HTML saved to database
 ```
-?> Note these filenames are simplified: they enqueue properly, but for easier debugging, aquamin prefixes them like `example-block-edit.js`, `example-block-editor.css`, `example-block-render.php`, etc.
+?> Note these filenames are simplified: they enqueue properly, but for easier debugging, aquamin prefixes them like `example-block-edit.js`, `example-block-editor.css`, `example-block-view.php`, etc.
 
 ## Front-End JavaScript
 
@@ -52,7 +52,7 @@ Note that you'll apply styling and front-end scripting for an inner block to it'
 
 ## Dynamic Blocks
 
-Though static JavaScript blocks are generally best, sometimes blocks require up-to-date data from the database, and therefore require dynamic PHP. The `wp aquamin block create` command will ask if a block should be dynamic, creating a `render.php` file for your block if so.
+Though static JavaScript blocks are generally best, sometimes blocks require up-to-date data from the database, and therefore require dynamic PHP. The `wp aquamin block create` command will ask if a block should be dynamic, creating a `view.php` file for your block if so.
 
 ?> Aquamin doesn't currently support automatic [inner block](#inner-blocks) generation if you choose to go dynamic: if you need that, you'll have to add your dynamic or static inner blocks manually.
 

@@ -11,9 +11,9 @@ The easiest way to create a component is to run `wp aquamin component create` ([
 
 ?> If you'd prefer not to use WP-CLI, you can simply add your own components as individual directories within `aquamin/assets/component-library/`. You can use the files within `aquamin/includes/cli/templates/component/` as a starting point if it's helpful, replacing all the "template" placeholder code and filename prefixes with your component's name.
 
-Not all components are alike, so the files each requires will differ. Aquamin automatically enqueues any `view.css` file as front-end styling, any `view.js` file as front-end JavaScript, and any `editor.css` file as back-end block editor styling, loading all of these site-wide. It houses any HTML or PHP in a `render.php` file, then uses `get_template_part()` to include the component wherever it's needed elsewhere in the theme. It also allows you to add any WordPress hooks and filters to a `hooks.php` file within each component's directory. You can optionally prefix all of these names (e.g. `my-component-view.css` or `my-component-hooks.php`) to make code editing and debugging easier. The goal is to ensure each component's code only exists within it's own directory, making them easy to find, manage, and edit.
+Not all components are alike, so the files each requires will differ. Aquamin automatically enqueues any `view.css` file as front-end styling, any `view.js` file as front-end JavaScript, and any `editor.css` file as back-end block editor styling, loading all of these site-wide. It houses any HTML or PHP in a `view.php` file, then uses `get_template_part()` to include the component wherever it's needed elsewhere in the theme. It also allows you to add any WordPress hooks and filters to a `hooks.php` file within each component's directory. You can optionally prefix all of these names (e.g. `my-component-view.css` or `my-component-hooks.php`) to make code editing and debugging easier. The goal is to ensure each component's code only exists within it's own directory, making them easy to find, manage, and edit.
 
-?> When you use the `wp aquamin component create` command, you'll conveniently find the `get_template_part()` call (including the appropriate file path) in the  `render.php` file's header comment.
+?> When you use the `wp aquamin component create` command, you'll conveniently find the `get_template_part()` call (including the appropriate file path) in the  `view.php` file's header comment.
 
 ## Examples
 
@@ -23,11 +23,11 @@ An example is the included `aquamin/assets/component-library/footer/` sticky foo
 📂 assets
  ┗ 📂 component-library     // directory containing all components
    ┗ 📂 footer              // the component's unique name
-     ┣ 📄 footer-render.php // HTML/PHP for the footer component
+     ┣ 📄 footer-view.php // HTML/PHP for the footer component
      ┗ 📄 footer-view.css  // sticky footer styling (add additional footer styling here)
 ```
 
-Aquamin then includes this component via `get_template_part( 'assets/component-library/footer/footer-render' )` in the standard `aquamin/footer.php` file. You could additionally add a `footer-view.js` file for front-end footer scripts, a `footer-editor.css` file to add styles relevant only to the back-end block editor, or a `footer-hooks.php` file to add footer-related WordPress hooks and filters.
+Aquamin then includes this component via `get_template_part( 'assets/component-library/footer/footer-view' )` in the standard `aquamin/footer.php` file. You could additionally add a `footer-view.js` file for front-end footer scripts, a `footer-editor.css` file to add styles relevant only to the back-end block editor, or a `footer-hooks.php` file to add footer-related WordPress hooks and filters.
 
 ## Built In Components
 

@@ -21,7 +21,7 @@ get_header(); ?>
 				</article>
 			<?php endwhile; ?>
 		<?php else : ?>
-			<?php get_template_part( 'assets/component-library/no-content/no-content-render' ); ?>
+			<?php get_template_part( 'assets/component-library/no-content/no-content-view' ); ?>
 		<?php endif; ?>
 	</main>
 </div>
