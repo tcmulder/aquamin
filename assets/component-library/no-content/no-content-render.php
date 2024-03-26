@@ -7,6 +7,6 @@
  * @param  array  $args  Arguments passed in from get_template_part() call.
  */
 ?>
-<article class="not-found torso entry-content has-global-padding is-layout-constrained">
+<article class="not-found has-global-padding is-layout-constrained">
 	<?php echo $args['message'] ?? __( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'aquamin' ); ?>
 </article>

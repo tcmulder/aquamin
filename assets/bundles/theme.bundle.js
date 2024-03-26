@@ -1,29 +1,18 @@
 /* eslint-disable import/no-unresolved */
 /**
- * Load front-end scripts and styling common the the entire theme.
+ * Theme-wide scripts and styles
+ *
+ * All files within the assets directory ending
+ * in "theme.js" or "theme.css" get enqueued on
+ * the front-end of the website, site-wide.
  */
-
-/**
- * Core/global configurations
- */
-import '../global/view.css';
-
-/**
- * Individual components
- */
-import '../component-library/*/*view.js';
-import '../component-library/*/*view.css';
-
-/**
- * Front-end overrides to existing blocks.
- */
-import '../block-editor/*/*view.js';
-import '../block-editor/*/*view.css';
+import '../**/*theme.css';
+import '../**/*theme.js';
 
 /**
  * Stuff we don't wanna talk about...
  *
  * See file for notes. Added here to be last
- * in cascade.
+ * in cascade. Loaded site-wide.
  */
 import '../global/shame.css';

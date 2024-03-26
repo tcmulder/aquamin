@@ -16,6 +16,25 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 	function aquamin_setup() {
 
 		/**
+		 * Execute hooks for component library
+		 * 
+		 * Add a hooks.php file within any component directory to use
+		 * add_action or add_filter features (rather than adding
+		 * these hooks outside the component's directory within functions.php).
+		 */
+		$hook_paths = array(
+			AQUAMIN_ASSETS . '/component-library/*/*hooks.php',
+		);
+		foreach ( $hook_paths as $path ) {
+			$hooks = glob( $path );
+			if ( $hooks ) {
+				foreach ( $hooks as $hooks ) {
+					require_once $hooks;
+				}
+			}
+		}
+
+		/**
 		 * Enqueue theme front-end styles and scripts
 		 */
 		add_action( 'wp_enqueue_scripts', 'aquamin_theme_scripts' );

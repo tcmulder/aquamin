@@ -6,7 +6,7 @@
  */
 ?>
 
-<aside id="secondary" class="main-sidebar">
+<aside id="secondary" class="main-sidebar has-global-padding">
 	<h3><?php _e( 'Archives', 'aquamin' ); ?></h3>
 	<ul>
 		<?php wp_get_archives('type=monthly'); ?>

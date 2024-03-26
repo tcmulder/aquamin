@@ -288,10 +288,10 @@ function aquamin_id() {
 		// use page set as the "posts page" for blog-like templates
 		if ( get_option( 'page_for_posts' )
 			&& ( is_singular( 'post' )
-				|| is_post_type_archive( 'post' )
 				|| is_category()
 				|| is_tag()
 				|| is_home()
+				|| ( is_archive() && 'post' === get_post_type() )
 			)
 		) {
 			$the_id = get_option( 'page_for_posts' );

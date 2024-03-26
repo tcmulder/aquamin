@@ -186,11 +186,6 @@ function block_create( $args, $assoc_args ) {
 		'find' => "\t/* TEMPLATE: enqueue front-end script */\n",
 		'repl' => ! $has_js ? "" : "\t\"viewScript\": [\"file:../../../dist/block-library/_template-block/template-slug-view.js\"],\n",
 	) );
-	// identify dynamic render php script
-	array_unshift( $far, array(
-		'find' => "\t/* TEMPLATE: enqueue dynamic render script */\n",
-		'repl' => ! $is_dynamic ? "" : "\t\"render\": \"file:./template-slug-render.php\",\n",
-	) );
 	
 	/**
 	 * Setup inner blocks

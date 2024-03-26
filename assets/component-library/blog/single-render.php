@@ -24,8 +24,8 @@ get_header(); ?>
 		<?php else : ?>
 			<?php get_template_part( 'assets/component-library/no-content/no-content-render' ); ?>
 		<?php endif; ?>
+		<?php get_template_part( 'assets/component-library/blog/sidebar-render' ); ?>
 	</main>
-	<?php get_template_part( 'assets/component-library/blog/sidebar-render' ); ?>
 </div>
 
 <?php get_footer();

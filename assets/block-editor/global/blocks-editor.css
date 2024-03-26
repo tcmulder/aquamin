@@ -5,32 +5,16 @@
  * the theme's major styling features,
  * wrapped within .editor-styles-wrapper.
  */
-@import "../../global/view.css";
+@import "../../global/theme.css";
 
 /**
- * Import theme stylesheets for editor into the editor
- */
-@import "../component-library/*/*editor.css";
-
-/**
- * (optional) Import theme front-end stylesheets into the block editor
- * 
- * Note: the view.css glob import _could_ import things
- * that wreak havoc on the block editor's styling, since these things
- * (like footers and menus) don't usually appear within the block
- * editor. Use at your own risk, or feel free to manually add a
- * list of imports for specific theme front-end components here.
- */
-/* @import "../component-library/* /*view.css"; */
-
-/**
-   * Global block styling and WordPress block overrides.
+   * Import global block styling and WordPress block overrides
    *
    * This causes the editor to inherit
-   * styling for the theme's blocks,
+   * styling for the theme's block overrides,
    * wrapped within .editor-styles-wrapper.
    */
-@import "./blocks.css";
+@import "./blocks-theme.css";
 
 /**
  * Global editor overrides
