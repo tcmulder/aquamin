@@ -134,35 +134,32 @@ function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text 
 /**
  * Get a specific post's content
  * 
- * Allows us to get the content of one post from within
- * another. Defaults to getting Appearance > Global Content
- * posts and their content.
+ * Allows us to get the content of one post from within another. Defaults
+ * to getting Appearance > Global Content posts and their content if you
+ * just pass in array( 'name' => 'global-content-slug' ).
  * 
- * @param  mixed   $find  custom query (array) or slug (string) for a Global Content post
- * @return string         Post content or empty string
+ * @param  array   $query  Query for a single post to grab content
+ * @return string          Post content or empty string
  */
-function aquamin_get_post_content( $find ) {
+function aquamin_get_post_content( $query ) {
 	
+	// start by assuming no content
 	$the_content = '';
 
-	$query = array(
+	// merge query with ours to get the ID of a single matching post
+	$query = wp_parse_args( $query, array(
 		'post_type' => 'aquamin-general',
 		'posts_per_page' => 1,
 		'fields' => 'ids'
-	);
-
-	if ( is_string( $find ) ) {
-		$query['name'] = $find;
-	} else {
-		$query = wp_parse_args( $find, $query );
-	}
+	) );
 	
+	// get the content of the post if it exists
 	$posts = get_posts( $query );
-	
 	if( $posts ) {
 		$the_content = apply_filters( 'the_content', get_post_field( 'post_content', $posts[0] ) );
 	}
 	
+	// send it!
 	return $the_content;
 
 }

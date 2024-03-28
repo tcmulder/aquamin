@@ -17,7 +17,7 @@ if ( $has_root_template ) : get_footer(); else : do_action( 'get_footer' ); ?>
 			</div><!-- #content (opened via header.php) -->
 
 			<footer id="colophon" class="site-footer has-global-padding is-layout-constrained">
-				<?php echo aquamin_get_post_content( 'footer' ); ?>
+				<?php echo aquamin_get_post_content( array( 'name' => 'footer' ) ); ?>
 			</footer>
 
 		</div><!-- #page (opened via header.php) -->
