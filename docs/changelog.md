@@ -1,13 +1,14 @@
 # Changelog
 
 ## 7.0.0 - March 19 2024
-* Note there are breaking changes, so blocks coming from v6 or lower may need some adjustments (mainly using `blocks.json` rather than `index.php` for automatic block registration).
-* Switched to exclusively using block.json for registering blocks (eliminates need to load index.php for each block, and reduces a lot of redundant code).
+* This version introduces breaking changes, so blocks coming from v6 or lower may need some adjustments.
+* Switched to exclusively using block.json for registering blocks.
+* Conducted massive file and directory refactoring, to reduce the number of root-level files and keep things better organized.
+* Moved more root-level files into component library (e.g. header and footer).
 * Renamed `block-edits` directory `block-editor` so it better parallels Gutenberg's directory structure.
-* Converted imports to a more standard format (from e.g. `const {__} = wp.i18n` to `import {__} from '@wordpress/i18n'`).
-* Updated and refined documentation.
-* Changed `script.js` and `style.css` files to `view.js` and `view.css` to make their parallel purpose clearer.
-* Simplified core templates by removing separate `content-*.php` and `excerpt-*.php` template parts.
+* Renamed `script.js`, `style.css`, and `render.php` files to `view.js`, `view.css`, and `view.php` to make their parallel purpose clearer.
+* Converted imports to a more standard format (from e.g. `const {useBlockProps} = wp.blockEditor` to `import { useBlockProps } from '@wordpress/block-editor'`).
+* Updated documentation, documenting changes and making things more concise.
 
 ## 6.1.2 - December 6 2023
 * Remove custom block patterns feature (this is now supported by core WordPress).
