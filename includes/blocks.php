@@ -205,6 +205,42 @@ function aquamin_editor_scripts() {
 }
 
 /**
+ * Add ani to dynamic blocks
+ */
+add_filter( 'render_block', 'aqua_dynamic_ani', 10, 2 );
+function aqua_dynamic_ani( $block_content, $block ) {
+
+	// start with no custom class names
+	$classes = '';
+
+	// handle animation classes
+	if ( ! empty( $block[ 'attrs' ][ 'aquaminClassNameAni' ] ) ) {
+		$classes .= ' ani ' . implode( ' ',  array_map( function( $ani ) {
+			return $ani[ 'value' ];
+		}, $block[ 'attrs' ][ 'aquaminClassNameAni' ] ) );
+	}
+
+	// handle hide/show responsiveness
+	if ( ! empty( $block[ 'attrs' ][ 'aquaminClassNameHide' ] ) ) {
+		$classes .= ' ' . implode( ' ',  array_map( function( $ani ) {
+			return $ani[ 'value' ];
+		}, $block[ 'attrs' ][ 'aquaminClassNameHide' ] ) );
+	}
+
+	// if we have new stuff then send it
+	if ( $classes && $block_content ) {
+		return preg_replace(
+			'/' . preg_quote( 'class="', '/' ) . '/',
+			'class="' . trim( esc_attr( $classes ) ) . ' ',
+			$block_content,
+			1
+		);
+	}
+	// just return things unchanged by default
+	return $block_content;
+}
+
+/**
  * Apply ugly hack to set correct root editor container classes
  * 
  * Setting settings.useRootPaddingAwareAlignments to true and settings.layout.type to
