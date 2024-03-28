@@ -23,6 +23,7 @@
  * @return string  Either sprintf result or an empty string.
  */
 function if_sprintf( $sprintf, ...$items ) {
+	
 	// get the first value and continue if it exists
 	$first = array_shift( $items );
 	if ( aquamin_is_truty_or_zero( $first ) ) {
@@ -40,6 +41,7 @@ function if_sprintf( $sprintf, ...$items ) {
 			return call_user_func_array( 'sprintf', array_merge( (array) $sprintf, (array) $first, $items ) );
 		}
 	}
+
 }
 
 // echo rather than return string
@@ -71,7 +73,7 @@ function aquamin_cache_break(  $path )  {
  * @return  string  Unique number.
  */
 function aquamin_disambiguate() {
-
+	
 	// set an unique increment variable if it's not already set
 	if ( ! isset( $GLOBALS[ 'disambiguation_incrament' ] ) ) {
 		$GLOBALS[ 'disambiguation_incrament' ] = 0;
@@ -81,6 +83,7 @@ function aquamin_disambiguate() {
 
 	// return it
 	return $unique_number;
+
 }
 
 /**
@@ -96,6 +99,7 @@ function aquamin_disambiguate() {
  * @return string                          Pagination HTML.
  */
 function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text = '', $show_disabled = false, $echo = true ) {
+	
 	global $wp_query;
 	$pagination = '';
 	$big = 999999999;
@@ -109,6 +113,7 @@ function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text 
 	    'total'     => $wp_query->max_num_pages,
 	    'next_text' => $next_text,
 	) );
+	
 	if ( $nav ) {
 		$html = $nav;
 		if ( $show_disabled ) {
@@ -121,7 +126,45 @@ function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text 
 		}
 		$pagination = '<div class="' . $class . '">' . $html . '</div>';
 	}
+	
 	return $pagination;
+
+}
+
+/**
+ * Get a specific post's content
+ * 
+ * Allows us to get the content of one post from within
+ * another. Defaults to getting Appearance > Global Content
+ * posts and their content.
+ * 
+ * @param  mixed   $find  custom query (array) or slug (string) for a Global Content post
+ * @return string         Post content or empty string
+ */
+function aquamin_get_post_content( $find ) {
+	
+	$the_content = '';
+
+	$query = array(
+		'post_type' => 'aquamin-general',
+		'posts_per_page' => 1,
+		'fields' => 'ids'
+	);
+
+	if ( is_string( $find ) ) {
+		$query['name'] = $find;
+	} else {
+		$query = wp_parse_args( $find, $query );
+	}
+	
+	$posts = get_posts( $query );
+	
+	if( $posts ) {
+		$the_content = apply_filters( 'the_content', get_post_field( 'post_content', $posts[0] ) );
+	}
+	
+	return $the_content;
+
 }
 
 /**
