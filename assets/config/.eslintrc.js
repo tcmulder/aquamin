@@ -19,4 +19,19 @@ module.exports = {
 		'no-undef': 'off',
 		'react/prop-types': 'off',
 	},
+	overrides: [
+		{
+			files: ['*.html'],
+			rules: {
+				'prettier/prettier': [
+					'error',
+					{
+						singleQuote: true,
+						tabWidth: 2,
+						useTabs: true,
+					},
+				],
+			},
+		},
+	],
 };

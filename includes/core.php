@@ -81,16 +81,16 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 
 			wp_enqueue_style(
 				'aquamin-style',
-				get_template_directory_uri() . '/dist/bundles/theme.bundle.css',
+				get_template_directory_uri() . '/dist/global/theme.bundle.css',
 				array(),
-				aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.css' ),
+				aquamin_cache_break( get_stylesheet_directory() .'/dist/global/theme.bundle.css' ),
 				'screen'
 			);
 			wp_enqueue_script(
 				'aquamin-scripts',
-				get_template_directory_uri() . '/dist/bundles/theme.bundle.js',
+				get_template_directory_uri() . '/dist/global/theme.bundle.js',
 				false,
-				aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.js' ),
+				aquamin_cache_break( get_stylesheet_directory() .'/dist/global/theme.bundle.js' ),
 				true
 			);
 

@@ -24,6 +24,8 @@ window.addEventListener('load', () => {
 						const inner = iframe.getElementById(id);
 						if (inner?.href !== outer?.href) {
 							inner.href = outer.href;
+							// eslint-disable-next-line no-console
+							console.log(`Copying script ${id} into iframe`);
 						}
 					}
 				});
