@@ -23,3 +23,8 @@ add_filter( 'home_template', 'aquamin_home_template' );
 function aquamin_home_template( $template ) {
 	return $template && 'index.php' !== basename( $template ) ? $template : __DIR__ . '/archive-view.php';
 }
+// comments
+add_filter( 'comments_template', 'aquamin_comments_template' );
+function aquamin_comments_template( $template ) {
+	return file_exists( $template ) ? $template : __DIR__ . '/comments-view.php';
+}

@@ -12,7 +12,7 @@
  * @package Aquamin
  */
 
-get_header(); ?>
+get_template_part( 'assets/component-library/header/header-view' ); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
@@ -36,4 +36,4 @@ get_header(); ?>
 		</main>
 	</div>
 
-<?php get_footer();
+<?php get_template_part( 'assets/component-library/footer/footer-view' );

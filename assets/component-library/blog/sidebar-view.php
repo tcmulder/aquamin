@@ -1,6 +1,9 @@
 <?php
 /**
  * The template for displaying the site's sidebar
+ * 
+ * This file renders the component's HTML via:
+ * get_template_part( 'assets/component-library/blog/sidebar-view' );
  *
  * @package Aquamin
  */
