@@ -126,6 +126,10 @@ function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text 
 		}
 		$pagination = '<div class="' . $class . '">' . $html . '</div>';
 	}
+
+	if ( $echo ) {
+		echo $pagination;
+	}
 	
 	return $pagination;
 
