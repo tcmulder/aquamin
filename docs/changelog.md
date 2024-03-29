@@ -1,6 +1,6 @@
 # Changelog
 
-## 7.0.0 - March 19 2024
+## 7.0.0 - March 29 2024
 * This version introduces breaking changes, so blocks coming from v6 or lower may need some adjustments.
 * Switched to exclusively using block.json for registering blocks.
 * Conducted massive file and directory refactoring, to reduce the number of root-level files and keep things better organized.
