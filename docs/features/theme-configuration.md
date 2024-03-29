@@ -11,27 +11,24 @@ The easiest way to create a component is to run `wp aquamin component create` ([
 
 ?> If you'd prefer not to use WP-CLI, you can simply add your own components as individual directories within `aquamin/assets/component-library/`. You can use the files within `aquamin/includes/cli/templates/component/` as a starting point if it's helpful, replacing all the "template" placeholder code and filename prefixes with your component's name.
 
-### File Name Prefixing
+### File Naming and Enqueuing Conventions
 
-Note that these shortened filenames work, but for easier debugging aquamin prefixes them like `example-component-edit.js`, `example-component-editor.css`, `example-component-view.php`, etc.
+Not all components are alike, so the files each requires will differ. The `wp aquamin component create` command will ask if you want the following:
 
-## File Naming and Enqueuing Conventions
+|  CSS/JS&nbsp;Suffix  | Compiled File Within `aquamin/dist/`  | Enqueued By           | Purpose
+|  -              | -                                          | -                     | - 
+|  `theme.css`    | `global/theme.bundle.css`                  | front-end globally    | theme-wide styling
+|  `theme.js`     | `global/theme.bundle.js`                   | front-end globally    | theme-wide behavior
+|  `editor.css`   | `global/editor.bundle.css`                 | back-end globally     | block editor styling
+|  `view.css`     | `component-library/<name>/<name>-view.css` | `hooks.php` manually  | component styling
+|  `view.js`      | `component-library/<name>/<name>-view.js`  | `hooks.php` manually  | component behavior
 
-Not all components are alike, so the files each requires will differ:
+|  PHP&nbsp;Suffix  | Where Included via PHP                                                                                    | Purpose
+|  -                | -                                                                                                         | -
+|  `hooks.php`      | automatically included via aquamin's `functions.php` file                                                 | wordpress&nbsp;hooks&nbsp;and&nbsp;filters
+|  `view.php`       | manually via `get_template_part('assets/component-library/<name>-view')` wherever component should appear | front-end html output of the component
 
-|  File Suffix: | Usage
-|  -            | -
-|  `theme.css`  | Compiled into `aquamin/dist/global/theme.bundle.css` so it loads site-wide automatically.
-|  `theme.js`   | Compiled into `aquamin/dist/global/theme.bundle.js` so it loads site-wide automatically.
-|  `hooks.php`  | Included via `functions.php` for component-specific hooks and filters.
-|  `view.php`   | Manually include this file via `get_template_part()` wherever component is needed.
-|  `view.css`   | Compiled into `aquamin/dist/component-library/component-name-view.css` so you can manually enqueue it via `hooks.php` logic.
-|  `view.js`    | Compiled into `aquamin/dist/component-library/component-name-view.js` so you can manually enqueue it via `hooks.php` logic.
-|  `editor.css` | Compiled into `aquamin/dist/global/editor.bundle.css` so it loads automatically in the back-end block editor.
-
-Just include whatever above files your component needs within the block's own directory so it's easy to find, manage, and edit your component in one place.
-
-?> When you use the `wp aquamin component create` command, you'll conveniently find the `get_template_part()` call (including the appropriate file path) in the  `view.php` file's header comment.
+?> When you use the `wp aquamin component create` command, you'll conveniently find the `get_template_part()` call (including the correct path) in the  `view.php` file's header comment.
 
 ### File Name Prefixing
 

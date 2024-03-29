@@ -72,4 +72,6 @@ a:hover {
 }
 .markdown-section code:not([class*="lang-"]):not([class*="language-"]) {
 	white-space: normal;
+	overflow-wrap: break-word;
+	padding: 1px 3px 2px;
 }
