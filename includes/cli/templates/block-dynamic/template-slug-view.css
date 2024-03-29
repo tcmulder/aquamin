@@ -1,8 +1,11 @@
 /**
- * template-title shared block styling
+ * template-title front-end styling
  *
- * This file gets shared between the
- * theme and editor.
+ * Defines front-end styling. All view.css files
+ * like this one only load when enqueued manually
+ * or via a block.json file. You can import this
+ * file into an editor.css file to apply these
+ * front-end styles within the block editor.
  */
 
 .template-slug b::after {

@@ -1,5 +1,8 @@
 /**
- * Extended animation shared block styling.
+ * Extended animation front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
  */
 
 /* animate items when they enter the viewport */
@@ -20,4 +23,20 @@
 	--ani-delay-factor: 0.05s; /* duration of each increment step */
 	--ani-delay-offset: 0.15s; /* start delay (so ani don't start at very bottom of screen) */
 	--ani-property: filter, transform; /* properties to animate */
+}
+
+/* turn off animations if the user says they don't want them */
+@media (prefers-reduced-motion) {
+	.ani {
+		--ani-opacity: 1;
+		--ani-scale-x: 1;
+		--ani-scale-y: 1;
+		--ani-blur: 0;
+		--ani-y: 0;
+		--ani-x: 0;
+		--ani-z: 0;
+		--ani-perspective: 0;
+		--ani-rotate-x: 0deg;
+		--ani-rotate: 0deg;
+	}
 }

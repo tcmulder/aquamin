@@ -1,5 +1,8 @@
 /**
- * Common block styling shared with editor and theme.
+ * Theme-wide block front-end styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
  */
 
 /**

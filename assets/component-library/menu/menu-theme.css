@@ -1,3 +1,8 @@
+/* Theme main menu front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
 .site-main {
 	padding-top: var(--h-menu);
 }

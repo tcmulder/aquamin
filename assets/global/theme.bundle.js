@@ -5,6 +5,8 @@
  * All files within the assets directory ending
  * in "theme.js" or "theme.css" get enqueued on
  * the front-end of the website, site-wide.
+ * All *.bundle.js files like this get bundled into
+ * a single .css and .js file in the dist/ directory.
  */
 import '../**/*theme.css';
 import '../**/*theme.js';
@@ -15,4 +17,4 @@ import '../**/*theme.js';
  * See file for notes. Added here to be last
  * in cascade. Loaded site-wide.
  */
-import '../global/shame.css';
+import './shame.css';

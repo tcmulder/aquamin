@@ -1,14 +1,13 @@
 /**
  * template-title front-end styling
  *
- * This file styles the front-end
- * (and back-end if the editor.css file imports it)
- * of the template-title copmonent.
+ * Defines front-end styling. All view.css files
+ * like this one only load when enqueued manually
+ * or via a block.json file. You can import this
+ * file into an editor.css file to apply these
+ * front-end styles within the block editor.
  */
 
-.template-slug {
-	/* replace this demo code with your own: */
-	b::after {
-		content: " (❒ view.css) ";
-	}
+.template-slug b::after {
+	content: " 🪄 "; /* NOTE: replace all this with your own code */
 }

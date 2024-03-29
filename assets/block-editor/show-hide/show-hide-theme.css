@@ -1,8 +1,8 @@
 /**
- * Responsive device hiding
+ * Responsive hide/show front-end global styling
  *
- * Allows for hiding block containers at
- * various breakpoints.
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
  */
 .torso {
 	/* hide from mobile */

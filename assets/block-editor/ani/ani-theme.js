@@ -1,8 +1,8 @@
 /**
- * Ani JavaScript
+ * Animation front-end global JavaScript
  *
- * This file defines behaviors of
- * ani blocks.
+ * Defines front-end behavior. All theme.js files
+ * like this one load globally on the front-end..
  */
 
 // import animations
