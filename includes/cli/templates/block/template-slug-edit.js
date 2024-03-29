@@ -33,7 +33,9 @@ const TemplateNamespaceBlockEdit = ({
 	});
 
 	// apply wrapper props to outermost block element so it can contain inner blocks
-	const innerBlocksProps = useInnerBlocksProps(blockProps /* TEMPLATE: inner blocks template */);
+	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+		/* TEMPLATE: inner blocks template */
+	});
 
 	return (
 		<div {...innerBlocksProps}>
