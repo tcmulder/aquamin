@@ -1,6 +1,12 @@
 /**
- * Extended .ani styling for the editor
+ * Extended .ani block editor styling
+ *
+ * Defines block editor styling. All editor.css files
+ * like this one load globally within the back-end
+ * block editor. You can import related view.css files
+ * here for front-end styling in the back-end block editor.
  */
+
 /* turn all animations off in the editor */
 .ani {
 	--ani-opacity: 1;

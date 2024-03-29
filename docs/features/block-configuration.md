@@ -23,26 +23,34 @@ Each block has its own block directory within `aquamin/assets/block-library/`. A
 ┗ 📂 block-library         // all blocks reside within assets/block-library/*
    ┗ 📂 example-block      // the block's unique name
       ┣ 📄 block.json      // block registration details
-      ┣ 📄 edit.js         // HTML shown in the block editor
-      ┣ 📄 editor.css      // styling for block editor (also imports front-end's view.css)
+      ┣ 📄 edit.js         // block editor back-end HTML
+      ┣ 📄 editor.css      // block editor styling (also imports view.css)
+      ┣ 📄 hooks.php       // (optional) functions.php hooks and filters
       ┣ 📄 index.js        // block entry file (mostly imports other files)
-      ┣ 📄 render.php      // (optional) PHP for a dynamic block
-      ┣ 📄 save.js         // HTML saved to database
-      ┣ 📄 view.js         // (optional) front-end JavaScript (also used for inner blocks)
-      ┣ 📄 view.css        // front-end CSS styling (also used for inner blocks)
+      ┣ 📄 save.js         // block HTML to be saved to database
+      ┣ 📄 view.css        // front-end styling (also used for inner blocks)
+      ┣ 📄 view.js         // (optional) front-end JavaScript (also used by inner blocks)
+      ┣ 📄 view.php        // (optional) front-end PHP for dynamic blocks
       ┗ 📂 inner-block     // (optional) nested block used only by its parent
          ┣ 📄 block.json   // block registration details
-         ┣ 📄 edit.js      // HTML shown in the block editor
+         ┣ 📄 edit.js      // block editor back-end HTML
          ┣ 📄 index.js     // block entry file (mostly imports other files)
-         ┗ 📄 save.js      // HTML saved to database
+         ┗ 📄 save.js      // block HTML to be saved to database
 ```
-?> Note these filenames are simplified: they enqueue properly, but for easier debugging, aquamin prefixes them like `example-block-edit.js`, `example-block-editor.css`, `example-block-render.php`, etc.
+
+### File Naming and Enqueuing Conventions
+
+The `block.json` file references a block's `view.css` and `view.js` files, allowing these files to only load on pages that utilize that block. If for some reason your block needs to load things side-wide, change these to `theme.css` and `theme.js`, and aquamin will add your scripts within the theme's `theme.bundle.css` and `theme.bundle.js` files globally.
+
+### File Name Prefixing
+
+Note that the above shortened filenames work, but for easier debugging aquamin prefixes them like `example-block-edit.js`, `example-block-editor.css`, `example-block-view.php`, etc.
 
 ## Front-End JavaScript
 
-To add front-end JavaScript to a block, you can register a `view.js` file via the `viewScript` property of the block's `block.json` file. The `wp aquamin block create` command can create this for you, prefixing the filename like `my-block-view.js` to make console debugging easier.
+To add front-end JavaScript to a block, you can register a `view.js` file via the `viewScript` property of the block's `block.json` file. The `wp aquamin block create` command can create this file for you when you create a new block.
 
-If you'd like to break a front-end script into multiple files, you can use this `view.js` file as an entry point and import your additional files from within the block's directory.
+If you'd like to break a front-end script into multiple files, you can use this `view.js` file as an entry point and import your additional files from within a `scripts` folder inside this block's directory.
 
 ## Inner Blocks
 
@@ -52,7 +60,7 @@ Note that you'll apply styling and front-end scripting for an inner block to it'
 
 ## Dynamic Blocks
 
-Though static JavaScript blocks are generally best, sometimes blocks require up-to-date data from the database, and therefore require dynamic PHP. The `wp aquamin block create` command will ask if a block should be dynamic, creating a `render.php` file for your block if so.
+Though static JavaScript blocks are generally best, sometimes blocks require back-end database queries to work, and therefore require dynamic PHP. The `wp aquamin block create` command will ask if a block should be dynamic, creating a `view.php` render file for your block if so.
 
 ?> Aquamin doesn't currently support automatic [inner block](#inner-blocks) generation if you choose to go dynamic: if you need that, you'll have to add your dynamic or static inner blocks manually.
 
@@ -62,7 +70,7 @@ Add whatever WordPress hooks and filters a block requires to a `hooks.php` file 
 
 ## Block Utilities
 
-You'll find some helpful, reusable utilities and UI components under `aquamin/assets/util` and `aquamin/assets/util/block-ui`, respectively. Check out the comments at the top of these files for usage information. You can add your own scripts into these directories as well, or ignore them if they're not helpful to you (since anything you don't use won't get bundled into the production build anyway).
+You'll find some helpful, reusable utilities and Gutenberg UI components under `aquamin/assets/util` and `aquamin/assets/util/block-ui`, respectively. Check out the comments at the top of these files for usage information. You can add your own scripts into these directories as well, or ignore them if they're not helpful to you (since anything you don't use won't get bundled into the production build anyway).
 
 ## Editing Core Blocks
 
@@ -70,7 +78,7 @@ You can edit core blocks (e.g. add custom block settings, set variations, insert
 
 Aquamin comes with a few modifications already, including block animations, column layout enhancements, a current year paragraph format type, and show/hide responsive container options. Feel free to duplicate and reuse any of these for your own purposes, or remove those you don't want.
 
-?> While aquamin only loads  `aquamin/assets/block-library/` styles and scripts on posts where those blocks appear, it loads `aquamin/assets/block-editor/` styles and scripts site-wide to ensure your customizations apply to core blocks wherever they may appear.
+?>You'll notice most block edits need a `theme.css` file so the styling appears theme-wide (see [conventions](#file-naming-and-enqueuing-conventions)). You can also replace this with a `view.css` file and enqueue it using advanced logic within a block's `hooks.php` file.
 
 ## Built In Blocks
 
@@ -83,14 +91,8 @@ Feel free to edit or delete these blocks to suit your needs.
 
 ## Deleting Blocks
 
-There's currently a bug in Parcel: if you delete a block's directory to remove the block, you'll need to exit Parcel and run `npm run clean` to clear the cache, then `npm run start` to restart the server; after that, your block will be removed from WordPress's registered bocks.
+There is currently a bug in Parcel: if you delete a block's directory to remove the block, you'll need to exit Parcel and run `npm run clean:cache` to clear the cache, then `npm run start` to restart the server; after that, your block will be removed from WordPress's registered bocks list, and you'll have left no code bloat behind.
 
-?> You can run `npm run clean && npm run start` if you would like to clear the cache immediately before starting the build server each time.
+?> You can run `npm run clean:cache && npm run start` if you would like to clear the cache immediately before starting the build server each time.
 
 !> If you _don't_ follow these instructions and you delete a file Parcel was watching, builds will fail. Maybe future releases of Parcel will eliminate this bug. It appears to happen when one file imports another, but then the imported file later gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don't clear its cache first.
-
-## A Note on Imports
-
-Via the `alias` section of the `package.json`, Parcel converts imports like `import { InspectorControls } from '@wordpress/block-editor';` to essentially `const { InspectorControls } = wp.blockEditor;` using the globally-available `wp` object in the editor. It does this in order to reduce bundle size and prevent duplicate versions of the `wp` object from clashing, and so everything better matches the format of WordPress's online documentation.
-
-This happens automatically and is generally irrelevant, but note a couple of things: first, blocks built using older versions of aquamin that didn't do this conversion (and used the global `wp` object directly instead) will still work fine; and second, though `package.json` includes the most common `@wordpress` package imports, there are many others, so if you encounter import errors in the console then you'll need to add those imports to `package.json` so Parcel knows to convert them also.

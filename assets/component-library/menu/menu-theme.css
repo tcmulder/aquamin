@@ -1,0 +1,26 @@
+/* Theme main menu front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+.site-main {
+	padding-top: var(--h-menu);
+}
+.site-menu {
+	position: fixed;
+	height: var(--h-menu);
+	ul,
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+/* push content below sticky menu */
+.site-main {
+	padding-top: var(--h-menu);
+}
+.site-menu {
+	height: var(--h-menu);
+}

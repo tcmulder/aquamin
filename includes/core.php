@@ -16,6 +16,64 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 	function aquamin_setup() {
 
 		/**
+		 * Execute hooks for component library
+		 * 
+		 * Add a hooks.php file within any component directory to use
+		 * add_action or add_filter features (rather than adding
+		 * these hooks outside the component's directory within functions.php).
+		 */
+		$hook_paths = array(
+			AQUAMIN_ASSETS . '/component-library/*/*hooks.php',
+		);
+		foreach ( $hook_paths as $path ) {
+			$hooks = glob( $path );
+			if ( $hooks ) {
+				foreach ( $hooks as $hooks ) {
+					require_once $hooks;
+				}
+			}
+		}
+
+		/**
+		 * Setup general content (like footers)
+		 */
+		register_post_type(
+			'aquamin-general',
+			array(
+				'labels' => array(
+					'name' => _x( 'Global Content', 'Taxonomy General Name', 'aquamin' ),
+					'singular_name' => _x( 'Global Content', 'Taxonopmy Singular Name', 'aquamin' ),
+					'menu_name' => __( 'Global Content', 'aquamin' ),
+					'all_items' => __( 'Global Content', 'aquamin' ),
+					'parent_item' => __( 'Parent Global Content', 'aquamin' ),
+					'parent_item_colon' => __( 'Parent Global Content:', 'aquamin' ),
+					'new_item_name' => __( 'New Global Content Name', 'aquamin' ),
+					'add_new_item' => __( 'Add New Global Content', 'aquamin' ),
+					'edit_item' => __( 'Edit Global Content', 'aquamin' ),
+					'update_item' => __( 'Update Global Content', 'aquamin' ),
+					'separate_items_with_commas' => __( 'Separate Global Content with commas', 'aquamin' ),
+					'search_items' => __( 'Search Global Content', 'aquamin' ),
+					'add_or_remove_items' => __( 'Add or remove items', 'aquamin' ),
+					'choose_from_most_used' => __( 'Choose from the most used items', 'aquamin' ),
+					'not_found' => __( 'Not Found', 'aquamin' ),
+				),
+				'public' => false,
+				'show_in_rest' => true,
+				'show_in_menu' => 'themes.php',
+				'show_in_nav_menus' => true,
+				'show_ui' => true,
+				'menu_position' => 20,
+				'menu_icon' => 'dashicons-button',
+				'supports' => array(
+					'editor',
+					'custom-fields',
+					'title',
+					'thumbnail',
+				),
+			)
+		);
+
+		/**
 		 * Enqueue theme front-end styles and scripts
 		 */
 		add_action( 'wp_enqueue_scripts', 'aquamin_theme_scripts' );
@@ -23,16 +81,16 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 
 			wp_enqueue_style(
 				'aquamin-style',
-				get_template_directory_uri() . '/dist/bundles/theme.bundle.css',
+				get_template_directory_uri() . '/dist/global/theme.bundle.css',
 				array(),
-				aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.css' ),
+				aquamin_cache_break( get_stylesheet_directory() .'/dist/global/theme.bundle.css' ),
 				'screen'
 			);
 			wp_enqueue_script(
 				'aquamin-scripts',
-				get_template_directory_uri() . '/dist/bundles/theme.bundle.js',
+				get_template_directory_uri() . '/dist/global/theme.bundle.js',
 				false,
-				aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/theme.bundle.js' ),
+				aquamin_cache_break( get_stylesheet_directory() .'/dist/global/theme.bundle.js' ),
 				true
 			);
 
@@ -155,6 +213,105 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 				return $urls;
 			}, 10, 2 );
 
+		}
+
+		/**
+		 * Add custom scripts fields
+		 * 
+		 * Adds fields for adding custom embed scripts at
+		 * ...</head>, <body>..., and/or ...</body>. Options
+		 * page available under Settings > Custom Scripts.
+		 * 
+		 * Supports shortcodes, so you could create a shortcode
+		 * for excluding a specific post type, list of page
+		 * IDS, etc. if necessary.
+		 */
+
+		// create the settings page
+		add_action( 'admin_menu', 'aquamin_create_custom_scripts_options_page' );
+		function aquamin_create_custom_scripts_options_page() {
+			add_options_page( __( 'Custom Scripts', 'aquamin' ), __( 'Custom Scripts', 'aquamin' ), 'administrator', __FILE__, function() {
+				ob_start();
+					settings_fields('aquamin_custom_scripts');
+				$fields = ob_get_clean();
+				ob_start();
+					do_settings_sections(__FILE__);
+				$section = ob_get_clean();
+				printf(
+					'<form method="post" action="options.php" enctype="multipart/form-data">
+						%s%s
+						<input name="Submit" type="submit" class="button-primary" value="%s" />
+					</form>',
+					$fields,
+					$section,
+					__( 'Save Changes', 'aquamin' )
+				);
+			});
+		}
+
+		// register custom script fields
+		add_action( 'admin_init', 'aquamin_register_custom_scripts_fields' );
+		function aquamin_register_custom_scripts_fields() {
+			register_setting( 'aquamin_custom_scripts', 'aquamin_custom_scripts', null ) ;
+			add_settings_section('main_section', 'Custom Scripts', function() {
+				printf( '<p>%s</p>', __( 'Embed scripts on the front-end of the website.', 'aquamin' ) );
+				printf( '<div class="update-nag notice notice-warning inline">%s</div>', __( 'WARNING: be very carful changing these settings, or you could break your site.', 'aquamin' ) );
+			}, __FILE__);
+			add_settings_field( 'aquamin_custom_scripts_closing_header', 'Before closing &lt;/head&gt;', function() {
+				$options = get_option( 'aquamin_custom_scripts' );
+				$code = $options['aquamin_custom_scripts_closing_header'] ?? '';
+				echo '<textarea name="aquamin_custom_scripts[aquamin_custom_scripts_closing_header]" rows="10" cols="60" type="textarea">' . $code . '</textarea>';
+			}, __FILE__, 'main_section');
+			add_settings_field( 'aquamin_custom_scripts_opening_body', 'Before opening &lt;body&gt;', function() {
+				$options = get_option( 'aquamin_custom_scripts' );
+				$code = $options['aquamin_custom_scripts_opening_body'] ?? '';
+				echo '<textarea name="aquamin_custom_scripts[aquamin_custom_scripts_opening_body]" rows="10" cols="60" type="textarea">' . $code . '</textarea>';
+			}, __FILE__, 'main_section');
+			add_settings_field( 'aquamin_custom_scripts_closing_body', 'Before closing &lt;/body&gt;', function() {
+				$options = get_option( 'aquamin_custom_scripts' );
+				$code = $options['aquamin_custom_scripts_closing_body'] ?? '';
+				echo '<textarea name="aquamin_custom_scripts[aquamin_custom_scripts_closing_body]" rows="10" cols="60" type="textarea">' . $code . '</textarea>';
+			}, __FILE__, 'main_section');
+		}
+
+		// add code to appropriate places in theme
+		add_action( 'wp_head', function() {
+			$options = get_option( 'aquamin_custom_scripts' );
+			echo do_shortcode( $options['aquamin_custom_scripts_closing_header'] ?? '' );
+		}, 99 );
+		add_action( 'wp_body_open', function() {
+			$options = get_option( 'aquamin_custom_scripts' );
+			echo do_shortcode( $options['aquamin_custom_scripts_opening_body'] ?? '' );
+		}, 99 );
+		add_action( 'wp_footer', function() {
+			$options = get_option( 'aquamin_custom_scripts' );
+			echo do_shortcode( $options['aquamin_custom_scripts_closing_body'] ?? '' );
+		}, 99 );
+
+		/**
+		 * Allow access to current background color var
+		 *
+		 * This let's you do things like:
+		 *	.thing {
+		*		border: 1px solid var(--c-bg);
+		* 	}
+		* So, for .thing.has-0-000-background-color
+		* you'll get a black border, and for
+		* .thing.has-0-900-background-color you'll
+		* get a white border, matching their respective
+		* backgrounds. It's often quite useful.
+		*/
+		add_action( 'wp_head', 'aquamin_bg_css' );
+		add_action( 'admin_head', 'aquamin_bg_css' );
+		function aquamin_bg_css() {
+			$colors = wp_get_global_settings( array( 'color', 'palette', 'theme' ) );
+			if ( $colors ) {
+				echo '<style id="aquamin-c-bg">';
+				foreach( $colors as $color ) {
+					echo '.has-' . $color[ 'slug' ] . '-background-color { --c-bg: var(--c-' . $color[ 'slug' ] . ') } /* ' . $color[ 'name' ] . " */\n";
+				}
+				echo '</style>';
+			}
 		}
 
 	}

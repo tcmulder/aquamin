@@ -30,7 +30,7 @@ While not nearly as robust as something like [Greensock](https://greensock.com/ 
 
 Under the hood, a custom property called `--ani-plx` is simply going from 1 to 0 as elements with a class of `ani--parallax` enter then leave the viewport (i.e. `--ani-plx` is `1` as soon as the element enters the viewport, `0.5` once it has scrolled to the center of the viewport, and `0` once it has been fully scrolled out of view again). So, you can use it for a wide variety of other animations using CSS `calc()` functions.
 
-You can also pass in `false` as a 2nd argument within the `aquamin/assets/block-editor/ani/ani-view.js` to base the scroll on the _window_ height rather than the _element_ height; this is useful in some scenarios, like when you want multiple animations to occur at the same speed even though the elements themselves vary in height.
+You can also pass in `false` as a 2nd argument within the `aquamin/assets/block-editor/ani/ani-theme.js` to base the scroll on the _window_ height rather than the _element_ height; this is useful in some scenarios, like when you want multiple animations to occur at the same speed even though the elements themselves vary in height.
 
 ## Background-Based Animations
 
@@ -54,4 +54,4 @@ This would cause `.thing` elements outside of the viewport that are using the bu
 ## Opt Out of Animations
 Aquamin's animations are lightweight and easy to use, but maybe they don't suit your needs. If you don't want to use them at all, simply delete the entire `aquamin/assets/block-editor/ani` directory.
 
-Though a little more involved, you can also remove just specific animation features. For instance, to just eliminate background-based animations, you'd delete the `aniBackground.js` and `ani-background.css` files, then remove the two `aniBackground()` calls from `ani-view.js`.
+Though a little more involved, you can also remove just specific animation features. For instance, to just eliminate background-based animations, you'd delete the `aniBackground.js` and `ani-background.css` files, then remove the two `aniBackground()` calls from `ani-theme.js`.

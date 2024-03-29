@@ -14,7 +14,7 @@ add_action( 'after_setup_theme', function() {
 
 	// enable editor styles
 	add_theme_support( 'editor-styles' );
-	add_editor_style( '/dist/bundles/editor.bundle.css' );
+	add_editor_style( '/dist/global/editor.bundle.css' );
 
 	// get rid of core patterns
 	remove_theme_support( 'core-block-patterns' );
@@ -187,21 +187,57 @@ function aquamin_editor_scripts() {
 	// add browsersync helper (enables block editor CSS injecting within the iframe)
 	wp_enqueue_script(
 		'aquamin-browsersync',
-		get_template_directory_uri() . '/dist/build/browsersync.bundle.js',
+		get_template_directory_uri() . '/dist/config/browsersync.bundle.js',
 		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/build/browsersync.bundle.js' ),
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/config/browsersync.bundle.js' ),
 		true
 	);
 
 	// add editor-related scripts like global block modifications
 	wp_enqueue_script(
 		'aquamin-editor',
-		get_template_directory_uri() . '/dist/bundles/editor.bundle.js',
+		get_template_directory_uri() . '/dist/global/editor.bundle.js',
 		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/bundles/editor.bundle.js' ),
+		aquamin_cache_break( get_stylesheet_directory() .'/dist/global/editor.bundle.js' ),
 		true
 	);
 
+}
+
+/**
+ * Add ani to dynamic blocks
+ */
+add_filter( 'render_block', 'aqua_dynamic_ani', 10, 2 );
+function aqua_dynamic_ani( $block_content, $block ) {
+
+	// start with no custom class names
+	$classes = '';
+
+	// handle animation classes
+	if ( ! empty( $block[ 'attrs' ][ 'aquaminClassNameAni' ] ) ) {
+		$classes .= ' ani ' . implode( ' ',  array_map( function( $ani ) {
+			return $ani[ 'value' ];
+		}, $block[ 'attrs' ][ 'aquaminClassNameAni' ] ) );
+	}
+
+	// handle hide/show responsiveness
+	if ( ! empty( $block[ 'attrs' ][ 'aquaminClassNameHide' ] ) ) {
+		$classes .= ' ' . implode( ' ',  array_map( function( $ani ) {
+			return $ani[ 'value' ];
+		}, $block[ 'attrs' ][ 'aquaminClassNameHide' ] ) );
+	}
+
+	// if we have new stuff then send it
+	if ( $classes && $block_content ) {
+		return preg_replace(
+			'/' . preg_quote( 'class="', '/' ) . '/',
+			'class="' . trim( esc_attr( $classes ) ) . ' ',
+			$block_content,
+			1
+		);
+	}
+	// just return things unchanged by default
+	return $block_content;
 }
 
 /**

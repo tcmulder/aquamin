@@ -1,0 +1,16 @@
+/**
+ * Theme-wide block front-end styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+
+/**
+ * Core block overrides
+ */
+.wp-block-cover {
+	/* otherwise we get forced text coloring without expicitly setting text color (no inheritance) */
+	.wp-block-cover__inner-container {
+		color: unset;
+	}
+}

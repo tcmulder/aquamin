@@ -2,7 +2,7 @@
 
 The `aquamin/assets/global/variables.css` file provides a number of useful custom properties you can update to match your theme's needs. WordPress's `theme.json` configuration file uses many of these custom properties so there's one source of truth: just make your edits in this CSS file, and Gutenberg will pick up on their values.
 
-|  Key:         | Usage                      | Format                             | Example
+|  Key          | Usage                      | Format                             | Example
 |  -            | -                          | -                                  | -
 |  `--ani`      | [Animation](#animation)    | --\<animation>-\<property>         | `--ani-speed` (duration/delay speed)
 |  `--c`        | [Color](#color)            | --\<color>-\<variant>-\<brightness>| `--c-1-2` (color one, darkish)

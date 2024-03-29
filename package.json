@@ -3,31 +3,36 @@
 	"version": "3.0.2",
 	"description": "Parcel build tool for Aquamarine",
 	"private": true,
+	"author": "@tcmulder",
+	"license": "ISC",
 	"engines": {
 		"node": ">=16.13.2",
 		"npm": ">=9.6.3"
 	},
 	"config": {
 		"lint_paths": "./assets",
-		"build_paths": "./assets/*/*.bundle.js ./assets/*/*.bundle.css ./assets/block-library/*/*view.js ./assets/block-library/*/index.js ./assets/block-library/*/*view.css",
+		"build_paths": "./assets/**/*.bundle.js ./assets/**/*.bundle.css ./assets/**/*view.js ./assets/**/*view.css ./assets/block-library/*/index.js",
 		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
 	},
 	"scripts": {
 		"start": "clear && npm-run-all --parallel --silent builder server",
-		"build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache && npm run build:post",
+		"build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache --cache-dir=./assets/config/.parcel-cache --config=./assets/config/.parcelrc && npm run build:post",
 		"build:post": "npm run static",
-		"builder": "parcel watch $npm_package_config_build_paths",
+		"builder": "parcel watch $npm_package_config_build_paths --config=./assets/config/.parcelrc --cache-dir=./assets/config/.parcel-cache",
 		"server:pre": "test -f .env && exit 0 || echo \"\\033[31mNo .env file found (use .env.example as a template to create one)\\033[0m\"; exit 1",
 		"server": "npm run server:pre && browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
 		"static": "del ./dist/static/* && ncp ./assets/static ./dist/static --filter '**/*.*'",
 		"docs": "docsify serve docs --open --port 4000",
-		"lint": "eslint -c .eslintrc.js $npm_package_config_lint_paths",
-		"lint:fix": "eslint -c .eslintrc.js $npm_package_config_lint_paths --fix",
-		"clean": "del ./.parcel-cache/*"
+		"lint": "eslint --config=./assets/config/.eslintrc.js $npm_package_config_lint_paths",
+		"lint:fix": "eslint --config=./assets/config/.eslintrc.js $npm_package_config_lint_paths --fix",
+		"clean:cache": "del ./assets/config/.parcel-cache/*",
+		"clean:dist": "del ./dist/*",
+		"clean": "npm run clean:cache && npm run clean:dist"
 	},
-	"author": "@tcmulder",
-	"license": "ISC",
 	"browserslist": "> 0.25%, last 2 versions, not dead",
+	"eslintConfig": {
+		"extends": "./assets/config/.eslintrc.js"
+	},
 	"devDependencies": {
 		"@parcel/resolver-glob": "^2.12.0",
 		"@parcel/transformer-svg-react": "^2.12.0",

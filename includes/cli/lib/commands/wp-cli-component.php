@@ -27,14 +27,26 @@ defined( 'ABSPATH' ) || exit; // exit if accessed directly
  * [--component_dir] 
  * : Set directory name.
  * 
- * [--has_js] 
- * : Add front-end JavaScript file (set to "n" to prevent)
- * 
  * [--has_template_part] 
  * : Add a PHP template part (set to "n" to prevent)
  * 
- * [--has_admin_css] 
+ * [--has_view_js]
+ * : Add manually enqueued front-end JavaScript (set to "n" to prevent)
+ * 
+ * [--has_theme_js]
+ * : Add global front-end JavaScript (set to "n" to prevent)
+ * 
+ * [--has_view_css]
+ * : Add manually enqueued front-end CSS (set to "n" to prevent)
+ * 
+ * [--has_theme_css]
+ * : Add global front-end CSS (set to "n" to prevent)
+ * 
+ * [--has_block_editor_css] 
  * : Add CSS for editor (set to "n" to prevent)
+ * 
+ * [--has_hooks]
+ * : Add functions.php-like actions and filters (set to "n" to prevent)
  *
  * ## EXAMPLES
  *
@@ -78,24 +90,50 @@ function component_create( $args, $assoc_args ) {
 		'find'       => '_template-component',
 		'default'    => $assoc_args[ 'component_dir' ] ?? '',
 	) );
-	Util\exclude( $exclude, array(
-		'question'   => 'Has front-end JavaScript? [y/N]',
-		'guess'      => 'n',
-		'filename'   => 'template-slug-view.js',
-		'default'    => $assoc_args[ 'has_js' ] ?? '',
-	) );
 	$has_template_part = Util\exclude( $exclude, array(
-		'question'   => 'Has PHP template part? [y/N]',
+		'question'   => 'Has PHP template part view? [y/N]',
 		'guess'      => 'n',
-		'filename'   => 'template-slug-render.php',
+		'filename'   => 'template-slug-view.php',
 		'default'    => $assoc_args[ 'has_template_part' ] ?? '',
 	) );
+	$has_view_js = Util\exclude( $exclude, array(
+		'question'   => 'Has manually enqueued front-end JavaScript? [y/N]',
+		'guess'      => 'n',
+		'filename'   => 'template-slug-view.js',
+		'default'    => $assoc_args[ 'has_view_js' ] ?? '',
+	) );
 	Util\exclude( $exclude, array(
-		'question'   => 'Has admin CSS? [y/N]',
+		'question'   => 'Has global front-end JavaScript? [y/N]',
+		'guess'      => 'n',
+		'filename'   => 'template-slug-theme.js',
+		'default'    => $assoc_args[ 'has_theme_js' ] ?? '',
+	) );
+	$has_view_css = Util\exclude( $exclude, array(
+		'question'   => 'Has manually enqueued front-end CSS? [y/N]',
+		'guess'      => 'n',
+		'filename'   => 'template-slug-view.css',
+		'default'    => $assoc_args[ 'has_view_css' ] ?? '',
+	) );
+	Util\exclude( $exclude, array(
+		'question'   => 'Has global front-end CSS? [y/N]',
+		'guess'      => 'n',
+		'filename'   => 'template-slug-theme.css',
+		'default'    => $assoc_args[ 'has_theme_css' ] ?? '',
+	) );
+	Util\exclude( $exclude, array(
+		'question'   => 'Has block editor CSS? [y/N]',
 		'guess'      => 'n',
 		'filename'   => 'template-slug-editor.css',
-		'default'    => $assoc_args[ 'has_admin_css' ] ?? '',
+		'default'    => $assoc_args[ 'has_block_editor_css' ] ?? '',
 	) );
+	if ( ! $has_view_js && ! $has_view_css ) { // must exist to enqueue view js or css
+		Util\exclude( $exclude, array(
+			'question'   => 'Has functions.php-like actions and filters? [y/N]',
+			'guess'      => 'n',
+			'filename'   => 'template-slug-hooks.php',
+			'default'    => $assoc_args[ 'has_hooks' ] ?? '',
+		) );
+	}
 
 	/**
 	 * Identify paths/dirs (note all paths end with a trailing /)
@@ -107,7 +145,7 @@ function component_create( $args, $assoc_args ) {
 	$component_path = $library_path . $dir . '/';
 	
 	/**
-	 * Create plugin directory
+	 * Create directory
 	 */
 	global $wp_filesystem;
 	$wp_filesystem->mkdir( $component_path );
@@ -115,9 +153,35 @@ function component_create( $args, $assoc_args ) {
 	// duplicate template's files (minus any we should exclude)
 	copy_dir( $cli_path . $template_dir, $component_path, $exclude );
 
+
 	/**
 	 * Find and replace strings
 	 */
+
+	// add script/style registration and/or enqueues (unshift to top of array so template strings get replaced)
+	array_unshift( $far, array(
+		'find' => "\n/* TEMPLATE: register component script */",
+		'repl' => ! $has_view_css ? "" : "\twp_register_style(\n\t\t'aquamin-component-template-slug-style',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.css',\n\t\tarray(),\n\t\taquamin_cache_break( get_stylesheet_directory() .'/dist/component-library/_template-component/template-slug-view.css' ),\n\t\t'screen'\n\t);"
+	) );
+	array_unshift( $far, array(
+		'find' => "\n/* TEMPLATE: enqueue component script */",
+		'repl' => ! $has_view_css ? "" : "\nwp_enqueue_style( 'aquamin-component-template-slug-style' );"
+	) );
+	array_unshift( $far, array(
+		'find' => "\n/* TEMPLATE: register component style */",
+		'repl' => ! $has_view_js ? "" : "\twp_register_script(\n\t\t'aquamin-component-template-slug-script',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.js',\n\t\tfalse,\n\t\taquamin_cache_break( get_stylesheet_directory() .'/dist/component-library/_template-component/template-slug-view.js' ),\n\t\ttrue\n\t);"
+	) );
+	array_unshift( $far, array(
+		'find' => "\n/* TEMPLATE: enqueue component style */",
+		'repl' => ! $has_view_js ? "" : "\nwp_enqueue_script( 'aquamin-component-template-slug-script' );"
+	) );
+	$function_name = 'aquamin_component_' . ( preg_replace( '/-/', '_', sanitize_title( $slug ) ) ) . '_register_scripts';
+	array_unshift( $far, array(
+		'find' => "\n/* TEMPLATE: register component scripts */",
+		'repl' => ! $has_view_css && ! $has_view_js ? "" : "\n\n/**\n * Register component styles and/or scripts\n */\nadd_action( 'wp_enqueue_scripts', '$function_name' );\nfunction $function_name() {\n/* TEMPLATE: register component style */\n/* TEMPLATE: register component script */\n}"
+	) );
+
+	// replace strings
 	Util\far( $component_path, $far );
 
 	// loop through the component's directory and replace file prefixes
@@ -128,7 +192,7 @@ function component_create( $args, $assoc_args ) {
 	WP_CLI::line( WP_CLI::colorize( "\n%6%k What's next? %n\n" ) );
 	WP_CLI::line( WP_CLI::colorize( "%C ‣ Restart Parcel and refresh your browser to watch these new files") );
 	if ( $has_template_part ) {
-		WP_CLI::line( WP_CLI::colorize( "%C ‣ Include your template part somewhere:%n get_template_part( 'assets/component-library/$dir/$slug-render' );") );
+		WP_CLI::line( WP_CLI::colorize( "%C ‣ Include your template part somewhere:%n get_template_part( 'assets/component-library/$dir/$slug-view' );") );
 	}
 	WP_CLI::line( WP_CLI::colorize( "%C ‣ Edit your new $title component:%n $component_path") );
 	WP_CLI::line( "\n" );

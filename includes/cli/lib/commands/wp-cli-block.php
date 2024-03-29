@@ -186,11 +186,6 @@ function block_create( $args, $assoc_args ) {
 		'find' => "\t/* TEMPLATE: enqueue front-end script */\n",
 		'repl' => ! $has_js ? "" : "\t\"viewScript\": [\"file:../../../dist/block-library/_template-block/template-slug-view.js\"],\n",
 	) );
-	// identify dynamic render php script
-	array_unshift( $far, array(
-		'find' => "\t/* TEMPLATE: enqueue dynamic render script */\n",
-		'repl' => ! $is_dynamic ? "" : "\t\"render\": \"file:./template-slug-render.php\",\n",
-	) );
 	
 	/**
 	 * Setup inner blocks
@@ -208,8 +203,8 @@ function block_create( $args, $assoc_args ) {
 		'repl' => ! $has_inner_block ? "" : "\n/**\n * Register inner blocks\n */\nimport './_template-item-dir';\n"
 	) );
 	array_unshift( $far, array(
-		'find' => " /* TEMPLATE: inner blocks template */",
-		'repl' => ! $has_inner_block ? "" : ", {\n\t\ttemplate: [['aquamin/template-item-slug']],\n\t\tallowedBlocks: ['aquamin/template-item-slug'],\n\t}"
+		'find' => "/* TEMPLATE: inner blocks template */",
+		'repl' => ! $has_inner_block ? "template: [['core/paragraph', {placeholder: __('template-title inner blocks', 'aquamin')}]]," : "template: [['aquamin/template-item-slug']],\n\t\tallowedBlocks: ['aquamin/template-item-slug'],"
 	) );
 	
 	/**
