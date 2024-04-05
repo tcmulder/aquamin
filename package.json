@@ -6,8 +6,8 @@
 	"author": "@tcmulder",
 	"license": "ISC",
 	"engines": {
-		"node": ">=16.13.2",
-		"npm": ">=9.6.3"
+		"node": ">=20.12.1",
+		"npm": ">=10.5.0"
 	},
 	"config": {
 		"lint_paths": "./assets",
@@ -15,39 +15,44 @@
 		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
 	},
 	"scripts": {
-		"start": "clear && npm-run-all --parallel --silent builder server",
-		"build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache --cache-dir=./assets/config/.parcel-cache --config=./assets/config/.parcelrc && npm run build:post",
-		"build:post": "npm run static",
-		"builder": "parcel watch $npm_package_config_build_paths --config=./assets/config/.parcelrc --cache-dir=./assets/config/.parcel-cache",
-		"server:pre": "test -f .env && exit 0 || echo \"\\033[31mNo .env file found (use .env.example as a template to create one)\\033[0m\"; exit 1",
-		"server": "npm run server:pre && browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
-		"static": "del ./dist/static/* && ncp ./assets/static ./dist/static --filter '**/*.*'",
-		"docs": "docsify serve docs --open --port 4000",
-		"lint": "eslint --config=./assets/config/.eslintrc.js $npm_package_config_lint_paths",
-		"lint:fix": "eslint --config=./assets/config/.eslintrc.js $npm_package_config_lint_paths --fix",
-		"clean:cache": "del ./assets/config/.parcel-cache/*",
-		"clean:dist": "del ./dist/*",
-		"clean": "npm run clean:cache && npm run clean:dist"
+		"MIGRATE_______start": "clear && npm-run-all --parallel --silent builder server",
+		"MIGRATE_______build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache --cache-dir=./assets/config/.parcel-cache --config=./assets/config/.parcelrc && npm run build:post",
+		"MIGRATE_______build:post": "npm run static",
+		"MIGRATE_______builder": "parcel watch $npm_package_config_build_paths --config=./assets/config/.parcelrc --cache-dir=./assets/config/.parcel-cache",
+		"MIGRATE_______server:pre": "test -f .env && exit 0 || echo \"\\033[31mNo .env file found (use .env.example as a template to create one)\\033[0m\"; exit 1",
+		"MIGRATE_______server": "npm run server:pre && browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
+		"MIGRATE_______static": "del ./dist/static/* && ncp ./assets/static ./dist/static --filter '**/*.*'",
+		"MIGRATE_______docs": "docsify serve docs --open --port 4000",
+		"MIGRATE_______lint": "eslint --config=./assets/config/.eslintrc.js $npm_package_config_lint_paths",
+		"MIGRATE_______lint:fix": "eslint --config=./assets/config/.eslintrc.js $npm_package_config_lint_paths --fix",
+		"MIGRATE_______clean:cache": "del ./assets/config/.parcel-cache/*",
+		"MIGRATE_______clean:dist": "del ./dist/*",
+		"MIGRATE_______clean": "npm run clean:cache && npm run clean:dist",
+		"start": "wp-scripts start --hot --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"build": "wp-scripts build --hot --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php"
 	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"eslintConfig": {
 		"extends": "./assets/config/.eslintrc.js"
 	},
 	"devDependencies": {
-		"@parcel/resolver-glob": "^2.12.0",
-		"@parcel/transformer-svg-react": "^2.12.0",
-		"@wordpress/element": "^5.31.0",
-		"@wordpress/icons": "^9.45.0",
+		"@wordpress/scripts": "^27.6.0",
+		"copy-webpack-plugin": "^12.0.2",
+		"glob": "^10.3.12",
+		"mini-css-extract-plugin": "^2.7.6",
+		"path": "^0.12.7",
+		"webpack-fix-style-only-entries": "^0.6.1",
+		"webpack-remove-empty-scripts": "^1.0.4",
 		"browser-sync": "^2.29.3",
 		"classnames": "^2.5.1",
-		"del-cli": "^5.1.0",
 		"docsify-cli": "^4.4.4",
-		"eslint-config-wesbos": "^4.0.1",
-		"ncp": "^2.0.0",
 		"npm-run-all": "^4.1.5",
-		"parcel": "^2.12.0",
-		"process": "^0.11.10",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"postcss-loader": "^8.1.1",
+		"postcss-preset-env": "^9.5.4",
+		"webpack-import-glob-loader": "^1.6.3"
+	},
+	"dependencies": {
+		"@wordpress/icons": "^9.46.0",
+		"@wordpress/interactivity": "^5.4.0"
 	}
 }

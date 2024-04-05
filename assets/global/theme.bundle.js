@@ -8,8 +8,8 @@
  * All *.bundle.js files like this get bundled into
  * a single .css and .js file in the dist/ directory.
  */
-import '../**/*theme.css';
-import '../**/*theme.js';
+import '../**/**theme.scss';
+import '../**/**theme.js';
 
 /**
  * Stuff we don't wanna talk about...
@@ -17,4 +17,4 @@ import '../**/*theme.js';
  * See file for notes. Added here to be last
  * in cascade. Loaded site-wide.
  */
-import './shame.css';
+import './shame.scss';

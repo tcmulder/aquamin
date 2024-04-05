@@ -34,6 +34,6 @@
 			"blockGap": ["horizontal", "vertical"]
 		}
 	},
-	"style": ["file:../../../dist/block-library/grd/grd-view.css"],
-	"editorScript": "file:../../../dist/block-library/grd/index.js"
+	"style": ["file:./grd-view.css"],
+	"editorScript": "file:./index.js"
 }

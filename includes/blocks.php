@@ -31,15 +31,16 @@ add_action( 'after_setup_theme', function() {
 add_action( 'init', function() {
 
 	// loop through all files (this is slightly faster than glob matching block.json with regex)
-	$dir_iterator = new RecursiveDirectoryIterator( AQUAMIN_ASSETS . '/block-library' );
+	$dir_iterator = new RecursiveDirectoryIterator( AQUAMIN_DIST . '/block-library' );
 	$iterator = new RecursiveIteratorIterator( $dir_iterator, RecursiveIteratorIterator::SELF_FIRST );
 	// register a block for each block.json found
 	foreach ( $iterator as $file ) {
 		if ( basename( $file ) === 'block.json' ) {
 			$block_json_path = $file->getPathname();
 			$block_json = json_decode( file_get_contents( $block_json_path ) );
-			$attr = aquamin_setup_block_assets( $block_json );
-			register_block_type( $block_json_path, $attr );
+			// $attr = aquamin_setup_block_assets( $block_json );
+			// register_block_type( $block_json_path, $attr );
+			register_block_type( $block_json_path );
 		}
 	}
 } );

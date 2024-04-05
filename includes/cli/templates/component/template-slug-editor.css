@@ -7,4 +7,4 @@
  * here for front-end styling in the back-end block editor.
  */
 
-/* to import front-end styling into block editor: @import "./*view.css"; */
+/* to import front-end styling into block editor: @import "./*view.scss"; */

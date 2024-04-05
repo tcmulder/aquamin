@@ -14,6 +14,7 @@ define( 'AQUAMIN_TEMPLATE_URL', get_template_directory_uri() );
 define( 'AQUAMIN_PATH', get_template_directory() );
 define( 'AQUAMIN_INC', AQUAMIN_PATH . '/includes' );
 define( 'AQUAMIN_ASSETS', AQUAMIN_PATH . '/assets' );
+define( 'AQUAMIN_DIST', AQUAMIN_PATH . '/dist' );
 
 /**
  * Set up the theme.

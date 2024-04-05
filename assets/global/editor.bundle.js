@@ -1,4 +1,14 @@
 /* eslint-disable import/no-unresolved */
+
+/**
+ * Import select theme stylesheets
+ *
+ * This causes the editor to inherit
+ * the theme's major styling features,
+ * wrapped within .editor-styles-wrapper.
+ */
+import '../**/**theme.scss';
+
 /**
  * Block editor back-end styling
  *
@@ -8,5 +18,4 @@
  * like this get bundled into a single .css and .js
  * file in the dist/ directory.
  */
-import '../**/*editor.css';
-import '../**/*editor.js';
+import '../**/**editor.scss';

@@ -6,7 +6,7 @@
  * block editor. You can import related view.css files
  * here for front-end styling in the back-end block editor.
  */
-@import "./*view.css";
+@import "./*view.scss";
 
 [data-type="aquamin/template-slug"].is-selected b::after {
 	content: " ✎ "; /* NOTE: replace all this with your own code */
