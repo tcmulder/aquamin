@@ -31,87 +31,15 @@ add_action( 'after_setup_theme', function() {
 add_action( 'init', function() {
 
 	// loop through all files (this is slightly faster than glob matching block.json with regex)
-	$dir_iterator = new RecursiveDirectoryIterator( AQUAMIN_ASSETS . '/block-library' );
+	$dir_iterator = new RecursiveDirectoryIterator( AQUAMIN_DIST . '/block-library' );
 	$iterator = new RecursiveIteratorIterator( $dir_iterator, RecursiveIteratorIterator::SELF_FIRST );
 	// register a block for each block.json found
 	foreach ( $iterator as $file ) {
 		if ( basename( $file ) === 'block.json' ) {
-			$block_json_path = $file->getPathname();
-			$block_json = json_decode( file_get_contents( $block_json_path ) );
-			$attr = aquamin_setup_block_assets( $block_json );
-			register_block_type( $block_json_path, $attr );
+			register_block_type_from_metadata( $file->getPathname() );
 		}
 	}
 } );
-
-/**
- * Load block assets
- * 
- * Properly adding style, viewScript, editorScript, etc. to block.json
- * does not work well currently: JavaScript doesn't load due to it having
- * an incorrect (plugin) file path, and CSS works but gets inlined rather than
- * using .css files. So, for now, we register and load things properly ourselves.
- * 
- * @see https://core.trac.wordpress.org/ticket/54647 (which does not work as advertised)
- * @see https://stackoverflow.com/questions/73970158/how-can-i-avoid-gutenberg-blocks-styles-be-written-inline
- */
-function aquamin_setup_block_assets( $block_json ) {
-	// start with no assets
-	$attr = array();
-	// loop through each JavaScript and PHP asset handle that could be found in block.json
-	$scripts = array(
-		array( 'style', 'style_handles' ),
-		array( 'editorStyle', 'editor_style_handles' ),
-		array( 'script', 'script_handles' ),
-		array( 'editorScript', 'editor_script_handles' ),
-		array( 'viewScript', 'view_script_handles' ),
-	);
-	foreach( $scripts as $script ) {
-		// if this block.json has this hook
-		$assets = $block_json->{ $script[0] } ?? false;
-		if ( $assets ) {
-			// turn strings into arrays so we can handle everything the same
-			if ( ! is_array( $assets ) ) {
-				$assets = array( $assets );
-			}
-			// loop through each asset for this block
-			foreach( $assets as $asset ) {
-				// only work with files (enqueue script handles work already)
-				if ( str_starts_with( $asset, 'file:' ) ) {
-					// get dist asset path
-					$asset_paths = explode( '../../../dist/', $asset );
-					// create unique script handle for this asset
-					$asset_name = preg_replace( '/_|\//', '-', sanitize_title( $block_json->name . '-' . $script[1] ) );
-					// if we have a path to work with
-					if ( $asset_paths[1] ?? false ) {
-						// enqueue the CSS or JavaScript file (depending on file extension)
-						$file_ext = pathinfo( $asset_paths[1], PATHINFO_EXTENSION );
-						if ( 'css' === $file_ext ) {
-							wp_register_style(
-								$asset_name,
-								get_template_directory_uri() . '/dist/' . $asset_paths[1],
-								null,
-								'1.0'
-							);
-						} elseif ( 'js' === $file_ext ) {
-							wp_register_script(
-								$asset_name,
-								get_template_directory_uri() . '/dist/' . $asset_paths[1],
-								null,
-								'1.0',
-								true
-							);
-						}
-						// add this script enqueue handle to the block
-						$attr[ $script[1] ] = array( $asset_name );
-					}
-				}
-			}
-		}
-	}
-	// send it!
-	return $attr;
-}
 
 /**
  * Execute hooks for blocks in the block library
@@ -121,8 +49,8 @@ function aquamin_setup_block_assets( $block_json ) {
  * these hooks outside the block's directory within functions.php).
  */
 $hook_paths = array(
-	AQUAMIN_ASSETS . '/block-library/*/*hooks.php',
-	AQUAMIN_ASSETS . '/block-editor/*/*hooks.php'
+	AQUAMIN_DIST . '/block-library/*/*hooks.php',
+	AQUAMIN_DIST . '/block-editor/*/*hooks.php'
 );
 foreach ( $hook_paths as $path ) {
 	$hooks = glob( $path );
@@ -185,20 +113,22 @@ add_action( 'enqueue_block_editor_assets', 'aquamin_editor_scripts' );
 function aquamin_editor_scripts() {
 
 	// add browsersync helper (enables block editor CSS injecting within the iframe)
+	$asset = include AQUAMIN_DIST . '/config/browsersync.bundle.asset.php';
 	wp_enqueue_script(
 		'aquamin-browsersync',
-		get_template_directory_uri() . '/dist/config/browsersync.bundle.js',
-		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/config/browsersync.bundle.js' ),
+		AQUAMIN_TEMPLATE_URL . '/dist/config/browsersync.bundle.js',
+		$asset['dependencies'],
+		$asset['version'],
 		true
 	);
 
 	// add editor-related scripts like global block modifications
+	$asset = include AQUAMIN_DIST . '/global/editor.bundle.asset.php';
 	wp_enqueue_script(
 		'aquamin-editor',
-		get_template_directory_uri() . '/dist/global/editor.bundle.js',
-		false,
-		aquamin_cache_break( get_stylesheet_directory() .'/dist/global/editor.bundle.js' ),
+		AQUAMIN_TEMPLATE_URL . '/dist/global/editor.bundle.js',
+		$asset['dependencies'],
+		$asset['version'],
 		true
 	);
 

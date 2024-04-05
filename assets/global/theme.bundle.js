@@ -8,8 +8,8 @@
  * All *.bundle.js files like this get bundled into
  * a single .css and .js file in the dist/ directory.
  */
-import '../**/*theme.css';
-import '../**/*theme.js';
+import '../**/**theme.css';
+import '../**/**theme.js';
 
 /**
  * Stuff we don't wanna talk about...

@@ -9,7 +9,7 @@
  */
 .grd {
 	/* prettier-ignore */
-	--grd-w: calc((100%/var(--grd-count))-((var(--grd-gap-left, 0px)*(var(--grd-count)- 1))/var(--grd-count)));
+	--grd-w: calc((100%/var(--grd-count)) - ((var(--grd-gap-left, 0px)*(var(--grd-count) - 1))/var(--grd-count)));
 	display: grid;
 	grid-template-columns: repeat(var(--grd-count), var(--grd-w));
 	grid-gap: var(--grd-gap-left, 0px);
@@ -62,8 +62,11 @@
 	/* faux aspect ratio */
 	&::after {
 		--grd-w-aspect: calc(
-			100% / var(--grd-span, 1)- (var(--grd-gap-left, 0px) /
-						var(--grd-span, 1) * (var(--grd-span, 1)- 1))
+			100% / var(--grd-span, 1) -
+				(
+					var(--grd-gap-left, 0px) / var(--grd-span, 1) *
+						(var(--grd-span, 1) - 1)
+				)
 		);
 		content: "";
 		width: var(--grd-w-aspect);

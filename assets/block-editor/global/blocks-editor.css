@@ -1,13 +1,4 @@
 /**
- * Import select theme stylesheets
- *
- * This causes the editor to inherit
- * the theme's major styling features,
- * wrapped within .editor-styles-wrapper.
- */
-@import "../../global/theme.css";
-
-/**
    * Import global block styling and WordPress block overrides
    *
    * This causes the editor to inherit

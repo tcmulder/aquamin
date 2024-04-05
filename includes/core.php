@@ -23,7 +23,7 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 		 * these hooks outside the component's directory within functions.php).
 		 */
 		$hook_paths = array(
-			AQUAMIN_ASSETS . '/component-library/*/*hooks.php',
+			AQUAMIN_DIST . '/component-library/*/*hooks.php',
 		);
 		foreach ( $hook_paths as $path ) {
 			$hooks = glob( $path );
@@ -79,18 +79,20 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 		add_action( 'wp_enqueue_scripts', 'aquamin_theme_scripts' );
 		function aquamin_theme_scripts() {
 
+			$asset = include AQUAMIN_DIST . '/global/theme.bundle.asset.php';
+			$foo = AQUAMIN_DIST . '/global/theme.bundle.css';
 			wp_enqueue_style(
 				'aquamin-style',
-				get_template_directory_uri() . '/dist/global/theme.bundle.css',
-				array(),
-				aquamin_cache_break( get_stylesheet_directory() .'/dist/global/theme.bundle.css' ),
+				AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.css',
+				false,
+				$asset['version'],
 				'screen'
 			);
 			wp_enqueue_script(
 				'aquamin-scripts',
-				get_template_directory_uri() . '/dist/global/theme.bundle.js',
-				false,
-				aquamin_cache_break( get_stylesheet_directory() .'/dist/global/theme.bundle.js' ),
+				AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.js',
+				$asset['dependencies'],
+				$asset['version'],
 				true
 			);
 
