@@ -6,7 +6,7 @@
  * contains both the current comments and the comment form.
  * 
  * This file renders the component's HTML via:
- * get_template_part( 'assets/component-library/blog/comments-view' );
+ * get_template_part( 'dist/component-library/blog/comments-view' );
  *
  * @package Aquamin
  */

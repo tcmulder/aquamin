@@ -3,12 +3,12 @@
  * The template for displaying search results pages
  * 
  * This file renders the component's HTML via:
- * get_template_part( 'assets/component-library/search/search-view' );
+ * get_template_part( 'dist/component-library/search/search-view' );
  *
  * @package Aquamin
  */
 
-get_template_part( 'assets/component-library/header/header-view' ); ?>
+get_template_part( 'dist/component-library/header/header-view' ); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
@@ -36,7 +36,7 @@ get_template_part( 'assets/component-library/header/header-view' ); ?>
 				<?php else : ?>
 					<?php
 						get_template_part(
-							'assets/component-library/no-content/no-content-view',
+							'dist/component-library/no-content/no-content-view',
 							null,
 							array(
 								'message' => __( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'aquamin' )
@@ -49,4 +49,4 @@ get_template_part( 'assets/component-library/header/header-view' ); ?>
 	</main>
 </div>
 
-<?php get_template_part( 'assets/component-library/footer/footer-view' );
+<?php get_template_part( 'dist/component-library/footer/footer-view' );

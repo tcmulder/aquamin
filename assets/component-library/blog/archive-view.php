@@ -3,12 +3,12 @@
  * The template for displaying archive pages
  * 
  * This file renders the component's HTML via:
- * get_template_part( 'assets/component-library/blog/archive-view' );
+ * get_template_part( 'dist/component-library/blog/archive-view' );
  *
  * @package Aquamin
  */
 
-get_template_part( 'assets/component-library/header/header-view' ); ?>
+get_template_part( 'dist/component-library/header/header-view' ); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
@@ -28,11 +28,11 @@ get_template_part( 'assets/component-library/header/header-view' ); ?>
 				<?php endwhile; ?>
 				<?php aquamin_pagination(); ?>
 			<?php else : ?>
-				<?php get_template_part( 'assets/component-library/no-content/no-content-view' ); ?>
+				<?php get_template_part( 'dist/component-library/no-content/no-content-view' ); ?>
 			<?php endif; ?>
 		</section>
-		<?php get_template_part( 'assets/component-library/blog/sidebar-view' ); ?>
+		<?php get_template_part( 'dist/component-library/blog/sidebar-view' ); ?>
 	</main>
 </div>
 
-<?php get_template_part( 'assets/component-library/footer/footer-view' );
+<?php get_template_part( 'dist/component-library/footer/footer-view' );

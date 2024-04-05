@@ -5,7 +5,7 @@
  * This file renders the component's HTML
  * via the template part path:
  * 
- * get_template_part( 'assets/component-library/header/header-view' );
+ * get_template_part( 'dist/component-library/header/header-view' );
  * 
  * @package Aquamin
  */
@@ -32,7 +32,7 @@ if ( $has_root_template ) : get_header(); else : do_action( 'get_header' ); ?>
 			<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'aquamin' ); ?></a>
 
 			<header id="masthead" class="site-header">
-				<?php get_template_part( 'assets/component-library/menu/menu-view' ); ?>
+				<?php get_template_part( 'dist/component-library/menu/menu-view' ); ?>
 			</header>
 
 			<div id="content" class="site-content"><!-- (closed via footer.php) -->

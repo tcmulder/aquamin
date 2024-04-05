@@ -8,12 +8,12 @@
  * different template.
  * 
  * This file renders the component's HTML via:
- * get_template_part( 'assets/component-library/page/page-view' );
+ * get_template_part( 'dist/component-library/page/page-view' );
  *
  * @package Aquamin
  */
 
-get_template_part( 'assets/component-library/header/header-view' ); ?>
+get_template_part( 'dist/component-library/header/header-view' ); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
@@ -24,9 +24,9 @@ get_template_part( 'assets/component-library/header/header-view' ); ?>
 				</article>
 			<?php endwhile; ?>
 		<?php else : ?>
-			<?php get_template_part( 'assets/component-library/no-content/no-content-view' ); ?>
+			<?php get_template_part( 'dist/component-library/no-content/no-content-view' ); ?>
 		<?php endif; ?>
 	</main>
 </div>
 
-<?php get_template_part( 'assets/component-library/footer/footer-view' );
+<?php get_template_part( 'dist/component-library/footer/footer-view' );

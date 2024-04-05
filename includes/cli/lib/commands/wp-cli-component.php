@@ -192,7 +192,7 @@ function component_create( $args, $assoc_args ) {
 	WP_CLI::line( WP_CLI::colorize( "\n%6%k What's next? %n\n" ) );
 	WP_CLI::line( WP_CLI::colorize( "%C ‣ Restart Parcel and refresh your browser to watch these new files") );
 	if ( $has_template_part ) {
-		WP_CLI::line( WP_CLI::colorize( "%C ‣ Include your template part somewhere:%n get_template_part( 'assets/component-library/$dir/$slug-view' );") );
+		WP_CLI::line( WP_CLI::colorize( "%C ‣ Include your template part somewhere:%n get_template_part( 'dist/component-library/$dir/$slug-view' );") );
 	}
 	WP_CLI::line( WP_CLI::colorize( "%C ‣ Edit your new $title component:%n $component_path") );
 	WP_CLI::line( "\n" );

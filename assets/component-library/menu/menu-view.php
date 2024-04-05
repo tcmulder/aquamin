@@ -3,7 +3,7 @@
  * The main site navigation menu
  * 
  * This file renders the component's HTML via:
- * get_template_part( 'assets/component-library/menu/menu-view' );
+ * get_template_part( 'dist/component-library/menu/menu-view' );
  *
  * @package Aquamin
  */

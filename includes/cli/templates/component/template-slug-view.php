@@ -3,7 +3,7 @@
  * The template-title component
  *
  * This file renders the component's HTML via:
- * get_template_part( 'assets/component-library/_template-component/template-slug-view' );
+ * get_template_part( 'dist/component-library/_template-component/template-slug-view' );
  * 
  * @package Aquamin
  * @param   array  $args  Optional array of custom arguments from parent script

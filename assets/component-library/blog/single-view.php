@@ -3,12 +3,12 @@
  * The template for displaying all single posts
  * 
  * This file renders the component's HTML via:
- * get_template_part( 'assets/component-library/blog/single-view' );
+ * get_template_part( 'dist/component-library/blog/single-view' );
  *
  * @package Aquamin
  */
 
-get_template_part( 'assets/component-library/header/header-view' ); ?>
+get_template_part( 'dist/component-library/header/header-view' ); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
@@ -25,10 +25,10 @@ get_template_part( 'assets/component-library/header/header-view' ); ?>
 				</section>
 			<?php endif; ?>
 		<?php else : ?>
-			<?php get_template_part( 'assets/component-library/no-content/no-content-view' ); ?>
+			<?php get_template_part( 'dist/component-library/no-content/no-content-view' ); ?>
 		<?php endif; ?>
-		<?php get_template_part( 'assets/component-library/blog/sidebar-view' ); ?>
+		<?php get_template_part( 'dist/component-library/blog/sidebar-view' ); ?>
 	</main>
 </div>
 
-<?php get_template_part( 'assets/component-library/footer/footer-view' );
+<?php get_template_part( 'dist/component-library/footer/footer-view' );

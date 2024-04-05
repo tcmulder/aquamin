@@ -12,7 +12,7 @@
  * @package Aquamin
  */
 
-get_template_part( 'assets/component-library/header/header-view' ); ?>
+get_template_part( 'dist/component-library/header/header-view' ); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
@@ -25,7 +25,7 @@ get_template_part( 'assets/component-library/header/header-view' ); ?>
 			<?php else : ?>
 				<?php 
 					get_template_part(
-						'assets/component-library/no-content/no-content-view',
+						'dist/component-library/no-content/no-content-view',
 						null,
 						array(
 							'message' => __( 'Sorry, the template you requested isn\'t available' ),
@@ -36,4 +36,4 @@ get_template_part( 'assets/component-library/header/header-view' ); ?>
 		</main>
 	</div>
 
-<?php get_template_part( 'assets/component-library/footer/footer-view' );
+<?php get_template_part( 'dist/component-library/footer/footer-view' );

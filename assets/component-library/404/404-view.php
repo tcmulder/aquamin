@@ -3,13 +3,13 @@
  * The template for displaying 404 pages (not found)
  *
  * This file renders the component's HTML via:
- * get_template_part( 'assets/component-library/_template-component/template-slug-view' );
+ * get_template_part( 'dist/component-library/_template-component/template-slug-view' );
  * 
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  * @package Aquamin
  */
 
-get_template_part( 'assets/component-library/header/header-view' ); ?>
+get_template_part( 'dist/component-library/header/header-view' ); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
@@ -30,4 +30,4 @@ get_template_part( 'assets/component-library/header/header-view' ); ?>
 	</main>
 </div>
 
-<?php get_template_part( 'assets/component-library/footer/footer-view' );
+<?php get_template_part( 'dist/component-library/footer/footer-view' );

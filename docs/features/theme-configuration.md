@@ -26,7 +26,7 @@ Not all components are alike, so the files each requires will differ. The `wp aq
 |  PHP&nbsp;Suffix  | Where Included via PHP                                                                                    | Purpose
 |  -                | -                                                                                                         | -
 |  `hooks.php`      | automatically included via aquamin's `functions.php` file                                                 | wordpress&nbsp;hooks&nbsp;and&nbsp;filters
-|  `view.php`       | manually via `get_template_part('assets/component-library/<name>-view')` wherever component should appear | front-end html output of the component
+|  `view.php`       | manually via `get_template_part('dist/component-library/<name>-view')` wherever component should appear | front-end html output of the component
 
 ?> When you use the `wp aquamin component create` command, you'll conveniently find the `get_template_part()` call (including the correct path) in the  `view.php` file's header comment.
 
@@ -46,7 +46,7 @@ An example is the included `aquamin/assets/component-library/footer/` sticky foo
      ┗ 📄 footer-theme.css  // site-wide sticky footer styling
 ```
 
-Aquamin then includes this component via `get_template_part( 'assets/component-library/footer/footer-view' )` in several other components. You could additionally add a `footer-theme.js` file for front-end footer scripts, a `footer-editor.css` file to add styles relevant only to the back-end block editor, or a `footer-hooks.php` file to add footer-related WordPress hooks and filters.
+Aquamin then includes this component via `get_template_part( 'dist/component-library/footer/footer-view' )` in several other components. You could additionally add a `footer-theme.js` file for front-end footer scripts, a `footer-editor.css` file to add styles relevant only to the back-end block editor, or a `footer-hooks.php` file to add footer-related WordPress hooks and filters.
 
 ## Built In Components
 

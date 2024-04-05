@@ -5,7 +5,7 @@
  * This file renders the component's HTML
  * via the template part path:
  * 
- * get_template_part( 'assets/component-library/footer/footer-view' );
+ * get_template_part( 'dist/component-library/footer/footer-view' );
  * 
  * @package Aquamin
  */
