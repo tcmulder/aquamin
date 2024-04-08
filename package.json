@@ -15,12 +15,12 @@
 		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
 	},
 	"scripts": {
-		"MIGRATE_______start": "clear && npm-run-all --parallel --silent builder server",
+		"start": "clear && npm-run-all --parallel --silent builder server",
 		"MIGRATE_______build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache --cache-dir=./assets/config/.parcel-cache --config=./assets/config/.parcelrc && npm run build:post",
 		"MIGRATE_______build:post": "npm run static",
-		"MIGRATE_______builder": "parcel watch $npm_package_config_build_paths --config=./assets/config/.parcelrc --cache-dir=./assets/config/.parcel-cache",
-		"MIGRATE_______server:pre": "test -f .env && exit 0 || echo \"\\033[31mNo .env file found (use .env.example as a template to create one)\\033[0m\"; exit 1",
-		"MIGRATE_______server": "npm run server:pre && browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
+		"builder": "wp-scripts start --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"server:pre": "test -f .env && exit 0 || echo \"\\033[31mNo .env file found (use .env.example as a template to create one)\\033[0m\"; exit 1",
+		"server": "npm run server:pre && browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
 		"MIGRATE_______static": "del ./dist/static/* && ncp ./assets/static ./dist/static --filter '**/*.*'",
 		"MIGRATE_______docs": "docsify serve docs --open --port 4000",
 		"MIGRATE_______lint": "eslint --config=./assets/config/.eslintrc.js $npm_package_config_lint_paths",
@@ -28,10 +28,8 @@
 		"MIGRATE_______clean:cache": "del ./assets/config/.parcel-cache/*",
 		"MIGRATE_______clean:dist": "del ./dist/*",
 		"MIGRATE_______clean": "npm run clean:cache && npm run clean:dist",
-		"start": "wp-scripts start --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
-		"build": "wp-scripts build --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
-		"DISABLED______start": "wp-scripts start --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
-		"DISABLED______build": "wp-scripts build --webpack-src-dir=assets --output-path=dist --webpack-copy-php"
+		"IGNORE________start": "wp-scripts start --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"build": "wp-scripts build --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php"
 	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"eslintConfig": {

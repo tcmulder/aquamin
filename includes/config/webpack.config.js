@@ -10,6 +10,7 @@ const FilenameReplaceWebpackPlugin = require('filename-replace-webpack-plugin');
 
 
 
+
 let globs = {};
 const toGlob = [
 	'./assets/block-library/**/*view.css',
@@ -44,7 +45,6 @@ toGlob.forEach((entry) => {
 		...newEntry
 	}
 })
-console.log('🤞', globs)
 
 // Add any a new entry point by extending the webpack config.
 module.exports = {
