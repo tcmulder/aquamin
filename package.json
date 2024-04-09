@@ -9,26 +9,16 @@
 		"node": ">=20.12.1",
 		"npm": ">=10.5.0"
 	},
-	"config": {
-		"lint_paths": "./assets",
-		"build_paths": "./assets/**/*.bundle.js ./assets/**/*.bundle.css ./assets/**/*view.js ./assets/**/*view.css ./assets/block-library/*/index.js",
-		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
-	},
 	"scripts": {
-		"start": "clear && npm-run-all --parallel --silent builder server",
-		"MIGRATE_______build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache --cache-dir=./assets/config/.parcel-cache --config=./assets/config/.parcelrc && npm run build:post",
-		"MIGRATE_______build:post": "npm run static",
-		"builder": "wp-scripts start --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
-		"server:pre": "test -f .env && exit 0 || echo \"\\033[31mNo .env file found (use .env.example as a template to create one)\\033[0m\"; exit 1",
-		"server": "npm run server:pre && browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
 		"MIGRATE_______static": "del ./dist/static/* && ncp ./assets/static ./dist/static --filter '**/*.*'",
 		"MIGRATE_______docs": "docsify serve docs --open --port 4000",
-		"MIGRATE_______lint": "eslint --config=./assets/config/.eslintrc.js $npm_package_config_lint_paths",
-		"MIGRATE_______lint:fix": "eslint --config=./assets/config/.eslintrc.js $npm_package_config_lint_paths --fix",
+		"MIGRATE_______lint": "eslint --config=./assets/config/.eslintrc.js ./assets",
+		"MIGRATE_______lint:fix": "eslint --config=./assets/config/.eslintrc.js ./assets --fix",
 		"MIGRATE_______clean:cache": "del ./assets/config/.parcel-cache/*",
 		"MIGRATE_______clean:dist": "del ./dist/*",
 		"MIGRATE_______clean": "npm run clean:cache && npm run clean:dist",
 		"IGNORE________start": "wp-scripts start --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"start": "wp-scripts start --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
 		"build": "wp-scripts build --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php"
 	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
@@ -37,10 +27,11 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^27.6.0",
-		"browser-sync": "^2.29.3",
+		"browser-sync-webpack-plugin": "^2.3.0",
 		"classnames": "^2.5.1",
 		"copy-webpack-plugin": "^12.0.2",
 		"docsify-cli": "^4.4.4",
+		"dotenv": "^16.4.5",
 		"filename-replace-webpack-plugin": "^1.0.1",
 		"glob": "^10.3.12",
 		"mini-css-extract-plugin": "^2.7.6",

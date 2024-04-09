@@ -22,6 +22,8 @@ add_action( 'after_setup_theme', function() {
 	// only load assets for blocks that appear on page
 	add_filter( 'should_load_separate_core_block_assets', '__return_true' );
 
+	// disable css inlining
+	add_filter( 'styles_inline_size_limit', '__return_zero' );
 
 } );
 

@@ -2,14 +2,14 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const { getWebpackEntryPoints } = require( '@wordpress/scripts/utils/config' );
 const RemoveEmptyScriptsPlugin  = require( 'webpack-remove-empty-scripts' );
 const CopyPlugin                = require( 'copy-webpack-plugin' );
-const postcssPresetEnv          = require( 'postcss-preset-env' );
 const path         = require( 'path' );
 const { globSync } = require( 'glob' );
 const FilenameReplaceWebpackPlugin = require('filename-replace-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+var autoprefixer = require('autoprefixer');
+require('dotenv').config()
 
-
-
-
+if (!process.env.URL) throw new Error('No .env file with URL property found.');
 
 let globs = {};
 const toGlob = [
@@ -49,6 +49,7 @@ toGlob.forEach((entry) => {
 // Add any a new entry point by extending the webpack config.
 module.exports = {
 	...defaultConfig,
+	stats: 'errors-warnings',
 	...{
 		entry: {
 			...defaultConfig.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
@@ -56,6 +57,7 @@ module.exports = {
 			'config/browsersync.bundle': path.resolve( process.cwd(), 'includes/config', 'browsersync.bundle.js' )
 		},
 		plugins: [
+
 			// Very important! Include WP's plugin config or the
 			// world will cease to exist as we know it.
 			...defaultConfig.plugins,
@@ -84,6 +86,21 @@ module.exports = {
 			new RemoveEmptyScriptsPlugin( {
 				stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS
 			} ),
+
+			// setup browsersync
+			new BrowserSyncPlugin(
+				{
+					proxy: process.env.URL,
+					open: false,
+					files: ['**/*.php', 'assets/**/*.js', 'dist/**/*.css'],
+					ignore: ['dist/**/*.php', 'dist/**/*.js'],
+					logFileChanges: false,
+				},
+				{
+					injectCss: true,
+					reload: false,
+				},
+			),
 
 		],
 		module: {
