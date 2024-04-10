@@ -184,7 +184,7 @@ function block_create( $args, $assoc_args ) {
 	// enqueue front-end scripts if appropriate (unshift to top of array so template strings get replaced)
 	array_unshift( $far, array(
 		'find' => "\t/* TEMPLATE: enqueue front-end script */\n",
-		'repl' => ! $has_js ? "" : "\t\"viewScript\": [\"file:../../../dist/block-library/_template-block/template-slug-view.js\"],\n",
+		'repl' => ! $has_js ? "" : "\t\"viewScript\": [\"file:./template-slug-view.js\"],\n",
 	) );
 	
 	/**

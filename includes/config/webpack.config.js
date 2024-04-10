@@ -14,6 +14,7 @@ if (!process.env.URL) throw new Error('No .env file with URL property found.');
 let globs = {};
 const toGlob = [
 	'./assets/block-library/**/*view.css',
+	'./assets/block-library/**/*view.js',
 	'./assets/component-library/**/*view.css',
 	'./assets/component-library/**/*view.js',
 	'./assets/**/*.bundle.js',

@@ -5,6 +5,6 @@
  * like this one load globally on the front-end.
  */
 
-.template-slug b::after {
+.template-slug i::after {
 	content: " 🪄 "; /* NOTE: replace all this with your own code */
 }

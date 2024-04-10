@@ -6,4 +6,4 @@
  */
 
 // eslint-disable-next-line no-console
-console.log('template-slug script has loaded'); // replace with your own code
+console.log('template-slug global script has loaded'); // replace with your own code
