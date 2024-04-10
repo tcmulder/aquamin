@@ -47,6 +47,17 @@ toGlob.forEach((entry) => {
 	}
 })
 
+// @wordpress/scripts loads all SVGs as data URIs so we exclude *.inline.svg ourselves
+const loadInlineSVG = () => {
+	const svgConfigIndex = defaultConfig.module.rules.findIndex((obj) => {
+		return String(obj.test) === '/\\.svg$/';
+	});
+	if (svgConfigIndex) {
+		defaultConfig.module.rules[svgConfigIndex].exclude = /\.inline\.svg$/;
+	}
+}
+loadInlineSVG();
+
 // Add any a new entry point by extending the webpack config.
 module.exports = {
 	...defaultConfig,
@@ -135,7 +146,11 @@ module.exports = {
 							}
 						}
 					}]
-				}
+				},
+				{
+					test: /\.inline\.svg$/,
+					use: ['@svgr/webpack'],
+				},
 			]
 		}
 	}

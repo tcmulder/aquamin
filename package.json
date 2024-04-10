@@ -26,6 +26,7 @@
 		"extends": "./assets/config/.eslintrc.js"
 	},
 	"devDependencies": {
+		"@svgr/webpack": "^8.1.0",
 		"@wordpress/scripts": "^27.6.0",
 		"browser-sync-webpack-plugin": "^2.3.0",
 		"classnames": "^2.5.1",
