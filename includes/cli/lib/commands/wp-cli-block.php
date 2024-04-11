@@ -199,10 +199,6 @@ function block_create( $args, $assoc_args ) {
 	}
 	// add inner find-and-replace strings (unshift to top of array so template strings get replaced)
 	array_unshift( $far, array(
-		'find' => "\n/* TEMPLATE: register inner blocks */\n",
-		'repl' => ! $has_inner_block ? "" : "\n/**\n * Register inner blocks\n */\nimport './_template-item-dir';\n"
-	) );
-	array_unshift( $far, array(
 		'find' => "/* TEMPLATE: inner blocks template */",
 		'repl' => ! $has_inner_block ? "template: [['core/paragraph', {placeholder: __('template-title inner blocks', 'aquamin')}]]," : "template: [['aquamin/template-item-slug']],\n\t\tallowedBlocks: ['aquamin/template-item-slug'],"
 	) );

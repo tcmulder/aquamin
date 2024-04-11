@@ -1,12 +1,10 @@
 const defaultConfig = require('@wordpress/scripts/config/webpack.config');
-const { getWebpackEntryPoints } = require('@wordpress/scripts/utils/config');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const { globSync } = require('glob');
 const FilenameReplaceWebpackPlugin = require('filename-replace-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 require('dotenv').config();
 
 if (!process.env.URL) throw new Error('No .env file with URL property found.');

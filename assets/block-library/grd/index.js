@@ -6,11 +6,6 @@
  */
 
 /**
- * Register inner blocks
- */
-import './grd-item';
-
-/**
  * Import dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';

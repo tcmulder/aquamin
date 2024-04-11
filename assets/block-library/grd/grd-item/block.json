@@ -42,5 +42,6 @@
 		"spacing": {
 			"padding": true
 		}
-	}
+	},
+	"editorScript": "file:./index.js"
 }

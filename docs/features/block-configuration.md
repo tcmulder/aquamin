@@ -54,7 +54,9 @@ If you'd like to break a front-end script into multiple files, you can use this 
 
 ## Inner Blocks
 
-A common pattern in Gutenberg is to have a parent block with dependent inner blocks, like a "Slider" block with several "Slide" blocks within it. The `wp aquamin block create` command will ask if you'd like to generate such an inner block, and will place that inner block within the parent's directory for convenience.
+A common pattern in Gutenberg is to have a parent block with dependent inner blocks (like a "Slider" block with several "Slide" blocks within it). The `wp aquamin block create` command will ask if you'd like to generate such an inner block, and will place that inner block within its parent's directory to keep everything organized in that one directory.
+
+?> Note you can move the inner block's directory outside of its parent (so they're alongside each other in `aquamin/assets/block-library`), and it will work fine. You may want to do this if the inner block will be shared by more than one parent block, or if you'd like your block library to be organized closer to how Gutenberg organizes core blocks.
 
 Note that you'll apply styling and front-end scripting for an inner block to it's _parent's_ `view.css` and `view.js` files. This simplifies development by reducing the number of files you need to work with, since these block parings are so tightly coupled anyway (see [Anatomy of a Block](#anatomy-of-a-block) for more details).
 
