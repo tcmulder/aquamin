@@ -1,7 +1,7 @@
 {
 	"name": "aquamin",
-	"version": "4.0.0",
-	"description": "Parcel build tool for Aquamarine",
+	"version": "5.0.0",
+	"description": "Webpack @wordpress/scripts build tool for Aquamarine",
 	"private": true,
 	"author": "@tcmulder",
 	"license": "ISC",
@@ -10,15 +10,15 @@
 		"npm": ">=10.5.0"
 	},
 	"scripts": {
+		"start": "wp-scripts start --progress --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"build": "wp-scripts build --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
 		"docs": "docsify serve docs --open --port 4000",
 		"lint": "eslint --config=./assets/config/.eslintrc.js ./assets",
-		"lint:fix": "eslint --config=./assets/config/.eslintrc.js ./assets --fix",
-		"start": "wp-scripts start --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
-		"build": "wp-scripts build --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php"
+		"lint:fix": "eslint --config=./assets/config/.eslintrc.js ./assets --fix"
 	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"eslintConfig": {
-		"extends": "./assets/config/.eslintrc.js"
+		"extends": "./includes/config/.eslintrc.js"
 	},
 	"devDependencies": {
 		"@svgr/webpack": "^8.1.0",

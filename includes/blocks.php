@@ -115,10 +115,10 @@ add_action( 'enqueue_block_editor_assets', 'aquamin_editor_scripts' );
 function aquamin_editor_scripts() {
 
 	// add browsersync helper (enables block editor CSS injecting within the iframe)
-	$asset = include AQUAMIN_DIST . '/config/browsersync.bundle.asset.php';
+	$asset = include AQUAMIN_DIST . '/config/browsersync.config.asset.php';
 	wp_enqueue_script(
 		'aquamin-browsersync',
-		AQUAMIN_TEMPLATE_URL . '/dist/config/browsersync.bundle.js',
+		AQUAMIN_TEMPLATE_URL . '/dist/config/browsersync.config.js',
 		$asset['dependencies'],
 		$asset['version'],
 		true
