@@ -15,10 +15,10 @@ if (!process.env.URL) throw new Error('No .env file with URL property found.');
 // create array of individual entry points based on glob file paths
 let globs = {};
 [
-	'./assets/block-library/**/*view.css',
-	'./assets/block-library/**/*view.js',
-	'./assets/component-library/**/*view.css',
-	'./assets/component-library/**/*view.js',
+	'./assets/block-library/**/*view.{css,scss}',
+	'./assets/block-library/**/*view.{js,ts}',
+	'./assets/component-library/**/*view.{css,scss}',
+	'./assets/component-library/**/*view.{js,ts}',
 	'./assets/**/*.bundle.js',
 ].forEach((entry) => {
 	// for each entry we find
