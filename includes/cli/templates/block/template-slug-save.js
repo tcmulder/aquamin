@@ -19,6 +19,9 @@ import {
 
 /**
  * Generate block HTML to save to the database
+ * @param {Object} root0
+ * @param {Object} root0.attributes
+ * @param {string} root0.className
  */
 const TemplateNamespaceBlockSave = ({ attributes, className }) => {
 	// get the attributes we care about

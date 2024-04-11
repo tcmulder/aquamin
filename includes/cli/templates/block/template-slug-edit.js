@@ -18,6 +18,10 @@ import {
 
 /**
  * Generate block editor component
+ * @param {Object}   root0
+ * @param {Object}   root0.attributes
+ * @param {Function} root0.setAttributes
+ * @param {string}   root0.className
  */
 const TemplateNamespaceBlockEdit = ({
 	attributes,
