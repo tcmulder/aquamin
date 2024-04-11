@@ -31,6 +31,8 @@ const isAffected = (name) => {
 
 /**
  * Modify attributes
+ * @param {Object} props
+ * @param {string} name
  */
 const modifyAttributes = (props, name) => {
 	// if we're supposed to edit this block
@@ -133,6 +135,9 @@ addFilter('editor.BlockEdit', EXTENSION_NAME, withModifyEdit);
 
 /**
  * Save attributes
+ * @param {Object} props
+ * @param {Object} block
+ * @param {Object} attributes
  */
 const modifySave = (props, block, attributes) => {
 	const { name } = block;

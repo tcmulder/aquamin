@@ -4,19 +4,20 @@
  * Animate elements fluidly based on scroll position.
  *
  * Examples:
- *  aniScroll('.ani--parallax');
- *  // or
- *  aniScroll(document.querySelectorAll('.ani--parallax'));
- *  // or
- *  aniScroll([
- *      document.querySelector('.ani--parallax'),
- *      document.querySelector('.ani--parallax-alt')
- *  ]);
- *  // or (bases animation on window height rather than total element height)
- *  aniScroll('.ani--parallax', false);
  *
- * @param  {mixed}    mixed        Wrapper element (as selector string, nodelist, or array of nodes)
- * @param  {boolean}  useElHeight  Stretch animations over full element height (true/default) or just window height (false)
+ *    aniScroll('.ani--parallax');
+ *    // or
+ *    aniScroll(document.querySelectorAll('.ani--parallax'));
+ *    // or
+ *    aniScroll([
+ *        document.querySelector('.ani--parallax'),
+ *        document.querySelector('.ani--parallax-alt')
+ *    ]);
+ *    // or (bases animation on window height rather than total element height)
+ *    aniScroll('.ani--parallax', false);
+ *
+ * @param {NodeList | Array} mixed       Wrapper element (as selector string, nodelist, or array of nodes)
+ * @param {boolean}          useElHeight Stretch animations over full element height (true/default) or just window height (false)
  */
 export const aniScroll = (mixed, useElHeight = true) => {
 	// identify scroll-based animation elements

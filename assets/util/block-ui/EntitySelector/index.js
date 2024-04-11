@@ -1,28 +1,29 @@
 /**
  * Get entities list
- * 
+ *
  * Handles creating a list of entities (posts, terms, etc)
  * and updates an array of unique ids.
- * 
+ *
  * Usage:
-<EntitySelector
-	title={__('Posts', 'aquamin')}
-	// getEntityRecords() call values
-	entityRecordsQuery={[
-		'postType', // or e.g. 'taxonomy'
-		'post', // or e.g. 'category'
-		// exclude this object entirely if you don't need it
-		// @see https://developer.wordpress.org/rest-api/reference/pages/#arguments
-		{ include: '287' }
-	]}
-	// how to find the title and ID from the entity's object
-	parseEntities={(entity) => ({
-		title: entity?.title?.raw, // e.g. 'taxonomy' instead returns entity?.name as title
-		value: entity?.id,
-	})}
-
-	blockAttributes={{ setAttributes, ids }}
-/>
+ *
+ *    <EntitySelector
+ *        title={__('Posts', 'aquamin')}
+ *        // getEntityRecords() call values
+ *        entityRecordsQuery={[
+ *            'postType', // or e.g. 'taxonomy'
+ *            'post', // or e.g. 'category'
+ *            // exclude this object entirely if you don't need it
+ *            // @see https://developer.wordpress.org/rest-api/reference/pages/#arguments
+ *            { include: '287' }
+ *        ]}
+ *        // how to find the title and ID from the entity's object
+ *        parseEntities={(entity) => ({
+ *            title: entity?.title?.raw, // e.g. 'taxonomy' instead returns entity?.name as title
+ *            value: entity?.id,
+ *        })}
+ *
+ *        blockAttributes={{ setAttributes, ids }}
+ *    />
  */
 
 import { __ } from '@wordpress/i18n';

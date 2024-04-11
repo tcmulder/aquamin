@@ -13,7 +13,6 @@ import './grd-item-variations';
 /**
  * Import dependencies
  */
-import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import Icon from './icon.inline.svg';
 import edit from './grd-item-edit';

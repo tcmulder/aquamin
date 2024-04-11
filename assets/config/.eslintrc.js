@@ -1,5 +1,5 @@
 module.exports = {
-	extends: ['wesbos'],
+	extends: ['plugin:@wordpress/eslint-plugin/recommended'],
 	rules: {
 		'no-console': 2,
 		'prettier/prettier': [

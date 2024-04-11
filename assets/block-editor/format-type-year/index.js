@@ -9,6 +9,10 @@ import { useSelect } from '@wordpress/data';
 
 /**
  * Setup conditional inserter button
+ * @param {Object}   root0
+ * @param {boolean}  root0.isActive
+ * @param {Function} root0.onChange
+ * @param {string}   root0.value
  */
 function ConditionalButton({ isActive, onChange, value }) {
 	// get this block

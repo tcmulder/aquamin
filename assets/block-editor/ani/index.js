@@ -42,6 +42,8 @@ const isAffected = (name, blocks) => {
 
 /**
  * Create a validation component.
+ * @param {Object} root0
+ * @param {Array}  root0.aquaminClassNameAni
  */
 const Validation = ({ aquaminClassNameAni }) => {
 	// start without a message
@@ -96,6 +98,8 @@ const Validation = ({ aquaminClassNameAni }) => {
 
 /**
  * Modify attributes
+ * @param {Object} props
+ * @param {string} name
  */
 const modifyAttributes = (props, name) => {
 	// if we're supposed to edit this block
@@ -236,6 +240,9 @@ addFilter('editor.BlockEdit', extensionName, withModifyEdit);
 
 /**
  * Save attributes
+ * @param {Object} props
+ * @param {Object} block
+ * @param {Object} attributes
  */
 const modifySave = (props, block, attributes) => {
 	// if we're supposed to edit this block

@@ -1,21 +1,20 @@
 /**
  * Appender for sibling inner blocks.
- * 
+ *
  * Goes within the inner blocks, so they
  * can tell their parent to insert a new
  * block after their own index.
  *
  * Example:
  *
- *
-import Appender from './Appender'
-export const SomeInnerEditBlock = ({ clientId }) => (
-	<Appender
-		label={__('Add Inner Block', 'aquamin')}
-		clientId={clientId}
-		orientation="vertical" // defaults to "horizontal"
-	/>
-)
+ *    import Appender from './Appender'
+ *    export const SomeInnerEditBlock = ({ clientId }) => (
+ *        <Appender
+ *            label={__('Add Inner Block', 'aquamin')}
+ *            clientId={clientId}
+ *            orientation="vertical" // defaults to "horizontal"
+ *        />
+ *    )
  */
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';

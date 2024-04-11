@@ -29,6 +29,10 @@ const MoveButton = ({ label, onClick, children, disabled }) => (
 
 /**
  * Change the order of things
+ * @param {Object}   root0
+ * @param {Array}    root0.chosen
+ * @param {Array}    root0.opt
+ * @param {Function} root0.updateAttributes
  */
 const OrderChanger = ({ chosen, opt, updateAttributes }) => {
 	const changeOrder = (fromIndex, toIndex) => {

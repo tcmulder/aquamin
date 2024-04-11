@@ -3,8 +3,8 @@
  *
  * Full-screen, fixed-position background animations.
  *
- * @param {mixed} element Selector string, nodelist, or array of nodes.
- * @param {boolean} isPopupStyle Whether to block adjacent content like a popup on active.
+ * @param {NodeList} element      Selector string, nodelist, or array of nodes.
+ * @param {boolean}  isPopupStyle Whether to block adjacent content like a popup on active.
  */
 export const aniBackground = (element, isPopupStyle = false) => {
 	const els =

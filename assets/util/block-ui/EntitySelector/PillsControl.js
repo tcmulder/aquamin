@@ -2,13 +2,14 @@
  * Add functional version of WP's FormTokenField control.
  *
  * Usage:
-<PillsControl
-	label={__('Some title', 'aquamin')}
-	limit={2}
-	chosen={chosenArray} // e.g. [{title: 'Title', value: 123}]
-	suggestions={someOptionsArray} // e.g. [{title: 'Title', value: 123}, {title: 'Title 2', value: 246}]
-	updateAttributes={parentsSetAttributesCall} // e.g. ()=>setAttribute({postIds: chosenArray.filter((val)=>val.id)})
-/>
+ *
+ *    <PillsControl
+ *        label={__('Some title', 'aquamin')}
+ *        limit={2}
+ *        chosen={chosenArray} // e.g. [{title: 'Title', value: 123}]
+ *        suggestions={someOptionsArray} // e.g. [{title: 'Title', value: 123}, {title: 'Title 2', value: 246}]
+ *        updateAttributes={parentsSetAttributesCall} // e.g. ()=>setAttribute({postIds: chosenArray.filter((val)=>val.id)})
+ *    />
  */
 
 import { useState } from '@wordpress/element';

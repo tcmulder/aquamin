@@ -3,7 +3,7 @@
  *
  * Run an animation on elements once they enter the viewport.
  *
- * @param {nodelist}} els Elements to which we'll attach animations
+ * @param {NodeList} els Elements to which we'll attach animations
  */
 export const ani = (els) => {
 	// if we have elements
@@ -37,9 +37,9 @@ export const ani = (els) => {
  * send the returned elements through ani()
  * to apply the animations.)
  *
- * @param {array} delegatedSelectors Array of parent/child selector pairs.
- * @param {string} aniClassName  Name of basic animations (what ani() will use)
- * @returns {nodelist} Elements to which we should apply animations.
+ * @param {Array}  delegatedSelectors Array of parent/child selector pairs.
+ * @param {string} aniClassName       Name of basic animations (what ani() will use)
+ * @return {NodeList} Elements to which we should apply animations.
  */
 export const aniDelegate = (delegatedSelectors, aniClassName = 'ani') => {
 	const allAniEls = [];
@@ -88,8 +88,8 @@ export const aniDelegate = (delegatedSelectors, aniClassName = 'ani') => {
  * Run animations once on document ready
  * and never again.
  *
- * @param {mixed} element Selector string, nodelist, or array of nodes.
- * @param {array} aniClassNameList Class names for animations (so we can remove it)
+ * @param {NodeList | Array} element          Selector string, nodelist, or array of nodes.
+ * @param {Array}            aniClassNameList Class names for animations (so we can remove it)
  */
 export const aniLoad = (element, aniClassNameList = ['ani']) => {
 	const els =

@@ -10,14 +10,9 @@
 		"npm": ">=10.5.0"
 	},
 	"scripts": {
-		"MIGRATE_______static": "del ./dist/static/* && ncp ./assets/static ./dist/static --filter '**/*.*'",
-		"MIGRATE_______docs": "docsify serve docs --open --port 4000",
-		"MIGRATE_______lint": "eslint --config=./assets/config/.eslintrc.js ./assets",
-		"MIGRATE_______lint:fix": "eslint --config=./assets/config/.eslintrc.js ./assets --fix",
-		"MIGRATE_______clean:cache": "del ./assets/config/.parcel-cache/*",
-		"MIGRATE_______clean:dist": "del ./dist/*",
-		"MIGRATE_______clean": "npm run clean:cache && npm run clean:dist",
-		"IGNORE________start": "wp-scripts start --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"docs": "docsify serve docs --open --port 4000",
+		"lint": "eslint --config=./assets/config/.eslintrc.js ./assets",
+		"lint:fix": "eslint --config=./assets/config/.eslintrc.js ./assets --fix",
 		"start": "wp-scripts start --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
 		"build": "wp-scripts build --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php"
 	},

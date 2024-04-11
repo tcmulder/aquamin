@@ -2,86 +2,80 @@
  * Media component
  *
  * Handles image/video media.
- * 
- * Usage:
-
-// add this to the block.json file:
-{
-	// ...other block settings
-	"attributes": {
-		"mediaId": {
-			"type": "number",
-			"default": 0
-		},
-		"mediaAlt": {
-			"type": "string",
-			"source": "attribute",
-			"selector": ".media",
-			"attribute": "alt"
-		},
-		"mediaUrl": {
-			"type": "string",
-			"source": "attribute",
-			"selector": ".media",
-			"attribute": "src"
-		},
-		"mediaWidth": {
-			"type": "number"
-		},
-		"mediaHeight": {
-			"type": "number"
-		},
-	}
-}
-
-Then use it within the edit function like:
-<Media
-	editable
-	setAttributes={setAttributes}
-	attributes={attributes}
-/>
-
-And use it within the save function like:
-<Media attributes={attributes} />
-
-There's a lot of customization you can do as well:
-<Media
-	editable
-	setAttributes={setAttributes}
-	attributes={attributes}
-	attributeNames = {{ // custom block.json props (defaults plus "Background" shown here)
-		alt: 'mediaAltBackground',
-		url: 'mediaUrlBackground',
-		id: 'mediaIdBackground',
-		width: 'mediaWidthBackground',
-		height: 'mediaHeightBackground',
-	}}
-	htmlAttributes={[
-		{
-			// apply html attributes to all media types
-			width: 800,
-			height: 600
-		},
-		{
-			// apply html attribute to image media
-			type: 'image',
-			loading: 'lazy',
-		},
-		{
-			// apply html attributes to video media (defaults to autplaying otherwise)
-			type: 'video',
-			controls: '',
-		},
-	]}
-	title={__('Background Media', 'aquamin')}, // title above <MediaPlaceholder />
-	className="my-extra-class" // comes with .media automatically
-	accept={['image/*', 'video/*']} // or exclude a type
-	allowedTypes={['image', 'video']} // or exclude a type
-	style={{ height: 'auto' }} // add css style attributes
-	hideInSidebar={true} // don't show this in block editor sidebar
-/>
-
  *
+ * Usage:
+ *    // add this to the block.json file:
+ *    {
+ *        // ...other block settings
+ *        "attributes": {
+ *            "mediaId": {
+ *                "type": "number",
+ *                "default": 0
+ *            },
+ *            "mediaAlt": {
+ *                "type": "string",
+ *                "source": "attribute",
+ *                "selector": ".media",
+ *                "attribute": "alt"
+ *            },
+ *            "mediaUrl": {
+ *                "type": "string",
+ *                "source": "attribute",
+ *                "selector": ".media",
+ *                "attribute": "src"
+ *            },
+ *            "mediaWidth": {
+ *                "type": "number"
+ *            },
+ *            "mediaHeight": {
+ *                "type": "number"
+ *            },
+ *        }
+ *    }
+ * Then use it within the edit function like:
+ *    <Media
+ *        editable
+ *        setAttributes={setAttributes}
+ *        attributes={attributes}
+ *    />
+ * And use it within the save function like:
+ *    <Media attributes={attributes} />
+ * There's a lot of customization you can do as well:
+ *    <Media
+ *        editable
+ *        setAttributes={setAttributes}
+ *        attributes={attributes}
+ *        attributeNames = {{ // custom block.json props (defaults plus "Background" shown here)
+ *            alt: 'mediaAltBackground',
+ *            url: 'mediaUrlBackground',
+ *            id: 'mediaIdBackground',
+ *            width: 'mediaWidthBackground',
+ *            height: 'mediaHeightBackground',
+ *        }}
+ *        htmlAttributes={[
+ *            {
+ *                // apply html attributes to all media types
+ *                width: 800,
+ *                height: 600
+ *            },
+ *            {
+ *                // apply html attribute to image media
+ *                type: 'image',
+ *                loading: 'lazy',
+ *            },
+ *            {
+ *                // apply html attributes to video media (defaults to autplaying otherwise)
+ *                type: 'video',
+ *                controls: '',
+ *            },
+ *        ]}
+ *        title={__('Background Media', 'aquamin')}, // title above <MediaPlaceholder />
+ *        className="my-extra-class" // comes with .media automatically
+ *        accept={['image/*', 'video/*']} // or exclude a type
+ *        allowedTypes={['image', 'video']} // or exclude a type
+ *        style={{ height: 'auto' }} // add css style attributes
+ *        hideInSidebar={true} // don't show this in block editor sidebar
+ *    />
  */
 
 /**
@@ -95,6 +89,7 @@ import { ButtonX } from '../Buttons';
 
 /**
  * Get type of media
+ * @param {string} url
  */
 const getType = (url) => {
 	let type = 'image';
@@ -117,6 +112,8 @@ const getType = (url) => {
 
 /**
  * Get HTML attributes
+ * @param {Object} htmlAttributes
+ * @param {string} type
  */
 const getHTMLAttributes = (htmlAttributes, type) => {
 	// start with none
@@ -155,6 +152,7 @@ const getHTMLAttributes = (htmlAttributes, type) => {
 
 /**
  * Output inspector controls
+ * @param {Object} props
  */
 const MediaInspector = (props) => {
 	const {
@@ -207,6 +205,13 @@ const MediaInspector = (props) => {
 
 /**
  * Output actual media HTML to save
+ * @param {Object}  root0
+ * @param {Object}  root0.attributeNames
+ * @param {Object}  root0.attributes
+ * @param {Object}  root0.htmlAttributes
+ * @param {string}  root0.className
+ * @param {Object}  root0.style
+ * @param {boolean} root0.editable
  */
 const MediaElement = ({
 	attributeNames,
@@ -252,6 +257,7 @@ const MediaElement = ({
 
 /**
  * Output existing media editor
+ * @param {Object} props
  */
 const MediaEdit = (props) => {
 	const { attributeNames, attributes, setAttributes, editable } = props;
@@ -284,6 +290,16 @@ const MediaEdit = (props) => {
 
 /**
  * Output new media adder
+ * @param {Object}   root0
+ * @param {string}   root0.className
+ * @param {Object}   root0.style
+ * @param {string}   root0.title
+ * @param {Object}   root0.attributes
+ * @param {Object}   root0.attributeNames
+ * @param {Function} root0.setAttributes
+ * @param {Array}    root0.accept
+ * @param {Array}    root0.allowedTypes
+ * @param {boolean}  root0.editable
  */
 const MediaNew = ({
 	className,
@@ -328,6 +344,7 @@ const MediaNew = ({
 
 /**
  * Show media component
+ * @param {Object} props
  */
 const Media = (props) => (
 	<>

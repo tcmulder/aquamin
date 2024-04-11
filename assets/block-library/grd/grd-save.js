@@ -16,6 +16,9 @@ import { getGap, getStyle, getStyleFromObject } from './grd-edit';
 
 /**
  * Generate block HTML to save to the database
+ * @param {Object} root0
+ * @param {Object} root0.attributes
+ * @param {string} root0.className
  */
 const GridBlockSave = ({ attributes, className }) => {
 	const { count, hasEqualRows, minAspect } = attributes;

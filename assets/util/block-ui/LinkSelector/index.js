@@ -2,19 +2,19 @@
  * Add link to block's floating toolbar.
  *
  * Example:
- *
-const { link } = attributes; // { url: 'https://example.com', opensInNewTab: false, title: 'Button Title' }
-<LinkSelector
-	link={link}
-	setAttributes={setAttributes}
-	show={isSelected}
-/>
+ *    const { link } = attributes; // { url: 'https://example.com', opensInNewTab: false, title: 'Button Title' }
+ *    <LinkSelector
+ *        link={link}
+ *        setAttributes={setAttributes}
+ *        show={isSelected}
+ *    />
  */
 import { link as linkIcon } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import {
 	BlockControls,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
 import {
@@ -26,6 +26,10 @@ import {
 
 /**
  * Link selector
+ * @param {Object}   root0
+ * @param {Object}   root0.link
+ * @param {Function} root0.setAttributes
+ * @param {boolean}  root0.show
  */
 const LinkSelector = ({ link, setAttributes, show }) => {
 	const [showLink, setShowLink] = useState(false);

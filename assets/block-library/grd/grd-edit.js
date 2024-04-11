@@ -20,9 +20,9 @@ import { ToggleControl, TextControl, PanelBody } from '@wordpress/components';
 /**
  * Get style for grid gaps (using WordPress's built in gap system)
  *
- * @param    {object} attributes  All block attributes for us to dig through
- * @param    {string} side        Grid gap side 'left' or 'top' to retrieve
- * @returns  {object}             Grid gap css custom property object
+ * @param {Object} attributes All block attributes for us to dig through
+ * @param {string} side       Grid gap side 'left' or 'top' to retrieve
+ * @return  {Object}             Grid gap css custom property object
  */
 export const getGap = (attributes, side) => {
 	let gap = {};
@@ -40,10 +40,10 @@ export const getGap = (attributes, side) => {
 /**
  * Get custom property style attribute from a string
  *
- * @param   {string}    name      Custom property name
- * @param   {mixed}     value 	  Value of the property (string or number)
- * @param   {function}  validate  Validation function (defaults to checking truthy)
- * @returns {object}              Style object (or {} if didn't pass validation)
+ * @param {string}        name     Custom property name
+ * @param {string|number} value    Value of the property (string or number)
+ * @param {Function}      validate Validation function (defaults to checking truthy)
+ * @return {Object}              Style object (or {} if didn't pass validation)
  */
 export const getStyle = (name, value, validate = (val) => !!val) => {
 	const style = {};
@@ -56,10 +56,10 @@ export const getStyle = (name, value, validate = (val) => !!val) => {
 /**
  * Get custom property style attributes from an object
  *
- * @param   {string}    nameBase  Custom property name base (keys in object get appended as suffix)
- * @param   {object}    obj       Object with key (used as name suffix) and value (property value)
- * @param   {function}  validate  Validation function (defaults to checking truthy)
- * @returns {object}              Style object (or {} if didn't pass validation)
+ * @param {string}   nameBase Custom property name base (keys in object get appended as suffix)
+ * @param {Object}   obj      Object with key (used as name suffix) and value (property value)
+ * @param {Function} validate Validation function (defaults to checking truthy)
+ * @return {Object}              Style object (or {} if didn't pass validation)
  */
 export const getStyleFromObject = (
 	nameBase,
@@ -76,6 +76,16 @@ export const getStyleFromObject = (
 
 /**
  * Handle responsive number values
+ *
+ * @param {Object}   root0
+ * @param {string}   root0.title
+ * @param {string}   root0.attributeName
+ * @param {Object}   root0.attributes
+ * @param {Function} root0.setAttributes
+ * @param {Array}    root0.opts
+ * @param {number}   root0.step
+ * @param {number}   root0.min
+ * @param {number}   root0.max
  */
 export const TextControlList = ({
 	title,
@@ -134,6 +144,10 @@ export const TextControlList = ({
 
 /**
  * Generate block editor component
+ * @param {Object}   root0
+ * @param {Object}   root0.attributes
+ * @param {Function} root0.setAttributes
+ * @param {string}   root0.className
  */
 const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 	const { count, hasEqualRows, minAspect } = attributes;
