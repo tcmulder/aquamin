@@ -219,7 +219,7 @@ function block_create( $args, $assoc_args ) {
 	// report
 	WP_CLI::success( 'Block created' );
 	WP_CLI::line( WP_CLI::colorize( "\n%6%k What's next? %n\n" ) );
-	WP_CLI::line( WP_CLI::colorize( "%C ‣ Restart Parcel and refresh your browser to watch these new files") );
+	WP_CLI::line( WP_CLI::colorize( "%C ‣ Restart webpack and refresh your browser to watch these new files") );
 	WP_CLI::line( WP_CLI::colorize( "%C ‣ Edit your new $title block:%n $block_path") );
 	WP_CLI::line( "\n" );
 

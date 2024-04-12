@@ -2,15 +2,15 @@
 
 Aquamin has some [WP-CLI](https://developer.wordpress.org/cli/commands/ ':target=_blank') commands built in to make common development tasks easy. Each feature comes with its own `--help` docs (e.g. `wp aquamin block create --help`) which contains additional information.
 
-# `wp aquamin block create`
+## `wp aquamin block create`
 
-This command scaffolds a new block for you, walking you through a series of prompts to name your block and generate the needed files. You'll end up with a new directory within `aquamin/assets/block-library/` that contains all your block files, ready for you to customize (learn more about [blocks in aquamin](/features/block-configuration)). Restart Parcel to begin watching changes to this block's files.
+This command scaffolds a new block for you, walking you through a series of prompts to name your block and generate the needed files. You'll end up with a new directory within `aquamin/assets/block-library/` that contains all your block files, ready for you to customize (learn more about [blocks in aquamin](/features/block-configuration)). Restart webpack to begin watching changes to this block's files.
 
-# `wp aquamin component create`
+## `wp aquamin component create`
 
-This command scaffolds a new component for you, letting you name the component and choose what files it should include. You'll end up with a new directory within `aquamin/assets/component-library/` that contains all your component files, properly enqueued and ready to use. Note you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the view.php file, if you chose to include PHP. Restart Parcel to begin watching changes to this component's files.
+This command scaffolds a new component for you, letting you name the component and choose what files it should include. You'll end up with a new directory within `aquamin/assets/component-library/` that contains all your component files, properly enqueued and ready to use. Note you'll conveniently find the get_template_part() call (including the appropriate file path) in the comment above the view.php file, if you chose to include PHP. Restart webpack to begin watching changes to this component's files.
 
-# `wp aquamin setup`
+## `wp aquamin setup`
  
 This setup command does several things:
 

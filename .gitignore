@@ -1,6 +1,5 @@
 .env
 .DS_Store
 node_modules
-.parcel-cache
 dist/
 wp-cli.yml

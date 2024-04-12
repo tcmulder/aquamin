@@ -2,6 +2,8 @@
                         
 Aquamin adds a few useful graphical user interface features to the WordPress back-end interface.
 
+?> Once WordPress's Full Site Editor has sufficiently matured, much of this functionality will likely be handled through that system rather than by these customizations to aquamin.
+
 ## Reusable Blocks
 
 The _Appearance > Block Patterns_ link in the WordPress sidebar allows you to see all [block patterns](https://wordpress.org/documentation/article/block-pattern/ ':target=_blank') you've defined on your site. So, if you want to change a reusable block globally, rather than needing to track down an example of that block somewhere on the site and update it there to apply it to all pages, you can more quickly find it within this menu and simply edit it there.
@@ -23,8 +25,6 @@ if( $sidebar ) {
 	echo apply_filters( 'the_content', get_post_field( 'post_content', $sidebar[0] ) );
 }
 ```
-
-?> Once WordPress's Full Site Editor has sufficiently matured, most of this functionality will likely be handled through that system, and the Global Content feature in aquamin will be deprecated at that time. But for now, it's very convenient, especially for clients wanting to edit content utilizing the full potential of blocks in nonstandard places on the site.
 
 ### Pre-Populating Posts
 

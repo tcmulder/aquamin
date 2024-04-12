@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.1.0 - April 12 2024
+* Completely removed Parcel 2 and replaced with @wordpress/scripts. Now, the build tool is officially supported by the WordPress community, solving a number of previous quirks.
+
 ## 7.0.0 - March 29 2024
 * This version introduces breaking changes, so blocks coming from v6 or lower may need some adjustments.
 * Switched to exclusively using block.json for registering blocks.

@@ -8,7 +8,7 @@ There's no configuration you need to do outside that directory, because aquamin 
 
 ## Creating Blocks
 
-The easiest way to create a block is to run `wp aquamin block create` ([see the docs](/features/wp-cli#wp-aquamin-block-create)). Aquamin will scaffold a new block directory for you in `aquamin/assets/block-library/`, and after you restart Parcel it will appear as a registered block within WordPress. Note that aquamin only loads assets associated with a block on pages where that block appears, which helps with site performance.
+The easiest way to create a block is to run `wp aquamin block create` ([see the docs](/features/wp-cli#wp-aquamin-block-create)). Aquamin will scaffold a new block directory for you in `aquamin/assets/block-library/`, and after you restart webpack it will appear as a registered block within WordPress. Note that aquamin only loads assets associated with a block on pages where that block appears, which helps with site performance.
 
 ?> If you'd prefer not to use WP-CLI, simply copy the appropriate block scaffold directory out of `aquamin/includes/cli/templates/`, then find and replace the "template" placeholder code and filename prefixes you'll find.
 
@@ -56,7 +56,7 @@ If you'd like to break a front-end script into multiple files, you can use this 
 
 A common pattern in Gutenberg is to have a parent block with dependent inner blocks (like a "Slider" block with several "Slide" blocks within it). The `wp aquamin block create` command will ask if you'd like to generate such an inner block, and will place that inner block within its parent's directory to keep everything organized in that one directory.
 
-?> Note you can move the inner block's directory outside of its parent (so they're alongside each other in `aquamin/assets/block-library`), and it will work fine. You may want to do this if the inner block will be shared by more than one parent block, or if you'd like your block library to be organized closer to how Gutenberg organizes core blocks.
+?> Note you can move the inner block's directory outside of its parent (so they're alongside each other in `aquamin/assets/block-library`), and it will work fine. You may want to do this if the inner block will be shared by more than one parent block, or if you'd prefer your block library be organized closer to how Gutenberg organizes core blocks.
 
 Note that you'll apply styling and front-end scripting for an inner block to it's _parent's_ `view.css` and `view.js` files. This simplifies development by reducing the number of files you need to work with, since these block parings are so tightly coupled anyway (see [Anatomy of a Block](#anatomy-of-a-block) for more details).
 
@@ -82,7 +82,7 @@ Aquamin comes with a few modifications already, including block animations, colu
 
 ?>You'll notice most block edits need a `theme.css` file so the styling appears theme-wide (see [conventions](#file-naming-and-enqueuing-conventions)). You can also replace this with a `view.css` file and enqueue it using advanced logic within a block's `hooks.php` file.
 
-## Built In Blocks
+## Built-In Blocks
 
 Aquamin comes with a few blocks preinstalled.
 
@@ -91,10 +91,12 @@ Aquamin comes with a few blocks preinstalled.
 
 Feel free to edit or delete these blocks to suit your needs.
 
+## Transferring Blocks
+
+To transfer blocks from one aquamin-based website to another, simply copy and paste the block's folder from one site's `aquamin/assets/block-library` directory to the other, then run `npm run build` to compile the block's files.
+
+Note that after webpack runs a build, you'll find all your blocks as individual directories within the `aquamin/dist/block-library` directory. These directories should contain everything you need to transfer your blocks to even _non_-aquamin-based themes or plugins—just register their `block.json` files via `register_block_type()` alongside the theme's or plugin's other blocks.
+
 ## Deleting Blocks
 
-There is currently a bug in Parcel: if you delete a block's directory to remove the block, you'll need to exit Parcel and run `npm run clean:cache` to clear the cache, then `npm run start` to restart the server; after that, your block will be removed from WordPress's registered bocks list, and you'll have left no code bloat behind.
-
-?> You can run `npm run clean:cache && npm run start` if you would like to clear the cache immediately before starting the build server each time.
-
-!> If you _don't_ follow these instructions and you delete a file Parcel was watching, builds will fail. Maybe future releases of Parcel will eliminate this bug. It appears to happen when one file imports another, but then the imported file later gets deleted: Parcel continues to look for that deleted file—even after restarting—if you don't clear its cache first.
+To remove a block, simply remove it's directory and restart webpack.
