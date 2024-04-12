@@ -161,7 +161,7 @@ function component_create( $args, $assoc_args ) {
 	// add script/style registration and/or enqueues (unshift to top of array so template strings get replaced)
 	array_unshift( $far, array(
 		'find' => "\n/* TEMPLATE: register component script */",
-		'repl' => ! $has_view_css ? "" : "\twp_register_style(\n\t\t'aquamin-component-template-slug-style',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.css',\n\t\tarray(),\n\t\taquamin_cache_break( get_stylesheet_directory() .'/dist/component-library/_template-component/template-slug-view.css' ),\n\t\t'screen'\n\t);"
+		'repl' => ! $has_view_css ? "" : "\n\t\$asset = include AQUAMIN_DIST . '/component-library/_template-component/template-slug-view.asset.php';\n\twp_register_style(\n\t\t'aquamin-component-template-slug-style',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.css',\n\t\t\$asset['dependencies'],\n\t\t\$asset['version'],\n\t\t'screen'\n\t);"
 	) );
 	array_unshift( $far, array(
 		'find' => "\n/* TEMPLATE: enqueue component script */",
@@ -169,7 +169,7 @@ function component_create( $args, $assoc_args ) {
 	) );
 	array_unshift( $far, array(
 		'find' => "\n/* TEMPLATE: register component style */",
-		'repl' => ! $has_view_js ? "" : "\twp_register_script(\n\t\t'aquamin-component-template-slug-script',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.js',\n\t\tfalse,\n\t\taquamin_cache_break( get_stylesheet_directory() .'/dist/component-library/_template-component/template-slug-view.js' ),\n\t\ttrue\n\t);"
+		'repl' => ! $has_view_js ? "" : "\n\t\$asset = include AQUAMIN_DIST . '/component-library/_template-component/template-slug-view.asset.php';\n\twp_register_script(\n\t\t'aquamin-component-template-slug-script',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.js',\n\t\t\$asset['dependencies'],\n\t\t\$asset['version'],\n\t\ttrue\n\t);"
 	) );
 	array_unshift( $far, array(
 		'find' => "\n/* TEMPLATE: enqueue component style */",

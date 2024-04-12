@@ -13,11 +13,12 @@
 add_action( 'wp_enqueue_scripts', 'aquamin_password_protected_scripts' );
 function aquamin_password_protected_scripts() {
 	if ( post_password_required() ) {
+		$asset = include AQUAMIN_DIST . '/component-library/password-protected/password-protected-view.asset.php';
 		wp_enqueue_style(
 			'aquamin-password-protected-style',
-			get_template_directory_uri() . '/dist/component-library/password-protected/password-protected-view.css',
-			array(),
-			aquamin_cache_break( get_stylesheet_directory() .'/dist/component-library/password-protected/password-protected-view.css' ),
+			AQUAMIN_TEMPLATE_URL . '/dist/component-library/password-protected/password-protected-view.css',
+			$asset['dependencies'],
+			$asset['version'],
 			'screen'
 		);
 	}

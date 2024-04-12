@@ -55,19 +55,6 @@ function aquamin_is_truty_or_zero( $mixed ) {
 }
 
 /**
- * Break file cache by appending `?ver={timestamp}` to the URL.
- * 
- * Note: if you'd rather manually break cache, just
- * replace the return line with e.g. `return '1.0.0'`.
- * 
- * @param  string  $path  File URI.
- * @return string         File URI with cache break appended.
- */
-function aquamin_cache_break(  $path )  {
-	return file_exists( $path ) ? @filemtime( $path ) : 1;
-}
-
-/**
  * Get disambiguated number (e.g. for unique IDs)
  * 
  * @return  string  Unique number.

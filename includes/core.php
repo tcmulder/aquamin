@@ -80,11 +80,10 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 		function aquamin_theme_scripts() {
 
 			$asset = include AQUAMIN_DIST . '/global/theme.bundle.asset.php';
-			$foo = AQUAMIN_DIST . '/global/theme.bundle.css';
 			wp_enqueue_style(
 				'aquamin-style',
 				AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.css',
-				false,
+				$asset['dependencies'],
 				$asset['version'],
 				'screen'
 			);
