@@ -2,8 +2,8 @@
  * Local Fonts
  *
  * To add local fonts, you should create a font directory as a sibling
- * of this file (e.g. aquamin/theme/global/fonts/my-font), add all font
- * files within it, then link to them here.
+ * of this file (e.g. aquamin/assets/global/fonts/my-font-name), add all
+ * font files within it, then link to them here.
  *
  * Example:
  *
