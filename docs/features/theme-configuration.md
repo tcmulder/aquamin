@@ -30,6 +30,11 @@ Not all components are alike, so the files each requires will differ. The `wp aq
 
 ?> When you use the `wp aquamin component create` command, you'll conveniently find the `get_template_part()` call (including the correct path) in the  `view.php` file's header comment.
 
+### JavaScript and CSS Pre-Processing
+
+Aquamin uses Babel and PostCSS to process .js and .css files, so you can use modern, standards-compliant ES6 and CSS features typically without worrying about polyfills, prefixes, etc. And, though aquamin doesn't employ TypeScript or SASS features out of the box, you can use .ts or .scss file extensions to support these features if you'd prefer.
+
+
 ### File Name Prefixing
 
 Note that the above shortened filenames work, but for easier debugging aquamin prefixes them like `example-component-theme.js`, `example-component-view.css`, `example-component-view.php`, etc.
