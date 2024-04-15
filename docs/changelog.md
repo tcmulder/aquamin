@@ -1,6 +1,6 @@
 # Changelog
 
-## 7.1.0 - April 12 2024
+## 7.1.0 - April 15 2024
 * Completely removed Parcel 2 and replaced with @wordpress/scripts. Now, the build tool is officially supported by the WordPress community, solving a number of previous quirks.
 
 ## 7.0.0 - March 29 2024
