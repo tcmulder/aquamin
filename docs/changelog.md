@@ -1,7 +1,7 @@
 # Changelog
 
 ## 7.1.0 - April 15 2024
-* Completely removed Parcel 2 and replaced with @wordpress/scripts. Now, the build tool is officially supported by the WordPress community, solving a number of previous quirks.
+* Implemented @wordpress/scripts with webpack, replacing Parcel 2. Now, the build tool is officially supported by the WordPress community, solving a number of previous quirks.
 
 ## 7.0.0 - March 29 2024
 * This version introduces breaking changes, so blocks coming from v6 or lower may need some adjustments.
