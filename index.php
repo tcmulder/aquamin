@@ -12,18 +12,28 @@
  * @package Aquamin
  */
 
-get_header(); ?>
+get_template_part( 'dist/component-library/header/header-view' ); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'assets/component-library/content/content', get_post_type() ); ?>
+					<section class="torso has-global-padding is-layout-constrained">
+						<?php the_content(); ?>
+					</section>
 				<?php endwhile; ?>
 			<?php else : ?>
-				<?php get_template_part( 'assets/component-library/content/content', 'none' ); ?>
+				<?php 
+					get_template_part(
+						'dist/component-library/no-content/no-content-view',
+						null,
+						array(
+							'message' => __( 'Sorry, the template you requested isn\'t available' ),
+						)
+					);
+				?>
 			<?php endif; ?>
 		</main>
 	</div>
 
-<?php get_footer();
+<?php get_template_part( 'dist/component-library/footer/footer-view' );

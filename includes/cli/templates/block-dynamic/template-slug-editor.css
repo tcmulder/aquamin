@@ -1,16 +1,13 @@
 /**
- * template-title editor styling
+ * template-title block editor styling
  *
- * This file is for CSS admin overrides only.
- * Use style.css for shared theme/editor block styling.
+ * Defines block editor styling. All editor.css files
+ * like this one load globally within the back-end
+ * block editor. You can import related view.css files
+ * here for front-end styling in the back-end block editor.
  */
-@import "./*style.css";
+@import "./*view.css";
 
-[data-type="aquamin/template-slug"] {
-	& .is-selected {
-		& b::after {
-			/* replace this demo code with your own: */
-			content: " (✎ editor.css) ";
-		}
-	}
+[data-type="aquamin/template-slug"].is-selected b::after {
+	content: " ✎ "; /* NOTE: replace all this with your own code */
 }

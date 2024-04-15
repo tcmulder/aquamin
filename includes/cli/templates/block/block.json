@@ -10,7 +10,7 @@
 	"attributes": {
 		"demoText": {
 			"type": "string",
-			"default": "(remove this demo attribute)"
+			"default": "template-desc ← replace this with your own code"
 		}
 	},
 	"supports": {
@@ -20,5 +20,8 @@
 			"margin": ["top", "bottom"],
 			"padding": ["top", "bottom"]
 		}
-	}
+	},
+	/* TEMPLATE: enqueue front-end script */
+	"style": ["file:./template-slug-view.css"],
+	"editorScript": "file:./index.js"
 }

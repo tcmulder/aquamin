@@ -11,12 +11,14 @@
  * Import dependencies
  */
 import classnames from 'classnames';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import { getStyle, getStyleFromObject } from '../grd-edit';
-
-const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 
 /**
  * Generate block HTML to save to the database
+ * @param {Object} root0
+ * @param {Object} root0.attributes
+ * @param {string} root0.className
  */
 const GridItemSave = ({ attributes, className }) => {
 	const { span, col, row, spanRow, vAlign, variation } = attributes;
@@ -26,7 +28,7 @@ const GridItemSave = ({ attributes, className }) => {
 			'grd__item',
 			variation !== 'cell' && `grd__item--${variation}`,
 			'ani-child',
-			className
+			className,
 		),
 		style: {
 			...getStyleFromObject('--grd-span', span, (val) => val > 1),
@@ -38,7 +40,7 @@ const GridItemSave = ({ attributes, className }) => {
 	});
 	const innerBlocksProps = useInnerBlocksProps.save(
 		{ ...blockProps },
-		{ template: [['core/paragraph']] }
+		{ template: [['core/paragraph']] },
 	);
 
 	return (

@@ -1,4 +1,9 @@
 /**
- * Block editor WordPress default classes and overrides
+ * WordPress default classes and overrides block editor styling
+ *
+ * Defines block editor styling. All editor.css files
+ * like this one load globally within the back-end
+ * block editor. You can import related view.css files
+ * here for front-end styling in the back-end block editor.
  */
-@import "./*style.css";
+@import "./*theme.css";

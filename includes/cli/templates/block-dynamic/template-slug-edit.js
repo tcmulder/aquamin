@@ -8,10 +8,12 @@
 /**
  * Import edit dependencies
  */
-const ServerSideRender = wp.serverSideRender;
+import ServerSideRender from '@wordpress/server-side-render';
 
 /**
  * Generate block editor component
+ * @param {Object} root0
+ * @param {Object} root0.attributes
  */
 const TemplateNamespaceBlockEdit = ({ attributes }) => {
 	return (

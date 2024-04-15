@@ -12,16 +12,13 @@ import Icon from './icon.inline.svg';
 import edit from './template-slug-edit';
 import save from './template-slug-save';
 import block from './block.json';
-
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+import { registerBlockType } from '@wordpress/blocks';
 
 /**
  * Register block
  */
 registerBlockType(block.name, {
-	title: __('template-title', 'aquamin'),
-	description: __('template-desc', 'aquamin'),
+	...block,
 	icon: Icon,
 	edit,
 	save,

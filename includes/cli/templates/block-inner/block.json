@@ -11,8 +11,9 @@
 	"attributes": {
 		"demoText": {
 			"type": "string",
-			"default": "(remove this demo attribute)"
+			"default": "template-item-desc ← replace with your own code"
 		}
 	},
-	"supports": {}
+	"supports": {},
+	"editorScript": "file:./index.js"
 }

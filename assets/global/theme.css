@@ -1,0 +1,13 @@
+/**
+ * Core front-end global styling
+ *
+ * High level front-end stuff goes here, like custom
+ * properites, @keyframes, etc. All theme.css files
+ * like this one load globally on the front-end.
+ */
+
+@import "./variables.css";
+@import "./fonts.css";
+@import "./animations.css";
+@import "./alignment.css";
+@import "./normalize/*.css";

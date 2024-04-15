@@ -1,9 +1,0 @@
-/**
- * Editor styling
- */
-.aquamin-media-remove {
-	display: none;
-	:is(.is-selected, .has-child-selected) & {
-		display: block;
-	}
-}

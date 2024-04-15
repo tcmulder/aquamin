@@ -1,0 +1,168 @@
+/**
+ * Appender block editor styling
+ *
+ * Defines block editor styling. All editor.css files
+ * like this one load globally within the back-end
+ * block editor. You can import related view.css files
+ * here for front-end styling in the back-end block editor.
+ */
+.aquamin-appender {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	:is(.is-selected, .has-child-selected) & {
+		&::before,
+		&::after {
+			color: var(--wp-admin-theme-color);
+			position: absolute;
+			transition: opacity 0.3s;
+		}
+
+		&::before {
+			content: "";
+			opacity: 0.35;
+		}
+
+		&::after {
+			content: attr(data-name);
+			display: block;
+			padding: 0 5px;
+			font-size: 12px;
+			background: white;
+			border: 1px dashed var(--wp-admin-theme-color);
+			color: var(--wp-admin-theme-color);
+			border-radius: 2px;
+		}
+
+		&:focus-within,
+		&:hover {
+			&::before,
+			&::after {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+.aquamin-appender__inner {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	z-index: 100;
+
+	&::before {
+		background: var(--wp-admin-theme-color);
+		border-radius: 1em;
+		content: "";
+		position: absolute;
+		transition: 0.3s 0.3s cubic-bezier(0, 0, 0.24, 1.39);
+	}
+
+	&::after {
+		transform: translateY(1em);
+	}
+
+	.aquamin-wp-button {
+		background: var(--wp-admin-theme-color);
+		position: relative;
+		transition: 0.3s cubic-bezier(0, 0, 0.24, 1.39);
+
+		&:hover,
+		&:focus {
+			background: #1e1e1e;
+		}
+
+		&.has-icon {
+			color: white;
+			height: 24px;
+			min-width: 24px;
+			padding: 0;
+		}
+	}
+
+	&:not(:hover):not(:focus):not(:focus-within) {
+		.aquamin-wp-button {
+			opacity: 0;
+			transform: scale(0.5);
+			transition: 0s;
+		}
+
+		&::before {
+			opacity: 0;
+			transform: scale(0.8);
+			transition: 0s;
+		}
+	}
+}
+
+.aquamin-appender--horizontal {
+	height: 0;
+	width: 100%;
+
+	&::before {
+		border-top: 1px dashed currentcolor;
+		top: 50%;
+		width: 100%;
+	}
+
+	.aquamin-appender__inner {
+		width: 100%;
+
+		&::before {
+			height: 5px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+		}
+
+		&:not(:hover):not(:focus):not(:focus-within) {
+			.aquamin-wp-button {
+				opacity: 0;
+				transform: scale(0.5);
+				transition: 0s;
+			}
+
+			&::before {
+				opacity: 0;
+				transform: scale(0.8);
+				transition: 0s;
+			}
+		}
+	}
+}
+
+.aquamin-appender--vertical {
+	height: 100%;
+	min-height: 5em;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 0;
+
+	&::before {
+		border-right: 1px dashed currentcolor;
+		height: 100%;
+		left: 50%;
+		width: 0;
+	}
+
+	.aquamin-appender__inner {
+		height: 100%;
+
+		&::before {
+			height: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 5px;
+		}
+	}
+
+	:is(.is-selected, .has-child-selected) & {
+		&::after {
+			transform: rotate(270deg);
+			white-space: nowrap;
+		}
+	}
+}

@@ -4,17 +4,17 @@
  * Returns `null`, which shows Gutenberg's built in
  * appender, until the limit is reached; then, returns
  * `false` which prevents the appender from showing.
- * 
+ *
  * Example:
  *
-import limitAppender from './limitAppender'
-export const SomeEditBlock = ({ clientId }) => (
-	<InnerBlocks
-		renderAppender={limitAppender(5, clientId)}
-	/>
-)
+ *    import limitAppender from './limitAppender'
+ *    export const SomeEditBlock = ({ clientId }) => (
+ *        <InnerBlocks
+ *            renderAppender={limitAppender(5, clientId)}
+ *        />
+ *    )
  */
-const { select } = wp.data;
+import { select } from '@wordpress/data';
 
 const limitAppender = (limit, clientId) => {
 	const parentBlock = select('core/editor')

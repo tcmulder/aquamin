@@ -1,0 +1,42 @@
+/**
+ * Extended animation front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+
+/* animate items when they enter the viewport */
+@import "./styles/ani-viewport.css";
+
+/* animate items on scroll (scrubs animation as you scroll) */
+@import "./styles/ani-scroll.css";
+
+/* animate backgrounds (like background-attachment:fixed) and foregrounds (like position:fixed popup) */
+@import "./styles/ani-background.css";
+
+/* common default animation custom properties */
+:root {
+	/* prettier-ignore */
+	--ani-duration: calc(var(--ani-speed, 0.375s) * 2); /* speed of transition effects */
+	--ani-timing-function: var(--ani-ease, ease);
+	--ani-delay-increment: 0; /* integer for stepped animations */
+	--ani-delay-factor: 0.05s; /* duration of each increment step */
+	--ani-delay-offset: 0.15s; /* start delay (so ani don't start at very bottom of screen) */
+	--ani-property: filter, transform; /* properties to animate */
+}
+
+/* turn off animations if the user says they don't want them */
+@media (prefers-reduced-motion) {
+	.ani {
+		--ani-opacity: 1;
+		--ani-scale-x: 1;
+		--ani-scale-y: 1;
+		--ani-blur: 0;
+		--ani-y: 0;
+		--ani-x: 0;
+		--ani-z: 0;
+		--ani-perspective: 0;
+		--ani-rotate-x: 0deg;
+		--ani-rotate: 0deg;
+	}
+}

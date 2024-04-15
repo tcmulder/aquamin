@@ -1,0 +1,23 @@
+/**
+ * Extended column front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+.is-full-md {
+	&.wp-block-column.wp-block-column.wp-block-column {
+		@media (max-width: 768px) {
+			flex-basis: calc(150% - 1em) !important;
+			margin-left: 0;
+		}
+	}
+}
+
+.is-first-md {
+	@media (max-width: 781px) {
+		/* for specificity */
+		&.is-first-md {
+			order: -1;
+		}
+	}
+}

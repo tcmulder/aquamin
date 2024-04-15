@@ -11,12 +11,14 @@
  * Import save dependencies
  */
 import classnames from 'classnames';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import { getGap, getStyle, getStyleFromObject } from './grd-edit';
-
-const { useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 
 /**
  * Generate block HTML to save to the database
+ * @param {Object} root0
+ * @param {Object} root0.attributes
+ * @param {string} root0.className
  */
 const GridBlockSave = ({ attributes, className }) => {
 	const { count, hasEqualRows, minAspect } = attributes;
@@ -29,7 +31,7 @@ const GridBlockSave = ({ attributes, className }) => {
 			hasAspect && 'grd--has-aspect',
 			hasEqualRows && 'grd--has-equal-rows',
 			'ani-parent',
-			className
+			className,
 		),
 		style: {
 			...getStyleFromObject('--grd-count', count),

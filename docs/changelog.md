@@ -1,6 +1,19 @@
 # Changelog
 
-## 6.1.2 - December 7 2023
+## 7.1.0 - April 15 2024
+* Implemented @wordpress/scripts with webpack, replacing Parcel 2. Now, the build tool is officially supported by the WordPress community, solving a number of previous quirks.
+
+## 7.0.0 - March 29 2024
+* This version introduces breaking changes, so blocks coming from v6 or lower may need some adjustments.
+* Switched to exclusively using block.json for registering blocks.
+* Conducted massive file and directory refactoring, to reduce the number of root-level files and keep things better organized.
+* Moved more root-level files into component library (e.g. header and footer).
+* Renamed `block-edits` directory `block-editor` so it better parallels Gutenberg's directory structure.
+* Renamed `script.js`, `style.css`, and `render.php` files to `view.js`, `view.css`, and `view.php` to make their parallel purpose clearer.
+* Converted imports to a more standard format (from e.g. `const {useBlockProps} = wp.blockEditor` to `import { useBlockProps } from '@wordpress/block-editor'`).
+* Updated documentation, documenting changes and making things more concise.
+
+## 6.1.2 - December 6 2023
 * Remove custom block patterns feature (this is now supported by core WordPress).
 * Move synced pattern to Appearance > Synced Patterns to clean up the sidebar.
 * Fix delegated animations issue that caused them to apply even with no animation options chosen.

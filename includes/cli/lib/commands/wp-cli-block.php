@@ -115,7 +115,7 @@ function block_create( $args, $assoc_args ) {
 	$has_js = Util\exclude( $exclude, array(
 		'question'   => 'Has front-end JavaScript? [y/N]',
 		'guess'      => 'n',
-		'filename'   => 'template-slug-script.js',
+		'filename'   => 'template-slug-view.js',
 		'default'    => $assoc_args[ 'has_js' ] ?? '',
 	) );
 	$is_dynamic = Util\ask( 'Dynamic? [y/N]', 'n', $assoc_args[ 'is_dynamic' ] ?? '' );
@@ -183,16 +183,8 @@ function block_create( $args, $assoc_args ) {
 	
 	// enqueue front-end scripts if appropriate (unshift to top of array so template strings get replaced)
 	array_unshift( $far, array(
-		'find' => "/* PLACEHOLDER: enqueue front-end script */\n",
-		'repl' => ! $has_js ? "" : "wp_register_script( 'aquamin-block-template-slug-script', get_template_directory_uri() . '/dist/block-library/template-slug/template-slug-script.js', null, '1.0', true );\n",
-	) );
-	array_unshift( $far, array(
-		'find' => "\t/* PLACEHOLDER: add front-end script handle */\n",
-		'repl' => ! $has_js ? "" : "\t'view_script_handles' => ['aquamin-block-template-slug-script'],\n",
-	) );
-	array_unshift( $far, array(
-		'find' => "\t\t/* PLACEHOLDER: add dynamic front-end script handle */\n",
-		'repl' => ! $has_js ? "" : "\t\t'view_script_handles' => ['aquamin-block-template-slug-script'],\n",
+		'find' => "\t/* TEMPLATE: enqueue front-end script */\n",
+		'repl' => ! $has_js ? "" : "\t\"viewScript\": [\"file:./template-slug-view.js\"],\n",
 	) );
 	
 	/**
@@ -207,16 +199,8 @@ function block_create( $args, $assoc_args ) {
 	}
 	// add inner find-and-replace strings (unshift to top of array so template strings get replaced)
 	array_unshift( $far, array(
-		'find' => "\n/* PLACEHOLDER: register inner blocks */\n",
-		'repl' => ! $has_inner_block ? "" : "\n/**\n * Register inner blocks\n */\nimport './_template-item-dir';\n"
-	) );
-	array_unshift( $far, array(
-		'find' => "\n/* PLACEHOLDER: register inner block */\n",
-		'repl' => ! $has_inner_block ? "" : "\n// register inner blocks\nregister_block_type( __DIR__ . '/_template-item-dir' );\n"
-	) );
-	array_unshift( $far, array(
-		'find' => " /* PLACEHOLDER: inner blocks template */ ",
-		'repl' => ! $has_inner_block ? " " : ", {\n\t\ttemplate: [['aquamin/template-item-slug']],\n\t\tallowedBlocks: ['aquamin/template-item-slug'],\n\t}"
+		'find' => "/* TEMPLATE: inner blocks template */",
+		'repl' => ! $has_inner_block ? "template: [['core/paragraph', {placeholder: __('template-title inner blocks', 'aquamin')}]]," : "template: [['aquamin/template-item-slug']],\n\t\tallowedBlocks: ['aquamin/template-item-slug'],"
 	) );
 	
 	/**
@@ -235,7 +219,7 @@ function block_create( $args, $assoc_args ) {
 	// report
 	WP_CLI::success( 'Block created' );
 	WP_CLI::line( WP_CLI::colorize( "\n%6%k What's next? %n\n" ) );
-	WP_CLI::line( WP_CLI::colorize( "%C ‣ Restart Parcel and refresh your browser to watch these new files") );
+	WP_CLI::line( WP_CLI::colorize( "%C ‣ Restart webpack and refresh your browser to watch these new files") );
 	WP_CLI::line( WP_CLI::colorize( "%C ‣ Edit your new $title block:%n $block_path") );
 	WP_CLI::line( "\n" );
 

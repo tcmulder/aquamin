@@ -16,21 +16,28 @@ import {
 	justifyStretch,
 } from '@wordpress/icons';
 import classnames from 'classnames';
+import { __ } from '@wordpress/i18n';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	InspectorControls,
+} from '@wordpress/block-editor';
+import { PanelBody, Icon, Button, ButtonGroup } from '@wordpress/components';
+import { select } from '@wordpress/data';
 import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
-
-const { __ } = wp.i18n;
-const { useBlockProps, useInnerBlocksProps, InspectorControls } =
-	wp.blockEditor;
-const { PanelBody, Icon, Button, ButtonGroup } = wp.components;
-const { select } = wp.data;
 
 /**
  * Generate block editor component
+ * @param {Object}   root0
+ * @param {Object}   root0.attributes
+ * @param {Function} root0.setAttributes
+ * @param {string}   root0.className
+ * @param {string}   root0.clientId
  */
 const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 	const { span, col, row, spanRow, vAlign, variation } = attributes;
 	const { count } = select('core/block-editor').getBlock(
-		select('core/block-editor').getBlockParents(clientId).at(-1)
+		select('core/block-editor').getBlockParents(clientId).at(-1),
 	).attributes;
 
 	const blockProps = useBlockProps({
@@ -41,7 +48,7 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 			className,
 			// add invalid class if we span more columns than exist
 			!!Object.keys(span).find((key) => span[key] > count[key]) &&
-				'grd__item--invalid'
+				'grd__item--invalid',
 		),
 		style: {
 			...getStyleFromObject('--grd-span', span, (val) => val > 1),
@@ -68,7 +75,7 @@ const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{ ...blockProps },
-		{ ...templates[variation] }
+		{ ...templates[variation] },
 	);
 
 	return (

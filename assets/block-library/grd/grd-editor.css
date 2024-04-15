@@ -1,14 +1,16 @@
 /**
- * Grid editor styling
+ * Grid block editor styling
  *
- * This file is for CSS admin overrides only.
- * Use style.css for shared theme/editor block styling.
+ * Defines block editor styling. All editor.css files
+ * like this one load globally within the back-end
+ * block editor. You can import related view.css files
+ * here for front-end styling in the back-end block editor.
  */
-@import "./*style.css";
+@import "./*view.css";
 
 .grd__item {
 	min-height: 1em;
-	& figure > * {
+	figure > * {
 		max-width: 100% !important;
 	}
 }
@@ -19,11 +21,11 @@
 		position: relative;
 		z-index: 10;
 	}
-	& figure > * {
+	figure > * {
 		width: 100% !important;
 		height: 100% !important;
 	}
-	& .components-resizable-box__handle {
+	.components-resizable-box__handle {
 		display: none !important;
 	}
 }

@@ -12,10 +12,17 @@
  */
 import classnames from 'classnames';
 
-const { useBlockProps, useInnerBlocksProps, RichText } = wp.blockEditor;
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	RichText,
+} from '@wordpress/block-editor';
 
 /**
  * Generate block HTML to save to the database
+ * @param {Object} root0
+ * @param {Object} root0.attributes
+ * @param {string} root0.className
  */
 const TemplateItemNamespaceSave = ({ attributes, className }) => {
 	// get the attributes we care about
@@ -32,8 +39,9 @@ const TemplateItemNamespaceSave = ({ attributes, className }) => {
 	// output the block's html
 	return (
 		<div {...blockProps}>
-			{/* replace this demo code with your own: */}
+			{/* START: replace with your own code */}
 			<RichText.Content tagName="i" value={demoText} />
+			{/* END: replace with your own code */}
 			{innerBlocksProps.children}
 		</div>
 	);

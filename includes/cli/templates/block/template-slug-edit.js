@@ -9,14 +9,25 @@
  * Import edit dependencies
  */
 import classnames from 'classnames';
-
-const { __ } = wp.i18n;
-const { useBlockProps, useInnerBlocksProps, RichText } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import {
+	useBlockProps,
+	useInnerBlocksProps,
+	RichText,
+} from '@wordpress/block-editor';
 
 /**
  * Generate block editor component
+ * @param {Object}   root0
+ * @param {Object}   root0.attributes
+ * @param {Function} root0.setAttributes
+ * @param {string}   root0.className
  */
-const TemplateNamespaceBlockEdit = ({ attributes, setAttributes, className }) => {
+const TemplateNamespaceBlockEdit = ({
+	attributes,
+	setAttributes,
+	className,
+}) => {
 	// get the attributes we care about
 	const { demoText } = attributes;
 
@@ -26,17 +37,20 @@ const TemplateNamespaceBlockEdit = ({ attributes, setAttributes, className }) =>
 	});
 
 	// apply wrapper props to outermost block element so it can contain inner blocks
-	const innerBlocksProps = useInnerBlocksProps(blockProps /* PLACEHOLDER: inner blocks template */ );
+	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+		/* TEMPLATE: inner blocks template */
+	});
 
 	return (
 		<div {...innerBlocksProps}>
-			{/* replace this demo code with your own: */}
+			{/* START: replace with your own code */}
 			<RichText
 				tagName="b"
-				placeholder={__('template-title', 'aquamin')}
+				placeholder={__('template-title content', 'aquamin')}
 				value={demoText}
 				onChange={(value) => setAttributes({ demoText: value })}
 			/>
+			{/* END: replace with your own code */}
 			{innerBlocksProps.children}
 		</div>
 	);

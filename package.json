@@ -1,50 +1,43 @@
 {
 	"name": "aquamin",
-	"version": "3.0.2",
-	"description": "Parcel build tool for Aquamarine",
+	"version": "5.0.0",
+	"description": "Webpack @wordpress/scripts build tool for Aquamarine",
 	"private": true,
-	"engines": {
-		"nodeVersion": ">=16.13.2",
-		"npmVersion": ">=7.11.2"
-	},
-	"config": {
-		"lint_paths": "./assets",
-		"build_paths": "./assets/*/*.bundle.js ./assets/*/*.bundle.css ./assets/block-library/*/*script.js ./assets/block-library/*/*style.css",
-		"watch_paths": "./dist/**/*.css,./dist/**/*.js,./**/*.php"
-	},
-	"scripts": {
-		"start": "npm-run-all --parallel builder server",
-		"build": "npm run clean && parcel build $npm_package_config_build_paths --no-cache && npm run build:post",
-		"build:post": "npm run static",
-		"builder": "parcel watch $npm_package_config_build_paths",
-		"server": "browser-sync start --logFileChanges=`grep LOG_FILE_CHANGES= .env | cut -d '=' -f2` --no-open --proxy `grep URL= .env | cut -d '=' -f2` --files $npm_package_config_watch_paths",
-		"static": "del ./dist/static/* && ncp ./assets/static ./dist/static --filter '**/*.*'",
-		"docs": "docsify serve docs --open --port 4000",
-		"lint": "eslint $npm_package_config_lint_paths",
-		"clean": "del ./.parcel-cache/*"
-	},
 	"author": "@tcmulder",
 	"license": "ISC",
-	"@parcel/transformer-css": {
-		"drafts": {
-			"nesting": true
-		}
+	"engines": {
+		"node": ">=20.12.1",
+		"npm": ">=10.5.0"
+	},
+	"scripts": {
+		"start": "wp-scripts start --progress --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"build": "wp-scripts build --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"docs": "docsify serve docs --open --port 4000",
+		"lint": "eslint --config=./assets/config/.eslintrc.js ./assets",
+		"lint:fix": "eslint --config=./assets/config/.eslintrc.js ./assets --fix"
 	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
+	"eslintConfig": {
+		"extends": "./includes/config/.eslintrc.js"
+	},
 	"devDependencies": {
-		"@parcel/resolver-glob": "^2.9.3",
-		"@parcel/transformer-svg-react": "^2.9.3",
-		"@wordpress/icons": "^9.29.0",
-		"browser-sync": "^2.29.3",
-		"classnames": "^2.3.2",
-		"del-cli": "^5.0.0",
+		"@svgr/webpack": "^8.1.0",
+		"@wordpress/scripts": "^27.6.0",
+		"browser-sync-webpack-plugin": "^2.3.0",
+		"classnames": "^2.5.1",
+		"copy-webpack-plugin": "^12.0.2",
 		"docsify-cli": "^4.4.4",
-		"eslint-config-wesbos": "^3.2.3",
-		"ncp": "^2.0.0",
-		"npm-run-all": "^4.1.5",
-		"parcel": "^2.9.3",
-		"process": "^0.11.10",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"dotenv": "^16.4.5",
+		"filename-replace-webpack-plugin": "^1.0.1",
+		"glob": "^10.3.12",
+		"path": "^0.12.7",
+		"postcss-loader": "^8.1.1",
+		"postcss-preset-env": "^9.5.4",
+		"webpack-import-glob-loader": "^1.6.3",
+		"webpack-remove-empty-scripts": "^1.0.4"
+	},
+	"dependencies": {
+		"@wordpress/icons": "^9.46.0",
+		"@wordpress/interactivity": "^5.4.0"
 	}
 }

@@ -1,0 +1,22 @@
+/**
+ * Footer front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+
+/* sticky footer feature */
+@supports (display: grid) {
+	html,
+	body {
+		height: 100%;
+	}
+	body > .all-the-things {
+		min-height: 100%;
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		& > * {
+			min-width: 0;
+		}
+	}
+}

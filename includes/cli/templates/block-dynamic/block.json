@@ -24,5 +24,11 @@
 			"margin": ["top", "bottom"],
 			"padding": ["top", "bottom"]
 		}
-	}
+	},
+	/* TEMPLATE: enqueue front-end script */
+	"style": [
+		"file:./template-slug-view.css"
+	],
+	"render": "file:./template-slug-view.php",
+	"editorScript": "file:./index.js"
 }

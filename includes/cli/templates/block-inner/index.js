@@ -8,22 +8,18 @@
 /**
  * Import dependencies
  */
+import { registerBlockType } from '@wordpress/blocks';
 import Icon from './icon.inline.svg';
 import edit from './template-item-slug-edit';
 import save from './template-item-slug-save';
 import block from './block.json';
 
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
-
 /**
  * Register block
  */
 registerBlockType(block.name, {
-	title: __('template-item-title', 'aquamin'),
-	description: __('template-item-desc', 'aquamin'),
+	...block,
 	icon: Icon,
 	edit,
 	save,
-	parent: ['aquamin/template-slug'],
 });

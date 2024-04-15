@@ -6,27 +6,19 @@
  */
 
 /**
- * Register inner blocks
- */
-import './grd-item';
-
-/**
  * Import dependencies
  */
+import { registerBlockType } from '@wordpress/blocks';
 import Icon from './icon.inline.svg';
 import edit from './grd-edit';
 import save from './grd-save';
 import block from './block.json';
 
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
-
 /**
  * Register block
  */
 registerBlockType(block.name, {
-	title: __('Grid', 'aquamin'),
-	description: __('Flexible grid layout.', 'aquamin'),
+	...block,
 	icon: Icon,
 	edit,
 	save,
