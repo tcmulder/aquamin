@@ -10,8 +10,8 @@
 		"npm": ">=10.5.0"
 	},
 	"scripts": {
-		"start": "wp-scripts start --progress --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
-		"build": "wp-scripts build --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"start": "wp-scripts start --experimental-modules --progress --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
+		"build": "wp-scripts build --experimental-modules --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
 		"docs": "docsify serve docs --open --port 4000",
 		"lint": "eslint --config=./assets/config/.eslintrc.js ./assets",
 		"lint:fix": "eslint --config=./assets/config/.eslintrc.js ./assets --fix"
@@ -22,6 +22,7 @@
 	},
 	"devDependencies": {
 		"@svgr/webpack": "^8.1.0",
+		"@wordpress/dependency-extraction-webpack-plugin": "^5.7.0",
 		"@wordpress/scripts": "^27.6.0",
 		"browser-sync-webpack-plugin": "^2.3.0",
 		"classnames": "^2.5.1",
@@ -34,6 +35,7 @@
 		"postcss-loader": "^8.1.1",
 		"postcss-preset-env": "^9.5.4",
 		"webpack-import-glob-loader": "^1.6.3",
+		"webpack-merge": "^5.10.0",
 		"webpack-remove-empty-scripts": "^1.0.4"
 	},
 	"dependencies": {
