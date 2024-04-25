@@ -28,7 +28,7 @@ if (!process.env.URL) throw new Error('No .env file with URL property found.');
 let globs = {};
 [
 	'./assets/block-library/**/*view.{css,scss}',
-	'./assets/block-library/**/*view.{js,ts}',
+	// './assets/block-library/**/*view.{js,ts}',
 	'./assets/component-library/**/*view.{css,scss}',
 	'./assets/component-library/**/*view.{js,ts}',
 	'./assets/**/*.bundle.js',
@@ -60,7 +60,8 @@ let globs = {};
 let moduleGlobs = {};
 [
 	// './assets/block-library/**/*view.{css,scss}',
-	'./assets/block-library/**/*module.{js,ts}',
+	'./assets/block-library/**/*view.{js,ts}',
+	// './assets/block-library/**/*module.{js,ts}',
 	// './assets/component-library/**/*view.{css,scss}',
 	// './assets/component-library/**/*view.{js,ts}',
 	// './assets/**/*.bundle.js',
@@ -166,7 +167,9 @@ const aquaminConfig = {
 			// allow glob patterns in JavaScript
 			{
 				test: /\.m?(j|t)sx?$/,
-				use: ['webpack-import-glob-loader'],
+				/////////////////////////////
+				// use: ['webpack-import-glob-loader'], ///////////////////////////////  this causes it to fail
+				//////////////////////////
 			},
 			// allow glob patterns in CSS
 			{
