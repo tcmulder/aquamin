@@ -80,31 +80,36 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 		function aquamin_theme_scripts() {
 
 			// load bundled global theme CSS
-			$asset = include AQUAMIN_DIST . '/global/theme.bundle.asset.php';
-			wp_enqueue_style(
-				'aquamin-style',
-				AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.css',
-				$asset['dependencies'],
-				$asset['version'],
-				'screen'
-			);
-			// load bundled global theme CommonJS JavaScript
-			wp_enqueue_script(
-				'aquamin-scripts',
-				AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.js',
-				$asset['dependencies'],
-				$asset['version'],
-				true
-			);
+			if ( file_exists( AQUAMIN_DIST . '/global/theme.bundle.asset.php' ) ) {
+				$asset = include AQUAMIN_DIST . '/global/theme.bundle.asset.php';
+				wp_enqueue_style(
+					'aquamin-style',
+					AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.css',
+					$asset['dependencies'],
+					$asset['version'],
+					'screen'
+				);
+				// load bundled global theme CommonJS JavaScript
+				wp_enqueue_script(
+					'aquamin-scripts',
+					AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.js',
+					$asset['dependencies'],
+					$asset['version'],
+					true
+				);
+			}
+
 			// load bundled global theme ESmodules JavaScript
-			$asset = include AQUAMIN_DIST . '/global/theme.module.bundle.asset.php';
-			wp_enqueue_script_module(
-				'aquamin-scripts-module',
-				AQUAMIN_TEMPLATE_URL . '/dist/global/theme.module.bundle.js',
-				$asset['dependencies'],
-				$asset['version'],
-				true
-			);
+			if ( file_exists( AQUAMIN_DIST . '/global/theme.module.bundle.asset.php' ) ) {
+				$asset = include AQUAMIN_DIST . '/global/theme.module.bundle.asset.php';
+				wp_enqueue_script_module(
+					'aquamin-scripts-module',
+					AQUAMIN_TEMPLATE_URL . '/dist/global/theme.module.bundle.js',
+					$asset['dependencies'],
+					$asset['version'],
+					true
+				);
+			}
 
 		}
 

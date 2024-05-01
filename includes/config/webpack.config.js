@@ -1,106 +1,119 @@
-// get the default configuration
-const [
-	defaultJSConfig,
-	defaultModuleConfig,
-] = require('@wordpress/scripts/config/webpack.config');
-// initialize dependencies
+/**
+ * Initialize dependencies
+ */
 const path = require('path');
-const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 const { merge } = require('webpack-merge');
 const CopyPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const FilenameReplaceWebpackPlugin = require('filename-replace-webpack-plugin');
 const { globSync } = require('glob');
-const {
-	requestToExternal,
-	requestToHandle,
-	requestToExternalModule,
-	getFile,
-	getWebPackAlias,
-} = require('./webpack-helpers');
 require('dotenv').config();
+
+/**
+ * Get default config
+ *
+ * Parse the default(s): it's an object unless using --experimental-modules in which case it's an array
+ */
+const defaultConfig = require('@wordpress/scripts/config/webpack.config');
+if (defaultConfig.length) {
+	defaultConfig.commonConfig = defaultConfig[0];
+	defaultConfig.moduleConfig = defaultConfig[1];
+	// eslint-disable-next-line no-console
+	console.log('Assuming format is [CommonJS,ESmodules] configs');
+} else {
+	defaultConfig.commonConfig = defaultConfig;
+}
 
 // exit if we don't have the right values in a .env file
 if (!process.env.URL) throw new Error('No .env file with URL property found.');
 
 // create array of individual entry points based on glob file paths
-let globs = {};
-[
-	// './assets/block-library/**/*view.{css,scss}',
-	// './assets/block-library/**/*view.{js,ts}',
-	'./assets/component-library/**/*view.{css,scss}',
-	'./assets/component-library/**/*view.{js,ts}',
-	'./assets/**/*.bundle.js',
-].forEach((entry) => {
-	// for each entry we find
-	const newEntry = globSync(entry).reduce((files, filepath) => {
-		// get path/filename details for this entry
-		const { dir, name, ext } = path.parse(filepath);
-		const dirs = dir.split('/');
-		const newDir = dirs.slice(1).join('/');
-		let newName = `${newDir}/${name}`;
+const getEntryGlobs = () => {
+	let entries = {};
+	[
+		'./assets/component-library/**/*view.{css,scss}',
+		'./assets/component-library/**/*view.{js,ts}',
+	].forEach((entry) => {
+		// for each entry we find
+		const newEntry = globSync(entry).reduce((files, filepath) => {
+			// get path/filename details for this entry
+			const { dir, name, ext } = path.parse(filepath);
+			const dirs = dir.split('/');
+			const newDir = dirs.slice(1).join('/');
+			let newName = `${newDir}/${name}`;
 
-		// prevent same-name files from overriding each other (e.g. view.css and view.js)
-		if (globs[newName]) {
-			newName += '_AQUAMIN_PREVENT_DUP_OVERRIDE_';
-		}
-		// add this entry
-		files[newName] = path.resolve(process.cwd(), dir, `${name}${ext}`);
-		// pass files to next iteration
-		return files;
-	}, {});
-	// add our new entry to our growing list of entrypoints
-	globs = {
-		...globs,
-		...newEntry,
-	};
-});
+			// prevent same-name files from overriding each other (e.g. view.css and view.js)
+			if (entries[newName]) {
+				newName += '_AQUAMIN_PREVENT_DUP_OVERRIDE_';
+			}
+			// add this entry
+			files[newName] = path.resolve(process.cwd(), dir, `${name}${ext}`);
+			// pass files to next iteration
+			return files;
+		}, {});
+		// add our new entry to our growing list of entrypoints
+		entries = {
+			...entries,
+			...newEntry,
+		};
+	});
+	return entries;
+};
 
-let moduleGlobs = {};
-[
-	// './assets/block-library/**/*view.{css,scss}',
-	'./assets/block-library/**/*view.mjs',
-	'./assets/component-library/**/*view.mjs',
-	// './assets/block-library/**/*module.{js,ts}',
-	// './assets/component-library/**/*view.{css,scss}',
-	// './assets/component-library/**/*view.{js,ts}',
-	'./assets/**/*.bundle.mjs',
-].forEach((entry) => {
-	// for each entry we find
-	const newEntry = globSync(entry).reduce((files, filepath) => {
-		// get path/filename details for this entry
-		const { dir, name, ext } = path.parse(filepath);
-		const dirs = dir.split('/');
-		const newDir = dirs.slice(1).join('/');
-		let newName = `${newDir}/${name}`;
+// create single CSS and JavaScript files for use in theme globally
+const getEntryTheme = () => {
+	const files = globSync([
+		/**
+		 * Theme-wide scripts and styles
+		 *
+		 * All files within the assets directory ending
+		 * in "theme.js" or "theme.css" get enqueued on
+		 * the front-end of the website, site-wide.
+		 * All *.bundle.js files like this get bundled into
+		 * a single .css and .js file in the dist/ directory.
+		 */
+		path.resolve(process.cwd(), 'assets/**/**theme.css'),
+		path.resolve(process.cwd(), 'assets/**/**theme.js'),
+		/**
+		 * Stuff we don't wanna talk about...
+		 *
+		 * See file for notes. Added here to be last
+		 * in cascade. Loaded site-wide.
+		 */
+		path.resolve(process.cwd(), 'assets/global/shame.css'),
+	]);
+	return files.length ? { 'global/theme.bundle': files } : {};
+};
 
-		// prevent same-name files from overriding each other (e.g. view.css and view.js)
-		if (moduleGlobs[newName]) {
-			newName += '_AQUAMIN_PREVENT_DUP_OVERRIDE_';
-		}
-		// add this entry
-		files[newName] = path.resolve(process.cwd(), dir, `${name}${ext}`);
-		// pass files to next iteration
-		return files;
-	}, {});
-	// add our new entry to our growing list of entrypoints
-	moduleGlobs = {
-		...moduleGlobs,
-		...newEntry,
-	};
-});
+// // create single JavaScript file for use of ESmodules in theme globally
+// getEntryThemeESModules = () => {
+// 	const files = globSync([
+// 		/**
+// 		 * Theme-wide ESmodules scripts
+// 		 *
+// 		 * All files within the assets directory ending
+// 		 * in "theme.mjs" get enqueued on the front-end of
+// 		 * the website, site-wide, as ESmodules.
+// 		 */
+// 		path.resolve(process.cwd(), 'assets/**/**theme.mjs'),
+// 	]);
+// 	return files.length ? { 'global/theme.module.bundle': files } : {};
+// };
 
 // allow inline svg (by ignoring *.inline.svg in @wordpress/scripts's defaultConfig itself)
-// const loadInlineSVG = () => {
-// 	const svgConfigIndex = defaultConfig.module.rules.findIndex((obj) => {
-// 		return String(obj.test) === '/\\.svg$/';
-// 	});
-// 	if (svgConfigIndex) {
-// 		defaultConfig.module.rules[svgConfigIndex].exclude = /\.inline\.svg$/;
-// 	}
-// };
-// loadInlineSVG();
+const loadInlineSVG = () => {
+	const svgConfigIndex = defaultConfig.commonConfig.module.rules.findIndex(
+		(obj) => {
+			return String(obj.test) === '/\\.svg$/';
+		},
+	);
+	if (svgConfigIndex) {
+		defaultConfig.commonConfig.module.rules[svgConfigIndex].exclude =
+			/\.inline\.svg$/;
+	}
+};
+loadInlineSVG();
 
 // modify default @wordpress/scripts config
 const aquaminConfig = {
@@ -109,14 +122,35 @@ const aquaminConfig = {
 	stats: 'errors-warnings',
 	// ...{
 	entry: {
-		...defaultJSConfig.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
+		...defaultConfig.commonConfig.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
 		// add our entry points
-		...globs,
+		...getEntryGlobs(),
 		'config/browsersync.config': path.resolve(
 			process.cwd(),
 			'includes/config',
 			'browsersync.config.js',
 		),
+		...getEntryTheme(),
+		'global/editor.bundle': globSync([
+			/**
+			 * Import select theme stylesheets
+			 *
+			 * This causes the editor to inherit
+			 * the theme's major styling features,
+			 * wrapped within .editor-styles-wrapper.
+			 */
+			path.resolve(process.cwd(), 'assets/**/**theme.css'),
+			/**
+			 * Block editor back-end styling
+			 *
+			 * All files within the assets directory ending
+			 * in "editor.css" get enqueued on the back-end of
+			 * the block editor, site-wide. All *.bundle.js files
+			 * like this get bundled into a single .css and .js
+			 * file in the dist/ directory.
+			 */
+			path.resolve(process.cwd(), 'assets/**/**editor.css'),
+		]),
 	},
 	plugins: [
 		// ...defaultConfig.plugins,
@@ -211,24 +245,54 @@ const aquaminConfig = {
 	// },
 };
 
+let moduleGlobs = {};
+[
+	'./assets/block-library/**/*view.mjs',
+	'./assets/component-library/**/*view.mjs',
+	'./assets/**/*.bundle.mjs',
+].forEach((entry) => {
+	// for each entry we find
+	const newEntry = globSync(entry).reduce((files, filepath) => {
+		// get path/filename details for this entry
+		const { dir, name, ext } = path.parse(filepath);
+		const dirs = dir.split('/');
+		const newDir = dirs.slice(1).join('/');
+		let newName = `${newDir}/${name}`;
+
+		// prevent same-name files from overriding each other (e.g. view.css and view.js)
+		if (moduleGlobs[newName]) {
+			newName += '_AQUAMIN_PREVENT_DUP_OVERRIDE_';
+		}
+		// add this entry
+		files[newName] = path.resolve(process.cwd(), dir, `${name}${ext}`);
+		// pass files to next iteration
+		return files;
+	}, {});
+	// add our new entry to our growing list of entrypoints
+	moduleGlobs = {
+		...moduleGlobs,
+		...newEntry,
+	};
+});
+
 const aquaminModuleConfig = {
-	...defaultModuleConfig,
-	output: { ...defaultModuleConfig.output, module: true },
+	...defaultConfig.moduleConfig,
+	output: { ...defaultConfig.moduleConfig.output, module: true },
 	experiments: { outputModule: true },
 	entry: {
-		// ...defaultModuleConfig.entry(),
+		// ...defaultConfig.moduleConfig.entry(),
 		...moduleGlobs,
 	},
-	resolve: {
-		...defaultModuleConfig.resolve,
-		alias: {
-			...defaultModuleConfig.resolve.alias,
-			...getWebPackAlias(),
-		},
-	},
+	// resolve: {
+	// 	...defaultConfig.moduleConfig.resolve,
+	// 	alias: {
+	// 		...defaultConfig.moduleConfig.resolve.alias,
+	// 		...getWebPackAlias(),
+	// 	},
+	// },
 	// plugins: [
-	// 	...defaultModuleConfig.plugins,
-	// 	// ...defaultModuleConfig.plugins.filter(
+	// 	...defaultConfig.moduleConfig.plugins,
+	// 	// ...defaultConfig.moduleConfig.plugins.filter(
 	// 	// 	(plugin) =>
 	// 	// 		plugin.constructor.name !== 'DependencyExtractionWebpackPlugin',
 	// 	// ),
@@ -292,7 +356,15 @@ const aquaminModuleConfig = {
 	},
 };
 
-module.exports = [
-	merge(defaultJSConfig, aquaminConfig),
-	merge(defaultModuleConfig, aquaminModuleConfig),
-];
+// return object (CommonJSConfig) or array ([CommonJSConfig, ESmodulesConfig])
+// @see https://github.com/WordPress/gutenberg/blob/3a38dd82e9abff09747e1db0ae989b9d1cc67c84/packages/scripts/config/webpack.config.js#L469
+let config = null;
+if (defaultConfig.length) {
+	config = [
+		merge(defaultConfig.commonConfig, aquaminConfig),
+		merge(defaultConfig.moduleConfig, aquaminModuleConfig),
+	];
+} else {
+	config = merge(defaultConfig.commonConfig, aquaminConfig);
+}
+module.exports = config;
