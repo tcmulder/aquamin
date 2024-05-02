@@ -36,7 +36,7 @@ const affectedBlocks = [
 	'aquamin/grd',
 ];
 const isAffected = (name, blocks) => {
-	affected = blocks || affectedBlocks;
+	const affected = blocks || affectedBlocks;
 	return affected.includes(name);
 };
 

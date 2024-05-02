@@ -11,9 +11,6 @@ const EventHooksPlugin = require('event-hooks-webpack-plugin');
 const { globSync } = require('glob');
 require('dotenv').config();
 
-/**
- * Handle preconditions
- */
 // exit if we don't have the right values in .env file
 if (!process.env.URL) throw new Error('No .env file with URL property found.');
 
@@ -32,118 +29,11 @@ if (defaultConfig.length) {
 }
 
 /**
- * Create standard CommonJS and CSS entrypoints
- */
-
-// create array of individual entry points based on glob file paths
-const getEntryGlobs = () => {
-	let entries = {};
-	/**
-	 * Manually loaded component files
-	 *
-	 * All files within the assets
-	 * directory ending in "view.css" or "view.js" get
-	 * compiled into the dist directory. You can then
-	 * manually enqueue these wherever they're needed.
-	 */
-	[
-		'./assets/component-library/**/*view.{css,scss}',
-		'./assets/component-library/**/*view.{js,ts}',
-		'./assets/block-library/**/*view.{css,scss}',
-	].forEach((entry) => {
-		// for each entry we find
-		const newEntry = globSync(entry).reduce((files, filepath) => {
-			// get path/filename details for this entry
-			const { dir, name, ext } = path.parse(filepath);
-			const dirs = dir.split('/');
-			const newDir = dirs.slice(1).join('/');
-			let newName = `${newDir}/${name}`;
-
-			// prevent same-name files from overriding each other (e.g. view.css and view.js)
-			if (entries[newName]) {
-				newName += '_AQUAMIN_PREVENT_DUP_OVERRIDE_';
-			}
-			// add this entry
-			files[newName] = path.resolve(process.cwd(), dir, `${name}${ext}`);
-			// pass files to next iteration
-			return files;
-		}, {});
-		// add our new entry to our growing list of entrypoints
-		entries = {
-			...entries,
-			...newEntry,
-		};
-	});
-	return entries;
-};
-
-// create single CSS and JavaScript files for global front-end of theme
-const getEntryTheme = () => {
-	const files = globSync([
-		/**
-		 * Theme-wide scripts and styles
-		 *
-		 * All files within the assets directory ending
-		 * in "theme.js" or "theme.css" get enqueued on
-		 * the front-end of the website, site-wide.
-		 * All *.bundle.js files like this get bundled into
-		 * a single .css and .js file in the dist/ directory.
-		 */
-		path.resolve(process.cwd(), 'assets/**/**theme.css'),
-		path.resolve(process.cwd(), 'assets/**/**theme.js'),
-		/**
-		 * Stuff we don't wanna talk about...
-		 *
-		 * See file for notes. Added here to be last
-		 * in cascade. Loaded site-wide.
-		 */
-		path.resolve(process.cwd(), 'assets/global/shame.css'),
-	]);
-	return files.length ? { 'global/theme.bundle': files } : {};
-};
-
-// create single editor CSS file for block editor back-end styling
-const getEntryEditor = () => {
-	const files = globSync([
-		/**
-		 * Import select theme stylesheets
-		 *
-		 * This causes the editor to inherit
-		 * the theme's major styling features,
-		 * wrapped within .editor-styles-wrapper.
-		 */
-		path.resolve(process.cwd(), 'assets/**/**theme.css'),
-		/**
-		 * Block editor back-end styling
-		 *
-		 * All files within the assets directory ending
-		 * in "editor.css" get enqueued on the back-end of
-		 * the block editor, site-wide. All *.bundle.js files
-		 * like this get bundled into a single .css and .js
-		 * file in the dist/ directory.
-		 */
-		path.resolve(process.cwd(), 'assets/**/**editor.css'),
-	]);
-	return files.length ? { 'global/editor.bundle': files } : {};
-};
-
-// create single tooling/configuration script file
-const getEntryTools = () => {
-	return {
-		'config/browsersync.config': path.resolve(
-			process.cwd(),
-			'includes/config',
-			'browsersync.config.js',
-		),
-	};
-};
-
-/**
- * Modify default @wordpress/scripts config
+ * Modify default @wordpress/scripts config for CommonJS
  *
- * Customize the script to support our theme's
- * unique files. (Note the default config already
- * handles block-related files.)
+ * Customize the script to support our theme's unique
+ * file organization. (Note the default config already
+ * handles many block-related files.)
  */
 const aquaminConfig = {
 	// be a little less verbose (set to 'normal' for more output)
@@ -151,42 +41,88 @@ const aquaminConfig = {
 	// combine our entries with the default ones (which are mostly block related)
 	entry: {
 		...config.commonConfig.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
-		/**
-		 * Manually loaded component files
-		 *
-		 * All files within the assets
-		 * directory ending in "view.css" or "view.js" get
-		 * compiled into the dist directory. You can then
-		 * manually enqueue these wherever they're needed.
-		 */
 		...[
+			'./assets/block-library/**/*view.{css,scss}',
+			'./assets/block-editor/**/*view.{css,scss}',
+			'./assets/block-editor/**/*view.{js,ts}',
 			'./assets/component-library/**/*view.{css,scss}',
 			'./assets/component-library/**/*view.{js,ts}',
-			'./assets/block-library/**/*view.{css,scss}',
 		].reduce((acc, cur) => {
-			// for each entry we find
+			/**
+			 * Compile individual view files
+			 *
+			 * All files within the assets directory ending in "view.css" or
+			 * "view.js" get compiled into the dist directory as separate files.
+			 * You can then manually enqueue these wherever they're needed.
+			 */
 			const newEntry = globSync(cur).reduce((files, filepath) => {
-				// get path/filename details for this entry
 				const { dir, name, ext } = path.parse(filepath);
 				const dirs = dir.split('/');
 				const newDir = dirs.slice(1).join('/');
 				const newName = `${newDir}/${name}`;
-
-				// add this entry
 				files[`${newName}${ext}`] = path.resolve(
 					process.cwd(),
 					dir,
 					`${name}${ext}`,
 				);
-				// pass files to next iteration
 				return files;
 			}, {});
-			// add our new entry to our growing list of entrypoints
 			return { ...acc, ...newEntry };
 		}, {}),
-		...getEntryTheme(),
-		...getEntryEditor(),
-		...getEntryTools(),
+		...(() => {
+			const files = globSync([
+				/**
+				 * Compile single theme CSS file and JS file
+				 *
+				 * All files within the assets directory ending
+				 * in "theme.js" or "theme.css" get enqueued on
+				 * the front-end of the website, site-wide via
+				 * the theme.bundle.js and theme.bundle.css files.
+				 */
+				path.resolve(process.cwd(), 'assets/**/**theme.css'),
+				path.resolve(process.cwd(), 'assets/**/**theme.js'),
+				/**
+				 * Stuff we don't wanna talk about...
+				 *
+				 * See file for notes. Added here to be
+				 * near last in cascade. Loaded site-wide.
+				 */
+				path.resolve(process.cwd(), 'assets/global/shame.css'),
+			]);
+			return files.length ? { 'global/theme.bundle': files } : {};
+		})(),
+		...(() => {
+			const files = globSync([
+				/**
+				 * Import select theme stylesheets to block editor
+				 *
+				 * This causes the editor to inherit
+				 * the theme's major styling features.
+				 */
+				path.resolve(process.cwd(), 'assets/global/theme.css'),
+				/**
+				 * Compile block editor back-end styling
+				 *
+				 * All files within the assets directory ending
+				 * in "editor.css" get enqueued on the back-end of
+				 * the block editor, site-wide via the editor.bundle.css
+				 * file.
+				 */
+				path.resolve(process.cwd(), 'assets/**/**editor.css'),
+				path.resolve(process.cwd(), 'assets/block-editor/**/*index.js'),
+			]);
+			return files.length ? { 'global/editor.bundle': files } : {};
+		})(),
+		/**
+		 * Sync brwosersync changes with block editor iframe
+		 *
+		 * See the browsersync.config.js file for more information.
+		 */
+		'config/browsersync.config': path.resolve(
+			process.cwd(),
+			'includes/config',
+			'browsersync.config.js',
+		),
 	},
 	plugins: [
 		// copy all static assets to dist without processing them
@@ -300,8 +236,7 @@ loadInlineSVG();
  * Modify ESmodules @wordpress/scripts config
  *
  * Customize the script to support our theme's
- * .mjs files. (Note the default config already
- * handles blocks using .mjs files.)
+ * .mjs files.
  */
 
 let aquaminModuleConfig = null;
@@ -310,47 +245,39 @@ if (config.moduleConfig) {
 		output: { module: true },
 		experiments: { outputModule: true },
 		entry: {
-			/**
-			 * Manual ESmodules loading
-			 *
-			 * All files within the assets directory ending in
-			 * "view.mjs" get compiled as ESmodules in individual
-			 * files you can then enqueue manually as needed.
-			 */
 			...[
 				'./assets/block-library/**/*view.mjs',
+				'./assets/block-editor/**/*view.mjs',
 				'./assets/component-library/**/*view.mjs',
 			].reduce((acc, cur) => {
-				// for each entry we find
+				/**
+				 * Compile individual ESmodules view files
+				 *
+				 * All files within the assets directory ending in
+				 * "view.mjs" get compiled as ESmodules as individual
+				 * files. You can then enqueue them manually as needed.
+				 */
 				const newEntry = globSync(cur).reduce((files, filepath) => {
-					// get path/filename details for this entry
 					const { dir, name, ext } = path.parse(filepath);
 					const dirs = dir.split('/');
 					const newDir = dirs.slice(1).join('/');
-					let newName = `${newDir}/${name}`;
-
-					// prevent same-name files from overriding each other (e.g. view.css and view.js)
-					if (acc[newName]) {
-						newName += '_AQUAMIN_PREVENT_DUP_OVERRIDE_';
-					}
-					// add this entry
+					const newName = `${newDir}/${name}`;
 					files[`${newName}.js`] = path.resolve(
 						process.cwd(),
 						dir,
 						`${name}${ext}`,
 					);
-					// pass files to next iteration
 					return files;
 				}, {});
-				// add our new entry to our growing list of entrypoints
 				return { ...acc, ...newEntry };
 			}, {}),
 			/**
-			 * Theme's site-wide ESmodules loading
+			 * Compile theme's ESmodules
 			 *
 			 * All files within the assets directory ending
 			 * in "theme.mjs" get enqueued on the front-end of the
-			 * website, site-wide.
+			 * website, site-wide, through the theme.module.bundle.js
+			 * file.
 			 */
 			...(() => {
 				const newEntries = globSync(
