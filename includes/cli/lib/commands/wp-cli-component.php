@@ -160,19 +160,19 @@ function component_create( $args, $assoc_args ) {
 
 	// add script/style registration and/or enqueues (unshift to top of array so template strings get replaced)
 	array_unshift( $far, array(
-		'find' => "\n/* TEMPLATE: register component script */",
-		'repl' => ! $has_view_css ? "" : "\n\t\$asset = include AQUAMIN_DIST . '/component-library/_template-component/template-slug-view.asset.php';\n\twp_register_style(\n\t\t'aquamin-component-template-slug-style',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.css',\n\t\t\$asset['dependencies'],\n\t\t\$asset['version'],\n\t\t'screen'\n\t);"
-	) );
-	array_unshift( $far, array(
-		'find' => "\n/* TEMPLATE: enqueue component script */",
-		'repl' => ! $has_view_css ? "" : "\nwp_enqueue_style( 'aquamin-component-template-slug-style' );"
-	) );
-	array_unshift( $far, array(
 		'find' => "\n/* TEMPLATE: register component style */",
-		'repl' => ! $has_view_js ? "" : "\n\t\$asset = include AQUAMIN_DIST . '/component-library/_template-component/template-slug-view.asset.php';\n\twp_register_script(\n\t\t'aquamin-component-template-slug-script',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.js',\n\t\t\$asset['dependencies'],\n\t\t\$asset['version'],\n\t\ttrue\n\t);"
+		'repl' => ! $has_view_css ? "" : "\n\t\$asset = include AQUAMIN_DIST . '/component-library/_template-component/template-slug-view.css.asset.php';\n\twp_register_style(\n\t\t'aquamin-component-template-slug-style',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.css',\n\t\t\$asset['dependencies'],\n\t\t\$asset['version'],\n\t\t'screen'\n\t);"
 	) );
 	array_unshift( $far, array(
 		'find' => "\n/* TEMPLATE: enqueue component style */",
+		'repl' => ! $has_view_css ? "" : "\nwp_enqueue_style( 'aquamin-component-template-slug-style' );"
+	) );
+	array_unshift( $far, array(
+		'find' => "\n/* TEMPLATE: register component script */",
+		'repl' => ! $has_view_js ? "" : "\n\t\$asset = include AQUAMIN_DIST . '/component-library/_template-component/template-slug-view.js.asset.php';\n\twp_register_script(\n\t\t'aquamin-component-template-slug-script',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.js',\n\t\t\$asset['dependencies'],\n\t\t\$asset['version'],\n\t\ttrue\n\t);"
+	) );
+	array_unshift( $far, array(
+		'find' => "\n/* TEMPLATE: enqueue component script */",
 		'repl' => ! $has_view_js ? "" : "\nwp_enqueue_script( 'aquamin-component-template-slug-script' );"
 	) );
 	$function_name = 'aquamin_component_' . ( preg_replace( '/-/', '_', sanitize_title( $slug ) ) ) . '_register_scripts';

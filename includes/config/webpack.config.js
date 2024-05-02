@@ -6,34 +6,51 @@ const { merge } = require('webpack-merge');
 const CopyPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
-const FilenameReplaceWebpackPlugin = require('filename-replace-webpack-plugin');
+const fs = require('fs');
+// const FilenameReplaceWebpackPlugin = require('filename-replace-webpack-plugin');
+const EventHooksPlugin = require('event-hooks-webpack-plugin');
 const { globSync } = require('glob');
 require('dotenv').config();
+
+/**
+ * Handle preconditions
+ */
+// exit if we don't have the right values in .env file
+if (!process.env.URL) throw new Error('No .env file with URL property found.');
 
 /**
  * Get default config
  *
  * Parse the default(s): it's an object unless using --experimental-modules in which case it's an array
  */
+const config = {};
 const defaultConfig = require('@wordpress/scripts/config/webpack.config');
 if (defaultConfig.length) {
-	defaultConfig.commonConfig = defaultConfig[0];
-	defaultConfig.moduleConfig = defaultConfig[1];
-	// eslint-disable-next-line no-console
-	console.log('Assuming format is [CommonJS,ESmodules] configs');
+	config.commonConfig = defaultConfig[0];
+	config.moduleConfig = defaultConfig[1];
 } else {
-	defaultConfig.commonConfig = defaultConfig;
+	config.commonConfig = defaultConfig;
 }
 
-// exit if we don't have the right values in a .env file
-if (!process.env.URL) throw new Error('No .env file with URL property found.');
+/**
+ * Create standard CommonJS and CSS entrypoints
+ */
 
 // create array of individual entry points based on glob file paths
 const getEntryGlobs = () => {
 	let entries = {};
+	/**
+	 * Manually loaded component files
+	 *
+	 * All files within the assets
+	 * directory ending in "view.css" or "view.js" get
+	 * compiled into the dist directory. You can then
+	 * manually enqueue these wherever they're needed.
+	 */
 	[
 		'./assets/component-library/**/*view.{css,scss}',
 		'./assets/component-library/**/*view.{js,ts}',
+		'./assets/block-library/**/*view.{css,scss}',
 	].forEach((entry) => {
 		// for each entry we find
 		const newEntry = globSync(entry).reduce((files, filepath) => {
@@ -61,7 +78,7 @@ const getEntryGlobs = () => {
 	return entries;
 };
 
-// create single CSS and JavaScript files for use in theme globally
+// create single CSS and JavaScript files for global front-end of theme
 const getEntryTheme = () => {
 	const files = globSync([
 		/**
@@ -86,75 +103,93 @@ const getEntryTheme = () => {
 	return files.length ? { 'global/theme.bundle': files } : {};
 };
 
-// // create single JavaScript file for use of ESmodules in theme globally
-// getEntryThemeESModules = () => {
-// 	const files = globSync([
-// 		/**
-// 		 * Theme-wide ESmodules scripts
-// 		 *
-// 		 * All files within the assets directory ending
-// 		 * in "theme.mjs" get enqueued on the front-end of
-// 		 * the website, site-wide, as ESmodules.
-// 		 */
-// 		path.resolve(process.cwd(), 'assets/**/**theme.mjs'),
-// 	]);
-// 	return files.length ? { 'global/theme.module.bundle': files } : {};
-// };
-
-// allow inline svg (by ignoring *.inline.svg in @wordpress/scripts's defaultConfig itself)
-const loadInlineSVG = () => {
-	const svgConfigIndex = defaultConfig.commonConfig.module.rules.findIndex(
-		(obj) => {
-			return String(obj.test) === '/\\.svg$/';
-		},
-	);
-	if (svgConfigIndex) {
-		defaultConfig.commonConfig.module.rules[svgConfigIndex].exclude =
-			/\.inline\.svg$/;
-	}
+// create single editor CSS file for block editor back-end styling
+const getEntryEditor = () => {
+	const files = globSync([
+		/**
+		 * Import select theme stylesheets
+		 *
+		 * This causes the editor to inherit
+		 * the theme's major styling features,
+		 * wrapped within .editor-styles-wrapper.
+		 */
+		path.resolve(process.cwd(), 'assets/**/**theme.css'),
+		/**
+		 * Block editor back-end styling
+		 *
+		 * All files within the assets directory ending
+		 * in "editor.css" get enqueued on the back-end of
+		 * the block editor, site-wide. All *.bundle.js files
+		 * like this get bundled into a single .css and .js
+		 * file in the dist/ directory.
+		 */
+		path.resolve(process.cwd(), 'assets/**/**editor.css'),
+	]);
+	return files.length ? { 'global/editor.bundle': files } : {};
 };
-loadInlineSVG();
 
-// modify default @wordpress/scripts config
-const aquaminConfig = {
-	// ...defaultConfig,
-	// be a little less verbose (set to 'normal' for more output)
-	stats: 'errors-warnings',
-	// ...{
-	entry: {
-		...defaultConfig.commonConfig.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
-		// add our entry points
-		...getEntryGlobs(),
+// create single tooling/configuration script file
+const getEntryTools = () => {
+	return {
 		'config/browsersync.config': path.resolve(
 			process.cwd(),
 			'includes/config',
 			'browsersync.config.js',
 		),
+	};
+};
+
+/**
+ * Modify default @wordpress/scripts config
+ *
+ * Customize the script to support our theme's
+ * unique files. (Note the default config already
+ * handles block-related files.)
+ */
+const aquaminConfig = {
+	// be a little less verbose (set to 'normal' for more output)
+	stats: 'errors-warnings',
+	// combine our entries with the default ones (which are mostly block related)
+	entry: {
+		...config.commonConfig.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
+		/**
+		 * Manually loaded component files
+		 *
+		 * All files within the assets
+		 * directory ending in "view.css" or "view.js" get
+		 * compiled into the dist directory. You can then
+		 * manually enqueue these wherever they're needed.
+		 */
+		...[
+			'./assets/component-library/**/*view.{css,scss}',
+			'./assets/component-library/**/*view.{js,ts}',
+			'./assets/block-library/**/*view.{css,scss}',
+		].reduce((acc, cur) => {
+			// for each entry we find
+			const newEntry = globSync(cur).reduce((files, filepath) => {
+				// get path/filename details for this entry
+				const { dir, name, ext } = path.parse(filepath);
+				const dirs = dir.split('/');
+				const newDir = dirs.slice(1).join('/');
+				const newName = `${newDir}/${name}`;
+
+				// add this entry
+				files[`${newName}${ext}`] = path.resolve(
+					process.cwd(),
+					dir,
+					`${name}${ext}`,
+				);
+				// pass files to next iteration
+				return files;
+			}, {});
+			// add our new entry to our growing list of entrypoints
+			return { ...acc, ...newEntry };
+		}, {}),
 		...getEntryTheme(),
-		'global/editor.bundle': globSync([
-			/**
-			 * Import select theme stylesheets
-			 *
-			 * This causes the editor to inherit
-			 * the theme's major styling features,
-			 * wrapped within .editor-styles-wrapper.
-			 */
-			path.resolve(process.cwd(), 'assets/**/**theme.css'),
-			/**
-			 * Block editor back-end styling
-			 *
-			 * All files within the assets directory ending
-			 * in "editor.css" get enqueued on the back-end of
-			 * the block editor, site-wide. All *.bundle.js files
-			 * like this get bundled into a single .css and .js
-			 * file in the dist/ directory.
-			 */
-			path.resolve(process.cwd(), 'assets/**/**editor.css'),
-		]),
+		...getEntryEditor(),
+		...getEntryTools(),
 	},
 	plugins: [
-		// ...defaultConfig.plugins,
-
 		// copy all static assets to dist without processing them
 		new CopyPlugin({
 			patterns: [
@@ -164,16 +199,6 @@ const aquaminConfig = {
 				},
 			],
 		}),
-
-		// prevent same-name files from overriding each other (e.g. view.css and view.js)
-		new FilenameReplaceWebpackPlugin([
-			{
-				replace: (filename) => {
-					const reg = /_AQUAMIN_PREVENT_DUP_OVERRIDE_/;
-					return reg.test(filename) && filename.replace(reg, '');
-				},
-			},
-		]),
 
 		// remove empty .js files (after *.asset.php files have been generated)
 		new RemoveEmptyScriptsPlugin({
@@ -194,17 +219,28 @@ const aquaminConfig = {
 				reload: false,
 			},
 		),
+
+		// fix duplicate prefixes (it's necessary to add them to prevent empty JS files from overriding real JS files)
+		// @see https://www.npmjs.com/package/webpack-remove-empty-scripts
+		new EventHooksPlugin({
+			afterEmit: () => {
+				const duplicateExt = globSync('./dist/**/*{.css.css,.js.js}');
+				duplicateExt.forEach((file) => {
+					const ext = path.extname(file);
+					const newName = file.replace(new RegExp(`${ext}$`), '');
+					fs.rename(file, newName, (err) => {
+						if (err) throw err;
+					});
+				});
+			},
+		}),
 	],
 	module: {
-		// ...defaultConfig.module,
 		rules: [
-			// ...defaultConfig.module.rules,
 			// allow glob patterns in JavaScript
 			{
 				test: /\.m?(j|t)sx?$/,
-				/////////////////////////////
-				use: ['webpack-import-glob-loader'], ///////////////////////////////  this causes it to fail
-				//////////////////////////
+				use: ['webpack-import-glob-loader'],
 			},
 			// allow glob patterns in CSS
 			{
@@ -242,129 +278,97 @@ const aquaminConfig = {
 			},
 		],
 	},
-	// },
 };
 
-let moduleGlobs = {};
-[
-	'./assets/block-library/**/*view.mjs',
-	'./assets/component-library/**/*view.mjs',
-	'./assets/**/*.bundle.mjs',
-].forEach((entry) => {
-	// for each entry we find
-	const newEntry = globSync(entry).reduce((files, filepath) => {
-		// get path/filename details for this entry
-		const { dir, name, ext } = path.parse(filepath);
-		const dirs = dir.split('/');
-		const newDir = dirs.slice(1).join('/');
-		let newName = `${newDir}/${name}`;
+// allow inline svg (by ignoring *.inline.svg in @wordpress/scripts's config.commonConfig object itself)
+const loadInlineSVG = () => {
+	const svgConfigIndex = config.commonConfig.module.rules.findIndex((obj) => {
+		return String(obj.test) === '/\\.svg$/';
+	});
+	if (svgConfigIndex) {
+		config.commonConfig.module.rules[svgConfigIndex].exclude =
+			/\.inline\.svg$/;
+	}
+};
+loadInlineSVG();
 
-		// prevent same-name files from overriding each other (e.g. view.css and view.js)
-		if (moduleGlobs[newName]) {
-			newName += '_AQUAMIN_PREVENT_DUP_OVERRIDE_';
-		}
-		// add this entry
-		files[newName] = path.resolve(process.cwd(), dir, `${name}${ext}`);
-		// pass files to next iteration
-		return files;
-	}, {});
-	// add our new entry to our growing list of entrypoints
-	moduleGlobs = {
-		...moduleGlobs,
-		...newEntry,
+/**
+ * Modify ESmodules @wordpress/scripts config
+ *
+ * Customize the script to support our theme's
+ * .mjs files. (Note the default config already
+ * handles blocks using .mjs files.)
+ */
+
+let aquaminModuleConfig = null;
+if (config.moduleConfig) {
+	aquaminModuleConfig = {
+		output: { module: true },
+		experiments: { outputModule: true },
+		entry: {
+			/**
+			 * Manual ESmodules loading
+			 *
+			 * All files within the assets directory ending in
+			 * "view.mjs" get compiled as ESmodules in individual
+			 * files you can then enqueue manually as needed.
+			 */
+			...[
+				'./assets/block-library/**/*view.mjs',
+				'./assets/component-library/**/*view.mjs',
+			].reduce((acc, cur) => {
+				// for each entry we find
+				const newEntry = globSync(cur).reduce((files, filepath) => {
+					// get path/filename details for this entry
+					const { dir, name, ext } = path.parse(filepath);
+					const dirs = dir.split('/');
+					const newDir = dirs.slice(1).join('/');
+					let newName = `${newDir}/${name}`;
+
+					// prevent same-name files from overriding each other (e.g. view.css and view.js)
+					if (acc[newName]) {
+						newName += '_AQUAMIN_PREVENT_DUP_OVERRIDE_';
+					}
+					// add this entry
+					files[`${newName}.js`] = path.resolve(
+						process.cwd(),
+						dir,
+						`${name}${ext}`,
+					);
+					// pass files to next iteration
+					return files;
+				}, {});
+				// add our new entry to our growing list of entrypoints
+				return { ...acc, ...newEntry };
+			}, {}),
+			/**
+			 * Theme's site-wide ESmodules loading
+			 *
+			 * All files within the assets directory ending
+			 * in "theme.mjs" get enqueued on the front-end of the
+			 * website, site-wide.
+			 */
+			...(() => {
+				const newEntries = globSync(
+					path.resolve(process.cwd(), 'assets/**/**theme.mjs'),
+				);
+				return newEntries.length
+					? { 'global/theme.modules.bundle': newEntries }
+					: {};
+			})(),
+		},
 	};
-});
-
-const aquaminModuleConfig = {
-	...defaultConfig.moduleConfig,
-	output: { ...defaultConfig.moduleConfig.output, module: true },
-	experiments: { outputModule: true },
-	entry: {
-		// ...defaultConfig.moduleConfig.entry(),
-		...moduleGlobs,
-	},
-	// resolve: {
-	// 	...defaultConfig.moduleConfig.resolve,
-	// 	alias: {
-	// 		...defaultConfig.moduleConfig.resolve.alias,
-	// 		...getWebPackAlias(),
-	// 	},
-	// },
-	// plugins: [
-	// 	...defaultConfig.moduleConfig.plugins,
-	// 	// ...defaultConfig.moduleConfig.plugins.filter(
-	// 	// 	(plugin) =>
-	// 	// 		plugin.constructor.name !== 'DependencyExtractionWebpackPlugin',
-	// 	// ),
-	// 	// new DependencyExtractionWebpackPlugin({
-	// 	// 	requestToExternal,
-	// 	// 	requestToHandle,
-	// 	// 	requestToExternalModule,
-	// 	// }),
-	// 	// Removes the empty `.js` files generated by webpack but
-	// 	// sets it after WP has generated its `*.asset.php` file.
-	// 	new RemoveEmptyScriptsPlugin({
-	// 		stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
-	// 	}),
-	// ],
-	module: {
-		// ...defaultConfig.module,
-		rules: [
-			// ...defaultConfig.module.rules,
-			// allow glob patterns in JavaScript
-			{
-				test: /\.m?(j|t)sx?$/,
-				/////////////////////////////
-				use: ['webpack-import-glob-loader'], ///////////////////////////////  this causes it to fail
-				//////////////////////////
-			},
-			// allow glob patterns in CSS
-			{
-				test: /\.(c|sc|sa)ss$/,
-				use: ['webpack-import-glob-loader'],
-			},
-			// use PostCSS for .css files
-			{
-				test: /\.css$/,
-				use: [
-					{
-						loader: 'postcss-loader',
-						options: {
-							postcssOptions: {
-								plugins: [
-									[
-										'postcss-preset-env',
-										{
-											stage: 3,
-											features: {
-												'nesting-rules': true,
-											},
-										},
-									],
-								],
-							},
-						},
-					},
-				],
-			},
-			// load *.inline.svg files as React components
-			{
-				test: /\.inline\.svg$/,
-				use: ['@svgr/webpack'],
-			},
-		],
-	},
-};
+}
 
 // return object (CommonJSConfig) or array ([CommonJSConfig, ESmodulesConfig])
 // @see https://github.com/WordPress/gutenberg/blob/3a38dd82e9abff09747e1db0ae989b9d1cc67c84/packages/scripts/config/webpack.config.js#L469
-let config = null;
-if (defaultConfig.length) {
-	config = [
-		merge(defaultConfig.commonConfig, aquaminConfig),
-		merge(defaultConfig.moduleConfig, aquaminModuleConfig),
+let ret = null;
+if (aquaminModuleConfig) {
+	ret = [
+		merge(config.commonConfig, aquaminConfig),
+		merge(config.moduleConfig, aquaminModuleConfig),
 	];
 } else {
-	config = merge(defaultConfig.commonConfig, aquaminConfig);
+	ret = merge(config.commonConfig, aquaminConfig);
 }
-module.exports = config;
+module.exports = ret;

@@ -13,7 +13,7 @@
 add_action( 'wp_enqueue_scripts', 'aquamin_password_protected_scripts' );
 function aquamin_password_protected_scripts() {
 	if ( post_password_required() ) {
-		$asset = include AQUAMIN_DIST . '/component-library/password-protected/password-protected-view.asset.php';
+		$asset = include AQUAMIN_DIST . '/component-library/password-protected/password-protected-view.css.asset.php';
 		wp_enqueue_style(
 			'aquamin-password-protected-style',
 			AQUAMIN_TEMPLATE_URL . '/dist/component-library/password-protected/password-protected-view.css',

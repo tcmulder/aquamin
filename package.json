@@ -29,7 +29,7 @@
 		"copy-webpack-plugin": "^12.0.2",
 		"docsify-cli": "^4.4.4",
 		"dotenv": "^16.4.5",
-		"filename-replace-webpack-plugin": "^1.0.1",
+		"event-hooks-webpack-plugin": "^2.3.0",
 		"glob": "^10.3.12",
 		"path": "^0.12.7",
 		"postcss-loader": "^8.1.1",

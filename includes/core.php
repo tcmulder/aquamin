@@ -85,7 +85,7 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 				wp_enqueue_style(
 					'aquamin-style',
 					AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.css',
-					$asset['dependencies'],
+					array(), // note theme.bundle.assets.php dependencies are generated from JS and not CSS
 					$asset['version'],
 					'screen'
 				);
