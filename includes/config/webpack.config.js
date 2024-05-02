@@ -36,6 +36,7 @@ if (defaultConfig.length) {
  * handles many block-related files.)
  */
 const aquaminConfig = {
+	devtool: false,
 	// be a little less verbose (set to 'normal' for more output)
 	stats: 'errors-warnings',
 	// combine our entries with the default ones (which are mostly block related)
@@ -186,30 +187,6 @@ const aquaminConfig = {
 			{
 				test: /\.(c|sc|sa)ss$/,
 				use: ['webpack-import-glob-loader'],
-			},
-			// use PostCSS for .css files
-			{
-				test: /\.css$/,
-				use: [
-					{
-						loader: 'postcss-loader',
-						options: {
-							postcssOptions: {
-								plugins: [
-									[
-										'postcss-preset-env',
-										{
-											stage: 3,
-											features: {
-												'nesting-rules': true,
-											},
-										},
-									],
-								],
-							},
-						},
-					},
-				],
 			},
 			// load *.inline.svg files as React components
 			{
