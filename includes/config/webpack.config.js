@@ -2,30 +2,35 @@
  * Initialize dependencies
  */
 const path = require('path');
-const { merge } = require('webpack-merge');
 const CopyPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
-const fs = require('fs');
 const EventHooksPlugin = require('event-hooks-webpack-plugin');
+const fs = require('fs');
+const { merge } = require('webpack-merge');
 const { globSync } = require('glob');
 require('dotenv').config();
 
 // exit if we don't have the right values in .env file
 if (!process.env.URL) throw new Error('No .env file with URL property found.');
+// set our environment
+const env = process.env.NODE_ENV || 'development';
 
 /**
  * Get default config
  *
- * Parse the default(s): it's an object unless using --experimental-modules in which case it's an array
+ * We must normalize the default object(s), because
+ * it's an object unless using --experimental-modules,
+ * in which case it's an array.
  */
-const config = {};
-const defaultConfig = require('@wordpress/scripts/config/webpack.config');
-if (defaultConfig.length) {
-	config.commonConfig = defaultConfig[0];
-	config.moduleConfig = defaultConfig[1];
+const orgConfig = {};
+const newConfig = {};
+const defaults = require('@wordpress/scripts/config/webpack.config');
+if (defaults.length) {
+	orgConfig.commonJS = defaults[0];
+	orgConfig.esModule = defaults[1];
 } else {
-	config.commonConfig = defaultConfig;
+	orgConfig.commonJS = defaults;
 }
 
 /**
@@ -35,12 +40,12 @@ if (defaultConfig.length) {
  * file organization. (Note the default config already
  * handles many block-related files.)
  */
-const aquaminConfig = {
-	// be a little less verbose (set to 'normal' for more output)
-	stats: 'errors-warnings',
+newConfig.commonJS = {
+	// be a little less verbose
+	stats: env === 'development' ? 'errors-warnings' : 'normal',
 	// combine our entries with the default ones (which are mostly block related)
 	entry: {
-		...config.commonConfig.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
+		...orgConfig.commonJS.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
 		...[
 			'./assets/block-library/**/*view.{css,scss}',
 			'./assets/block-editor/**/*view.{css,scss}',
@@ -96,17 +101,16 @@ const aquaminConfig = {
 				/**
 				 * Import select theme stylesheets to block editor
 				 *
-				 * This causes the editor to inherit
-				 * the theme's major styling features.
+				 * This causes the editor to inherit the theme's
+				 * major styling features.
 				 */
 				path.resolve(process.cwd(), 'assets/global/theme.css'),
 				/**
 				 * Compile block editor back-end styling
 				 *
-				 * All files within the assets directory ending
-				 * in "editor.css" get enqueued on the back-end of
-				 * the block editor, site-wide via the editor.bundle.css
-				 * file.
+				 * All files within the assets directory ending in "editor.css"
+				 * get enqueued on the back-end of the block editor, site-wide
+				 * via the editor.bundle.css file.
 				 */
 				path.resolve(process.cwd(), 'assets/**/**editor.css'),
 				path.resolve(process.cwd(), 'assets/block-editor/**/*index.js'),
@@ -114,9 +118,10 @@ const aquaminConfig = {
 			return files.length ? { 'global/editor.bundle': files } : {};
 		})(),
 		/**
-		 * Sync brwosersync changes with block editor iframe
+		 * Enable browsersync in the block editor back-end
 		 *
-		 * See the browsersync.config.js file for more information.
+		 * Allows browsersync file changes to trickle down into the block
+		 * editor iframe (see the browsersync.config.js file for more info).
 		 */
 		'config/browsersync.config': path.resolve(
 			process.cwd(),
@@ -140,7 +145,7 @@ const aquaminConfig = {
 			stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
 		}),
 
-		// setup browsersync
+		// set up browsersync
 		new BrowserSyncPlugin(
 			{
 				proxy: process.env.URL,
@@ -160,7 +165,7 @@ const aquaminConfig = {
 			},
 		),
 
-		// fix duplicate prefixes (it's necessary to add them to prevent empty JS files from overriding real JS files)
+		// fix issue where similar files (e.g. view.js and view.css) override each other
 		// @see https://www.npmjs.com/package/webpack-remove-empty-scripts
 		new EventHooksPlugin({
 			afterEmit: () => {
@@ -196,13 +201,13 @@ const aquaminConfig = {
 	},
 };
 
-// allow inline svg (by ignoring *.inline.svg in @wordpress/scripts's config.commonConfig object itself)
+// allow inline svg (by ignoring *.inline.svg in @wordpress/scripts's orgConfig.commonJS object itself)
 const loadInlineSVG = () => {
-	const svgConfigIndex = config.commonConfig.module.rules.findIndex((obj) => {
+	const svgConfigIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
 		return String(obj.test) === '/\\.svg$/';
 	});
 	if (svgConfigIndex) {
-		config.commonConfig.module.rules[svgConfigIndex].exclude =
+		orgConfig.commonJS.module.rules[svgConfigIndex].exclude =
 			/\.inline\.svg$/;
 	}
 };
@@ -211,15 +216,14 @@ loadInlineSVG();
 /**
  * Modify ESmodules @wordpress/scripts config
  *
- * Customize the script to support our theme's
- * .mjs files.
+ * Customize the script to support .mjs files
+ * particular to the theme.
  */
 
-let aquaminModuleConfig = null;
-if (config.moduleConfig) {
-	aquaminModuleConfig = {
-		// be a little less verbose (set to 'normal' for more output)
-		stats: 'errors-warnings',
+if (orgConfig.esModule) {
+	newConfig.esModule = {
+		// be a little less verbose
+		stats: env === 'development' ? 'errors-warnings' : 'normal',
 		// let webpack know we're using ESmodules
 		output: { module: true },
 		experiments: { outputModule: true },
@@ -234,7 +238,7 @@ if (config.moduleConfig) {
 				 * Compile individual ESmodules view files
 				 *
 				 * All files within the assets directory ending in
-				 * "view.mjs" get compiled as ESmodules as individual
+				 * "view.mjs" get compiled as ESmodules in individual
 				 * files. You can then enqueue them manually as needed.
 				 */
 				const newEntry = globSync(cur).reduce((files, filepath) => {
@@ -254,10 +258,9 @@ if (config.moduleConfig) {
 			/**
 			 * Compile theme's ESmodules
 			 *
-			 * All files within the assets directory ending
-			 * in "theme.mjs" get enqueued on the front-end of the
-			 * website, site-wide, through the theme.module.bundle.js
-			 * file.
+			 * All files within the assets directory ending in "theme.mjs"
+			 * get enqueued on the front-end of the website, site-wide,
+			 * through the theme.module.bundle.js file.
 			 */
 			...(() => {
 				const newEntries = globSync(
@@ -274,12 +277,13 @@ if (config.moduleConfig) {
 // return object (CommonJSConfig) or array ([CommonJSConfig, ESmodulesConfig])
 // @see https://github.com/WordPress/gutenberg/blob/3a38dd82e9abff09747e1db0ae989b9d1cc67c84/packages/scripts/config/webpack.config.js#L469
 let ret = null;
-if (aquaminModuleConfig) {
+if (newConfig.esModule) {
 	ret = [
-		merge(config.commonConfig, aquaminConfig),
-		merge(config.moduleConfig, aquaminModuleConfig),
+		merge(orgConfig.commonJS, newConfig.commonJS),
+		merge(orgConfig.esModule, newConfig.esModule),
 	];
 } else {
-	ret = merge(config.commonConfig, aquaminConfig);
+	ret = merge(orgConfig.commonJS, newConfig.commonJS);
 }
+
 module.exports = ret;

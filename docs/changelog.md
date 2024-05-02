@@ -1,45 +1,7 @@
 # Changelog
 
-## 7.1.0 - April 26
-* Added support for WordPress's Interactivity API (or, more generically, for JavaScript modules).
-
-
-
-
-
-
-# TODO
-- Confirm that interactivity API actually works as a component (with no interactive block loaded).
-- Document it.
-- Clean up webpack.config.
-- Confirm need webpack-helpers.js and remove if not.
-- Confirm there are no files or customizations I used for debebugging purposes.
-- Create my-* blocks/components to confirm everything works (and copy to copy-paste directory).
-
-# WHAT IT LOOKS LIKE:
-- It now supports viewScriptModule in block.json.
-  - The file must be called *view.mjs.
-- It enqueues a new theme.module.bundle.mjs (to differentiate js output from theme.bundle.js).
-  - It grabs files like *theme.mjs
-- It exports all component-library/**/*view.mjs for manual import.
-
-# CAVEATS:
-- It's still experimental, and Node identifies this as being the case
-- They must be .mjs files.
-- It throws errors if you import WordPress packages (although node_modules packages work fine)
-- They must be enqueued separately, adding a request.
-- The build fails if it can't find anything to import, i.e. no theme.mjs files. Could I load this via webpack instead?
-- It throws several [not cacheable] errors in the console, all for .mjs files.
-- It outputs more files (e.g. an empty .mjs file). Though, it's possible .js imports would do the same for the normal version.
-
-
-
-
-
-
-
-
-
+## 7.1.1 - April 26
+* Added support for WordPress's Interactivity API (or, more generically, for JavaScript modules) by supporting .mjs files.
 
 ## 7.1.0 - April 15 2024
 * Implemented @wordpress/scripts with webpack, replacing Parcel 2. Now, the build tool is officially supported by the WordPress community, solving a number of previous quirks.
