@@ -209,7 +209,12 @@ const aquaminConfig = {
 			{
 				proxy: process.env.URL,
 				open: false,
-				files: ['**/*.php', 'assets/**/*.js', 'dist/**/*.css'],
+				files: [
+					'**/*.php',
+					'assets/**/*.js',
+					'assets/**/*.mjs',
+					'dist/**/*.css',
+				],
 				ignore: ['dist/**/*.php', 'dist/**/*.js'],
 				logFileChanges: false,
 			},
