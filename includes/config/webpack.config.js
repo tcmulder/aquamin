@@ -36,7 +36,6 @@ if (defaultConfig.length) {
  * handles many block-related files.)
  */
 const aquaminConfig = {
-	devtool: false,
 	// be a little less verbose (set to 'normal' for more output)
 	stats: 'errors-warnings',
 	// combine our entries with the default ones (which are mostly block related)
