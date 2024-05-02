@@ -7,7 +7,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const fs = require('fs');
-// const FilenameReplaceWebpackPlugin = require('filename-replace-webpack-plugin');
 const EventHooksPlugin = require('event-hooks-webpack-plugin');
 const { globSync } = require('glob');
 require('dotenv').config();
@@ -353,7 +352,7 @@ if (config.moduleConfig) {
 					path.resolve(process.cwd(), 'assets/**/**theme.mjs'),
 				);
 				return newEntries.length
-					? { 'global/theme.modules.bundle': newEntries }
+					? { 'global/theme.module.bundle': newEntries }
 					: {};
 			})(),
 		},

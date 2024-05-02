@@ -13,8 +13,8 @@
 		"start": "wp-scripts start --experimental-modules --progress --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
 		"build": "wp-scripts build --experimental-modules --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
 		"docs": "docsify serve docs --open --port 4000",
-		"lint": "eslint --config=./assets/config/.eslintrc.js ./assets",
-		"lint:fix": "eslint --config=./assets/config/.eslintrc.js ./assets --fix"
+		"lint": "eslint --config=./includes/config/.eslintrc.js ./assets",
+		"lint:fix": "eslint --config=./includes/config/.eslintrc.js ./assets --fix"
 	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"eslintConfig": {
