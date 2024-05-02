@@ -218,8 +218,12 @@ loadInlineSVG();
 let aquaminModuleConfig = null;
 if (config.moduleConfig) {
 	aquaminModuleConfig = {
+		// be a little less verbose (set to 'normal' for more output)
+		stats: 'errors-warnings',
+		// let webpack know we're using ESmodules
 		output: { module: true },
 		experiments: { outputModule: true },
+		// combine our entries with any default ones
 		entry: {
 			...[
 				'./assets/block-library/**/*view.mjs',
