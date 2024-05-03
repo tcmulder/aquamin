@@ -40,7 +40,7 @@ Each block has its own block directory within `aquamin/assets/block-library/`. A
 
 ### File Naming and Enqueuing Conventions
 
-The `block.json` file references a block's `view.css` and `view.js` files, allowing these files to only load on pages that utilize that block. If for some reason your block needs to load things side-wide, change these to `theme.css` and `theme.js`, and aquamin will add your scripts within the theme's `theme.bundle.css` and `theme.bundle.js` files globally.
+The `block.json` file references a block's `view.css` and `view.js` files, allowing these files to only load on pages that utilize that block. If for some reason your block needs to load things side-wide, change these to `theme.css` and `theme.js`, and aquamin will add your scripts within the theme's `theme.bundle.css` and `theme.bundle.js` files globally. You can read up on aquamain's [theme file conventions](features/theme-configuration#file-naming-and-enqueuing-conventions) to learn more.
 
 ### File Name Prefixing
 

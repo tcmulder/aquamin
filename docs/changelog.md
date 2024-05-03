@@ -3,6 +3,7 @@
 ## 7.1.1 - May 3 2024
 * Added support for WordPress's Interactivity API (or, more generically, for JavaScript modules) by supporting .mjs files.
 * Documented new .mjs support.
+* Broke component and theme documentation into separate pages.
 * Removed Appearance > Block Patterns from sidebar since WordPress has added their own Appearance > Patterns link.
 * Removed *.bundle.{css,js} options in favor of adding them to the webpack.config.js (so it no longer errors if no matching files are found).
 

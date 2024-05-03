@@ -1,24 +1,24 @@
 # Theme Configuration
 
-## Component Philosophy
+## Automatic Asset Handling
 
-All sites can be broken down into meaningful components, combined in various ways to create a unified whole. Just like it does for blocks, aquamin capitalizes on this concept by making it _really_ easy to work with individual components.
+Aquamin automatically looks for certain file patterns within various directories to figure out when and where assets should load, without requiring you to manually import things outside of each block or component's directory. So, it uses regex patterns like `**/*view.{css,scss}` to automatically handle files like `aquamin/assets/block-library/my-block/my-block-view.css` and `aquamin/assets/component-library/my-component/my-component.css` appropriately.
 
-Each component is it's own self-contained directory where you'll handle all development for that particular piece of the site (it may help to read [aquamin's block philosophy](/features/block-configuration#block-philosophy) for more on the theory behind this).
 
-## Assets and Dist Directories
+### The `assets` and `dist` Directories
 
-The `aquamin/assets` directory is where you'll edit all your block and component related code. Webpack will compile your .css and .js files and copy those and all your PHP files, images, fonts, and so forth over to the `aquamin/dist` directory. Therefore, never enqueue or require files in your theme that reside in the assets directory since these are meant only for development, and never make edits to any files in the dist folder since they'll be overridden any time you run a build.
+The `aquamin/assets` directory is where you'll edit all your block and component related code. Webpack will compile your .css and .js files, then copy those and all your PHP files, images, fonts, and so forth over to the `aquamin/dist` directory.
 
-## Creating Components
+| Directory        | Contents                  | Purpose
+| -                | -                         | -
+| `aquamin/assets` | development source files  | edit only these files during development
+| `aquamin/dist`   | compiled production files | enqueue or include these files in the theme
 
-The easiest way to create a component is to run `wp aquamin component create` ([see the docs](features/wp-cli#wp-aquamin-component-create)). Then, just restart webpack, and the scaffolded component is ready for you to customize within its own directory inside `aquamin/assets/component-library/`.
-
-?> If you'd prefer not to use WP-CLI, you can simply add your own components as individual directories within `aquamin/assets/component-library/`. You can use the files within `aquamin/includes/cli/templates/component/` as a starting point if it's helpful, replacing all the "template" placeholder code and filename prefixes with your component's name.
+!> Never enqueue or require files directly from the assets directory, as these are only for development; likewise, never directly edit any files in the dist folder, since they'll be overridden with every build.
 
 ### File Naming and Enqueuing Conventions
 
-Not all components are alike, so the files each requires will differ. The `wp aquamin component create` command will ask if you want the following:
+Aquamin handles several special asset file prefixes automatically:
 
 |  CSS/JS&nbsp;Suffix  | Compiled&nbsp;File&nbsp;Within&nbsp;`aquamin/dist/`  | Enqueued&nbsp;By           | Purpose
 |  -              | -                                          | -                     | - 
@@ -27,75 +27,25 @@ Not all components are alike, so the files each requires will differ. The `wp aq
 |  `editor.css`   | `global/editor.bundle.css`                 | back-end globally     | block editor styling
 |  `view.css`     | `component-library/<name>/<name>-view.css` | `hooks.php` manually  | component styling
 |  `view.js`      | `component-library/<name>/<name>-view.js`  | `hooks.php` manually  | component behavior
+|  `view.css`     | `block-library/<name>/<name>-view.css`     | via `block.json`      | block styling
+|  `view.js`      | `block-library/<name>/<name>-view.js`      | via `block.json`      | block behavior
+
+Additionally, aquamin provides a means of running WordPress hooks and including template parts within your block or component directories:
 
 |  PHP&nbsp;Suffix  | Where Included via PHP                                                                                    | Purpose
 |  -                | -                                                                                                         | -
 |  `hooks.php`      | automatically included via aquamin's `functions.php` file                                                 | wordpress&nbsp;hooks&nbsp;and&nbsp;filters
 |  `view.php`       | manually via `get_template_part('dist/component-library/<name>-view')` wherever component should appear | front-end html output of the component
 
-?> When you use the `wp aquamin component create` command, you'll conveniently find the `get_template_part()` call (including the correct path) in the  `view.php` file's header comment.
-
 ### JavaScript and CSS Pre-Processing
 
-Aquamin uses Babel and PostCSS to process .js and .css files, so you can use modern, standards-compliant ES6 and CSS features typically without worrying about polyfills, prefixes, etc. And, though aquamin doesn't employ TypeScript or SASS features out of the box, you can use .ts or .scss file extensions to support these features if you'd prefer.
+Aquamin uses Babel and PostCSS to process .js and .css files, so you can use modern, standards-compliant ES6 and CSS features typically without worrying about polyfills, prefixes, etc. And, though aquamin doesn't employ TypeScript or SASS features out of the box, you can use .ts or .scss file extensions as well.
 
-Aquamin compiles .js files to CommonJS, but if you'd like to use ESmodules (e.g. to support the WordPress Interactivity API), use the extension .mjs instead. If you scaffolded your block or component with aquamin's WP-CLI commands, you'll need to convert viewScript to viewScriptModule and wp_register_script to wp_register_script_module within your block or component, then change the file extension of `view.js` to `view.mjs`. Note that this uses Node's `--experimental-modules` flag, so there may be some quirks till it's no longer experimental.
-
-
-### File Name Prefixing
-
-Note that the above shortened filenames work, but for easier debugging aquamin prefixes them like `example-component-theme.js`, `example-component-view.css`, `example-component-view.php`, etc.
-
-
-## Built In Components
-
-The following components come with the aquamin theme. You'll add your own alongside these in the same `aquamin/assets/component-library/` directory.
-
-```
-📂 assets
- ┗ 📂 component-library    // all preinstalled components are within this folder
-   ┣ 📂 404                // 404 error message component
-   ┣ 📂 blog               // blog (single, archive, sidebar, etc.)
-   ┣ 📂 footer             // site's footer component
-   ┣ 📂 header             // site's header component
-   ┣ 📂 menu               // site's main menu navigation in the header
-   ┣ 📂 no-content         // reusable "no posts" message component
-   ┣ 📂 page               // general page torso component
-   ┣ 📂 password-protected // password-protected posts component
-   ┣ 📂 search             // search-related components
-   ┗ 📂 wp-overrides       // wordpress styling overrides
-```
-
-### Examples
-
-Let's explore the internal organization of the `aquamin/assets/component-library/menu/` main menu component.
-
-```
-📂 assets
- ┗ 📂 component-library  // directory containing all components
-   ┗ 📂 menu             // the component's unique name
-     ┣ 📄 menu-view.php  // HTML/PHP for the menu component
-     ┣ 📄 menu-theme.css // site-wide main menu styling
-     ┗ 📄 menu-theme.js  // site-wide main menu behavior
-```
-
-Since the .css and .js files end with "theme," they get compiled to the `aquamin/dist/global/theme.bundle.js` and `aquamin/dist/global/theme.bundle.css` files and load site-wide on the front-end. Aquamin includes this component via a call to `get_template_part( 'dist/component-library/menu/menu-view' )` in the site's header template file.
-
-Another example is the password protected page styling:
-
-```
-📂 assets
- ┗ 📂 component-library                // directory containing all components
-   ┗ 📂 password-protected             // the component's unique name
-     ┣ 📄 password-protected-hooks.php // HTML/PHP for the menu component
-     ┗ 📄 password-protected-view.css  // site-wide main menu styling
-```
-
-Since the .css file ends with "view," it's compiled to `aquamin/dist/component-library/password-protected/password-protected-view.css`. Then, `password-protected-hooks.php` enqueues this stylesheet only on posts that have WordPress's password protection enabled.
+Aquamin compiles .js files to CommonJS, but if you'd like to use ESmodules (e.g. to support the WordPress Interactivity API), use the extension .mjs instead. If you scaffolded your block or component with aquamin's WP-CLI commands, you'll need to convert `viewScript` to `viewScriptModule` in your block's `block.json` file or `wp_register_script` to `wp_register_script_module` in your component's `hooks.php` file, then change the file extension of `view.js` to `view.mjs`. (Note that this uses Node's `--experimental-modules` flag, so there may be some quirks till it's no longer experimental.)
 
 ## Global Features
 
-Aquamin includes some global features that apply site-wide across all components and blocks. Edit the code within these files to meet the requirements of your theme.
+Aquamin includes some global features that apply theme-wide across all components and blocks. Edit the code within these files to meet the requirements of your theme.
 
 ```
 📂 assets
@@ -103,15 +53,15 @@ Aquamin includes some global features that apply site-wide across all components
  ┗ 📂 global                // global styling that exists site-wide
    ┣ 📄 alignment.css       // block alignment customizations
    ┣ 📄 animations.css      // reusable multi-component keyframe animations
-   ┣ 📄 fonts.css           // custom font imports (see Fonts below)
+   ┣ 📄 fonts.css           // custom font imports (see Fonts section below)
    ┣ 📂 normalize           // global styling for common html elements you'll customize
-   ┣ 📄 shame.css           // styling we hope to fix later (occurs last in cascade)
+   ┣ 📄 shame.css           // styling we hope to fix later (occurs near last in cascade)
    ┣ 📄 theme.css           // main entry file (coordinates global styling cascade)
    ┗ 📄 variables.css       // css custom properties (first in cascade)
 ```
 
 ## Fonts
-You should add fonts to a `aquamin/assets/global/fonts/` folder, then add the `@font-face` definitions in the `aquamin/assets/global/fonts.css` file. Webpack will take care including your font files within the `aquamin/dist/` directory, and aquamin will enqueue them.
+Add fonts to a `aquamin/assets/global/fonts/` folder, then add the `@font-face` definitions in the `aquamin/assets/global/fonts.css` file. Webpack will take care including your font files within the `aquamin/dist/` directory, and aquamin will enqueue them.
 
 Or, you can directly enqueue any fonts from a CDN (like Google Fonts) within the `aquamin/functions.php` file.
 
