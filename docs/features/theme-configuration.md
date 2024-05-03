@@ -1,9 +1,14 @@
 # Theme Configuration
 
 ## Component Philosophy
+
 All sites can be broken down into meaningful components, combined in various ways to create a unified whole. Just like it does for blocks, aquamin capitalizes on this concept by making it _really_ easy to work with individual components.
 
 Each component is it's own self-contained directory where you'll handle all development for that particular piece of the site (it may help to read [aquamin's block philosophy](/features/block-configuration#block-philosophy) for more on the theory behind this).
+
+## Assets and Dist Directories
+
+The `aquamin/assets` directory is where you'll edit all your block and component related code. Webpack will compile your .css and .js files and copy those and all your PHP files, images, fonts, and so forth over to the `aquamin/dist` directory. Therefore, never enqueue or require files in your theme that reside in the assets directory since these are meant only for development, and never make edits to any files in the dist folder since they'll be overridden any time you run a build.
 
 ## Creating Components
 
@@ -34,27 +39,13 @@ Not all components are alike, so the files each requires will differ. The `wp aq
 
 Aquamin uses Babel and PostCSS to process .js and .css files, so you can use modern, standards-compliant ES6 and CSS features typically without worrying about polyfills, prefixes, etc. And, though aquamin doesn't employ TypeScript or SASS features out of the box, you can use .ts or .scss file extensions to support these features if you'd prefer.
 
+Aquamin compiles .js files to CommonJS, but if you'd like to use ESmodules (e.g. to support the WordPress Interactivity API), use the extension .mjs instead. If you scaffolded your block or component with aquamin's WP-CLI commands, you'll need to convert viewScript to viewScriptModule and wp_register_script to wp_register_script_module within your block or component, then change the file extension of `view.js` to `view.mjs`. Note that this uses Node's `--experimental-modules` flag, so there may be some quirks till it's no longer experimental.
+
 
 ### File Name Prefixing
 
 Note that the above shortened filenames work, but for easier debugging aquamin prefixes them like `example-component-theme.js`, `example-component-view.css`, `example-component-view.php`, etc.
 
-### Examples
-
-An example is the built-in `aquamin/assets/component-library/menu/` main menu component.
-
-[text](../../assets/component-library/menu/menu-theme.css) [text](../../assets/component-library/menu/menu-theme.js) [text](../../assets/component-library/menu/menu-view.php)
-
-```
-📂 assets
- ┗ 📂 component-library  // directory containing all components
-   ┗ 📂 menu             // the component's unique name
-     ┣ 📄 menu-view.php  // HTML/PHP for the menu component
-     ┣ 📄 menu-theme.css // site-wide main menu styling
-     ┗ 📄 menu-theme.js  // site-wide main menu behavior
-```
-
-Aquamin then includes this component via `get_template_part( 'dist/component-library/menu/menu-view' )` in the site's header.
 
 ## Built In Components
 
@@ -75,6 +66,33 @@ The following components come with the aquamin theme. You'll add your own alongs
    ┗ 📂 wp-overrides       // wordpress styling overrides
 ```
 
+### Examples
+
+Let's explore the internal organization of the `aquamin/assets/component-library/menu/` main menu component.
+
+```
+📂 assets
+ ┗ 📂 component-library  // directory containing all components
+   ┗ 📂 menu             // the component's unique name
+     ┣ 📄 menu-view.php  // HTML/PHP for the menu component
+     ┣ 📄 menu-theme.css // site-wide main menu styling
+     ┗ 📄 menu-theme.js  // site-wide main menu behavior
+```
+
+Since the .css and .js files end with "theme," they get compiled to the `aquamin/dist/global/theme.bundle.js` and `aquamin/dist/global/theme.bundle.css` files and load site-wide on the front-end. Aquamin includes this component via a call to `get_template_part( 'dist/component-library/menu/menu-view' )` in the site's header template file.
+
+Another example is the password protected page styling:
+
+```
+📂 assets
+ ┗ 📂 component-library                // directory containing all components
+   ┗ 📂 password-protected             // the component's unique name
+     ┣ 📄 password-protected-hooks.php // HTML/PHP for the menu component
+     ┗ 📄 password-protected-view.css  // site-wide main menu styling
+```
+
+Since the .css file ends with "view," it's compiled to `aquamin/dist/component-library/password-protected/password-protected-view.css`. Then, `password-protected-hooks.php` enqueues this stylesheet only on posts that have WordPress's password protection enabled.
+
 ## Global Features
 
 Aquamin includes some global features that apply site-wide across all components and blocks. Edit the code within these files to meet the requirements of your theme.
@@ -92,8 +110,6 @@ Aquamin includes some global features that apply site-wide across all components
    ┗ 📄 variables.css       // css custom properties (first in cascade)
 ```
 
-In addition, you'll find the `theme.bundle.js` and `editor.bundle.js` files, which webpack uses as an entry point for compiling global front-end styling/scripts and back-end block editor styling/scripts, respectively.
-
 ## Fonts
 You should add fonts to a `aquamin/assets/global/fonts/` folder, then add the `@font-face` definitions in the `aquamin/assets/global/fonts.css` file. Webpack will take care including your font files within the `aquamin/dist/` directory, and aquamin will enqueue them.
 
@@ -103,7 +119,7 @@ Or, you can directly enqueue any fonts from a CDN (like Google Fonts) within the
 
 You can add images for a component within an "images" folder in that component's directory (e.g. `aquamin/assets/component-library/some-component/images/icon.png`), then include them via a relative path (e.g. `background-image: url("./images/icon.png")` in `aquamin/assets/component-library/some-component/some-component-theme.css`).
 
-If you have images that multiple components need to use, create your own `aquamin/assets/images` directory for them. Then, reference them via a relative path (e.g. `background-image: url("../../images/fpo.png")` in `aquamin/assets/component-library/some-component/some-component-theme.css`).
+If you have images that multiple blocks or components need to use, create your own `aquamin/assets/images` directory for them. Then, reference them via a relative path (e.g. `background-image: url("../../images/my-image.png")` in your stylesheet.
 
 ## SVGs
 

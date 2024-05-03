@@ -1,7 +1,10 @@
 # Changelog
 
-## 7.1.1 - April 26
+## 7.1.1 - May 3 2024
 * Added support for WordPress's Interactivity API (or, more generically, for JavaScript modules) by supporting .mjs files.
+* Documented new .mjs support.
+* Removed Appearance > Block Patterns from sidebar since WordPress has added their own Appearance > Patterns link.
+* Removed *.bundle.{css,js} options in favor of adding them to the webpack.config.js (so it no longer errors if no matching files are found).
 
 ## 7.1.0 - April 15 2024
 * Implemented @wordpress/scripts with webpack, replacing Parcel 2. Now, the build tool is officially supported by the WordPress community, solving a number of previous quirks.

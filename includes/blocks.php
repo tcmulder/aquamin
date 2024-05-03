@@ -94,21 +94,6 @@ add_action( 'after_setup_theme', function() {
 } );
 
 /**
- * Expose all synced patterns under Appearance > Synced Patterns
- * 
- * @link https://www.billerickson.net/reusable-blocks-accessible-in-wordpress-admin-area
- */
-add_action( 'admin_menu', function() {
-	add_submenu_page(
-        'themes.php',
-        __( 'Block Patterns', 'aquamin' ),
-        __( 'Block Patterns', 'aquamin' ),
-        'edit_posts',
-        'edit.php?post_type=wp_block'
-    );
-} );
-
-/**
  * Enqueue back-end-only block editor scripts
  */
 add_action( 'enqueue_block_editor_assets', 'aquamin_editor_scripts' );
