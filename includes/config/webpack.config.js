@@ -12,7 +12,9 @@ const { globSync } = require('glob');
 require('dotenv').config();
 
 // exit if we don't have the right values in .env file
-if (!process.env.URL) throw new Error('No .env file with URL property found.');
+if (!process.env.URL) {
+	throw new Error('No .env file with URL property found.');
+}
 // set our environment
 const env = process.env.NODE_ENV || 'development';
 
@@ -174,7 +176,9 @@ newConfig.commonJS = {
 					const ext = path.extname(file);
 					const newName = file.replace(new RegExp(`${ext}$`), '');
 					fs.rename(file, newName, (err) => {
-						if (err) throw err;
+						if (err) {
+							throw err;
+						}
 					});
 				});
 			},
@@ -201,14 +205,30 @@ newConfig.commonJS = {
 	},
 };
 
-// allow inline svg (by ignoring *.inline.svg in @wordpress/scripts's orgConfig.commonJS object itself)
+// don't base64 all the svg images (as the default does)
 const loadInlineSVG = () => {
-	const svgConfigIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
-		return String(obj.test) === '/\\.svg$/';
+	// allow inline svg
+	const svgJSIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
+		return (
+			String(obj.test) === '/\\.svg$/' &&
+			String(obj.issuer) === '/\\.(j|t)sx?$/'
+		);
 	});
-	if (svgConfigIndex) {
-		orgConfig.commonJS.module.rules[svgConfigIndex].exclude =
-			/\.inline\.svg$/;
+	if (svgJSIndex !== -1) {
+		orgConfig.commonJS.module.rules[svgJSIndex].exclude = /\.inline\.svg$/;
+	}
+	// prevent base64 within css files
+	const svgCSSIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
+		return (
+			String(obj.test) === '/\\.svg$/' &&
+			String(obj.issuer) === '/\\.(pc|sc|sa|c)ss$/'
+		);
+	});
+	if (svgCSSIndex !== -1) {
+		orgConfig.commonJS.module.rules[svgCSSIndex].type = 'asset/resource';
+		orgConfig.commonJS.module.rules[svgCSSIndex].generator = {
+			filename: 'images/[name].[hash:8][ext]',
+		};
 	}
 };
 loadInlineSVG();

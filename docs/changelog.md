@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.1.2 - May 9 2024
+* Prevent images in CSS from being converted to base64 (links to the image with a cache hash instead).
+
 ## 7.1.1 - May 3 2024
 * Added support for WordPress's Interactivity API (or, more generically, for JavaScript modules) by supporting .mjs files.
 * Documented new .mjs support.
