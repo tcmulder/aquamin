@@ -64,6 +64,23 @@ export const deleteTestPage = async ({ page, requestUtils }) => {
 export const openPageFromEditor = async ({ page }) => {
 	await page.getByRole('button', { name: 'Update' }).click();
 	await page.getByRole('menuitem', { name: 'View Page' }).click();
+	await page.waitForLoadState('domcontentloaded')
+}
+
+/**
+ * Add logs property to subject containing console logs for front-end (not immutable)
+ * 
+ * @param {Object} props Properties
+ * @param {Object} props.subject Test subject
+ * 
+ * @returns {Array} Array of console log values
+ */
+export const getConsoleLogs = async ({ page }) => {
+	let logs = [];
+	await page.on('console', async msg => {
+		logs.push(msg.text());
+	});
+	return logs;
 }
 
 /**
@@ -79,4 +96,18 @@ export const testIsolatedScreenshot = async ({ subject, page }) => {
 		content: `${ subject.selector }{position:fixed;inset:0;z-index:999999;background:white;}`
 	});
 	await expect(page).toHaveScreenshot(imageName);
+}
+
+/**
+ * Check if console logs match expected on front-end
+ * 
+ * @param {Object} props Properties
+ * @param {Object} props.subject Test subject
+ * 
+ * @returns {boolean} True/false if logs match expected
+ */
+export const logsMatch = ({ subject }) => {
+	return subject.expectedLogs.reduce((acc, cur) => {
+		return acc && subject.logs.includes(cur);
+	}, true);
 }

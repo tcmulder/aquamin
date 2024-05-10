@@ -2,7 +2,7 @@
  * E2E tests for the My Block WP-CLI block
  */
 const { test, expect } = require('@wordpress/e2e-test-utils-playwright');
-const { openPageFromEditor, createTestPage, deleteTestPage, testIsolatedScreenshot } = require('../helpers');
+const { openPageFromEditor, createTestPage, deleteTestPage, testIsolatedScreenshot, getConsoleLogs, logsMatch } = require('../helpers');
 
 const subject = {
 	label: 'My Block WP-CLI',
@@ -12,12 +12,16 @@ const subject = {
 		title: 'My Block WP-CLI',
 		name: 'aquamin/my-block-wpcli',
 		slug: 'my-block-wpcli',
-	}
+	},
+	expectedLogs: [
+		'my-component-wpcli global script has loaded',
+	],
 };
 
 test.describe(`The block "${subject.label}"`, () => {
 
 	test.beforeEach( async({ requestUtils, page, editor }) => {
+		subject.logs = await getConsoleLogs({ page });
 		await createTestPage({ subject, page, requestUtils });
 		await editor.insertBlock({ name: subject.block.name });
 	});
@@ -39,6 +43,11 @@ test.describe(`The block "${subject.label}"`, () => {
 	test('works on front-end', async({ page }) => {
 		await openPageFromEditor({ page });
 		await expect(page.locator(subject.selector) ).toBeVisible();
+	});
+
+	test('logs from JS', async({ page }) => {
+		await openPageFromEditor({ page });
+		expect(logsMatch({ subject })).toBe(true);
 	});
 
 	test('matches reference screenshot', async({ page }) => {

@@ -2,7 +2,7 @@
  * E2E tests for the My Block Interactive block
  */
 const { test, expect } = require('@wordpress/e2e-test-utils-playwright');
-const { openPageFromEditor, createTestPage, deleteTestPage, testIsolatedScreenshot } = require('../helpers');
+const { openPageFromEditor, createTestPage, deleteTestPage, testIsolatedScreenshot, logsMatch, getConsoleLogs } = require('../helpers');
 
 const subject = {
 	label: 'My Block Interactive',
@@ -12,12 +12,21 @@ const subject = {
 		title: 'My Block Interactive',
 		name: 'aquamin/my-block-interactive',
 		slug: 'my-block-interactive',
-	}
+	},
+	expectedLogs: [
+		'Interactive block module loads Wordpress dependency: true',
+		'Interactive block module loads node_modules dependency: true',
+		'Interactive block module loads internal dependency: true',
+		'Interactive block module theme loads Wordpress dependency: true',
+		'Interactive block module theme loads node_modules dependency: true',
+		'Interactive block module theme loads internal dependency: true',
+	],
 };
 
 test.describe(`The block "${subject.label}"`, () => {
 
 	test.beforeEach( async({ requestUtils, page, editor }) => {
+		subject.logs = await getConsoleLogs({ page });
 		await createTestPage({ subject, page, requestUtils });
 		await editor.insertBlock({ name: subject.block.name });
 	});
@@ -39,6 +48,11 @@ test.describe(`The block "${subject.label}"`, () => {
 	test('works on front-end', async({ page }) => {
 		await openPageFromEditor({ page });
 		await expect(page.locator(subject.selector) ).toBeVisible();
+	});
+
+	test('logs from JS', async({ page }) => {
+		await openPageFromEditor({ page });
+		expect(logsMatch({ subject })).toBe(true);
 	});
 
 	test('matches reference screenshot', async({ page }) => {
