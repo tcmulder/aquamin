@@ -3,7 +3,10 @@
 	"version": "1.0.0",
 	"description": "E2E testing for the aquamin theme",
 	"scripts": {
-		"start": "npm run theme:clean && npm run theme:seed && npm run wpcli && npm run theme:build && npm run env:start && npm run test:e2e",
+		"start": "npm run theme:clean && npm run theme:build && npm run env:start && npm run theme:seed && npm run wpcli && npm run theme:build && npm run test:e2e",
+		"env:start": "wp-env start && wp-env run tests-cli wp theme activate aquamin",
+		"env:stop": "wp-env stop",
+		"env:ssh": "wp-env run wordpress /bin/bash",
 		"theme:build": "cd ../../themes/aquamin && npm run build",
 		"theme:clean": "cd ../../themes/aquamin && rm -rf dist/",
 		"theme:seed": "rsync -a ./seed/themes/aquamin/ ../../themes/aquamin",
@@ -11,8 +14,6 @@
 		"wpcli:block:dynamic": "wp-env run tests-cli wp aquamin block create --block_title='My Block WP-CLI Dynamic' --block_slug='my-block-wpcli-dynamic' --block_dir='my-block-wpcli-dynamic' --block_namespace='MyBlockWPCLIDynamic' --block_desc='The My Block WP-CLI Dynamic block.' --has_js --is_dynamic",
 		"wpcli:component": "wp-env run tests-cli wp aquamin component create --component_title='My Component WP-CLI' --component_slug='my-component-wpcli' --component_dir='my-component-wpcli' --has_template_part='my-component-wpcli' --has_view_js --has_theme_js --has_view_css --has_theme_css --has_block_editor_css --has_hooks",
 		"wpcli": "npm run wpcli:block && npm run wpcli:block:dynamic && npm run wpcli:component",
-		"env:start": "wp-env start && wp-env run tests-cli wp theme activate aquamin",
-		"env:stop": "wp-env stop",
 		"test:e2e:ui": "wp-scripts test-playwright --config playwright.config.js --ui",
 		"test:e2e:headed": "wp-scripts test-playwright --config playwright.config.js --headed",
 		"test:e2e": "wp-scripts test-playwright --config playwright.config.js"
