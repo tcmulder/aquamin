@@ -52,17 +52,18 @@ export const deleteTestPage = async ({ page, requestUtils }) => {
 }
 
 /**
- * Get WordPress post preview and wait for the "generating preview" to leave
+ * View page from editor
+ * 
+ * Clicks "publish" first then "view page".
  * 
  * @param {Object} props Properties
- * @param {Object} props.editor WordPress playwright editor object
+ * @param {Object} props.page Playwright page object
  * 
  * @returns Playwright page object
  */
-export const loadPostPreview = async ({ editor }) => {
-	const preview = await editor.openPreviewPage();
-	await expect(preview.locator('.editor-post-preview-button__interstitial-message')).not.toBeVisible();
-	return preview;
+export const openPageFromEditor = async ({ page }) => {
+	await page.getByRole('button', { name: 'Update' }).click();
+	await page.getByRole('menuitem', { name: 'View Page' }).click();
 }
 
 /**

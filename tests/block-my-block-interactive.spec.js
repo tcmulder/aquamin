@@ -2,7 +2,7 @@
  * E2E tests for the My Block Interactive block
  */
 const { test, expect } = require('@wordpress/e2e-test-utils-playwright');
-const { loadPostPreview, createTestPage, deleteTestPage, testIsolatedScreenshot } = require('../helpers');
+const { openPageFromEditor, createTestPage, deleteTestPage, testIsolatedScreenshot } = require('../helpers');
 
 const subject = {
 	label: 'My Block Interactive',
@@ -31,25 +31,26 @@ test.describe(`The block "${subject.label}"`, () => {
 		await expect(block.name).toBe(subject.block.name);
 	});
 
-	test('uses SVG icon', async({ page }) => {
+	test('uses SVG icon', async({ page, editor }) => {
+		editor.openDocumentSettingsSidebar();
 		expect(await page.locator(`.block-editor-block-card svg`).isVisible()).toBe(true);
 	});
 
-	test('works on front-end', async({ editor }) => {
-		const preview = await loadPostPreview({ editor });
-		await expect(preview.locator(subject.selector) ).toBeVisible();
+	test('works on front-end', async({ page }) => {
+		await openPageFromEditor({ page });
+		await expect(page.locator(subject.selector) ).toBeVisible();
 	});
 
-	test('matches reference screenshot', async({ editor }) => {
-		const preview = await loadPostPreview({ editor });
-		await testIsolatedScreenshot({ subject, page: preview });
+	test('matches reference screenshot', async({ page }) => {
+		await openPageFromEditor({ page });
+		await testIsolatedScreenshot({ subject, page });
 	});
 	
-	test('interactivity works', async({ editor }) => {
-		const preview = await loadPostPreview({ editor });
-		await expect(preview.getByText('This element is now visible!')).not.toBeVisible();
-		await preview.getByRole('button', { name: 'Toggle' }).click();
-		await expect(preview.getByText('This element is now visible!')).toBeVisible();
+	test('interactivity works', async({ page }) => {
+		await openPageFromEditor({ page });
+		await expect(page.getByText('This element is now visible!')).not.toBeVisible();
+		await page.getByRole('button', { name: 'Toggle' }).click();
+		await expect(page.getByText('This element is now visible!')).toBeVisible();
 	});
 
 });
