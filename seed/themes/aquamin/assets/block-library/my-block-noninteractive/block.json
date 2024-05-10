@@ -1,0 +1,31 @@
+{
+	"apiVersion": 3,
+	"title": "My Block Noninteractive",
+	"description": "The My Block Noninteractive block.",
+	"text-domain": "aquamin",
+	"name": "aquamin/my-block-noninteractive",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"demoText": {
+			"type": "string",
+			"default": "The My Block Noninteractive block. ← replace this with your own code"
+		}
+	},
+	"supports": {
+		"customClassName": true,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": ["top", "bottom"],
+			"padding": ["top", "bottom"]
+		}
+	},
+	"viewScript": [
+		"file:./my-block-noninteractive-view.js",
+		"aquamin-browsersync"
+	],
+	"script": ["aquamin-browsersync"],
+	"style": ["file:./my-block-noninteractive-view.css"],
+	"editorScript": "file:./index.js"
+}

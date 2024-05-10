@@ -1,0 +1,28 @@
+{
+	"apiVersion": 3,
+	"title": "My Block Interactive",
+	"description": "Demo of the Interactivity API",
+	"text-domain": "aquamin",
+	"name": "aquamin/my-block-interactive",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"demoText": {
+			"type": "string",
+			"default": "Demo of the Interactivity API ← replace this with your own code"
+		}
+	},
+	"supports": {
+		"interactivity": true,
+		"customClassName": true,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": ["top", "bottom"],
+			"padding": ["top", "bottom"]
+		}
+	},
+	"viewScriptModule": ["file:./my-block-interactive-view.js"],
+	"style": ["file:./my-block-interactive-view.css"],
+	"editorScript": "file:./index.js"
+}

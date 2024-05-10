@@ -1,0 +1,30 @@
+{
+	"name": "aquamin-e2e",
+	"version": "1.0.0",
+	"description": "E2E testing for the aquamin theme",
+	"scripts": {
+		"start": "npm run theme:clean && npm run theme:seed && npm run wpcli && npm run theme:build && npm run env:start && npm run test:e2e",
+		"theme:build": "cd ../../themes/aquamin && npm run build",
+		"theme:clean": "cd ../../themes/aquamin && rm -rf dist/",
+		"theme:seed": "rsync -a ./seed/themes/aquamin/ ../../themes/aquamin",
+		"wpcli:block": "wp-env run tests-cli wp aquamin block create --block_title='My Block WP-CLI' --block_slug='my-block-wpcli' --block_dir='my-block-wpcli' --block_namespace='MyBlockWPCLI' --block_desc='The My Block WP-CLI block.' --has_inner_block --inner_block_title='My Block WP-CLI Item' --inner_block_slug='my-block-wpcli-item' --inner_block_dir='my-block-wpcli-item' --inner_block_namespace='MyBlockWPCLIItem' --inner_block_desc='The My Block WP-CLI Item inner block.' --has_js --is_dynamic='n'",
+		"wpcli:block:dynamic": "wp-env run tests-cli wp aquamin block create --block_title='My Block WP-CLI Dynamic' --block_slug='my-block-wpcli-dynamic' --block_dir='my-block-wpcli-dynamic' --block_namespace='MyBlockWPCLIDynamic' --block_desc='The My Block WP-CLI Dynamic block.' --has_js --is_dynamic",
+		"wpcli:component": "wp-env run tests-cli wp aquamin component create --component_title='My Component WP-CLI' --component_slug='my-component-wpcli' --component_dir='my-component-wpcli' --has_template_part='my-component-wpcli' --has_view_js --has_theme_js --has_view_css --has_theme_css --has_block_editor_css --has_hooks",
+		"wpcli": "npm run wpcli:block && npm run wpcli:block:dynamic && npm run wpcli:component",
+		"env:start": "wp-env start && wp-env run tests-cli wp theme activate aquamin",
+		"env:stop": "wp-env stop",
+		"test:e2e:ui": "wp-scripts test-playwright --config playwright.config.js --ui",
+		"test:e2e:headed": "wp-scripts test-playwright --config playwright.config.js --headed",
+		"test:e2e": "wp-scripts test-playwright --config playwright.config.js"
+	},
+	"author": "@tcmulder",
+	"license": "ISC",
+	"devDependencies": {
+		"@playwright/test": "^1.44.0",
+		"@types/node": "^20.12.10",
+		"@wordpress/e2e-test-utils-playwright": "^0.25.0",
+		"@wordpress/env": "^9.9.0",
+		"@wordpress/scripts": "^27.8.0",
+		"webpack-merge": "^5.10.0"
+	}
+}

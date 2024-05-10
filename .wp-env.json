@@ -1,0 +1,13 @@
+{
+	"core": null,
+	"plugins": ["."],
+	"themes": ["../../themes/aquamin"],
+	"env": {
+		"tests": {
+			"mappings": {
+				"wp-content/plugins/aquamin-tests": ".",
+				"wp-content": "../../wp-content"
+			}
+		}
+	}
+}

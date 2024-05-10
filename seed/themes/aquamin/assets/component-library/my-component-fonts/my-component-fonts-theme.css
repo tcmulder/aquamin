@@ -1,0 +1,23 @@
+/**
+ * My Component Fonts front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+@font-face {
+	font-family: "My Font";
+	src: url("./fonts/my-font/my-font.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+body {
+	&::before {
+		content: "font loaded via css";
+		position: absolute;
+		inset: -2px 2px auto auto;
+		line-height: 1;
+		font-family: "My Font", monospace;
+		color: #00caa9;
+	}
+}

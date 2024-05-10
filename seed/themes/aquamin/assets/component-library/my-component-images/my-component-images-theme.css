@@ -1,0 +1,11 @@
+/**
+ * My Component Images front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+
+body {
+	background: url("./images/my-image.svg") calc(100% - 1em) 1em no-repeat;
+	background-size: 4em;
+}
