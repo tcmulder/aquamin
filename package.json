@@ -1,5 +1,5 @@
 {
-	"name": "aquamin-e2e",
+	"name": "aquatester",
 	"version": "1.0.0",
 	"description": "E2E testing for the aquamin theme",
 	"scripts": {
