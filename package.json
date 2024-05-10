@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"description": "E2E testing for the aquamin theme",
 	"scripts": {
-		"start": "npm run theme:clean && npm run theme:build && npm run env:start && npm run theme:seed && npm run wpcli && npm run theme:build && npm run test:e2e",
+		"start": "npm run theme:clean && npm run theme:build && npm run env:start && npm run theme:seed && npm run wpcli && npm run theme:build && npm run test:e2e && echo 'Happy testing!'",
+		"stop": "npm run env:stop && echo 'Thanks for stopping by!'",
 		"env:start": "wp-env start && wp-env run tests-cli wp theme activate aquamin",
 		"env:stop": "wp-env stop",
 		"env:ssh": "wp-env run wordpress /bin/bash",
