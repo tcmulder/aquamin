@@ -42,18 +42,18 @@ test.describe(`The block "${subject.label}"`, () => {
 		expect(await page.locator(`.block-editor-block-card svg`).isVisible()).toBe(true);
 	});
 
-	test('works on front-end', async({ page }) => {
-		await openPageFromEditor({ page });
+	test('works on front-end', async({ page, requestUtils }) => {
+		await openPageFromEditor({ page, requestUtils });
 		await expect(page.locator(subject.selector) ).toBeVisible();
 	});
 
-	test('logs from JS', async({ page }) => {
-		await openPageFromEditor({ page });
+	test('logs from JS', async({ page, requestUtils }) => {
+		await openPageFromEditor({ page, requestUtils });
 		expect(logsMatch({ subject })).toBe(true);
 	});
 
-	test('matches reference screenshot', async({ page }) => {
-		await openPageFromEditor({ page });
+	test('matches reference screenshot', async({ page, requestUtils }) => {
+		await openPageFromEditor({ page, requestUtils });
 		await testIsolatedScreenshot({ subject, page });
 	});
 

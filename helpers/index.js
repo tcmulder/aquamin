@@ -58,12 +58,13 @@ export const deleteTestPage = async ({ page, requestUtils }) => {
  * 
  * @param {Object} props Properties
  * @param {Object} props.page Playwright page object
+ * @param {Object} props.requestUtils WordPress E2E utils object
  * 
  * @returns Playwright page object
  */
-export const openPageFromEditor = async ({ page }) => {
+export const openPageFromEditor = async ({ page, requestUtils }) => {
 	await page.getByRole('button', { name: 'Update' }).click();
-	await page.getByRole('menuitem', { name: 'View Page' }).click();
+	await page.goto(`${ requestUtils.baseURL }?page_id=${ getPostIdFromUrl(page.url()) }`);
 	await page.waitForLoadState('domcontentloaded')
 }
 
