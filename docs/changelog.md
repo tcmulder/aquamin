@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.1.3 - June 17 2024
+* Fix PHP error if theme is activated without an initial dist directory (i.e. prior to running an initial `npm run build`).
+
 ## 7.1.2 - May 9 2024
 * Prevent images in CSS from being converted to base64 (links to the image with a cache hash instead).
 

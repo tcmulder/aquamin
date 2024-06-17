@@ -33,14 +33,17 @@ add_action( 'after_setup_theme', function() {
 add_action( 'init', function() {
 
 	// loop through all files (this is slightly faster than glob matching block.json with regex)
-	$dir_iterator = new RecursiveDirectoryIterator( AQUAMIN_DIST . '/block-library' );
-	$iterator = new RecursiveIteratorIterator( $dir_iterator, RecursiveIteratorIterator::SELF_FIRST );
-	// register a block for each block.json found
-	foreach ( $iterator as $file ) {
-		if ( basename( $file ) === 'block.json' ) {
-			register_block_type_from_metadata( $file->getPathname() );
+	if ( is_dir( AQUAMIN_DIST . '/block-library' ) ) {
+		$dir_iterator = new RecursiveDirectoryIterator( AQUAMIN_DIST . '/block-library' );
+		$iterator = new RecursiveIteratorIterator( $dir_iterator, RecursiveIteratorIterator::SELF_FIRST );
+		// register a block for each block.json found
+		foreach ( $iterator as $file ) {
+			if ( basename( $file ) === 'block.json' ) {
+				register_block_type_from_metadata( $file->getPathname() );
+			}
 		}
 	}
+
 } );
 
 /**
