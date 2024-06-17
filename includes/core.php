@@ -79,21 +79,37 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 		add_action( 'wp_enqueue_scripts', 'aquamin_theme_scripts' );
 		function aquamin_theme_scripts() {
 
-			$asset = include AQUAMIN_DIST . '/global/theme.bundle.asset.php';
-			wp_enqueue_style(
-				'aquamin-style',
-				AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.css',
-				$asset['dependencies'],
-				$asset['version'],
-				'screen'
-			);
-			wp_enqueue_script(
-				'aquamin-scripts',
-				AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.js',
-				$asset['dependencies'],
-				$asset['version'],
-				true
-			);
+			// load bundled global theme CSS
+			if ( file_exists( AQUAMIN_DIST . '/global/theme.bundle.asset.php' ) ) {
+				$asset = include AQUAMIN_DIST . '/global/theme.bundle.asset.php';
+				wp_enqueue_style(
+					'aquamin-style',
+					AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.css',
+					array(), // note theme.bundle.assets.php dependencies are generated from JS and not CSS
+					$asset['version'],
+					'screen'
+				);
+				// load bundled global theme CommonJS JavaScript
+				wp_enqueue_script(
+					'aquamin-scripts',
+					AQUAMIN_TEMPLATE_URL . '/dist/global/theme.bundle.js',
+					$asset['dependencies'],
+					$asset['version'],
+					true
+				);
+			}
+
+			// load bundled global theme ESmodules JavaScript
+			if ( file_exists( AQUAMIN_DIST . '/global/theme.module.bundle.asset.php' ) ) {
+				$asset = include AQUAMIN_DIST . '/global/theme.module.bundle.asset.php';
+				wp_enqueue_script_module(
+					'aquamin-scripts-module',
+					AQUAMIN_TEMPLATE_URL . '/dist/global/theme.module.bundle.js',
+					$asset['dependencies'],
+					$asset['version'],
+					true
+				);
+			}
 
 		}
 

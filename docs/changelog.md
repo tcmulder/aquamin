@@ -1,5 +1,18 @@
 # Changelog
 
+## 7.1.3 - June 17 2024
+* Fix PHP error if theme is activated without an initial dist directory (i.e. prior to running an initial `npm run build`).
+
+## 7.1.2 - May 9 2024
+* Prevent images in CSS from being converted to base64 (links to the image with a cache hash instead).
+
+## 7.1.1 - May 3 2024
+* Added support for WordPress's Interactivity API (or, more generically, for JavaScript modules) by supporting .mjs files.
+* Documented new .mjs support.
+* Broke component and theme documentation into separate pages.
+* Removed Appearance > Block Patterns from sidebar since WordPress has added their own Appearance > Patterns link.
+* Removed *.bundle.{css,js} options in favor of adding them to the webpack.config.js (so it no longer errors if no matching files are found).
+
 ## 7.1.0 - April 15 2024
 * Implemented @wordpress/scripts with webpack, replacing Parcel 2. Now, the build tool is officially supported by the WordPress community, solving a number of previous quirks.
 
