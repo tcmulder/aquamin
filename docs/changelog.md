@@ -1,7 +1,8 @@
 # Changelog
 
-## 7.1.4
-* Add `npm run clean` to clear dist directory (otherwise maintains old blocks and such).
+## 7.1.4 - July 29 2024
+* Fixed "failed to resolve module" error for JavaScript module assets.
+* Added `npm run clean` to clear dist directory (otherwise maintains old blocks and such).
 
 ## 7.1.3 - June 17 2024
 * Fix PHP error if theme is activated without an initial dist directory (i.e. prior to running an initial `npm run build`).

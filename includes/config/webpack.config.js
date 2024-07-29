@@ -2,6 +2,7 @@
  * Initialize dependencies
  */
 const path = require('path');
+const exec = require('child_process').exec;
 const CopyPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
@@ -171,10 +172,26 @@ newConfig.commonJS = {
 		// @see https://www.npmjs.com/package/webpack-remove-empty-scripts
 		new EventHooksPlugin({
 			afterEmit: () => {
+				// replace double file extensions
 				const duplicateExt = globSync('./dist/**/*{.css.css,.js.js}');
-				duplicateExt.forEach((file) => {
+				duplicateExt?.forEach((file) => {
 					const ext = path.extname(file);
 					const newName = file.replace(new RegExp(`${ext}$`), '');
+					fs.rename(file, newName, (err) => {
+						if (err) {
+							throw err;
+						}
+					});
+				});
+				// replace incorrect assets file after double file extension rename
+				const duplicateExtJsAsset = globSync(
+					'./dist/**/*.js.asset.php',
+				);
+				duplicateExtJsAsset?.forEach((file) => {
+					const newName = file.replace(
+						new RegExp(`\.js\.asset\.php$`),
+						'.asset.php',
+					);
 					fs.rename(file, newName, (err) => {
 						if (err) {
 							throw err;
@@ -205,30 +222,14 @@ newConfig.commonJS = {
 	},
 };
 
-// don't base64 all the svg images (as the default does)
+// allow inline svg (by ignoring *.inline.svg in @wordpress/scripts's orgConfig.commonJS object itself)
 const loadInlineSVG = () => {
-	// allow inline svg
-	const svgJSIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
-		return (
-			String(obj.test) === '/\\.svg$/' &&
-			String(obj.issuer) === '/\\.(j|t)sx?$/'
-		);
+	const svgConfigIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
+		return String(obj.test) === '/\\.svg$/';
 	});
-	if (svgJSIndex !== -1) {
-		orgConfig.commonJS.module.rules[svgJSIndex].exclude = /\.inline\.svg$/;
-	}
-	// prevent base64 within css files
-	const svgCSSIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
-		return (
-			String(obj.test) === '/\\.svg$/' &&
-			String(obj.issuer) === '/\\.(pc|sc|sa|c)ss$/'
-		);
-	});
-	if (svgCSSIndex !== -1) {
-		orgConfig.commonJS.module.rules[svgCSSIndex].type = 'asset/resource';
-		orgConfig.commonJS.module.rules[svgCSSIndex].generator = {
-			filename: 'images/[name].[hash:8][ext]',
-		};
+	if (svgConfigIndex) {
+		orgConfig.commonJS.module.rules[svgConfigIndex].exclude =
+			/\.inline\.svg$/;
 	}
 };
 loadInlineSVG();
