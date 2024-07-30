@@ -2,7 +2,6 @@
  * Initialize dependencies
  */
 const path = require('path');
-const exec = require('child_process').exec;
 const CopyPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
