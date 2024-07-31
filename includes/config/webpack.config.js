@@ -221,14 +221,30 @@ newConfig.commonJS = {
 	},
 };
 
-// allow inline svg (by ignoring *.inline.svg in @wordpress/scripts's orgConfig.commonJS object itself)
+// don't base64 all the svg images (as done by default)
 const loadInlineSVG = () => {
-	const svgConfigIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
-		return String(obj.test) === '/\\.svg$/';
+	// allow inline svg
+	const svgJSIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
+		return (
+			String(obj.test) === '/\\.svg$/' &&
+			String(obj.issuer) === '/\\.(j|t)sx?$/'
+		);
 	});
-	if (svgConfigIndex) {
-		orgConfig.commonJS.module.rules[svgConfigIndex].exclude =
-			/\.inline\.svg$/;
+	if (svgJSIndex !== -1) {
+		orgConfig.commonJS.module.rules[svgJSIndex].exclude = /\.inline\.svg$/;
+	}
+	// prevent base64 within css files
+	const svgCSSIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
+		return (
+			String(obj.test) === '/\\.svg$/' &&
+			String(obj.issuer) === '/\\.(pc|sc|sa|c)ss$/'
+		);
+	});
+	if (svgCSSIndex !== -1) {
+		orgConfig.commonJS.module.rules[svgCSSIndex].type = 'asset/resource';
+		orgConfig.commonJS.module.rules[svgCSSIndex].generator = {
+			filename: 'images/[name].[hash:8][ext]',
+		};
 	}
 };
 loadInlineSVG();
