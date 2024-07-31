@@ -63,7 +63,7 @@ export const deleteTestPage = async ({ page, requestUtils }) => {
  * @returns Playwright page object
  */
 export const openPageFromEditor = async ({ page, requestUtils }) => {
-	await page.getByRole('button', { name: 'Update' }).click();
+	await page.getByRole('button', { name: 'Save', exact: true }).click();
 	await page.goto(`${ requestUtils.baseURL }?page_id=${ getPostIdFromUrl(page.url()) }`);
 	await page.waitForLoadState('domcontentloaded')
 }
