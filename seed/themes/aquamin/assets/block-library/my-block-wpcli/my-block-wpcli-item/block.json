@@ -1,0 +1,19 @@
+{
+	"apiVersion": 3,
+	"title": "My Block WP-CLI Item",
+	"description": "The My Block WP-CLI Item inner block.",
+	"text-domain": "aquamin",
+	"name": "aquamin/my-block-wpcli-item",
+	"parent": ["aquamin/my-block-wpcli"],
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"demoText": {
+			"type": "string",
+			"default": "The My Block WP-CLI Item inner block. ← replace with your own code"
+		}
+	},
+	"supports": {},
+	"editorScript": "file:./index.js"
+}

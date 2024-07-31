@@ -1,0 +1,10 @@
+/**
+ * My Component WP-CLI front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+
+.my-component-wpcli i::after {
+	content: " 🪄 "; /* NOTE: replace all this with your own code */
+}

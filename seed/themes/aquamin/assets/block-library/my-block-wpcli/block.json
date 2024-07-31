@@ -1,0 +1,27 @@
+{
+	"apiVersion": 3,
+	"title": "My Block WP-CLI",
+	"description": "The My Block WP-CLI block.",
+	"text-domain": "aquamin",
+	"name": "aquamin/my-block-wpcli",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"demoText": {
+			"type": "string",
+			"default": "The My Block WP-CLI block. ← replace this with your own code"
+		}
+	},
+	"supports": {
+		"customClassName": true,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": ["top", "bottom"],
+			"padding": ["top", "bottom"]
+		}
+	},
+	"viewScript": ["file:./my-block-wpcli-view.js"],
+	"style": ["file:./my-block-wpcli-view.css"],
+	"editorScript": "file:./index.js"
+}

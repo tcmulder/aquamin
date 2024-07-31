@@ -1,0 +1,34 @@
+{
+	"apiVersion": 3,
+	"title": "My Block WP-CLI Dynamic",
+	"description": "The My Block WP-CLI Dynamic block.",
+	"text-domain": "aquamin",
+	"name": "aquamin/my-block-wpcli-dynamic",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"aquaminClassNameAni": {
+			"type": "array",
+			"default": []
+		},
+		"aquaminClassNameHide": {
+			"type": "array",
+			"default": []
+		}
+	},
+	"supports": {
+		"customClassName": true,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": ["top", "bottom"],
+			"padding": ["top", "bottom"]
+		}
+	},
+	"viewScript": ["file:./my-block-wpcli-dynamic-view.js"],
+	"style": [
+		"file:./my-block-wpcli-dynamic-view.css"
+	],
+	"render": "file:./my-block-wpcli-dynamic-view.php",
+	"editorScript": "file:./index.js"
+}

@@ -13,7 +13,7 @@
  */
 add_action( 'wp_enqueue_scripts', 'aquamin_component_my_component_noninteractive_register_scripts' );
 function aquamin_component_my_component_noninteractive_register_scripts() {
-	$asset = include AQUAMIN_DIST . '/component-library/my-component-noninteractive/my-component-noninteractive-view.js.asset.php';
+	$asset = include AQUAMIN_DIST . '/component-library/my-component-noninteractive/my-component-noninteractive-view.asset.php';
 	wp_register_script(
 		'aquamin-component-my-component-noninteractive-script',
 		get_template_directory_uri() . '/dist/component-library/my-component-noninteractive/my-component-noninteractive-view.js',
