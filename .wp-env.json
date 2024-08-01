@@ -5,7 +5,7 @@
 	"env": {
 		"tests": {
 			"mappings": {
-				"wp-content/plugins/aquamin-tests": ".",
+				"wp-content/plugins/aquamin-e2e-tests": ".",
 				"wp-content": "../../wp-content"
 			}
 		}

@@ -25,8 +25,8 @@
 	"devDependencies": {
 		"@playwright/test": "^1.44.0",
 		"@types/node": "^20.12.10",
-		"@wordpress/e2e-test-utils-playwright": "^0.25.0",
-		"@wordpress/env": "^9.9.0",
+		"@wordpress/e2e-test-utils-playwright": "^1.4.0",
+		"@wordpress/env": "^10.4.0",
 		"@wordpress/scripts": "^27.8.0",
 		"webpack-merge": "^5.10.0"
 	}

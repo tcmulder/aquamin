@@ -62,6 +62,9 @@ test.describe(`The block "${subject.label}"`, () => {
 	
 	test('interactivity works', async({ page, requestUtils }) => {
 		await openPageFromEditor({ page, requestUtils });
+		await page.addStyleTag({
+			content: `#site-navigation{visibility:hidden !important;}`
+		});
 		await expect(page.getByText('This element is now visible!')).not.toBeVisible();
 		await page.getByRole('button', { name: 'Toggle' }).click();
 		await expect(page.getByText('This element is now visible!')).toBeVisible();

@@ -2,7 +2,7 @@
  * E2E tests for the My Block Noninteractive block
  */
 const { test, expect } = require('@wordpress/e2e-test-utils-playwright');
-const { openPageFromEditor, createTestPage, deleteTestPage, testIsolatedScreenshot, getConsoleLogs, logsMatch } = require('../helpers');
+const { openPageFromEditor, createTestPage, deleteTestPage, testIsolatedScreenshot, logsMatch, getConsoleLogs } = require('../helpers');
 
 const subject = {
 	label: 'My Block Noninteractive',

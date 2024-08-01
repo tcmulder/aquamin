@@ -29,7 +29,12 @@ export const createTestPage = async ({ subject, page, requestUtils }) => {
 	const newPage = await requestUtils.createPage( {
 		title: `E2E test for ${ subject.label }`,
 		status: 'publish',
+		showWelcomeGuide: false,
 	} );
+	const welcome = await page.isVisible('button[aria-label="Close"]');
+	if (welcome) {
+		await page.locator('button[aria-label="Close"]').click();
+	}
 	await page.goto(`${ requestUtils.baseURL }/wp-admin/post.php?post=${ newPage.id }&action=edit`);
 }
 
