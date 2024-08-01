@@ -10,6 +10,8 @@
 
 > 💡 Tip: if node_modules doesn't exist yet you can run `test -d "node_modules" || npm install && npm run start`.
 
+> ⛔️ Warning: Docker doesn't follow symlinks, so this must be cloned or copied into the plugins directory.
+
 ## Configuration
 
 - Ensure the `seed` directory contains any `block-library` or `component-library` features you would like to use (see `aquamin/_gitignore-preserve/wp-content/themes/aquamin/assets` for latest).
