@@ -1,7 +1,8 @@
 # Changelog
 
-## 7.1.4 - July 31 2024
+## 7.1.4 - August 5 2024
 * Fixed "failed to resolve module" error for JavaScript module assets.
+* Fixed PHP errors prior to running build command.
 * Added `npm run clean` to clear dist directory (otherwise maintains old blocks and such).
 
 ## 7.1.3 - June 17 2024
