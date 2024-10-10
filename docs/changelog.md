@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.1.5 - October 10 2024
+* Prevent PostCSS from allowing nested CSS ([see this issue](https://github.com/Yoast/wordpress-seo/issues/20535)).
+
 ## 7.1.4 - August 5 2024
 * Fixed "failed to resolve module" error for JavaScript module assets.
 * Fixed PHP errors prior to running build command.
