@@ -68,7 +68,7 @@ Though static JavaScript blocks are generally best, sometimes blocks require bac
 
 ## Hooks and Filters
 
-Add whatever WordPress hooks and filters a block requires to a `hooks.php` file in that block's directory. (Don't add them to `functions.php` to ensure everything stays organized in the block's own directory—see [Block Philosophy](#block-philosophy).)
+Add whatever WordPress hooks and filters a block requires to a `hooks.php` file in that block's directory. (Don't add them to `functions.php` to ensure everything stays organized in the block's own directory—see [Block Philosophy](#block-philosophy).) You can see an example within `aquamin/assets/block-library/extend-date/date-hooks.php`, which allows you to insert an auto-updating current year with the core date block.
 
 ## Block Utilities
 
@@ -83,8 +83,9 @@ You can edit core blocks (e.g. add custom block settings, set variations, insert
 ┗ 📂 block-library         // all block edits reside within assets/block-library/*
    ┣ 📂 extend-styles      // geneal block editor styling tweaks/fixes
    ┣ 📂 extend-ani         // animations you can apply to core or custom blocks
-   ┣ 📂 extend-core-button // core button block style overrides
-   ┣ 📂 extend-core-column // core column options (like mobile ordering and widths)
+   ┣ 📂 extend-core-button // core/button block style overrides
+   ┣ 📂 extend-core-column // core/column options like mobile ordering/widths
+   ┣ 📂 extend-date        // core/post-date option to show current date
    ┗ 📂 extend-show-hide   // generic responsive show/hide functionality
 ```
 You can use these as a model for creating your own edits (and remove any you don't want).

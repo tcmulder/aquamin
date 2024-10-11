@@ -1,0 +1,29 @@
+/**
+ * Date block editor styling
+ *
+ * Defines block editor styling. All editor.css files
+ * like this one load globally within the back-end
+ * block editor. You can import related view.css files
+ * here for front-end styling in the back-end block editor.
+ */
+.current-year {
+	overflow: hidden;
+	position: relative;
+	&:hover {
+		overflow: visible;
+	}
+	&::before {
+		content: "YYYY";
+	}
+	&.is-selected {
+		&::before {
+			content: "(Current Year)";
+		}
+	}
+	time {
+		position: absolute;
+		inset: 0;
+		margin: auto;
+		opacity: 0;
+	}
+}
