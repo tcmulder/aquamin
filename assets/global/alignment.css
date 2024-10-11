@@ -90,7 +90,7 @@
  * or there will be unneeded spacing. This disabled that margin.
  */
 :is(.torso, .is-root-container).is-layout-constrained {
-	& > *:not(ul, ol, h1, h2, h3, h4, h5, h6) {
+	& > * {
 		margin-block-start: unset;
 	}
 }

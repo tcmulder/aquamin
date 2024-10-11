@@ -202,7 +202,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p class="">WordPress controls alignment via the <em>theme.json's settings.layout object</em>. <em>Bey default, blocks are the content width <strong>(content width)</strong>, but can be set to wide width <strong>(wide width)</strong> or full width <strong>(full width)</strong>. All but full width honor their container's padding. So, we get…</em></p>
+<p class="">WordPress controls alignment via <em>theme.json.settings.layout object</em>. <em>Bey default, blocks are the content width <strong>(content width)</strong>, but can be set to wide width <strong>(wide width)</strong> or full width <strong>(full width)</strong>. All but full width honor their container's padding. So, we get…</em></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
@@ -428,15 +428,15 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"align":"full","backgroundColor":"0-0","layout":{"inherit":true,"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:group {"align":"full","layout":{"inherit":false,"contentSize":"","wideSize":"","type":"constrained"}} -->
-<div class="wp-block-group alignfull"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">a basic wide inner block is <strong>this width</strong> like usual,</h4>
+<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:group {"align":"full","style":{"border":{"width":"1px"}},"borderColor":"0-9","layout":{"inherit":false,"contentSize":"","wideSize":"","type":"constrained"}} -->
+<div class="wp-block-group alignfull has-border-color has-0-9-border-color" style="border-width:1px"><!-- wp:heading {"level":4,"style":{"elements":{"link":{"color":{"text":"var:preset|color|0-0"}}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background has-link-color">a basic inner block is <strong>this width</strong> like usual,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","layout":{"inherit":false,"contentSize":"600px","wideSize":"600px","type":"constrained"}} -->
-<div class="wp-block-group alignwide"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">but a nested block with custom wide width is <strong>width</strong>,</h4>
+<!-- wp:group {"align":"full","style":{"border":{"width":"1px"}},"borderColor":"0-9","layout":{"inherit":false,"contentSize":"600px","wideSize":"600px","type":"constrained"}} -->
+<div class="wp-block-group alignfull has-border-color has-0-9-border-color" style="border-width:1px"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">...but a nested block with custom width is <strong>width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
@@ -772,8 +772,8 @@
   <wp:post_id>10</wp:post_id>
   <wp:post_date>2022-10-04 00:03:42</wp:post_date>
   <wp:post_date_gmt>2022-10-04 00:03:42</wp:post_date_gmt>
-  <wp:post_modified>2024-10-11 16:36:23</wp:post_modified>
-  <wp:post_modified_gmt>2024-10-11 16:36:23</wp:post_modified_gmt>
+  <wp:post_modified>2024-10-11 17:18:03</wp:post_modified>
+  <wp:post_modified_gmt>2024-10-11 17:18:03</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>alignment</wp:post_name>
@@ -794,11 +794,11 @@
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_yoast_wpseo_content_score</wp:meta_key>
-    <wp:meta_value><![CDATA[60]]></wp:meta_value>
+    <wp:meta_value><![CDATA[90]]></wp:meta_value>
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_yoast_wpseo_estimated-reading-time-minutes</wp:meta_key>
-    <wp:meta_value><![CDATA[4]]></wp:meta_value>
+    <wp:meta_value><![CDATA[6]]></wp:meta_value>
   </wp:postmeta>
 </item>
   </channel>
