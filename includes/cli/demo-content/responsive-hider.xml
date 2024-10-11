@@ -41,7 +41,7 @@
   <title><![CDATA[Responsive Hider]]></title>
   <link>https://aquamin.aquamarine.test/all-the-things/responsive-hider/</link>
   <pubDate>Fri, 17 Feb 2017 00:00:00 +0000</pubDate>
-  <dc:creator>aquaadmin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">https://aquamin.aquamarine.test/?post_type=all-the-things&amp;p=200</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"0","left":"0"}}}} -->
@@ -103,8 +103,8 @@
   <wp:post_id>200</wp:post_id>
   <wp:post_date>2023-07-12 22:24:25</wp:post_date>
   <wp:post_date_gmt>2023-07-12 22:24:25</wp:post_date_gmt>
-  <wp:post_modified>2023-12-11 17:38:02</wp:post_modified>
-  <wp:post_modified_gmt>2023-12-11 17:38:02</wp:post_modified_gmt>
+  <wp:post_modified>2023-07-12 22:24:25</wp:post_modified>
+  <wp:post_modified_gmt>2023-07-12 22:24:25</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>responsive-hider</wp:post_name>
@@ -115,10 +115,6 @@
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
   <category domain="all-the-things-thing" nicename="extensions"><![CDATA[Extensions]]></category>
-  <wp:postmeta>
-    <wp:meta_key>_edit_last</wp:meta_key>
-    <wp:meta_value><![CDATA[1]]></wp:meta_value>
-  </wp:postmeta>
 </item>
   </channel>
 </rss>

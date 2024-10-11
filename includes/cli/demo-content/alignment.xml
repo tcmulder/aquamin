@@ -41,7 +41,7 @@
   <title><![CDATA[Alignment]]></title>
   <link>https://aquamin.aquamarine.test/all-the-things/alignment/</link>
   <pubDate>Fri, 17 Feb 2017 00:00:00 +0000</pubDate>
-  <dc:creator>aquaadmin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">https://playground.aquamarine.test/?post_type=all-the-things&amp;p=10</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:html -->
@@ -772,8 +772,8 @@
   <wp:post_id>10</wp:post_id>
   <wp:post_date>2022-10-04 00:03:42</wp:post_date>
   <wp:post_date_gmt>2022-10-04 00:03:42</wp:post_date_gmt>
-  <wp:post_modified>2024-10-11 17:18:03</wp:post_modified>
-  <wp:post_modified_gmt>2024-10-11 17:18:03</wp:post_modified_gmt>
+  <wp:post_modified>2022-10-04 00:03:42</wp:post_modified>
+  <wp:post_modified_gmt>2022-10-04 00:03:42</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>alignment</wp:post_name>
@@ -784,10 +784,6 @@
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
   <category domain="all-the-things-thing" nicename="extensions"><![CDATA[Extensions]]></category>
-  <wp:postmeta>
-    <wp:meta_key>_edit_last</wp:meta_key>
-    <wp:meta_value><![CDATA[1]]></wp:meta_value>
-  </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_yoast_wpseo_primary_all-the-things-thing</wp:meta_key>
     <wp:meta_value><![CDATA[7]]></wp:meta_value>

@@ -3,8 +3,10 @@
 ## 7.2.0 - October 10 2024
 * Prevent PostCSS from allowing nested CSS ([see this issue](https://github.com/Yoast/wordpress-seo/issues/20535)).
 * Update alignment styling (e.g. content, wide, full) so back-end and front-end match.
-* Various minor bug fixes.
 * Removed `block-editor` directory and moved them to `block-library` for simplification.
+* Removed `aquamin-general` post type (use a synced pattern instead since this is closer to how FSE will work).
+* Switched footer that's added on `wp aquamin setup` to use a synced pattern instead of the `aquamin-general` post type.
+* Various minor bug fixes.
 
 ## 7.1.4 - August 5 2024
 * Fixed "failed to resolve module" error for JavaScript module assets.

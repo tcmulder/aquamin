@@ -41,7 +41,7 @@
   <title><![CDATA[➠ Playground]]></title>
   <link>https://aquamin.aquamarine.test/all-the-things/playground/</link>
   <pubDate>Fri, 17 Feb 2017 00:00:00 +0000</pubDate>
-  <dc:creator>aquaadmin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">https://playground.aquamarine.test/?post_type=all-the-things&amp;p=7</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
@@ -55,8 +55,8 @@
   <wp:post_id>7</wp:post_id>
   <wp:post_date>2022-10-03 23:49:57</wp:post_date>
   <wp:post_date_gmt>2022-10-03 23:49:57</wp:post_date_gmt>
-  <wp:post_modified>2023-12-11 17:37:42</wp:post_modified>
-  <wp:post_modified_gmt>2023-12-11 17:37:42</wp:post_modified_gmt>
+  <wp:post_modified>2022-10-03 23:49:57</wp:post_modified>
+  <wp:post_modified_gmt>2022-10-03 23:49:57</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>playground</wp:post_name>
@@ -67,10 +67,6 @@
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
   <category domain="all-the-things-thing" nicename="theme"><![CDATA[Theme]]></category>
-  <wp:postmeta>
-    <wp:meta_key>_edit_last</wp:meta_key>
-    <wp:meta_value><![CDATA[1]]></wp:meta_value>
-  </wp:postmeta>
 </item>
   </channel>
 </rss>

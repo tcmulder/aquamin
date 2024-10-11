@@ -41,7 +41,7 @@
   <title><![CDATA[Ani]]></title>
   <link>https://aquamin.aquamarine.test/all-the-things/animation/</link>
   <pubDate>Fri, 17 Feb 2017 00:00:00 +0000</pubDate>
-  <dc:creator>aquaadmin</dc:creator>
+  <dc:creator/>
   <guid isPermaLink="false">https://aquamin.aquamarine.test/?post_type=all-the-things&amp;p=26</guid>
   <description/>
   <content:encoded><![CDATA[<!-- wp:paragraph -->
@@ -357,8 +357,8 @@
   <wp:post_id>26</wp:post_id>
   <wp:post_date>2022-10-29 19:58:04</wp:post_date>
   <wp:post_date_gmt>2022-10-29 19:58:04</wp:post_date_gmt>
-  <wp:post_modified>2024-04-08 21:46:57</wp:post_modified>
-  <wp:post_modified_gmt>2024-04-08 21:46:57</wp:post_modified_gmt>
+  <wp:post_modified>2022-10-29 19:58:04</wp:post_modified>
+  <wp:post_modified_gmt>2022-10-29 19:58:04</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>animation</wp:post_name>
@@ -369,10 +369,6 @@
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
   <category domain="all-the-things-thing" nicename="extensions"><![CDATA[Extensions]]></category>
-  <wp:postmeta>
-    <wp:meta_key>_edit_last</wp:meta_key>
-    <wp:meta_value><![CDATA[1]]></wp:meta_value>
-  </wp:postmeta>
 </item>
   </channel>
 </rss>
