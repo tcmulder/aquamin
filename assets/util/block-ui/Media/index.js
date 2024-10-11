@@ -30,6 +30,14 @@
  *            "mediaHeight": {
  *                "type": "number"
  *            },
+ *            "mediaFocalX": {
+ *                "type": "number",
+ *                "default": 0.5
+ *            },
+ *            "mediaFocalY": {
+ *                "type": "number",
+ *                "default": 0.5
+ *            },
  *        }
  *    }
  * Then use it within the edit function like:
@@ -45,12 +53,17 @@
  *        editable
  *        setAttributes={setAttributes}
  *        attributes={attributes}
- *        attributeNames = {{ // custom block.json props (defaults plus "Background" shown here)
- *            alt: 'mediaAltBackground',
- *            url: 'mediaUrlBackground',
- *            id: 'mediaIdBackground',
- *            width: 'mediaWidthBackground',
- *            height: 'mediaHeightBackground',
+ *        showFocal={true} // show object fit focal point controls (don't need mediaFocalX or Y if false)
+ *        attributeNames = {{
+ *            // custom block.json prop names (e.g. mediaAlt1 and mediaAlt2 for two <Media />)
+ *            // if you have two <Media /> use something like .media-1 and .media-2 for class names in block.json
+ *            alt: 'mediaAlt',
+ *            url: 'mediaUrl',
+ *            id: 'mediaId',
+ *            width: 'mediaWidth',
+ *            height: 'mediaHeight',
+ *            focalX: 'mediaFocalX',
+ *            focalY: 'mediaFocalY',
  *        }}
  *        htmlAttributes={[
  *            {
@@ -73,7 +86,6 @@
  *        className="my-extra-class" // comes with .media automatically
  *        accept={['image/*', 'video/*']} // or exclude a type
  *        allowedTypes={['image', 'video']} // or exclude a type
- *        style={{ height: 'auto' }} // add css style attributes
  *        hideInSidebar={true} // don't show this in block editor sidebar
  *    />
  */
@@ -84,7 +96,11 @@
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { MediaPlaceholder, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, TextareaControl } from '@wordpress/components';
+import {
+	PanelBody,
+	TextareaControl,
+	FocalPointPicker,
+} from '@wordpress/components';
 import { ButtonX } from '../Buttons';
 
 /**
@@ -158,7 +174,6 @@ const MediaInspector = (props) => {
 	const {
 		title,
 		hideInSidebar,
-		style,
 		editable,
 		attributes,
 		attributeNames,
@@ -168,7 +183,7 @@ const MediaInspector = (props) => {
 	return show ? (
 		<InspectorControls group="styles">
 			<PanelBody title={title}>
-				<MediaEdit {...props} style={{ ...style, height: 'auto' }} />
+				<MediaEdit {...props} style={{ height: 'auto' }} />
 				<MediaNew {...props} />
 				{getType(attributes[attributeNames.url]) !== 'video' && (
 					<div style={{ marginTop: 10 }}>
@@ -210,7 +225,6 @@ const MediaInspector = (props) => {
  * @param {Object}  root0.attributes
  * @param {Object}  root0.htmlAttributes
  * @param {string}  root0.className
- * @param {Object}  root0.style
  * @param {boolean} root0.editable
  */
 const MediaElement = ({
@@ -218,21 +232,35 @@ const MediaElement = ({
 	attributes,
 	htmlAttributes,
 	className,
-	style,
 	editable,
 }) => {
 	const show = !editable;
 	if (show) {
 		const type = getType(attributes[attributeNames.url]);
+
+		// establish focal point
+		let styles = {};
+		const hasFocal = !!attributes[attributeNames.focalX];
+		if (hasFocal) {
+			styles = {
+				'--media-x': `${attributes[attributeNames.focalX] * 100}%`,
+				'--media-y': `${attributes[attributeNames.focalY] * 100}%`,
+			};
+		}
+
 		if (type === 'video' && attributes[attributeNames.url]) {
 			return (
 				// eslint-disable-next-line jsx-a11y/media-has-caption
 				<video
-					className={classnames('media', className)}
+					className={classnames(
+						'media',
+						className,
+						hasFocal ? 'media--focal' : '',
+					)}
 					src={attributes[attributeNames.url]}
 					width={attributes[attributeNames.width]}
 					height={attributes[attributeNames.height]}
-					style={style}
+					style={styles}
 					{...getHTMLAttributes(htmlAttributes, type)}
 				/>
 			);
@@ -240,12 +268,16 @@ const MediaElement = ({
 		if (type === 'image' && attributes[attributeNames.url]) {
 			return (
 				<img
-					className={classnames('media', className)}
+					className={classnames(
+						'media',
+						className,
+						hasFocal ? 'media--focal' : '',
+					)}
 					src={attributes[attributeNames.url]}
 					width={attributes[attributeNames.width]}
 					height={attributes[attributeNames.height]}
 					alt={attributes[attributeNames.alt]}
-					style={style}
+					style={styles}
 					{...getHTMLAttributes(htmlAttributes, type)}
 				/>
 			);
@@ -260,7 +292,8 @@ const MediaElement = ({
  * @param {Object} props
  */
 const MediaEdit = (props) => {
-	const { attributeNames, attributes, setAttributes, editable } = props;
+	const { attributeNames, attributes, setAttributes, editable, showFocal } =
+		props;
 	const show = editable && attributes[attributeNames.url];
 	return show ? (
 		<>
@@ -274,6 +307,8 @@ const MediaEdit = (props) => {
 							[attributeNames.alt]: '',
 							[attributeNames.width]: '',
 							[attributeNames.height]: '',
+							[attributeNames.focalX]: '',
+							[attributeNames.focalY]: '',
 						})
 					}
 					style={{
@@ -283,7 +318,25 @@ const MediaEdit = (props) => {
 					}}
 				/>
 			</div>
-			<MediaElement {...props} editable={false} />
+			{showFocal ? (
+				<FocalPointPicker
+					url={attributes[attributeNames.url]}
+					value={{
+						x: attributes[attributeNames.focalX],
+						y: attributes[attributeNames.focalY],
+					}}
+					onChange={(value) => {
+						setAttributes({
+							[attributeNames.focalX]: value.x,
+							[attributeNames.focalY]: value.y,
+						});
+					}}
+					__next40pxDefaultSize
+					__nextHasNoMarginBottom
+				/>
+			) : (
+				<MediaElement {...props} editable={false} />
+			)}
 		</>
 	) : null;
 };
@@ -292,7 +345,6 @@ const MediaEdit = (props) => {
  * Output new media adder
  * @param {Object}   root0
  * @param {string}   root0.className
- * @param {Object}   root0.style
  * @param {string}   root0.title
  * @param {Object}   root0.attributes
  * @param {Object}   root0.attributeNames
@@ -300,10 +352,10 @@ const MediaEdit = (props) => {
  * @param {Array}    root0.accept
  * @param {Array}    root0.allowedTypes
  * @param {boolean}  root0.editable
+ * @param {boolean}  root0.showFocal
  */
 const MediaNew = ({
 	className,
-	style,
 	title,
 	attributes,
 	attributeNames,
@@ -311,13 +363,17 @@ const MediaNew = ({
 	accept,
 	allowedTypes,
 	editable,
+	showFocal,
 }) => {
 	const show = editable && !attributes[attributeNames.url];
 	return show ? (
 		<MediaPlaceholder
 			disableDropZone={false}
-			className={classnames('media', className)}
-			style={style}
+			className={classnames(
+				'media',
+				className,
+				showFocal ? 'media--focal' : '',
+			)}
 			labels={{
 				title,
 			}}
@@ -349,7 +405,7 @@ const MediaNew = ({
 const Media = (props) => (
 	<>
 		<MediaInspector {...props} />
-		<MediaEdit {...props} />
+		<MediaEdit {...props} showFocal={false} />
 		<MediaNew {...props} />
 		<MediaElement {...props} />
 	</>
@@ -358,12 +414,15 @@ Media.defaultProps = {
 	title: __('Media Upload', 'aquamin'),
 	accept: ['image/*', 'video/*'],
 	allowedTypes: ['image', 'video'],
+	showFocal: true,
 	attributeNames: {
 		alt: 'mediaAlt',
 		url: 'mediaUrl',
 		id: 'mediaId',
 		width: 'mediaWidth',
 		height: 'mediaHeight',
+		focalX: 'mediaFocalX',
+		focalY: 'mediaFocalY',
 	},
 };
 
