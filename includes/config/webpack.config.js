@@ -105,7 +105,7 @@ newConfig.commonJS = {
 			return files.length ? { 'global/theme.bundle': files } : {};
 		})(),
 		/**
-		 * Compile all *theme.ext files into one editor-enqueued file (and include main theme.css file)
+		 * Compile all *editor.ext files into one editor-enqueued file (and include main theme.css file)
 		 */
 		...(() => {
 			const files = globSync([
