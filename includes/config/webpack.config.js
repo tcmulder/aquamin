@@ -48,6 +48,9 @@ newConfig.commonJS = {
 	// combine our entries with the default ones (which are mostly block related)
 	entry: {
 		...orgConfig.commonJS.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
+		/**
+		 * Compile all *view.ext files into separate output files
+		 */
 		...[
 			'./assets/block-library/**/*view.{css,scss}',
 			'./assets/block-editor/**/*view.{css,scss}',
@@ -76,6 +79,9 @@ newConfig.commonJS = {
 			}, {});
 			return { ...acc, ...newEntry };
 		}, {}),
+		/**
+		 * Compile all *theme.ext files into one globally-enqueued file (and shame.css)
+		 */
 		...(() => {
 			const files = globSync([
 				/**
@@ -98,6 +104,9 @@ newConfig.commonJS = {
 			]);
 			return files.length ? { 'global/theme.bundle': files } : {};
 		})(),
+		/**
+		 * Compile all *theme.ext files into one editor-enqueued file (and include main theme.css file)
+		 */
 		...(() => {
 			const files = globSync([
 				/**
@@ -172,10 +181,14 @@ newConfig.commonJS = {
 		new EventHooksPlugin({
 			afterEmit: () => {
 				// replace double file extensions
-				const duplicateExt = globSync('./dist/**/*{.css.css,.js.js}');
+				const duplicateExt = globSync(
+					'./dist/**/*{.css.css,.js.js,.scss.css,.ts.js}',
+				);
 				duplicateExt?.forEach((file) => {
 					const ext = path.extname(file);
-					const newName = file.replace(new RegExp(`${ext}$`), '');
+					const newName =
+						file.replace(new RegExp('((?:.[^.\r\n]*){2})$'), '') +
+						ext;
 					fs.rename(file, newName, (err) => {
 						if (err) {
 							throw err;
