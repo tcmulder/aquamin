@@ -69,7 +69,7 @@
  *                controls: '',
  *            },
  *        ]}
- *        title={__('Background Media', 'aquamin')}, // title above <MediaPlaceholder />
+ *        title={__('Background Media', 'aquamin')} // title above <MediaPlaceholder />
  *        className="my-extra-class" // comes with .media automatically
  *        accept={['image/*', 'video/*']} // or exclude a type
  *        allowedTypes={['image', 'video']} // or exclude a type
