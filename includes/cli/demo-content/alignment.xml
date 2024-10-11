@@ -17,17 +17,17 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress/6.5.2" created="2017-02-17 00:00" -->
+<!-- generator="WordPress/6.6.2" created="2017-02-17 00:00" -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
   <channel>
 <title>Aquamin Theme</title>
-<link>https://aquamin.aquamarine.test</link>
+<link>https://aquamin.aquamarine.test/</link>
 <description>Just another WordPress site</description>
 <pubDate>Fri, 17 Feb 2017 00:00:00 +0000</pubDate>
 <language>en-US</language>
 <wp:wxr_version>1.2</wp:wxr_version>
-<wp:base_site_url>https://aquamin.aquamarine.test</wp:base_site_url>
-<wp:base_blog_url>https://aquamin.aquamarine.test</wp:base_blog_url>
+<wp:base_site_url>https://aquamin.aquamarine.test/</wp:base_site_url>
+<wp:base_blog_url>https://aquamin.aquamarine.test/</wp:base_blog_url>
 <wp:author>
   <wp:author_id>1</wp:author_id>
   <wp:author_login>aquaadmin</wp:author_login>
@@ -36,7 +36,7 @@
   <wp:author_first_name><![CDATA[]]></wp:author_first_name>
   <wp:author_last_name><![CDATA[]]></wp:author_last_name>
 </wp:author>
-<generator>https://wordpress.org/?v=6.5.2</generator>
+<generator>https://wordpress.org/?v=6.6.2</generator>
 <item>
   <title><![CDATA[Alignment]]></title>
   <link>https://aquamin.aquamarine.test/all-the-things/alignment/</link>
@@ -46,442 +46,545 @@
   <description/>
   <content:encoded><![CDATA[<!-- wp:html -->
 <div class="size-check has-global-padding is-layout-constrained">
-	<style>
-		:root {
-			--sc-c-reference-normal: lime;
-			--sc-c-reference-wide: yellow;
-			--sc-c-reference-full: aqua;
-		}
-		.torso .wp-block-group,
-		.torso .wp-block-group__inner-container,
-		.torso .wp-block-columns,
-		.torso .wp-block-column {
-			outline: 1px solid rgba(0, 0, 0, 0.2);
-		}
-		.torso .has-background {
-			outline: 1px solid rgba(0, 0, 0, 0.2);
-		}
-		.torso .has-background .has-background {
-			outline: 1px solid rgba(0, 0, 0, 0.2);
-		}
-		.size-check {
-			pointer-events: none;
-			position: fixed;
-			inset: auto 0 0;
-			z-index: 1000;
-			width: 100% !important;
-			max-width: 100% !important;
-		}
-		.size-check div {
-			background: currentcolor;
-			margin: auto;
-			position: relative;
-		}
-		.size-check span {
-			float: right;
-		}
-		.size-check i {
-			pointer-events: none;
-			border: 1px dashed currentColor;
-			bottom: 0;
-			height: 9999px;
-			position: absolute;
-			width: var(--wp--style--root--padding-left);
-		}
-		.size-check i:first-of-type {
-			right: 100%;
-		}
-		.size-check i:last-of-type {
-			left: 100%;
-		}
-		.size-check i {
-			opacity: 0.5;
-		}
-		.size-check b {
-			color: black !important;
-		}
-		.size-check__container {
-			padding: 0 var(--wp--style--root--padding-left);
-		}
-		.size-check__container--normal,
-		.size-check__container--normal div {
-			color: var(--sc-c-reference-normal);
-		}
-		.size-check__container--wide,
-		.size-check__container--wide div {
-			color: var(--sc-c-reference-wide);
-		}
-		.size-check__container--full,
-		.size-check__container--full div {
-			color: var(--sc-c-reference-full);
-		}
-	</style>
-	<div class="size-check__container size-check__container--normal">
-		<div>
-			<i></i><i></i>
-			<b>[ Normal <span>]</span></b>
-		</div>
-		<i></i><i></i>
-	</div>
-	<div class="size-check__container size-check__container--wide alignwide">
-		<div>
-			<i></i><i></i>
-			<b>[ Wide <span>]</span></b>
-		</div>
-		<i></i><i></i>
-	</div>
-	<div class="size-check__container size-check__container--full alignfull">
-		<div>
-			<i></i><i></i>
-			<b>[ Full <span>]</span></b>
-		</div>
-		<i></i><i></i>
-	</div>
-	<script>
-		const sizer = () => {
-			document.querySelectorAll('.size-check__container ')
-				.forEach((el) => {
-					el.querySelector('span').innerHTML = `${el.offsetWidth}px ]`;
-				});
-			document.querySelectorAll('h4 strong')
-				.forEach(el=>{
-					el.innerHTML = `${el.parentElement.offsetWidth}px`;
-				});
-		}
-		window.addEventListener('load', sizer);
-		window.addEventListener('resize', sizer);
-		window.addEventListener('load', () => {
-			document.querySelectorAll('h3 strong')
-				.forEach(el=>{
-					if (el.innerText === 'column width') {
-						el.innerText += `(${getComputedStyle(document.body).getPropertyValue('--wp--style--global--content-size').trim()})`;
-					} else if (el.innerText === 'wide width') {
-						el.innerText += `(${getComputedStyle(document.body).getPropertyValue('--wp--style--global--wide-size').trim()})`;
-					} else if (el.innerText === 'full width') {
-						el.innerText += `(${window.innerWidth}px)`;
-					}
-				});
-		})
-	</script>
+  <style>
+    :root {
+      --sc-c-reference-normal: red;
+      --sc-c-reference-wide: blue;
+      --sc-c-reference-full: whitesmoke;
+    }
+    :where(.has-0-0-color) {
+      color: black;
+    }
+    :where(.has-0-9-color) {
+      color: white;
+    }
+    :where(.has-0-0-background-color) {
+      background-color: black;
+    }
+    :where(.has-0-9-background-color) {
+      background-color: white;
+    }
+    :where(.has-0-0-border-color) {
+      border-color: black;
+    }
+    :where(.has-0-9-border-color) {
+      border-color: white;
+    }
+    .torso .wp-block-group,
+    .torso .wp-block-group__inner-container,
+    .torso .wp-block-columns,
+    .torso .wp-block-column {
+      outline: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .torso .has-background {
+      outline: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .torso .has-background .has-background {
+      outline: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .size-check {
+      pointer-events: none;
+      position: fixed;
+      inset: auto 0 0;
+      z-index: 1000;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .size-check div {
+      background: currentcolor;
+      margin: auto;
+      position: relative;
+    }
+    .size-check span {
+      float: right;
+    }
+    .size-check i {
+      pointer-events: none;
+      border: 1px solid currentColor;
+      bottom: 0;
+      height: 9999px;
+      position: absolute;
+      width: var(--wp--style--root--padding-left);
+      background-color: color-mix(in srgb, lime 25%, transparent);
+    }
+    .size-check i:first-of-type {
+      right: 100%;
+    }
+    .size-check i:last-of-type {
+      left: 100%;
+    }
+    .size-check i {
+      opacity: 0.5;
+    }
+    .size-check__container > i {
+      background-color: color-mix(in srgb, orange 25%, transparent);
+    }
+    .size-check__container {
+      padding: 0 var(--wp--style--root--padding-left);
+    }
+    .size-check__container--normal,
+    .size-check__container--normal div {
+      color: var(--sc-c-reference-normal);
+    }
+    .size-check__container--wide,
+    .size-check__container--wide div {
+      color: var(--sc-c-reference-wide);
+    }
+    .size-check__container--full,
+    .size-check__container--full div {
+      color: var(--sc-c-reference-full);
+    }
+  </style>
+  <div class="size-check__container size-check__container--normal">
+    <div>
+      <i></i><i></i>
+      <b>[ Normal <span>]</span></b>
+    </div>
+    <i></i><i></i>
+  </div>
+  <div class="size-check__container size-check__container--wide alignwide">
+    <div>
+      <i></i><i></i>
+      <b>[ Wide <span>]</span></b>
+    </div>
+    <i></i><i></i>
+  </div>
+  <div class="size-check__container size-check__container--full alignfull">
+    <div>
+      <i></i><i></i>
+      <b>[ Full <span>]</span></b>
+    </div>
+    <i></i><i></i>
+  </div>
+  <script>
+    const sizer = () => {
+      document.querySelectorAll('.size-check__container ')
+        .forEach((el) => {
+          el.querySelector('span').innerHTML = `${el.offsetWidth}px ]`;
+        });
+      document.querySelectorAll('h4 strong')
+        .forEach(el=>{
+          el.innerHTML = `${el.parentElement.offsetWidth}px`;
+        });
+    }
+    window.addEventListener('load', sizer);
+    window.addEventListener('resize', sizer);
+    window.addEventListener('load', () => {
+      document.querySelectorAll('p strong')
+        .forEach(el=>{
+          if (el.innerText === '(content width)') {
+            el.innerText = ` of ${getComputedStyle(document.body).getPropertyValue('--wp--style--global--content-size').trim()}`;
+          } else if (el.innerText === '(wide width)') {
+            el.innerText = ` of ${getComputedStyle(document.body).getPropertyValue('--wp--style--global--wide-size').trim()}`;
+          } else if (el.innerText === '(full width)') {
+            el.innerText = ` of ${window.innerWidth}px`;
+          }
+        });
+    })
+  </script>
 </div>
 <!-- /wp:html -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>By default, groups are <strong>column width</strong>, so…</em></h3>
+<!-- wp:heading {"level":1,"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h1 class="wp-block-heading" style="text-transform:uppercase">Alignment Checker</h1>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…root-level normal inner blocks are <strong>this width</strong>,</h4>
+<!-- wp:heading {"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h2 class="wp-block-heading" style="text-transform:uppercase">Instructions:</h2>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">root-level wide inner blocks are <strong>this width</strong>,</h4>
+<!-- wp:paragraph -->
+<p class="">Use this page to ensure layouts are functioning properly, on both the front-end and within the block editor. You'll need to resize the browser, checking in particular if things that should have padding do, while things that should not do not (and that these do not extend beyond the edges of their container).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h2 class="wp-block-heading" style="text-transform:uppercase">Default:</h2>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">and root-level full inner blocks are <strong>this width</strong>.</h4>
+<!-- wp:paragraph -->
+<p class="">WordPress controls alignment via the <em>theme.json's settings.layout object</em>. <em>Bey default, blocks are the content width <strong>(content width)</strong>, but can be set to wide width <strong>(wide width)</strong> or full width <strong>(full width)</strong>. All but full width honor their container's padding. So, we get…</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…root-level normal inner blocks are <strong>this width</strong> (and respect padding),</h4>
 <!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">root-level wide inner blocks respect padding and are <strong>this width</strong> (and respect padding),</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and root-level full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h2 class="wp-block-heading" style="text-transform:uppercase">Default Nested:</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>You can nest blocks within blocks, so…</em></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"backgroundColor":"0-0","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<div class="wp-block-group has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks within groups are <strong>this width</strong>,</h4>
+<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks nested within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks within groups are <strong>this width</strong>,</h4>
+<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks nested within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks within groups are <strong>this width</strong>.</h4>
+<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks nested within groups are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>If you want to have the padding internally, too, you can manually apply it, so</em>…</h3>
-<!-- /wp:heading -->
-
-<!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"backgroundColor":"0-0","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-0-background-color has-background" style="padding-right:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
-<!-- /wp:heading -->
-
-<!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks within groups are <strong>this width</strong>,</h4>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
-<!-- /wp:heading -->
-
-<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks within groups are <strong>this width</strong>,</h4>
-<!-- /wp:heading --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
-<!-- /wp:heading -->
-
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks within groups are <strong>this width</strong>.</h4>
-<!-- /wp:heading --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
-
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>You can also set them to <strong>wide width</strong>, so…</em></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p class=""><em>You can also set them to <strong>wide width</strong>, so…</em></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"align":"wide","backgroundColor":"0-0","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignwide has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks within groups are <strong>this width</strong>,</h4>
+<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks nested within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks within groups are <strong>this width</strong>,</h4>
+<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks nested within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks within groups are <strong>this width</strong>.</h4>
+<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks nested within groups are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>And, you can set them to <strong>full width</strong>, so…</em></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p class=""><em>And, you can set them to <strong>full width</strong>, so…</em></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"align":"full","backgroundColor":"0-0","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks within groups are <strong>this width</strong>,</h4>
+<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks nested within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks within groups are <strong>this width</strong>,</h4>
+<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks nested within groups are <strong>this width</strong>,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks within groups are <strong>this width</strong>.</h4>
+<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks nested within groups are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>You can also customize inner block widths (e.g. 500px/800px), which could mean…</em></h3>
+<!-- wp:heading {"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h2 class="wp-block-heading" style="text-transform:uppercase">Custom Padding and Width:</h2>
 <!-- /wp:heading -->
 
-<!-- wp:group {"align":"full","backgroundColor":"0-0","layout":{"inherit":false,"contentSize":"500px","wideSize":"800px","type":"constrained"},"aquaminClassNameAni":[]} -->
-<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:paragraph -->
+<p class=""><em>If you want to set the padding internally (e.g. 100px), too, you can manually apply it, so</em>…</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"100px","left":"100px"}}},"backgroundColor":"0-0","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-0-background-color has-background" style="padding-right:100px;padding-left:100px"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks nested within groups are <strong>this width</strong>,</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks nested within groups are <strong>this width</strong>,</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks nested within groups are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p class=""><em>Or, you can set padding to 0px, so</em>…</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-0","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-0-background-color has-background" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"style":{"spacing":{"padding":{"right":"0","left":"0"}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background" style="padding-right:0;padding-left:0">…normal inner blocks nested within groups are <strong>this width</strong>,</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks nested within groups are <strong>this width</strong>,</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">full inner blocks are <strong>this width</strong>.</h4>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks nested within groups are <strong>this width</strong>.</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p class=""><em>You can also customize inner block widths (e.g. 500px/800px), which could mean…</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"align":"full","backgroundColor":"0-0","layout":{"inherit":false,"contentSize":"500px","wideSize":"800px","type":"constrained"}} -->
+<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>Lastly, you can set nested layouts within inner blocks (e.g. 600px), which could mean…</em></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p class=""><em>Lastly, you can leave the container standard but set an inner bock's width (e.g. 600px), which could mean…</em></p>
+<!-- /wp:paragraph -->
 
-<!-- wp:group {"align":"full","backgroundColor":"0-0","layout":{"inherit":true,"type":"constrained"},"aquaminClassNameAni":[],"aquaminClassNameHide":[]} -->
-<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column {"width":"100%","layout":{"contentSize":"600px","wideSize":"600px"}} -->
-<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…normal inner blocks are <strong>this width</strong>,</h4>
-<!-- /wp:heading --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:group {"align":"wide","layout":{"inherit":false,"contentSize":"600px","wideSize":"600px","type":"constrained"},"aquaminClassNameAni":[]} -->
-<div class="wp-block-group alignwide"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
+<!-- wp:group {"align":"full","backgroundColor":"0-0","layout":{"inherit":true,"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-0-0-background-color has-background"><!-- wp:group {"align":"full","layout":{"inherit":false,"contentSize":"","wideSize":"","type":"constrained"}} -->
+<div class="wp-block-group alignfull"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">a basic wide inner block is <strong>this width</strong> like usual,</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:columns {"align":"full"} -->
-<div class="wp-block-columns alignfull"><!-- wp:column {"width":"100%","layout":{"contentSize":"600px"}} -->
-<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
-<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
+<!-- wp:group {"align":"wide","layout":{"inherit":false,"contentSize":"600px","wideSize":"600px","type":"constrained"}} -->
+<div class="wp-block-group alignwide"><!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">but a nested block with custom wide width is <strong>width</strong>,</h4>
 <!-- /wp:heading --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>Further, normal cover block looks like…</em></h3>
+<!-- wp:heading {"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h2 class="wp-block-heading" style="text-transform:uppercase">Cover Blocks:</h2>
 <!-- /wp:heading -->
 
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"0-0","minHeight":200,"minHeightUnit":"px","isDark":false} -->
-<div class="wp-block-cover is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:paragraph -->
+<p class=""><em>Further, normal cover block looks like…</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","alt":"fpo","dimRatio":50,"overlayColor":"0-0","isUserOverlayColor":true,"minHeight":200,"minHeightUnit":"px","isDark":false} -->
+<div class="wp-block-cover is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","className":"alignwide","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","className":"alignwide","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","className":"alignfull","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","className":"alignfull","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>While, a wide cover block looks like…</em></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p class=""><em>While, a wide cover block looks like…</em></p>
+<!-- /wp:paragraph -->
 
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"overlayColor":"0-0","minHeight":200,"minHeightUnit":"px","isDark":false,"align":"wide"} -->
-<div class="wp-block-cover alignwide is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","alt":"fpo","dimRatio":50,"overlayColor":"0-0","isUserOverlayColor":true,"minHeight":200,"minHeightUnit":"px","isDark":false,"align":"wide"} -->
+<div class="wp-block-cover alignwide is-light" style="min-height:200px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","className":"alignwide","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","className":"alignwide","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","className":"alignfull","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","className":"alignfull","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>And, a full width cover block looks like…</em></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p class=""><em>And, a full width cover block looks like…</em></p>
+<!-- /wp:paragraph -->
 
-<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","dimRatio":50,"isDark":false,"className":"alignfull is-light"} -->
-<div class="wp-block-cover is-light alignfull"><span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","alt":"fpo","dimRatio":50,"isDark":false,"className":"alignfull is-light"} -->
+<div class="wp-block-cover is-light alignfull"><span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"wide","backgroundColor":"0-9","textColor":"0-0","className":"alignwide","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"wide","className":"alignwide","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignwide has-0-0-color has-0-9-background-color has-text-color has-background">wide inner blocks are <strong>this width</strong>,</h4>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-9","textColor":"0-0","className":"alignfull","aquaminClassNameAni":[]} -->
+<!-- wp:heading {"level":4,"align":"full","className":"alignfull","backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">and full inner blocks are <strong>this width</strong>.</h4>
 <!-- /wp:heading --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>A normal columns block looks like…</em></h3>
+<!-- wp:heading {"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h2 class="wp-block-heading" style="text-transform:uppercase">Column Blocks:</h2>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>A normal columns block looks like…</em></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:columns {"backgroundColor":"0-0","textColor":"0-9"} -->
 <div class="wp-block-columns has-0-9-color has-0-0-background-color has-text-color has-background"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…a column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…another column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>While a wide columns block looks like…</em></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p class=""><em>While a wide columns block looks like…</em></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:columns {"align":"wide","style":{"spacing":{"padding":{"top":"0"}}},"backgroundColor":"0-0","textColor":"0-9"} -->
 <div class="wp-block-columns alignwide has-0-9-color has-0-0-background-color has-text-color has-background" style="padding-top:0"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…a column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…another column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>And a full width columns block looks like…</em></h3>
-<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p class=""><em>And a full width columns block looks like…</em></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:columns {"align":"full","backgroundColor":"0-0","textColor":"0-9"} -->
 <div class="wp-block-columns alignfull has-0-9-color has-0-0-background-color has-text-color has-background"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…a column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0","aquaminClassNameAni":[]} -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
 <h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…another column</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:heading {"level":3,"aquaminClassNameAni":[]} -->
-<h3 class="wp-block-heading"><em>There are a few margin/padding sizes like…</em></h3>
+<!-- wp:paragraph -->
+<p class=""><em>Note that, in the event you want the columns container to have padding, you'll need to set it manually like...</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:columns {"style":{"spacing":{"padding":{"right":"var:preset|spacing|20","left":"var:preset|spacing|20"}}},"backgroundColor":"0-0","textColor":"0-9"} -->
+<div class="wp-block-columns has-0-9-color has-0-0-background-color has-text-color has-background" style="padding-right:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…a column not pressed against the side</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">…another column</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h2 class="wp-block-heading" style="text-transform:uppercase">Spacing:</h2>
 <!-- /wp:heading -->
 
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|20","right":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20"},"margin":{"bottom":"var:preset|spacing|20","top":"0"}}},"backgroundColor":"0-0","textColor":"0-9","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--20);padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-9","layout":{"type":"constrained"}} -->
+<!-- wp:paragraph -->
+<p class=""><em>There are a few spacing sizes (for margins, padding, gaps, etc.) like…</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|20","right":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"var:preset|spacing|20"},"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}},"backgroundColor":"0-0","textColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20);padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)"><!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-9","layout":{"type":"constrained"}} -->
 <div class="wp-block-group has-border-color has-0-9-border-color" style="border-width:1px"><!-- wp:paragraph -->
 <p class="">small spacing (--wp--preset--spacing--20, matches outer container padding),</p>
 <!-- /wp:paragraph --></div>
@@ -504,19 +607,173 @@
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:paragraph {"backgroundColor":"0-0","textColor":"0-9","className":"has-0-900-color has-0-000-background-color","aquaminClassNameAni":[]} -->
-<p class="has-0-900-color has-0-000-background-color has-0-9-color has-0-0-background-color has-text-color has-background">Lastly, regular paragraphs are just column width, like this. Happy coding :-)</p>
+<!-- wp:heading {"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h2 class="wp-block-heading" style="text-transform:uppercase">Overrides:</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>There are a few resets in alignment.css that fix WordPress layout quirks. We may one day be able to get rid of these if WordPress fixes them. Each reset in alignment.css follows.</em></p>
 <!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h3 class="wp-block-heading" style="text-transform:uppercase">Background Color/Image Padding:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>Blocks with a background color/image should not have weird padding, just default .has-global-padding</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|0-9"}}}},"backgroundColor":"0-0","textColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background has-link-color"><!-- wp:heading {"level":4,"backgroundColor":"0-0","textColor":"0-9"} -->
+<h4 class="wp-block-heading has-0-9-color has-0-0-background-color has-text-color has-background">this has no extra padding...</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|0-9"}}}},"backgroundColor":"0-0","textColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-9-color has-0-0-background-color has-text-color has-background has-link-color" style="padding-right:0;padding-left:0"><!-- wp:heading {"level":4,"backgroundColor":"0-0","textColor":"0-9"} -->
+<h4 class="wp-block-heading has-0-9-color has-0-0-background-color has-text-color has-background">...but you can override this override with custom padding</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":3,"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h3 class="wp-block-heading" style="text-transform:uppercase">Cover Block Padding:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>The cover block should default to .has-global-padding values, not 1em all around.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","alt":"fpo","dimRatio":50,"overlayColor":"0-0","isUserOverlayColor":true,"minHeight":50,"minHeightUnit":"px","isDark":false} -->
+<div class="wp-block-cover is-light" style="min-height:50px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">this has normal padding</h4>
+<!-- /wp:heading --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:heading {"level":3,"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h3 class="wp-block-heading" style="text-transform:uppercase">Cover Blocks with Full Width Children:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>Full width blocks nested within a cover block should go full width. Note this doesn't work with custom padding, since WordPress does not generate the padding rules we need to use.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:cover {"url":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E","alt":"fpo","dimRatio":50,"overlayColor":"0-0","isUserOverlayColor":true,"minHeight":50,"minHeightUnit":"px","isDark":false} -->
+<div class="wp-block-cover is-light" style="min-height:50px"><span aria-hidden="true" class="wp-block-cover__background has-0-0-background-color has-background-dim"></span><img class="wp-block-cover__image-background" alt="fpo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cpath fill='%23EEE' d='M0 0h1920v1080H0z'/%3E%3Cpath fill='%23DDD' fill-rule='evenodd' d='M1073 392a359 359 0 0 0-697 172c-73 24-126 93-126 174 0 101 9 290 633 183 190-33 278-22 372-11 65 8 133 17 240 11a183 183 0 0 0 0-366h-47a246 246 0 0 0-375-163Z' clip-rule='evenodd'/%3E%3C/svg%3E" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":4,"align":"full","className":"alignfull","backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background">this is full width</h4>
+<!-- /wp:heading --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:heading {"level":3,"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h3 class="wp-block-heading" style="text-transform:uppercase">Stretched Inner Blocks:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>Blocks set to stretch don't stretch their immediate children; the parent is technically stretched, but since its children are not, background colors and such are not properly full height.</em> </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:columns {"backgroundColor":"0-0"} -->
+<div class="wp-block-columns has-0-0-background-color has-background"><!-- wp:column {"verticalAlignment":"stretch","style":{"spacing":{"padding":{"top":"5px","bottom":"5px","left":"5px","right":"5px"}}},"backgroundColor":"0-9"} -->
+<div class="wp-block-column is-vertically-aligned-stretch has-0-9-background-color has-background" style="padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:5px"><!-- wp:heading {"level":4,"style":{"elements":{"link":{"color":{"text":"var:preset|color|0-9"}}}},"backgroundColor":"0-0","textColor":"0-9"} -->
+<h4 class="wp-block-heading has-0-9-color has-0-0-background-color has-text-color has-background has-link-color">this stretches full height</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"verticalAlignment":"stretch","style":{"spacing":{"padding":{"top":"5px","bottom":"5px","left":"5px","right":"5px"}}},"backgroundColor":"0-9"} -->
+<div class="wp-block-column is-vertically-aligned-stretch has-0-9-background-color has-background" style="padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:5px"><!-- wp:heading {"level":4,"style":{"elements":{"link":{"color":{"text":"var:preset|color|0-9"}}}},"backgroundColor":"0-0","textColor":"0-9"} -->
+<h4 class="wp-block-heading has-0-9-color has-0-0-background-color has-text-color has-background has-link-color">...<br>...<br>...<br>...</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"level":3,"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h3 class="wp-block-heading" style="text-transform:uppercase">Nested Full Width Blocks:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>An .alignfull block within a .has-global-padding container should not use 0px negative margins; otherwise, it's not full width, but instead has padding equal to .has-global-padding values.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"backgroundColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-9-background-color has-background"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-0","textColor":"0-9"} -->
+<h4 class="wp-block-heading alignfull has-0-9-color has-0-0-background-color has-text-color has-background">this is full width...</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"100px","left":"100px"}}},"backgroundColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-9-background-color has-background" style="padding-right:100px;padding-left:100px"><!-- wp:heading {"level":4,"align":"full","backgroundColor":"0-0","textColor":"0-9"} -->
+<h4 class="wp-block-heading alignfull has-0-9-color has-0-0-background-color has-text-color has-background">...even with custom padding values.</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":3,"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h3 class="wp-block-heading" style="text-transform:uppercase">Root-Level Block Margins:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>WordPress adds a margin top equal to theme.json.styles.spacing.blockGap to blocks. You can set this block spacing to 0px (or any other value) on a block and it will conveniently apply to all that block's children; but, since root-level blocks don't have a containing block, the only way to set space between root-level blocks to 0px is to manually apply it to each block individually. That's quite a pain!</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"backgroundColor":"0-0","layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group has-0-0-background-color has-background"><!-- wp:heading {"level":4,"style":{"elements":{"link":{"color":{"text":"var:preset|color|0-0"}}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background has-link-color">⬇ inner block gap</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"style":{"elements":{"link":{"color":{"text":"var:preset|color|0-0"}}},"spacing":{"margin":{"top":"0"}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background has-link-color" style="margin-top:0">⬇ no root-level gap</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:columns {"style":{"border":{"width":"1px"}},"backgroundColor":"0-0","textColor":"0-9","borderColor":"0-0"} -->
+<div class="wp-block-columns has-border-color has-0-0-border-color has-0-9-color has-0-0-background-color has-text-color has-background" style="border-width:1px"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">⬆ no root-level gap</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":4,"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background">⬅ inner block gap</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"level":3,"style":{"typography":{"textTransform":"uppercase"}}} -->
+<h3 class="wp-block-heading" style="text-transform:uppercase">Use Global Padding:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p class=""><em>WordPress adds a convoluted set of rules that removes the effects of global padding in many cases, so we re-apply it ourselves.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"backgroundColor":"0-0","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-0-0-background-color has-background"><!-- wp:heading {"level":4,"style":{"elements":{"link":{"color":{"text":"var:preset|color|0-0"}}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background has-link-color">this respects global padding</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4,"align":"full","style":{"elements":{"link":{"color":{"text":"var:preset|color|0-0"}}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading alignfull has-0-0-color has-0-9-background-color has-text-color has-background has-link-color">this is full width (not breaking outside its container)</h4>
+<!-- /wp:heading -->
+
+<!-- wp:group {"style":{"border":{"width":"1px"}},"borderColor":"0-9","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-border-color has-0-9-border-color" style="border-width:1px"><!-- wp:heading {"level":4,"style":{"elements":{"link":{"color":{"text":"var:preset|color|0-0"}}}},"backgroundColor":"0-9","textColor":"0-0"} -->
+<h4 class="wp-block-heading has-0-0-color has-0-9-background-color has-text-color has-background has-link-color">this is nested so it has double padding</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
 
 <!-- wp:spacer {"height":"150px"} -->
 <div style="height:150px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->]]></content:encoded>
+<!-- /wp:spacer -->
+
+<!-- wp:paragraph {"className":"has-0-9-color has-0-0-background-color","style":{"spacing":{"margin":{"top":"100px"}}},"backgroundColor":"0-0","textColor":"0-9"} -->
+<p class="has-0-9-color has-0-0-background-color has-text-color has-background" style="margin-top:100px">fin</p>
+<!-- /wp:paragraph -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
   <wp:post_id>10</wp:post_id>
   <wp:post_date>2022-10-04 00:03:42</wp:post_date>
   <wp:post_date_gmt>2022-10-04 00:03:42</wp:post_date_gmt>
-  <wp:post_modified>2023-12-11 17:38:02</wp:post_modified>
-  <wp:post_modified_gmt>2023-12-11 17:38:02</wp:post_modified_gmt>
+  <wp:post_modified>2024-10-11 16:36:23</wp:post_modified>
+  <wp:post_modified_gmt>2024-10-11 16:36:23</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>alignment</wp:post_name>
@@ -530,6 +787,18 @@
   <wp:postmeta>
     <wp:meta_key>_edit_last</wp:meta_key>
     <wp:meta_value><![CDATA[1]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_yoast_wpseo_primary_all-the-things-thing</wp:meta_key>
+    <wp:meta_value><![CDATA[7]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_yoast_wpseo_content_score</wp:meta_key>
+    <wp:meta_value><![CDATA[60]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_yoast_wpseo_estimated-reading-time-minutes</wp:meta_key>
+    <wp:meta_value><![CDATA[4]]></wp:meta_value>
   </wp:postmeta>
 </item>
   </channel>

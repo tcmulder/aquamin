@@ -16,7 +16,7 @@
 	 --w: 1280; /* pixel (unitless) medium base width */
 	 --w-s: 960px;
 	 --w-m: calc(var(--w) * 1px); /* settings.layout.contentSize in theme.json */
-	 --w-l: 1440px; /* settings.layout.wideSize in theme.json */
+	 --w-l: 100%; /* settings.layout.wideSize in theme.json */
 	 --w-px: calc(100% - var(--sp-m) * 2); /* 100% screen width minus side (x axis) padding */
 	
 	/*

@@ -14,16 +14,8 @@
 html .edit-widgets-main-block-list :where(.editor-styles-wrapper),
 .interface-interface-skeleton__content {
 	font-family: var(--ff-1);
-	font-size: calc(var(--fs) * 1px);
-	line-height: 1.4;
-}
-
-/* global-styles-inline-css breaks the front-end/block editor styling parity for core/column blocks via :not([class*="__"]) */
-.has-global-padding
-	> .alignfull:where(:not(.has-global-padding))
-	> :where(.wp-block-column:not(.alignfull)) {
-	padding-right: var(--wp--style--root--padding-right);
-	padding-left: var(--wp--style--root--padding-left);
+	font-size: var(--fs-px);
+	line-height: var(--flh-m);
 }
 
 /**

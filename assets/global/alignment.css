@@ -1,87 +1,113 @@
 /**
  * Page layout alignments
+ *
+ * These reset some default WordPress layout quirks
+ * that make alignment inconsistent.
  */
-/* don't allow default extreme padding merely if has bg color */
+
+/**
+ * Fix extreme default background padding.
+ *
+ * By default, WordPress adds HUGE padding values to things with backgorund
+ * colors, which is weird. This removes the top and bottom, then also removes
+ * the left and right (unless it's using the .has-global-padding value). Note
+ * further that any manually-added inline padding settings on a block will
+ * properly override the following resets.
+ */
 .has-background.has-background {
 	padding-top: 0;
 	padding-bottom: 0;
-	/* but keep padding on globally padded elements (note wp's inline padding will override this) */
 	&:not(.has-global-padding) {
 		padding-left: 0;
 		padding-right: 0;
 	}
 }
-/* override wp's 1em with essentially has-global-padding for cover blocks */
-.wp-block-cover {
+
+/**
+ * Fix block cover padding.
+ * 
+ * By default, WordPress adds padding:1em all around blocks,
+ * so we remove the tops and add root padding to the sides.
+ */
+.wp-block-cover.wp-block-cover {
 	padding: 0 var(--wp--style--root--padding-right) 0
 		var(--wp--style--root--padding-left);
 }
-/* default to column/wide width within cover blocks */
+
+/**
+ * Fix .alignfull blocks within cover blocks.
+ * 
+ * Blocks within the cover block's content container div
+ * don't respect .alignfull without this. Note that this
+ * doesn't work with manual padding on the cover block,
+ * since WordPress doesn't generate the appropriate code.
+ */
 .wp-block-cover__inner-container {
-	& > :not(.alignfull, .alignwide) {
-		max-width: var(--wp--style--global--content-size);
-		margin-left: auto;
-		margin-right: auto;
-	}
-	& > .alignwide {
-		max-width: var(--wp--style--global--wide-size);
-		margin-left: auto;
-		margin-right: auto;
-	}
-	.wp-block-cover:not([style*="margin-left"]) & > .alignfull {
+	.wp-block-cover:not([style*="padding-left"]) & > .alignfull {
 		margin-left: calc(-1 * var(--wp--style--root--padding-left));
 	}
-	.wp-block-cover:not([style*="margin-right"]) & > .alignfull {
+	.wp-block-cover:not([style*="padding-right"]) & > .alignfull {
 		margin-right: calc(-1 * var(--wp--style--root--padding-right));
 	}
 }
 
-/* pull alignfull elements outside containers that use default left/right padding sizes */
-[style*="padding-left:var(--wp--preset--spacing--10)"] {
-	--pl: var(--wp--preset--spacing--10);
-	& > .alignfull {
-		margin-left: calc(-1 * var(--pl));
+/**
+ * Force align stretch.
+ * 
+ * When e.g. columns are set to stretch, they do... but their immediate
+ * children do not, which sorta defeats the purpose. This forces immediate
+ * children of stretched blocks to mimic the stretch also.
+ */
+.is-vertically-aligned-stretch > * {
+	height: 100%;
+}
+
+/**
+ * Fix nested .alignfull.
+ *
+ * If you set padding on a container, it gets a dynamic class like
+ * .wp-container-core-group-is-layout-17 > .alignfull { margin-left: calc(50px -1) }
+ * in order to stretch full width. but, if you leave it to the default .has-global-padding,
+ * WordPress currently sets this to 0px, which causes inner .alignfull to recieve e.g.
+ * margin-left: calc(0px -1) so it doesn't extend. The following overrides that.
+ */
+.has-global-padding:not(.alignfull) {
+	&:not([style*="padding-left"]) > .alignfull {
+		margin-left: calc(var(--wp--style--root--padding-left) * -1);
+	}
+	&:not([style*="padding-right"]) > .alignfull {
+		margin-right: calc(var(--wp--style--root--padding-right) * -1);
 	}
 }
-[style*="padding-right:var(--wp--preset--spacing--10)"] {
-	--pl: var(--wp--preset--spacing--10);
-	& > .alignfull {
-		margin-right: calc(-1 * var(--pl));
+
+/**
+ * Fix layout constrained's forced top margins.
+ * 
+ * The setting theme.json.styles.spacing.blockGap is used for
+ * all default gap spacing (like between column blocks), but
+ * is also used between all adjacent root-level blocks, meaning
+ * we have to manually set each root block's top margin to 0px
+ * or there will be unneeded spacing. This disabled that margin.
+ */
+:is(.torso, .is-root-container).is-layout-constrained {
+	& > *:not(ul, ol, h1, h2, h3, h4, h5, h6) {
+		margin-block-start: unset;
 	}
 }
-[style*="padding-left:var(--wp--preset--spacing--20)"] {
-	--pl: var(--wp--preset--spacing--20);
-	& > .alignfull {
-		margin-left: calc(-1 * var(--pl));
-	}
-}
-[style*="padding-right:var(--wp--preset--spacing--20)"] {
-	--pl: var(--wp--preset--spacing--20);
-	& > .alignfull {
-		margin-right: calc(-1 * var(--pl));
-	}
-}
-[style*="padding-left:var(--wp--preset--spacing--50)"] {
-	--pl: var(--wp--preset--spacing--50);
-	& > .alignfull {
-		margin-left: calc(-1 * var(--pl));
-	}
-}
-[style*="padding-right:var(--wp--preset--spacing--50)"] {
-	--pl: var(--wp--preset--spacing--50);
-	& > .alignfull {
-		margin-right: calc(-1 * var(--pl));
-	}
-}
-[style*="padding-left:var(--wp--preset--spacing--80)"] {
-	--pl: var(--wp--preset--spacing--80);
-	& > .alignfull {
-		margin-left: calc(-1 * var(--pl));
-	}
-}
-[style*="padding-right:var(--wp--preset--spacing--80)"] {
-	--pl: var(--wp--preset--spacing--80);
-	& > .alignfull {
-		margin-right: calc(-1 * var(--pl));
+
+/*
+ * Add padding if .has-global-padding
+ * 
+ * Without this, WordPress adds a convoluted set of rules that removes the effects
+ * of global padding in most cases. This adds them back in.
+ */
+.has-global-padding
+	:where(
+		:not(.alignfull.is-layout-flow)
+			> .has-global-padding:not(.wp-block-block, .alignfull)
+	) {
+	&.has-global-padding {
+		padding-right: var(--wp--style--root--padding-right);
+		padding-left: var(--wp--style--root--padding-left);
 	}
 }

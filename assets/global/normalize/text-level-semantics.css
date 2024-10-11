@@ -20,50 +20,54 @@ strong {
 dfn {
 	font-style: italic;
 }
-:is(h1, .has-h-1-font-size, .h1),
-:is(h2, .has-h-2-font-size, .h2),
-:is(h3, .has-h-3-font-size, .h3),
-:is(h4, .has-h-4-font-size, .h4),
-:is(h5, .has-h-5-font-size, .h5),
-:is(h6, .has-h-6-font-size, .h6) {
-	margin-top: 0.5em;
-	margin-bottom: 0;
-	font-weight: 700;
-	line-height: var(--flh-s);
-	font-family: var(--ff-2);
-	&:first-child {
-		margin-top: 0;
-	}
-	&:last-child {
+/* NOTE: the :is(.torso, .is-root-container) is needed to override WordPress default block gap spacing */
+:is(.torso, .is-root-container) {
+	:is(h1, .has-h-1-font-size, .h1),
+	:is(h2, .has-h-2-font-size, .h2),
+	:is(h3, .has-h-3-font-size, .h3),
+	:is(h4, .has-h-4-font-size, .h4),
+	:is(h5, .has-h-5-font-size, .h5),
+	:is(h6, .has-h-6-font-size, .h6) {
+		margin-top: 0.5em;
 		margin-bottom: 0;
+		font-weight: 700;
+		line-height: var(--flh-s);
+		font-family: var(--ff-2);
+		&:first-child {
+			margin-top: 0;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
-}
-:is(h1, .has-h-1-font-size, .h1) {
-	font-size: var(--fs-h1);
-}
-:is(h2, .has-h-2-font-size, .h2) {
-	font-size: var(--fs-h2);
-}
-:is(h3, .has-h-3-font-size, .h3) {
-	font-size: var(--fs-h3);
-}
-:is(h4, .has-h-4-font-size, .h4) {
-	font-size: var(--fs-h4);
-}
-:is(h5, .has-h-5-font-size, .h5) {
-	font-size: var(--fs-h5);
-}
-:is(h6, .has-h-6-font-size, .h6) {
-	font-size: var(--fs-h6);
-}
-:is(big, .has-big-font-size) {
-	font-size: var(--fs-big, 120%);
-}
-:is(small, .has-small-font-size) {
-	font-size: var(--fs-small, 80%);
+	:is(h1, .has-h-1-font-size, .h1) {
+		font-size: var(--fs-h1);
+	}
+	:is(h2, .has-h-2-font-size, .h2) {
+		font-size: var(--fs-h2);
+	}
+	:is(h3, .has-h-3-font-size, .h3) {
+		font-size: var(--fs-h3);
+	}
+	:is(h4, .has-h-4-font-size, .h4) {
+		font-size: var(--fs-h4);
+	}
+	:is(h5, .has-h-5-font-size, .h5) {
+		font-size: var(--fs-h5);
+	}
+	:is(h6, .has-h-6-font-size, .h6) {
+		font-size: var(--fs-h6);
+	}
+	:is(big, .has-big-font-size) {
+		font-size: var(--fs-big, 120%);
+	}
+	:is(small, .has-small-font-size) {
+		font-size: var(--fs-small, 80%);
+	}
 }
 p {
 	margin-top: 0;
+	margin-bottom: 1em; /* required by block editor */
 	&:last-child {
 		margin-bottom: 0;
 	}
