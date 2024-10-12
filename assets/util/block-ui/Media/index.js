@@ -93,180 +93,11 @@
 /**
  * Dependencies
  */
-import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
-import { MediaPlaceholder, InspectorControls } from '@wordpress/block-editor';
-import {
-	PanelBody,
-	TextareaControl,
-	FocalPointPicker,
-} from '@wordpress/components';
-import { ButtonX } from '../Buttons';
 import { MediaElement } from './MediaElement';
-import { getType } from './util';
-
-/**
- * Output inspector controls
- * @param {Object} props
- */
-const MediaInspector = (props) => {
-	const {
-		title,
-		hideInSidebar,
-		editable,
-		attributes,
-		attributeNames,
-		setAttributes,
-	} = props;
-	const show = editable && !hideInSidebar;
-	return show ? (
-		<InspectorControls group="styles">
-			<PanelBody title={title}>
-				<MediaSidebar {...props} style={{ height: 'auto' }} />
-				<MediaNew {...props} />
-				{getType(attributes[attributeNames.url]) !== 'video' && (
-					<div style={{ marginTop: 10 }}>
-						<TextareaControl
-							label={__('Alt text (alternative text)', 'aquamin')}
-							style={{ marginBottom: -15 }}
-							value={attributes[attributeNames.alt]}
-							onChange={(value) =>
-								setAttributes({
-									[attributeNames.alt]: value,
-								})
-							}
-						/>
-						<p>
-							{__(
-								'Describe the purpose of the image. Leave empty if the image is purely decorative.',
-								'aquamin',
-							)}
-							{` `}
-							<a
-								href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
-								target="_blank"
-								rel="noreferrer"
-							>
-								{__('What is alt text?', 'aquamin')}
-							</a>
-						</p>
-					</div>
-				)}
-			</PanelBody>
-		</InspectorControls>
-	) : null;
-};
-
-/**
- * Output existing media editor
- * @param {Object} props
- */
-const MediaSidebar = (props) => {
-	const { attributeNames, attributes, setAttributes, editable, showFocal } =
-		props;
-	const show = editable && attributes[attributeNames.url];
-	return show ? (
-		<>
-			<div className="aquamin-media-remove">
-				<ButtonX
-					label={__('Remove Media', 'aquamin')}
-					handleClick={() =>
-						setAttributes({
-							[attributeNames.id]: '',
-							[attributeNames.url]: '',
-							[attributeNames.alt]: '',
-							[attributeNames.width]: '',
-							[attributeNames.height]: '',
-							[attributeNames.focalX]: '',
-							[attributeNames.focalY]: '',
-						})
-					}
-					style={{
-						position: 'absolute',
-						zIndex: '10',
-						border: '2px solid currentColor',
-					}}
-				/>
-			</div>
-			{showFocal ? (
-				<FocalPointPicker
-					url={attributes[attributeNames.url]}
-					value={{
-						x: attributes[attributeNames.focalX],
-						y: attributes[attributeNames.focalY],
-					}}
-					onChange={(value) => {
-						setAttributes({
-							[attributeNames.focalX]: value.x,
-							[attributeNames.focalY]: value.y,
-						});
-					}}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-				/>
-			) : (
-				<MediaElement {...props} editable={false} />
-			)}
-		</>
-	) : null;
-};
-
-/**
- * Output new media adder
- * @param {Object}   root0
- * @param {string}   root0.className
- * @param {string}   root0.title
- * @param {Object}   root0.attributes
- * @param {Object}   root0.attributeNames
- * @param {Function} root0.setAttributes
- * @param {Array}    root0.accept
- * @param {Array}    root0.allowedTypes
- * @param {boolean}  root0.editable
- * @param {boolean}  root0.showFocal
- */
-const MediaNew = ({
-	className,
-	title,
-	attributes,
-	attributeNames,
-	setAttributes,
-	accept,
-	allowedTypes,
-	editable,
-	showFocal,
-}) => {
-	const show = editable && !attributes[attributeNames.url];
-	return show ? (
-		<MediaPlaceholder
-			disableDropZone={false}
-			className={classnames(
-				'media',
-				className,
-				showFocal ? 'media--focal' : '',
-			)}
-			labels={{
-				title,
-			}}
-			value={attributes[attributeNames.id]}
-			onSelectURL={(value) =>
-				setAttributes({
-					[attributeNames.url]: value,
-				})
-			}
-			onSelect={(value) =>
-				setAttributes({
-					[attributeNames.id]: value.id,
-					[attributeNames.url]: value.url,
-					[attributeNames.alt]: value.alt,
-					[attributeNames.width]: value.width,
-					[attributeNames.height]: value.height,
-				})
-			}
-			accept={accept}
-			allowedTypes={allowedTypes}
-		/>
-	) : null;
-};
+import { MediaEditor } from './MediaEditor';
+import { MediaNewPlaceholder } from './MediaNewPlaceholder';
+import { MediaInspector } from './MediaInspector';
 
 /**
  * Show media component
@@ -275,8 +106,8 @@ const MediaNew = ({
 const Media = (props) => (
 	<>
 		<MediaInspector {...props} />
-		<MediaSidebar {...props} showFocal={false} />
-		<MediaNew {...props} />
+		<MediaEditor {...props} showFocal={false} />
+		<MediaNewPlaceholder {...props} />
 		<MediaElement {...props} />
 	</>
 );
