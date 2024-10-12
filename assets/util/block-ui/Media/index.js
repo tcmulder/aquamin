@@ -102,69 +102,8 @@ import {
 	FocalPointPicker,
 } from '@wordpress/components';
 import { ButtonX } from '../Buttons';
-
-/**
- * Get type of media
- * @param {string} url
- */
-const getType = (url) => {
-	let type = 'image';
-	if (url) {
-		const ext = url
-			.split('/')
-			.pop()
-			.split('#')[0]
-			.split('?')[0]
-			.split('.')
-			.pop();
-		if (['mp4', 'm4v', 'webm', 'ogv', 'flv'].includes(ext)) {
-			type = 'video';
-		} else if (['jpg', 'png', 'gif', 'jpeg', 'webp', 'svg'].includes(ext)) {
-			type = 'image';
-		}
-	}
-	return type;
-};
-
-/**
- * Get HTML attributes
- * @param {Object} htmlAttributes
- * @param {string} type
- */
-const getHTMLAttributes = (htmlAttributes, type) => {
-	// start with none
-	let allAttributes = {};
-	htmlAttributes?.forEach((attrObj) => {
-		if (attrObj?.type === type) {
-			// if this is the current media type then add html attributes
-			allAttributes = {
-				...allAttributes,
-				...attrObj,
-			};
-		} else if (!attrObj.type) {
-			// if this is for any media type add attributes
-			allAttributes = {
-				...allAttributes,
-				...attrObj,
-			};
-		}
-	});
-	// if this is a video default to autoplay if no attributes given
-	if (type === 'video' && allAttributes?.type !== 'video') {
-		allAttributes = {
-			...allAttributes,
-			loop: '',
-			muted: '',
-			playsinline: '',
-			autoplay: '',
-		};
-	}
-
-	// delete type (if any) since it's not an html attribute
-	delete allAttributes.type;
-
-	return allAttributes;
-};
+import { MediaElement } from './MediaElement';
+import { getType } from './util';
 
 /**
  * Output inspector controls
@@ -183,7 +122,7 @@ const MediaInspector = (props) => {
 	return show ? (
 		<InspectorControls group="styles">
 			<PanelBody title={title}>
-				<MediaEdit {...props} style={{ height: 'auto' }} />
+				<MediaSidebar {...props} style={{ height: 'auto' }} />
 				<MediaNew {...props} />
 				{getType(attributes[attributeNames.url]) !== 'video' && (
 					<div style={{ marginTop: 10 }}>
@@ -219,79 +158,10 @@ const MediaInspector = (props) => {
 };
 
 /**
- * Output actual media HTML to save
- * @param {Object}  root0
- * @param {Object}  root0.attributeNames
- * @param {Object}  root0.attributes
- * @param {Object}  root0.htmlAttributes
- * @param {string}  root0.className
- * @param {boolean} root0.editable
- */
-const MediaElement = ({
-	attributeNames,
-	attributes,
-	htmlAttributes,
-	className,
-	editable,
-}) => {
-	const show = !editable;
-	if (show) {
-		const type = getType(attributes[attributeNames.url]);
-
-		// establish focal point
-		let styles = {};
-		const hasFocal = !!attributes[attributeNames.focalX];
-		if (hasFocal) {
-			styles = {
-				'--media-x': `${attributes[attributeNames.focalX] * 100}%`,
-				'--media-y': `${attributes[attributeNames.focalY] * 100}%`,
-			};
-		}
-
-		if (type === 'video' && attributes[attributeNames.url]) {
-			return (
-				// eslint-disable-next-line jsx-a11y/media-has-caption
-				<video
-					className={classnames(
-						'media',
-						className,
-						hasFocal ? 'media--focal' : '',
-					)}
-					src={attributes[attributeNames.url]}
-					width={attributes[attributeNames.width]}
-					height={attributes[attributeNames.height]}
-					style={styles}
-					{...getHTMLAttributes(htmlAttributes, type)}
-				/>
-			);
-		}
-		if (type === 'image' && attributes[attributeNames.url]) {
-			return (
-				<img
-					className={classnames(
-						'media',
-						className,
-						hasFocal ? 'media--focal' : '',
-					)}
-					src={attributes[attributeNames.url]}
-					width={attributes[attributeNames.width]}
-					height={attributes[attributeNames.height]}
-					alt={attributes[attributeNames.alt]}
-					style={styles}
-					{...getHTMLAttributes(htmlAttributes, type)}
-				/>
-			);
-		}
-	}
-
-	return null;
-};
-
-/**
  * Output existing media editor
  * @param {Object} props
  */
-const MediaEdit = (props) => {
+const MediaSidebar = (props) => {
 	const { attributeNames, attributes, setAttributes, editable, showFocal } =
 		props;
 	const show = editable && attributes[attributeNames.url];
@@ -405,7 +275,7 @@ const MediaNew = ({
 const Media = (props) => (
 	<>
 		<MediaInspector {...props} />
-		<MediaEdit {...props} showFocal={false} />
+		<MediaSidebar {...props} showFocal={false} />
 		<MediaNew {...props} />
 		<MediaElement {...props} />
 	</>
