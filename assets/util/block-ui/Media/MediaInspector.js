@@ -8,6 +8,7 @@ import {
 	TextareaControl,
 	ExternalLink,
 	FocalPointPicker,
+	Button,
 } from '@wordpress/components';
 import { MediaNewPlaceholder } from './MediaNewPlaceholder';
 import { MediaElement } from './MediaElement';
@@ -49,6 +50,33 @@ const AltControl = ({ attributes, setAttributes, attributeNames }) => {
 };
 
 /**
+ *
+ * @param {Object}   props                All props
+ * @param {Object}   props.title          Media title
+ * @param {Function} props.setAttributes  Set block attributes
+ * @param {Object}   props.attributeNames Custom/default attribute names
+ * @param            props.attributes
+ */
+const Remove = ({ setAttributes, attributeNames, title }) => {
+	return (
+		<Button
+			variant="secondary"
+			onClick={() => {
+				setAttributes({
+					[attributeNames.id]: 0,
+					[attributeNames.url]: '',
+					[attributeNames.alt]: '',
+					[attributeNames.width]: 0,
+					[attributeNames.height]: 0,
+				});
+			}}
+		>
+			{`${__('Replace', 'aquamin')} ${title}`}
+		</Button>
+	);
+};
+
+/**
  * Media editor types (new media, focal point, plain media iamge)
  * @param {Object} props
  */
@@ -78,6 +106,7 @@ const MediaEditor = (props) => {
 					__nextHasNoMarginBottom
 				/>
 				<AltControl {...props} />
+				<Remove {...props} />
 			</>
 		);
 	} else {
@@ -85,6 +114,7 @@ const MediaEditor = (props) => {
 			<>
 				<MediaElement {...props} style={{ height: 'auto' }} />
 				<AltControl {...props} />
+				<Remove {...props} />
 			</>
 		);
 	}
