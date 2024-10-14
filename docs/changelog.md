@@ -6,6 +6,7 @@
 * Removed `block-editor` directory and moved them to `block-library` for simplification.
 * Removed `aquamin-general` post type (use a synced pattern instead since this is closer to how FSE will work).
 * Switched footer that's added on `wp aquamin setup` to use a synced pattern instead of the `aquamin-general` post type.
+* Updated Media UI utility to make it more useful and easier to use.
 * Removed Buttons UI and Appender UI (Gutenberg has gotten better at handling this natively).
 * Various minor bug fixes.
 
