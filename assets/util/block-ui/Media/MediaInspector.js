@@ -96,7 +96,6 @@ const MediaEditor = (props) => {
  */
 export const MediaInspector = (props) => {
 	const { title, hideInSidebar, editable } = props;
-	console.log('🤞', editable);
 	if (editable && !hideInSidebar) {
 		return (
 			<InspectorControls group="styles">

@@ -76,3 +76,31 @@ export const getFocalStyles = (focal) => {
 	}
 	return focalStyles;
 };
+
+/**
+ * Set the media object of Media
+ * @param {Object} value Selected gutenberg media object
+ * @param {Object} props All Media props
+ */
+export const handleMediaSelect = (value, props) => {
+	const { attributeNames, setAttributes } = props;
+	setAttributes({
+		[attributeNames.id]: value.id,
+		[attributeNames.url]: value.url,
+		[attributeNames.alt]: value.alt,
+		[attributeNames.width]: value.width,
+		[attributeNames.height]: value.height,
+	});
+};
+
+/**
+ * Set the URL of Media
+ * @param {Object} value Selected gutenberg media object
+ * @param {Object} props All Media props
+ */
+export const handleURLSelect = (value, props) => {
+	const { attributeNames, setAttributes } = props;
+	setAttributes({
+		[attributeNames.url]: value,
+	});
+};

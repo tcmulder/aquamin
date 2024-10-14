@@ -3,51 +3,47 @@
  */
 import classnames from 'classnames';
 import { MediaPlaceholder } from '@wordpress/block-editor';
+import { handleMediaSelect, handleURLSelect } from './media-util';
 
 /**
  * Output new media adder
- * @param {Object}   root0
- * @param {string}   root0.className
- * @param {string}   root0.title
- * @param {Object}   root0.attributes
- * @param {Object}   root0.attributeNames
- * @param {Function} root0.setAttributes
- * @param {Array}    root0.accept
- * @param {Array}    root0.allowedTypes
+ * @param {Object}  props
+ * @param {string}  props.className
+ * @param {string}  props.title
+ * @param {Object}  props.attributes
+ * @param {Object}  props.attributeNames
+ * @param {Array}   props.accept
+ * @param {Array}   props.allowedTypes
+ * @param {boolean} props.editable
+ * @param {boolean} props.hidePlaceholder
  */
-export const MediaNewPlaceholder = ({
-	className,
-	title,
-	attributes,
-	attributeNames,
-	setAttributes,
-	accept,
-	allowedTypes,
-}) => {
-	return (
-		<MediaPlaceholder
-			disableDropZone={false}
-			className={classnames('media', className)}
-			labels={{
-				title,
-			}}
-			value={attributes[attributeNames.id]}
-			onSelectURL={(value) =>
-				setAttributes({
-					[attributeNames.url]: value,
-				})
-			}
-			onSelect={(value) =>
-				setAttributes({
-					[attributeNames.id]: value.id,
-					[attributeNames.url]: value.url,
-					[attributeNames.alt]: value.alt,
-					[attributeNames.width]: value.width,
-					[attributeNames.height]: value.height,
-				})
-			}
-			accept={accept}
-			allowedTypes={allowedTypes}
-		/>
-	);
+export const MediaNewPlaceholder = (props) => {
+	const {
+		className,
+		title,
+		attributes,
+		attributeNames,
+		accept,
+		allowedTypes,
+		editable,
+		hidePlaceholder,
+	} = props;
+	if (editable && !hidePlaceholder) {
+		return (
+			<MediaPlaceholder
+				disableDropZone={false}
+				className={classnames('media', className)}
+				labels={{
+					title,
+				}}
+				value={attributes[attributeNames.id]}
+				onSelectURL={(value) => handleURLSelect(value, props)}
+				onSelect={(value) => handleMediaSelect(value, props)}
+				accept={accept}
+				allowedTypes={allowedTypes}
+			/>
+		);
+	}
+
+	return null;
 };

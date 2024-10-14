@@ -110,7 +110,7 @@ const Media = (props) => (
 );
 
 Media.defaultProps = {
-	title: __('Media Upload', 'aquamin'),
+	title: __('Media', 'aquamin'),
 	accept: ['image/*', 'video/*'],
 	allowedTypes: ['image', 'video'],
 	attributeNames: {

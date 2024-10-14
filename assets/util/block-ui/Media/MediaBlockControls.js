@@ -3,6 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
+import { handleMediaSelect, handleURLSelect } from './media-util';
 
 /**
  * Output editor for existing media
@@ -11,35 +12,24 @@ import { BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
 export const MediaBlockControls = (props) => {
 	const {
 		editable,
+		hideInBlockControls,
 		attributeNames,
 		attributes,
-		setAttributes,
 		allowedTypes,
 		accept,
+		title,
 	} = props;
-	if (editable) {
+	if (editable && !hideInBlockControls) {
 		return (
 			<BlockControls>
 				<MediaReplaceFlow
 					allowedTypes={allowedTypes}
 					accept={accept}
-					onSelectURL={(value) =>
-						setAttributes({
-							[attributeNames.url]: value,
-						})
-					}
-					onSelect={(value) => {
-						return setAttributes({
-							[attributeNames.id]: value.id,
-							[attributeNames.url]: value.url,
-							[attributeNames.alt]: value.alt,
-							[attributeNames.width]: value.width,
-							[attributeNames.height]: value.height,
-						});
-					}}
+					onSelectURL={(value) => handleURLSelect(value, props)}
+					onSelect={(value) => handleMediaSelect(value, props)}
 					mediaId={attributes[attributeNames.id]}
 					mediaURL={attributes[attributeNames.url]}
-					name={__('Add')}
+					name={`${__('Replace', 'aquamin')} ${title}`}
 				/>
 			</BlockControls>
 		);
