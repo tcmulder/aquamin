@@ -14,7 +14,6 @@ import { MediaPlaceholder } from '@wordpress/block-editor';
  * @param {Function} root0.setAttributes
  * @param {Array}    root0.accept
  * @param {Array}    root0.allowedTypes
- * @param {boolean}  root0.editable
  */
 export const MediaNewPlaceholder = ({
 	className,
@@ -24,10 +23,8 @@ export const MediaNewPlaceholder = ({
 	setAttributes,
 	accept,
 	allowedTypes,
-	editable,
 }) => {
-	const show = editable && !attributes[attributeNames.url];
-	return show ? (
+	return (
 		<MediaPlaceholder
 			disableDropZone={false}
 			className={classnames('media', className)}
@@ -52,5 +49,5 @@ export const MediaNewPlaceholder = ({
 			accept={accept}
 			allowedTypes={allowedTypes}
 		/>
-	) : null;
+	);
 };

@@ -11,7 +11,7 @@ import { MediaElement } from './MediaElement';
  * @param {Object} props
  */
 export const MediaEditor = (props) => {
-	const { attributeNames, attributes, setAttributes, editable, showFocal } =
+	const { attributeNames, attributes, setAttributes, editable, hasFocal } =
 		props;
 	const show = editable && attributes[attributeNames.url];
 	return show ? (
@@ -53,7 +53,7 @@ export const MediaEditor = (props) => {
 					// addToGallery={ hasImageIds }
 				/>
 			</BlockControls> */}
-			{showFocal ? (
+			{hasFocal ? (
 				<>
 					<FocalPointPicker
 						url={attributes[attributeNames.url]}

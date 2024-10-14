@@ -53,7 +53,6 @@
  *        editable // set to true if within edit function or leave off if in save function
  *        setAttributes={setAttributes} // setAttributes function from containing block
  *        attributes={attributes} // attributes from containing block
- *        showFocal={true} // show object fit focal point controls (don't need mediaFocalX or Y if false)
  *        attributeNames = {{
  *            // custom block.json prop names (e.g. mediaAlt1 and mediaAlt2 for two <Media />)
  *            // if you have two <Media /> use something like .media-1 and .media-2 for class names in block.json
@@ -83,6 +82,7 @@
  *        ]}
  *        title={__('Background Media', 'aquamin')} // title above <MediaPlaceholder />
  *        className="my-extra-class" // comes with .media automatically
+ *        style={{ height: 'auto }} // inline css styling
  *        accept={['image/*', 'video/*']} // or exclude a type
  *        allowedTypes={['image', 'video']} // or exclude a type
  *        hideInSidebar={true} // don't show this in block editor sidebar
@@ -111,7 +111,6 @@ Media.defaultProps = {
 	title: __('Media Upload', 'aquamin'),
 	accept: ['image/*', 'video/*'],
 	allowedTypes: ['image', 'video'],
-	showFocal: true,
 	attributeNames: {
 		alt: 'mediaAlt',
 		url: 'mediaUrl',

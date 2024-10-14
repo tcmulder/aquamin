@@ -10,8 +10,14 @@ import { getHTMLAttributes, getType, getFocalStyles } from './media-util';
  * @param {Object} props All Media props
  */
 export const MediaElement = (props) => {
-	const { attributeNames, attributes, htmlAttributes, className, editable } =
-		props;
+	const {
+		attributeNames,
+		attributes,
+		htmlAttributes,
+		className,
+		editable,
+		style,
+	} = props;
 	const hasUrl = !!attributes[attributeNames.url];
 
 	if (editable && !hasUrl) {
@@ -29,7 +35,7 @@ export const MediaElement = (props) => {
 				width={attributes[attributeNames.width]}
 				height={attributes[attributeNames.height]}
 				alt={attributes[attributeNames.alt]}
-				style={focalStyles}
+				style={{ ...focalStyles, ...style }}
 				{...getHTMLAttributes(htmlAttributes, type)}
 			/>
 		);
@@ -41,7 +47,7 @@ export const MediaElement = (props) => {
 				src={attributes[attributeNames.url]}
 				width={attributes[attributeNames.width]}
 				height={attributes[attributeNames.height]}
-				style={focalStyles}
+				style={{ ...focalStyles, ...style }}
 				{...getHTMLAttributes(htmlAttributes, type)}
 			/>
 		);
