@@ -99,7 +99,7 @@ import { MediaInspector } from './MediaInspector';
 
 /**
  * Show media component
- * @param {Object} props
+ * @param {Object} props All Media props
  */
 const Media = (props) => (
 	<>
@@ -109,6 +109,7 @@ const Media = (props) => (
 	</>
 );
 
+// establish sane defaults
 Media.defaultProps = {
 	title: __('Media', 'aquamin'),
 	accept: ['image/*', 'video/*'],

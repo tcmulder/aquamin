@@ -7,7 +7,14 @@ import { getHTMLAttributes, getType, getFocalStyles } from './media-util';
 
 /**
  * Output actual media HTML to save
- * @param {Object} props All Media props
+ *
+ * @param {Object}  props                All Media props
+ * @param {Object}  props.attributeNames Object attribute names
+ * @param {Object}  props.attributes     Media block attributes
+ * @param {Object}  props.htmlAttributes HTML attributes
+ * @param {string}  props.className      Media's class name (in addition to .media)
+ * @param {boolean} props.editable       Whether or not this is editable (i.e. edit/save)
+ * @param {Object}  props.style          Media inline style attributes
  */
 export const MediaElement = (props) => {
 	const {

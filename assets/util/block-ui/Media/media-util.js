@@ -1,7 +1,8 @@
 /**
  * Get HTML attributes
- * @param {Object} htmlAttributes
- * @param {string} type
+ *
+ * @param {Object} htmlAttributes HTML attributes to parse
+ * @param {string} type           Type of media (e.g. 'video' or 'image')
  */
 export const getHTMLAttributes = (htmlAttributes, type) => {
 	// start with none
@@ -40,7 +41,8 @@ export const getHTMLAttributes = (htmlAttributes, type) => {
 
 /**
  * Get type of media
- * @param {string} url
+ *
+ * @param {string} url URL of the media asset to evaluate
  */
 export const getType = (url) => {
 	let type = 'image';
@@ -63,7 +65,11 @@ export const getType = (url) => {
 
 /**
  * Get image focal point
- * @param {Object} focal Focal parameters
+ *
+ * @param {Object} focal           Focal parameters
+ * @param {number} focal.x         Horizontal percentage focus
+ * @param {number} focal.y         Vertical percentage focus
+ * @param {string} focal.objectFit Object fit value (like "cover")
  */
 export const getFocalStyles = (focal) => {
 	let focalStyles = {};
@@ -79,6 +85,7 @@ export const getFocalStyles = (focal) => {
 
 /**
  * Set the media object of Media
+ *
  * @param {Object} value Selected gutenberg media object
  * @param {Object} props All Media props
  */
@@ -95,6 +102,7 @@ export const handleMediaSelect = (value, props) => {
 
 /**
  * Set the URL of Media
+ *
  * @param {Object} value Selected gutenberg media object
  * @param {Object} props All Media props
  */

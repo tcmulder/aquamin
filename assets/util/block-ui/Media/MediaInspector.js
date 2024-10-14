@@ -16,10 +16,12 @@ import { getType } from './media-util';
 
 /**
  * Alt text editor
- * @param {Object}   props
- * @param {Object}   props.attributes
- * @param {Function} props.setAttributes
- * @param {Object}   props.attributeNames
+ *
+ * @param {Object}   props                All Media props
+ * @param {Object}   props.attributeNames Object attribute names
+ * @param {Function} props.setAttributes  Function to change Media attributes
+ * @param {Object}   props.attributeNames Object attribute names
+ * @param {Object}   props.attributes     Media block attributes
  */
 const AltControl = ({ attributes, setAttributes, attributeNames }) => {
 	return getType(attributes[attributeNames.url]) !== 'video' ? (
@@ -50,12 +52,12 @@ const AltControl = ({ attributes, setAttributes, attributeNames }) => {
 };
 
 /**
+ * Button for removing Media
  *
  * @param {Object}   props                All props
  * @param {Object}   props.title          Media title
- * @param {Function} props.setAttributes  Set block attributes
+ * @param {Function} props.setAttributes  Set Media block attributes
  * @param {Object}   props.attributeNames Custom/default attribute names
- * @param            props.attributes
  */
 const Remove = ({ setAttributes, attributeNames, title }) => {
 	return (
@@ -77,8 +79,12 @@ const Remove = ({ setAttributes, attributeNames, title }) => {
 };
 
 /**
- * Media editor types (new media, focal point, plain media iamge)
- * @param {Object} props
+ * Media editor types (new media, focal point, actual media asset)
+ *
+ * @param {Object}   props                All props
+ * @param {Function} props.setAttributes  Set Media block attributes
+ * @param {Object}   props.attributeNames Custom/default attribute names
+ * @param {Object}   props.attributes     Media block attributes
  */
 const MediaEditor = (props) => {
 	const { attributes, attributeNames, setAttributes } = props;
@@ -122,7 +128,11 @@ const MediaEditor = (props) => {
 
 /**
  * Output inspector controls
- * @param {Object} props
+ *
+ * @param {Object}  props
+ * @param {string}  props.title         Media's name in the editor
+ * @param {boolean} props.editable      Whether or not this is editable (i.e. edit/save)
+ * @param {boolean} props.hideInSidebar Whether or not to hide inspector altogether
  */
 export const MediaInspector = (props) => {
 	const { title, hideInSidebar, editable } = props;

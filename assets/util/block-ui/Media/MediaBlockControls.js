@@ -7,6 +7,19 @@ import { ToolbarGroup } from '@wordpress/components';
 import { handleMediaSelect, handleURLSelect } from './media-util';
 
 /**
+ * Output actual media HTML to save
+ *
+ * @param {Object}  props                     All Media props
+ * @param {boolean} props.editable            Whether or not this is editable (i.e. edit/save)
+ * @param {boolean} props.hideInBlockControls Weather or not to show block controls
+ * @param {Object}  props.attributeNames      Object attribute names
+ * @param {Object}  props.attributes          Media block attributes
+ * @param {Array}   props.allowedTypes        Array of allowed mime types (e.g. ['image', 'video'])
+ * @param {Array}   props.accept              Array of accepted upload types (e.g. ['image/*', 'video/*'])
+ * @param {string}  props.title               Media's name in the editor
+ */
+
+/**
  * Output editor for existing media
  * @param {Object} props
  */
