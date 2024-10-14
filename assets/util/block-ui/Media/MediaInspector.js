@@ -18,7 +18,6 @@ import { getType } from './media-util';
  * Alt text editor
  *
  * @param {Object}   props                All Media props
- * @param {Object}   props.attributeNames Object attribute names
  * @param {Function} props.setAttributes  Function to change Media attributes
  * @param {Object}   props.attributeNames Object attribute names
  * @param {Object}   props.attributes     Media block attributes
