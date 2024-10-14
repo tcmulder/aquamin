@@ -94,6 +94,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { MediaElement } from './MediaElement';
+import { MediaBlockControls } from './MediaBlockControls';
 import { MediaInspector } from './MediaInspector';
 
 /**
@@ -103,6 +104,7 @@ import { MediaInspector } from './MediaInspector';
 const Media = (props) => (
 	<>
 		<MediaInspector {...props} />
+		<MediaBlockControls {...props} />
 		<MediaElement {...props} />
 	</>
 );
