@@ -4,7 +4,7 @@
  * Defines front-end styling. All theme.css files
  * like this one load globally on the front-end.
  */
-.media--focal {
-	object-fit: cover;
+:where(.media) {
 	object-position: var(--media-x, 50%) var(--media-y, 50%);
+	object-fit: var(--media-focal, cover);
 }

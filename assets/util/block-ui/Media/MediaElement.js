@@ -2,7 +2,7 @@
  * Dependencies
  */
 import classnames from 'classnames';
-import { getHTMLAttributes, getType } from './util';
+import { getHTMLAttributes, getType, getFocalStyles } from './media-util';
 
 /**
  * Output actual media HTML to save
@@ -23,30 +23,20 @@ export const MediaElement = ({
 	const show = !editable;
 	if (show) {
 		const type = getType(attributes[attributeNames.url]);
-
-		// establish focal point
-		let styles = {};
-		const hasFocal = !!attributes[attributeNames.focalX];
-		if (hasFocal) {
-			styles = {
-				'--media-x': `${attributes[attributeNames.focalX] * 100}%`,
-				'--media-y': `${attributes[attributeNames.focalY] * 100}%`,
-			};
-		}
+		const focalStyles = getFocalStyles({
+			focalX: attributes[attributeNames.focalX],
+			focalY: attributes[attributeNames.focalY],
+		});
 
 		if (type === 'video' && attributes[attributeNames.url]) {
 			return (
 				// eslint-disable-next-line jsx-a11y/media-has-caption
 				<video
-					className={classnames(
-						'media',
-						className,
-						hasFocal ? 'media--focal' : '',
-					)}
+					className={classnames('media', className)}
 					src={attributes[attributeNames.url]}
 					width={attributes[attributeNames.width]}
 					height={attributes[attributeNames.height]}
-					style={styles}
+					style={focalStyles}
 					{...getHTMLAttributes(htmlAttributes, type)}
 				/>
 			);
@@ -54,16 +44,12 @@ export const MediaElement = ({
 		if (type === 'image' && attributes[attributeNames.url]) {
 			return (
 				<img
-					className={classnames(
-						'media',
-						className,
-						hasFocal ? 'media--focal' : '',
-					)}
+					className={classnames('media', className)}
 					src={attributes[attributeNames.url]}
 					width={attributes[attributeNames.width]}
 					height={attributes[attributeNames.height]}
 					alt={attributes[attributeNames.alt]}
-					style={styles}
+					style={focalStyles}
 					{...getHTMLAttributes(htmlAttributes, type)}
 				/>
 			);

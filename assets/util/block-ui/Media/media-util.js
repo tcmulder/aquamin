@@ -60,3 +60,21 @@ export const getType = (url) => {
 	}
 	return type;
 };
+
+/**
+ * Get image focal point
+ * @param {Object} root0
+ * @param {number} root0.focalX
+ * @param {number} root0.focalY
+ */
+export const getFocalStyles = ({ focalX, focalY }) => {
+	let focalStyles = {};
+	if (focalX && focalY) {
+		focalStyles = {
+			'--media-x': `${focalX * 100}%`,
+			'--media-y': `${focalY * 100}%`,
+			'--media-focal': 'cover',
+		};
+	}
+	return focalStyles;
+};

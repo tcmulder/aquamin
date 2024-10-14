@@ -111,6 +111,7 @@ const Media = (props) => (
 		<MediaElement {...props} />
 	</>
 );
+
 Media.defaultProps = {
 	title: __('Media Upload', 'aquamin'),
 	accept: ['image/*', 'video/*'],

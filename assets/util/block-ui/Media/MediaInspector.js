@@ -6,7 +6,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextareaControl } from '@wordpress/components';
 import { MediaEditor } from './MediaEditor';
 import { MediaNewPlaceholder } from './MediaNewPlaceholder';
-import { getType } from './util';
+import { getType } from './media-util';
 
 /**
  * Output inspector controls
