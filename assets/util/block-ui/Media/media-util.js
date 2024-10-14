@@ -63,17 +63,15 @@ export const getType = (url) => {
 
 /**
  * Get image focal point
- * @param {Object} root0
- * @param {number} root0.focalX
- * @param {number} root0.focalY
+ * @param {Object} focal Focal parameters
  */
-export const getFocalStyles = ({ focalX, focalY }) => {
+export const getFocalStyles = (focal) => {
 	let focalStyles = {};
-	if (focalX && focalY) {
+	if (focal) {
 		focalStyles = {
-			'--media-x': `${focalX * 100}%`,
-			'--media-y': `${focalY * 100}%`,
-			'--media-focal': 'cover',
+			'--media-x': `${focal.x * 100}%`,
+			'--media-y': `${focal.y * 100}%`,
+			'--media-focal': focal.objectFit,
 		};
 	}
 	return focalStyles;

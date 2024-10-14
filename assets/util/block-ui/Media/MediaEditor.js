@@ -58,13 +58,16 @@ export const MediaEditor = (props) => {
 					<FocalPointPicker
 						url={attributes[attributeNames.url]}
 						value={{
-							x: attributes[attributeNames.focalX],
-							y: attributes[attributeNames.focalY],
+							x: attributes[attributeNames.focal].x,
+							y: attributes[attributeNames.focal].y,
 						}}
 						onChange={(value) => {
 							setAttributes({
-								[attributeNames.focalX]: value.x,
-								[attributeNames.focalY]: value.y,
+								[attributeNames.focal]: {
+									x: value.x,
+									y: value.y,
+									objectFit: 'cover',
+								},
 							});
 						}}
 						__next40pxDefaultSize

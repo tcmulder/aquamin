@@ -15,7 +15,6 @@ import { MediaPlaceholder } from '@wordpress/block-editor';
  * @param {Array}    root0.accept
  * @param {Array}    root0.allowedTypes
  * @param {boolean}  root0.editable
- * @param {boolean}  root0.showFocal
  */
 export const MediaNewPlaceholder = ({
 	className,
@@ -26,17 +25,12 @@ export const MediaNewPlaceholder = ({
 	accept,
 	allowedTypes,
 	editable,
-	showFocal,
 }) => {
 	const show = editable && !attributes[attributeNames.url];
 	return show ? (
 		<MediaPlaceholder
 			disableDropZone={false}
-			className={classnames(
-				'media',
-				className,
-				showFocal ? 'media--focal' : '',
-			)}
+			className={classnames('media', className)}
 			labels={{
 				title,
 			}}

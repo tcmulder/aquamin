@@ -30,13 +30,13 @@
  *            "mediaHeight": {
  *                "type": "number"
  *            },
- *            "mediaFocalX": {
- *                "type": "number",
- *                "default": 0.5
- *            },
- *            "mediaFocalY": {
- *                "type": "number",
- *                "default": 0.5
+ *            "mediaFocal": {
+ *                "type": "object",
+ *                "default": {
+ *                    "x": 0.5,
+ *                    "y": 0.5,
+ *                    "objectFit": "cover",
+ *                }
  *            },
  *        }
  *    }
@@ -50,9 +50,9 @@
  *    <Media attributes={attributes} />
  * There's a lot of customization you can do as well:
  *    <Media
- *        editable
- *        setAttributes={setAttributes}
- *        attributes={attributes}
+ *        editable // set to true if within edit function or leave off if in save function
+ *        setAttributes={setAttributes} // setAttributes function from containing block
+ *        attributes={attributes} // attributes from containing block
  *        showFocal={true} // show object fit focal point controls (don't need mediaFocalX or Y if false)
  *        attributeNames = {{
  *            // custom block.json prop names (e.g. mediaAlt1 and mediaAlt2 for two <Media />)
@@ -62,8 +62,7 @@
  *            id: 'mediaId',
  *            width: 'mediaWidth',
  *            height: 'mediaHeight',
- *            focalX: 'mediaFocalX',
- *            focalY: 'mediaFocalY',
+ *            focal: 'mediaFocal',
  *        }}
  *        htmlAttributes={[
  *            {
@@ -95,8 +94,6 @@
  */
 import { __ } from '@wordpress/i18n';
 import { MediaElement } from './MediaElement';
-import { MediaEditor } from './MediaEditor';
-import { MediaNewPlaceholder } from './MediaNewPlaceholder';
 import { MediaInspector } from './MediaInspector';
 
 /**
@@ -106,8 +103,6 @@ import { MediaInspector } from './MediaInspector';
 const Media = (props) => (
 	<>
 		<MediaInspector {...props} />
-		<MediaEditor {...props} showFocal={false} />
-		<MediaNewPlaceholder {...props} />
 		<MediaElement {...props} />
 	</>
 );
@@ -123,8 +118,7 @@ Media.defaultProps = {
 		id: 'mediaId',
 		width: 'mediaWidth',
 		height: 'mediaHeight',
-		focalX: 'mediaFocalX',
-		focalY: 'mediaFocalY',
+		focal: 'mediaFocal',
 	},
 };
 
