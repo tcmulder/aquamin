@@ -1,0 +1,10 @@
+/**
+ * Media front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+:where(.media) {
+	object-position: var(--media-x, 50%) var(--media-y, 50%);
+	object-fit: var(--media-focal, cover);
+}

@@ -68,7 +68,7 @@ Though static JavaScript blocks are generally best, sometimes blocks require bac
 
 ## Hooks and Filters
 
-Add whatever WordPress hooks and filters a block requires to a `hooks.php` file in that block's directory. (Don't add them to `functions.php` to ensure everything stays organized in the block's own directory—see [Block Philosophy](#block-philosophy).) You can see an example within `aquamin/assets/block-editor/format-type-year/year-hooks.php`, which the year format type uses to display the current year via PHP.
+Add whatever WordPress hooks and filters a block requires to a `hooks.php` file in that block's directory. (Don't add them to `functions.php` to ensure everything stays organized in the block's own directory—see [Block Philosophy](#block-philosophy).) You can see an example within `aquamin/assets/block-library/extend-date/date-hooks.php`, which allows you to insert an auto-updating current year with the core date block.
 
 ## Block Utilities
 
@@ -76,20 +76,21 @@ You'll find some helpful, reusable utilities and Gutenberg UI components under `
 
 ## Editing Core Blocks
 
-You can edit core blocks (e.g. add custom block settings, set variations, insert format types, register or deregister block styles, etc.) within the `aquamin/assets/block-editor/` directory.
+You can edit core blocks (e.g. add custom block settings, set variations, insert format types, register or deregister block styles, etc.) within the `aquamin/assets/block-library/` directory. Aquamin comes with a few such modifications already:
 
-Aquamin comes with a few modifications already, including block animations, column layout enhancements, a current year paragraph format type, and show/hide responsive container options. Feel free to duplicate and reuse any of these for your own purposes, or remove those you don't want.
+```
+📂 assets
+┗ 📂 block-library         // all block edits reside within assets/block-library/*
+   ┣ 📂 extend-styles      // geneal block editor styling tweaks/fixes
+   ┣ 📂 extend-ani         // animations you can apply to core or custom blocks
+   ┣ 📂 extend-core-button // core/button block style overrides
+   ┣ 📂 extend-core-column // core/column options like mobile ordering/widths
+   ┣ 📂 extend-date        // core/post-date option to show current date
+   ┗ 📂 extend-show-hide   // generic responsive show/hide functionality
+```
+You can use these as a model for creating your own edits (and remove any you don't want).
 
-?>You'll notice most block edits need a `theme.css` file so the styling appears theme-wide (see [conventions](#file-naming-and-enqueuing-conventions)). You can also replace this with a `view.css` file and enqueue it using advanced logic within a block's `hooks.php` file.
-
-## Built-In Blocks
-
-Aquamin comes with a few blocks preinstalled.
-
-1. *The `aquamin/assets/block-library/grd` Grid Block*: This block supports advanced, responsive layout grids.
-2. *The `aquamin/assets/block-editor/format-type-year` Format Type*: This format type allows you to essentially add "YYYY" to a paragraph, which gets converted to the current year via PHP—very useful for footer copyrights.
-
-Feel free to edit or delete these blocks to suit your needs.
+?>The folder prefix "extend-*" isn't required, but is helpful to differentiate blocks from extensions of existing blocks.
 
 ## Transferring Blocks
 

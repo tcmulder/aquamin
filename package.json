@@ -1,6 +1,6 @@
 {
 	"name": "aquamin",
-	"version": "5.0.0",
+	"version": "7.2.0",
 	"description": "Webpack @wordpress/scripts build tool for Aquamarine",
 	"private": true,
 	"author": "@tcmulder",
@@ -14,11 +14,17 @@
 		"build": "wp-scripts build --experimental-modules --config=includes/config/webpack.config.js --webpack-src-dir=assets --output-path=dist --webpack-copy-php",
 		"docs": "docsify serve docs --open --port 4000",
 		"lint": "eslint --config=./includes/config/.eslintrc.js ./assets",
-		"lint:fix": "eslint --config=./includes/config/.eslintrc.js ./assets --fix"
+		"lint:fix": "eslint --config=./includes/config/.eslintrc.js ./assets --fix",
+		"clean": "rm -rf ./dist"
 	},
 	"browserslist": "> 0.25%, last 2 versions, not dead",
 	"eslintConfig": {
 		"extends": "./includes/config/.eslintrc.js"
+	},
+	"postcss": {
+		"plugins": {
+			"postcss-nested": {}
+		}
 	},
 	"devDependencies": {
 		"@svgr/webpack": "^8.1.0",
@@ -32,6 +38,7 @@
 		"event-hooks-webpack-plugin": "^2.3.0",
 		"glob": "^10.3.12",
 		"path": "^0.12.7",
+		"postcss-nested": "^6.2.0",
 		"webpack-import-glob-loader": "^1.6.3",
 		"webpack-merge": "^5.10.0",
 		"webpack-remove-empty-scripts": "^1.0.4"

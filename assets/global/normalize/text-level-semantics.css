@@ -26,16 +26,18 @@ dfn {
 :is(h4, .has-h-4-font-size, .h4),
 :is(h5, .has-h-5-font-size, .h5),
 :is(h6, .has-h-6-font-size, .h6) {
-	margin-top: 0.5em;
-	margin-bottom: 0;
 	font-weight: 700;
 	line-height: var(--flh-s);
 	font-family: var(--ff-2);
-	&:first-child {
-		margin-top: 0;
-	}
-	&:last-child {
-		margin-bottom: 0;
+	/* required to override block editor's "block spacing" */
+	:is(.torso, .is-root-container) & {
+		margin-top: 0.5em;
+		&:first-child {
+			margin-top: 0;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 }
 :is(h1, .has-h-1-font-size, .h1) {
@@ -64,8 +66,12 @@ dfn {
 }
 p {
 	margin-top: 0;
-	&:last-child {
-		margin-bottom: 0;
+	/* required to override block editor's "block spacing" */
+	:is(.torso, .is-root-container) & {
+		margin-bottom: 1em;
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 }
 mark {

@@ -126,8 +126,8 @@ function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text 
  * Get a specific post's content
  * 
  * Allows us to get the content of one post from within another. Defaults
- * to getting Appearance > Global Content posts and their content if you
- * just pass in array( 'name' => 'global-content-slug' ).
+ * to getting Appearance > Pattern wp_block posts and their content if you
+ * just pass in array( 'name' => 'pattern-slug' ).
  * 
  * @param  array   $query  Query for a single post to grab content
  * @return string          Post content or empty string
@@ -139,7 +139,7 @@ function aquamin_get_post_content( $query ) {
 
 	// merge query with ours to get the ID of a single matching post
 	$query = wp_parse_args( $query, array(
-		'post_type' => 'aquamin-general',
+		'post_type' => 'wp_block',
 		'posts_per_page' => 1,
 		'fields' => 'ids'
 	) );

@@ -12,7 +12,7 @@ module.exports = {
 		],
 		'import/no-extraneous-dependencies': [
 			'error',
-			{ packageDir: './', devDependencies: true },
+			{ devDependencies: true },
 		],
 		'import/no-unresolved': [2, { ignore: ['@wordpress'] }],
 		'arrow-body-style': 'off',

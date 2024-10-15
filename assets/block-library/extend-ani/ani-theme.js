@@ -6,9 +6,9 @@
  */
 
 // import animations
-import { aniScroll } from './scripts/aniScroll';
-import { aniBackground } from './scripts/aniBackground';
-import { ani, aniDelegate, aniLoad } from './scripts/aniViewport';
+import { ani, aniDelegate, aniLoad } from './ani-on-viewport/aniViewport';
+import { aniScroll } from './ani-on-scroll/aniScroll';
+import { aniBackground } from './ani-on-background/aniBackground';
 
 // animate items once on page load
 aniLoad('.ani--load');

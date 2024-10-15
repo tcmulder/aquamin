@@ -48,10 +48,11 @@ newConfig.commonJS = {
 	// combine our entries with the default ones (which are mostly block related)
 	entry: {
 		...orgConfig.commonJS.entry(), // or ...getWebpackEntryPoints() (see https://github.com/WordPress/gutenberg/issues/58074)
+		/**
+		 * Compile all *view.ext files into separate output files
+		 */
 		...[
 			'./assets/block-library/**/*view.{css,scss}',
-			'./assets/block-editor/**/*view.{css,scss}',
-			'./assets/block-editor/**/*view.{js,ts}',
 			'./assets/component-library/**/*view.{css,scss}',
 			'./assets/component-library/**/*view.{js,ts}',
 		].reduce((acc, cur) => {
@@ -76,6 +77,9 @@ newConfig.commonJS = {
 			}, {});
 			return { ...acc, ...newEntry };
 		}, {}),
+		/**
+		 * Compile all *theme.ext files into one globally-enqueued file (and shame.css)
+		 */
 		...(() => {
 			const files = globSync([
 				/**
@@ -86,18 +90,21 @@ newConfig.commonJS = {
 				 * the front-end of the website, site-wide via
 				 * the theme.bundle.js and theme.bundle.css files.
 				 */
-				path.resolve(process.cwd(), 'assets/**/**theme.css'),
-				path.resolve(process.cwd(), 'assets/**/**theme.js'),
+				path.resolve(process.cwd(), 'assets/**/**theme.{css,scss}'),
+				path.resolve(process.cwd(), 'assets/**/**theme.{js,ts}'),
 				/**
 				 * Stuff we don't wanna talk about...
 				 *
 				 * See file for notes. Added here to be
 				 * near last in cascade. Loaded site-wide.
 				 */
-				path.resolve(process.cwd(), 'assets/global/shame.css'),
+				path.resolve(process.cwd(), 'assets/global/shame.{css,scss}'),
 			]);
 			return files.length ? { 'global/theme.bundle': files } : {};
 		})(),
+		/**
+		 * Compile all *editor.ext files into one editor-enqueued file (and include main theme.css file)
+		 */
 		...(() => {
 			const files = globSync([
 				/**
@@ -106,7 +113,7 @@ newConfig.commonJS = {
 				 * This causes the editor to inherit the theme's
 				 * major styling features.
 				 */
-				path.resolve(process.cwd(), 'assets/global/theme.css'),
+				path.resolve(process.cwd(), 'assets/global/theme.{css,scss}'),
 				/**
 				 * Compile block editor back-end styling
 				 *
@@ -114,8 +121,8 @@ newConfig.commonJS = {
 				 * get enqueued on the back-end of the block editor, site-wide
 				 * via the editor.bundle.css file.
 				 */
-				path.resolve(process.cwd(), 'assets/**/**editor.css'),
-				path.resolve(process.cwd(), 'assets/block-editor/**/*index.js'),
+				path.resolve(process.cwd(), 'assets/**/**editor.{css,scss}'),
+				path.resolve(process.cwd(), 'assets/**/**editor.{js,ts}'),
 			]);
 			return files.length ? { 'global/editor.bundle': files } : {};
 		})(),
@@ -171,10 +178,30 @@ newConfig.commonJS = {
 		// @see https://www.npmjs.com/package/webpack-remove-empty-scripts
 		new EventHooksPlugin({
 			afterEmit: () => {
-				const duplicateExt = globSync('./dist/**/*{.css.css,.js.js}');
-				duplicateExt.forEach((file) => {
+				// replace double file extensions
+				const duplicateExt = globSync(
+					'./dist/**/*{.css.css,.js.js,.scss.css,.ts.js}',
+				);
+				duplicateExt?.forEach((file) => {
 					const ext = path.extname(file);
-					const newName = file.replace(new RegExp(`${ext}$`), '');
+					const newName =
+						file.replace(new RegExp('((?:.[^.\r\n]*){2})$'), '') +
+						ext;
+					fs.rename(file, newName, (err) => {
+						if (err) {
+							throw err;
+						}
+					});
+				});
+				// replace incorrect assets file after double file extension rename
+				const duplicateExtJsAsset = globSync(
+					'./dist/**/*.js.asset.php',
+				);
+				duplicateExtJsAsset?.forEach((file) => {
+					const newName = file.replace(
+						new RegExp(`\.js\.asset\.php$`),
+						'.asset.php',
+					);
 					fs.rename(file, newName, (err) => {
 						if (err) {
 							throw err;
@@ -205,7 +232,7 @@ newConfig.commonJS = {
 	},
 };
 
-// don't base64 all the svg images (as the default does)
+// don't base64 all the svg images (as done by default)
 const loadInlineSVG = () => {
 	// allow inline svg
 	const svgJSIndex = orgConfig.commonJS.module.rules.findIndex((obj) => {
@@ -251,7 +278,6 @@ if (orgConfig.esModule) {
 		entry: {
 			...[
 				'./assets/block-library/**/*view.mjs',
-				'./assets/block-editor/**/*view.mjs',
 				'./assets/component-library/**/*view.mjs',
 			].reduce((acc, cur) => {
 				/**

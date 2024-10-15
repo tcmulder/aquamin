@@ -49,7 +49,7 @@ function setup( $args, $assoc_args ) {
 	if ( ! $has_error ) {
 		WP_CLI::success( 'Setup complete' );
 		WP_CLI::line( WP_CLI::colorize( "\n%6%k What's next? %n\n" ) );
-		WP_CLI::line( WP_CLI::colorize( "%C ‣ Customize your footer:%n \n" . get_admin_url( null, '/edit.php?post_type=aquamin-general' ) ) );
+		WP_CLI::line( WP_CLI::colorize( "%C ‣ Customize your footer:%n \n" . get_admin_url( null, '/site-editor.php?postType=wp_block' ) ) );
 		WP_CLI::line( WP_CLI::colorize( "%C ‣ Visit the pattern library:%n \n" . get_admin_url( null, '/edit.php?post_type=all-the-things' ) ) );
 		WP_CLI::line( "\n" );
 	}

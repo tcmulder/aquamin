@@ -32,7 +32,6 @@
 /* this is a sort of fake background-attachment:fixed element */
 .background-color-block {
 	pointer-events: none;
-	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -43,7 +42,9 @@
 	transition: 1s;
 	/* override WordPresss's labotimized owl */
 	margin: 0 !important;
+	/* override too-specific WordPress cover block styling */
 	&.background-color-block {
+		position: fixed;
 		* {
 			max-width: 100%;
 		}

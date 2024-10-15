@@ -24,7 +24,9 @@ export const aniScroll = (mixed, useElHeight = true) => {
 	const isStr = typeof mixed === 'string';
 	const scrollWraps = isStr ? document.querySelectorAll(mixed) : mixed;
 	// bail if we have nothing
-	if (!scrollWraps.length) return;
+	if (!scrollWraps.length) {
+		return;
+	}
 
 	// prep to store all scroll-based animation elements
 	const scrollable = {};

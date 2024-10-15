@@ -44,7 +44,9 @@ const Render = ({
 	canReorder = true,
 }) => {
 	const [reorder, setReorder] = useState(false);
-	if (entities === null) return <Spinner />;
+	if (entities === null) {
+		return <Spinner />;
+	}
 	const opt = [
 		...entities.map((t) => {
 			return parseEntities(t);

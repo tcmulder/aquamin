@@ -1,5 +1,20 @@
 # Changelog
 
+## 7.2.0 - October 10 2024
+* Prevent PostCSS from allowing nested CSS ([see this issue](https://github.com/Yoast/wordpress-seo/issues/20535)).
+* Update alignment styling (e.g. content, wide, full) so back-end and front-end match.
+* Removed `block-editor` directory and moved them to `block-library` for simplification.
+* Removed `aquamin-general` post type (use a synced pattern instead since this is closer to how FSE will work).
+* Switched footer that's added on `wp aquamin setup` to use a synced pattern instead of the `aquamin-general` post type.
+* Updated Media UI utility to make it more useful and easier to use.
+* Removed Buttons UI and Appender UI (Gutenberg has gotten better at handling this natively).
+* Various minor bug fixes.
+
+## 7.1.4 - August 5 2024
+* Fixed "failed to resolve module" error for JavaScript module assets.
+* Fixed PHP errors prior to running build command.
+* Added `npm run clean` to clear dist directory (otherwise maintains old blocks and such).
+
 ## 7.1.3 - June 17 2024
 * Fix PHP error if theme is activated without an initial dist directory (i.e. prior to running an initial `npm run build`).
 

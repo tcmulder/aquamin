@@ -1,0 +1,18 @@
+/**
+ * Buttons front-end global styling
+ *
+ * Defines front-end styling. All theme.css files
+ * like this one load globally on the front-end.
+ */
+:is(.wp-block-button .wp-block-button__link), /* default */
+:is(.is-style-dark .wp-block-button__link),
+:is(a, button).is-style-dark {
+	background-color: var(--c-0-0);
+	color: var(--c-0-9);
+	border-radius: 0;
+}
+:is(.is-style-light .wp-block-button__link),
+:is(a, button).is-style-light {
+	background-color: var(--c-0-9);
+	color: var(--c-0-0);
+}

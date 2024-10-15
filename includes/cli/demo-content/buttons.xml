@@ -38,35 +38,53 @@
 </wp:author>
 <generator>https://wordpress.org/?v=6.6.2</generator>
 <item>
-  <title><![CDATA[➠ Playground]]></title>
-  <link>https://aquamin.aquamarine.test/all-the-things/playground/</link>
+  <title><![CDATA[Buttons]]></title>
+  <link>https://aquamin.aquamarine.test/all-the-things/buttons/</link>
   <pubDate>Fri, 17 Feb 2017 00:00:00 +0000</pubDate>
   <dc:creator/>
-  <guid isPermaLink="false">https://playground.aquamarine.test/?post_type=all-the-things&amp;p=7</guid>
+  <guid isPermaLink="false">https://aquamin.aquamarine.test/?post_type=all-the-things&amp;p=600</guid>
   <description/>
-  <content:encoded><![CDATA[<!-- wp:paragraph -->
-<p class="">You can use this pattern for just trying out random things. Think of it sort of like an Etch A Sketch: play around with creating something, then wipe it clean once you're done so you can use it for a different something later.</p>
-<!-- /wp:paragraph -->
+  <content:encoded><![CDATA[<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}},"border":{"width":"1px"}},"borderColor":"0-0"} -->
+<div class="wp-block-column has-border-color has-0-0-border-color" style="border-width:1px;padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Dark (default)</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column -->
 
-<!-- wp:paragraph -->
-<p class=""></p>
-<!-- /wp:paragraph -->]]></content:encoded>
+<!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}},"backgroundColor":"0-0"} -->
+<div class="wp-block-column has-0-0-background-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-light"} -->
+<div class="wp-block-button is-style-light"><a class="wp-block-button__link wp-element-button">Light</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->]]></content:encoded>
   <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-  <wp:post_id>7</wp:post_id>
-  <wp:post_date>2022-10-03 23:49:57</wp:post_date>
-  <wp:post_date_gmt>2022-10-03 23:49:57</wp:post_date_gmt>
-  <wp:post_modified>2022-10-03 23:49:57</wp:post_modified>
-  <wp:post_modified_gmt>2022-10-03 23:49:57</wp:post_modified_gmt>
+  <wp:post_id>600</wp:post_id>
+  <wp:post_date>2024-10-11 19:25:32</wp:post_date>
+  <wp:post_date_gmt>2024-10-11 19:25:32</wp:post_date_gmt>
+  <wp:post_modified>2024-10-11 19:25:32</wp:post_modified>
+  <wp:post_modified_gmt>2024-10-11 19:25:32</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
-  <wp:post_name>playground</wp:post_name>
+  <wp:post_name>buttons</wp:post_name>
   <wp:status>publish</wp:status>
   <wp:post_parent>0</wp:post_parent>
   <wp:menu_order>0</wp:menu_order>
   <wp:post_type>all-the-things</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
-  <category domain="all-the-things-thing" nicename="theme"><![CDATA[Theme]]></category>
+  <category domain="all-the-things-thing" nicename="extensions"><![CDATA[Extensions]]></category>
+  <wp:postmeta>
+    <wp:meta_key>_yoast_wpseo_primary_all-the-things-thing</wp:meta_key>
+    <wp:meta_value><![CDATA[7]]></wp:meta_value>
+  </wp:postmeta>
+  <wp:postmeta>
+    <wp:meta_key>_yoast_wpseo_estimated-reading-time-minutes</wp:meta_key>
+    <wp:meta_value><![CDATA[1]]></wp:meta_value>
+  </wp:postmeta>
 </item>
   </channel>
 </rss>

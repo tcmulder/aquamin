@@ -6,13 +6,13 @@
  */
 
 /* animate items when they enter the viewport */
-@import "./styles/ani-viewport.css";
+@import "./ani-on-viewport/ani-viewport.css";
 
 /* animate items on scroll (scrubs animation as you scroll) */
-@import "./styles/ani-scroll.css";
+@import "./ani-on-scroll/ani-scroll.css";
 
 /* animate backgrounds (like background-attachment:fixed) and foregrounds (like position:fixed popup) */
-@import "./styles/ani-background.css";
+@import "./ani-on-background/ani-background.css";
 
 /* common default animation custom properties */
 :root {

@@ -103,24 +103,28 @@ add_action( 'enqueue_block_editor_assets', 'aquamin_editor_scripts' );
 function aquamin_editor_scripts() {
 
 	// add browsersync helper (enables block editor CSS injecting within the iframe)
-	$asset = include AQUAMIN_DIST . '/config/browsersync.config.asset.php';
-	wp_enqueue_script(
-		'aquamin-browsersync',
-		AQUAMIN_TEMPLATE_URL . '/dist/config/browsersync.config.js',
-		$asset['dependencies'],
-		$asset['version'],
-		true
-	);
+	if ( file_exists( AQUAMIN_DIST . '/config/browsersync.config.asset.php' ) ) {
+		$asset = include AQUAMIN_DIST . '/config/browsersync.config.asset.php';
+		wp_enqueue_script(
+			'aquamin-browsersync',
+			AQUAMIN_TEMPLATE_URL . '/dist/config/browsersync.config.js',
+			$asset['dependencies'],
+			$asset['version'],
+			true
+		);
+	}
 
 	// add editor-related scripts like global block modifications
-	$asset = include AQUAMIN_DIST . '/global/editor.bundle.asset.php';
-	wp_enqueue_script(
-		'aquamin-editor',
-		AQUAMIN_TEMPLATE_URL . '/dist/global/editor.bundle.js',
-		$asset['dependencies'],
-		$asset['version'],
-		true
-	);
+	if ( file_exists( AQUAMIN_DIST . '/global/editor.bundle.asset.php' ) ) {
+		$asset = include AQUAMIN_DIST . '/global/editor.bundle.asset.php';
+		wp_enqueue_script(
+			'aquamin-editor',
+			AQUAMIN_TEMPLATE_URL . '/dist/global/editor.bundle.js',
+			$asset['dependencies'],
+			$asset['version'],
+			true
+		);
+	}
 
 }
 
