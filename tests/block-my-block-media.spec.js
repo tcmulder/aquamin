@@ -37,16 +37,6 @@ test.describe(`The block "${subject.label}"`, () => {
 	test.afterEach( async ( { page, requestUtils } ) => {
 		await deleteTestPage({ page, requestUtils });
 	} );
-	
-	// test('works on back-end', async ({ editor }) => {
-	// 	const block = (await editor.getBlocks() )[ 0 ];
-	// 	await expect(block.name).toBe(subject.block.name);
-	// });
-
-	// test('works on front-end', async({ page, requestUtils }) => {
-	// 	await openPageFromEditor({ page, requestUtils });
-	// 	await expect(page.locator(subject.selector) ).toBeVisible();
-	// });
 
 	test('matches reference screenshot', async({ page, requestUtils }) => {
 		await openPageFromEditor({ page, requestUtils });
