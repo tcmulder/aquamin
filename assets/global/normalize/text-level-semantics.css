@@ -78,6 +78,9 @@ mark {
 	background: #ff0;
 	color: #000;
 }
+code {
+	background-color: #eee;
+}
 sub,
 sup {
 	font-size: 75%;

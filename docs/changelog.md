@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.2.1 - October 29 2024
+* Standardize background color functionality.
+
 ## 7.2.0 - October 10 2024
 * Prevent PostCSS from allowing nested CSS ([see this issue](https://github.com/Yoast/wordpress-seo/issues/20535)).
 * Update alignment styling (e.g. content, wide, full) so back-end and front-end match.

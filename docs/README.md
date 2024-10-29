@@ -1,6 +1,6 @@
 # Aquamin WordPress Theme
 
-![Static Badge](https://img.shields.io/badge/Theme-7.2.0-01CAA9) [![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+![Static Badge](https://img.shields.io/badge/Theme-7.2.1-01CAA9) [![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 Aquamin is a minimal theme for custom WordPress development, with first-class support for your own Gutenberg blocks and custom components built right in.
 
