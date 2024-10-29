@@ -81,17 +81,34 @@
 }
 
 /**
- * Fix layout constrained's forced top margins.
+ * Adjust layout constrained's forced top margins.
  * 
  * The setting theme.json.styles.spacing.blockGap is used for
  * all default gap spacing (like between column blocks), but
  * is also used between all adjacent root-level blocks, meaning
- * we have to manually set each root block's top margin to 0px
- * or there will be unneeded spacing. This disabled that margin.
+ * we have to manually set each root block's top margin to our
+ * desired value, manually. This lets us apply our desired default.
  */
-:is(.torso, .is-root-container).is-layout-constrained {
-	& > * {
-		margin-block-start: unset;
+.torso.is-layout-constrained,
+.is-root-container.is-layout-constrained {
+	& > :not([style*="margin-top"]) {
+		margin-block-start: unset; /* or use something like var(--sp-s-rem) */
+	}
+}
+
+/**
+ * Add default top/bottom margins to first and last block.
+ * 
+ * This allows us to add default space under a sticky nav and/or above
+ * the footer automatically. We can override this by setting a margin
+ * manually for the first and/or last block through the block editor.
+ */
+.torso.is-layout-constrained {
+	& > *:not([style*="margin-top"]):first-child {
+		margin-top: var(--h-menu); /* space below main menu */
+	}
+	& > *:not([style*="margin-bottom"]):last-child {
+		margin-bottom: var(--sp-s-rem); /* space above footer */
 	}
 }
 

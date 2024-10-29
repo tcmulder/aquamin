@@ -4,6 +4,8 @@
 * Standardize background color functionality.
 * Removed unused comments.php (use component-library/blog/comments-view.php).
 * Renamed date block hook function to prevent generic function name clashes.
+* Tweaked alignment for more control over block gap values.
+* Updated CSS custom properties and several theme.json values to unify some common values.
 
 ## 7.2.0 - October 10 2024
 * Prevent PostCSS from allowing nested CSS ([see this issue](https://github.com/Yoast/wordpress-seo/issues/20535)).

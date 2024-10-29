@@ -113,6 +113,11 @@
 			"background": "var(--wp--preset--color--0-9)",
 			"text": "var(--wp--preset--color--0-0)"
 		},
+		"typography": {
+			"lineHeight": "var(--flh-m)",
+			"fontSize": "var(--fs-px)",
+			"fontFamily": "var(--ff-1)"
+		},
 		"spacing": {
 			"blockGap": "var(--sp-s-rem)",
 			"padding": {
