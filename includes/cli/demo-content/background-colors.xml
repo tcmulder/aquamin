@@ -71,8 +71,8 @@
   <wp:post_id>671</wp:post_id>
   <wp:post_date>2024-10-29 16:01:53</wp:post_date>
   <wp:post_date_gmt>2024-10-29 16:01:53</wp:post_date_gmt>
-  <wp:post_modified>2024-10-29 16:01:54</wp:post_modified>
-  <wp:post_modified_gmt>2024-10-29 16:01:54</wp:post_modified_gmt>
+  <wp:post_modified>2024-10-29 16:20:18</wp:post_modified>
+  <wp:post_modified_gmt>2024-10-29 16:20:18</wp:post_modified_gmt>
   <wp:comment_status>closed</wp:comment_status>
   <wp:ping_status>closed</wp:ping_status>
   <wp:post_name>background-colors</wp:post_name>
@@ -82,13 +82,14 @@
   <wp:post_type>all-the-things</wp:post_type>
   <wp:post_password/>
   <wp:is_sticky>0</wp:is_sticky>
+  <category domain="all-the-things-thing" nicename="theme"><![CDATA[Theme]]></category>
   <wp:postmeta>
     <wp:meta_key>_edit_last</wp:meta_key>
     <wp:meta_value><![CDATA[1]]></wp:meta_value>
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_yoast_wpseo_primary_all-the-things-thing</wp:meta_key>
-    <wp:meta_value><![CDATA[]]></wp:meta_value>
+    <wp:meta_value><![CDATA[8]]></wp:meta_value>
   </wp:postmeta>
   <wp:postmeta>
     <wp:meta_key>_yoast_wpseo_content_score</wp:meta_key>
