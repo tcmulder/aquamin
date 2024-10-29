@@ -69,6 +69,7 @@ export const deleteTestPage = async ({ page, requestUtils }) => {
  */
 export const openPageFromEditor = async ({ page, requestUtils }) => {
 	await page.getByRole('button', { name: 'Save', exact: true }).click();
+	await expect(page.getByRole('button', { name: 'Save', exact: true })).toBeVisible();
 	await page.goto(`${ requestUtils.baseURL }?page_id=${ getPostIdFromUrl(page.url()) }`);
 	await page.waitForLoadState('domcontentloaded')
 }
