@@ -42,8 +42,8 @@ const isAffected = (name, blocks) => {
 
 /**
  * Create a validation component.
- * @param {Object} root0
- * @param {Array}  root0.aquaminClassNameAni
+ * @param {Object} props
+ * @param {Array}  props.aquaminClassNameAni
  */
 const Validation = ({ aquaminClassNameAni }) => {
 	// start without a message

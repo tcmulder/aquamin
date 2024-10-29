@@ -26,10 +26,10 @@ import {
 
 /**
  * Link selector
- * @param {Object}   root0
- * @param {Object}   root0.link
- * @param {Function} root0.setAttributes
- * @param {boolean}  root0.show
+ * @param {Object}   props
+ * @param {Object}   props.link
+ * @param {Function} props.setAttributes
+ * @param {boolean}  props.show
  */
 const LinkSelector = ({ link, setAttributes, show }) => {
 	const [showLink, setShowLink] = useState(false);

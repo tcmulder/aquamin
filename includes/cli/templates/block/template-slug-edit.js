@@ -18,10 +18,10 @@ import {
 
 /**
  * Generate block editor component
- * @param {Object}   root0
- * @param {Object}   root0.attributes
- * @param {Function} root0.setAttributes
- * @param {string}   root0.className
+ * @param {Object}   props
+ * @param {Object}   props.attributes
+ * @param {Function} props.setAttributes
+ * @param {string}   props.className
  */
 const TemplateNamespaceBlockEdit = ({
 	attributes,
