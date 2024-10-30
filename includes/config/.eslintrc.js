@@ -14,7 +14,7 @@ module.exports = {
 			'error',
 			{ devDependencies: true },
 		],
-		'import/no-unresolved': [2, { ignore: ['@wordpress'] }],
+		'import/no-unresolved': [2, { ignore: ['@wordpress', 'classnames'] }],
 		'arrow-body-style': 'off',
 		'no-undef': 'off',
 		'react/prop-types': 'off',

@@ -2,8 +2,8 @@
 /**
  * Customize render of some blocks
  */
-add_filter( 'render_block', 'aquamin_customize_blocks', 9, 3 );
-function aquamin_customize_blocks( $block_content, $block ) {
+add_filter( 'render_block', 'aquamin_extend_date_block', 9, 3 );
+function aquamin_extend_date_block( $block_content, $block ) {
 	if ( 'core/post-date' === $block['blockName'] ) {
 		// $attr = 
 		// output current year (e.g. for footer copyright) if has setting checked to do so

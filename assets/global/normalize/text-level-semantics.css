@@ -3,11 +3,6 @@
  *
  * Normalize.css v3.0.0 | MIT License | git.io/normalize
  */
-html {
-	font-size: var(--fs-px);
-	line-height: var(--flh-m);
-	font-family: var(--ff-1);
-}
 abbr[title] {
 	border-bottom: none;
 	cursor: inherit;
@@ -77,6 +72,9 @@ p {
 mark {
 	background: #ff0;
 	color: #000;
+}
+code {
+	background-color: #eee;
 }
 sub,
 sup {

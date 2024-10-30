@@ -54,7 +54,7 @@ newConfig.commonJS = {
 		...[
 			'./assets/block-library/**/*view.{css,scss}',
 			'./assets/component-library/**/*view.{css,scss}',
-			'./assets/component-library/**/*view.{js,ts}',
+			'./assets/component-library/**/*view.{js,ts,jsx,tsx}',
 		].reduce((acc, cur) => {
 			/**
 			 * Compile individual view files
@@ -91,7 +91,10 @@ newConfig.commonJS = {
 				 * the theme.bundle.js and theme.bundle.css files.
 				 */
 				path.resolve(process.cwd(), 'assets/**/**theme.{css,scss}'),
-				path.resolve(process.cwd(), 'assets/**/**theme.{js,ts}'),
+				path.resolve(
+					process.cwd(),
+					'assets/**/**theme.{js,ts,jsx,tsx}',
+				),
 				/**
 				 * Stuff we don't wanna talk about...
 				 *
@@ -122,7 +125,10 @@ newConfig.commonJS = {
 				 * via the editor.bundle.css file.
 				 */
 				path.resolve(process.cwd(), 'assets/**/**editor.{css,scss}'),
-				path.resolve(process.cwd(), 'assets/**/**editor.{js,ts}'),
+				path.resolve(
+					process.cwd(),
+					'assets/**/**editor.{js,ts,jsx,tsx}',
+				),
 			]);
 			return files.length ? { 'global/editor.bundle': files } : {};
 		})(),
@@ -180,7 +186,7 @@ newConfig.commonJS = {
 			afterEmit: () => {
 				// replace double file extensions
 				const duplicateExt = globSync(
-					'./dist/**/*{.css.css,.js.js,.scss.css,.ts.js}',
+					'./dist/**/*{.css.css,.js.js,.scss.css,.ts.js,jsx.js,tsx.js}',
 				);
 				duplicateExt?.forEach((file) => {
 					const ext = path.extname(file);

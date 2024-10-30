@@ -3,8 +3,8 @@
  * 
  * Note that many of these are fed into the
  * theme.json file, allowing you to control
- * much of the styling via this CSS file. See
- * comments below for more.
+ * much of the styling via this CSS file.
+ * See comments below for details.
  */
 
 /* prettier-ignore */
@@ -26,7 +26,7 @@
 	 */
 	--sp-s: 24; /* pixel (unitless) desktop value for settings.spacing.spacingSizes.slug=20 in theme.json */
 		--sp-s-rem:calc((var(--sp-s)/var(--fs))*1rem);
-		--sp-s-em:calc((var(--sp-s)/var(--fs))*1em); /* settings.styles.spacing.padding in theme.json */
+		--sp-s-em:calc((var(--sp-s)/var(--fs))*1em); /* settings.typography.lineHeight in theme.jsonspacing.padding and settings.styles.spacing.blockGap in theme.json */
 	
 	--sp-m: 50; /* pixel (unitless) desktop value for settings.spacing.spacingSizes.slug=50 in theme.json */
 		--sp-m-rem:calc((var(--sp-m)/var(--fs))*1rem);
@@ -41,7 +41,7 @@
 	/*
 	 * Common Heights
 	 */
-	--h-menu: 3em; /* main menu height (e.g. to push top of content down under sticky menu) */
+	--h-menu: 4rem; /* main menu height (e.g. to push top of content down under sticky menu) */
 	
 	/*
 	 * Common Font Sizes
@@ -50,36 +50,36 @@
 	 * per breakpoint, instead use e.g. calc((24 / var(--fs)) * 1em) for a em-based, 24px font.
 	 */
 	--fs: 16; /* unitless base font sized (used by many other calculations) */
-	--fs-px: calc(var(--fs) * 1px); /* base font size in pixels */
+	--fs-px: calc(var(--fs) * 1px); /* base font size in pixels and styles.typography.fontSize in theme.json */
 
 	--fs-h1: clamp(
 		18px, /* min in pixels */
-		calc(32 / var(--w) * 100vw), /* unitless max (flexes up to max value) */
+		calc( 32 /var(--w)*100vw), /* unitless max */
 		32px /* max in pixels */
 	);
 	--fs-h2: clamp(
 		18px,
-		calc(24 / var(--w) * 100vw),
+		calc( 24 /var(--w)*100vw),
 		24px
 	);
 	--fs-h3: clamp(
 		18px,
-		calc(20.8 / var(--w) * 100vw),
+		calc( 20.8 /var(--w)*100vw),
 		20.8px
 	);
 	--fs-h4: clamp(
 		18px,
-		calc(16 / var(--w) * 100vw),
+		calc( 16 /var(--w)*100vw),
 		16px
 	);
 	--fs-h5: clamp(
 		18px,
-		calc(12.8 / var(--w) * 100vw),
+		calc( 12.8 /var(--w)*100vw),
 		12.8px
 	);
 	--fs-h6: clamp(
 		18px,
-		calc(11.2 / var(--w) * 100vw),
+		calc( 11.2 /var(--w)*100vw),
 		11.2px
 	);
 	--fs-big: larger;
@@ -89,14 +89,14 @@
 	/**
 	 * Common Line Heights
 	 */
-	--flh-s: 1.2; /* default for headings */
-	--flh-m: 1.4; /* default for body copy */
+	--flh-s: 1.2; /* default for headings and faux headings in text-level-semantics.css */
+	--flh-m: 1.4; /* styles.typography.lineHeight in theme.json */
 
 	/*
 	 * Common Font Families
 	 */
-	--ff-1: monospace, sans-serif;
-	--ff-2: var(--ff-1);
+	--ff-1: monospace, sans-serif; /* default for body and styles.typography.fontFamily in theme.json */
+	--ff-2: var(--ff-1); /* default for headings and faux headings in text-level-semantics.css */
 
 	/*
 	 * Common Animation Defaults
@@ -108,11 +108,12 @@
 	 * Common Colors
 	 *
 	 * Use the format: --<color>-<variant>-<brightness>
-	 * For example, --c-2-2 is a darkish version of color two.
+	 * For example, --c-2-7 is a lightish version of color two.
 	 *
 	 * For opacity, use color-mix. For example, to produce
 	 * a 0.5 opaque lightish version of color two, use:
 	 * background: color-mix(in hsl, var(--c-2-7) 50%, transparent);
+	 * (and can use CSS Relative Color Syntax once it's widely supported)
 	*/
 
 	/* drab (light, medium, dark) */

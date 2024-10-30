@@ -77,15 +77,15 @@ export const getStyleFromObject = (
 /**
  * Handle responsive number values
  *
- * @param {Object}   root0
- * @param {string}   root0.title
- * @param {string}   root0.attributeName
- * @param {Object}   root0.attributes
- * @param {Function} root0.setAttributes
- * @param {Array}    root0.opts
- * @param {number}   root0.step
- * @param {number}   root0.min
- * @param {number}   root0.max
+ * @param {Object}   props
+ * @param {string}   props.title
+ * @param {string}   props.attributeName
+ * @param {Object}   props.attributes
+ * @param {Function} props.setAttributes
+ * @param {Array}    props.opts
+ * @param {number}   props.step
+ * @param {number}   props.min
+ * @param {number}   props.max
  */
 export const TextControlList = ({
 	title,
@@ -144,10 +144,10 @@ export const TextControlList = ({
 
 /**
  * Generate block editor component
- * @param {Object}   root0
- * @param {Object}   root0.attributes
- * @param {Function} root0.setAttributes
- * @param {string}   root0.className
+ * @param {Object}   props
+ * @param {Object}   props.attributes
+ * @param {Function} props.setAttributes
+ * @param {string}   props.className
  */
 const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 	const { count, hasEqualRows, minAspect } = attributes;

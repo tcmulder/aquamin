@@ -28,11 +28,11 @@ import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
 
 /**
  * Generate block editor component
- * @param {Object}   root0
- * @param {Object}   root0.attributes
- * @param {Function} root0.setAttributes
- * @param {string}   root0.className
- * @param {string}   root0.clientId
+ * @param {Object}   props
+ * @param {Object}   props.attributes
+ * @param {Function} props.setAttributes
+ * @param {string}   props.className
+ * @param {string}   props.clientId
  */
 const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
 	const { span, col, row, spanRow, vAlign, variation } = attributes;

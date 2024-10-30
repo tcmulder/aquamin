@@ -279,16 +279,27 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 		* get a white border, matching their respective
 		* backgrounds. It's often quite useful.
 		*/
-		add_action( 'wp_head', 'aquamin_bg_css' );
-		add_action( 'admin_head', 'aquamin_bg_css' );
+		add_action( 'wp_head', 'aquamin_bg_css', 5 );
+		add_action( 'admin_head', 'aquamin_bg_css', 5 );
 		function aquamin_bg_css() {
 			$colors = wp_get_global_settings( array( 'color', 'palette', 'theme' ) );
+			$site_background = wp_get_global_styles( array( 'color', 'background' ) );
 			if ( $colors ) {
-				echo '<style id="aquamin-c-bg">';
+				$styles = array( sprintf(
+					':root,.is-root-container{--c-bg:%s;}/*%s*/', $site_background, __( 'Value of theme.json\'s styles.color.background' ) )
+				);
 				foreach( $colors as $color ) {
-					echo '.has-' . $color[ 'slug' ] . '-background-color { --c-bg: var(--c-' . $color[ 'slug' ] . ') } /* ' . $color[ 'name' ] . " */\n";
+					array_push( $styles, sprintf(
+						'.has-%s-background-color{--c-bg:var(--c-%s)}/*%s*/',
+						$color[ 'slug' ],
+						$color[ 'slug' ],
+						$color[ 'name' ]
+					) );
 				}
-				echo '</style>';
+				wp_add_inline_style(
+					'aquamin-style',
+					implode( "\n", $styles )
+				);
 			}
 		}
 
