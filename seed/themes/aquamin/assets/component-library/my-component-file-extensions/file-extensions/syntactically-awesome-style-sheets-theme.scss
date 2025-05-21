@@ -1,0 +1,16 @@
+/**
+ * My Component File Extensions front-end styling
+ *
+ * Defines front-end styling. All view.css files
+ * like this one only load when enqueued manually
+ * or via a block.json file. You can import this
+ * file into an editor.css file to apply these
+ * front-end styles within the block editor.
+ */
+
+.my-component-tile-extensions-scss {
+	&::before {
+		$sass-variable: ".scss files compile";
+		content: $sass-variable !important;
+	}
+}

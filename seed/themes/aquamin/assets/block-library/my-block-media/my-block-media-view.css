@@ -1,0 +1,26 @@
+/**
+ * My Block Media front-end styling
+ *
+ * Defines front-end styling. All view.css files
+ * like this one only load when enqueued manually
+ * or via a block.json file. You can import this
+ * file into an editor.css file to apply these
+ * front-end styles within the block editor.
+ */
+
+.my-block-media {
+	& > div {
+		margin-bottom: 2em;
+	}
+	video,
+	img {
+		width: 200px;
+		height: 200px;
+		display: block;
+		outline: 1px solid black;
+		object-fit: contain;
+		&[style*="--media-focal"] {
+			object-fit: var(--media-focal);
+		}
+	}
+}

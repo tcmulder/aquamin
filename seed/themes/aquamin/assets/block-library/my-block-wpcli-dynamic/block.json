@@ -19,6 +19,7 @@
 	},
 	"supports": {
 		"customClassName": true,
+		"anchor": true,
 		"align": ["wide", "full"],
 		"spacing": {
 			"margin": ["top", "bottom"],

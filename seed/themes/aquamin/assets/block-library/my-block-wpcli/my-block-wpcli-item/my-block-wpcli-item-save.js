@@ -20,9 +20,9 @@ import {
 
 /**
  * Generate block HTML to save to the database
- * @param {Object} root0
- * @param {Object} root0.attributes
- * @param {string} root0.className
+ * @param {Object} props
+ * @param {Object} props.attributes
+ * @param {string} props.className
  */
 const MyBlockWPCLIItemSave = ({ attributes, className }) => {
 	// get the attributes we care about

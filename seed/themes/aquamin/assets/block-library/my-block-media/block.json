@@ -1,0 +1,87 @@
+{
+	"apiVersion": 3,
+	"title": "My Block Media",
+	"description": "The My Block Media block.",
+	"text-domain": "aquamin",
+	"name": "aquamin/my-block-media",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"mediaId": {
+			"type": "number",
+			"default": 0
+		},
+		"mediaAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".media-1",
+			"attribute": "alt"
+		},
+		"mediaUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".media-1",
+			"attribute": "src"
+		},
+		"mediaWidth": {
+			"type": "number",
+			"source": "attribute",
+			"selector": ".media-1",
+			"attribute": "width"
+		},
+		"mediaHeight": {
+			"type": "number",
+			"source": "attribute",
+			"selector": ".media-1",
+			"attribute": "height"
+		},
+		"mediaId2": {
+			"type": "number",
+			"default": 0
+		},
+		"mediaAlt2": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".media-2",
+			"attribute": "alt"
+		},
+		"mediaUrl2": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".media-2",
+			"attribute": "src"
+		},
+		"mediaWidth2": {
+			"type": "number",
+			"source": "attribute",
+			"selector": ".media-1",
+			"attribute": "width"
+		},
+		"mediaHeight2": {
+			"type": "number",
+			"source": "attribute",
+			"selector": ".media-1",
+			"attribute": "height"
+		},
+		"mediaFocal2": {
+			"type": "object",
+			"default": {
+				"x": 0.5,
+				"y": 0.5,
+				"objectFit": "cover"
+			}
+		}
+	},
+	"supports": {
+		"customClassName": true,
+		"anchor": true,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": ["top", "bottom"],
+			"padding": ["top", "bottom"]
+		}
+	},
+	"style": ["file:./my-block-media-view.css"],
+	"editorScript": "file:./index.js"
+}
