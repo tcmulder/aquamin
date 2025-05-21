@@ -9,6 +9,7 @@
 		"env:start": "wp-env start && wp-env run tests-cli wp theme activate aquamin",
 		"env:stop": "wp-env stop",
 		"env:ssh": "wp-env run wordpress /bin/bash",
+		"env:open": "open http://localhost:8889/",
 		"theme:build": "cd ../../themes/aquamin && npm run build",
 		"theme:clean": "cd ../../themes/aquamin && rm -rf dist/",
 		"theme:seed": "rsync -a ./seed/themes/aquamin/ ../../themes/aquamin",
