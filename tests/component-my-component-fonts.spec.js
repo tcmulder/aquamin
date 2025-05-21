@@ -7,7 +7,7 @@ const { testIsolatedScreenshot } = require('../helpers');
 const subject = {
 	label: 'Fonts',
 	slug: 'test-component-my-component-fonts',
-	selector: 'body:after'
+	selector: 'body'
 };
 
 test.describe(`The component "${subject.label}"`, () => {
@@ -25,7 +25,8 @@ test.describe(`The component "${subject.label}"`, () => {
 	});
 
 	test('matches reference screenshot', async({ page }) => {
-		await testIsolatedScreenshot({ subject, page });
+		const el = page.locator(subject.selector);
+		await testIsolatedScreenshot({ el, page });
 	});
 
 });

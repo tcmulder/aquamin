@@ -92,17 +92,49 @@ export const getConsoleLogs = async ({ page }) => {
 
 /**
  * Test screenshot of isolated subject (z-indexed  above any other elements)
- * 
+ *
  * @param {Object} props Properties
- * @param {Object} props.subject Test subject
+ * @param {Object} props.el Locator element to isolate and screenshot
+ * @param {Object} props.clip Whether or not to clip to the element (defaults to true)
  * @param {Object} props.page Playwright page object
+ * @param {Object} props.opt Playwright toHaveScreenshot options (defaults to empty object)
  */
-export const testIsolatedScreenshot = async ({ subject, page }) => {
-	const imageName = `${ subject.slug }.png`;
-	await page.addStyleTag({
-		content: `${ subject.selector }{position:fixed;inset:0;z-index:999999;background:white;}`
-	});
-	await expect(page).toHaveScreenshot(imageName);
+export const testIsolatedScreenshot = async ({
+	el,
+	page,
+	clip = true,
+	opt = {},
+}) => {
+	if (clip) {
+		await el.evaluate((element) => {
+			element.setAttribute("style", `
+				position: relative;
+				z-index: 9999999;
+			`)
+		})
+		await el.scrollIntoViewIfNeeded()
+		const { x, y, width, height } = await el.boundingBox()
+		await expect(page).toHaveScreenshot({
+			clip: { x, y, width, height },
+			fullPage: true,
+			...opt,
+		})
+	} else {
+		await el.evaluate((element) => {
+			element.setAttribute("style", `
+				position: fixed;
+				inset: 0;
+				z-index: 9999999;
+				background: white;
+				width: 100vw;
+				height: 100vh;
+				max-width: none;
+				max-height: none;
+				margin:0;
+			`)
+		})
+		await expect(page).toHaveScreenshot({ ...opt })
+	}
 }
 
 /**

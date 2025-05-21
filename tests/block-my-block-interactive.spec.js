@@ -57,7 +57,8 @@ test.describe(`The block "${subject.label}"`, () => {
 
 	test('matches reference screenshot', async({ page, requestUtils }) => {
 		await openPageFromEditor({ page, requestUtils });
-		await testIsolatedScreenshot({ subject, page });
+		const el = page.locator(subject.selector)
+		await testIsolatedScreenshot({ el, page });
 	});
 	
 	test('interactivity works', async({ page, requestUtils }) => {
