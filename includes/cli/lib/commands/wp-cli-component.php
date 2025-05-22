@@ -169,7 +169,7 @@ function component_create( $args, $assoc_args ) {
 	) );
 	array_unshift( $far, array(
 		'find' => "\n/* TEMPLATE: register component script */",
-		'repl' => ! $has_view_js ? "" : "\n\t\$asset = include AQUAMIN_DIST . '/component-library/_template-component/template-slug-view.js.asset.php';\n\twp_register_script(\n\t\t'aquamin-component-template-slug-script',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.js',\n\t\t\$asset['dependencies'],\n\t\t\$asset['version'],\n\t\ttrue\n\t);"
+		'repl' => ! $has_view_js ? "" : "\n\t\$asset = include AQUAMIN_DIST . '/component-library/_template-component/template-slug-view.asset.php';\n\twp_register_script(\n\t\t'aquamin-component-template-slug-script',\n\t\tget_template_directory_uri() . '/dist/component-library/_template-component/template-slug-view.js',\n\t\t\$asset['dependencies'],\n\t\t\$asset['version'],\n\t\ttrue\n\t);"
 	) );
 	array_unshift( $far, array(
 		'find' => "\n/* TEMPLATE: enqueue component script */",
