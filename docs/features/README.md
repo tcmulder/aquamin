@@ -6,5 +6,6 @@
 - [CSS Styling](/features/css-styling)
 - [Animations](/features/animations)
 - [WP-CLI Commands](/features/wp-cli)
+- [Magic Filenames](/features/magic-filenames)
 - [More Features](/features/more-features)
 - [Requirements](/features/requirements)
