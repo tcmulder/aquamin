@@ -20,9 +20,9 @@ import {
 
 /**
  * Generate block HTML to save to the database
- * @param root0
- * @param root0.attributes
- * @param root0.className
+ * @param props             Block properties.
+ * @param props.attributes  All block attributes.
+ * @param props.className   Block classes.
  */
 const MyBlockBlockSave = ({ attributes, className }) => {
 	// get the attributes we care about

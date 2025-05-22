@@ -15,10 +15,10 @@ import Media from '../../util/block-ui/Media';
 
 /**
  * Generate block editor component
- * @param {Object}   root0
- * @param {Object}   root0.attributes
- * @param {Function} root0.setAttributes
- * @param {string}   root0.className
+ * @param {Object}   props
+ * @param {Object}   props.attributes
+ * @param {Function} props.setAttributes
+ * @param {string}   props.className
  */
 const MyBlockMediaBlockEdit = ({ attributes, setAttributes, className }) => {
 	// set props for the outermost block element

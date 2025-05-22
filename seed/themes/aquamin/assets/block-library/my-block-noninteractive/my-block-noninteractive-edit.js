@@ -19,10 +19,10 @@ import {
 
 /**
  * Generate block editor component
- * @param root0
- * @param root0.attributes
- * @param root0.setAttributes
- * @param root0.className
+ * @param props               Component properties.
+ * @param props.attributes    All block attributes.
+ * @param props.setAttributes Function to update block attributes.
+ * @param props.className     Block classes.
  */
 const MyBlockBlockEdit = ({ attributes, setAttributes, className }) => {
 	// get the attributes we care about
