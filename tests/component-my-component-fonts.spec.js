@@ -15,7 +15,7 @@ test.describe(`The component "${subject.label}"`, () => {
 	test.beforeEach( async({ page, requestUtils }) => {
 		await page.goto(requestUtils.baseURL)
 		await page.addStyleTag({
-			content: `body *{display:none !important;}body{background:none !important;font-size:100px;}`
+			content: `body *{display:none !important;}body{background:none !important;}body::before{font-size:90px;}`
 		});
 	});
 

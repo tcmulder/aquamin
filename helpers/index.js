@@ -110,6 +110,8 @@ export const testIsolatedScreenshot = async ({
 			element.setAttribute("style", `
 				position: relative;
 				z-index: 9999999;
+				background-color: white;
+				${element.getAttribute('style') || ''}
 			`)
 		})
 		await el.scrollIntoViewIfNeeded()

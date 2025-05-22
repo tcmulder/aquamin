@@ -57,6 +57,10 @@ test.describe(`The block "${subject.label}"`, () => {
 
 	test('matches reference screenshot', async({ page, requestUtils }) => {
 		await openPageFromEditor({ page, requestUtils });
+		await page.addStyleTag({
+			content: `#masthead{visibility:hidden !important;}`
+		});
+		await page.getByRole('button', { name: 'Toggle' }).click();
 		const el = page.locator(subject.selector)
 		await testIsolatedScreenshot({ el, page });
 	});
@@ -64,7 +68,7 @@ test.describe(`The block "${subject.label}"`, () => {
 	test('interactivity works', async({ page, requestUtils }) => {
 		await openPageFromEditor({ page, requestUtils });
 		await page.addStyleTag({
-			content: `#site-navigation{visibility:hidden !important;}`
+			content: `#masthead{visibility:hidden !important;}`
 		});
 		await expect(page.getByText('This element is now visible!')).not.toBeVisible();
 		await page.getByRole('button', { name: 'Toggle' }).click();
