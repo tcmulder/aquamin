@@ -13,42 +13,28 @@
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 
-/**
- * Create a movement button.
- *
- * @param {Object}   props          Component properties.
- * @param {string}   props.label    Button label.
- * @param {Function} props.onClick  Button click handler.
- * @param {string}   props.children Button children.
- * @param {boolean}  props.disabled Whether or not the button is disabled.
- * @return {Object}                 Button render
- */
-const MoveButton = (props) => {
-	const { label, onClick, children, disabled } = props;
-	return (
-		<Button
-			style={{ textDecoration: 'none' }}
-			className="button button-small"
-			type="button"
-			aria-label={label}
-			onClick={onClick}
-			disabled={disabled}
-		>
-			{children}
-		</Button>
-	);
-};
+const MoveButton = ({ label, onClick, children, disabled }) => (
+	<Button
+		style={{ textDecoration: 'none' }}
+		className="button button-small"
+		type="button"
+		aria-label={label}
+		isLink
+		onClick={onClick}
+		disabled={disabled}
+	>
+		{children}
+	</Button>
+);
 
 /**
  * Change the order of things
- * @param {Object}   props                  Component props.
- * @param {Array}    props.chosen           Array of selected items.
- * @param {Array}    props.opt              Array of available options.
- * @param {Function} props.updateAttributes Function to update attributes with new order.
- * @return {Object}                         OrderChanger render
+ * @param {Object}   props
+ * @param {Array}    props.chosen
+ * @param {Array}    props.opt
+ * @param {Function} props.updateAttributes
  */
-const OrderChanger = (props) => {
-	const { chosen, opt, updateAttributes } = props;
+const OrderChanger = ({ chosen, opt, updateAttributes }) => {
 	const changeOrder = (fromIndex, toIndex) => {
 		const orderChosen = [...chosen];
 		const item = orderChosen[fromIndex];
