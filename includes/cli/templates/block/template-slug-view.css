@@ -8,6 +8,4 @@
  * front-end styles within the block editor.
  */
 
-.template-slug b::after {
-	content: " ❒ "; /* NOTE: replace all this with your own code */
-}
+/* @todo replace demo code: */.wp-block-aquamin-template-slug { &::before { content: " ❒ "; background-color: aquamarine; } }
