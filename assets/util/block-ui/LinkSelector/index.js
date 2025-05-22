@@ -31,7 +31,8 @@ import {
  * @param {Function} props.setAttributes Function to set block attributes.
  * @param {boolean}  props.show          Whether or not to show the link selector.
  */
-const LinkSelector = ({ link, setAttributes, show }) => {
+const LinkSelector = (props) => {
+	const { link, setAttributes, show } = props;
 	const [showLink, setShowLink] = useState(false);
 	return (
 		<>

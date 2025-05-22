@@ -20,7 +20,8 @@ import { getGap, getStyle, getStyleFromObject } from './grd-edit';
  * @param {Object} props.attributes All block attributes
  * @param {string} props.className  Block class name
  */
-const GridBlockSave = ({ attributes, className }) => {
+const GridBlockSave = (props) => {
+	const { attributes, className } = props;
 	const { count, hasEqualRows, minAspect } = attributes;
 	const { x, y } = minAspect;
 	const hasAspect = x && y;

@@ -23,8 +23,9 @@ import {
  * @param {Object} props.attributes All block attributes
  * @param {string} props.className  Block class name
  */
-const TemplateNamespaceBlockSave = ({ attributes, className }) => {
-	// get the attributes we care about
+const TemplateNamespaceBlockSave = (props) => {
+	// get the props and attributes we care about
+	const { attributes, className } = props;
 	const { demoText } = attributes;
 
 	// set props for the outermost block element

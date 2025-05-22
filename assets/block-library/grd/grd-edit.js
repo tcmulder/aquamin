@@ -87,20 +87,23 @@ export const getStyleFromObject = (
  * @param {number}   props.min           Minimum value for number input.
  * @param {number}   props.max           Maximum value for number input.
  */
-export const TextControlList = ({
-	title,
-	attributeName,
-	attributes,
-	setAttributes,
-	opts = [
-		[__('Desktop', 'aquamin'), 'lg'],
-		[__('Tablet', 'aquamin'), 'md'],
-		[__('Mobile', 'aquamin'), 'sm'],
-	],
-	step = 1,
-	min = 0,
-	max,
-}) => {
+export const TextControlList = (props) => {
+	// get the props we care about
+	const {
+		title,
+		attributeName,
+		attributes,
+		setAttributes,
+		opts = [
+			[__('Desktop', 'aquamin'), 'lg'],
+			[__('Tablet', 'aquamin'), 'md'],
+			[__('Mobile', 'aquamin'), 'sm'],
+		],
+		step = 1,
+		min = 0,
+		max,
+	} = props;
+
 	return (
 		<fieldset>
 			{title && (
@@ -149,7 +152,8 @@ export const TextControlList = ({
  * @param {Function} props.setAttributes Function to set block attributes.
  * @param {string}   props.className     Block class name.
  */
-const GridBlockEdit = ({ attributes, setAttributes, className }) => {
+const GridBlockEdit = (props) => {
+	const { attributes, setAttributes, className } = props;
 	const { count, hasEqualRows, minAspect } = attributes;
 	const { x, y } = minAspect;
 	const hasAspect = x && y;

@@ -20,7 +20,8 @@ import { getStyle, getStyleFromObject } from '../grd-edit';
  * @param {Object} props.attributes All block attributes.
  * @param {string} props.className  Block class name.
  */
-const GridItemSave = ({ attributes, className }) => {
+const GridItemSave = (props) => {
+	const { attributes, className } = props;
 	const { span, col, row, spanRow, vAlign, variation } = attributes;
 
 	const blockProps = useBlockProps.save({

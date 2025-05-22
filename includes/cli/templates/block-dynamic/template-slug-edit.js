@@ -15,7 +15,8 @@ import ServerSideRender from '@wordpress/server-side-render';
  * @param {Object} props            Component props
  * @param {Object} props.attributes All block attributes
  */
-const TemplateNamespaceBlockEdit = ({ attributes }) => {
+const TemplateNamespaceBlockEdit = (props) => {
+	const { attributes } = props;
 	return (
 		<ServerSideRender
 			block="aquamin/template-slug"

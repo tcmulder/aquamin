@@ -34,7 +34,8 @@ import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
  * @param {string}   props.className     Block class name.
  * @param {string}   props.clientId      Unique ID for the block instance.
  */
-const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
+const GridItemEdit = (props) => {
+	const { attributes, setAttributes, className, clientId } = props;
 	const { span, col, row, spanRow, vAlign, variation } = attributes;
 	const { count } = select('core/block-editor').getBlock(
 		select('core/block-editor').getBlockParents(clientId).at(-1),

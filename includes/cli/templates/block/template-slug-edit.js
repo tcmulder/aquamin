@@ -23,12 +23,9 @@ import {
  * @param {Function} props.setAttributes Function to set block attributes
  * @param {string}   props.className     Block class name
  */
-const TemplateNamespaceBlockEdit = ({
-	attributes,
-	setAttributes,
-	className,
-}) => {
-	// get the attributes we care about
+const TemplateNamespaceBlockEdit = (props) => {
+	// get the props and attributes we care about
+	const { attributes, setAttributes, className } = props;
 	const { demoText } = attributes;
 
 	// set props for the outermost block element

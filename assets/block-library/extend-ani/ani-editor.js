@@ -45,7 +45,9 @@ const isAffected = (name, blocks) => {
  * @param {Object} props                     Component props
  * @param {Array}  props.aquaminClassNameAni Array of animation classes
  */
-const Validation = ({ aquaminClassNameAni }) => {
+const Validation = (props) => {
+	// get the props we care about
+	const { aquaminClassNameAni } = props;
 	// start without a message
 	const msgs = [];
 	// get the animations the user selected

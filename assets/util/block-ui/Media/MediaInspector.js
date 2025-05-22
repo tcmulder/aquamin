@@ -22,7 +22,8 @@ import { getType } from './media-util';
  * @param {Object}   props.attributeNames Object attribute names
  * @param {Object}   props.attributes     Media block attributes
  */
-const AltControl = ({ attributes, setAttributes, attributeNames }) => {
+const AltControl = (props) => {
+	const { attributes, setAttributes, attributeNames } = props;
 	return getType(attributes[attributeNames.url]) !== 'video' ? (
 		<div style={{ marginTop: 10, marginBottom: 10 }}>
 			<TextareaControl
@@ -58,7 +59,8 @@ const AltControl = ({ attributes, setAttributes, attributeNames }) => {
  * @param {Function} props.setAttributes  Set Media block attributes
  * @param {Object}   props.attributeNames Custom/default attribute names
  */
-const Remove = ({ setAttributes, attributeNames, title }) => {
+const Remove = (props) => {
+	const { setAttributes, attributeNames, title } = props;
 	return (
 		<Button
 			variant="secondary"
