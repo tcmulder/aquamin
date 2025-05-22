@@ -2,6 +2,9 @@
 
 ## 7.3.0 - May 22 2025
 * Fixed JavaScript linting errors.
+* Simplified alignment styling to better match block editor defaults.
+* Make the EntitySelector block UI component more flexible.
+* Refactor props in code for greater flexibility.
 
 ## 7.2.1 - October 29 2024
 * Standardize background color functionality.
