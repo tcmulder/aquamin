@@ -128,7 +128,7 @@ const MediaEditor = (props) => {
 /**
  * Output inspector controls
  *
- * @param {Object}  props
+ * @param {Object}  props               All props
  * @param {string}  props.title         Media's name in the editor
  * @param {boolean} props.editable      Whether or not this is editable (i.e. edit/save)
  * @param {boolean} props.hideInSidebar Whether or not to hide inspector altogether

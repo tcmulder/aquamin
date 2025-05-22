@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.3.0 - May 22 2025
+* Fixed JavaScript linting errors.
+
 ## 7.2.1 - October 29 2024
 * Standardize background color functionality.
 * Removed unused comments.php (use component-library/blog/comments-view.php).

@@ -16,9 +16,9 @@ import { getStyle, getStyleFromObject } from '../grd-edit';
 
 /**
  * Generate block HTML to save to the database
- * @param {Object} props
- * @param {Object} props.attributes
- * @param {string} props.className
+ * @param {Object} props            Component props.
+ * @param {Object} props.attributes All block attributes.
+ * @param {string} props.className  Block class name.
  */
 const GridItemSave = ({ attributes, className }) => {
 	const { span, col, row, spanRow, vAlign, variation } = attributes;

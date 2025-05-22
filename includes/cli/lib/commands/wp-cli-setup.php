@@ -12,8 +12,8 @@ use AquaminCLI\Util;
 /**
 * Sets up default content
 *
-* @param array $modules
-* @param array $assoc_args
+* @param array $args       Iterator of the unnamed or positional arguments
+* @param array $assoc_args iterator of named or associative arguments
 * @return null
 */
 function setup( $args, $assoc_args ) {

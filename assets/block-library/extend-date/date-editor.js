@@ -28,8 +28,8 @@ const isAffected = (name) => {
 
 /**
  * Modify attributes
- * @param {Object} props
- * @param {string} name
+ * @param {Object} props Component props
+ * @param {string} name  Block name
  */
 const modifyAttributes = (props, name) => {
 	// if we're supposed to edit this block

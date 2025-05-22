@@ -19,7 +19,6 @@ const MoveButton = ({ label, onClick, children, disabled }) => (
 		className="button button-small"
 		type="button"
 		aria-label={label}
-		isLink
 		onClick={onClick}
 		disabled={disabled}
 	>
@@ -29,10 +28,10 @@ const MoveButton = ({ label, onClick, children, disabled }) => (
 
 /**
  * Change the order of things
- * @param {Object}   props
- * @param {Array}    props.chosen
- * @param {Array}    props.opt
- * @param {Function} props.updateAttributes
+ * @param {Object}   props                  Component props.
+ * @param {Array}    props.chosen           Array of selected items.
+ * @param {Array}    props.opt              Array of available options.
+ * @param {Function} props.updateAttributes Function to update attributes with new order.
  */
 const OrderChanger = ({ chosen, opt, updateAttributes }) => {
 	const changeOrder = (fromIndex, toIndex) => {

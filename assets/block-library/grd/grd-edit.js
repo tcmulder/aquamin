@@ -20,9 +20,9 @@ import { ToggleControl, TextControl, PanelBody } from '@wordpress/components';
 /**
  * Get style for grid gaps (using WordPress's built in gap system)
  *
- * @param {Object} attributes All block attributes for us to dig through
- * @param {string} side       Grid gap side 'left' or 'top' to retrieve
- * @return  {Object}             Grid gap css custom property object
+ * @param {Object} attributes All block attributes for us to dig through.
+ * @param {string} side       Grid gap side 'left' or 'top' to retrieve.
+ * @return  {Object}          Grid gap css custom property object.
  */
 export const getGap = (attributes, side) => {
 	let gap = {};
@@ -40,10 +40,10 @@ export const getGap = (attributes, side) => {
 /**
  * Get custom property style attribute from a string
  *
- * @param {string}        name     Custom property name
- * @param {string|number} value    Value of the property (string or number)
- * @param {Function}      validate Validation function (defaults to checking truthy)
- * @return {Object}              Style object (or {} if didn't pass validation)
+ * @param {string}        name     Custom property name.
+ * @param {string|number} value    Value of the property (string or number).
+ * @param {Function}      validate Validation function (defaults to checking truthy).
+ * @return {Object}                Style object (or {} if didn't pass validation)
  */
 export const getStyle = (name, value, validate = (val) => !!val) => {
 	const style = {};
@@ -56,10 +56,10 @@ export const getStyle = (name, value, validate = (val) => !!val) => {
 /**
  * Get custom property style attributes from an object
  *
- * @param {string}   nameBase Custom property name base (keys in object get appended as suffix)
- * @param {Object}   obj      Object with key (used as name suffix) and value (property value)
- * @param {Function} validate Validation function (defaults to checking truthy)
- * @return {Object}              Style object (or {} if didn't pass validation)
+ * @param {string}   nameBase Custom property name base (keys in object get appended as suffix).
+ * @param {Object}   obj      Object with key (used as name suffix) and value (property value).
+ * @param {Function} validate Validation function (defaults to checking truthy).
+ * @return {Object}           Style object (or {} if didn't pass validation)
  */
 export const getStyleFromObject = (
 	nameBase,
@@ -77,15 +77,15 @@ export const getStyleFromObject = (
 /**
  * Handle responsive number values
  *
- * @param {Object}   props
- * @param {string}   props.title
- * @param {string}   props.attributeName
- * @param {Object}   props.attributes
- * @param {Function} props.setAttributes
- * @param {Array}    props.opts
- * @param {number}   props.step
- * @param {number}   props.min
- * @param {number}   props.max
+ * @param {Object}   props               Component props.
+ * @param {string}   props.title         Title for the control group.
+ * @param {string}   props.attributeName Name of the attribute to modify.
+ * @param {Object}   props.attributes    All block attributes.
+ * @param {Function} props.setAttributes Function to set block attributes.
+ * @param {Array}    props.opts          Options available for responsive breakpoints.
+ * @param {number}   props.step          Step increment for number input.
+ * @param {number}   props.min           Minimum value for number input.
+ * @param {number}   props.max           Maximum value for number input.
  */
 export const TextControlList = ({
 	title,
@@ -144,10 +144,10 @@ export const TextControlList = ({
 
 /**
  * Generate block editor component
- * @param {Object}   props
- * @param {Object}   props.attributes
- * @param {Function} props.setAttributes
- * @param {string}   props.className
+ * @param {Object}   props               Component props.
+ * @param {Object}   props.attributes    All block attributes.
+ * @param {Function} props.setAttributes Function to set block attributes.
+ * @param {string}   props.className     Block class name.
  */
 const GridBlockEdit = ({ attributes, setAttributes, className }) => {
 	const { count, hasEqualRows, minAspect } = attributes;

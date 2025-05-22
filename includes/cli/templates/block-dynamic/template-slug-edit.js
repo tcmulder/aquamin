@@ -12,8 +12,8 @@ import ServerSideRender from '@wordpress/server-side-render';
 
 /**
  * Generate block editor component
- * @param {Object} props
- * @param {Object} props.attributes
+ * @param {Object} props            Component props
+ * @param {Object} props.attributes All block attributes
  */
 const TemplateNamespaceBlockEdit = ({ attributes }) => {
 	return (

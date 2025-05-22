@@ -62,8 +62,8 @@ defined( 'ABSPATH' ) || exit; // exit if accessed directly
  *
  * wp aquamin block create
  *
- * @param array $modules
- * @param array $assoc_args
+ * @param array $args       Iterator of the unnamed or positional arguments
+ * @param array $assoc_args iterator of named or associative arguments
  * @return null
  */
 function block_create( $args, $assoc_args ) {

@@ -4,10 +4,10 @@
  *
  * This file renders the dynamic block.
  * 
- * @param  array $attributes  Block attributes.
+ * @param  array $attributes  All block attributes.
  * @param  array $content     Block content.
  * @param  array $block       Block instance.
- * @return string
+ * @return string             HTML output.
  */
 ?>
 <div <?php echo get_block_wrapper_attributes( array( 'class' => 'template-slug' ) ) ?>>

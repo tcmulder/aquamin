@@ -38,8 +38,8 @@ export const ani = (els) => {
  * to apply the animations.)
  *
  * @param {Array}  delegatedSelectors Array of parent/child selector pairs.
- * @param {string} aniClassName       Name of basic animations (what ani() will use)
- * @return {NodeList} Elements to which we should apply animations.
+ * @param {string} aniClassName       Name of basic animations (what ani() will use).
+ * @return {NodeList}                 Elements to which we should apply animations.
  */
 export const aniDelegate = (delegatedSelectors, aniClassName = 'ani') => {
 	const allAniEls = [];

@@ -20,9 +20,9 @@ import {
 
 /**
  * Generate block HTML to save to the database
- * @param {Object} props
- * @param {Object} props.attributes
- * @param {string} props.className
+ * @param {Object} props            Component props
+ * @param {Object} props.attributes All block attributes
+ * @param {string} props.className  Block class name
  */
 const TemplateItemNamespaceSave = ({ attributes, className }) => {
 	// get the attributes we care about
