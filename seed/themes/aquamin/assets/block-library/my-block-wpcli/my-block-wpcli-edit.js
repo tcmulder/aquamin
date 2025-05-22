@@ -23,11 +23,7 @@ import {
  * @param {Function} props.setAttributes
  * @param {string}   props.className
  */
-const MyBlockWPCLIBlockEdit = ({
-	attributes,
-	setAttributes,
-	className,
-}) => {
+const MyBlockWPCLIBlockEdit = ({ attributes, setAttributes, className }) => {
 	// get the attributes we care about
 	const { demoText } = attributes;
 
