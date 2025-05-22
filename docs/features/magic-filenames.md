@@ -21,8 +21,8 @@ Aquamin automatically compiles files named or ending in _editor_ to a single fil
 
 So, `my-block-editor.js`, `my-component-editor.css`, or `editor.scss` would all automatically compile to the `dist/global/editor.bundle.js` or `dist/global/editor.bundle.css` files, which aquamin enqueues on the back-end of the block editor.
 
-### `hook` files in the format _`optional-prefix-` `hook` `.extension`_
+### `hooks` files in the format _`optional-prefix-` `hooks` `.extension`_
 
-Files named or ending in _hook_ are automatically ran by the `functions.php` file. This lets you colocate PHP functionality with your block or component.
+Files named or ending in _hooks_ are automatically ran by the `functions.php` file. This lets you colocate PHP functionality with your block or component.
 
-So, aquamin would automatically run `my-block-hook.php`, `my-component-hook.php`, or `hook.php` via the theme's `functions.php` file.
+So, aquamin would automatically run `my-block-hooks.php`, `my-component-hooks.php`, or `hooks.php` via the theme's `functions.php` file.
