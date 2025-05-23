@@ -1,6 +1,6 @@
 ![Aquamin logo](https://raw.githubusercontent.com/tcmulder/aquamin/master/docs/_assets/heading.svg)
 
-![Static Badge](https://img.shields.io/badge/Theme-7.2.1-01CAA9) [![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+![Static Badge](https://img.shields.io/badge/Theme-7.3.0-01CAA9) [![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 
 # About Aquamin

@@ -42,10 +42,12 @@ const isAffected = (name, blocks) => {
 
 /**
  * Create a validation component.
- * @param {Object} props
- * @param {Array}  props.aquaminClassNameAni
+ * @param {Object} props                     Component props
+ * @param {Array}  props.aquaminClassNameAni Array of animation classes
  */
-const Validation = ({ aquaminClassNameAni }) => {
+const Validation = (props) => {
+	// get the props we care about
+	const { aquaminClassNameAni } = props;
 	// start without a message
 	const msgs = [];
 	// get the animations the user selected
@@ -98,8 +100,8 @@ const Validation = ({ aquaminClassNameAni }) => {
 
 /**
  * Modify attributes
- * @param {Object} props
- * @param {string} name
+ * @param {Object} props Component props
+ * @param {string} name  Block name
  */
 const modifyAttributes = (props, name) => {
 	// if we're supposed to edit this block
@@ -240,9 +242,9 @@ addFilter('editor.BlockEdit', extensionName, withModifyEdit);
 
 /**
  * Save attributes
- * @param {Object} props
- * @param {Object} block
- * @param {Object} attributes
+ * @param {Object} props      Component props
+ * @param {Object} block      Block object
+ * @param {Object} attributes All block attributes
  */
 const modifySave = (props, block, attributes) => {
 	// if we're supposed to edit this block

@@ -273,15 +273,14 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 		 *	.thing {
 		*		border: 1px solid var(--c-bg);
 		* 	}
-		* So, for .thing.has-0-000-background-color
+		* So, for .thing.has-0-0-background-color
 		* you'll get a black border, and for
-		* .thing.has-0-900-background-color you'll
+		* .thing.has-0-9-background-color you'll
 		* get a white border, matching their respective
 		* backgrounds. It's often quite useful.
 		*/
-		add_action( 'wp_head', 'aquamin_bg_css', 5 );
-		add_action( 'admin_head', 'aquamin_bg_css', 5 );
 		function aquamin_bg_css() {
+			$style_html = '';
 			$colors = wp_get_global_settings( array( 'color', 'palette', 'theme' ) );
 			$site_background = wp_get_global_styles( array( 'color', 'background' ) );
 			if ( $colors ) {
@@ -296,11 +295,26 @@ if ( ! function_exists( 'aquamin_setup' ) ) {
 						$color[ 'name' ]
 					) );
 				}
-				wp_add_inline_style(
-					'aquamin-style',
-					implode( "\n", $styles )
-				);
+				$style_html = implode( "\n", $styles );
 			}
+			return $style_html;
+		}
+
+		add_action( 'wp_enqueue_scripts', 'aquamin_bg_front_end', 50 );
+		function aquamin_bg_front_end() {
+			$style_html = aquamin_bg_css();
+			if ( $style_html ) {
+				wp_add_inline_style( 'aquamin-style', $style_html );
+			}
+		}
+
+		add_filter( 'block_editor_settings_all', 'aquamin_bg_back_end', 10,2 );
+		function aquamin_bg_back_end( $editor_settings, $editor_context ) {
+			$style_html = aquamin_bg_css();
+			if ( $style_html ) {
+				$editor_settings["styles"][] = array( "css" => $style_html );
+			}
+			return $editor_settings;
 		}
 
 	}

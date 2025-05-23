@@ -1,5 +1,18 @@
-.env
+# aquamarine
+aquanalize
+
+# system
 .DS_Store
+
+# secret
+.env
+
+# development
 node_modules
-dist/
 wp-cli.yml
+dist/
+
+# wp engine
+_wpeprivate/
+.wpe-pull-ignore
+.wpe-push-ignore

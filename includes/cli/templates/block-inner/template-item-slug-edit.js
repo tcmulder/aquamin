@@ -18,17 +18,14 @@ import {
 
 /**
  * Generate block editor component
- * @param {Object}   props
- * @param {Object}   props.attributes
- * @param {Function} props.setAttributes
- * @param {string}   props.className
+ * @param {Object}   props               Component props
+ * @param {Object}   props.attributes    All block attributes
+ * @param {Function} props.setAttributes Function to set block attributes
+ * @param {string}   props.className     Block class name
  */
-const TemplateItemNamespaceEdit = ({
-	attributes,
-	setAttributes,
-	className,
-}) => {
-	// get the attributes we care about
+const TemplateItemNamespaceEdit = (props) => {
+	// get the props and attributes we care about
+	const { attributes, setAttributes, className } = props;
 	const { demoText } = attributes;
 
 	// set props for the outermost block element

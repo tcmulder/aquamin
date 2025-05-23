@@ -26,12 +26,13 @@ import {
 
 /**
  * Link selector
- * @param {Object}   props
- * @param {Object}   props.link
- * @param {Function} props.setAttributes
- * @param {boolean}  props.show
+ * @param {Object}   props               Component props.
+ * @param {Object}   props.link          Link object with url, title, and opensInNewTab properties.
+ * @param {Function} props.setAttributes Function to set block attributes.
+ * @param {boolean}  props.show          Whether or not to show the link selector.
  */
-const LinkSelector = ({ link, setAttributes, show }) => {
+const LinkSelector = (props) => {
+	const { link, setAttributes, show } = props;
 	const [showLink, setShowLink] = useState(false);
 	return (
 		<>

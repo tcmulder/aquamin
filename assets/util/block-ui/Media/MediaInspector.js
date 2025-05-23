@@ -22,7 +22,8 @@ import { getType } from './media-util';
  * @param {Object}   props.attributeNames Object attribute names
  * @param {Object}   props.attributes     Media block attributes
  */
-const AltControl = ({ attributes, setAttributes, attributeNames }) => {
+const AltControl = (props) => {
+	const { attributes, setAttributes, attributeNames } = props;
 	return getType(attributes[attributeNames.url]) !== 'video' ? (
 		<div style={{ marginTop: 10, marginBottom: 10 }}>
 			<TextareaControl
@@ -58,7 +59,8 @@ const AltControl = ({ attributes, setAttributes, attributeNames }) => {
  * @param {Function} props.setAttributes  Set Media block attributes
  * @param {Object}   props.attributeNames Custom/default attribute names
  */
-const Remove = ({ setAttributes, attributeNames, title }) => {
+const Remove = (props) => {
+	const { setAttributes, attributeNames, title } = props;
 	return (
 		<Button
 			variant="secondary"
@@ -128,7 +130,7 @@ const MediaEditor = (props) => {
 /**
  * Output inspector controls
  *
- * @param {Object}  props
+ * @param {Object}  props               All props
  * @param {string}  props.title         Media's name in the editor
  * @param {boolean} props.editable      Whether or not this is editable (i.e. edit/save)
  * @param {boolean} props.hideInSidebar Whether or not to hide inspector altogether

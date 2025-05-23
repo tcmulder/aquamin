@@ -28,13 +28,14 @@ import { TextControlList, getStyle, getStyleFromObject } from '../grd-edit';
 
 /**
  * Generate block editor component
- * @param {Object}   props
- * @param {Object}   props.attributes
- * @param {Function} props.setAttributes
- * @param {string}   props.className
- * @param {string}   props.clientId
+ * @param {Object}   props               Component props.
+ * @param {Object}   props.attributes    All block attributes.
+ * @param {Function} props.setAttributes Function to set block attributes.
+ * @param {string}   props.className     Block class name.
+ * @param {string}   props.clientId      Unique ID for the block instance.
  */
-const GridItemEdit = ({ attributes, setAttributes, className, clientId }) => {
+const GridItemEdit = (props) => {
+	const { attributes, setAttributes, className, clientId } = props;
 	const { span, col, row, spanRow, vAlign, variation } = attributes;
 	const { count } = select('core/block-editor').getBlock(
 		select('core/block-editor').getBlockParents(clientId).at(-1),

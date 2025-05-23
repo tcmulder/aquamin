@@ -8,6 +8,4 @@
  */
 @import "./*view.css";
 
-[data-type="aquamin/template-slug"].is-selected b::after {
-	content: " ✎ "; /* NOTE: replace all this with your own code */
-}
+/* @todo replace demo code: */.wp-block-aquamin-template-slug { &::after { content: " ✎ "; background-color: aquamarine; } }
