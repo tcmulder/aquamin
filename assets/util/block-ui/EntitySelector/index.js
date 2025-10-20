@@ -21,8 +21,10 @@
  *            title: entity?.title?.raw, // e.g. 'taxonomy' instead returns entity?.name as title
  *            value: entity?.id,
  *        })}
- *
- *        blockAttributes={{ setAttributes, ids }}
+ *        // current value
+ *        value={ attributes.ids }
+ *        // function to handle value updates
+ *        onUpdate={(value) => setAttributes({ ids: value })}
  *    />
  */
 
@@ -71,7 +73,7 @@ const Render = ({
 			)}
 			{canReorder && (
 				<Button
-					isLink
+					variant="link"
 					onClick={() => setReorder(!reorder)}
 					style={{ marginBottom: '1rem' }}
 				>
@@ -91,16 +93,12 @@ const EntitySelector = compose(
 			{
 				title,
 				limit,
-				blockAttributes,
+				value: chosen,
+				onUpdate,
 				entityRecordsQuery,
 				parseEntities,
 			},
 		) => {
-			// parse attribute/setAttributes from parent
-			const attrName = Object.keys(blockAttributes).pop('setAttributes');
-			const attrVal = blockAttributes[attrName];
-			const setAttr = blockAttributes.setAttributes;
-
 			// parse entity query
 			const [kind, name, query = {}] = entityRecordsQuery;
 			query.per_page = query?.per_page || 100; // FormTokenField supposedly supports 100 max
@@ -112,10 +110,8 @@ const EntitySelector = compose(
 				parseEntities,
 				title,
 				limit,
-				chosen: attrVal,
-				updateAttributes: (value) => {
-					setAttr({ [attrName]: value });
-				},
+				chosen,
+				updateAttributes: (value) => onUpdate(value),
 			};
 		},
 	),
