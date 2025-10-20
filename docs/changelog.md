@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.3.1 - October 20 2025
+* Fixed EntitySelector block UI component flexibility update.
+
 ## 7.3.0 - May 22 2025
 * Fixed JavaScript linting errors.
 * Simplified alignment styling to better match block editor defaults.
