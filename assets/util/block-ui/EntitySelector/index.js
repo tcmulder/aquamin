@@ -76,6 +76,7 @@ const Render = ({
 					variant="link"
 					onClick={() => setReorder(!reorder)}
 					style={{ marginBottom: '1rem' }}
+					disabled={chosen.length < 2}
 				>
 					{reorder
 						? __('Done Reordering', 'aquamin')
