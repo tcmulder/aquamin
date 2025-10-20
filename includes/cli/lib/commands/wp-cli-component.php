@@ -194,7 +194,7 @@ function component_create( $args, $assoc_args ) {
 	if ( $has_template_part ) {
 		WP_CLI::line( WP_CLI::colorize( "%C ‣ Include your template part somewhere:%n get_template_part( 'dist/component-library/$dir/$slug-view' );") );
 	}
-	WP_CLI::line( WP_CLI::colorize( "%C ‣ Edit your new $title component:%n $component_path") );
+	WP_CLI::line( WP_CLI::colorize( "%C ‣ Edit your new $title component:%n '$component_path'") );
 	WP_CLI::line( "\n" );
 
 }
