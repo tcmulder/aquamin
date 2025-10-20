@@ -1,6 +1,7 @@
 # Changelog
 
 ## 7.3.1 - October 20 2025
+* Remove postcss-nested package as it's not needed after WordPress version 6.7.
 * Fixed EntitySelector block UI component flexibility update.
 
 ## 7.3.0 - May 22 2025
