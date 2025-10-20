@@ -35,7 +35,7 @@
  *                "default": {
  *                    "x": 0.5,
  *                    "y": 0.5,
- *                    "objectFit": "cover",
+ *                    "objectFit": "cover"
  *                }
  *            },
  *        }
@@ -82,7 +82,7 @@
  *        ]}
  *        title={__('Background Media', 'aquamin')} // title above <MediaPlaceholder />
  *        className="my-extra-class" // comes with .media automatically
- *        style={{ height: 'auto }} // inline css styling
+ *        style={{ height: 'auto' }} // inline css styling
  *        accept={['image/*', 'video/*']} // or exclude a type
  *        allowedTypes={['image', 'video']} // or exclude a type
  *        hideInSidebar={true} // don't show this in block editor sidebar
