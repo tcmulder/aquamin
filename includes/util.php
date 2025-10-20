@@ -127,17 +127,18 @@ function aquamin_pagination( $class = 'pagination', $prev_text = '', $next_text 
  * 
  * Allows us to get the content of one post from within another. Defaults
  * to getting Appearance > Pattern wp_block posts and their content if you
- * just pass in array( 'name' => 'pattern-slug' ).
+ * just pass in an array like array( 'name' => 'pattern-slug' ).
  * 
  * @param  array   $query  Query for a single post to grab content
+ * @param  bool    $raw    Whether to return raw content (default false)
  * @return string          Post content or empty string
  */
-function aquamin_get_post_content( $query ) {
+function aquamin_get_post_content( $query, $raw = false ) {
 	
 	// start by assuming no content
 	$the_content = '';
 
-	// merge query with ours to get the ID of a single matching post
+	// merge query with our defaults to produce a single matching post
 	$query = wp_parse_args( $query, array(
 		'post_type' => 'wp_block',
 		'posts_per_page' => 1,
@@ -147,7 +148,20 @@ function aquamin_get_post_content( $query ) {
 	// get the content of the post if it exists
 	$posts = get_posts( $query );
 	if( $posts ) {
-		$the_content = apply_filters( 'the_content', get_post_field( 'post_content', $posts[0] ) );
+		$raw_content = get_post_field( 'post_content', $posts[0] );
+		// if asked for raw simply return unprocessed (e.g. for the default_content filter)
+		if ( $raw ) {
+			$the_content = $raw_content;
+		// if we have blocks
+		} elseif ( has_blocks( $raw_content ) ) {
+			// parse blocks
+			$the_content = do_blocks( $raw_content );
+			// run shortcodes (necessary if have any core/shortcode blocks)
+			$the_content = do_shortcode( $the_content );
+		// default to legacy the_content filtering (includes do_shortcode already)
+		} else {
+			$the_content = apply_filters( 'the_content', $raw_content );
+		}
 	}
 	
 	// send it!

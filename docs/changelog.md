@@ -3,6 +3,7 @@
 ## 7.3.1 - October 20 2025
 * Remove postcss-nested package as it's not needed after WordPress version 6.7.
 * Convert wp cli inner block generator's useBlockProps to useInnerBlockProps.
+* Have aquamin_get_post_content() parse blocks more accurately, and support "raw" option (e.g. for default_content filter usage).
 * Fixed EntitySelector block UI component flexibility update.
 
 ## 7.3.0 - May 22 2025
