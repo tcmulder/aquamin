@@ -2,6 +2,7 @@
 
 ## 7.3.1 - October 20 2025
 * Remove postcss-nested package as it's not needed after WordPress version 6.7.
+* Convert wp cli inner block generator's useBlockProps to useInnerBlockProps.
 * Fixed EntitySelector block UI component flexibility update.
 
 ## 7.3.0 - May 22 2025

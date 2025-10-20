@@ -39,7 +39,7 @@ const TemplateItemNamespaceSave = (props) => {
 
 	// output the block's html
 	return (
-		<div {...blockProps}>
+		<div {...innerBlocksProps}>
 			{/* START: replace with your own code */}
 			<RichText.Content tagName="i" value={demoText} />
 			{/* END: replace with your own code */}
