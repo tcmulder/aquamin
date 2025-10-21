@@ -7,6 +7,7 @@
 * Prevent reordering of less than 2 items with EntitySelector.
 * Fixed EntitySelector block UI component flexibility update.
 * Default to showing appender when using useInnerBlocksProps(useBlockProps()) (see Gutenberg GitHub issue #70275).
+* Created a classNameUI() utility for adding simple class names to blocks.
 
 ## 7.3.0 - May 22 2025
 * Fixed JavaScript linting errors.
