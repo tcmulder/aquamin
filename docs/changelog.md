@@ -1,14 +1,15 @@
 # Changelog
 
 ## 7.3.1 - October 20 2025
-* Remove postcss-nested package as it's not needed after WordPress version 6.7.
-* Convert wp cli inner block generator's useBlockProps to useInnerBlockProps.
-* Have aquamin_get_post_content() parse blocks more accurately, and support "raw" option (e.g. for default_content filter usage).
-* Prevent reordering of less than 2 items with EntitySelector.
+* Removed postcss-nested package as it's not needed after WordPress version 6.7.
+* Converted wp cli inner block generator's useBlockProps to useInnerBlockProps.
+* Made aquamin_get_post_content() parse blocks more accurately, and support "raw" option (e.g. for default_content filter usage).
+* Prevented reordering of less than 2 items with EntitySelector.
 * Fixed EntitySelector block UI component flexibility update.
-* Default to showing appender when using useInnerBlocksProps(useBlockProps()) (see Gutenberg GitHub issue #70275).
-* Created a classNameUI() utility for adding simple class names to blocks.
-* Created getFauxInnerBlocks() utility for exposing inner blocks to dynamic blocks in the editor.
+* Set default to showing appender when using useInnerBlocksProps(useBlockProps()) (see Gutenberg GitHub issue #70275).
+* Added classNameUI() utility that adds a simple control for adding CSS classes to a block.
+* Added getFauxInnerBlocks() utility for exposing inner blocks to dynamic blocks in the editor.
+* Added useHasChildSelected() hook to essentially detect .some-block.is-selected.has-child-selected in JavaScript.
 
 ## 7.3.0 - May 22 2025
 * Fixed JavaScript linting errors.
