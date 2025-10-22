@@ -7,9 +7,7 @@
 * Prevented reordering of less than 2 items with EntitySelector.
 * Fixed EntitySelector block UI component flexibility update.
 * Set default to showing appender when using useInnerBlocksProps(useBlockProps()) (see Gutenberg GitHub issue #70275).
-* Added classNameUI() utility that adds a simple control for adding CSS classes to a block.
-* Added getFauxInnerBlocks() utility for exposing inner blocks to dynamic blocks in the editor.
-* Added useHasChildSelected() hook to essentially detect .some-block.is-selected.has-child-selected in JavaScript.
+* Removed some utility functions to reduce bloat (you can find them at https://github.com/tcmulder/aquamin-util).
 
 ## 7.3.0 - May 22 2025
 * Fixed JavaScript linting errors.
