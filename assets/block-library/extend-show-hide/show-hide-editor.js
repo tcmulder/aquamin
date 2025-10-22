@@ -15,7 +15,6 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ButtonGroup, Button, Icon } from '@wordpress/components';
-import extractClasses from '../../util/extractClasses';
 
 /**
  * Identify the extension's name
@@ -185,12 +184,20 @@ const withShowModifyEdit = createHigherOrderComponent(
 		const { name, attributes } = props;
 		// if we're supposed to edit this block
 		if (isAffected(name)) {
-			return (
-				<BlockListBlock
-					{...props}
-					className={classnames(extractClasses(attributes))}
-				/>
-			);
+			/**
+			 * Extract our classes from the attributes. This is necessary because
+			 * adding attributes in the editor appears to happen multiple times,
+			 * so only the last set of classes added gets applied; so, this process
+			 * re-adds the appropriate classes on each pass.
+			 */
+			const extractedClasses = Object.entries(attributes)
+				.flatMap(([key, val]) =>
+					key.startsWith('aquaminClassName') && Array.isArray(val)
+						? val.map((obj) => obj.value)
+						: [],
+				)
+				.join(' ');
+			return <BlockListBlock {...props} className={extractedClasses} />;
 		}
 
 		// everything's normal nothing to see here
