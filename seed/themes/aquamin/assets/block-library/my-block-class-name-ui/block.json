@@ -1,0 +1,22 @@
+{
+	"apiVersion": 3,
+	"title": "My Block Class Name UI",
+	"description": "The My Block Class Name UI block.",
+	"text-domain": "aquamin",
+	"name": "aquamin/my-block-class-name-ui",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"aquaminClassNameAquaminMySpecialClasses": {
+			"type": "array",
+			"default": [
+				{ "value": "border-left", "title": "Border Left" },
+				{ "value": "border-right", "title": "Border Right" }
+			]
+		}
+	},
+	"supports": {},
+	"style": ["file:./my-block-class-name-ui-view.css"],
+	"editorScript": "file:./index.js"
+}

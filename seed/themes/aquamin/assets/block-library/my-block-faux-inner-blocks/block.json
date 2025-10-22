@@ -1,0 +1,26 @@
+{
+	"apiVersion": 3,
+	"title": "My Block Faux Inner Blocks",
+	"description": "The My Block Faux Inner Blocks dynamic block.",
+	"text-domain": "aquamin",
+	"name": "aquamin/my-block-faux",
+	"icon": "feedback",
+	"category": "aquamin-blocks",
+	"example": {},
+	"attributes": {
+		"aquaminClassNameAni": {
+			"type": "array",
+			"default": []
+		},
+		"aquaminClassNameHide": {
+			"type": "array",
+			"default": []
+		},
+		"fauxInnerBlocks": {
+			"type": "string"
+		}
+	},
+	"supports": {},
+	"render": "file:./my-block-faux-view.php",
+	"editorScript": "file:./index.js"
+}
