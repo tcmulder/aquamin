@@ -7,7 +7,7 @@
 * Prevented reordering of less than 2 items with EntitySelector.
 * Fixed EntitySelector block UI component flexibility update.
 * Set default to showing appender when using useInnerBlocksProps(useBlockProps()) (see Gutenberg GitHub issue #70275).
-* Removed some utility functions to reduce bloat (you can find them at https://github.com/tcmulder/aquamin-util).
+* Removed some JavaScript utilities to reduce bloat (you can find them at https://github.com/tcmulder/aquamin-util).
 
 ## 7.3.0 - May 22 2025
 * Fixed JavaScript linting errors.

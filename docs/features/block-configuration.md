@@ -70,9 +70,9 @@ Though static JavaScript blocks are generally best, sometimes blocks require bac
 
 Add whatever WordPress hooks and filters a block requires to a `hooks.php` file in that block's directory. (Don't add them to `functions.php` to ensure everything stays organized in the block's own directory—see [Block Philosophy](#block-philosophy).) You can see an example within `aquamin/assets/block-library/extend-date/date-hooks.php`, which allows you to insert an auto-updating current year with the core date block.
 
-## Block Utilities
+## JavaScript Utilities
 
-You'll find some helpful, reusable utilities and Gutenberg UI components under `aquamin/assets/util` and `aquamin/assets/util/block-ui`, respectively. Check out the comments at the top of these files for usage information. You can add your own scripts into these directories as well, or ignore them if they're not helpful to you (since anything you don't use won't get bundled into the production build anyway).
+You'll find some helpful JavaScript utilities and Gutenberg UI components under `aquamin/assets/util` and `aquamin/assets/util/block-ui`, respectively. These directories house utilities needed across multiple blocks and/or components to keep your code DRY. Manually import any you'd like to use, and feel free to add your own utilities (whatever you don't import won't be bundled in the production build).
 
 ## Editing Core Blocks
 
