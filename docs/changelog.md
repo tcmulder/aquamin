@@ -1,5 +1,14 @@
 # Changelog
 
+## 7.3.1 - October 20 2025
+* Removed postcss-nested package as it's not needed after WordPress version 6.7.
+* Converted wp cli inner block generator's useBlockProps to useInnerBlockProps.
+* Made aquamin_get_post_content() parse blocks more accurately, and support "raw" option (e.g. for default_content filter usage).
+* Prevented reordering of less than 2 items with EntitySelector.
+* Fixed EntitySelector block UI component flexibility update.
+* Set default to showing appender when using useInnerBlocksProps(useBlockProps()) (see Gutenberg GitHub issue #70275).
+* Removed some JavaScript utilities to reduce bloat (you can find them at https://github.com/tcmulder/aquamin-util).
+
 ## 7.3.0 - May 22 2025
 * Fixed JavaScript linting errors.
 * Simplified alignment styling to better match block editor defaults.

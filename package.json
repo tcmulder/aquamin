@@ -1,6 +1,6 @@
 {
 	"name": "aquamin",
-	"version": "7.3.0",
+	"version": "7.3.1",
 	"description": "Webpack @wordpress/scripts build tool for Aquamarine",
 	"private": true,
 	"author": "@tcmulder",
@@ -21,11 +21,6 @@
 	"eslintConfig": {
 		"extends": "./includes/config/.eslintrc.js"
 	},
-	"postcss": {
-		"plugins": {
-			"postcss-nested": {}
-		}
-	},
 	"devDependencies": {
 		"@svgr/webpack": "^8.1.0",
 		"@wordpress/dependency-extraction-webpack-plugin": "^5.7.0",
@@ -38,7 +33,6 @@
 		"event-hooks-webpack-plugin": "^2.3.0",
 		"glob": "^10.3.12",
 		"path": "^0.12.7",
-		"postcss-nested": "^6.2.0",
 		"prettier": "^3.3.3",
 		"typescript": "^5.6.3",
 		"webpack-import-glob-loader": "^1.6.3",

@@ -2,13 +2,13 @@
                         
 Aquamin adds a few miscellaneous features to make development and content management easier.
 
-## Browsersync
-
-When you run `npm run start`, along with the hot reloading localhost link at `http://localhost:3000`, you'll see a link to `http://localhost:3001`, which opens browsersync's UI for device syncing, remote debugging, and more (see [browsersync docs](https://browsersync.io/docs/options#option-ui ':target=_blank')).
-
 ## Documentation
 
 In addition to reviewing the most up-to-date docs at `https://aquamin.thinkaquamarine.com`, you can also run `npm run docs` to open docs for the specific version of aquamin you are using (or peruse the markdown files within the `aquamin/docs` directory).
+
+## Browsersync
+
+When you run `npm run start`, along with the hot reloading localhost link at `http://localhost:3000`, you'll see a link to `http://localhost:3001`, which opens browsersync's UI for device syncing, remote debugging, and more (see [browsersync docs](https://browsersync.io/docs/options#option-ui ':target=_blank')).
 
 ## The `aquamin_get_post_content()` Function
 

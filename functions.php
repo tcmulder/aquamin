@@ -18,19 +18,19 @@ define( 'AQUAMIN_DIST', AQUAMIN_PATH . '/dist' );
 /**
  * Set up the theme.
  */
-require AQUAMIN_INC . '/core.php';
+require_once AQUAMIN_INC . '/core.php';
 
 /**
  * Add common reusable scripts
  */
-require AQUAMIN_INC . '/util.php';
+require_once AQUAMIN_INC . '/util.php';
 
 /**
  * Add the custom blocks
  */
-require AQUAMIN_INC . '/blocks.php';
+require_once AQUAMIN_INC . '/blocks.php';
 
 /**
  * Enable command line interface
  */
-require AQUAMIN_INC . '/cli/wp-cli.php';
+require_once AQUAMIN_INC . '/cli/wp-cli.php';

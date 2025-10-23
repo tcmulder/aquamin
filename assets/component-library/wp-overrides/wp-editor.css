@@ -7,3 +7,15 @@
  * here for front-end styling in the back-end block editor.
  */
 @import "./*theme.css";
+
+/*
+ * Force the appender to appear
+ *
+ * This is necessary whenever using useInnerBlocksProps(useBlockProps())
+ * in order to eliminate the div wrapping inner blocks.
+ 
+ * @see https://github.com/WordPress/gutenberg/issues/70275#issuecomment-3100469236 
+ */
+[data-type^="aquamin/"].block-editor-block-list__block.is-selected .block-list-appender .block-list-appender__toggle {
+	display: flex;
+}

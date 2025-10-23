@@ -49,7 +49,8 @@ Aquamin includes some global features that apply theme-wide across all component
 
 ```
 📂 assets
- ┣ 📂 util                  // reusable js utility functions
+ ┣ 📂 util                  // js utility functions (import them individually)
+ ┃ ┗ 📂 block-ui            // common block UI controls (shared across blocks)
  ┗ 📂 global                // global styling that exists site-wide
    ┣ 📄 alignment.css       // block alignment customizations
    ┣ 📄 animations.css      // reusable multi-component keyframe animations
