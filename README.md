@@ -2,16 +2,12 @@
 
 ## Instructions
 
-1. Start Docker so wp-env can run (may need to close other local server apps).
-2. Begin with a WordPress site with `wp-content/themes/aquamin` installed and `npm install` ran.
-3. Clone `git clone git@gitlab.com:thinkaquamarine/aquamin-e2e-tests.git` into `wp-content/plugins`.
-4. Enter the plugin's directory with `cd aquamin-e2e-tests`.
-5. Initialize with `npm install`.
-6. Run tests with `npm run start` or `npm run start:ui`.
+1. Run `cd '/Users/tcmulder/Documents/Work/Side Projects/_wp/aquamin/tests/wordpress/plugins/aquamin-e2e-tests'`.
+2. Start Docker so wp-env can run (may need to close other local server apps).
+3. Add the version of aquamin you would like to test (just copy/paste or `git clone --branch v1.0.0 https://github.com/tcmulder/aquamin.git ../../themes/aquamin`)
+4. Run tests with `npm run start` or `npm run start:ui` (or if npm is not installed then `test -d "node_modules" || npm install && npm run start`).
 
-> 💡 Tip: if node_modules doesn't exist yet you can run `test -d "node_modules" || npm install && npm run start`.
-
-> ⛔️ Warning: Docker doesn't follow symlinks, so this must be cloned or copied into the plugins directory.
+> ⛔️ Warning: Docker doesn't follow symlinks, so all files must be cloned or copied into the `wordpress` directory.
 
 ## Configuration
 

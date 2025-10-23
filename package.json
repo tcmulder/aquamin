@@ -3,14 +3,15 @@
 	"version": "1.0.0",
 	"description": "E2E testing for the aquamin theme",
 	"scripts": {
-		"start": "npm run theme:clean && npm run theme:build && npm run env:start && npm run theme:seed && npm run theme:util && npm run wpcli && npm run theme:build && npm run test:e2e && echo 'Happy testing!'",
-		"start:ui": "npm run theme:clean && npm run theme:build && npm run env:start && npm run theme:seed && npm run theme:util && npm run wpcli && npm run theme:build && npm run test:e2e:ui && echo 'Happy testing!'",
+		"start": "npm run start:setup && npm run test:e2e && echo 'Happy testing!'",
+		"start:ui": "npm run start:setup && npm run test:e2e:ui && echo 'Happy testing!'",
+		"start:setup": "npm run theme:clean && npm run theme:seed && npm run theme:util && npm run theme:build && npm run env:start && npm run wpcli && npm run theme:build",
 		"stop": "npm run env:stop && echo 'Thanks for stopping by!'",
 		"env:start": "wp-env start && wp-env run tests-cli wp theme activate aquamin",
 		"env:stop": "wp-env stop",
 		"env:ssh": "wp-env run wordpress /bin/bash",
 		"env:open": "open http://localhost:8889/",
-		"theme:build": "cd ../../themes/aquamin && npm run build",
+		"theme:build": "cd ../../themes/aquamin && test -d 'node_modules' || npm install && npm run build",
 		"theme:clean": "cd ../../themes/aquamin && rm -rf dist/",
 		"theme:seed": "rsync -a ./seed/themes/aquamin/ ../../themes/aquamin",
 		"theme:util": "rm -rf ../../themes/aquamin/assets/util && git clone https://github.com/tcmulder/aquamin-util.git ../../themes/aquamin/assets/util",
@@ -20,7 +21,8 @@
 		"wpcli": "npm run wpcli:block && npm run wpcli:block:dynamic && npm run wpcli:component",
 		"test:e2e:ui": "wp-scripts test-playwright --config playwright.config.js --ui",
 		"test:e2e:headed": "wp-scripts test-playwright --config playwright.config.js --headed",
-		"test:e2e": "wp-scripts test-playwright --config playwright.config.js"
+		"test:e2e": "wp-scripts test-playwright --config playwright.config.js",
+		"test:clean": "rm -rf ./reference"
 	},
 	"author": "@tcmulder",
 	"license": "ISC",
